@@ -1938,6 +1938,26 @@
       </div>
 
       <div class="ref-block">
+        <div class="ref-title">V28U1 — Pamuk / FIC — Mesane USG</div>
+        Puccinelli, C., Lippi, I., Pelligra, T., Mannucci, T., Perondi, F., Mattolini, M., &amp; Citi, S. (2021). Pseudomembranous Cystitis: An Uncommon Ultrasound Appearance of Cystitis in Cats and Dogs. <em>Veterinary Sciences</em>, 8(7), 125. <a href="https://doi.org/10.3390/vetsci8070125" target="_blank" style="color:var(--accent-cyan)">doi:10.3390/vetsci8070125</a>
+      </div>
+
+      <div class="ref-block">
+        <div class="ref-title">V28DR1 — Pamuk / FIC — Abdominal Röntgen</div>
+        Anja. <em>Radio abdominale chat LL G normale</em> [Fotoğraf]. Wikimedia Commons. <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" style="color:var(--accent-cyan)">CC BY-SA 4.0</a>. <a href="https://commons.wikimedia.org/w/index.php?curid=186061468" target="_blank" style="color:var(--accent-cyan)">Wikimedia Commons</a>
+      </div>
+
+      <div class="ref-block">
+        <div class="ref-title">V30DR1 — Atlas / Kronik Karaciğer Yetmezliği — Abdominal Röntgen</div>
+        Pereira, A.M., Guimarães, D., &amp; Pires, J. (2025). Nutritional factors related to canine gallbladder diseases — A scoping review. <em>Animals</em>, 15(3), 345. <a href="https://doi.org/10.3390/ani15030345" target="_blank" style="color:var(--accent-cyan)">doi:10.3390/ani15030345</a> <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color:var(--accent-cyan)">CC BY 4.0</a>.
+      </div>
+
+      <div class="ref-block">
+        <div class="ref-title">V30DR1 — Atlas / Kronik Karaciğer Yetmezliği — Abdominal Röntgen</div>
+        Lee, S., Kim, J., Park, S., &amp; Yoon, J. (2025). Case report: Successful surgical intervention for portal hypertension caused by primary hypoplasia of the portal vein in a dog. <em>Frontiers in Veterinary Science</em>, 12, 1582290. <a href="https://doi.org/10.3389/fvets.2025.1582290" target="_blank" style="color:var(--accent-cyan)">doi:10.3389/fvets.2025.1582290</a>
+      </div>
+
+      <div class="ref-block">
         <div class="ref-title">V22DR1 — Titan / Travmatik Diyafragmatik Herni (Köpek) — Direkt Röntgen</div>
         <em>File:Diaphragmatic-rupture dog.jpg.</em> (2026, April 26). Wikimedia Commons. <a href="https://commons.wikimedia.org/w/index.php?title=File:Diaphragmatic-rupture_dog.jpg&oldid=1204065337" target="_blank" style="color:var(--accent-cyan)">Wikimedia Commons</a>
       </div>
@@ -2025,6 +2045,7 @@
   <div style="font-size:11px;color:var(--text-muted);letter-spacing:2px">Vaka veritabanı yükleniyor...</div>
   <div id="splash-status" style="font-size:10px;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;min-height:16px"></div>
   <button id="splash-retry" onclick="loadCaseData()" style="display:none;padding:8px 20px;background:rgba(0,212,255,0.1);border:1px solid var(--accent-cyan);border-radius:8px;color:var(--accent-cyan);font-family:'JetBrains Mono',monospace;font-size:10px;cursor:pointer">🔄 Tekrar Dene</button>
+  <button onclick="hideSplash()" style="margin-top:8px;padding:8px 20px;background:rgba(46,204,113,0.1);border:1px solid var(--accent-green);border-radius:8px;color:var(--accent-green);font-family:'JetBrains Mono',monospace;font-size:10px;cursor:pointer">▶ Manuel Devam</button>
   <div style="width:120px;height:2px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:8px">
     <div style="height:100%;background:var(--accent-cyan);animation:splashLoad 1.5s ease-in-out infinite alternate;border-radius:2px"></div>
   </div>
@@ -2413,7 +2434,8 @@ const HEALTHY_XRAY_DOG = [
 const HEALTHY_XRAY_CAT = [
   "https://upload.wikimedia.org/wikipedia/commons/6/67/Radiographie_thoracique_chez_un_chat.jpg",
   "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Radiografia-lateral-gato.jpg/1920px-Radiografia-lateral-gato.jpg",
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Radiografia-ventro-dorsal-gato.jpg/960px-Radiografia-ventro-dorsal-gato.jpg"
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Radiografia-ventro-dorsal-gato.jpg/960px-Radiografia-ventro-dorsal-gato.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Radio_abdominale_chat_-_LL_G_-_normale.jpg/1920px-Radio_abdominale_chat_-_LL_G_-_normale.jpg"
 ];
 
 function assignHealthyXray(caseData) {
@@ -2525,6 +2547,7 @@ function fillMissingParams(caseData) {
 }
 
 const CASES_URL2 = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/cases2.json";
+const CASES_URL3 = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/cases3.json";
 async function loadCaseData() {
   try {
     const r = await fetch(CASES_URL);
@@ -2532,7 +2555,9 @@ async function loadCaseData() {
     const data1 = await r.json();
     let data2 = {};
     try { const r2 = await fetch(CASES_URL2); if (r2.ok) data2 = await r2.json(); } catch(e2) {}
-    CASE_DATA = { ...data1, ...data2 };
+    let data3 = {};
+    try { const r3 = await fetch(CASES_URL3); if (r3.ok) data3 = await r3.json(); } catch(e3) {}
+    CASE_DATA = { ...data1, ...data2, ...data3 };
     document.getElementById('splash-status').textContent = "Parametreler dolduruluyor...";
     Object.values(CASE_DATA).forEach(c => fillMissingParams(c));
     document.getElementById('splash-status').textContent = "Görseller atanıyor...";
@@ -2574,6 +2599,13 @@ const CASE_INDEX = {
   fiv:               { label: "Karabaş — Tekir",                  tag: "Viral (FIV)",      icon: "🐱" },
   felv:              { label: "Pati — Tekir",                      tag: "Viral (FeLV)",     icon: "🐱" },
   hyperaldosteronism:{ label: "Minnoş — Domestic Shorthair",         tag: "Endokrinoloji",    icon: "🐱" },
+  fic:               { label: "Pamuk — Domestic Shorthair",          tag: "Üroloji",          icon: "🐱" },
+  liver_failure:     { label: "Atlas — Labrador Retriever",          tag: "Hepatoloji",       icon: "🐶" },
+  imha:              { label: "Bella — Amerikan Cocker Spaniel",      tag: "Hematoloji",       icon: "🐶" },
+  toxo:              { label: "Aslan — British Shorthair",           tag: "Paraziter",        icon: "🐱" },
+  atopic_derm:       { label: "Şeker — Domestic Shorthair",          tag: "Dermatoloji",      icon: "🐱" },
+  bacterial_cystitis:{ label: "Yumi — Domestic Shorthair",            tag: "Üroloji",          icon: "🐱" },
+  ehrlichiosis:      { label: "Ares — Golden Retriever",              tag: "Paraziter (Kene)", icon: "🐶" },
   toxo:              { label: "Tekir — Domestic Shorthair",       tag: "Parazitoloji",     icon: "🐱" },
   asthma:            { label: "Pamuk — British Shorthair",          tag: "Solunum",          icon: "🐱" },
   hcm_ate:           { label: "Aslan — Maine Coon",                   tag: "Kardiyoloji ⚡ACİL", icon: "🐱" },
@@ -2583,8 +2615,8 @@ const CASE_INDEX = {
   dermatophytosis_dog: { label: "Boncuk — Yorkshire Terrier",         tag: "Dermatoloji",      icon: "🐶" },
 };
 const SPECIES_CASES = {
-  cat: ["cat", "fip", "hernia", "uro", "demodicosis", "dermatophytosis", "hyperthyroidism", "ckd", "fiv", "felv", "hyperaldosteronism", "toxo", "asthma", "hcm_ate"],
-  dog: ["dog", "parvo", "ascaris", "pancreatitis", "invagination", "cushings", "giardiasis", "hypothyroidism", "addison", "hypoglycemia", "hernia_dog", "dermatophytosis_dog"],
+  cat: ["cat", "fip", "hernia", "uro", "demodicosis", "dermatophytosis", "hyperthyroidism", "fiv", "felv", "hyperaldosteronism", "fic", "toxo", "atopic_derm", "bacterial_cystitis", "asthma", "hcm_ate"],
+  dog: ["dog", "parvo", "ascaris", "pancreatitis", "invagination", "cushings", "giardiasis", "hypothyroidism", "addison", "hypoglycemia", "hernia_dog", "dermatophytosis_dog", "liver_failure", "imha", "ehrlichiosis"],
 };
 
 // ═══════════════════════════════════════════════════════════════
@@ -5025,7 +5057,15 @@ const DISEASE_LIBRARY = [
   // ── Mevcut vakalara karşılık gelen hastalıklar ──────────────
   { id:"v01", name:"Felin İmmün Yetmezlik Virüsü (FIV)",            species:["cat"],       category:"Viral",      etken:"Felin İmmün Yetmezlik Virüsü", symptoms:"Lenfopeni, lökopeni, non-rejeneratif anemi, kronik stomatit, tekrarlayan fırsatçı enfeksiyonlar, hiperglobulinemi" },
   { id:"v03", name:"Felin Lösemi Virüsü (FeLV)", species:["cat"], category:"Viral", etken:"Retrovirus (Onkovirus)", symptoms:"Pansitopeni, makrositik non-rejeneratif anemi, ikter, lenfadenomegali, mediastinal lenfoma, hiperglobulinemi, FeLV antijen pozitif" },
-  { id:"e04", name:"Primer Hiperaldosteronizm (Conn Sendromu)", species:["cat"], category:"Endokrinoloji", etken:"Adrenokortikal adenom/karsinom", symptoms:"Hipokalemi, servikal ventrofleksiyon, hipernatremi, şiddetli hipertansiyon, midriyazis, retinal dekolman, Aldosteron >200 pg/mL" }, species:["cat"], category:"Viral", etken:"Retrovirus (Onkovirus)", symptoms:"Pansitopeni, makrositik non-rejeneratif anemi, ikter, lenfadenomegali, mediastinal lenfoma, hiperglobulinemi, FeLV antijen pozitif" },
+  { id:"h02", name:"İmmün Aracılı Hemolitik Anemi (IMHA)", species:["dog"], category:"Hematoloji", etken:"Otoimmün eritrosit yıkımı", symptoms:"Şiddetli anemi (HCT<%20), sferositoz, oto-aglütinasyon, ikter, hemoglobinüri, splenomegali, lökomoid reaksiyon, makrositik hipokromik anemi" },
+  { id:"h01", name:"Kronik Karaciğer Yetmezliği (Hepatik Siroz)", species:["dog"], category:"Hepatoloji", etken:"Bakır birikimi, kronik hepatit, siroz", symptoms:"İkter, asit, hipoalbüminemi, ALT/ALP/AST/GGT yüksekliği, hipoglisemi, melena, hepatik ensefalopati, mikrositik anemi" },
+  { id:"u01", name:"Felin İdiyopatik Sistit (FIC)", species:["cat"], category:"Üroloji", etken:"İdiyopatik (stres, düşük su tüketimi, çevre faktörleri)", symptoms:"Dizüri, hematüri, pollaküri, strangüri, mesane duvarı kalınlaşması, idrar sedimentinde eritrosit ve lökosit, bakteri yok" },
+  { id:"b01", name:"Ehrlichiosis (Canine Monocytic Ehrlichiosis)", species:["dog"], category:"Bakteriyel", etken:"Ehrlichia canis (kene aracılı)", symptoms:"Şiddetli trombositopeni, epistaksis, peteşi/ekimoz, hifema, pansitopeni, hiperglobulinemi, hipoalbüminemi, morula, kene teması" },
+  { id:"u02", name:"Bakteriyel Sistit (Alt Üriner Sistem Enfeksiyonu)", species:["cat"], category:"Üroloji", etken:"Bakteriyel (E. coli, Staphylococcus sp.)", symptoms:"Pollaküri, strangüri, disüri, hematüri, periüri, piyüri, sedimentde bakteri, pH alkalin, ileri yaş kedi" },
+  { id:"d01", name:"Felin Atopik Dermatit (Çevresel Alerji)", species:["cat"], category:"Dermatoloji", etken:"Çevresel alerjenler (mevsimsel)", symptoms:"Pruritus, eozinofilik plak, simetrik alopesi, eozinofili, mevsimsel tekrar, Wood's lambası negatif" },
+  { id:"p01", name:"Toksoplazmoz (Toxoplasma gondii)", species:["cat"], category:"Paraziter", etken:"Toxoplasma gondii protozou", symptoms:"Yüksek ateş, pnömoni, üveit/koryoretinit, ikter, hepatomegali, ataksi, dışkıda oosit, lenfopeni, monositoz, toksik nötrofil" },
+  { id:"e04", name:"Primer Hiperaldosteronizm (Conn Sendromu)", species:["cat"], category:"Endokrinoloji", etken:"Adrenokortikal adenom/karsinom", symptoms:"Hipokalemi, servikal ventrofleksiyon, hipernatremi, şiddetli hipertansiyon, midriyazis, retinal dekolman, Aldosteron >200 pg/mL" },
+  { id:"v03", name:"Felin Lösemi Virüsü (FeLV)", species:["cat"], category:"Viral", etken:"Retrovirus (Onkovirus)", symptoms:"Pansitopeni, makrositik non-rejeneratif anemi, ikter, lenfadenomegali, mediastinal lenfoma, hiperglobulinemi, FeLV antijen pozitif" },
   { id:"v02", name:"Canine Parvovirus Enteritis",                  species:["dog"],       category:"Viral",      etken:"Canine Parvovirus tip 2",   symptoms:"Şiddetli kanlı ishal, kusma, lökopeni, dehidrasyon" },
   { id:"v11", name:"Feline Infectious Peritonitis (Islak Form)",   species:["cat"],       category:"Viral",      etken:"Feline Coronavirus (FCoV)", symptoms:"Karın asiti, ateş, iştahsızlık, letarji, sarılık" },
   { id:"m01", name:"Diabetes Mellitus",                            species:["dog","cat"], category:"Metabolik",  etken:"İnsülin yetmezliği/direnci",symptoms:"Poliüri, polidipsi, polifaji, kilo kaybı, katarakt (köpek)" },
