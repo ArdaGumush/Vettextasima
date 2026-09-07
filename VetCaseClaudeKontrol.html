@@ -5163,7 +5163,8 @@ function showDiagnosisPanel() {
 
 function buildDiagnosisHTML(isClinic) {
   const groups = {};
-  DISEASE_LIBRARY.forEach(d => {
+  const _lib = (typeof DISEASE_LIBRARY !== 'undefined') ? DISEASE_LIBRARY : [];
+  _lib.forEach(d => {
     if (!groups[d.category]) groups[d.category] = [];
     groups[d.category].push(d);
   });
@@ -5487,7 +5488,7 @@ function addDiagnosisBtn() {
   btn.style.cssText = 'border-color:var(--accent-purple);color:var(--accent-purple);cursor:pointer';
   btn.textContent = '🔍 Nihai Teşhis';
   btn.onclick = () => { diagnosisSubmitted = false; openModal('NİHAİ TEŞHİS — HASTALIK REFERANSİ', buildDiseaseReferenceHTML(
-    (() => { const g={}; DISEASE_LIBRARY.forEach(d=>{ if(!g[d.category])g[d.category]=[]; g[d.category].push(d); }); return g; })(),
+    (() => { const g={}; const _l=(typeof DISEASE_LIBRARY!=='undefined')?DISEASE_LIBRARY:[]; _l.forEach(d=>{ if(!g[d.category])g[d.category]=[]; g[d.category].push(d); }); return g; })(),
     {"Viral":"var(--accent-blue)","Paraziter":"var(--accent-orange)","Bakteriyel":"var(--accent-red)","Metabolik":"var(--accent-purple)","Travmatik":"var(--accent-cyan)","Solunum":"var(--accent-green)","Endokrinoloji":"var(--accent-orange)","Dermatoloji":"var(--accent-pink)","Nefroloji":"var(--accent-blue)","Paraziter (İç)":"var(--accent-orange)","Fungal":"var(--accent-yellow)"}
   )); };
   topbar.appendChild(btn);
