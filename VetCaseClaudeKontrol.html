@@ -2552,14 +2552,25 @@ const CASES_URL3 = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/re
 async function loadCaseData() {
   try {
     // vetconfig.js yükle — CASE_INDEX, SPECIES_CASES, DISEASE_LIBRARY
-    try {
-      const rc = await fetch(CONFIG_URL);
-      if (rc.ok) {
-        const configText = await rc.text();
-        eval(configText);
+    // DEBUG: sorun bulununca kaldırılacak
+    showToast("Debug: vetconfig.js yükleniyor...");
+    await new Promise((resolve) => {
+      const script = document.createElement('script');
+      script.src = CONFIG_URL;
+      script.onload = () => {
+        // DEBUG: sorun bulununca kaldırılacak
+        showToast("Debug: vetconfig.js yüklendi ✓ — DISEASE_LIBRARY: " + (typeof DISEASE_LIBRARY !== 'undefined' ? DISEASE_LIBRARY.length + ' kayıt' : 'UNDEFINED!'));
         console.log("vetconfig.js yüklendi ✓");
-      }
-    } catch(ce) { console.warn("vetconfig.js yüklenemedi:", ce); }
+        resolve();
+      };
+      script.onerror = () => {
+        // DEBUG: sorun bulununca kaldırılacak
+        showToast("Debug HATA: vetconfig.js yüklenemedi!");
+        console.warn("vetconfig.js yüklenemedi");
+        resolve();
+      };
+      document.head.appendChild(script);
+    });
 
     const r = await fetch(CASES_URL);
     if (!r.ok) throw new Error("HTTP " + r.status);
@@ -5162,8 +5173,11 @@ function showDiagnosisPanel() {
 }
 
 function buildDiagnosisHTML(isClinic) {
+  // DEBUG: sorun bulununca kaldırılacak
+  showToast("Debug: buildDiagnosisHTML çağrıldı — DISEASE_LIBRARY: " + (typeof DISEASE_LIBRARY !== 'undefined' ? DISEASE_LIBRARY.length + ' kayıt' : 'UNDEFINED!'));
   const groups = {};
   const _lib = (typeof DISEASE_LIBRARY !== 'undefined') ? DISEASE_LIBRARY : [];
+  if (_lib.length === 0) showToast("Debug HATA: DISEASE_LIBRARY boş veya undefined!");
   _lib.forEach(d => {
     if (!groups[d.category]) groups[d.category] = [];
     groups[d.category].push(d);
