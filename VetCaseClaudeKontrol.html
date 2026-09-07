@@ -477,6 +477,19 @@
   }
   .topbar-meta .tag.live { border-color: var(--accent-green); color: var(--accent-green); }
 
+  /* ── USG RAPOR ─────────────────────────────────── */
+  .usg-rapor { color: #1a1a1a; font-family: 'Segoe UI', sans-serif; }
+  .usg-bulgular-baslik { font-size: 10px; font-weight: 800; letter-spacing: 2px; color: #1a3a5c; text-transform: uppercase; margin-bottom: 10px; padding-bottom: 4px; border-bottom: 2px solid #1a3a5c; }
+  .usg-satir { font-size: 12.5px; line-height: 1.75; color: #2a3a4a; margin-bottom: 5px; display: flex; }
+  .usg-satir.anormal { background: #fdf5f5; border-left: 3px solid #c0392b; padding: 4px 8px; border-radius: 0 4px 4px 0; }
+  .usg-satir.anormal .usg-organ { color: #c0392b; }
+  .usg-organ { font-weight: 700; color: #1a2a3a; flex-shrink: 0; }
+  .usg-sonuc { background: #edf2f7; border: 1px solid #c0d0e0; border-left: 4px solid #1a3a5c; border-radius: 0 4px 4px 0; padding: 12px 16px; margin-top: 14px; font-size: 12.5px; line-height: 1.75; color: #1a2a3a; }
+  .usg-sonuc-baslik { font-size: 10px; font-weight: 800; letter-spacing: 2px; color: #1a3a5c; text-transform: uppercase; margin-bottom: 6px; }
+  .usg-gorsel-alan { margin-top: 16px; border-top: 1px dashed #c0d0e0; padding-top: 14px; }
+  .usg-gorsel-baslik { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: #5a6a7a; text-transform: uppercase; margin-bottom: 8px; }
+  .usg-footer { font-size: 9px; color: #8a9ab0; margin-top: 14px; text-align: center; border-top: 1px solid #e0e8f0; padding-top: 8px; }
+
   /* ── MAIN LAYOUT ────────────────────────────────────── */
   #layout {
     position: relative;
@@ -2030,7 +2043,7 @@
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v2.3</span>
+      <span>v2.4</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -2420,6 +2433,7 @@
 let CASE_DATA = {};
 const CASES_URL = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/cases.json";
 const CONFIG_URL = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/vetconfig.json";
+const USG_REPORTS_URL = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/usg-reports.json";
 const SUPABASE_URL = "https://ugfolpromkgaskpkugmk.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_ijytFzxuaK1rhAed4qnsmQ_k8TlHkCj";
 
@@ -2572,6 +2586,8 @@ async function loadCaseData() {
     let data3 = {};
     try { const r3 = await fetch(CASES_URL3); if (r3.ok) data3 = await r3.json(); } catch(e3) {}
     CASE_DATA = { ...data1, ...data2, ...data3 };
+    // USG raporlarını yükle
+    try { const ru = await fetch(USG_REPORTS_URL); if (ru.ok) window.USG_REPORTS = await ru.json(); } catch(eu) {}
     document.getElementById('splash-status').textContent = "Parametreler dolduruluyor...";
     Object.values(CASE_DATA).forEach(c => fillMissingParams(c));
     document.getElementById('splash-status').textContent = "Görseller atanıyor...";
@@ -4569,10 +4585,63 @@ function openXrayMenu() {
   openModal('RÖNTGEN — TÜR SEÇİMİ', html);
 }
 
+function buildUSGReportHTML(caseKey, imgUrl) {
+  const report = (window.USG_REPORTS && window.USG_REPORTS[caseKey]) || null;
+  if (!report) return null;
+
+  const lines = report.split('\n');
+  let bulgular = '';
+  let sonuc = '';
+  const anormalKelimeler = ['dilatasyon','kalınlaşma','büyümüş','splenomegali','hepatomegali','serbest sıvı','reaktif','artmış','kitlesi','efüzyon','hipoekoik','hiperekoik','akustik gölge','peristaltizm kaybı'];
+
+  lines.forEach(line => {
+    if (line.startsWith('SONUÇ:')) {
+      sonuc = line.replace('SONUÇ:', '').trim();
+    } else if (line.trim()) {
+      const isAnormal = anormalKelimeler.some(k => line.toLowerCase().includes(k));
+      const colonIdx = line.indexOf(':');
+      const organ = colonIdx > -1 ? line.substring(0, colonIdx) : '';
+      const bulgu = colonIdx > -1 ? line.substring(colonIdx+1).trim() : line;
+      bulgular += `<div class="usg-satir ${isAnormal ? 'anormal' : ''}">
+        <span class="usg-organ">${organ}:&nbsp;</span><span>${bulgu}</span>
+      </div>`;
+    }
+  });
+
+  const gorselHTML = imgUrl ? `
+    <div class="usg-gorsel-alan">
+      <div class="usg-gorsel-baslik">ULTRASONOGRAFİ GÖRÜNTÜSİ</div>
+      <img src="${imgUrl}" style="width:100%;border-radius:4px;border:1px solid #c0d0e0">
+    </div>` : '';
+
+  return `<div class="usg-rapor">
+    <div class="usg-bulgular-baslik">ULTRASONOGRAFİ BULGULARI</div>
+    ${bulgular}
+    <div class="usg-sonuc">
+      <div class="usg-sonuc-baslik">RADYOLOJİ SONUCU</div>
+      ${sonuc}
+    </div>
+    ${gorselHTML}
+    <div class="usg-footer">⚠ Bu rapor simülasyon amaçlıdır, gerçek tanı değildir. · Vettex v2.4</div>
+  </div>`;
+}
+
 function doImaging(key) {
   if (!currentCase) return;
   const data = currentCase.imaging[key];
   if (!data) { showToast('Bu vakada ' + (imagingLabels[key]||key) + ' verisi bulunamadı.'); return; }
+  
+  // USG için rapor modalı
+  if (key === 'usg') {
+    const caseKey = Object.keys(window.CASE_DATA || {}).find(k => CASE_DATA[k] === currentCase);
+    const reportHTML = buildUSGReportHTML(caseKey, data.imgUrl && data.imgUrl !== "null" ? data.imgUrl : null);
+    if (reportHTML) {
+      if (!spendCredit(TETKIK_COSTS.usg, 'USG')) return;
+      if (!consumeAction('Görüntüleme')) return;
+      openModal('ABDOMİNAL ULTRASONOGRAFİ', reportHTML);
+      return;
+    }
+  }
   const imgCostMap = {echo:TETKIK_COSTS.echo, usg:TETKIK_COSTS.usg, xray_direct:TETKIK_COSTS.xray, xray_indirect:TETKIK_COSTS.xray, bt:TETKIK_COSTS.bt, mr:TETKIK_COSTS.mr};
   if (!spendCredit(imgCostMap[key]||TETKIK_COSTS.xray, imagingLabels[key]||key)) return;
   if (!consumeAction('Görüntüleme')) return;
