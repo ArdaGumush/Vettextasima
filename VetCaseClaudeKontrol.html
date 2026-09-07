@@ -2030,7 +2030,7 @@
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v2.2</span>
+      <span>v2.3</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -2554,23 +2554,15 @@ async function loadCaseData() {
     // vetconfig.js yükle — CASE_INDEX, SPECIES_CASES, DISEASE_LIBRARY
     // DEBUG: sorun bulununca kaldırılacak
     showToast("Debug: vetconfig.js yükleniyor...");
-    // DEBUG: sorun bulununca kaldırılacak
-    showToast("Debug: vetconfig.json yükleniyor...");
     try {
       const rc = await fetch(CONFIG_URL);
       if (rc.ok) {
         const cfg = await rc.json();
-        if (cfg.case_index)    { window.CASE_INDEX     = cfg.case_index; }
-        if (cfg.species_cases) { window.SPECIES_CASES  = cfg.species_cases; }
+        if (cfg.case_index)     { window.CASE_INDEX      = cfg.case_index; }
+        if (cfg.species_cases)  { window.SPECIES_CASES   = cfg.species_cases; }
         if (cfg.disease_library){ window.DISEASE_LIBRARY = cfg.disease_library; }
-        // DEBUG: sorun bulununca kaldırılacak
-        showToast("Debug: vetconfig.json yüklendi ✓ — DISEASE_LIBRARY: " + (DISEASE_LIBRARY ? DISEASE_LIBRARY.length + ' kayıt' : 'UNDEFINED!'));
-      } else {
-        showToast("Debug HATA: vetconfig.json HTTP " + rc.status);
       }
-    } catch(ce) {
-      showToast("Debug HATA: " + ce.message);
-    }
+    } catch(ce) { console.warn("vetconfig.json yüklenemedi:", ce); }
 
     const r = await fetch(CASES_URL);
     if (!r.ok) throw new Error("HTTP " + r.status);
@@ -5173,11 +5165,8 @@ function showDiagnosisPanel() {
 }
 
 function buildDiagnosisHTML(isClinic) {
-  // DEBUG: sorun bulununca kaldırılacak
-  showToast("Debug: buildDiagnosisHTML çağrıldı — DISEASE_LIBRARY: " + (typeof DISEASE_LIBRARY !== 'undefined' ? DISEASE_LIBRARY.length + ' kayıt' : 'UNDEFINED!'));
   const groups = {};
   const _lib = (typeof DISEASE_LIBRARY !== 'undefined') ? DISEASE_LIBRARY : [];
-  if (_lib.length === 0) showToast("Debug HATA: DISEASE_LIBRARY boş veya undefined!");
   _lib.forEach(d => {
     if (!groups[d.category]) groups[d.category] = [];
     groups[d.category].push(d);

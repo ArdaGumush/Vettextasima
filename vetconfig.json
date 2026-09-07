@@ -459,16 +459,6 @@
       "symptoms": "Hipokalemi, servikal ventrofleksiyon, hipernatremi, şiddetli hipertansiyon, midriyazis, retinal dekolman, Aldosteron >200 pg/mL"
     },
     {
-      "id": "v03",
-      "name": "Felin Lösemi Virüsü (FeLV)",
-      "species": [
-        "cat"
-      ],
-      "category": "Viral",
-      "etken": "Retrovirus (Onkovirus)",
-      "symptoms": "Pansitopeni, makrositik non-rejeneratif anemi, ikter, lenfadenomegali, mediastinal lenfoma, hiperglobulinemi, FeLV antijen pozitif"
-    },
-    {
       "id": "v02",
       "name": "Canine Parvovirus Enteritis",
       "species": [
@@ -522,36 +512,6 @@
       "symptoms": "Dizüri, hematüri, ağrı, tam anüri, üremi"
     },
     {
-      "id": "p02",
-      "name": "Ascariasis (Toxocara canis)",
-      "species": [
-        "dog"
-      ],
-      "category": "Paraziter",
-      "etken": "Toxocara canis",
-      "symptoms": "Karın şişliği, büyüme geriliği, eozinofili, öksürük, kusma"
-    },
-    {
-      "id": "p03",
-      "name": "Felin Demodicosis (Demodex cati)",
-      "species": [
-        "cat"
-      ],
-      "category": "Paraziter",
-      "etken": "Demodex cati",
-      "symptoms": "Alopesi, pullanma, blefaritis, kaşıntısız deri lezyonu"
-    },
-    {
-      "id": "g01",
-      "name": "Akut Pankreatit",
-      "species": [
-        "dog"
-      ],
-      "category": "Gastroenteroloji",
-      "etken": "Yağlı diyet, idiopatik",
-      "symptoms": "Kusma, karın ağrısı, anoreksi, dua pozisyonu, ateş"
-    },
-    {
       "id": "c01",
       "name": "Travmatik İntestinal İnvaginasyon",
       "species": [
@@ -570,17 +530,6 @@
       "category": "Endokrinoloji",
       "etken": "Hipofiz/Adrenal tümör",
       "symptoms": "PU/PD, polifaji, pendülöz karın, alopesi, kas atrofisi"
-    },
-    {
-      "id": "d01",
-      "name": "Dermatofitoz (Microsporum canis)",
-      "species": [
-        "cat",
-        "dog"
-      ],
-      "category": "Dermatoloji",
-      "etken": "Microsporum canis",
-      "symptoms": "Sirküler alopesi, skuam, Wood's lambası pozitif, zoonoz"
     },
     {
       "id": "p04",
@@ -683,6 +632,76 @@
       "category": "Dermatoloji",
       "etken": "Microsporum canis",
       "symptoms": "Sirküler alopesi, skuam, Wood's lambası pozitif, artrospor, zoonoz"
+    },
+    {
+      "id": "e05",
+      "name": "Felin Hipertiroidi",
+      "species": [
+        "cat"
+      ],
+      "category": "Endokrinoloji",
+      "etken": "Fonksiyonel tiroid adenomu",
+      "symptoms": "Polifaji, kilo kaybı, poliüri, taşikardi, hipertansiyon, T4 yüksek, tiroid nodülü"
+    },
+    {
+      "id": "e06",
+      "name": "Primer Hipotiroidi",
+      "species": [
+        "dog"
+      ],
+      "category": "Endokrinoloji",
+      "etken": "Lenfositik tiroidit / idiyopatik atrofi",
+      "symptoms": "Letarji, kilo artışı, soğuk intoleransı, bradikardi, hiperlipidemi, T4 düşük, TSH yüksek"
+    },
+    {
+      "id": "p06",
+      "name": "Ascariasis (Toxocara canis)",
+      "species": [
+        "dog"
+      ],
+      "category": "Paraziter",
+      "etken": "Toxocara canis",
+      "symptoms": "Karın şişliği, potbelly, kusma, ishal, öksürük, dışkıda yuvarlak kurt, yavru köpek"
+    },
+    {
+      "id": "p07",
+      "name": "Felin Demodicosis (Demodex cati)",
+      "species": [
+        "cat"
+      ],
+      "category": "Dermatoloji",
+      "etken": "Demodex cati",
+      "symptoms": "Periokuler/auriküler alopesi, eritematöz plak, kaşıntısız, derin kazıntıda Demodex"
+    },
+    {
+      "id": "d03",
+      "name": "Dermatofitoz (Microsporum canis) — Kedi",
+      "species": [
+        "cat"
+      ],
+      "category": "Dermatoloji",
+      "etken": "Microsporum canis",
+      "symptoms": "Sirküler alopesi, skuam, Wood's lambası pozitif, artrospor, zoonoz"
+    },
+    {
+      "id": "g02",
+      "name": "Akut Pankreatit",
+      "species": [
+        "dog"
+      ],
+      "category": "Gastroenteroloji",
+      "etken": "Yağlı diyet, idiyopatik",
+      "symptoms": "Kusma, abdominal ağrı, dua pozisyonu, lipaz yüksek, USG pankreatik ödem"
+    },
+    {
+      "id": "v09",
+      "name": "Feline Panleukopenia Virus (FPV)",
+      "species": [
+        "cat"
+      ],
+      "category": "Viral",
+      "etken": "Feline Panleukopenia Virus (Parvovirus)",
+      "symptoms": "Şiddetli panlökopeni (WBC<1.0), kanlı ishal, kusma, enoftalmi, FPV Ag POZİTİF, aşısız yavru kedi"
     }
   ]
 }
