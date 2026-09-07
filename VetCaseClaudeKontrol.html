@@ -2043,7 +2043,7 @@
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v2.4</span>
+      <span>v2.5</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -2691,6 +2691,7 @@ function consumeAction(actionName) {
 // STATE
 // ═══════════════════════════════════════════════════════════════
 let currentCase = null;
+let currentCaseKey = null;
 let complaintAsked = false;
 let diffStates = {};
 let startTime = null;
@@ -4251,6 +4252,7 @@ function backToStep1() {
 // ═══════════════════════════════════════════════════════════════
 function startCase(caseKey) {
   currentCase = CASE_DATA[caseKey];
+  currentCaseKey = caseKey;
   complaintAsked = false;
   diffStates = {};
 
@@ -4633,7 +4635,7 @@ function doImaging(key) {
   
   // USG için rapor modalı
   if (key === 'usg') {
-    const caseKey = Object.keys(window.CASE_DATA || {}).find(k => CASE_DATA[k] === currentCase);
+    const caseKey = currentCaseKey;
     const reportHTML = buildUSGReportHTML(caseKey, data.imgUrl && data.imgUrl !== "null" ? data.imgUrl : null);
     if (reportHTML) {
       if (!spendCredit(TETKIK_COSTS.usg, 'USG')) return;
@@ -5478,6 +5480,7 @@ function debugLaunchCase(caseKey, forceEmergency) {
 
   // Direkt vakayı başlat
   currentCase = CASE_DATA[caseKey];
+  currentCaseKey = caseKey;
   complaintAsked = false;
   diffStates = {};
 
