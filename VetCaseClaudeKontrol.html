@@ -2043,7 +2043,7 @@
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v2.5</span>
+      <span>v2.6</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -2411,6 +2411,26 @@
 </div><!-- /layout -->
 
 <!-- ── MODAL ────────────────────────────────────────────────────── -->
+<!-- USG RAPOR MODAL -->
+<div id="usg-modal-overlay" onclick="closeUSGModal(event)" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.8);align-items:center;justify-content:center;padding:16px;overflow-y:auto">
+  <div id="usg-modal-paper" style="background:#fafaf8;width:100%;max-width:680px;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,0.5);position:relative;margin:auto">
+    <div id="usg-modal-header" style="background:#1a3a5c;color:white;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;border-radius:4px 4px 0 0">
+      <div>
+        <div style="font-size:14px;font-weight:700;letter-spacing:1px">Vettex Veteriner Kliniği</div>
+        <div style="font-size:10px;opacity:0.7;margin-top:2px">Radyoloji & Görüntüleme Birimi</div>
+      </div>
+      <div style="font-size:11px;background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:20px;letter-spacing:1px;font-weight:600">ABDOMİNAL USG</div>
+      <button onclick="closeUSGModal()" style="background:rgba(255,255,255,0.15);border:none;color:white;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;line-height:1">✕</button>
+    </div>
+    <div id="usg-modal-hasta" style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;background:#f0f4f8;border:1px solid #d0dae6;margin:16px 20px 0;border-radius:4px;padding:10px 14px;font-size:12px"></div>
+    <div id="usg-modal-body" style="padding:16px 20px;color:#1a1a1a"></div>
+    <div style="background:#f0f4f8;border-top:1px solid #d0dae6;padding:8px 20px;display:flex;justify-content:space-between;font-size:9px;color:#8a9ab0;border-radius:0 0 4px 4px">
+      <span style="color:#c0392b;font-weight:600">⚠ Bu rapor simülasyon amaçlıdır, gerçek tanı değildir.</span>
+      <span>Vettex v2.6 · Eğitim Simülasyonu</span>
+    </div>
+  </div>
+</div>
+
 <div id="modal-overlay" onclick="closeModal(event)">
   <div id="modal-box">
     <button class="modal-close" onclick="closeModal()">✕</button>
@@ -4640,7 +4660,7 @@ function doImaging(key) {
     if (reportHTML) {
       if (!spendCredit(TETKIK_COSTS.usg, 'USG')) return;
       if (!consumeAction('Görüntüleme')) return;
-      openModal('ABDOMİNAL ULTRASONOGRAFİ', reportHTML);
+      openUSGModal(caseKey, data.imgUrl && data.imgUrl !== "null" ? data.imgUrl : null);
       return;
     }
   }
@@ -5066,6 +5086,65 @@ function typewrite(el, html, onDone) {
 // ═══════════════════════════════════════════════════════════════
 // MODAL
 // ═══════════════════════════════════════════════════════════════
+function openUSGModal(caseKey, imgUrl) {
+  const report = (window.USG_REPORTS && window.USG_REPORTS[caseKey]) || null;
+  if (!report) return false;
+
+  // Hasta bilgileri
+  const c = currentCase;
+  const hastaDiv = document.getElementById('usg-modal-hasta');
+  hastaDiv.innerHTML = `
+    <div style="display:flex;gap:6px"><span style="color:#5a6a7a;font-weight:600;min-width:70px">Hasta</span><span style="color:#1a2a3a;font-weight:500">${c.anamnez?.name?.replace(/\*\*/g,'').split('|')[0].replace('İsim:','').trim()}</span></div>
+    <div style="display:flex;gap:6px"><span style="color:#5a6a7a;font-weight:600;min-width:70px">Tür / Irk</span><span style="color:#1a2a3a;font-weight:500">${c.species} / ${c.anamnez?.name?.replace(/\*\*/g,'').split('|')[1]?.replace('Irk:','').trim()||''}</span></div>
+    <div style="display:flex;gap:6px"><span style="color:#5a6a7a;font-weight:600;min-width:70px">Vaka No</span><span style="color:#1a2a3a;font-weight:500">${c.caseId}</span></div>
+    <div style="display:flex;gap:6px"><span style="color:#5a6a7a;font-weight:600;min-width:70px">İnceleme</span><span style="color:#1a2a3a;font-weight:500">Tam Abdominal USG</span></div>
+  `;
+
+  // Rapor içeriği
+  const lines = report.split('\n');
+  const anormalKelimeler = ['dilatasyon','kalınlaşma','büyümüş','splenomegali','hepatomegali','serbest sıvı','reaktif','artmış','efüzyon','hipoekoik','hiperekoik','akustik gölge','peristaltizm kaybı','kitlesi','nodül'];
+  let html = '<div style="font-size:10px;font-weight:800;letter-spacing:2px;color:#1a3a5c;text-transform:uppercase;margin-bottom:10px;padding-bottom:4px;border-bottom:2px solid #1a3a5c">Ultrasonografi Bulguları</div>';
+  let sonuc = '';
+
+  lines.forEach(line => {
+    if (!line.trim()) return;
+    if (line.startsWith('SONUÇ:')) { sonuc = line.replace('SONUÇ:','').trim(); return; }
+    const colonIdx = line.indexOf(':');
+    const organ = colonIdx > -1 ? line.substring(0, colonIdx) : '';
+    const bulgu = colonIdx > -1 ? line.substring(colonIdx+1).trim() : line;
+    const isAnormal = anormalKelimeler.some(k => line.toLowerCase().includes(k));
+    if (isAnormal) {
+      html += `<div style="font-size:12.5px;line-height:1.75;margin-bottom:5px;display:flex;background:#fdf5f5;border-left:3px solid #c0392b;padding:4px 8px;border-radius:0 4px 4px 0"><span style="font-weight:700;color:#c0392b;flex-shrink:0">${organ}:&nbsp;</span><span style="color:#2a3a4a">${bulgu}</span></div>`;
+    } else {
+      html += `<div style="font-size:12.5px;line-height:1.75;margin-bottom:5px;display:flex"><span style="font-weight:700;color:#1a2a3a;flex-shrink:0">${organ}:&nbsp;</span><span style="color:#2a3a4a">${bulgu}</span></div>`;
+    }
+  });
+
+  if (sonuc) {
+    html += `<div style="background:#edf2f7;border:1px solid #c0d0e0;border-left:4px solid #1a3a5c;border-radius:0 4px 4px 0;padding:12px 16px;margin-top:14px">
+      <div style="font-size:10px;font-weight:800;letter-spacing:2px;color:#1a3a5c;text-transform:uppercase;margin-bottom:6px">Radyoloji Sonucu</div>
+      <div style="font-size:12.5px;line-height:1.75;color:#1a2a3a">${sonuc}</div>
+    </div>`;
+  }
+
+  if (imgUrl && imgUrl !== 'null') {
+    html += `<div style="margin-top:16px;border-top:1px dashed #c0d0e0;padding-top:14px">
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#5a6a7a;text-transform:uppercase;margin-bottom:8px">ULTRASONOGRAFİ GÖRÜNTÜSİ</div>
+      <img src="${imgUrl}" style="width:100%;border-radius:4px;border:1px solid #c0d0e0">
+    </div>`;
+  }
+
+  document.getElementById('usg-modal-body').innerHTML = html;
+  document.getElementById('usg-modal-overlay').style.display = 'flex';
+  return true;
+}
+
+function closeUSGModal(e) {
+  if (!e || e.target === document.getElementById('usg-modal-overlay') || !e) {
+    document.getElementById('usg-modal-overlay').style.display = 'none';
+  }
+}
+
 function openModal(title, content) {
   document.getElementById('modal-title').textContent = title;
   document.getElementById('modal-content').innerHTML = content;
