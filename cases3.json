@@ -1,1 +1,3542 @@
-{}
+{
+  "distemper": {
+    "caseId": "VC-2025-036",
+    "species": "Köpek",
+    "icon": "🐶",
+    "diagnosis": "Canine Distemper Virüsü (Köpek Gençlik Hastalığı)",
+    "anamnez": {
+      "name": "İsim: **Pamuk** | Irk: **Melez**",
+      "demog": "Yaş: **4 aylık** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmamış**",
+      "vaccine": "Aşılar: **Yok (sokaktan sahiplenilmiş)** | Parazit ilacı: **Yapılmamış**",
+      "complaint": [
+        "Sahibi endişeyle anlatıyor:\n\n\"Yaklaşık bir haftadır sürekli burnundan ve gözlerinden koyu, sarı-yeşil renkli sümük gibi akıntılar geliyor; gözleri resmen yapışıp kapanıyor.\"",
+        "Sahibi korkarak anlatıyor:\n\n\"Aşırı halsizleşti ve dünden beri hiçbir şey yemiyor, su bile içiremiyoruz. Sürekli kusuyor ve çok pis kokulu, cıvık bir ishal başladı.\"",
+        "Sahibi üzülerek anlatıyor:\n\n\"Son iki gündür nefes alırken hırıldıyor ve sürekli kesik kesik, çok kuru bir şekilde öksürüyor.\"",
+        "Sahibi şaşırarak anlatıyor:\n\n\"Bugün fark ettim, patilerinin altı ve burnunun üzeri sanki odun gibi taşlaşmış, kupkuru ve katı bir tabaka bağlamış.\"",
+        "Sahibi korkarak anlatıyor:\n\n\"Birkaç saat önce aniden oturduğu yerde kafasını ve çenesini ritmik bir şekilde, sanki sakız çiğniyormuş gibi sallamaya başladı, ağzından köpükler akıttı.\""
+      ]
+    },
+    "diffQuestions": [
+      {
+        "q": "Köpeğinizi sokaktan ne zaman sahiplendiniz ve yakın zamanda başka hasta hayvanlarla temas etti mi?",
+        "a": "Yaklaşık iki hafta önce sokakta tek başına bulmuştum. Mahallede diğer sokak köpekleriyle oynuyordu, o köpeklerden bazılarının da gözleri akıyordu."
+      },
+      {
+        "q": "Çene sallama veya tik benzeri kasılmalar ne sıklıkla oluyor ve bu sırada sizi duyabiliyor mu?",
+        "a": "Önce saatte bir oluyordu ama şimdi neredeyse her on dakikada bir çenesi tık tık tık diye sallanıyor. O sırada gözleri sabitleniyor ve seslendiğimde bana hiç tepki vermiyor."
+      },
+      {
+        "q": "İshalinde kan gördünüz mü ve kokusu normal dışkı gibi mi?",
+        "a": "Dışkısında tam kırmızı kan yok ama rengi çok koyu ve hayatımda duymadığım kadar ekşi, çok ağır, leş gibi kötü bir kokusu var."
+      },
+      {
+        "q": "Kusması mamasını yedikten hemen sonra mı oluyor yoksa midesi boşken de kusuyor mu?",
+        "a": "Zaten dünden beri mamasını hiç yemedi ama buna rağmen sürekli sarımsı köpüklü, yapışkan sıvılar kusmaya devam ediyor."
+      },
+      {
+        "q": "Patilerinin altındaki sertleşme yürüyüşünü etkiledi mi, basarken acı çekiyor mu?",
+        "a": "Evet, basarken sanki canı yanıyor gibi yavaş ve temkinli adımlar atıyor. Zaten halsiz ama yürürken de bacakları titriyor."
+      }
+    ],
+    "physical": {
+      "temp": "Vücut sıcaklığı: **40.5°C** (Referans: 37.8–39.2°C) → Yüksek ateş — enfeksiyonun akut fazında bifazik ateşin ikinci yükselme evresi 🔴",
+      "resp": "Solunum sayısı: **44/dak** (Referans: 10–30/dak) → Belirgin takipne — sekonder bakteriyel bronkopnömoni 🔴",
+      "hr": "Kalp atım sayısı: **148/dak** (Referans: 70–120/dak) → Taşikardi — ateş, dehidrasyon ve sistemik enfeksiyon 🔴",
+      "mucosa": "Mukoza rengi: **Kirli pembe, kuru** | CRT: **3.5 sn** → Dehidrasyon ve endotoksemiye bağlı perfüzyon yetersizliği 🔴",
+      "lymph": "Lenf nodları: Submandibular ve preskapular lenf nodları bilateral büyümüş, ağrılı ve reaktif — lenfoid doku invazyonu. 🔴",
+      "palp": "Karın palpasyonu: Bağırsak lopları gaz ve sıvı ile dolu, yaygın abdominal ağrı. **Ayak tabanı (pad) ve burun ucunda aşırı hiperkeratoz (Hard pad hastalığı).** 🔴"
+    },
+    "tools": {
+      "otoscope": "Otoskopi: Kulak kanalları açık. **Kulak kepçesinin iç tüysüz kısımlarında püstüler dermatoz odakları** tespit edildi. Timpanik zar doğal. 🔴",
+      "ophthalmo": "Oftalmoskopi: **Şiddetli bilateral keratokonjonktivitis sikka.** 🔴 Korneada matlaşma ve retinada **'madalyon lezyonları'** olarak bilinen atrofik koryoretinit odakları gözlendi. 🔴",
+      "pharyngo": "Faringoskopi: Tonsiller yaygın hiperemik ve büyümüş. **Mukopurulent eksüdat soluk borusu girişine yapışmış.** 🔴",
+      "reflex": "Refleks muayenesi: Patellar refleks **hiperaktif.** ⚠ Temporal ve çiğneme kaslarında **ritmik miyoklonus** (sakız çiğneme benzeri kasılmalar). 🔴 Proprioseptif yanıtlar yavaşlamış — nörolojik faz başlangıcı.",
+      "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
+      "inspection": "İnspeksiyon: **Mukopurulent göz ve burun akıntısı, hiperkeratoz (hard pad), miyoklonus, letarji.** 🔴 Genel durum kritik.",
+      "auscultation": "Oskültasyon: **Akciğer:** Bilateral yaş raller ve bronkointerstisyel sesler — bronkopnömoni. 🔴 **Kalp:** Taşikardik, üfürüm yok. **Bağırsak:** Artmış, sıvı guruldama sesleri."
+    },
+    "imaging": {
+      "echo": {
+        "result": "EKO: Kardiyak bulgular normal sınırlar içinde. Patolojik bulgu yok. ✓",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "usg": {
+        "result": "Abdominal USG: Bağırsaklarda yaygın hipomotilite, gastroenterit bulguları, mezenterik lenf nodlarında reaktif büyüme. 🔴 Görsel henüz mevcut değildir — klinik bulgularla devam ediniz.",
+        "hasImage": true,
+        "imgUrl": null
+      },
+      "xray_direct": {
+        "result": "Toraks Radyografisi: Yaygın, belirgin alveoler ve bronkointerstisyel akciğer paterni mevcut — sekonder bakteriyel bronkopnömoni ile uyumlu radyoopasite artışları. 🔴 Görsel henüz mevcut değildir — klinik bulgularla devam ediniz.",
+        "hasImage": true,
+        "imgUrl": null
+      },
+      "xray_indirect": {
+        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "bt": {
+        "result": "BT: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "mr": {
+        "result": "MR: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      }
+    },
+    "rapidKits": {
+      "fiv_felv": "NEGATİF",
+      "fcov_ab": "NEGATİF",
+      "fpv_ag": "NEGATİF",
+      "fcov_ag": "NEGATİF",
+      "ntprobnp": "NEGATİF",
+      "fsaa": "POZİTİF",
+      "giardia_ag": "NEGATİF"
+    },
+    "hemogram": [
+      {
+        "param": "WBC",
+        "value": "3.2",
+        "unit": "10³/µL",
+        "ref": "6.0–17.0",
+        "flag": "L"
+      },
+      {
+        "param": "RBC",
+        "value": "5.8",
+        "unit": "10⁶/µL",
+        "ref": "5.5–8.5",
+        "flag": ""
+      },
+      {
+        "param": "HGB",
+        "value": "12.8",
+        "unit": "g/dL",
+        "ref": "12.0–18.0",
+        "flag": ""
+      },
+      {
+        "param": "HCT",
+        "value": "39.5",
+        "unit": "%",
+        "ref": "37–55",
+        "flag": ""
+      },
+      {
+        "param": "MCV",
+        "value": "68.1",
+        "unit": "fL",
+        "ref": "60–77",
+        "flag": ""
+      },
+      {
+        "param": "MCH",
+        "value": "22.0",
+        "unit": "pg",
+        "ref": "19–24.5",
+        "flag": ""
+      },
+      {
+        "param": "MCHC",
+        "value": "32.4",
+        "unit": "g/dL",
+        "ref": "32–36",
+        "flag": ""
+      },
+      {
+        "param": "PLT",
+        "value": "110",
+        "unit": "10³/µL",
+        "ref": "200–900",
+        "flag": "L"
+      },
+      {
+        "param": "Nöt%",
+        "value": "82",
+        "unit": "%",
+        "ref": "60–77",
+        "flag": "H"
+      },
+      {
+        "param": "Lenf%",
+        "value": "4",
+        "unit": "%",
+        "ref": "12–30",
+        "flag": "L"
+      },
+      {
+        "param": "Mon%",
+        "value": "12",
+        "unit": "%",
+        "ref": "3–10",
+        "flag": "H"
+      },
+      {
+        "param": "Eoz%",
+        "value": "2",
+        "unit": "%",
+        "ref": "0–9",
+        "flag": ""
+      }
+    ],
+    "biochemistry": {
+      "ALT": {
+        "value": "85",
+        "unit": "U/L",
+        "ref": "10–125",
+        "flag": ""
+      },
+      "ALP": {
+        "value": "190",
+        "unit": "U/L",
+        "ref": "23–212",
+        "flag": ""
+      },
+      "AST": {
+        "value": "42",
+        "unit": "U/L",
+        "ref": "10–50",
+        "flag": ""
+      },
+      "GGT": {
+        "value": "5",
+        "unit": "U/L",
+        "ref": "0–14",
+        "flag": ""
+      },
+      "Total Bili.": {
+        "value": "0.3",
+        "unit": "mg/dL",
+        "ref": "0–0.9",
+        "flag": ""
+      },
+      "Safra As.": {
+        "value": "5.0",
+        "unit": "µmol/L",
+        "ref": "0–10",
+        "flag": ""
+      },
+      "Glukoz": {
+        "value": "82",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": ""
+      },
+      "Fruktozamin": {
+        "value": "235",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "CREA": {
+        "value": "1.9",
+        "unit": "mg/dL",
+        "ref": "0.5–1.8",
+        "flag": "H"
+      },
+      "Fosfor": {
+        "value": "5.2",
+        "unit": "mg/dL",
+        "ref": "2.5–6.8",
+        "flag": ""
+      },
+      "Total Prot.": {
+        "value": "5.2",
+        "unit": "g/dL",
+        "ref": "5.1–7.8",
+        "flag": ""
+      },
+      "ALB": {
+        "value": "2.0",
+        "unit": "g/dL",
+        "ref": "2.6–4.0",
+        "flag": "L"
+      },
+      "Glob": {
+        "value": "3.2",
+        "unit": "g/dL",
+        "ref": "1.6–3.6",
+        "flag": ""
+      },
+      "Na": {
+        "value": "134",
+        "unit": "mEq/L",
+        "ref": "139–154",
+        "flag": "L"
+      },
+      "K": {
+        "value": "3.1",
+        "unit": "mEq/L",
+        "ref": "3.6–5.5",
+        "flag": "L"
+      },
+      "Cl": {
+        "value": "94",
+        "unit": "mEq/L",
+        "ref": "102–120",
+        "flag": "L"
+      },
+      "Ca": {
+        "value": "8.2",
+        "unit": "mg/dL",
+        "ref": "7.9–12.0",
+        "flag": ""
+      }
+    },
+    "hormones": {
+      "T4": {
+        "value": "—",
+        "unit": "µg/dL",
+        "ref": "1.0–4.0",
+        "flag": ""
+      },
+      "T3": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "0.5–2.0",
+        "flag": ""
+      },
+      "TSH": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "0.01–0.5",
+        "flag": ""
+      },
+      "Kortizol": {
+        "value": "—",
+        "unit": "µg/dL",
+        "ref": "1.0–6.0",
+        "flag": ""
+      },
+      "Aldosteron": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "İnsülin": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "5–30",
+        "flag": ""
+      },
+      "Progesteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "Testosteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "1.0–8.0",
+        "flag": ""
+      },
+      "Östrojen": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      }
+    },
+    "microscopy": {
+      "blood": {
+        "text": "Kan yayması: Eritrositler normositik normokromik. **Şiddetli lenfopeni** — lenfoid doku yıkımı ile uyumlu. 🔴 Diff-Quik boyamada lenfosit ve nötrofil sitoplazmasında **Lentz inklüzyon cisimcikleri** (asidofilik viral inklüzyonlar) tespit edildi. 🔴 Hafif trombositopeni mevcut.",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+      },
+      "urine": "İdrar muayenesi: Koyu sarı, berrak. SpGr: 1.040 — dehidrasyona bağlı konsantre idrar. pH: 6.0. Protein: Eser. Glukoz: Negatif. Keton: Negatif. Sediment: Epitel hücrelerinde sitoplazmik inklüzyon arandı, aktif sediment patolojisi saptanmadı.",
+      "stool": "Dışkı muayenesi: Flotasyon ve natif muayenede parazit yumurtasına rastlanmadı — paraziter gastroenterit dışlandı. ✓",
+      "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
+      "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Kesin tanı CDV antijen hızlı test kiti ve RT-PCR ile konulmaktadır."
+    }
+  },
+  "kennel_cough": {
+    "caseId": "VC-2025-037",
+    "species": "Kedi",
+    "icon": "🐱",
+    "diagnosis": "Felin Üst Solunum Yolu Kompleksi (Barınak Öksürüğü / Bordetella bronchiseptica)",
+    "anamnez": {
+      "name": "İsim: **Çorap** | Irk: **Domestic Shorthair**",
+      "demog": "Yaş: **8 aylık** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmamış**",
+      "vaccine": "Aşılar: **Güncel değil (barınaktan yeni sahiplenilmiş)** | Parazit ilacı: **Yapılmamış**",
+      "complaint": [
+        "Sahibi endişeyle anlatıyor:\n\n\"Barınaktan iki hafta önce getirdik, son 3 gündür sanki boğazına bir şey kaçmış gibi kuru kuru ve çok şiddetli öksürüyor.\"",
+        "Sahibi şaşırarak anlatıyor:\n\n\"Öksürüğünün arkasından bazen öyle bir öğürüyor ki kusacak sanıyoruz ama sadece beyaz, köpüklü bir sıvı çıkartıp geri yutuyor.\"",
+        "Sahibi üzülerek anlatıyor:\n\n\"Gözleri ve burnu sürekli akıyor, siliyoruz ama sarımsı yeşilimsi çapaklar ve akıntı tekrar birikiyor.\"",
+        "Sahibi korkarak anlatıyor:\n\n\"Normalde çok oyuncuydu ama dünden beri mamasını düzgün yemiyor, sürekli odanın köşesinde halsiz bir şekilde uyuyor.\"",
+        "Sahibi endişeyle anlatıyor:\n\n\"Nefes alıp verirken burnundan hırıltılı ve ıslık gibi sesler geliyor, bazen sanki nefes almakta zorlanıyor gibi ağzını açıyor.\""
+      ]
+    },
+    "diffQuestions": [
+      {
+        "q": "Kedinizin bu şikayetleri başlamadan önce çok sayıda kediyle bir arada bulunduğu bir ortam geçmişi var mı?",
+        "a": "Evet, yaklaşık 10 gün önce çok kalabalık bir barınaktan sahiplendik. Oradaki bazı kediler de hapşırıp öksürüyordu."
+      },
+      {
+        "q": "Öksürük krizleri günün hangi zamanlarında artıyor ve boynuna dokunduğunuzda tetikleniyor mu?",
+        "a": "Özellikle hareket edip biraz koşmaya çalıştığında ya da boğazının altına, tasmasının olduğu yere dokunduğumuzda hemen öksürmeye başlıyor."
+      },
+      {
+        "q": "Evdeki diğer evcil hayvanlarınızda benzer hapşırık veya öksürük şikayetleri var mı?",
+        "a": "Evet, evdeki diğer büyük kedimiz de dün akşamdan beri hafif hafif hapşırmaya ve gözlerini kırpıştırmaya başladı."
+      },
+      {
+        "q": "Kediniz hiç dışarı çıkıyor mu veya evdeki saksı bitkilerini kemirme huyu var mı?",
+        "a": "Hayır, tamamen evde duruyor. Evde bitki veya çiçeğimiz de yok, yabancı cisim yutma ihtimali çok düşük."
+      },
+      {
+        "q": "Şikayetleri başladıktan sonra hiç ishal veya kusma gözlemlediniz mi?",
+        "a": "Hayır, kakası gayet normal. Kusması da mama kusması değil, sadece öksürük krizinin sonunda o köpüklü sıvıyı çıkarıyor."
+      }
+    ],
+    "physical": {
+      "temp": "Vücut sıcaklığı: **39.6°C** (Referans: 38.1–39.2°C) → Hafif ateş — akut üst solunum yolu enfeksiyonunda yangısal yanıt ⚠",
+      "resp": "Solunum sayısı: **36/dak** (Referans: 20–42/dak) → Normal üst sınıra yakın — konjesyon ve mukopurulent akıntı ⚠",
+      "hr": "Kalp atım sayısı: **185/dak** (Referans: 140–220/dak) → Normal — ateş ve klinik strese bağlı fizyolojik artış ✓",
+      "mucosa": "Mukoza rengi: **Pembe, hafif konjestif** | CRT: **2 sn** → Perfüzyon normal, farenks mukozasında irritasyona bağlı hafif kızarıklık ✓",
+      "lymph": "Lenf nodları: Mandibular lenf nodları bilateral hafif büyümüş ve hassas. Preskapular ve popliteal lenf nodları normal. ⚠",
+      "palp": "Karın palpasyonu: Organlar normal, ağrı veya kitle yok. **Trakeal palpasyonda şiddetli ve kolay tetiklenen trakeal refleks** (öksürük krizi). 🔴"
+    },
+    "tools": {
+      "otoscope": "Otoskopi: Kulak kanalları açık ve temiz, timpanik zar doğal. Kulak kepçesinde lezyon yok. ✓",
+      "ophthalmo": "Oftalmoskopi: **Bilateral konjonktivit** — konjonktivalarda hiperemi ve seromukozal akıntı kalıntıları. Kornea ve retina doğal. ⚠",
+      "pharyngo": "Faringoskopi: Tonsiller hafif hiperemik ve şiş. **Yumuşak damak ve farenks arkasında mukozal kızarıklık ve köpüklü-mukoid salgı birikimi.** 🔴 Yabancı cisim veya kitle yok.",
+      "reflex": "Refleks muayenesi: Patellar refleks bilateral normal. Motor nöron veya refleks arkı patolojisi yok. ✓",
+      "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
+      "inspection": "İnspeksiyon: Seromukopurulent oküler ve nazal akıntı, ekspiratuvar nefes güçlüğü, letarji. **Trakeal bölgede hassasiyet.** ⚠",
+      "auscultation": "Oskültasyon: **Akciğer:** Hafif bronkovesiküler ses artışı, kaba sesler. Konsolidasyon bulgusu yok. ⚠ **Kalp:** Normal ritim, üfürüm yok. **Bağırsak:** Normal."
+    },
+    "imaging": {
+      "echo": {
+        "result": "EKO: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "usg": {
+        "result": "Abdominal USG: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "xray_direct": {
+        "result": "Toraks Radyografisi: Trakeal lümende hafif daralma (ödem kaynaklı) ve peribronşiyal çizgilenmelerde hafif artış (bronşiyal tıkızlık). Akciğer parankiminde konsolidasyon veya pnömoni bulgusu saptanmadı. Görsel henüz mevcut değildir — klinik bulgularla devam ediniz.",
+        "hasImage": true,
+        "imgUrl": null
+      },
+      "xray_indirect": {
+        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "bt": {
+        "result": "BT: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "mr": {
+        "result": "MR: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      }
+    },
+    "rapidKits": {
+      "fiv_felv": "NEGATİF",
+      "fcov_ab": "NEGATİF",
+      "fpv_ag": "NEGATİF",
+      "fcov_ag": "NEGATİF",
+      "ntprobnp": "NEGATİF",
+      "fsaa": "POZİTİF",
+      "giardia_ag": "NEGATİF"
+    },
+    "hemogram": [
+      {
+        "param": "WBC",
+        "value": "21.2",
+        "unit": "10³/µL",
+        "ref": "5.5–19.5",
+        "flag": "H"
+      },
+      {
+        "param": "RBC",
+        "value": "7.8",
+        "unit": "10⁶/µL",
+        "ref": "5.0–10.0",
+        "flag": ""
+      },
+      {
+        "param": "HGB",
+        "value": "12.5",
+        "unit": "g/dL",
+        "ref": "8.0–15.0",
+        "flag": ""
+      },
+      {
+        "param": "HCT",
+        "value": "38.2",
+        "unit": "%",
+        "ref": "24–45",
+        "flag": ""
+      },
+      {
+        "param": "MCV",
+        "value": "49.0",
+        "unit": "fL",
+        "ref": "41–58",
+        "flag": ""
+      },
+      {
+        "param": "MCH",
+        "value": "16.0",
+        "unit": "pg",
+        "ref": "13–17",
+        "flag": ""
+      },
+      {
+        "param": "MCHC",
+        "value": "32.7",
+        "unit": "g/dL",
+        "ref": "30–36",
+        "flag": ""
+      },
+      {
+        "param": "PLT",
+        "value": "420",
+        "unit": "10³/µL",
+        "ref": "300–800",
+        "flag": ""
+      },
+      {
+        "param": "Nöt%",
+        "value": "78",
+        "unit": "%",
+        "ref": "35–75",
+        "flag": "H"
+      },
+      {
+        "param": "Lenf%",
+        "value": "15",
+        "unit": "%",
+        "ref": "20–55",
+        "flag": "L"
+      },
+      {
+        "param": "Mon%",
+        "value": "5",
+        "unit": "%",
+        "ref": "1–4",
+        "flag": "H"
+      },
+      {
+        "param": "Eoz%",
+        "value": "2",
+        "unit": "%",
+        "ref": "0–5",
+        "flag": ""
+      }
+    ],
+    "biochemistry": {
+      "ALT": {
+        "value": "45",
+        "unit": "U/L",
+        "ref": "10–80",
+        "flag": ""
+      },
+      "ALP": {
+        "value": "32",
+        "unit": "U/L",
+        "ref": "10–90",
+        "flag": ""
+      },
+      "AST": {
+        "value": "28",
+        "unit": "U/L",
+        "ref": "10–50",
+        "flag": ""
+      },
+      "GGT": {
+        "value": "2",
+        "unit": "U/L",
+        "ref": "0–10",
+        "flag": ""
+      },
+      "Total Bili.": {
+        "value": "0.2",
+        "unit": "mg/dL",
+        "ref": "0–0.4",
+        "flag": ""
+      },
+      "Safra As.": {
+        "value": "4.8",
+        "unit": "µmol/L",
+        "ref": "0–10",
+        "flag": ""
+      },
+      "Glukoz": {
+        "value": "92",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": ""
+      },
+      "Fruktozamin": {
+        "value": "228",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "CREA": {
+        "value": "1.1",
+        "unit": "mg/dL",
+        "ref": "0.8–1.8",
+        "flag": ""
+      },
+      "Fosfor": {
+        "value": "4.5",
+        "unit": "mg/dL",
+        "ref": "2.4–8.2",
+        "flag": ""
+      },
+      "Total Prot.": {
+        "value": "7.9",
+        "unit": "g/dL",
+        "ref": "5.4–8.2",
+        "flag": ""
+      },
+      "ALB": {
+        "value": "3.0",
+        "unit": "g/dL",
+        "ref": "2.1–3.5",
+        "flag": ""
+      },
+      "Glob": {
+        "value": "4.9",
+        "unit": "g/dL",
+        "ref": "2.6–5.1",
+        "flag": ""
+      },
+      "Na": {
+        "value": "151",
+        "unit": "mEq/L",
+        "ref": "147–162",
+        "flag": ""
+      },
+      "K": {
+        "value": "4.2",
+        "unit": "mEq/L",
+        "ref": "3.5–5.8",
+        "flag": ""
+      },
+      "Cl": {
+        "value": "122",
+        "unit": "mEq/L",
+        "ref": "115–130",
+        "flag": ""
+      },
+      "Ca": {
+        "value": "9.5",
+        "unit": "mg/dL",
+        "ref": "8.8–11.9",
+        "flag": ""
+      }
+    },
+    "hormones": {
+      "T4": {
+        "value": "—",
+        "unit": "µg/dL",
+        "ref": "0.8–4.7",
+        "flag": ""
+      },
+      "T3": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "0.5–1.5",
+        "flag": ""
+      },
+      "TSH": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "0.01–0.1",
+        "flag": ""
+      },
+      "Kortizol": {
+        "value": "—",
+        "unit": "µg/dL",
+        "ref": "0.5–5.0",
+        "flag": ""
+      },
+      "Aldosteron": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "İnsülin": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "5–20",
+        "flag": ""
+      },
+      "Progesteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "Testosteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "Östrojen": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      }
+    },
+    "microscopy": {
+      "blood": {
+        "text": "Kan yayması: Eritrositler normositik normokromik. Segmenter nötrofillerde hafif toksik değişimler izlendi. Kan paraziti görülmedi. Trombositler normal morfoloji ve sayıda. ✓",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+      },
+      "urine": "İdrar muayenesi: Açık sarı, berrak. SpGr: 1.038. pH: 6.5. Protein: Negatif. Glukoz: Negatif. Keton: Negatif. Sediment: Silindir, kristal, lökosit veya eritrosit yok — inaktif. ✓",
+      "stool": "Dışkı muayenesi: Baermann tekniği ve flotasyon muayenesi negatif — akciğer kıl kurdu (Aelurostrongylus abstrusus) dışlandı. ✓",
+      "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
+      "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Kesin tanı derin farenks/trakea swap PCR paneli ile konulmaktadır."
+    }
+  },
+  "leptospirosis": {
+    "caseId": "VC-2025-038",
+    "species": "Köpek",
+    "icon": "🐶",
+    "diagnosis": "Leptospirozis (Akut Böbrek Hasarı + İkterik Form)",
+    "anamnez": {
+      "name": "İsim: **Duman** | Irk: **Golden Retriever**",
+      "demog": "Yaş: **3 yaş** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmış (Orşiektomi)**",
+      "vaccine": "Aşılar: **Karma + Kuduz güncel, Leptospira aşısı yok** | Parazit ilacı: **Güncel**",
+      "complaint": [
+        "Sahibi korkarak anlatıyor:\n\n\"Gözlerinin beyazı, diş etleri ve hatta kulaklarının içi aniden sapsarı oldu.\"",
+        "Sahibi üzülerek anlatıyor:\n\n\"Dünden beri hiçbir şey yemiyor ve içtiği suyu bile hemen sarı köpük şeklinde kusuyor.\"",
+        "Sahibi endişeyle anlatıyor:\n\n\"Eskiden çok su içerdi ama bugün sabahtan beri hiç çişini yapmadı, çok halsiz yatıyor.\"",
+        "Sahibi korkarak anlatıyor:\n\n\"Vücudu ateş gibi yanıyor ve dokunduğumuzda titriyor, yerinden kalkacak mecali yok.\"",
+        "Sahibi ağlayarak anlatıyor:\n\n\"Karnına veya beline dokunmaya çalıştığımda çok şiddetli tepki veriyor, ağlayıp benden kaçıyor.\""
+      ]
+    },
+    "diffQuestions": [
+      {
+        "q": "Yakın zamanda ormanlık alanda gölet, dere veya durgun su birikintisinden su içti mi ya da yüzdü mü?",
+        "a": "Evet, geçen hafta ormanda kampa gitmiştik. Oradaki durgun bir gölete girdi ve o sudan epey içti."
+      },
+      {
+        "q": "Evinizin etrafında veya bahçenizde fare, sıçan gibi kemirgenler gördünüz mü?",
+        "a": "Bahçemiz tarlaya bakıyor, son zamanlarda birkaç kez ölü fare bulmuştuk."
+      },
+      {
+        "q": "İdrar miktarında tamamen kesilmeden önce bir artış ve idrar renginde koyulaşma fark ettiniz mi?",
+        "a": "Evet, ilk başlarda çok su içip çok idrar yapıyordu, idrarı da portakal rengi gibi çok koyuydu ama dünden beri hiç çiş yapmıyor."
+      },
+      {
+        "q": "Kusmalarında taze kan veya kahve telvesi gibi siyah pıhtılar gördünüz mü?",
+        "a": "Kusmuğunda kan yoktu ama dışkısı çok cıvık, koyu kahverengi ve çok kötü kokuluydu."
+      },
+      {
+        "q": "Aşı karnesinde Leptospirozis aşısı ibaresi hatırlıyor musunuz?",
+        "a": "Hayır, sadece temel karma ve kuduz aşılarını yaptırdık, ekstra bir aşı yaptırmadık."
+      }
+    ],
+    "physical": {
+      "temp": "Vücut sıcaklığı: **40.2°C** (Referans: 37.8–39.2°C) → Yüksek ateş — bakteriyel enfeksiyona ve sistemik inflamasyona bağlı 🔴",
+      "resp": "Solunum sayısı: **42/dak** (Referans: 10–30/dak) → Takipne — ateş, karın ağrısı ve üremik asidoz 🔴",
+      "hr": "Kalp atım sayısı: **150/dak** (Referans: 60–140/dak) → Taşikardi — enfeksiyon, ağrı ve dehidrasyon ⚠",
+      "mucosa": "Mukoza rengi: **Belirgin İkterik (sapsarı), kuru** | CRT: **3 sn** → İntrahepatik kolestaz + dehidrasyon 🔴",
+      "lymph": "Lenf nodları: Submandibular ve preskapular bilateral reaktif, büyümüş ve ağrılı. 🔴",
+      "palp": "Karın palpasyonu: Kranial batında (karaciğer) ve böbrek lojunda **şiddetli ağrı ve defans.** 🔴 Böbrekler palpasyonda hafif büyük ve sert — akut parankimal şişme ile uyumlu."
+    },
+    "tools": {
+      "otoscope": "Otoskopi: Kulak kanalı temiz, kulak zarı intakt. **Kulak kepçesi mukozasında belirgin ikter ve küçük peteşiyal kanama odakları.** 🔴",
+      "ophthalmo": "Oftalmoskopi: **Sklera şiddetli ikterik.** 🔴 Retinal muayenede **sekonder üveit ve küçük vasküler kanamalar** — sistemik vaskülit ve trombositopeni bulgusu. 🔴",
+      "pharyngo": "Faringoskopi: Oral mukoza sapsarı. **Dil ve yanak içlerinde akut üremiye sekonder fokal üremik ülserasyonlar.** 🔴",
+      "reflex": "Refleks muayenesi: Spinal refleksler normal, ancak şiddetli mental depresyon nedeniyle genel tepkiler yavaş. ⚠",
+      "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
+      "inspection": "İnspeksiyon: Yaygın ikter, letarji, ağrı davranışı, oligüri. Genel durum kritik. 🔴",
+      "auscultation": "Oskültasyon: **Akciğer:** Hafif takipne, temiz veziküler sesler. **Kalp:** Taşikardik, üfürüm yok. **Bağırsak:** Azalmış — üremik gastroparezi. ⚠"
+    },
+    "imaging": {
+      "echo": {
+        "result": "EKO: Bu vakada endike görülmemiştir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "usg": {
+        "result": "Abdominal USG: Bilateral böbreklerde büyüme (renomegali), kortikal ekojenitede artış ve kortikomedüller ayrımın silinmesi — akut tübüler nekroz ile uyumlu. 🔴 Karaciğer parankiminde diffüz hipoekoik görünüm (akut hepatit) ve safra kesesi çamuru mevcut. Görsel sonradan eklenecektir.",
+        "hasImage": true,
+        "imgUrl": null
+      },
+      "xray_direct": {
+        "result": "Direkt Röntgen: Bu vakada endike görülmemiştir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "xray_indirect": {
+        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "bt": {
+        "result": "BT: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "mr": {
+        "result": "MR: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      }
+    },
+    "rapidKits": {
+      "fiv_felv": "NEGATİF",
+      "fcov_ab": "NEGATİF",
+      "fpv_ag": "NEGATİF",
+      "fcov_ag": "NEGATİF",
+      "ntprobnp": "NEGATİF",
+      "fsaa": "POZİTİF",
+      "giardia_ag": "NEGATİF"
+    },
+    "hemogram": [
+      {
+        "param": "WBC",
+        "value": "28.5",
+        "unit": "10³/µL",
+        "ref": "6.0–17.0",
+        "flag": "H"
+      },
+      {
+        "param": "RBC",
+        "value": "5.0",
+        "unit": "10⁶/µL",
+        "ref": "5.5–8.5",
+        "flag": "L"
+      },
+      {
+        "param": "HGB",
+        "value": "11.2",
+        "unit": "g/dL",
+        "ref": "12.0–18.0",
+        "flag": "L"
+      },
+      {
+        "param": "HCT",
+        "value": "33.0",
+        "unit": "%",
+        "ref": "37–55",
+        "flag": "L"
+      },
+      {
+        "param": "MCV",
+        "value": "66.0",
+        "unit": "fL",
+        "ref": "60–77",
+        "flag": ""
+      },
+      {
+        "param": "MCH",
+        "value": "22.4",
+        "unit": "pg",
+        "ref": "19–24.5",
+        "flag": ""
+      },
+      {
+        "param": "MCHC",
+        "value": "33.9",
+        "unit": "g/dL",
+        "ref": "32–36",
+        "flag": ""
+      },
+      {
+        "param": "PLT",
+        "value": "85",
+        "unit": "10³/µL",
+        "ref": "200–900",
+        "flag": "L"
+      },
+      {
+        "param": "Nöt%",
+        "value": "86",
+        "unit": "%",
+        "ref": "60–77",
+        "flag": "H"
+      },
+      {
+        "param": "Lenf%",
+        "value": "8",
+        "unit": "%",
+        "ref": "12–30",
+        "flag": "L"
+      },
+      {
+        "param": "Mon%",
+        "value": "6",
+        "unit": "%",
+        "ref": "3–10",
+        "flag": ""
+      },
+      {
+        "param": "Eoz%",
+        "value": "0",
+        "unit": "%",
+        "ref": "0–9",
+        "flag": ""
+      }
+    ],
+    "biochemistry": {
+      "ALT": {
+        "value": "650",
+        "unit": "U/L",
+        "ref": "10–125",
+        "flag": "H"
+      },
+      "ALP": {
+        "value": "880",
+        "unit": "U/L",
+        "ref": "23–212",
+        "flag": "H"
+      },
+      "AST": {
+        "value": "340",
+        "unit": "U/L",
+        "ref": "10–50",
+        "flag": "H"
+      },
+      "GGT": {
+        "value": "45",
+        "unit": "U/L",
+        "ref": "0–14",
+        "flag": "H"
+      },
+      "Total Bili.": {
+        "value": "6.8",
+        "unit": "mg/dL",
+        "ref": "0–0.9",
+        "flag": "H"
+      },
+      "Safra As.": {
+        "value": "42",
+        "unit": "µmol/L",
+        "ref": "0–10",
+        "flag": "H"
+      },
+      "Glukoz": {
+        "value": "90",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": ""
+      },
+      "Fruktozamin": {
+        "value": "240",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "CREA": {
+        "value": "5.4",
+        "unit": "mg/dL",
+        "ref": "0.5–1.8",
+        "flag": "H"
+      },
+      "Fosfor": {
+        "value": "9.2",
+        "unit": "mg/dL",
+        "ref": "2.5–6.8",
+        "flag": "H"
+      },
+      "Total Prot.": {
+        "value": "6.1",
+        "unit": "g/dL",
+        "ref": "5.1–7.8",
+        "flag": ""
+      },
+      "ALB": {
+        "value": "2.4",
+        "unit": "g/dL",
+        "ref": "2.6–4.0",
+        "flag": "L"
+      },
+      "Glob": {
+        "value": "3.7",
+        "unit": "g/dL",
+        "ref": "1.6–3.6",
+        "flag": "H"
+      },
+      "Na": {
+        "value": "134",
+        "unit": "mEq/L",
+        "ref": "139–154",
+        "flag": "L"
+      },
+      "K": {
+        "value": "6.5",
+        "unit": "mEq/L",
+        "ref": "3.6–5.5",
+        "flag": "H"
+      },
+      "Cl": {
+        "value": "105",
+        "unit": "mEq/L",
+        "ref": "102–120",
+        "flag": ""
+      },
+      "Ca": {
+        "value": "8.9",
+        "unit": "mg/dL",
+        "ref": "7.9–12.0",
+        "flag": ""
+      }
+    },
+    "hormones": {
+      "T4": {
+        "value": "1.1",
+        "unit": "µg/dL",
+        "ref": "1.0–4.0",
+        "flag": ""
+      },
+      "T3": {
+        "value": "0.6",
+        "unit": "ng/mL",
+        "ref": "0.5–2.0",
+        "flag": ""
+      },
+      "TSH": {
+        "value": "0.25",
+        "unit": "µIU/mL",
+        "ref": "0.01–0.5",
+        "flag": ""
+      },
+      "Kortizol": {
+        "value": "5.5",
+        "unit": "µg/dL",
+        "ref": "1.0–6.0",
+        "flag": ""
+      },
+      "Aldosteron": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "İnsülin": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "5–30",
+        "flag": ""
+      },
+      "Progesteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "Testosteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "1.0–8.0",
+        "flag": ""
+      },
+      "Östrojen": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      }
+    },
+    "microscopy": {
+      "blood": {
+        "text": "Kan yayması: Nötrofillerde belirgin toksik değişiklikler (Döhle cisimcikleri, sitoplazmik vakuolizasyon). Trombositler her sahada azalmış. 🔴 Kan paraziti görülmedi.",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+      },
+      "urine": "İdrar muayenesi (Sistosentez): **Koyu portakal/kahverengi, bulanık.** SpGr: **1.012** — izostenüri, böbrek konsantrasyon yeteneği kaybolmuş. 🔴 pH: 6.0. Protein: **(+++)** — tübüler hasar. 🔴 **Glukoz: (++) — normoglisemik glukozüri** — tübüler reabsorpsiyon bozukluğu. 🔴 Keton: Negatif. **Sediment:** Bol granüler silendir (renal tübüler nekroz), lökositler ve bilirubin kristalleri. 🔴",
+      "stool": "Dışkı muayenesi: Makroskobik olarak çok koyu ve cıvık (melena). Parazit yumurtası görülmedi. **Fekal gizli kan testi POZİTİF** — üremik ülserasyon kanaması. 🔴",
+      "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
+      "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Kesin tanı Leptospira PCR ve MAT (Mikroskobik Aglütinasyon Testi) ile konulmaktadır."
+    }
+  },
+  "babesiosis": {
+    "caseId": "VC-2025-039",
+    "species": "Köpek",
+    "icon": "🐶",
+    "diagnosis": "Babesiozis (Babesia canis)",
+    "anamnez": {
+      "name": "İsim: **Rex** | Irk: **Labrador Retriever**",
+      "demog": "Yaş: **3 yaş** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmamış**",
+      "vaccine": "Aşılar: **Güncel (DHPPI + Kuduz)** | Parazit ilacı: **Düzensiz — son 4 aydır uygulanmamış**",
+      "complaint": [
+        "Sahibi korkarak anlatıyor:\n\n\"Son 2 gündür ateşi çok yüksek, cayır cayır yanıyor resmen. Kafasını bile kaldıramıyor, sürekli yatıyor ve aşırı halsiz.\"",
+        "Sahibi üzülerek anlatıyor:\n\n\"Önüne en sevdiği et konservesini koysam bile yüzüne bakmıyor, dünden beri tek bir lokma bile yemek yemedi.\"",
+        "Sahibi şaşırarak anlatıyor:\n\n\"Diş etlerine baktım, o canlı pembe rengi tamamen gitmiş, bembeyaz pamuk gibi olmuş.\"",
+        "Sahibi korkarak anlatıyor:\n\n\"Bugün çişini yaparken fark ettim, idrarının rengi çok koyu, sanki çay veya kola renginde akıyor.\"",
+        "Sahibi endişeyle anlatıyor:\n\n\"Midesi de bulanıyor galiba, dün akşam sadece su içti onu da hemen arkasından sarı bir köpük şeklinde kustu.\""
+      ]
+    },
+    "diffQuestions": [
+      {
+        "q": "Köpeğinizin üzerinden yakın zamanda kene topladınız mı veya kırsal/ormanlık bir alana gittiniz mi?",
+        "a": "Evet, yaklaşık iki hafta önce ormanlık alanda yürüyüşe çıkmıştık. Eve döndüğümüzde boynundan ve kulak arkasından 3 tane şişmiş kene kopardım."
+      },
+      {
+        "q": "İdrar rengindeki koyulaşma ne zaman başladı ve yaparken zorlanma var mı?",
+        "a": "Dün sabah hafif koyuydu ama bu sabah resmen demli çay gibi kapkara yaptı. Yaparken hiç zorlanmıyor, ağrısı yok gibi direkt normal yapıyor."
+      },
+      {
+        "q": "Köpeğinizde daha önce otoimmün hastalık veya kanser geçmişi var mı?",
+        "a": "Hayır, bugüne kadar hiçbir kronik hastalığı yoktu, turp gibiydi. Aşıları da hep tamdır."
+      },
+      {
+        "q": "Gözlerinde veya cildinde sararma fark ettiniz mi?",
+        "a": "Evet, diş etlerinin beyazlığının yanında gözünün beyaz kısımları da hafif sararmış gibi duruyor, dikkatimi çekti."
+      },
+      {
+        "q": "Vücudunda, özellikle karnında küçük kırmızı noktalar ya da morluklar gördünüz mü?",
+        "a": "Karnının altında sanki iğne ucu gibi küçük küçük kırmızı lekeler oluşmuş, çarpma izi gibi değil."
+      }
+    ],
+    "physical": {
+      "temp": "Vücut sıcaklığı: **40.5°C** (Referans: 37.8–39.2°C) → Şiddetli ateş — protozoen enfeksiyona bağlı pirojen salınımı 🔴",
+      "resp": "Solunum sayısı: **38/dak** (Referans: 10–30/dak) → Takipne — anemiye bağlı doku hipoksisi 🔴",
+      "hr": "Kalp atım sayısı: **142/dak** (Referans: 60–120/dak) → Taşikardi ve bounding nabız — şiddetli anemiye bağlı kardiyak debi artışı 🔴",
+      "mucosa": "Mukoza rengi: **Solgun ve hafif ikterik** | CRT: **3 sn** → Anemi, hipoperfüzyon ve pre-hepatik hemolize bağlı ikterus 🔴",
+      "lymph": "Lenf nodları: Mandibular, preskapular ve popliteal bilateral hafif büyümüş ve hassas — sistemik enfeksiyona bağlı reaktif lenfadenomegali. ⚠",
+      "palp": "Karın palpasyonu: Sol kranyal kadranda **belirgin splenomegali** ve karaciğer bölgesinde hafif hassasiyet. 🔴 Yoğun ekstravasküler hemoliz nedeniyle dalakta reaktif hiperplazi."
+    },
+    "tools": {
+      "otoscope": "Otoskopi: Kulak kanalları açık. **Sol kulak kepçesinin iç kısmında kene ısırığına bağlı 'kene krateri' (tick crater)** saptandı. Timpanik membran intakt. 🔴",
+      "ophthalmo": "Oftalmoskopi: **Anemiye bağlı retinal solgunluk.** Hafif konjonktival ikterus mevcut. Üveit bulgusuna rastlanmadı. ⚠",
+      "pharyngo": "Faringoskopi: **Oral mukozalar belirgin derecede solgun, peteşiyal kanama odakları mevcut.** 🔴 Tonsiller normal.",
+      "reflex": "Refleks muayenesi: Patellar ve pedal refleksler normal. Merkezi sinir sistemi tutulumu yok. ✓",
+      "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
+      "inspection": "İnspeksiyon: **Şiddetli solgunluk, hafif ikter, peteşiler, halsizlik.** 🔴 Sol kulak arkasında kene ısırık izi. Genel durum ağır.",
+      "auscultation": "Oskültasyon: **Kalp:** Taşikardik, bounding kalite, **anemik sistolik üfürüm (Grade II/VI).** 🔴 **Akciğer:** Temiz veziküler. **Bağırsak:** Normal."
+    },
+    "imaging": {
+      "echo": {
+        "result": "EKO: Miyokardiyal kontraktilite normal, anemiye bağlı hiperdinamik akım izlendi. Patolojik bulgu yok.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "usg": {
+        "result": "Abdominal USG: Belirgin splenomegali (dalak homojen ve büyümüş), karaciğer boyutları hafif artmış. Safra kesesi duvarı normal. Bu vakada görüntüleme destekleyici niteliktedir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "xray_direct": {
+        "result": "Toraks ve abdomen radyografilerinde organ pozisyonları normal, belirgin patoloji yok. Bu vakada tanı klinik ve laboratuvar bulgularla konulmaktadır.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "xray_indirect": {
+        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "bt": {
+        "result": "BT: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "mr": {
+        "result": "MR: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      }
+    },
+    "rapidKits": {
+      "fiv_felv": "NEGATİF",
+      "fcov_ab": "NEGATİF",
+      "fpv_ag": "NEGATİF",
+      "fcov_ag": "NEGATİF",
+      "ntprobnp": "NEGATİF",
+      "fsaa": "POZİTİF",
+      "giardia_ag": "NEGATİF"
+    },
+    "hemogram": [
+      {
+        "param": "WBC",
+        "value": "18.5",
+        "unit": "10³/µL",
+        "ref": "6.0–17.0",
+        "flag": "H"
+      },
+      {
+        "param": "RBC",
+        "value": "3.1",
+        "unit": "10⁶/µL",
+        "ref": "5.5–8.5",
+        "flag": "L"
+      },
+      {
+        "param": "HGB",
+        "value": "6.8",
+        "unit": "g/dL",
+        "ref": "12.0–18.0",
+        "flag": "L"
+      },
+      {
+        "param": "HCT",
+        "value": "20.2",
+        "unit": "%",
+        "ref": "37–55",
+        "flag": "L"
+      },
+      {
+        "param": "MCV",
+        "value": "78.5",
+        "unit": "fL",
+        "ref": "60–77",
+        "flag": "H"
+      },
+      {
+        "param": "MCH",
+        "value": "23.1",
+        "unit": "pg",
+        "ref": "19–24.5",
+        "flag": ""
+      },
+      {
+        "param": "MCHC",
+        "value": "31.2",
+        "unit": "g/dL",
+        "ref": "32–36",
+        "flag": "L"
+      },
+      {
+        "param": "PLT",
+        "value": "22",
+        "unit": "10³/µL",
+        "ref": "200–900",
+        "flag": "L"
+      },
+      {
+        "param": "Nöt%",
+        "value": "79",
+        "unit": "%",
+        "ref": "60–77",
+        "flag": "H"
+      },
+      {
+        "param": "Lenf%",
+        "value": "13",
+        "unit": "%",
+        "ref": "12–30",
+        "flag": ""
+      },
+      {
+        "param": "Mon%",
+        "value": "6",
+        "unit": "%",
+        "ref": "3–10",
+        "flag": ""
+      },
+      {
+        "param": "Eoz%",
+        "value": "2",
+        "unit": "%",
+        "ref": "0–9",
+        "flag": ""
+      }
+    ],
+    "biochemistry": {
+      "ALT": {
+        "value": "148",
+        "unit": "U/L",
+        "ref": "10–125",
+        "flag": "H"
+      },
+      "ALP": {
+        "value": "195",
+        "unit": "U/L",
+        "ref": "23–212",
+        "flag": ""
+      },
+      "AST": {
+        "value": "62",
+        "unit": "U/L",
+        "ref": "10–50",
+        "flag": "H"
+      },
+      "GGT": {
+        "value": "6",
+        "unit": "U/L",
+        "ref": "0–14",
+        "flag": ""
+      },
+      "Total Bili.": {
+        "value": "2.8",
+        "unit": "mg/dL",
+        "ref": "0–0.9",
+        "flag": "H"
+      },
+      "Safra As.": {
+        "value": "5.2",
+        "unit": "µmol/L",
+        "ref": "0–10",
+        "flag": ""
+      },
+      "Glukoz": {
+        "value": "88",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": ""
+      },
+      "Fruktozamin": {
+        "value": "240",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "CREA": {
+        "value": "1.1",
+        "unit": "mg/dL",
+        "ref": "0.5–1.8",
+        "flag": ""
+      },
+      "Fosfor": {
+        "value": "4.0",
+        "unit": "mg/dL",
+        "ref": "2.5–6.8",
+        "flag": ""
+      },
+      "Total Prot.": {
+        "value": "7.6",
+        "unit": "g/dL",
+        "ref": "5.1–7.8",
+        "flag": ""
+      },
+      "ALB": {
+        "value": "2.8",
+        "unit": "mg/dL",
+        "ref": "2.6–4.0",
+        "flag": ""
+      },
+      "Glob": {
+        "value": "4.8",
+        "unit": "g/dL",
+        "ref": "1.6–3.6",
+        "flag": "H"
+      },
+      "Na": {
+        "value": "142",
+        "unit": "mEq/L",
+        "ref": "139–154",
+        "flag": ""
+      },
+      "K": {
+        "value": "4.1",
+        "unit": "mEq/L",
+        "ref": "3.6–5.5",
+        "flag": ""
+      },
+      "Cl": {
+        "value": "108",
+        "unit": "mEq/L",
+        "ref": "102–120",
+        "flag": ""
+      },
+      "Ca": {
+        "value": "9.2",
+        "unit": "mg/dL",
+        "ref": "7.9–12.0",
+        "flag": ""
+      }
+    },
+    "hormones": {
+      "T4": {
+        "value": "—",
+        "unit": "µg/dL",
+        "ref": "1.0–4.0",
+        "flag": ""
+      },
+      "T3": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "0.5–2.0",
+        "flag": ""
+      },
+      "TSH": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "0.01–0.5",
+        "flag": ""
+      },
+      "Kortizol": {
+        "value": "—",
+        "unit": "µg/dL",
+        "ref": "1.0–6.0",
+        "flag": ""
+      },
+      "Aldosteron": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "İnsülin": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "5–30",
+        "flag": ""
+      },
+      "Progesteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "Testosteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "1.0–8.0",
+        "flag": ""
+      },
+      "Östrojen": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      }
+    },
+    "microscopy": {
+      "blood": {
+        "text": "Kan Yayması (Giemsa): Eritrositlerin içinde tekli veya karakteristik **armut biçiminde ikili (piroplasm) yerleşim gösteren büyük Babesia formları** saptandı. 🔴 Yoğun sferositler ve **oto-aglütinasyon pozitif.** Trombositler her sahada 1-2 adet — kritik trombositopeni. 🔴",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+      },
+      "urine": "İdrar muayenesi: **Koyu kırmızı/kahverengi (çay rengi).** Berrak — santrifüj sonrası renk değişmedi, **hemoglobinüri doğrulandı** (hematüri ekarte). SpGr: 1.028. pH: 6.5. Protein: (+) — hemoglobinüriye bağlı yalancı proteinüri. Glukoz: Negatif. Keton: Negatif. Sediment: Eritrosit görülmedi, birkaç bilirubin kristali izlendi. 🔴",
+      "stool": "Dışkı muayenesi: Natif ve flotasyon yönteminde parazit yumurtasına veya protozoona rastlanmadı. ✓",
+      "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
+      "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Tanı kan yayması (Giemsa) ile konulmaktadır."
+    }
+  },
+  "leishmaniosis": {
+    "caseId": "VC-2025-040",
+    "species": "Köpek",
+    "icon": "🐶",
+    "diagnosis": "Leishmaniozis (Leishmania infantum)",
+    "anamnez": {
+      "name": "İsim: **Zara** | Irk: **Boxer**",
+      "demog": "Yaş: **4 yaş** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmış (OVH)**",
+      "vaccine": "Aşılar: **DHPPI + Kuduz güncel, Leishmania aşısı yok** | Parazit ilacı: **Düzenli endoparazit, tatarcık kovucu repellan yok**",
+      "complaint": [
+        "Sahibi endişeyle anlatıyor:\n\n\"Son birkaç aydır özellikle başının üstünde, kulak kenarlarında ve gözlerinin etrafında hiç geçmeyen bir tüysüzlük başladı. Derisi kurudu, pul pul kepek döküyor ve hiç kaşınmıyor.\"",
+        "Sahibi üzülerek anlatıyor:\n\n\"İştahı normal, hatta bazen her zamankinden çok yiyor ama gözümün önünde eridi resmen. Özellikle kafasının üstündeki kemikler dışarı fırladı, şakakları çöktü.\"",
+        "Sahibi korkarak anlatıyor:\n\n\"Dün akşam durup dururken burnunun tek deliğinden açık kırmızı renkte kan gelmeye başladı, halıyı batırdı.\"",
+        "Sahibi şaşırarak anlatıyor:\n\n\"Tırnakları inanılmaz hızlı ve tuhaf uzuyor. Daha yeni kesmemize rağmen kuş pençesi gibi kıvrıldı, yürürken yere sürtüyor.\"",
+        "Sahibi yorgun anlatıyor:\n\n\"Eski neşesi hiç yok, sürekli uyumak istiyor. Son birkaç gündür de sol ön bacağına tam basamıyor, hafif topallayarak yürüyor.\""
+      ]
+    },
+    "diffQuestions": [
+      {
+        "q": "Son 1-2 yıl içinde Akdeniz veya Ege gibi tatarcık popülasyonu yoğun olan yerlerde bulundunuz mu?",
+        "a": "Evet, her yaz Muğla ve Aydın taraflarındaki yazlığımıza götürüyoruz, geceleri bahçede bizimle beraber oturur."
+      },
+      {
+        "q": "Vücudundaki döküntülerde kaşıntı var mı, kendisi o bölgeleri tırmalar mı?",
+        "a": "Hayır, garip olan da o ya. Derisi bu kadar kötü durumda ama dönüp bir kere bile oraları kaşımıyor. Kendi halinde dökülüyor tüyleri."
+      },
+      {
+        "q": "Çok su içme veya normalden fazla idrara çıkma dikkat çekiyor mu?",
+        "a": "Evet, son birkaç haftadır su kabını günde üç kez dolduruyoruz. Geceleri hiç huyu değilken çişe kalkmak istiyor."
+      },
+      {
+        "q": "Gözlerinde kızarıklık, çapaklanma ya da puslu görünüm fark ettiniz mi?",
+        "a": "Gözlerinin etrafı halka gibi kel kaldı zaten, bir de iki gözü birden sürekli yaşarıyor, içi de hafif kızarık ve puslu bakıyor."
+      },
+      {
+        "q": "Eklemlerinde herhangi bir şişlik gördünüz mü, topallık hep aynı bacakta mı?",
+        "a": "Geçen hafta sağ arka bacağını sakınıyordu, bu hafta sol ön bacağına geçti. Ön bacağının bilek eklemi de elime biraz şiş ve sıcak geldi."
+      }
+    ],
+    "physical": {
+      "temp": "Vücut sıcaklığı: **39.4°C** (Referans: 37.8–39.2°C) → Hafif subfebril — kronik granülomatöz enfeksiyona bağlı intermitent ateş ⚠",
+      "resp": "Solunum sayısı: **24/dak** (Referans: 10–30/dak) → Normal ✓",
+      "hr": "Kalp atım sayısı: **105/dak** (Referans: 60–120/dak) → Normal ✓",
+      "mucosa": "Mukoza rengi: **Solgun pembe** | CRT: **2 sn** → Kronik hastalık anemisi ⚠",
+      "lymph": "Lenf nodları: Mandibular, preskapular ve popliteal bilateral belirgin büyümüş, ağrısız ve sert. 🔴 Generalize lenfadenomegali.",
+      "palp": "Karın palpasyonu: **Orta derece splenomegali ve hepatomegali.** 🔴 **Temporal ve masseter kaslarında belirgin simetrik atrofi.** 🔴 Sol carpus ekleminde hafif efüzyon ve krepitasyon. ⚠"
+    },
+    "tools": {
+      "otoscope": "Otoskopi: **Kulak kepçesi kenarlarında karakteristik kuru, simetrik, skuamöz döküntüler ve ülseröz yaralar.** 🔴 Kulak kanalları temiz, timpanik membran intakt.",
+      "ophthalmo": "Oftalmoskopi: **Bilateral anterior üveit, konjonktivit ve korneal ödem (puslu görünüm).** 🔴 Retinada hafif vaskülit ve immün kompleks birikimi.",
+      "pharyngo": "Faringoskopi: Oral mukozada ülser yok. Tonsiller hafif reaktif. ✓",
+      "reflex": "Refleks muayenesi: Proprioseptif ve spinal refleksler normal — topallık nörolojik değil, poliartrite bağlı. ✓",
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif — dermatofit dışlandı. ✓",
+      "inspection": "İnspeksiyon: **Perioküler ve auriküler bölgede simetrik alopesi + skuamöz döküntüler.** 🔴 **Onişogrifoz (kaşıntısız tırnak uzaması + kıvrılması).** 🔴 Temporal kas atrofisi belirgin.",
+      "auscultation": "Oskültasyon: Kalp ve akciğer sesleri normal. Eklem krepitasyonu sol carpus bölgesinde hissedilmekte. ✓"
+    },
+    "imaging": {
+      "echo": {
+        "result": "EKO: Kardiyak fonksiyonlar ve kapakçık mekanizmaları normal. Patolojik bulgu yok. ✓",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "usg": {
+        "result": "Abdominal USG: Belirgin splenomegali, karaciğer ekojenitesinde hafif heterojen artış. Böbrek medulla-korteks sınırı netliğini hafif kaybetmiş — kronik glomerülonefrit şüphesi. Bu vakada görüntüleme destekleyici niteliktedir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "xray_direct": {
+        "result": "Sol ön bacak carpal eklem grafisinde yumuşak doku şişliği (artrit bulgusu), destrüktif olmayan eklem efüzyonu. Toraks normal. Bu vakada tanı klinik ve laboratuvar bulgularla konulmaktadır.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "xray_indirect": {
+        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "bt": {
+        "result": "BT: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "mr": {
+        "result": "MR: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      }
+    },
+    "rapidKits": {
+      "fiv_felv": "NEGATİF",
+      "fcov_ab": "NEGATİF",
+      "fpv_ag": "NEGATİF",
+      "fcov_ag": "NEGATİF",
+      "ntprobnp": "NEGATİF",
+      "fsaa": "POZİTİF",
+      "giardia_ag": "NEGATİF"
+    },
+    "hemogram": [
+      {
+        "param": "WBC",
+        "value": "14.2",
+        "unit": "10³/µL",
+        "ref": "6.0–17.0",
+        "flag": ""
+      },
+      {
+        "param": "RBC",
+        "value": "4.2",
+        "unit": "10⁶/µL",
+        "ref": "5.5–8.5",
+        "flag": "L"
+      },
+      {
+        "param": "HGB",
+        "value": "9.5",
+        "unit": "g/dL",
+        "ref": "12.0–18.0",
+        "flag": "L"
+      },
+      {
+        "param": "HCT",
+        "value": "29.1",
+        "unit": "%",
+        "ref": "37–55",
+        "flag": "L"
+      },
+      {
+        "param": "MCV",
+        "value": "68.2",
+        "unit": "fL",
+        "ref": "60–77",
+        "flag": ""
+      },
+      {
+        "param": "MCH",
+        "value": "22.1",
+        "unit": "pg",
+        "ref": "19–24.5",
+        "flag": ""
+      },
+      {
+        "param": "MCHC",
+        "value": "32.6",
+        "unit": "g/dL",
+        "ref": "32–36",
+        "flag": ""
+      },
+      {
+        "param": "PLT",
+        "value": "110",
+        "unit": "10³/µL",
+        "ref": "200–900",
+        "flag": "L"
+      },
+      {
+        "param": "Nöt%",
+        "value": "71",
+        "unit": "%",
+        "ref": "60–77",
+        "flag": ""
+      },
+      {
+        "param": "Lenf%",
+        "value": "14.5",
+        "unit": "%",
+        "ref": "12–30",
+        "flag": ""
+      },
+      {
+        "param": "Mon%",
+        "value": "12.5",
+        "unit": "%",
+        "ref": "3–10",
+        "flag": "H"
+      },
+      {
+        "param": "Eoz%",
+        "value": "2.0",
+        "unit": "%",
+        "ref": "0–9",
+        "flag": ""
+      }
+    ],
+    "biochemistry": {
+      "ALT": {
+        "value": "65",
+        "unit": "U/L",
+        "ref": "10–125",
+        "flag": ""
+      },
+      "ALP": {
+        "value": "140",
+        "unit": "U/L",
+        "ref": "23–212",
+        "flag": ""
+      },
+      "AST": {
+        "value": "44",
+        "unit": "U/L",
+        "ref": "10–50",
+        "flag": ""
+      },
+      "GGT": {
+        "value": "5",
+        "unit": "U/L",
+        "ref": "0–14",
+        "flag": ""
+      },
+      "Total Bili.": {
+        "value": "0.3",
+        "unit": "mg/dL",
+        "ref": "0–0.9",
+        "flag": ""
+      },
+      "Safra As.": {
+        "value": "4.8",
+        "unit": "µmol/L",
+        "ref": "0–10",
+        "flag": ""
+      },
+      "Glukoz": {
+        "value": "90",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": ""
+      },
+      "Fruktozamin": {
+        "value": "245",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "CREA": {
+        "value": "2.4",
+        "unit": "mg/dL",
+        "ref": "0.5–1.8",
+        "flag": "H"
+      },
+      "Fosfor": {
+        "value": "7.1",
+        "unit": "mg/dL",
+        "ref": "2.5–6.8",
+        "flag": "H"
+      },
+      "Total Prot.": {
+        "value": "9.8",
+        "unit": "g/dL",
+        "ref": "5.1–7.8",
+        "flag": "H"
+      },
+      "ALB": {
+        "value": "1.7",
+        "unit": "g/dL",
+        "ref": "2.6–4.0",
+        "flag": "L"
+      },
+      "Glob": {
+        "value": "8.1",
+        "unit": "g/dL",
+        "ref": "1.6–3.6",
+        "flag": "H"
+      },
+      "Na": {
+        "value": "144",
+        "unit": "mEq/L",
+        "ref": "139–154",
+        "flag": ""
+      },
+      "K": {
+        "value": "4.9",
+        "unit": "mEq/L",
+        "ref": "3.6–5.5",
+        "flag": ""
+      },
+      "Cl": {
+        "value": "112",
+        "unit": "mEq/L",
+        "ref": "102–120",
+        "flag": ""
+      },
+      "Ca": {
+        "value": "8.8",
+        "unit": "mg/dL",
+        "ref": "7.9–12.0",
+        "flag": ""
+      }
+    },
+    "hormones": {
+      "T4": {
+        "value": "—",
+        "unit": "µg/dL",
+        "ref": "1.0–4.0",
+        "flag": ""
+      },
+      "T3": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "0.5–2.0",
+        "flag": ""
+      },
+      "TSH": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "0.01–0.5",
+        "flag": ""
+      },
+      "Kortizol": {
+        "value": "—",
+        "unit": "µg/dL",
+        "ref": "1.0–6.0",
+        "flag": ""
+      },
+      "Aldosteron": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "İnsülin": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "5–30",
+        "flag": ""
+      },
+      "Progesteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "Testosteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "1.0–8.0",
+        "flag": ""
+      },
+      "Östrojen": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      }
+    },
+    "microscopy": {
+      "blood": {
+        "text": "Kan yayması: Eritrositler normositik normokromik. **Hiperglobulinemiye bağlı belirgin rouleaux (rulo) formasyonu.** ⚠ Monositik seride vakuolleşme saptandı. Periferik kanda serbest parazite rastlanmadı. Trombositler sayıca hafif azalmış. (Kesin tanı: Popliteal lenf nodu aspirasyonunda makrofajlar içinde **Leishman-Donovan cisimcikleri** görüldü.) 🔴",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+      },
+      "urine": "İdrar muayenesi: Açık sarı, hafif bulanık. SpGr: **1.014** — glomerülonefrite bağlı konsantrasyon yeteneğinde azalma. ⚠ pH: 6.8. Protein: **(+++)** — glomerüler hasara bağlı masif proteinüri, UPC >2.0. 🔴 Glukoz: Negatif. Keton: Negatif. Sediment: Birkaç hiyalin ve granüler silendir — aktif olmayan renal proteinüri tablosu.",
+      "stool": "Dışkı muayenesi: Parazit yumurtası veya protozoon saptanmadı. Normal flora elemanları izlendi. ✓",
+      "skin": "Deri kazıntısı: Derin kazıntıda Demodex veya Sarcoptes akarı görülmedi. Skuamöz değişiklikler kaşıntısız ve simetrik — dermatofitozdan farklı klinik patern. Tırnaklarda onişogrifoz bulgusu belirgin. 🔴",
+      "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Kesin tanı lenf nodu veya kemik iliği aspirasyonunda Leishman-Donovan cisimciklerinin görülmesiyle ve/veya seroloji ile konulmaktadır."
+    }
+  },
+  "cav1_hepatitis": {
+    "caseId": "VC-2025-041",
+    "species": "Köpek",
+    "icon": "🐶",
+    "diagnosis": "Enfeksiyöz Köpek Hepatiti (Canine Adenovirus-1 / CAV-1)",
+    "anamnez": {
+      "name": "İsim: **Şimşek** | Irk: **Melez**",
+      "demog": "Yaş: **9 aylık** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmamış**",
+      "vaccine": "Aşılar: **Aşısız (sokaktan sahiplenilmiş)** | Parazit ilacı: **1 ay önce yapılmış**",
+      "complaint": [
+        "Sahibi korkarak anlatıyor:\n\n\"Dün sabaha kadar hiçbir şeyi yoktu, birden bire çöktü. Yataktan kalkamıyor, patilerinin üstünde duracak mecali yok, gözleri sürekli kapanıyor.\"",
+        "Sahibi şaşırarak anlatıyor:\n\n\"Sabahtan beri 3 kere kustu, son kusmuğu resmen kanlı gibi kırmızıydı. Arkasından da çok kötü kokulu, cıvık ve kanlı bir ishal yapmaya başladı.\"",
+        "Sahibi korkarak anlatıyor:\n\n\"İki gözünün rengi de birden değişti. Sanki gözlerinin üstüne mavi bir perde çekilmiş veya duman çökmüş gibi, kör oldu diye çok korkuyorum.\"",
+        "Sahibi ağlayarak anlatıyor:\n\n\"Karnı davul gibi şişti, kucağıma alıp kaldırmak istediğimde canı çok yanıyor gibi acı acı inliyor ve beni ısırmaya çalışıyor.\"",
+        "Sahibi endişeyle anlatıyor:\n\n\"Ağzının içine baktım, diş etlerinde küçük küçük kan toplanmış gibi kıpkırmızı noktalar var. Sanki bir yerlere çarpmış gibi ama durup dururken oldu.\""
+      ]
+    },
+    "diffQuestions": [
+      {
+        "q": "Gözlerindeki mavi-beyaz puslu görünüm her iki gözünde birden mi başladı?",
+        "a": "Dün akşam sol gözü biraz buğuluydu ama bu sabah kalktığımızda iki gözü birden tamamen masmavi bir renk almıştı, gözbebeği seçilmiyor bile."
+      },
+      {
+        "q": "Son zamanlarda dışarıda başka köpeklerle temas etti mi veya aşı geçmişini bilmediğiniz köpeklerle oynadı mı?",
+        "a": "Biz sahiplenmeden önce sokakta diğer köpeklerle beraber büyümüş zaten. Biz aldıktan sonra da mahalledeki parkta tasmasız gezen köpeklerle birkaç kez oynadı."
+      },
+      {
+        "q": "Kusması ve ishalinden önce evde kimyasal bir madde ya da temizlik ürünü yalama ihtimali var mı?",
+        "a": "Kesinlikle yok, deterjanların hepsi kapalı dolapta. Zaten bu durum birden bire yüksek ateşle beraber geldi, zehirlenme gibi değil."
+      },
+      {
+        "q": "Karın bölgesindeki şişlik ve ağrıyı ne zaman fark ettiniz?",
+        "a": "Bugün öğleye doğru iyice şiştiğini fark ettim. Eskiden karnını sevdirmeye bayılırdı, şimdi elimi yaklaştırdığım an hemen arkasını dönüp büzülüyor."
+      },
+      {
+        "q": "Vücudunda kasık bölgesinde veya karnında morluk/çürük gibi lekeler gördünüz mü?",
+        "a": "Evet, demin karnının altına ve tüysüz olan kasık bölgelerine baktım, sanki deri altında mor mor lekeler, çürükler oluşmuş."
+      }
+    ],
+    "physical": {
+      "temp": "Vücut sıcaklığı: **40.8°C** (Referans: 37.8–39.2°C) → Şiddetli ateş — akut viremi aşamasında bifazik ateş 🔴",
+      "resp": "Solunum sayısı: **42/dak** (Referans: 10–30/dak) → Takipne — ateş, karın ağrısı ve pulmoner vasküler hasara sekonder 🔴",
+      "hr": "Kalp atım sayısı: **150/dak** (Referans: 60–120/dak) → Taşikardi — dehidrasyon, septisemi ve ağrı 🔴",
+      "mucosa": "Mukoza rengi: **Solgun ve belirgin ikterik, peteşi + ekimozlar yaygın** | CRT: **3.5 sn** → Akut karaciğer nekrozu + tüketim koagülopatisi (DIC) 🔴",
+      "lymph": "Lenf nodları: Mandibular ve preskapular bilateral büyümüş, ödemli, hafif hassas — viral lenfoid tutulum. 🔴",
+      "palp": "Karın palpasyonu: Sağ kranyal kadranda **şiddetli defans ve belirgin hepatomegali.** 🔴 **Asit** — abdomen flüktüasyon veriyor."
+    },
+    "tools": {
+      "otoscope": "Otoskopi: Kulak kanalları açık, timpanik membran intakt. **Kulak kepçesinin iç derisinde peteşiyal kanamalar.** 🔴",
+      "ophthalmo": "Oftalmoskopi: **Bilateral yaygın korneal ödem — 'Hepatitis Blue Eye' / Mavi Göz bulgusu** (CAV-1'e karşı tip-III immün kompleks reaksiyonu). 🔴 Anterior kamarada hafif hipopyon ve üveit.",
+      "pharyngo": "Faringoskopi: **Tonsiller bilateral şiddetli derecede büyümüş, konjestiyonlu ve peteşili.** 🔴 Akut tonsillitis — CAV-1 için ayırt edici triadın parçası.",
+      "reflex": "Refleks muayenesi: Spinal refleksler zayıf — karaciğer yetmezliğine sekonder erken hepatik ensefalopati. **Mental küntlük (stupor) hali hakim.** ⚠",
+      "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
+      "inspection": "İnspeksiyon: **Bilateral mavi göz, mukozal peteşi/ekimoz, karın şişliği, stupor.** 🔴 Genel durum kritik.",
+      "auscultation": "Oskültasyon: **Kalp:** Taşikardik. **Akciğer:** Takipneik, bronkovesiküler sesler artmış. **Karın:** Sıvı dalgalanma sesi (asit). 🔴"
+    },
+    "imaging": {
+      "echo": {
+        "result": "EKO: Miyokard normal, intrakardiyak patoloji yok. ✓",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "usg": {
+        "result": "Abdominal USG: Karaciğerde şiddetli büyüme, heterojen hipoekoik alanlar (akut nekrotizan hepatit). Safra kesesi duvarında ödem ve çift duvar görünümü. Karın boşluğunda serbest sıvı. 🔴 Görüntüleme destekleyici niteliktedir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "xray_direct": {
+        "result": "Abdominal Röntgen: Karaciğer sınırlarında kaudale uzanma (hepatomegali). Aside bağlı batında detay kaybı (buzlu cam görünümü). 🔴 Görüntüleme destekleyici niteliktedir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "xray_indirect": {
+        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "bt": {
+        "result": "BT: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "mr": {
+        "result": "MR: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      }
+    },
+    "rapidKits": {
+      "fiv_felv": "NEGATİF",
+      "fcov_ab": "NEGATİF",
+      "fpv_ag": "NEGATİF",
+      "fcov_ag": "NEGATİF",
+      "ntprobnp": "NEGATİF",
+      "fsaa": "POZİTİF",
+      "giardia_ag": "NEGATİF"
+    },
+    "hemogram": [
+      {
+        "param": "WBC",
+        "value": "2.8",
+        "unit": "10³/µL",
+        "ref": "6.0–17.0",
+        "flag": "L"
+      },
+      {
+        "param": "RBC",
+        "value": "5.2",
+        "unit": "10⁶/µL",
+        "ref": "5.5–8.5",
+        "flag": "L"
+      },
+      {
+        "param": "HGB",
+        "value": "11.2",
+        "unit": "g/dL",
+        "ref": "12.0–18.0",
+        "flag": "L"
+      },
+      {
+        "param": "HCT",
+        "value": "33.5",
+        "unit": "%",
+        "ref": "37–55",
+        "flag": "L"
+      },
+      {
+        "param": "MCV",
+        "value": "64.4",
+        "unit": "fL",
+        "ref": "60–77",
+        "flag": ""
+      },
+      {
+        "param": "MCH",
+        "value": "21.5",
+        "unit": "pg",
+        "ref": "19–24.5",
+        "flag": ""
+      },
+      {
+        "param": "MCHC",
+        "value": "33.4",
+        "unit": "g/dL",
+        "ref": "32–36",
+        "flag": ""
+      },
+      {
+        "param": "PLT",
+        "value": "45",
+        "unit": "10³/µL",
+        "ref": "200–900",
+        "flag": "L"
+      },
+      {
+        "param": "Nöt%",
+        "value": "48",
+        "unit": "%",
+        "ref": "60–77",
+        "flag": "L"
+      },
+      {
+        "param": "Lenf%",
+        "value": "42",
+        "unit": "%",
+        "ref": "12–30",
+        "flag": "H"
+      },
+      {
+        "param": "Mon%",
+        "value": "8",
+        "unit": "%",
+        "ref": "3–10",
+        "flag": ""
+      },
+      {
+        "param": "Eoz%",
+        "value": "2",
+        "unit": "%",
+        "ref": "0–9",
+        "flag": ""
+      }
+    ],
+    "biochemistry": {
+      "ALT": {
+        "value": "1250",
+        "unit": "U/L",
+        "ref": "10–125",
+        "flag": "H"
+      },
+      "ALP": {
+        "value": "480",
+        "unit": "U/L",
+        "ref": "23–212",
+        "flag": "H"
+      },
+      "AST": {
+        "value": "680",
+        "unit": "U/L",
+        "ref": "10–50",
+        "flag": "H"
+      },
+      "GGT": {
+        "value": "22",
+        "unit": "U/L",
+        "ref": "0–14",
+        "flag": "H"
+      },
+      "Total Bili.": {
+        "value": "3.4",
+        "unit": "mg/dL",
+        "ref": "0–0.9",
+        "flag": "H"
+      },
+      "Safra As.": {
+        "value": "85",
+        "unit": "µmol/L",
+        "ref": "0–10",
+        "flag": "H"
+      },
+      "Glukoz": {
+        "value": "62",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": "L"
+      },
+      "Fruktozamin": {
+        "value": "230",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "CREA": {
+        "value": "1.9",
+        "unit": "mg/dL",
+        "ref": "0.5–1.8",
+        "flag": "H"
+      },
+      "Fosfor": {
+        "value": "6.9",
+        "unit": "mg/dL",
+        "ref": "2.5–6.8",
+        "flag": "H"
+      },
+      "Total Prot.": {
+        "value": "4.8",
+        "unit": "g/dL",
+        "ref": "5.1–7.8",
+        "flag": "L"
+      },
+      "ALB": {
+        "value": "1.8",
+        "unit": "g/dL",
+        "ref": "2.6–4.0",
+        "flag": "L"
+      },
+      "Glob": {
+        "value": "3.0",
+        "unit": "g/dL",
+        "ref": "1.6–3.6",
+        "flag": ""
+      },
+      "Na": {
+        "value": "132",
+        "unit": "mEq/L",
+        "ref": "139–154",
+        "flag": "L"
+      },
+      "K": {
+        "value": "3.1",
+        "unit": "mEq/L",
+        "ref": "3.6–5.5",
+        "flag": "L"
+      },
+      "Cl": {
+        "value": "94",
+        "unit": "mEq/L",
+        "ref": "102–120",
+        "flag": "L"
+      },
+      "Ca": {
+        "value": "7.4",
+        "unit": "mg/dL",
+        "ref": "7.9–12.0",
+        "flag": "L"
+      }
+    },
+    "hormones": {
+      "T4": {
+        "value": "—",
+        "unit": "µg/dL",
+        "ref": "1.0–4.0",
+        "flag": ""
+      },
+      "T3": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "0.5–2.0",
+        "flag": ""
+      },
+      "TSH": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "0.01–0.5",
+        "flag": ""
+      },
+      "Kortizol": {
+        "value": "—",
+        "unit": "µg/dL",
+        "ref": "1.0–6.0",
+        "flag": ""
+      },
+      "Aldosteron": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "İnsülin": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "5–30",
+        "flag": ""
+      },
+      "Progesteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "Testosteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "1.0–8.0",
+        "flag": ""
+      },
+      "Östrojen": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      }
+    },
+    "microscopy": {
+      "blood": {
+        "text": "Kan yayması: Eritrositlerde hafif polikromazi. Lökopeni teyit edildi — **nötrofillerde toksik değişimler (Döhle cisimcikleri, sitoplazmik vakuolleşme).** ⚠ **Trombositopeni belirgin** — yaymada neredeyse hiç trombosit kümesi yok. 🔴 Pıhtılaşma zamanı (PT + APTT) 2 kattan fazla uzamış — **DIC bulgusu.** 🔴",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+      },
+      "urine": "İdrar muayenesi: Koyu sarı/kahverengi, hafif bulanık. SpGr: 1.035 — dehidrasyon. pH: 6.0. Protein: (++) — immün kompleks glomerülonefriti veya ateşsel proteinüri. Glukoz: Negatif. Keton: Negatif. **Sediment:** Yaygın bilirubin kristalleri, yoğun renal epitel hücre dökülmesi ve birkaç granüler silendir. 🔴",
+      "stool": "Dışkı muayenesi: **Kanlı ve mukoid.** Mikroskobik incelemede eritrosit ve lökosit artışı (hemorajik enterit). Paraziter etken saptanmadı. 🔴",
+      "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
+      "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Kesin tanı asit sıvısı veya doku PCR ile CAV-1 DNA'sının saptanmasıyla konulmaktadır."
+    }
+  },
+  "ibd": {
+    "caseId": "VC-2025-042",
+    "species": "Kedi",
+    "icon": "🐱",
+    "diagnosis": "İnflamatuar Bağırsak Hastalığı (IBD - Lenfositik-Plazmasitik Form)",
+    "anamnez": {
+      "name": "İsim: **Bulut** | Irk: **Domestic Shorthair**",
+      "demog": "Yaş: **6 yaş** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmış (OVH)**",
+      "vaccine": "Aşılar: **Güncel (FVRCP + Kuduz)** | Parazit ilacı: **Düzenli, her 2 ayda bir (son 3 yıl)**",
+      "complaint": [
+        "Sahibi endişeyle anlatıyor:\n\n\"Son 3-4 aydır haftada en az bir iki kere bazen köpüklü, bazen de yarı sindirilmiş mama kusuyor. Başta tüy yumağıdır dedik ama macun vermemize rağmen geçmedi.\"",
+        "Sahibi şaşırarak anlatıyor:\n\n\"Kusmalarına son bir aydır ishal de eklendi. Dışkısı tam su gibi değil ama cıvık püre kıvamında ve çok pis kokuyor, bazen içinde sümüksü yapılar görüyorum.\"",
+        "Sahibi üzülerek anlatıyor:\n\n\"Kedimin iştahı çok garip; bazı günler önündeki her şeyi bitirip daha fazlasını istiyor, bazı günler ise kabına bile yaklaşmıyor. Ama ne yerse yesin gözle görülür şekilde zayıfladı, omurgası elime geliyor.\"",
+        "Sahibi yorgun bir ifadeyle anlatıyor:\n\n\"Eski neşesi hiç kalmadı. Günün büyük bölümünü uyuyarak geçiriyor, eskiden çok sevdiği tüylü oltasıyla bile oynamaya mecali yok.\"",
+        "Sahibi üzülerek anlatıyor:\n\n\"Tüyleri eskiden ipek gibi parlaktı, şimdi ise döküntülü, mat ve keçeleşmiş gibi duruyor. Kendini temizlemeyi de bıraktı.\""
+      ]
+    },
+    "diffQuestions": [
+      {
+        "q": "Son zamanlarda mamasında bir değişiklik yaptınız mı veya evde çöpten bir şeyler yemiş olabilir mi?",
+        "a": "Hayır, yaklaşık 2 yıldır aynı gastrointestinal ve hipoalerjenik mamayı kullanıyoruz. Dışarı hiç çıkmaz, evde de çöplere erişemez, zaten çok seçici bir kedidir."
+      },
+      {
+        "q": "Kusması veya ishali günün belli zamanlarında mı oluyor ve hiç dışkısında ya da kusmuğunda taze kan gördünüz mü?",
+        "a": "Mamadan hemen sonra değil, genellikle açken ya da mamadan saatler sonra kusuyor. Dışkısında parlak kırmızı kan görmedim ama rengi normalden daha koyu kahverengi ve sümüksü bir tabaka var."
+      },
+      {
+        "q": "Çok fazla su içme veya çok sık idrara çıkma gibi bir durum gözlemlediniz mi?",
+        "a": "Hayır, su kabını doldurma sıklığım da kum kabından aldığım idrar topaklarının büyüklüğü de her zamanki gibi, bir artış fark etmedim."
+      },
+      {
+        "q": "Yüksek yerlere atlarken tereddüt ediyor mu veya karnına dokundurmak istemiyor mu?",
+        "a": "Koltuklara atlarken biraz isteksiz ama bu daha çok halsizlikten gibi. Karnına dokundurmak istemiyor, kucağıma alırken canı acıyor gibi ses çıkarıyor."
+      },
+      {
+        "q": "Evdeki diğer evcil hayvanlarınızda da benzer şikayetler var mı?",
+        "a": "Evde bir kedimiz daha var, onun dışkısı ve keyfi tamamen normal. Sadece bu kedimde bu problemler var."
+      }
+    ],
+    "physical": {
+      "temp": "Vücut sıcaklığı: **38.3°C** (Referans: 38.0–39.2°C) → Normotermik — IBD non-enfeksiyöz kronik yangısal bir süreçtir ✓",
+      "resp": "Solunum sayısı: **24/dak** (Referans: 20–30/dak) → Normal ✓",
+      "hr": "Kalp atım sayısı: **180/dak** (Referans: 140–220/dak) → Normal (klinik strese bağlı hafif üst sınıra yakın) ✓",
+      "mucosa": "Mukoza rengi: **Pembe** | CRT: **1.5 sn** → Hafif dehidrasyona rağmen perfüzyon normal; anemi sınırda olduğundan mukoza solukluğu belirgin değil ✓",
+      "lymph": "Lenf nodları: Mandibular, preskapular ve popliteal lenf nodları normal büyüklükte ve ağrısız. **Abdominal lenf nodları palpasyonda reaktif.** ⚠",
+      "palp": "Karın palpasyonu: **Bağırsak looplarında kalınlaşma ve kaba yapı** hissedilmektedir. 🔴 Yaygın intestinal hassasiyet ve orta derece abdominal ağrı. BCS: **3/9 (Zayıf)**, kas kondisyon skoru düşük — belirgin kas atrofisi ve omurga çıkıntısı. Hafif kifotik duruş (abdominal rahatsızlık kaynaklı)."
+    },
+    "tools": {
+      "otoscope": "Otoskopi: Kulak kanalı bilateral temiz, timpanik membran intakt. Akıntı veya eksüda yok. ✓",
+      "ophthalmo": "Oftalmoskopi: Göz içi yapılar normal, retina ve optik disk fizyolojik görünümde. Sistemik enfeksiyon veya hipertansiyon bulgusu yok. ✓",
+      "pharyngo": "Faringoskopi: Oral kavite mukozası pembe ve nemli. Farinks ve tonsiller doğal büyüklükte. Ülserasyon veya yangısal üretime rastlanmadı. ✓",
+      "reflex": "Refleks muayenesi: Patellar refleks ve ön ekstremite refleksleri bilateral normoreflektif. Nörolojik defisit yok. ✓",
+      "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
+      "inspection": "İnspeksiyon: Letarjik ve depresif genel görünüm. **Kronik malabsorbsiyona bağlı belirgin kas atrofisi** — omurga ve ileum kanatları görünür durumda. 🔴 Tüyler mat, kuru ve keçeleşmiş (grooming azalması). **Hafif tuck-up abdomen ve kifotik duruş** mevcut. BCS: 3/9.",
+      "auscultation": "Oskültasyon: **Kalp sesleri:** Ritmik, üfürüm veya ritim bozukluğu yok. ✓ **Akciğer:** Patolojik solunum sesi yok. ✓ **Abdomen:** İntestinal hipermotiliteye bağlı **borborismus (bağırsak sesleri artışı)** izlendi. 🔴"
+    },
+    "imaging": {
+      "echo": {
+        "result": "EKO: Kalp duvar kalınlıkları, kapak mekanizmaları ve fonksiyonları normal sınırlardadır. ✓",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "usg": {
+        "result": "Abdominal USG: Duodenum ve jejunum segmentlerinde **diffüz musküler tabaka kalınlaşması** saptandı. Total bağırsak duvar kalınlığı artmış (>2.5mm). 🔴 **Mezenterik lenf nodları büyümüş ve hipoekoik** (lenfadenomegali). ⚠ Bağırsak katman mimarisi korunmuş — lenfoma yerine öncelikle IBD lehinedir. Görsel sonradan eklenecektir.",
+        "hasImage": true,
+        "imgUrl": null
+      },
+      "xray_direct": {
+        "result": "Abdominal Röntgen: Bağırsak gaz paterninde hafif-orta artış. Organomegali, mekanik obstrüksiyon bulgusu veya radyopak yabancı cisim/kitle saptanmadı. Toraks grafileri normal. ⚠ Görsel sonradan eklenecektir.",
+        "hasImage": true,
+        "imgUrl": null
+      },
+      "xray_indirect": {
+        "result": "İndirekt Radyografi (Baryumlu Pasaj): Kontrast maddenin ince bağırsaklardan geçiş hızında artış (hipermotilite) ve **mukozal yüzeyde düzensizlik/pürüzlülük** izlendi — malabsorbsiyon ve yangısal mukozal değişikliklerle uyumlu. 🔴 Görsel sonradan eklenecektir.",
+        "hasImage": true,
+        "imgUrl": null
+      },
+      "bt": {
+        "result": "BT: Bu vakada endike değildir. Birinci basamak intestinal değerlendirmede USG yeterli görülmüştür.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "mr": {
+        "result": "MR: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      }
+    },
+    "rapidKits": {
+      "fiv_felv": "NEGATİF",
+      "fcov_ab": "NEGATİF",
+      "fpv_ag": "NEGATİF",
+      "fcov_ag": "NEGATİF",
+      "ntprobnp": "NEGATİF",
+      "fsaa": "POZİTİF",
+      "giardia_ag": "NEGATİF"
+    },
+    "hemogram": [
+      {
+        "param": "WBC",
+        "value": "21.2",
+        "unit": "10³/µL",
+        "ref": "5.5–19.5",
+        "flag": "H"
+      },
+      {
+        "param": "RBC",
+        "value": "4.8",
+        "unit": "10⁶/µL",
+        "ref": "5.0–10.0",
+        "flag": "L"
+      },
+      {
+        "param": "HGB",
+        "value": "7.6",
+        "unit": "g/dL",
+        "ref": "8.0–15.0",
+        "flag": "L"
+      },
+      {
+        "param": "HCT",
+        "value": "22.8",
+        "unit": "%",
+        "ref": "24–45",
+        "flag": "L"
+      },
+      {
+        "param": "MCV",
+        "value": "44.5",
+        "unit": "fL",
+        "ref": "41–58",
+        "flag": ""
+      },
+      {
+        "param": "MCH",
+        "value": "14.2",
+        "unit": "pg",
+        "ref": "13–17",
+        "flag": ""
+      },
+      {
+        "param": "MCHC",
+        "value": "33.3",
+        "unit": "g/dL",
+        "ref": "30–36",
+        "flag": ""
+      },
+      {
+        "param": "PLT",
+        "value": "350",
+        "unit": "10³/µL",
+        "ref": "300–800",
+        "flag": ""
+      },
+      {
+        "param": "Nöt%",
+        "value": "78",
+        "unit": "%",
+        "ref": "35–75",
+        "flag": "H"
+      },
+      {
+        "param": "Lenf%",
+        "value": "16",
+        "unit": "%",
+        "ref": "20–55",
+        "flag": "L"
+      },
+      {
+        "param": "Mon%",
+        "value": "4",
+        "unit": "%",
+        "ref": "1–4",
+        "flag": ""
+      },
+      {
+        "param": "Eoz%",
+        "value": "2",
+        "unit": "%",
+        "ref": "0–5",
+        "flag": ""
+      }
+    ],
+    "biochemistry": {
+      "ALT": {
+        "value": "92",
+        "unit": "U/L",
+        "ref": "10–80",
+        "flag": "H"
+      },
+      "ALP": {
+        "value": "42",
+        "unit": "U/L",
+        "ref": "10–90",
+        "flag": ""
+      },
+      "AST": {
+        "value": "28",
+        "unit": "U/L",
+        "ref": "10–50",
+        "flag": ""
+      },
+      "GGT": {
+        "value": "2",
+        "unit": "U/L",
+        "ref": "0–10",
+        "flag": ""
+      },
+      "Total Bili.": {
+        "value": "0.2",
+        "unit": "mg/dL",
+        "ref": "0–0.4",
+        "flag": ""
+      },
+      "Safra As.": {
+        "value": "4.5",
+        "unit": "µmol/L",
+        "ref": "0–10",
+        "flag": ""
+      },
+      "Glukoz": {
+        "value": "85",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": ""
+      },
+      "Fruktozamin": {
+        "value": "228",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "CREA": {
+        "value": "1.1",
+        "unit": "mg/dL",
+        "ref": "0.8–1.8",
+        "flag": ""
+      },
+      "Fosfor": {
+        "value": "4.0",
+        "unit": "mg/dL",
+        "ref": "2.4–8.2",
+        "flag": ""
+      },
+      "Total Prot.": {
+        "value": "5.0",
+        "unit": "g/dL",
+        "ref": "5.4–8.2",
+        "flag": "L"
+      },
+      "ALB": {
+        "value": "1.9",
+        "unit": "g/dL",
+        "ref": "2.1–3.5",
+        "flag": "L"
+      },
+      "Glob": {
+        "value": "3.1",
+        "unit": "g/dL",
+        "ref": "2.6–5.1",
+        "flag": ""
+      },
+      "Na": {
+        "value": "148",
+        "unit": "mEq/L",
+        "ref": "147–162",
+        "flag": ""
+      },
+      "K": {
+        "value": "3.3",
+        "unit": "mEq/L",
+        "ref": "3.5–5.8",
+        "flag": "L"
+      },
+      "Cl": {
+        "value": "116",
+        "unit": "mEq/L",
+        "ref": "115–130",
+        "flag": ""
+      },
+      "Ca": {
+        "value": "8.4",
+        "unit": "mg/dL",
+        "ref": "8.8–11.9",
+        "flag": "L"
+      }
+    },
+    "hormones": {
+      "T4": {
+        "value": "2.1",
+        "unit": "µg/dL",
+        "ref": "0.8–4.7",
+        "flag": ""
+      },
+      "T3": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "0.5–1.5",
+        "flag": ""
+      },
+      "TSH": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "0.01–0.1",
+        "flag": ""
+      },
+      "Kortizol": {
+        "value": "—",
+        "unit": "µg/dL",
+        "ref": "0.5–5.0",
+        "flag": ""
+      },
+      "Aldosteron": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "İnsülin": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "5–20",
+        "flag": ""
+      },
+      "Progesteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "Testosteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "Östrojen": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      }
+    },
+    "microscopy": {
+      "blood": {
+        "text": "Kan yayması: Eritrositler normositik normokromik. Rejenerasyon bulgusu (polikromazi, retikülosit) izlenmedi — **non-rejeneratif anemi.** Lökosit formülünde nötrofili ağırlıklı, atipik veya blast hücre yok (lenfoma ekarte destekleyici). Parazit saptanmadı. Trombositler kümeleşme eğiliminde, sayıca normal.",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+      },
+      "urine": "İdrar muayenesi: Açık sarı, berrak. SpGr: 1.040 — idrar konsantrasyonu korunmuş. pH: 6.5. Protein: Negatif. Glukoz: Negatif. Keton: Negatif. Sediment: Her sahada 1-2 eritrosit, kristal veya silindir görülmedi — inaktif.",
+      "stool": "Dışkı muayenesi: **Makroskobik:** Cıvık-püre kıvamında, açık kahverengi-sarımtırak, yoğun mukus içerikli, keskin kokusu olan dışkı. 🔴 **Parazitolojik:** Nematod, sestod, Giardia kisti, Tritrichomonas, Cryptosporidium saptanmadı. **Sitolojik yayma:** Yoğun nötrofil ve yer yer lenfosit infiltrasyonu — mukozal yangı bulgusu. 🔴 **Sindirim muayenesi:** Sindirilmemiş kas lifleri (proteoliz bozukluğu) ve **nötral yağ damlacıkları (steatorre — malabsorbsiyon kanıtı)** izlendi. 🔴",
+      "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
+      "biopsy": "Biyopsi raporu: Kesin tanı için **endoskopik ince bağırsak biyopsisi** altın standarttır. Histopatoloji: Lenfosit ve plazma hücresi ağırlıklı lamina propria infiltrasyonu — lenfositik-plazmasitik form ile uyumlu. Lenfoma ekarte edilmesi için PARR (klon analizi) gerekebilir."
+    }
+  },
+  "fpv": {
+    "caseId": "VC-2025-043",
+    "species": "Kedi",
+    "icon": "🐱",
+    "diagnosis": "Kedi Panlökopenisi (Feline Panleukopenia Virus - FPV)",
+    "anamnez": {
+      "name": "İsim: **Minnak** | Irk: **Tekir (Domestic Shorthair)**",
+      "demog": "Yaş: **4 aylık** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmamış**",
+      "vaccine": "Aşılar: **Aşısız (sokaktan yeni sahiplenilmiş)** | Parazit ilacı: **Yapılmamış**",
+      "complaint": [
+        "Sahibi endişeyle anlatıyor:\n\n\"İki gün önce birden mama yemeyi kesti, en sevdiği yaş mamayı bile koklayıp yüzünü çeviriyor. Dünden beri de sürekli olarak sarımsı-köpüklü bir sıvı kusuyor, su içse bile hemen arkasından çıkartıyor.\"",
+        "Sahibi üzülerek anlatıyor:\n\n\"Kedim o kadar halsizleşti ki kafasını bile kaldıramıyor. Sürekli su kabının başında duruyor, sanki su içmek istiyor ama içemeden öylece saatlerce kabın üstüne eğilmiş vaziyette bekliyor.\"",
+        "Sahibi korkarak anlatıyor:\n\n\"Bugün çok kötü ve ağır kokulu bir ishal başladı. Rengi kahverengi-kırmızımsı gibi, resmen su gibi yapıyor ve kokusu tüm eve yayıldı, dayanılacak gibi değil.\"",
+        "Sahibi korkarak anlatıyor:\n\n\"Vücudu resmen alev alev yanıyor, dokunduğumda sıcaklığı çok net hissediyorum. Normalde yerinde duramayan hayvan koltuğun arkasına saklandı, gözlerini bile açmıyor.\"",
+        "Sahibi ağlayarak anlatıyor:\n\n\"Sadece 2 günde gözleri içeri çöktü, derisini elime aldığımda eski haline dönmüyor, sanki kurudu hayvan. Çok hızlı zayıfladı.\""
+      ]
+    },
+    "diffQuestions": [
+      {
+        "q": "Kusmanın sıklığı nedir ve içerisinde yabancı cisim veya kan gördünüz mü?",
+        "a": "Günde neredeyse 6-7 kez kusuyor. Yabancı cisim yok ama tamamen köpüklü, sarı renkte ve bazen içinde hafif kan çizgileri olan bir sıvı çıkarıyor."
+      },
+      {
+        "q": "Çevrede veya evde bu belirtileri gösteren başka bir kedi var mı ya da sokak kedileriyle teması oldu mu?",
+        "a": "Kendisini sokakta bulmuştuk, eve alalı 1 hafta oldu. Dışarıdaki diğer kedilerle teması olmuş olabilir ama evde tek bakıyoruz."
+      },
+      {
+        "q": "Dışkısında net bir şekilde kan görüyor musunuz, kıvamı tam olarak nasıl?",
+        "a": "Evet, tamamen sıvı formda ve içinde koyu kırmızı, parça parça kanlar var. Resmen kanlı su gibi dışkılıyor."
+      },
+      {
+        "q": "Kedinin aşı kartı var mı, hiç veteriner hekime götürülüp karma aşı yapıldı mı?",
+        "a": "Hayır, sokaktan yeni sahiplendiğimiz için henüz hiçbir aşısını yaptıramamıştık, önümüzdeki hafta götürecektik."
+      },
+      {
+        "q": "Karnına dokunduğunuzda bir ağrı reaksiyonu veya bağırsaklarında gurultu fark ettiniz mi?",
+        "a": "Karnını kucağıma alıp kaldırmaya çalıştığımda acı acı miyavlıyor ve hemen kaçmak istiyor, karnı aşırı gergin ve sürekli gurul gurul sesler geliyor."
+      }
+    ],
+    "physical": {
+      "temp": "Vücut sıcaklığı: **40.3°C** (Referans: 38.1–39.2°C) → Hipertermi — FPV enfeksiyonunun akut döneminde karakteristik yüksek ateş (terminal dönemde hipotermiye dönebilir) 🔴",
+      "resp": "Solunum sayısı: **38/dak** (Referans: 20–40/dak) → Normal-hafif takipneik — ateş ve ağrıya sekonder ⚠",
+      "hr": "Kalp atım sayısı: **230/dak** (Referans: 140–220/dak) → Taşikardi — şiddetli dehidrasyon, hipovolemi ve ateş 🔴",
+      "mucosa": "Mukoza rengi: **Solgun pembe, kuru/yapışkan** | CRT: **3.5 sn** → >%10 şiddetli dehidrasyon, hipovolemik şok başlangıcı 🔴",
+      "lymph": "Lenf nodları: Mandibular ve preskapular normal boyutta. **Mezenterik lenf nodları abdominal palpasyonda belirgin büyümüş ve ağrılı.** 🔴",
+      "palp": "Karın palpasyonu: **Yaygın şiddetli abdominal ağrı ve defans.** 🔴 Bağırsak lopları gaz ve sıvı ile dolu, **kalınlaşmış ve kordon gibi hissediliyor.** Deri turgoru belirgin azalmış. **Su kabının üzerinde başı öne eğik karakteristik bekleyiş pozisyonu** ve sternal rekumbens."
+    },
+    "tools": {
+      "otoscope": "Otoskopi: Kulak kanalı ve kulak zarı bilateral doğal, patoloji saptanmadı. ✓",
+      "ophthalmo": "Oftalmoskopi: Göz içi ve retina bulguları normal. Konjonktivalar **dehidrasyona bağlı kuru ve hafif enjekte.** ⚠ Göz kürelerinde **enoftalmi** (çökme) — şiddetli dehidrasyon bulgusu. 🔴",
+      "pharyngo": "Faringoskopi: Oral kavite kuru, tükürük kıvamlı ve ipliksi. Farinkste hafif hiperemi, ülserasyon saptanmadı. ⚠",
+      "reflex": "Refleks muayenesi: Spinal refleksler (patellar vb.) korunmuş ancak genel düşkünlük nedeniyle zayıf motor yanıt. ⚠",
+      "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
+      "inspection": "İnspeksiyon: **Şiddetli depresyon, sternal rekumbens, su kabında karakteristik baş-öne eğik bekleyiş pozisyonu.** 🔴 **Enoftalmi** (göz küresi çökmesi) ve mat tüy yapısı. Abdominal ağrıya bağlı kambur duruş.",
+      "auscultation": "Oskültasyon: **Kalp:** Taşikardik, üfürüm yok. **Akciğer:** Dehidrasyona sekonder zayıf solunum sesleri. **Bağırsak:** Başlangıçta hipermotilite, ilerleyen saatlerde hipomotilite/ileus bulguları. 🔴"
+    },
+    "imaging": {
+      "echo": {
+        "result": "EKO: Kalp duvar kalınlıkları ve kapakçıklar normal sınırlarda. Dehidrasyona bağlı hafif hipovolemi bulgusu (sol ventrikül hacminde daralma). ✓",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "usg": {
+        "result": "Abdominal USG: İnce bağırsak duvarlarında **yaygın mukozal kalınlaşma** ve lümen içerisinde yoğun sıvı akümülasyonu (enterit bulguları). 🔴 **Korrugasyon (kıvrımlanma)** ve reaktif mezenterik lenfadenomegali. Abdomende minimal serbest sıvı. Görsel sonradan eklenecektir.",
+        "hasImage": true,
+        "imgUrl": null
+      },
+      "xray_direct": {
+        "result": "Abdominal Röntgen: İnce ve kalın bağırsak loplarında **yaygın gaz ve sıvı distansiyonu (ileus tablosu).** 🔴 Peritoneal detayda dehidrasyona bağlı hafif azalma (buzlu cam görünümü). Görsel sonradan eklenecektir.",
+        "hasImage": true,
+        "imgUrl": null
+      },
+      "xray_indirect": {
+        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "bt": {
+        "result": "BT: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "mr": {
+        "result": "MR: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      }
+    },
+    "rapidKits": {
+      "fiv_felv": "NEGATİF",
+      "fcov_ab": "NEGATİF",
+      "fpv_ag": "FPV Ag POZİTİF 🔴",
+      "fcov_ag": "NEGATİF",
+      "ntprobnp": "NEGATİF",
+      "fsaa": "POZİTİF",
+      "giardia_ag": "NEGATİF"
+    },
+    "hemogram": [
+      {
+        "param": "WBC",
+        "value": "0.8",
+        "unit": "10³/µL",
+        "ref": "5.5–19.5",
+        "flag": "L"
+      },
+      {
+        "param": "RBC",
+        "value": "5.2",
+        "unit": "10⁶/µL",
+        "ref": "5.0–10.0",
+        "flag": ""
+      },
+      {
+        "param": "HGB",
+        "value": "9.5",
+        "unit": "g/dL",
+        "ref": "8.0–15.0",
+        "flag": ""
+      },
+      {
+        "param": "HCT",
+        "value": "48.0",
+        "unit": "%",
+        "ref": "24–45",
+        "flag": "H"
+      },
+      {
+        "param": "MCV",
+        "value": "46.0",
+        "unit": "fL",
+        "ref": "41–58",
+        "flag": ""
+      },
+      {
+        "param": "MCH",
+        "value": "14.5",
+        "unit": "pg",
+        "ref": "13–17",
+        "flag": ""
+      },
+      {
+        "param": "MCHC",
+        "value": "33.2",
+        "unit": "g/dL",
+        "ref": "30–36",
+        "flag": ""
+      },
+      {
+        "param": "PLT",
+        "value": "180",
+        "unit": "10³/µL",
+        "ref": "300–800",
+        "flag": "L"
+      },
+      {
+        "param": "Nöt%",
+        "value": "28",
+        "unit": "%",
+        "ref": "35–75",
+        "flag": "L"
+      },
+      {
+        "param": "Lenf%",
+        "value": "12",
+        "unit": "%",
+        "ref": "20–55",
+        "flag": "L"
+      },
+      {
+        "param": "Mon%",
+        "value": "0.5",
+        "unit": "%",
+        "ref": "1–4",
+        "flag": "L"
+      },
+      {
+        "param": "Eoz%",
+        "value": "0",
+        "unit": "%",
+        "ref": "0–5",
+        "flag": ""
+      }
+    ],
+    "biochemistry": {
+      "ALT": {
+        "value": "45",
+        "unit": "U/L",
+        "ref": "10–80",
+        "flag": ""
+      },
+      "ALP": {
+        "value": "52",
+        "unit": "U/L",
+        "ref": "10–90",
+        "flag": ""
+      },
+      "AST": {
+        "value": "38",
+        "unit": "U/L",
+        "ref": "10–50",
+        "flag": ""
+      },
+      "GGT": {
+        "value": "2",
+        "unit": "U/L",
+        "ref": "0–10",
+        "flag": ""
+      },
+      "Total Bili.": {
+        "value": "0.2",
+        "unit": "mg/dL",
+        "ref": "0–0.4",
+        "flag": ""
+      },
+      "Safra As.": {
+        "value": "4.0",
+        "unit": "µmol/L",
+        "ref": "0–10",
+        "flag": ""
+      },
+      "Glukoz": {
+        "value": "88",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": ""
+      },
+      "Fruktozamin": {
+        "value": "228",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "CREA": {
+        "value": "2.3",
+        "unit": "mg/dL",
+        "ref": "0.8–1.8",
+        "flag": "H"
+      },
+      "Fosfor": {
+        "value": "5.8",
+        "unit": "mg/dL",
+        "ref": "2.4–8.2",
+        "flag": ""
+      },
+      "Total Prot.": {
+        "value": "8.6",
+        "unit": "g/dL",
+        "ref": "5.4–8.2",
+        "flag": "H"
+      },
+      "ALB": {
+        "value": "3.2",
+        "unit": "g/dL",
+        "ref": "2.1–3.5",
+        "flag": ""
+      },
+      "Glob": {
+        "value": "5.4",
+        "unit": "g/dL",
+        "ref": "2.6–5.1",
+        "flag": "H"
+      },
+      "Na": {
+        "value": "148",
+        "unit": "mEq/L",
+        "ref": "147–162",
+        "flag": ""
+      },
+      "K": {
+        "value": "3.0",
+        "unit": "mEq/L",
+        "ref": "3.5–5.8",
+        "flag": "L"
+      },
+      "Cl": {
+        "value": "110",
+        "unit": "mEq/L",
+        "ref": "115–130",
+        "flag": ""
+      },
+      "Ca": {
+        "value": "8.9",
+        "unit": "mg/dL",
+        "ref": "8.8–11.9",
+        "flag": ""
+      }
+    },
+    "hormones": {
+      "T4": {
+        "value": "—",
+        "unit": "µg/dL",
+        "ref": "0.8–4.7",
+        "flag": ""
+      },
+      "T3": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "0.5–1.5",
+        "flag": ""
+      },
+      "TSH": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "0.01–0.1",
+        "flag": ""
+      },
+      "Kortizol": {
+        "value": "6.5",
+        "unit": "µg/dL",
+        "ref": "0.5–5.0",
+        "flag": "H"
+      },
+      "Aldosteron": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "İnsülin": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "5–20",
+        "flag": ""
+      },
+      "Progesteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "Testosteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "Östrojen": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      }
+    },
+    "microscopy": {
+      "blood": {
+        "text": "Kan yayması: Eritrositler normositik normokromik. **Dehidrasyona bağlı belirgin rouleaux formasyonu.** Lökosit formülünde neredeyse hiç lökosit yok — **şiddetli panlökopeni doğrulandı.** 🔴 Mevcut az sayıdaki nötrofilde **toksik granülasyon ve Döhle cisimcikleri** (endotoksemi bulgusu). Trombositler azalmış, kümelenme zayıf. Hemoparazit görülmedi.",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+      },
+      "urine": "İdrar muayenesi: Koyu sarı, berrak. SpGr: **1.055** — prerenal azotemi, böbrekler maksimum konsantrasyon çabasında. 🔴 pH: 6.0. Protein: (+) — dehidrasyon ve ateşe bağlı geçici. Glukoz: Negatif. Keton: Negatif. Sediment: Tek tük epitel hücresi, kristal veya silindir yok.",
+      "stool": "Dışkı muayenesi: Natif muayenede **bol miktarda eritrosit**, deskuame bağırsak epitel hücreleri ve yoğun mikrobiyal flora. 🔴 Parazit oositine rastlanmadı. **FPV Ag hızlı test: POZİTİF** — kesin tanı doğrulandı. 🔴",
+      "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
+      "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Kesin tanı FPV Ag hızlı testi ve RT-PCR ile konulmaktadır."
+    }
+  },
+  "fip_dry": {
+    "caseId": "VC-2025-044",
+    "species": "Kedi",
+    "icon": "🐱",
+    "diagnosis": "Kuru Form Kedi Enfeksiyöz Peritoniti (Non-effusive FIP)",
+    "anamnez": {
+      "name": "İsim: **Peri** | Irk: **British Shorthair**",
+      "demog": "Yaş: **10 aylık** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmış (OVH, 1 ay önce)**",
+      "vaccine": "Aşılar: **Güncel (Karma aşıları tam)** | Parazit ilacı: **Düzenli, güncel**",
+      "complaint": [
+        "Sahibi endişeyle anlatıyor:\n\n\"Yaklaşık iki haftadır ateşi var. Evde dereceyle ölçtüğümüzde hep 40 derecelerde çıkıyor. Ateş düşürücü şurup veriyoruz, biraz düşüyor ama birkaç saat sonra halsizleşip tekrar alev alev yanmaya başlıyor.\"",
+        "Sahibi üzülerek anlatıyor:\n\n\"İştahı azaldı ama hiç yemiyor diyemem, az da olsa atıştırıyor. Buna rağmen inanılmaz hızlı kilo kaybetti, omurga kemikleri elime geliyor. Sanki eriyor hayvan.\"",
+        "Sahibi korkarak anlatıyor:\n\n\"Son 3-4 gündür sağ gözünün rengi değişti, içi puslu ve kanlı gibi görünüyor. Işığa bakarken gözünü kısıyor, sanki tam göremiyor gibi mobilyalara çarpıyor.\"",
+        "Sahibi şaşırarak anlatıyor:\n\n\"Bugün yürürken arkasını tam toparlayamadığını fark ettim. Yatağa zıplamaya çalıştı ama beceremedi, sendeledi ve arka bacakları hafif yana doğru açıldı, dengesini kuramıyor.\"",
+        "Sahibi yorgun bir ifadeyle anlatıyor:\n\n\"Kısırlaştırma ameliyatından sonra boyu posu hiç büyümedi, tüyleri çok cansızlaştı ve matlaştı. Eski neşeli, oyuncu halinden eser kalmadı, sürekli saklanıyor.\""
+      ]
+    },
+    "diffQuestions": [
+      {
+        "q": "Kedinizin geçmişinde barınak, petshop veya çok kedili bir ev geçmişi var mı?",
+        "a": "Evet, 3 aylıkken çok kedili bir üreticiden almıştık. Evimize gelmeden önce kalabalık bir kedi grubuyla bir arada yaşıyordu."
+      },
+      {
+        "q": "Gözündeki puslanma başlamadan önce herhangi bir travma veya diğer kedilerle kavga durumu oldu mu?",
+        "a": "Hayır, evde tek kedi zaten. Herhangi bir düşme ya da kavga durumu kesinlikle yaşanmadı, gözü durup dururken kendi kendine bulandı."
+      },
+      {
+        "q": "Yürürken zorlanma halsizlikten mi kaynaklanıyor yoksa patilerinde titreme veya basma bozukluğu var mı?",
+        "a": "Halsiz ama yürürken özellikle arka ayakları sarhoş gibi sallanıyor, basarken patilerinin üstü ters katlanıyor gibi oluyor, titriyor."
+      },
+      {
+        "q": "Karın bölgesinde belirgin bir şişme veya sanki içinde su varmış gibi lıkır lıkır bir büyüme fark ettiniz mi?",
+        "a": "Hayır, karnı hiç şişmedi. Aksine gövdesi iyice zayıfladı ve kemikleri sayılıyor, karın kısmı oldukça içe çökük."
+      },
+      {
+        "q": "Yakın zamanda hayatında büyük bir değişiklik veya onu strese sokacak bir durum yaşandı mı?",
+        "a": "Yaklaşık 1 ay önce kısırlaştırma ameliyatı oldu. Operasyondan sonra çok stres yaptı, o günden beri de bir türlü tam olarak toparlanamadı."
+      }
+    ],
+    "physical": {
+      "temp": "Vücut sıcaklığı: **39.9°C** (Referans: 38.1–39.2°C) → Antibiyotik tedavisine yanıt vermeyen inatçı, dalgalı hipertermi 🔴",
+      "resp": "Solunum sayısı: **28/dak** (Referans: 20–40/dak) → Normal — plevral efüzyon olmadığı için dispne yok ✓",
+      "hr": "Kalp atım sayısı: **190/dak** (Referans: 140–220/dak) → Normal sınırda, ateşe bağlı fizyolojik taşikardi ⚠",
+      "mucosa": "Mukoza rengi: **Solgun pembe, hafif ikterik** | CRT: **2 sn** → Kronik non-rejeneratif anemi + pyogranülomatöz hepatit komplikasyonu başlangıcı 🔴",
+      "lymph": "Lenf nodları: Popliteal ve preskapular normal. **Mezenterik lenf nodları abdominal palpasyonda nodüler tarzda büyümüş, sert ve hafif hassas.** 🔴",
+      "palp": "Karın palpasyonu: Pyogranülomlara bağlı **organlar üzerinde düzensizlik ve engebeli yapı.** 🔴 **Bilateral böbrekler büyümüş, yüzeyleri pürüzlü ve lobüllü.** 🔴 Serbest sıvı yok. Spinal hat boyunca şiddetli kas atrofisi."
+    },
+    "tools": {
+      "otoscope": "Otoskopi: Kulak kanalları temiz, kulak zarları bilateral intakt. ✓",
+      "ophthalmo": "Oftalmoskopi: Sağ gözde **anterior üveit** — ön kamarada keratik presipitatlar, aköz flare, iris hiperemi ve **retinal perivasküler manşetlenme (retinal vaskülit).** 🔴",
+      "pharyngo": "Faringoskopi: Oral mukozalar hafif solgun. Tonsiller doğal. Farinkste ülser veya kitle odağı saptanmadı. ✓",
+      "reflex": "Refleks muayenesi: Arka bacaklarda patellar ve tibial refleksler **hiperreflektif** — Üst Motor Nöron lezyonu, FIP'in MSS tutulumu ile uyumlu. 🔴 **Proprioseptif defisit ve ataksi** mevcut.",
+      "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
+      "inspection": "İnspeksiyon: **Mental depresyon, letarji, ataksi ve arka bacaklarda paraparezi.** 🔴 Kas atrofisi belirgin. Sağ göz kısık ve ışığa duyarlı (fotofob).",
+      "auscultation": "Oskültasyon: **Kalp ve akciğer sesleri fizyolojik.** Plevral efüzyon düşündürecek ses boğuklaşması yok — kuru form ile uyumlu. ✓"
+    },
+    "imaging": {
+      "echo": {
+        "result": "EKO: Kardiyak odacıklar, duvar kalınlıkları ve kapak fonksiyonları normal. Perikardiyal sıvı saptanmadı. ✓",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "usg": {
+        "result": "Abdominal USG: Karaciğer parankiminde heterojenite ve büyüme. **Bilateral böbrek korteksinde kalınlaşma ve FIP için karakteristik hipoekoik subkapsüler halka/hat görünümü.** 🔴 Mezenterik lenf nodlarında belirgin büyüme. Serbest sıvı yok. Görsel sonradan eklenecektir.",
+        "hasImage": true,
+        "imgUrl": null
+      },
+      "xray_direct": {
+        "result": "Abdominal Röntgen: Karaciğer ve böbrek silüetlerinde büyüme. Bağırsak loplarında lenf yumrusu büyümesine bağlı hafif yer değiştirme. Toraks grafisi normal, plevral sıvı yok. Görsel sonradan eklenecektir.",
+        "hasImage": true,
+        "imgUrl": null
+      },
+      "xray_indirect": {
+        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "bt": {
+        "result": "Beyin BT: Granülomatöz meningoensefalit ile uyumlu **meningeal kontrastlanma artışı** ve hafif lateral ventrikülomegali (obstrüktif hidrosefali başlangıcı). 🔴 Görsel sonradan eklenecektir.",
+        "hasImage": true,
+        "imgUrl": null
+      },
+      "mr": {
+        "result": "MR: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      }
+    },
+    "rapidKits": {
+      "fiv_felv": "NEGATİF",
+      "fcov_ab": "POZİTİF (FCoV Ab titre >1:800) 🔴",
+      "fpv_ag": "NEGATİF",
+      "fcov_ag": "NEGATİF",
+      "ntprobnp": "NEGATİF",
+      "fsaa": "POZİTİF",
+      "giardia_ag": "NEGATİF"
+    },
+    "hemogram": [
+      {
+        "param": "WBC",
+        "value": "24.5",
+        "unit": "10³/µL",
+        "ref": "5.5–19.5",
+        "flag": "H"
+      },
+      {
+        "param": "RBC",
+        "value": "4.2",
+        "unit": "10⁶/µL",
+        "ref": "5.0–10.0",
+        "flag": "L"
+      },
+      {
+        "param": "HGB",
+        "value": "7.1",
+        "unit": "g/dL",
+        "ref": "8.0–15.0",
+        "flag": "L"
+      },
+      {
+        "param": "HCT",
+        "value": "22.0",
+        "unit": "%",
+        "ref": "24–45",
+        "flag": "L"
+      },
+      {
+        "param": "MCV",
+        "value": "51.0",
+        "unit": "fL",
+        "ref": "41–58",
+        "flag": ""
+      },
+      {
+        "param": "MCH",
+        "value": "16.0",
+        "unit": "pg",
+        "ref": "13–17",
+        "flag": ""
+      },
+      {
+        "param": "MCHC",
+        "value": "32.2",
+        "unit": "g/dL",
+        "ref": "30–36",
+        "flag": ""
+      },
+      {
+        "param": "PLT",
+        "value": "140",
+        "unit": "10³/µL",
+        "ref": "300–800",
+        "flag": "L"
+      },
+      {
+        "param": "Nöt%",
+        "value": "82",
+        "unit": "%",
+        "ref": "35–75",
+        "flag": "H"
+      },
+      {
+        "param": "Lenf%",
+        "value": "10",
+        "unit": "%",
+        "ref": "20–55",
+        "flag": "L"
+      },
+      {
+        "param": "Mon%",
+        "value": "7",
+        "unit": "%",
+        "ref": "1–4",
+        "flag": "H"
+      },
+      {
+        "param": "Eoz%",
+        "value": "1",
+        "unit": "%",
+        "ref": "0–5",
+        "flag": ""
+      }
+    ],
+    "biochemistry": {
+      "ALT": {
+        "value": "110",
+        "unit": "U/L",
+        "ref": "10–80",
+        "flag": "H"
+      },
+      "ALP": {
+        "value": "85",
+        "unit": "U/L",
+        "ref": "10–90",
+        "flag": ""
+      },
+      "AST": {
+        "value": "62",
+        "unit": "U/L",
+        "ref": "10–50",
+        "flag": "H"
+      },
+      "GGT": {
+        "value": "4",
+        "unit": "U/L",
+        "ref": "0–10",
+        "flag": ""
+      },
+      "Total Bili.": {
+        "value": "0.8",
+        "unit": "mg/dL",
+        "ref": "0–0.4",
+        "flag": "H"
+      },
+      "Safra As.": {
+        "value": "6.5",
+        "unit": "µmol/L",
+        "ref": "0–10",
+        "flag": ""
+      },
+      "Glukoz": {
+        "value": "90",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": ""
+      },
+      "Fruktozamin": {
+        "value": "235",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "CREA": {
+        "value": "1.5",
+        "unit": "mg/dL",
+        "ref": "0.8–1.8",
+        "flag": ""
+      },
+      "Fosfor": {
+        "value": "4.2",
+        "unit": "mg/dL",
+        "ref": "2.4–8.2",
+        "flag": ""
+      },
+      "Total Prot.": {
+        "value": "10.2",
+        "unit": "g/dL",
+        "ref": "5.4–8.2",
+        "flag": "H"
+      },
+      "ALB": {
+        "value": "1.8",
+        "unit": "g/dL",
+        "ref": "2.1–3.5",
+        "flag": "L"
+      },
+      "Glob": {
+        "value": "8.4",
+        "unit": "g/dL",
+        "ref": "2.6–5.1",
+        "flag": "H"
+      },
+      "Na": {
+        "value": "150",
+        "unit": "mEq/L",
+        "ref": "147–162",
+        "flag": ""
+      },
+      "K": {
+        "value": "4.1",
+        "unit": "mEq/L",
+        "ref": "3.5–5.8",
+        "flag": ""
+      },
+      "Cl": {
+        "value": "118",
+        "unit": "mEq/L",
+        "ref": "115–130",
+        "flag": ""
+      },
+      "Ca": {
+        "value": "8.9",
+        "unit": "mg/dL",
+        "ref": "8.8–11.9",
+        "flag": ""
+      }
+    },
+    "hormones": {
+      "T4": {
+        "value": "1.8",
+        "unit": "µg/dL",
+        "ref": "0.8–4.7",
+        "flag": ""
+      },
+      "T3": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "0.5–1.5",
+        "flag": ""
+      },
+      "TSH": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "0.01–0.1",
+        "flag": ""
+      },
+      "Kortizol": {
+        "value": "5.8",
+        "unit": "µg/dL",
+        "ref": "0.5–5.0",
+        "flag": "H"
+      },
+      "Aldosteron": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "İnsülin": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "5–20",
+        "flag": ""
+      },
+      "Progesteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "Testosteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "Östrojen": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      }
+    },
+    "microscopy": {
+      "blood": {
+        "text": "Kan yayması: Eritrositlerde anizositoz ve hafif polikromazi. Non-rejeneratif anemi. Olgun nötrofil ve monositlerde belirgin artış — pyogranülomatöz yanıt. Lenfopeni teyit edildi. **Makrotrombositler** mevcut. Kan paraziti görülmedi.",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+      },
+      "urine": "İdrar muayenesi: Koyu sarı-kehribar, berrak. SpGr: 1.038. pH: 6.5. Protein: Eser (+). Glukoz: Negatif. Keton: Negatif. Sediment: Nadir hiyalin silindir ve birkaç transizyonel epitel hücresi — inaktif.",
+      "stool": "Dışkı muayenesi: Flotasyon ve natif muayenede helmint yumurtası veya protozoon saptanmadı. (Feline Enteric Coronavirus dışkı PCR yapılabilir ancak kuru form için patognomonik değildir). ✓",
+      "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
+      "biopsy": "Biyopsi raporu: Kesin tanı için organdaki pyogranülom dokusunun histopatolojisi ve immunohistokimyası (FCoV antijen) altın standarttır. Serum protein elektroforezi: **Gamma-globulin fraksiyonunda poliklonal artış (gama-pati)** — kuru form FIP'i yüksek oranda doğrular. 🔴"
+    }
+  },
+  "fhv_fcv": {
+    "caseId": "VC-2025-045",
+    "species": "Kedi",
+    "icon": "🐱",
+    "diagnosis": "Felin Üst Solunum Yolu Kompleksi (FHV-1 + FCV)",
+    "anamnez": {
+      "name": "İsim: **Şıllık** | Irk: **Domestic Shorthair**",
+      "demog": "Yaş: **4 aylık** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmamış**",
+      "vaccine": "Aşılar: **Aşısız veya eksik aşılı (FVRCP yapılmamış)** | Parazit ilacı: **Düzensiz/Yapılmamış**",
+      "complaint": [
+        "Sahibi endişeyle anlatıyor:\n\n\"Yaklaşık 4-5 gün önce hafif bir hapşırıkla başladı. Son iki gündür gözleri resmen çapakla kapandı, açamıyor. Burnundan da sarı-yeşil, koyu bir sıvı geliyor.\"",
+        "Sahibi üzülerek anlatıyor:\n\n\"Hiç keyfi yok, sürekli uyuyor. Mama kabının yanına gidiyor ama koklayıp geri dönüyor, sanırım burnu tıkalı olduğu için kokusunu alamıyor. Ayrıca ağzını açtığında dilinin üzerinde kırmızı yaralar gördüm, canı acıyor herhalde.\"",
+        "Sahibi şaşırarak anlatıyor:\n\n\"Evet, yaklaşık iki hafta önce sokakta bulup eve getirdiğimiz bir yavru kedi vardı, o da çok hapşırıyordu. Birkaç gün aynı odada kaldılar, sonra bizimkinde de bu belirtiler başladı.\"",
+        "Sahibi korkarak anlatıyor:\n\n\"Özellikle uyurken burnundan çok ses geliyor, hırıldıyor. Bazen de tıkanıyor gibi arka arkaya güçlü şekilde hapşırıyor.\"",
+        "Sahibi yorgun anlatıyor:\n\n\"İki gündür mama yemedi, su içmek istiyor ama burnunun tıkandığını hissediyorum, çok halsizleşti.\""
+      ]
+    },
+    "diffQuestions": [
+      {
+        "q": "Kedinizin gözlerindeki ve burnundaki akıntı ne zamandır var ve kıvamı nasıl?",
+        "a": "Yaklaşık 4-5 gün önce hafif bir hapşırıkla başladı. Son iki gündür gözleri resmen çapakla kapandı, açamıyor. Burnundan da sarı-yeşil, koyu bir sıvı geliyor."
+      },
+      {
+        "q": "Son zamanlarda kedinizde halsizlik veya iştahsızlık fark ettiniz mi, mamasını rahat yiyebiliyor mu?",
+        "a": "Hiç keyfi yok, sürekli uyuyor. Mama kabının yanına gidiyor ama koklayıp geri dönüyor. Ağzını açtığında dilinin üzerinde kırmızı yaralar gördüm, canı acıyor."
+      },
+      {
+        "q": "Çevresinde veya evde onun gibi hapşıran, gözü akan başka kediler var mı?",
+        "a": "Evet, yaklaşık iki hafta önce sokakta bulup eve getirdiğimiz bir yavru kedi vardı, o da çok hapşırıyordu. Birkaç gün aynı odada kaldılar, sonra bizimkinde de bu belirtiler başladı."
+      },
+      {
+        "q": "Kedinizde öksürük, hırıltılı solunum veya nefes almada zorluk gözlemlediniz mi?",
+        "a": "Özellikle uyurken burnundan çok ses geliyor, hırıldıyor. Bazen de tıkanıyor gibi arka arkaya güçlü şekilde hapşırıyor ama belirgin bir göğüs öksürüğü fark etmedim."
+      },
+      {
+        "q": "Kedinizin topallama veya eklemlerinde ani bir ağrı/şişlik durumu oldu mu?",
+        "a": "Hayır, yürümesinde veya bacaklarında herhangi bir tuhaflık yok. Sadece halsiz olduğu için yerinden kalkmak istemiyor."
+      }
+    ],
+    "physical": {
+      "temp": "Vücut sıcaklığı: **39.8°C** (Referans: 38.1–39.2°C) → Hipertermi — viral replikasyon ve sekonder bakteriyel enfeksiyona bağlı akut yangısal yanıt 🔴",
+      "resp": "Solunum sayısı: **38/dak** (Referans: 20–40/dak) → Hafif takipne — üst solunum yolu tıkanıklığına bağlı stertor ⚠",
+      "hr": "Kalp atım sayısı: **190/dak** (Referans: 140–220/dak) → Normal-hafif taşikardi — ateş ve dehidrasyon ⚠",
+      "mucosa": "Mukoza rengi: **Hafif solgun ve kuru pembe** | CRT: **2.5 sn** → %6-8 dehidrasyon ⚠",
+      "lymph": "Lenf nodları: Mandibular lenf nodları bilateral reaktif, büyümüş ve hafif hassas. 🔴 Diğer periferik lenf nodları normal.",
+      "palp": "Karın palpasyonu: Organomegali saptanmadı, normal. **Trakeal palpasyonda hafif hassasiyet** mevcut. ⚠ Deri turgoru hafif azalmış."
+    },
+    "tools": {
+      "otoscope": "Otoskopi: Kulak kanalları açık ve temiz, timpanik zar intakt. Kulak kepçesinde patoloji yok. ✓",
+      "ophthalmo": "Oftalmoskopi: **Bilateral şiddetli konjonktivit, kemozis (konjonktiva ödemi) ve purulent oküler akıntı.** 🔴 Korneada FHV-1 ile uyumlu **hafif dendritik ülser odakları** izlendi. 🔴",
+      "pharyngo": "Faringoskopi: Dil yüzeyinde ve sert damakta **FCV ile uyumlu ağrılı ülseratif stomatit/glossit odakları.** 🔴 Yumuşak damak ve farinks konjestif ve hiperemik.",
+      "reflex": "Refleks muayenesi: Patellar ve fleksör refleksler normal. Nörolojik defisit yok. ✓",
+      "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
+      "inspection": "İnspeksiyon: **Bilateral mukopurulent oküler ve nazal akıntı, oral ülserler, üst solunum yolu stertoru.** 🔴 Letarji ve iştahsızlık belirgin.",
+      "auscultation": "Oskültasyon: **Kalp:** Normal, üfürüm yok. **Akciğer:** Alt solunum yolu tutulumu yok, temiz. **Üst solunum yolu:** Stertor (nazal tıkanıklığa bağlı hırıltı). ⚠"
+    },
+    "imaging": {
+      "echo": {
+        "result": "EKO: Kalp morfolojisi ve fonksiyonları normal. Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "usg": {
+        "result": "Abdominal USG: Abdominal organlar normal mimaride. Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "xray_direct": {
+        "result": "Toraks Radyografisi: Belirgin alt solunum yolu (bronkopnömoni) tutulumu gözlenmedi. Üst solunum yollarında tıkanıklık bulguları mevcut. Bu vakada görsel endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "xray_indirect": {
+        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "bt": {
+        "result": "BT: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "mr": {
+        "result": "MR: Bu vakada endike değildir.",
+        "hasImage": false,
+        "imgUrl": null
+      }
+    },
+    "rapidKits": {
+      "fiv_felv": "NEGATİF",
+      "fcov_ab": "NEGATİF",
+      "fpv_ag": "NEGATİF",
+      "fcov_ag": "NEGATİF",
+      "ntprobnp": "NEGATİF",
+      "fsaa": "POZİTİF",
+      "giardia_ag": "NEGATİF"
+    },
+    "hemogram": [
+      {
+        "param": "WBC",
+        "value": "22.4",
+        "unit": "10³/µL",
+        "ref": "5.5–19.5",
+        "flag": "H"
+      },
+      {
+        "param": "RBC",
+        "value": "9.8",
+        "unit": "10⁶/µL",
+        "ref": "5.0–10.0",
+        "flag": ""
+      },
+      {
+        "param": "HGB",
+        "value": "14.8",
+        "unit": "g/dL",
+        "ref": "8.0–15.0",
+        "flag": ""
+      },
+      {
+        "param": "HCT",
+        "value": "46.2",
+        "unit": "%",
+        "ref": "24–45",
+        "flag": "H"
+      },
+      {
+        "param": "MCV",
+        "value": "47.1",
+        "unit": "fL",
+        "ref": "41–58",
+        "flag": ""
+      },
+      {
+        "param": "MCH",
+        "value": "15.1",
+        "unit": "pg",
+        "ref": "13–17",
+        "flag": ""
+      },
+      {
+        "param": "MCHC",
+        "value": "32.0",
+        "unit": "g/dL",
+        "ref": "30–36",
+        "flag": ""
+      },
+      {
+        "param": "PLT",
+        "value": "350",
+        "unit": "10³/µL",
+        "ref": "300–800",
+        "flag": ""
+      },
+      {
+        "param": "Nöt%",
+        "value": "80",
+        "unit": "%",
+        "ref": "35–75",
+        "flag": "H"
+      },
+      {
+        "param": "Lenf%",
+        "value": "14",
+        "unit": "%",
+        "ref": "20–55",
+        "flag": "L"
+      },
+      {
+        "param": "Mon%",
+        "value": "4",
+        "unit": "%",
+        "ref": "1–4",
+        "flag": ""
+      },
+      {
+        "param": "Eoz%",
+        "value": "2",
+        "unit": "%",
+        "ref": "0–5",
+        "flag": ""
+      }
+    ],
+    "biochemistry": {
+      "ALT": {
+        "value": "45",
+        "unit": "U/L",
+        "ref": "10–80",
+        "flag": ""
+      },
+      "ALP": {
+        "value": "38",
+        "unit": "U/L",
+        "ref": "10–90",
+        "flag": ""
+      },
+      "AST": {
+        "value": "28",
+        "unit": "U/L",
+        "ref": "10–50",
+        "flag": ""
+      },
+      "GGT": {
+        "value": "2",
+        "unit": "U/L",
+        "ref": "0–10",
+        "flag": ""
+      },
+      "Total Bili.": {
+        "value": "0.2",
+        "unit": "mg/dL",
+        "ref": "0–0.4",
+        "flag": ""
+      },
+      "Safra As.": {
+        "value": "4.5",
+        "unit": "µmol/L",
+        "ref": "0–10",
+        "flag": ""
+      },
+      "Glukoz": {
+        "value": "92",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": ""
+      },
+      "Fruktozamin": {
+        "value": "228",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "CREA": {
+        "value": "1.4",
+        "unit": "mg/dL",
+        "ref": "0.8–1.8",
+        "flag": ""
+      },
+      "Fosfor": {
+        "value": "5.2",
+        "unit": "mg/dL",
+        "ref": "2.4–8.2",
+        "flag": ""
+      },
+      "Total Prot.": {
+        "value": "8.4",
+        "unit": "g/dL",
+        "ref": "5.4–8.2",
+        "flag": "H"
+      },
+      "ALB": {
+        "value": "3.6",
+        "unit": "g/dL",
+        "ref": "2.1–3.5",
+        "flag": "H"
+      },
+      "Glob": {
+        "value": "4.8",
+        "unit": "g/dL",
+        "ref": "2.6–5.1",
+        "flag": ""
+      },
+      "Na": {
+        "value": "152",
+        "unit": "mEq/L",
+        "ref": "147–162",
+        "flag": ""
+      },
+      "K": {
+        "value": "3.9",
+        "unit": "mEq/L",
+        "ref": "3.5–5.8",
+        "flag": ""
+      },
+      "Cl": {
+        "value": "118",
+        "unit": "mEq/L",
+        "ref": "115–130",
+        "flag": ""
+      },
+      "Ca": {
+        "value": "9.4",
+        "unit": "mg/dL",
+        "ref": "8.8–11.9",
+        "flag": ""
+      }
+    },
+    "hormones": {
+      "T4": {
+        "value": "—",
+        "unit": "µg/dL",
+        "ref": "0.8–4.7",
+        "flag": ""
+      },
+      "T3": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "0.5–1.5",
+        "flag": ""
+      },
+      "TSH": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "0.01–0.1",
+        "flag": ""
+      },
+      "Kortizol": {
+        "value": "—",
+        "unit": "µg/dL",
+        "ref": "0.5–5.0",
+        "flag": ""
+      },
+      "Aldosteron": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "İnsülin": {
+        "value": "—",
+        "unit": "µIU/mL",
+        "ref": "5–20",
+        "flag": ""
+      },
+      "Progesteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "Testosteron": {
+        "value": "—",
+        "unit": "ng/mL",
+        "ref": "—",
+        "flag": ""
+      },
+      "Östrojen": {
+        "value": "—",
+        "unit": "pg/mL",
+        "ref": "—",
+        "flag": ""
+      }
+    },
+    "microscopy": {
+      "blood": {
+        "text": "Kan yayması: Eritrositler normositik normokromik. Lökosit formülünde nötrofil hakimiyeti doğrulandı, sola kayma minimal. Kan paraziti görülmedi. Trombosit kümelenmeleri izlendi. ✓",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+      },
+      "urine": "İdrar muayenesi: Koyu sarı, berrak. SpGr: 1.045 — konsantre idrar, dehidrasyon doğrulandı. pH: 6.5. Protein: Negatif. Glukoz: Negatif. Keton: Negatif. Sediment: Aktif yangı hücresi veya kristal yok — inaktif. ✓",
+      "stool": "Dışkı muayenesi: Flotasyon ve natif muayenede helmint yumurtası veya protozoon kistine rastlanmadı. ✓",
+      "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
+      "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Kesin tanı oküler/oral lezyon sürüntüsünden PCR panel (FHV-1 + FCV) ile konulmaktadır."
+    }
+  }
+}

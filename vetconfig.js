@@ -35,6 +35,10 @@ const CASE_INDEX = {
   babesiosis:        { label: "Rex — Labrador Retriever",             tag: "Paraziter (Kene)", icon: "🐶" },
   cav1_hepatitis:    { label: "Şimşek — Melez",                       tag: "Viral ⚡ACİL",     icon: "🐶" },
   leishmaniosis:     { label: "Zara — Boxer",                        tag: "Paraziter",        icon: "🐶" },
+  ibd:               { label: "Bulut — Domestic Shorthair",          tag: "Gastroenteroloji", icon: "🐱" },
+  fpv:               { label: "Minnak — Tekir",                     tag: "Viral ⚡ACİL",     icon: "🐱" },
+  fip_dry:           { label: "Peri — British Shorthair",            tag: "Viral (FIP Kuru)", icon: "🐱" },
+  fhv_fcv:           { label: "Şıllık — Domestic Shorthair",         tag: "Viral (ÜSYK)",     icon: "🐱" },
   toxo:              { label: "Tekir — Domestic Shorthair",       tag: "Parazitoloji",     icon: "🐱" },
   asthma:            { label: "Pamuk — British Shorthair",          tag: "Solunum",          icon: "🐱" },
   hcm_ate:           { label: "Aslan — Maine Coon",                   tag: "Kardiyoloji ⚡ACİL", icon: "🐱" },
@@ -45,7 +49,7 @@ const CASE_INDEX = {
 };
 
 const SPECIES_CASES = {
-  cat: ["cat", "fip", "hernia", "uro", "demodicosis", "dermatophytosis", "hyperthyroidism", "fiv", "felv", "hyperaldosteronism", "fic", "toxo", "atopic_derm", "bacterial_cystitis", "kennel_cough", "asthma", "hcm_ate"],
+  cat: ["cat", "fip", "hernia", "uro", "demodicosis", "dermatophytosis", "hyperthyroidism", "fiv", "felv", "hyperaldosteronism", "fic", "toxo", "atopic_derm", "bacterial_cystitis", "kennel_cough", "ibd", "fpv", "fip_dry", "fhv_fcv", "asthma", "hcm_ate"],
   dog: ["dog", "parvo", "ascaris", "pancreatitis", "invagination", "cushings", "giardiasis", "hypothyroidism", "addison", "hypoglycemia", "hernia_dog", "dermatophytosis_dog", "liver_failure", "imha", "ehrlichiosis", "distemper", "leptospirosis", "babesiosis", "cav1_hepatitis"],
 };
 
@@ -55,7 +59,11 @@ const DISEASE_LIBRARY = [
   { id:"v03", name:"Felin Lösemi Virüsü (FeLV)", species:["cat"], category:"Viral", etken:"Retrovirus (Onkovirus)", symptoms:"Pansitopeni, makrositik non-rejeneratif anemi, ikter, lenfadenomegali, mediastinal lenfoma, hiperglobulinemi, FeLV antijen pozitif" },
   { id:"h02", name:"İmmün Aracılı Hemolitik Anemi (IMHA)", species:["dog"], category:"Hematoloji", etken:"Otoimmün eritrosit yıkımı", symptoms:"Şiddetli anemi (HCT<%20), sferositoz, oto-aglütinasyon, ikter, hemoglobinüri, splenomegali, lökomoid reaksiyon, makrositik hipokromik anemi" },
   { id:"h01", name:"Kronik Karaciğer Yetmezliği (Hepatik Siroz)", species:["dog"], category:"Hepatoloji", etken:"Bakır birikimi, kronik hepatit, siroz", symptoms:"İkter, asit, hipoalbüminemi, ALT/ALP/AST/GGT yüksekliği, hipoglisemi, melena, hepatik ensefalopati, mikrositik anemi" },
+  { id:"g01", name:"İnflamatuar Bağırsak Hastalığı (IBD - Lenfositik-Plazmasitik Form)", species:["cat"], category:"Gastroenteroloji", etken:"İdiyopatik kronik bağırsak yangısı (lenfositik-plazmasitik)", symptoms:"Kronik kusma, kronik ishal, kilo kaybı, hipoalbüminemi, steatorre, Cobalamin/Folate düşük, bağırsak duvarı kalınlaşması (USG), non-rejeneratif anemi" },
   { id:"u01", name:"Felin İdiyopatik Sistit (FIC)", species:["cat"], category:"Üroloji", etken:"İdiyopatik (stres, düşük su tüketimi, çevre faktörleri)", symptoms:"Dizüri, hematüri, pollaküri, strangüri, mesane duvarı kalınlaşması, idrar sedimentinde eritrosit ve lökosit, bakteri yok" },
+  { id:"v07", name:"Kuru Form FIP (Non-effusive FIP)", species:["cat"], category:"Viral", etken:"Feline Infectious Peritonitis Virus (FIPV - FCoV mutasyonu)", symptoms:"İnatçı dalgalı ateş, non-rejeneratif anemi, Glob>8 + ALB<2 (A/G<0.4), anterior üveit, MSS ataksisi, böbrek subkapsüler halka USG, poliklonal gamopati, FCoV Ab titre yüksek" },
+  { id:"v08", name:"Felin Üst Solunum Yolu Kompleksi (FHV-1 + FCV)", species:["cat"], category:"Viral", etken:"Feline Herpesvirus-1 + Feline Calicivirus", symptoms:"Bilateral mukopurulent oküler+nazal akıntı, oral ülserler (FCV), korneal dendritik ülser (FHV-1), üst solunum yolu stertoru, nötrofilik lökositoz, temas geçmişi" },
+  { id:"v06", name:"Kedi Panlökopenisi (Feline Panleukopenia Virus - FPV)", species:["cat"], category:"Viral", etken:"Feline Panleukopenia Virus (Parvovirus)", symptoms:"Şiddetli panlökopeni (WBC<1.0), kanlı ishal, kusma, enoftalmi, su kabında karakteristik bekleyiş, FPV Ag POZİTİF, aşısız yavru kedi" },
   { id:"v04", name:"Canine Distemper Virüsü (Köpek Gençlik Hastalığı)", species:["dog"], category:"Viral", etken:"Canine Distemper Virus (CDV)", symptoms:"Mukopurulent oküler/nazal akıntı, hiperkeratoz (hard pad), miyoklonus, lenfopeni, bronkopnömoni, Lentz inklüzyon cisimcikleri, aşısız yavru köpek" },
   { id:"p03", name:"Leishmaniozis (Leishmania infantum)", species:["dog"], category:"Paraziter", etken:"Leishmania infantum (tatarcık aracılı protozoon)", symptoms:"Kaşıntısız simetrik alopesi, onişogrifoz, kas atrofisi, hiperglobulinemi (Glob>5), hipoalbüminemi, masif proteinüri (UPC>2), azotemi, Akdeniz tatil geçmişi" },
   { id:"v05", name:"Enfeksiyöz Köpek Hepatiti (CAV-1)", species:["dog"], category:"Viral", etken:"Canine Adenovirus-1 (CAV-1)", symptoms:"Bilateral mavi göz (korneal ödem), şiddetli akut hepatit (ALT>1000), asit, DIC, lökopeni, trombositopeni, tonsillitis, aşısız yavru" },
