@@ -2043,7 +2043,7 @@
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v2.9</span>
+      <span>v2.10</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -4655,9 +4655,7 @@ function doImaging(key) {
   
   // USG için rapor modalı
   if (key === 'usg') {
-    const caseKey = currentCaseKey;
-    // DEBUG: sorun bulununca kaldırılacak
-    showToast("Debug: caseKey=" + caseKey + " | USG_REPORTS=" + (window.USG_REPORTS ? Object.keys(window.USG_REPORTS).length + " rapor" : "YOK") + " | Bu key var mı: " + (window.USG_REPORTS && window.USG_REPORTS[caseKey] ? "EVET" : "HAYIR"));
+    const caseKey = (currentCase && currentCase._realKey) ? currentCase._realKey : currentCaseKey;
     if (window.USG_REPORTS && window.USG_REPORTS[caseKey]) {
       if (!spendCredit(TETKIK_COSTS.usg, 'USG')) return;
       if (!consumeAction('Görüntüleme')) return;
@@ -5292,6 +5290,7 @@ function startClinicMode(speciesFilter) {
   CASE_DATA['__clinic__'] = randomizedCase;
   CASE_DATA['__clinic__']._clinicMode = true;
   CASE_DATA['__clinic__']._realDiagnosis = randomizedCase.diagnosis || 'Bilinmiyor';
+  CASE_DATA['__clinic__']._realKey = caseKey;
 
   document.getElementById('welcome-clinic').style.display = 'none';
   startCase('__clinic__');
