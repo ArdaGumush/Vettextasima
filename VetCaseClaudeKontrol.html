@@ -2083,7 +2083,7 @@ window.onerror = function(msg,src,line) { fc('❌ '+msg+' (satır:'+line+')', 'e
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v3.11</span>
+      <span>v3.12</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -4481,6 +4481,7 @@ function askAnamnez(key) {
 
 function buildDiffQuestions() {
   const container = document.getElementById('diff-questions');
+  if (!container) return;
   container.innerHTML = '';
   if (!currentCase) return;
   currentCase.diffQuestions.forEach((item, i) => {
