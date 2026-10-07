@@ -2082,7 +2082,7 @@ window.onerror = function(msg, src, line, col, err) {
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v3.4</span>
+      <span>v3.5</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -2657,10 +2657,11 @@ async function loadCaseData() {
     const data1 = await r.json();
     dbLog("cases.json OK — " + Object.keys(data1).length + " vaka", "ok");
     let data2 = {};
-    try { const r2 = await fetch(CASES_URL2); if (r2.ok) data2 = await r2.json(); } catch(e2) {}
+    try { const r2 = await fetch(CASES_URL2); if (r2.ok) { data2 = await r2.json(); dbLog("cases2.json OK — " + Object.keys(data2).length + " vaka", "ok"); } else { dbLog("cases2.json HTTP " + r2.status, "error"); } } catch(e2) { dbLog("cases2.json HATA: " + e2.message, "error"); }
     let data3 = {};
-    try { const r3 = await fetch(CASES_URL3); if (r3.ok) data3 = await r3.json(); } catch(e3) {}
+    try { const r3 = await fetch(CASES_URL3); if (r3.ok) { data3 = await r3.json(); dbLog("cases3.json OK — " + Object.keys(data3).length + " vaka", "ok"); } else { dbLog("cases3.json HTTP " + r3.status, "error"); } } catch(e3) { dbLog("cases3.json HATA: " + e3.message, "error"); }
     CASE_DATA = { ...data1, ...data2, ...data3 };
+    dbLog("Toplam: " + Object.keys(CASE_DATA).length + " vaka yüklendi", "ok");
     // USG raporlarını yükle
     try { const ru = await fetch(USG_REPORTS_URL); if (ru.ok) window.USG_REPORTS = await ru.json(); } catch(eu) {}
     fetch(QUESTIONS_URL).then(r=>r.ok?r.json():{}).then(d=>{window.QUESTIONS=d;dbLog("questions.json OK — " + Object.keys(d).length + " kategori","ok");}).catch(e=>{window.QUESTIONS={};dbLog("questions.json HATA: "+e.message,"error");});
