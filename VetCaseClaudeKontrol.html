@@ -477,6 +477,7 @@
   }
   .topbar-meta .tag.live { border-color: var(--accent-green); color: var(--accent-green); }
 
+
   /* ── ANAMNEZ SORU AĞACI ─────────────────────────── */
   .aq-category { border-bottom: 1px solid var(--border); }
   .aq-cat-header { padding: 12px 16px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: background 0.15s; user-select: none; }
@@ -502,7 +503,6 @@
   .aq-q-badge { font-size: 9px; color: var(--accent-green); background: rgba(46,204,113,0.1); border: 1px solid rgba(46,204,113,0.3); padding: 1px 6px; border-radius: 8px; flex-shrink: 0; }
   .aq-answer { margin: 0 16px 8px 54px; background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.2); border-radius: 6px; padding: 8px 12px; font-size: 12px; line-height: 1.6; color: var(--text-primary); }
   .aq-ans-label { font-size: 9px; color: var(--accent-cyan); letter-spacing: 1px; margin-bottom: 4px; font-weight: 700; }
-
   /* ── USG RAPOR ─────────────────────────────────── */
   .usg-rapor { color: #1a1a1a; font-family: 'Segoe UI', sans-serif; }
   .usg-bulgular-baslik { font-size: 10px; font-weight: 800; letter-spacing: 2px; color: #1a3a5c; text-transform: uppercase; margin-bottom: 10px; padding-bottom: 4px; border-bottom: 2px solid #1a3a5c; }
@@ -2069,13 +2069,13 @@
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v3.3</span>
+      <span>v3.0</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
       <span id="d-date"></span>
     </div>
-    <div class="d-hint" onclick="document.getElementById('disclaimer-screen').remove(); document.getElementById('splash').style.display='flex';" style="cursor:pointer;text-decoration:underline">OTOMATİK DEVAM EDİYOR — TIKLA</div>
+    <div class="d-hint">OTOMATİK DEVAM EDİYOR</div>
   </div>
 </div>
 
@@ -2084,7 +2084,7 @@
   <div style="font-size:11px;color:var(--text-muted);letter-spacing:2px">Vaka veritabanı yükleniyor...</div>
   <div id="splash-status" style="font-size:10px;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;min-height:16px"></div>
   <button id="splash-retry" onclick="loadCaseData()" style="display:none;padding:8px 20px;background:rgba(0,212,255,0.1);border:1px solid var(--accent-cyan);border-radius:8px;color:var(--accent-cyan);font-family:'JetBrains Mono',monospace;font-size:10px;cursor:pointer">🔄 Tekrar Dene</button>
-  <button onclick="var s=document.getElementById('splash');if(s){s.style.opacity='0';s.style.transition='opacity 0.5s';setTimeout(()=>s.remove(),500);}" style="margin-top:8px;padding:8px 20px;background:rgba(46,204,113,0.1);border:1px solid var(--accent-green);border-radius:8px;color:var(--accent-green);font-family:'JetBrains Mono',monospace;font-size:10px;cursor:pointer">▶ Manuel Devam</button>
+  <button onclick="hideSplash()" style="margin-top:8px;padding:8px 20px;background:rgba(46,204,113,0.1);border:1px solid var(--accent-green);border-radius:8px;color:var(--accent-green);font-family:'JetBrains Mono',monospace;font-size:10px;cursor:pointer">▶ Manuel Devam</button>
   <div style="width:120px;height:2px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:8px">
     <div style="height:100%;background:var(--accent-cyan);animation:splashLoad 1.5s ease-in-out infinite alternate;border-radius:2px"></div>
   </div>
@@ -2285,7 +2285,7 @@
 
     <div class="tab-bar">
       <button class="tab-btn" onclick="openAnamnezModal()" id="btn-anamnez">🔍 Anamnez Sor</button>
-      <button class="tab-btn active" onclick="switchTab('fizik')">A. Fiziksel Muayene</button>
+            <button class="tab-btn active" onclick="switchTab('fizik')">A. Fiziksel Muayene</button>
       <button class="tab-btn" onclick="switchTab('ileri')">B. İleri Muayene</button>
       <button class="tab-btn" onclick="switchTab('goruntu')">C. Görüntüleme</button>
       <button class="tab-btn" onclick="switchTab('hemogram')">D. Hemogram</button>
@@ -2624,7 +2624,9 @@ const CASES_URL2 = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/re
 const CASES_URL3 = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/cases3.json";
 async function loadCaseData() {
   try {
-    // vetconfig.json yükle
+    // vetconfig.js yükle — CASE_INDEX, SPECIES_CASES, DISEASE_LIBRARY
+    // DEBUG: sorun bulununca kaldırılacak
+    showToast("Debug: vetconfig.js yükleniyor...");
     try {
       const rc = await fetch(CONFIG_URL);
       if (rc.ok) {
@@ -2643,9 +2645,9 @@ async function loadCaseData() {
     let data3 = {};
     try { const r3 = await fetch(CASES_URL3); if (r3.ok) data3 = await r3.json(); } catch(e3) {}
     CASE_DATA = { ...data1, ...data2, ...data3 };
+    // USG raporlarını yükle
     try { const ru = await fetch(USG_REPORTS_URL); if (ru.ok) window.USG_REPORTS = await ru.json(); } catch(eu) {}
-    // questions.json — arka planda yükle, bloklama
-    fetch(QUESTIONS_URL).then(r => r.ok ? r.json() : {}).then(d => { window.QUESTIONS = d; }).catch(() => { window.QUESTIONS = {}; });
+    fetch(QUESTIONS_URL).then(r=>r.ok?r.json():{}).then(d=>{window.QUESTIONS=d;}).catch(()=>{window.QUESTIONS={};});
     document.getElementById('splash-status').textContent = "Parametreler dolduruluyor...";
     Object.values(CASE_DATA).forEach(c => fillMissingParams(c));
     document.getElementById('splash-status').textContent = "Görseller atanıyor...";
@@ -4311,7 +4313,7 @@ function backToStep1() {
 function startCase(caseKey) {
   currentCase = CASE_DATA[caseKey];
   currentCaseKey = caseKey;
-  window._aqAnswered = {}; // Soru geçmişini sıfırla
+  window._aqAnswered = {};
   complaintAsked = false;
   diffStates = {};
 
@@ -5130,9 +5132,11 @@ function typewrite(el, html, onDone) {
 // ═══════════════════════════════════════════════════════════════
 function openAnamnezModal() {
   if (!currentCase) { showToast("Önce bir vaka seçin."); return; }
-  if (!window.QUESTIONS) { showToast("Debug HATA: questions.json yüklenmemiş!"); return; }
-  // DEBUG: sorun bulununca kaldırılacak
-  showToast("Debug: Anamnez modal açılıyor — vaka: " + currentCaseKey);
+  if (!window.QUESTIONS || Object.keys(window.QUESTIONS).length === 0) {
+    showToast("Soru havuzu henüz yüklenmedi, lütfen bekleyin.");
+    return;
+  }
+  if (!window._aqAnswered) window._aqAnswered = {};
   renderAnamnezModal();
   document.getElementById('anamnez-modal-overlay').style.display = 'block';
 }
@@ -5145,44 +5149,37 @@ function closeAnamnezModal(e) {
 
 function renderAnamnezModal() {
   const Q = window.QUESTIONS;
-  const answers = (currentCase && currentCase.questionAnswers) || {};
-  // DEBUG: sorun bulununca kaldırılacak
-  showToast("Debug: " + Object.keys(answers).length + " özel cevap, " + Object.keys(Q).length + " kategori");
-
   let html = '';
   for (const [catId, cat] of Object.entries(Q)) {
-    html += `<div class="aq-category" id="aqcat_${catId}">
-      <div class="aq-cat-header" onclick="toggleAqCat('${catId}')">
-        <span class="aq-cat-icon">${cat.icon||'📋'}</span>
-        <span class="aq-cat-label">${cat.label}</span>
-        <span class="aq-cat-arrow" id="aqarr_${catId}">▼</span>
-      </div>
-      <div class="aq-subcats" id="aqsub_${catId}" style="display:none">`;
-
+    html += '<div class="aq-category">';
+    html += '<div class="aq-cat-header" onclick="toggleAqCat('' + catId + '')">';
+    html += '<span class="aq-cat-icon">' + (cat.icon||'📋') + '</span>';
+    html += '<span class="aq-cat-label">' + cat.label + '</span>';
+    html += '<span class="aq-cat-arrow" id="aqarr_' + catId + '">▼</span>';
+    html += '</div>';
+    html += '<div class="aq-subcats" id="aqsub_' + catId + '" style="display:none">';
     for (const [subId, sub] of Object.entries(cat.subcategories||{})) {
-      html += `<div class="aq-subcat" id="aqsubcat_${subId}">
-        <div class="aq-sub-header" onclick="toggleAqSub('${subId}')">
-          <span class="aq-sub-dot"></span>
-          <span class="aq-sub-label">${sub.label}</span>
-          <span class="aq-sub-arrow" id="aqsubarr_${subId}">▼</span>
-        </div>
-        <div class="aq-questions" id="aqqs_${subId}" style="display:none">`;
-
+      html += '<div class="aq-sub-header" onclick="toggleAqSub('' + subId + '')">';
+      html += '<span class="aq-sub-dot"></span>';
+      html += '<span class="aq-sub-label">' + sub.label + '</span>';
+      html += '<span class="aq-sub-arrow" id="aqsubarr_' + subId + '">▼</span>';
+      html += '</div>';
+      html += '<div id="aqqs_' + subId + '" style="display:none">';
       for (const q of (sub.questions||[])) {
-        const answered = window._aqAnswered && window._aqAnswered[q.id];
-        html += `<div class="aq-q-item ${answered?'aq-q-asked':''}" onclick="askAnamnezQ('${q.id}','${catId}','${subId}')">
-          <span class="aq-q-bullet"></span>
-          <span class="aq-q-text">${q.q}</span>
-          ${answered ? '<span class="aq-q-badge">✓</span>' : ''}
-        </div>
-        <div class="aq-answer" id="aqans_${q.id}" style="display:${answered?'block':'none'}">
-          <div class="aq-ans-label">SAHİBİ YANITI</div>
-          <div id="aqanstext_${q.id}">${answered||''}</div>
-        </div>`;
+        const asked = window._aqAnswered && window._aqAnswered[q.id];
+        html += '<div class="aq-q-item' + (asked?' aq-q-asked':'') + '" onclick="askAnamnezQ('' + q.id + '','' + catId + '','' + subId + '')">';
+        html += '<span class="aq-q-bullet"></span>';
+        html += '<span class="aq-q-text">' + q.q + '</span>';
+        if (asked) html += '<span class="aq-q-badge">✓</span>';
+        html += '</div>';
+        html += '<div class="aq-answer" id="aqans_' + q.id + '" style="display:' + (asked?'block':'none') + '">';
+        html += '<div class="aq-ans-label">SAHİBİ YANITI</div>';
+        html += '<div>' + (asked||'') + '</div>';
+        html += '</div>';
       }
-      html += `</div></div>`;
+      html += '</div>';
     }
-    html += `</div></div>`;
+    html += '</div></div>';
   }
   document.getElementById('anamnez-modal-body').innerHTML = html;
 }
@@ -5190,31 +5187,24 @@ function renderAnamnezModal() {
 function toggleAqCat(id) {
   const sub = document.getElementById('aqsub_' + id);
   const arr = document.getElementById('aqarr_' + id);
-  const hdr = sub.previousElementSibling;
   const open = sub.style.display === 'none';
   sub.style.display = open ? 'block' : 'none';
   arr.textContent = open ? '▲' : '▼';
-  hdr.classList.toggle('aq-cat-open', open);
 }
 
 function toggleAqSub(id) {
   const qs = document.getElementById('aqqs_' + id);
   const arr = document.getElementById('aqsubarr_' + id);
-  const hdr = qs.previousElementSibling;
   const open = qs.style.display === 'none';
   qs.style.display = open ? 'block' : 'none';
   arr.textContent = open ? '▲' : '▼';
-  hdr.classList.toggle('aq-sub-open', open);
 }
 
 function askAnamnezQ(qId, catId, subId) {
   if (!window._aqAnswered) window._aqAnswered = {};
-  if (window._aqAnswered[qId]) return; // zaten soruldu
-
+  if (window._aqAnswered[qId]) return;
   const answers = (currentCase && currentCase.questionAnswers) || {};
   const Q = window.QUESTIONS;
-
-  // Cevabı bul — önce vakaya özel, yoksa default
   let answer = answers[qId] || null;
   if (!answer) {
     const cat = Q[catId];
@@ -5222,27 +5212,22 @@ function askAnamnezQ(qId, catId, subId) {
     const q = sub && sub.questions && sub.questions.find(x => x.id === qId);
     answer = (q && q.default) || 'Bu konuda bilgi alınamadı.';
   }
-
-  // DEBUG: sorun bulununca kaldırılacak
-  showToast("Debug: " + qId + " — " + (answers[qId] ? "ÖZEL cevap" : "DEFAULT cevap"));
-
   window._aqAnswered[qId] = answer;
-
-  // UI güncelle
-  const item = document.querySelector(\`.aq-q-item[onclick*="'${qId}'"]\`);
-  if (item) {
-    item.classList.add('aq-q-asked');
-    if (!item.querySelector('.aq-q-badge')) {
-      const badge = document.createElement('span');
-      badge.className = 'aq-q-badge';
-      badge.textContent = '✓';
-      item.appendChild(badge);
+  const items = document.querySelectorAll('.aq-q-item');
+  items.forEach(item => {
+    if (item.getAttribute('onclick') && item.getAttribute('onclick').includes("'" + qId + "'")) {
+      item.classList.add('aq-q-asked');
+      if (!item.querySelector('.aq-q-badge')) {
+        const badge = document.createElement('span');
+        badge.className = 'aq-q-badge';
+        badge.textContent = '✓';
+        item.appendChild(badge);
+      }
     }
-  }
+  });
   const ansDiv = document.getElementById('aqans_' + qId);
-  const ansText = document.getElementById('aqanstext_' + qId);
-  if (ansDiv && ansText) {
-    ansText.textContent = answer;
+  if (ansDiv) {
+    ansDiv.querySelector('div:last-child').textContent = answer;
     ansDiv.style.display = 'block';
   }
 }
