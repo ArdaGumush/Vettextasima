@@ -2069,7 +2069,7 @@
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v3.5</span>
+      <span>v3.6</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -4336,7 +4336,7 @@ function startCase(caseKey) {
 
   // diag-btn temizle — vakadan vakaya geçişte üst üste eklenmesini önle
   const _diagBtn = document.getElementById('diag-btn');
-  if (_diagBtn) _diagBtn.remove();
+  if (_diagBtn) _diagBtn.style.display = 'none';
 
   // Build diff questions
   buildDiffQuestions();
@@ -5746,7 +5746,7 @@ function debugLaunchCase(caseKey, forceEmergency) {
 
   // diag-btn'i temizle — birden fazla debug vakasında üst üste eklenmesini önle
   const diagBtn = document.getElementById('diag-btn');
-  if (diagBtn) diagBtn.remove();
+  if (diagBtn) diagBtn.style.display = 'none';
 
   if (forceEmergency) {
     activateEmergency();
