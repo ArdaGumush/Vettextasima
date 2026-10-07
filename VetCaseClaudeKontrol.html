@@ -2069,7 +2069,7 @@
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v3.8</span>
+      <span>v3.9</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -4378,10 +4378,8 @@ function startCase(caseKey) {
   // Klinik mod badge'ini temizle
   const cb = document.getElementById('clinic-badge');
   if (cb) cb.remove();
-  // Normal modda teşhis butonu
-  if (!currentCase._clinicMode) {
-    setTimeout(addDiagnosisBtn, 200);
-  }
+  // Teşhis butonu
+  setTimeout(addDiagnosisBtn, 200);
   // Teşhis sonuç önbelleğini temizle
   const dh = document.getElementById('diagnosis-result-html');
   if (dh) dh.innerHTML = '';
