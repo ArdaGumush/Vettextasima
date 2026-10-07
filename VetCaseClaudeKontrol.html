@@ -2069,7 +2069,7 @@
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v3.1</span>
+      <span>v3.1.1</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -2658,12 +2658,13 @@ async function loadCaseData() {
     // DEBUG: sorun bulununca kaldırılacak
     debugSplash("⏳ Sorular yükleniyor...");
     try {
-      const rq = await fetch(QUESTIONS_URL);
+      const timeout = new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 5000));
+      const rq = await Promise.race([fetch(QUESTIONS_URL), timeout]);
       if (rq.ok) {
         window.QUESTIONS = await rq.json();
         debugSplash("✓ " + Object.keys(window.QUESTIONS).length + " soru kategorisi yüklendi");
-      } else { console.warn("Debug HATA: questions.json HTTP " + rq.status); window.QUESTIONS = {}; }
-    } catch(eq) { console.warn("Debug HATA: questions.json — " + eq.message); window.QUESTIONS = {}; }
+      } else { debugSplash("⚠ Sorular yüklenemedi (" + rq.status + ")"); window.QUESTIONS = {}; }
+    } catch(eq) { debugSplash("⚠ Sorular atlandı: " + eq.message); window.QUESTIONS = {}; }
     document.getElementById('splash-status').textContent = "Parametreler dolduruluyor...";
     Object.values(CASE_DATA).forEach(c => fillMissingParams(c));
     document.getElementById('splash-status').textContent = "Görseller atanıyor...";
