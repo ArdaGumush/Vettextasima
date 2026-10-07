@@ -354,6 +354,18 @@
       "stool": "Dışkı muayenesi: Kıvam normal. Bağırsak tıkanıklığında dışkı çıkışı durabilir veya çok az olabilir. Parazit yumurtası görülmedi.",
       "skin": "Deri kazıntısı: Deri tüylü, sağlıklı görünümde. Parazit veya mantar elemanı görülmedi. Yüzeyel kazıntı normal sınırlarda.",
       "biopsy": "Biyopsi raporu: Rutin biyopsi bu vakada endike değildir. Cerrahi eksplorasyon tanı ve tedaviyi birlikte sağlar."
+    },
+    "questionAnswers": {
+      "kusma_1": "İplik yuttuktan sonra başladı ve son 3 gündür sürekli kusuyor. Günde 3 ila 5 kez sarı, köpüklü sıvı çıkarıyor.",
+      "kusma_2": "Kusmuk sarımsı, köpüklü ve safralıdır. İçerisinde mama artığı veya yabancı cisim görülmemiştir.",
+      "kusma_3": "3 gündür hiçbir şey yemediği için kusma yemekle ilişkili değildir.",
+      "dişkilama_1": "Son 4 gündür hiç dışkılamadı. Öncesinde ise normal kıvamda dışkılıyordu.",
+      "dişkilama_4": "Son 4 gündür hiç dışkılamadı. Olay öncesinde günde 1 kez yapıyordu.",
+      "istah_1": "Evet, 3 gündür hiçbir şey yemiyor.",
+      "istah_3": "Su içmeyi bıraktı denecek kadar azaldı. Son 2 gündür neredeyse hiç su içmedi.",
+      "karin_2": "Evet, karnına dokunulduğunda irkiliyor ve acı çekiyor. Kaldırılmaya çalışıldığında da tepki veriyor.",
+      "karin_3": "Karın bölgesinde belirgin sertlik mevcuttur.",
+      "agri_1": "Karnına dokunulduğunda ağrısı vardır, irkilir ve kaldırılmaya çalışıldığında acı çeker."
     }
   },
   "dog": {
@@ -708,6 +720,15 @@
       "stool": "Dışkı muayenesi: Normal kıvam. Parazit yumurtası görülmedi. Bu vakada dışkı muayenesinde spesifik patolojik bulgu beklenmez.",
       "skin": "Deri kazıntısı: Ektoparazit görülmedi. Deri değişiklikleri endokrin kökenli görünmekte. Sekonder bakteriyel enfeksiyon bulgusu yok.",
       "biopsy": "Biyopsi raporu: Bu vakada biyopsi endikasyonu bulunmamaktadır. Karaciğer biyopsisi ilerleyen evrede hepatomegali takibi için düşünülebilir."
+    },
+    "questionAnswers": {
+      "istah_1": "Hayır, hiç azalmadı, aksine her zamankinin iki katı mama yiyor.",
+      "istah_3": "Evet, normalde yarım litre içerken son 2 haftadır günde 2-3 litre içiyor, geceleri bile kalkıp su arıyor.",
+      "uroloji_idrar_1": "Tam saymadım ama eskiye göre çok fazla yapıyor, geceleri bile çıkmak istiyor.",
+      "uroloji_idrar_4": "Evet, idrarı çok açık sarı ve bazen tatlımsı bir kokusu geliyor.",
+      "uroloji_kaza_1": "Evet, özellikle geceleri yetişemeyip bazen eve kaçırıyor.",
+      "agirlik_1": "Evet, bu kadar çok yemesine rağmen son bir ayda 3 kilo verdi, kasları da eridi gibi.",
+      "goz_1": "Gözleri son günlerde bulanıklaştı, etraftaki eşyalara çarpıp duruyor."
     }
   },
   "fip": {
@@ -1068,6 +1089,16 @@
       "stool": "Dışkı muayenesi: Normal kıvam. Parazit yumurtası görülmedi. Primer dışkı bulgusu bu vakada beklenmez.",
       "skin": "Deri kazıntısı: Deri normal görünümde. Ektoparazit görülmedi. Primer deri tutulumu bu vakada beklenmez.",
       "biopsy": "Biyopsi raporu: Efüzyon sitolojisi tanısal değer taşır. Büyük granülosit/lenfosit oranı yüksek. Efüzyonda protein yüksek, hücre sayısı düşük — pirinç suyu görünümü. Kesin tanı için PCR veya immünokimyasal boyama gereklidir."
+    },
+    "questionAnswers": {
+      "istah_1": "Evet, yaklaşık 3 haftadır iştahı çok az, neredeyse hiçbir şey yemek istemiyor.",
+      "karin_1": "Evet, son bir iki haftadır karnı giderek şişti, sanki içi su doluymuş gibi ağır ve büyük duruyor.",
+      "solunum_nefes_4": "Evet, karnı şiştiğinden beri yürürken bile zorlanıyor, merdiven çıkınca hemen yorulup derin derin nefes alıyor.",
+      "agirlik_1": "Evet, vücudu giderek inceliyor ve kilo kaybediyor ama garip bir şekilde sadece karnı büyüyor.",
+      "enerji_1": "Evet, 3 haftadır çok halsiz ve hareket etmekte zorlanıyor.",
+      "goz_1": "Evet, eskiden gözleri çok parlaktı ama son zamanlarda bulanık bakmaya başladı.",
+      "gecmis_hastalik_2": "Evet, daha önce antibiyotik ve ateş düşürücü verdiler ama ateşini tam düşüremedik, ilaçlar pek işe yaramadı.",
+      "sosyal_temas_2": "Şu an evde tek kedi ama 3 aylıkken çok kalabalık bir üreticiden sahiplenmiştik."
     }
   },
   "parvo": {
@@ -1428,6 +1459,20 @@
       "woodslamp": "Wood's Lambası: Bu vakada deri mantar lezyonu şüphesi bulunmadığından uygulanmadı.",
       "skin": "Deri kazıntısı: Deri turgoru ileri düzeyde azalmış — ciddi dehidrasyon. Ektoparazit görülmedi. Bu vakada deri muayenesi primer tanı aracı değildir.",
       "biopsy": "Biyopsi raporu: Bu vakada biyopsi endikasyonu yoktur. Tanı snap testi ve klinik tablo ile konulmuştur. Bağırsak biyopsisi yalnızca kronik vakalarda düşünülür."
+    },
+    "questionAnswers": {
+      "kusma_1": "Dün sabahtan beri neredeyse saat başı durmadan kusuyor.",
+      "kusma_2": "Önce yediği mamayı çıkardı, sonra sarı sıvıya döndü, şimdi ise kanlı kusuyor.",
+      "kusma_3": "Zaten dünden beri hiçbir şey yemiyor, su içirmeye çalıştığımızda bile hemen geri çıkarıyor.",
+      "dişkilama_1": "Durduramadığımız çok şiddetli bir ishali var ve inanılmaz kötü kokuyor.",
+      "dişkilama_2": "Evet, dışkısı tamamen kanlı geliyor.",
+      "istah_1": "Evet, bir haftadır iştahsızdı zaten ama son iki gündür ağzına tek lokma koymadı.",
+      "istah_3": "Su bile tutamıyor midesinde, içtiği gibi kusuyor.",
+      "karin_2": "Evet, karnına dokunduğumuz anda acıyla inliyor ve elimizden kaçmaya çalışıyor.",
+      "enerji_1": "Aşırı halsiz, yerinden hiç kalkmak istemiyor; seslensek bile kafasını bile kaldıramıyor.",
+      "agri_1": "Özellikle karnına dokunduğumuzda çok acı çekiyor, inleyip kaçmaya çalışıyor.",
+      "gecmis_asi_1": "Hayır, aşıları ne yazık ki tam yaptırılmamıştı.",
+      "sosyal_temas_2": "Evet, 5 gün önce köpek parkında diğer köpeklerle, geçen hafta da bahçede sahipsiz bir yavruyla oynadı."
     }
   },
   "hernia": {
@@ -1789,6 +1834,16 @@
       "stool": "Dışkı muayenesi: Bu vakada öncelikli değil. Hasta kritik solunum sıkıntısında — dışkı örneği almak için durum uygun değil.",
       "skin": "Deri kazıntısı: Toraks ve karın bölgesinde ezilme yaralanmaları mevcut. Ektoparazit görülmedi. Deri altı amfizem şüphesi — palpasyon ile krepitasyon (+). 🔴",
       "biopsy": "Biyopsi raporu: Travma vakasında biyopsi uygun değil. Acil cerrahi müdahale önceliklidir. Biyopsi operasyon sonrası değerlendirme için saklanabilir."
+    },
+    "questionAnswers": {
+      "solunum_nefes_1": "Evet, nefes almakta çok zorlanıyor, sanki göğsü hiç çalışmıyor gibi karnıyla nefes alıyor.",
+      "solunum_nefes_3": "Evet, sabahtan beri ağzını açmış halde nefes alıp veriyor.",
+      "istah_1": "Evet, sabahtan beri önüne koyduğumuz mamaya bakmıyor bile, hiçbir şey yemedi.",
+      "istah_3": "Sabahtan beri hiç su içmiyor, ağzına tek damla sürmedi.",
+      "karin_1": "Şişlik değil de karnı çok garip duruyor, sanki içi tamamen boşalmış gibi.",
+      "noroloji_yürüyüş_3": "Evet, kalkmakta çok zorlanıyor ve arka bacaklarını zar zor, sürükler gibi kullanıyor.",
+      "gecmis_ameliyat_2": "Hayır, daha önce hiç böyle bir düşme veya travma yaşamamıştı.",
+      "maruziyet_dışarı_1": "Dün gece 3. kattan aşağıya düştü, sabah bulabildik."
     }
   },
   "uro": {
@@ -2149,6 +2204,17 @@
       "woodslamp": "Wood's Lambası: Bu vakada deri mantar lezyonu şüphesi bulunmadığından uygulanmadı.",
       "skin": "Deri kazıntısı: Deri normal görünümde. Ektoparazit yok. Kasık ve perine bölgesinde hafif ıslaklık — idrar damlatmaya bağlı.",
       "biopsy": "Biyopsi raporu: Bu vakada biyopsi endikasyonu yoktur. Mesane ya da üretra biyopsisi yalnızca kronik tıkanıklık veya tümör şüphesinde gereklidir."
+    },
+    "questionAnswers": {
+      "uroloji_idrar_1": "Dün akşam az yapıyordu ama sabahtan beri hiç yapamıyor, sadece son iki saatte en az 6-7 kez kuma girdi.",
+      "uroloji_idrar_2": "Dün akşam çok az yapıyordu ama dünden beri damla bile çıkmıyor, ıkınsa da boş dönüyor.",
+      "uroloji_idrar_3": "Evet, öne eğilip çok ıkınıyor, kum kabındayken acı acı miyavlayıp inliyor.",
+      "uroloji_kan_1": "İdrarını hiç yapamıyor ama altında ve kumunda kanlı lekeler gördük.",
+      "uroloji_kan_4": "Evet, sabah kumun içinde kanlı izler ve lekeler vardı.",
+      "istah_1": "Evet, sabahtan beri önüne koyduğumuz mamadan hiçbir şey yemedi.",
+      "istah_3": "Zaten normalde de suya pek yaklaşmaz, sabah biraz içti ama onu da hemen kustu.",
+      "karin_1": "Evet, karın bölgesi özellikle gece yarısından beri aşırı gergin ve sert hissediliyor.",
+      "genel_davranis_1": "Normalde çok sessiz bir kedidir ama gece yarısından beri durmadan ağlıyor ve çok huzursuz."
     }
   },
   "ascaris": {
@@ -2507,6 +2573,18 @@
       },
       "skin": "Deri kazıntısı: Ektoparazit görülmedi. Bu vakada deri kazıntısı tanı aracı değildir.",
       "biopsy": "Biyopsi raporu: Bu vakada biyopsi endikasyonu yoktur. Tanı dışkı flotasyonu, klinik bulgular ve görüntüleme ile konulmuştur."
+    },
+    "questionAnswers": {
+      "kusma_2": "Dün kustu ve kusmuğunun içinde canlı solucanlar vardı.",
+      "dişkilama_1": "Dışkısı bazen çok yumuşak, cıvık, sarımsı ve kötü kokulu geliyor.",
+      "dişkilama_2": "Kan görmedim ama dışkısı bazen çok sümüksü oluyor.",
+      "istah_1": "Hayır, mama yeme isteği çok iyi, gayet güzel yiyor.",
+      "agirlik_1": "Çok iyi yemesine rağmen bir türlü kilo alamıyor, kardeşlerine göre çok küçük kaldı.",
+      "agirlik_2": "Evet, kilo alamadığı için kemikleri resmen sayılıyor.",
+      "solunum_öksürük_1": "Evet, birkaç haftadır ara ara kuru öksürüğü var, özellikle dinlenirken daha çok öksürüyor.",
+      "solunum_nefes_4": "Evet, birazcık oyun oynasa hemen yoruluyor ve çabuk nefes nefese kalıyor.",
+      "karin_1": "Evet, karnı giderek şişti ve şu an davul gibi duruyor.",
+      "maruziyet_kene_pire_2": "Hayır, annesi sokaktan gelmişti ve parazit ilacı hiç yapılmadı."
     }
   },
   "demodicosis": {
@@ -2842,6 +2920,18 @@
         "imgRef": "Ribeiro et al. (2024). Otitis externa associated with Demodex cati - case report. Arquivo Brasileiro de Medicina Veterinária e Zootecnia, 76, 109-113. DOI: 10.1590/1678-4162-13004"
       },
       "biopsy": "Biyopsi raporu: Bu vakada rutin biyopsi endikasyonu yoktur. Deri kazıntısı tanı için yeterlidir. Kronik veya dirençli vakalarda foliküler biyopsi düşünülebilir."
+    },
+    "questionAnswers": {
+      "deri_kaşıntı_1": "Hayır, hiç kaşınmıyor, tüyleri kendiliğinden döküldü.",
+      "deri_döküntü_1": "Hafif bir kızarıklık var ama daha çok derisi kuru ve kabuklu görünüyor.",
+      "deri_döküntü_2": "Evet, derisi kepek gibi dökülüyor ve çok fazla pullanıp kabuk bağlıyor.",
+      "deri_tüy_1": "Evet, tüyleri kaşınmadığı halde kendiliğinden giderek dökülüyor.",
+      "deri_tüy_2": "Evet, özellikle gözlerinin etrafındaki ve başındaki tüyler tamamen döküldü.",
+      "istah_3": "Evet, son zamanlarda çok arttı; artık su kabını günde iki kez doldurmak zorunda kalıyorum.",
+      "agirlik_1": "Evet, iştahı gayet yerinde olmasına rağmen kilo kaybediyor.",
+      "enerji_1": "Evet, son zamanlarda belirgin şekilde halsizleşti.",
+      "gecmis_ilaç_2": "Evet, geçen ay alerji şüphesiyle kortizon iğnesi yapılmıştı, zaten dökülmeler de ondan sonra arttı.",
+      "sosyal_diğer_hayvanlar_1": "Bu sorun sadece bu kedimde var, evdeki diğer kedilerde hiçbir belirti görülmedi."
     }
   },
   "pancreatitis": {
@@ -3197,6 +3287,19 @@
       "stool": "Dışkı muayenesi: Kıvam yumuşak, renk açık-sarı. **Steatore şüphesi** — yağlı, kötü kokulu dışkı pankreatik eksokrin yetmezliğini düşündürür. Gizli kan: Negatif. Parazit yumurtası görülmedi.",
       "skin": "Deri kazıntısı: Bu vakada deri kazıntısı endike değildir. Ektoparazit görülmedi.",
       "biopsy": "Biyopsi raporu: Akut vakada biyopsi kontrendikedir. Tanı klinik bulgular, enzim yüksekliği ve görüntüleme ile konulur. Kronik/tekrarlayan vakalarda patoloji değerlendirmesi düşünülebilir."
+    },
+    "questionAnswers": {
+      "kusma_1": "Sabahtan beri durmadan kusuyor, bugün 5-6 kez kustu.",
+      "kusma_2": "Önce mamasını çıkardı, sonrasında ise sadece sarı köpüklü sıvı gelmeye başladı.",
+      "dişkilama_1": "Dışkısı çok yumuşak ve rengi her zamankinden daha açık.",
+      "istah_1": "Evet, bugün hiçbir şey yemedi, ağzına mama sürmüyor.",
+      "istah_3": "Bugün hiç su içmek istemedi, su kabına yaklaşmıyor.",
+      "karin_1": "Evet, karnı belirgin şekilde sert ve aşırı hassas duruyor.",
+      "karin_2": "Evet, karnına dokunmaya kalktığımızda bağırıyor, kaçıyor ve ağlıyor.",
+      "agri_1": "Çok şiddetli ağrısı var, ayakta bile duramayıp sürekli inliyor ve dokunduğumuzda bağırıyor.",
+      "enerji_1": "Evet, aşırı halsiz ve ayakta bile duramıyor; ön ayaklarını yere uzatıp arkasını havada tutarak bekliyor.",
+      "maruziyet_beslenme_1": "Evet, dün akşam mangaldan arta kalan et yağları ve kemikler verilmişti.",
+      "gecmis_hastalik_2": "Hayır, ilk defa bu kadar şiddetli oluyor, daha önce hiç böyle bir şey yaşamamıştık."
     }
   },
   "invagination": {
@@ -3552,6 +3655,20 @@
       "stool": "Dışkı muayenesi: **Kanlı-sümüksü dışkı** mevcut. 🔴 Parazit yumurtası görülmedi. Dışkı bulgusunun spesifik tanısal değeri sınırlıdır.",
       "skin": "Deri kazıntısı: Sağ karın duvarında ekimoz (morarma) dışında deri normal. Ektoparazit görülmedi.",
       "biopsy": "Biyopsi raporu: Bu vakada acil cerrahi müdahale önceliklidir. İnvagine bağırsak segmentinin viabilitesi operasyon sırasında değerlendirilecek; nekrotik doku saptanırsa rezeksiyon-anastomoz planlanmalıdır."
+    },
+    "questionAnswers": {
+      "kusma_1": "2 gün önceki kazanın olduğu akşam başladı ve dünden beri hiçbir şeyi midesinde tutamıyor.",
+      "kusma_2": "Kusmuğunda kan yok, sadece sarı köpüklü sıvı çıkarıyor.",
+      "kusma_3": "Evet, su içtikten 2 dakika sonra hemen geri çıkarıyor.",
+      "dişkilama_1": "Dün sabahtan sonra tamamen değişti, jöle gibi sümüksü bir kıvamda çıkarıyor.",
+      "dişkilama_2": "Evet, dışkısı tamamen kanlı ve sümüksü bir halde geliyor.",
+      "istah_1": "Evet, önüne ne koysam reddediyor, dünden beri hiçbir şey yemiyor.",
+      "istah_3": "Su içtiğinde midesinde tutamayıp hemen kustuğu için su da içemiyor.",
+      "karin_1": "Evet, karnı çok gergin duruyor ve sağ tarafında hafif bir morluk var.",
+      "karin_2": "Evet, karnına dokunulduğunda çok acı çekip bağırıyor.",
+      "agri_1": "Özellikle karnına dokunulduğunda bağıracak kadar çok şiddetli ağrısı var.",
+      "enerji_1": "Evet, dünden beri aşırı halsiz ve yerinden hiç kalkmak istemiyor.",
+      "maruziyet_dışarı_1": "Evet, 2 gün önce bahçede koşarken karnının sağ tarafını kapı eşiğine çok sert çarptı."
     }
   },
   "cushings": {
@@ -3904,6 +4021,17 @@
       "stool": "Dışkı muayenesi: Kıvam normal. Parazit yumurtasına rastlanmadı. Sindirim normal görünümde.",
       "skin": "Deri kazıntısı: Tüy dökülen bölgelerde deri ince ve frajil. **Ektoparazit görülmedi.** Kalınlaşmış epidermis veya hiperkeratoz bulgusu yok. Alopesi non-enflamatuar niteliktedir — endokrin kökenli.",
       "biopsy": "Biyopsi raporu: Bu vakada rutin deri biyopsisi endike değildir. Tanı ACTH stimülasyon testi ve USG ile konulmuştur. Karaciğer biyopsisi ancak vakuoler hepatopatinin ilerlediği durumlarda düşünülür."
+    },
+    "questionAnswers": {
+      "istah_1": "Hayır, hiç azalmadı; sürekli aç gibi kendi mamasını hemen bitirip mutfaktan yemek çalmaya çalışıyor.",
+      "istah_3": "Evet, inanılmaz arttı; eskiden bir kase yeterken şimdi günde 3 litreden fazla içiyor, geceleri bile kalkıp su arıyor.",
+      "uroloji_kaza_1": "Evet, her sabah evin ortasında idrar birikintisi buluyoruz, geceleri mutlaka kaza yapıyor.",
+      "deri_kaşıntı_1": "Hayır, tüy dökülen yerlerde hiç kaşıntı ya da kızarıklık yok.",
+      "deri_tüy_1": "Evet, sırtındaki tüyler çok döküldü ve derisi damarları görünecek kadar inceldi.",
+      "deri_tüy_2": "Evet, özellikle sırt bölgesindeki tüyleri tamamen döküldü.",
+      "karin_1": "Evet, son 4-5 aydır karnı yavaş yavaş şişti ve şu an balon gibi duruyor.",
+      "solunum_nefes_4": "Evet, kasları eridiği için merdiven çıkarken bile hemen nefes nefese kalıyor ve yürümekte zorlanıyor.",
+      "gecmis_ilaç_1": "Hayır, son iki yıldır düzenli olarak hiçbir ilaç kullanmadı."
     }
   },
   "dermatophytosis": {
@@ -4262,6 +4390,16 @@
         "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Macroconidia_Microsporum_canis.JPG/1920px-Macroconidia_Microsporum_canis.JPG"
       },
       "biopsy": "Biyopsi raporu: Rutin biyopsi bu vakada endike değildir. Kültür ve Wood's lambası tanı için yeterlidir. Kronik/dirençli vakalarda foliküler biyopsi düşünülebilir."
+    },
+    "questionAnswers": {
+      "deri_kaşıntı_1": "Şiddetli bir kaşıntısı yok gibi ama ön bacaklarını sanki tahriş varmış gibi sürekli yalıyor.",
+      "deri_döküntü_2": "Evet, derisi oldukça pullu ve kepekli görünüyor.",
+      "deri_tüy_1": "Evet, tüyleri belirgin şekilde dökülüyor ve oldukça mat duruyor.",
+      "deri_tüy_2": "Evet, özellikle baş bölgesinde ve kulak arkalarında bölgesel tüy dökülmeleri ve açılmalar var.",
+      "deri_tüy_3": "Evet, tüyleri eskisi gibi değil; oldukça mat, bakımsız ve cansız görünüyor.",
+      "istah_1": "Evet, biraz iştahı azaldı ama genel durumu fena değil.",
+      "maruziyet_beslenme_3": "Hayır, son zamanlarda herhangi bir mama veya çevre değişikliği yapmadık.",
+      "sosyal_diğer_hayvanlar_4": "Evet, evdeki diğer kedimizin de kulak kenarlarında aynı anda tüy dökülmeleri ve açılmalar başladı."
     }
   },
   "giardiasis": {
@@ -4619,6 +4757,18 @@
       },
       "skin": "Deri kazıntısı: Ektoparazit görülmedi. Bu vakada deri bulgularında spesifik patoloji beklenmez.",
       "biopsy": "Biyopsi raporu: Bu vakada biyopsi endike değildir. Tanı dışkı mikroskobu ve ELISA testi ile doğrulanmıştır. Kronik malabsorpsiyon vakalarında ince bağırsak biyopsisi düşünülebilir."
+    },
+    "questionAnswers": {
+      "dişkilama_1": "2 haftadır geçmeyen, bazen düzelip tekrar başlayan yumuşak bir ishali var; dışkısı açık renkli, yağlı gibi parlak ve çok kötü kokuyor.",
+      "dişkilama_2": "Kan görmedim ama dışkısı bazen sümüksü bir yapıda oluyor.",
+      "dişkilama_3": "Evet çok arttı, eskiden günde 2 kez çıkarken şimdi günde 4-5 kez dışarı çıkmak istiyor.",
+      "kusma_1": "Haftada 1-2 kez mide bulantısı gibi bir durumu oluyor ama asıl problemimiz ishal.",
+      "istah_1": "Hayır hiç azalmadı, iştahı gayet yerinde ve çok yiyor.",
+      "agirlik_1": "Evet, çok yemesine rağmen bir türlü kilo alamıyor, hatta kaburgaları sayılacak kadar zayıfladı.",
+      "karin_1": "Karnından çok yüksek sesli gurultular geliyor ve çok fazla gaz çıkarıyor.",
+      "karin_2": "Evet, karnı bazen çok gergin oluyor ve dokunduğumuzda inliyor.",
+      "genel_davranis_2": "Evet, halıları ve yerleri takıntılı bir şekilde yalamaya başladı.",
+      "maruziyet_zehir_3": "Evet, hafta sonları ormanlık alanda gezerken göletlerden su içiyor."
     }
   },
   "hyperthyroidism": {
@@ -4970,6 +5120,18 @@
       "stool": "Dışkı muayenesi: **Hacimli dışkı, steatore şüphesi** — yağ emilim bozukluğu. ⚠ Parazit yumurtası görülmedi.",
       "skin": "Deri kazıntısı: Ektoparazit görülmedi. Deri tüy kalitesinde bozulma mevcut ancak lezyonsuz. Bu vakada deri kazıntısı primer tanı aracı değildir.",
       "biopsy": "Biyopsi raporu: Bu vakada biyopsi endike değildir. Tanı T4 yüksekliği ve klinik bulgularla konulmaktadır. Tiroid kitlesi şüphesinde ince iğne aspirasyonu düşünülebilir."
+    },
+    "questionAnswers": {
+      "istah_1": "Hayır, aksine çok yiyor, iştahında bir azalma yok.",
+      "istah_3": "Evet, su tüketimi çok arttı; eskiden günde bir kez tazelerken şimdi su kabını günde 3 kez doldurmak zorunda kalıyorum.",
+      "agirlik_1": "Evet, bu kadar çok yemesine rağmen gözle görülür şekilde zayıfladı, resmen kemikleri sayılıyor.",
+      "kusma_1": "Evet, arada bir mama yedikten sonra kusuyor.",
+      "dişkilama_1": "Bazen dışkısı cıvık geliyor.",
+      "uroloji_idrar_1": "Evet, kum kabı eskiye göre çok daha çabuk kirleniyor, daha sık idrara çıkıyor.",
+      "deri_tüy_3": "Evet, artık kendini yalamayı bıraktığı için tüyleri çok bakımsız ve mat görünüyor.",
+      "enerji_1": "Aktivitesi azalmadı, aksine geceleri bile uyumayıp evin içinde oradan oraya koşturuyor.",
+      "genel_davranis_1": "Evet, çok hırçınlaştı ve sinirli oldu; sürekli tetikte duruyor, dokunmamıza bile izin vermiyor ve geceleri yüksek sesle bağırıyor.",
+      "noroloji_yürüyüş_4": "Evet, eskiden tezgaha tek hamlede zıplayıp çıkardı ama artık çıkamıyor."
     }
   },
   "hypothyroidism": {
@@ -5324,6 +5486,17 @@
       "stool": "Dışkı muayenesi: Parazit yumurtasına rastlanmadı. Kıvam normal. Primer dışkı bulgusu bu vakada beklenmez.",
       "skin": "Deri kazıntısı: Ektoparazit görülmedi. **Tüy dökülen bölgelerde hiperkeratoz ve hiperpigmentasyon** mevcut — endokrin alopesi ile uyumlu. Mantar elemanı yok.",
       "biopsy": "Biyopsi raporu: Deri biyopsisi bu vakada endike değildir. Tanı T4/TSH değerleri ve klinik bulgularla konulmaktadır. Dirençli vakalarda deri biyopsisi miksödem değişikliklerini gösterebilir."
+    },
+    "questionAnswers": {
+      "istah_1": "Evet, iştahı azaldı, önüne koyduğumuz yemeği bitirmekte bile zorlanıyor.",
+      "agirlik_3": "Evet, daha az yemesine rağmen çok kilo aldı ve şişmanlamaya devam ediyor.",
+      "deri_kaşıntı_1": "Hayır, tüy dökülen yerlerde hiç kaşıntı yok, tüyleri kendiliğinden dökülüyor.",
+      "deri_tüy_1": "Evet, tüyleri iyice cansızlaştı ve çok fazla dökülüyor.",
+      "deri_tüy_2": "Evet, özellikle kuyruğundaki tüyler tamamen döküldü, kuyruğu çıplak kaldı.",
+      "enerji_1": "Evet, eskiden çok enerjikti ama şimdi bütün gün uyuyor ve hiç oyun oynamak istemiyor.",
+      "solunum_nefes_4": "Evet, daha sokağın başına bile varmadan hemen yorulup duruyor ve dinlenmek istiyor.",
+      "genel_davranis_4": "Evet, komutlara tepkisi oldukça yavaşladı, seslendiğimizde eskisi gibi hemen gelmiyor.",
+      "genel_soguk_1": "Evet, sürekli evin en sıcak yerlerini arıyor ve battaniyenin altında yatmak istiyor."
     }
   },
   "asthma": {
@@ -5678,6 +5851,17 @@
       "stool": "Dışkı muayenesi: Flotasyon ve sedimantasyon yöntemleriyle incelendi. Akciğer kıl kurtlarına ait larva veya parazit yumurtası görülmedi. **Sonuç: Negatif** ✓ — Paraziter bronşit dışlandı.",
       "skin": "Deri kazıntısı: Deri lezyonu bulunmadığından kazıntı endike değildir. Ektoparazit görülmedi.",
       "biopsy": "Biyopsi raporu: Akut vakada biyopsi endike değildir. Kronik/dirençli vakalarda bronkoalveolar lavaj (BAL) sitolojisi düşünülebilir."
+    },
+    "questionAnswers": {
+      "solunum_öksürük_1": "Evet, 2 gündür yere çömelip boynunu öne doğru uzatarak öksürüyor.",
+      "solunum_öksürük_2": "Öksürüğü tamamen kuru, hiçbir şey kusmuyor ya da çıkarmıyor.",
+      "solunum_öksürük_4": "Evet; parfümlü kum, oda spreyi, tütsü, sigara dumanı ve tadilat tozu gibi durumlar hemen krizi tetikliyor.",
+      "solunum_nefes_1": "Evet, dinlenirken bile göğsü ve karnı körük gibi çok hızlı inip kalkıyor.",
+      "solunum_nefes_2": "Evet, nefes alırken boğulur gibi belirgin bir hırıltı sesi geliyor.",
+      "solunum_nefes_4": "Evet, iki adım koşsa hemen yoruluyor ve nefes nefese kalıyor.",
+      "kusma_1": "Hayır, kusması yok; sadece kuru kuru öksürüp halsiz düşüyor.",
+      "enerji_1": "Evet, hiç oyun oynamıyor, çabuk yoruluyor ve duman veya koku olunca köşelere saklanıyor.",
+      "maruziyet_zehir_1": "Evet, evde sigara içiliyor; ayrıca oda spreyi, parfümlü kedi kumu, kokulu mumlar ve esansiyel yağlar kullanılıyor."
     }
   }
 }

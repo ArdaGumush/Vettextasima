@@ -1,0 +1,912 @@
+{
+  "sindirim": {
+    "label": "Sindirim Sistemi",
+    "icon": "🤮",
+    "subcategories": {
+      "kusma": {
+        "label": "Kusma",
+        "questions": [
+          {
+            "id": "kusma_1",
+            "q": "Son zamanlarda kusma veya öğürme gördünüz mü?",
+            "default": "Hayır."
+          },
+          {
+            "id": "kusma_2",
+            "q": "Kustuysa içinde mama, safra veya yabancı cisim var mıydı?",
+            "default": "Kusmadı."
+          },
+          {
+            "id": "kusma_3",
+            "q": "Kusma yemekten hemen sonra mı gerçekleşiyor?",
+            "default": "Kusma sorunu yok."
+          },
+          {
+            "id": "kusma_4",
+            "q": "Kusarken aşırı bir karın eforu sarf ediyor mu?",
+            "default": "Hayır, kusmuyor."
+          }
+        ]
+      },
+      "diskilama": {
+        "label": "Dışkılama",
+        "questions": [
+          {
+            "id": "diskilama_1",
+            "q": "Dışkısının kıvamında ishal veya sertlik var mı?",
+            "default": "Dışkısı normal kıvamda."
+          },
+          {
+            "id": "diskilama_2",
+            "q": "Dışkısında kan veya sümüksü bir yapı fark ettiniz mi?",
+            "default": "Hayır, görmedim."
+          },
+          {
+            "id": "diskilama_3",
+            "q": "Dışkısını yaparken zorlanıyor veya bağırıyor mu?",
+            "default": "Zorlanmadan rahatça yapıyor."
+          },
+          {
+            "id": "diskilama_4",
+            "q": "Günde ortalama kaç kez büyük tuvaletine çıkıyor?",
+            "default": "Günde bir iki kez normal şekilde yapıyor."
+          }
+        ]
+      },
+      "i̇stah": {
+        "label": "İştah",
+        "questions": [
+          {
+            "id": "i̇stah_1",
+            "q": "Son günlerde mama yeme isteğinde bir azalma var mı?",
+            "default": "İştahı gayet yerinde."
+          },
+          {
+            "id": "i̇stah_2",
+            "q": "Günlük öğünlerinin tamamını bitiriyor mu?",
+            "default": "Evet, hepsini bitiriyor."
+          },
+          {
+            "id": "i̇stah_3",
+            "q": "Su içme miktarında belirgin bir artış veya azalış oldu mu?",
+            "default": "Normal miktarda su içiyor."
+          },
+          {
+            "id": "i̇stah_4",
+            "q": "Çiğnerken zorlanma veya mamayı ağzından düşürme var mı?",
+            "default": "Hayır, rahatça çiğniyor."
+          }
+        ]
+      },
+      "karin": {
+        "label": "Karın",
+        "questions": [
+          {
+            "id": "karin_1",
+            "q": "Karnında belirgin bir şişlik veya gaz fark ettiniz mi?",
+            "default": "Hayır, karnı normal."
+          },
+          {
+            "id": "karin_2",
+            "q": "Karnına dokunduğunuzda bir tepki veya huzursuzluk gösteriyor mu?",
+            "default": "Hayır, dokununca rahatsız olmuyor."
+          },
+          {
+            "id": "karin_3",
+            "q": "Karın bölgesinde gurultu veya sertlik hissediyor musunuz?",
+            "default": "Hayır, hissetmiyorum."
+          },
+          {
+            "id": "karin_4",
+            "q": "Sürekli kambur durarak karnını koruma eğiliminde mi?",
+            "default": "Hayır, duruşu normal."
+          }
+        ]
+      }
+    }
+  },
+  "solunum": {
+    "label": "Solunum",
+    "icon": "🫁",
+    "subcategories": {
+      "oksuruk": {
+        "label": "Öksürük",
+        "questions": [
+          {
+            "id": "oksuruk_1",
+            "q": "Son günlerde öksürük veya tıkanma benzeri sesler çıkardı mı?",
+            "default": "Hayır, hiç öksürmedi."
+          },
+          {
+            "id": "oksuruk_2",
+            "q": "Öksürük nöbetleri özellikle hareket ettikten sonra mı artıyor?",
+            "default": "Öksürüğü yok."
+          },
+          {
+            "id": "oksuruk_3",
+            "q": "Boğazına bir şey takılmış gibi öğürme hareketi yapıyor mu?",
+            "default": "Hayır, yapmıyor."
+          },
+          {
+            "id": "oksuruk_4",
+            "q": "Uykudan uyandıran şiddetli bir öksürüğü oldu mu?",
+            "default": "Hayır, olmadı."
+          }
+        ]
+      },
+      "nefes": {
+        "label": "Nefes",
+        "questions": [
+          {
+            "id": "nefes_1",
+            "q": "Dinlenme halindeyken hızlı veya zor nefes alıp veriyor mu?",
+            "default": "Nefes alıp verişi sakin ve normal."
+          },
+          {
+            "id": "nefes_2",
+            "q": "Soluk alıp verirken hırıltı veya ıslık sesi duyuluyor mu?",
+            "default": "Hayır, duyulmuyor."
+          },
+          {
+            "id": "nefes_3",
+            "q": "Ağzı açık nefes alma veya boynunu uzatma davranışı var mı?",
+            "default": "Hayır, yok."
+          },
+          {
+            "id": "nefes_4",
+            "q": "En ufak bir harekette çabuk yorulup nefessiz kalıyor mu?",
+            "default": "Hayır, kondisyonu iyi."
+          }
+        ]
+      },
+      "burun": {
+        "label": "Burun",
+        "questions": [
+          {
+            "id": "burun_1",
+            "q": "Burnundan şeffaf veya renkli bir akıntı geliyor mu?",
+            "default": "Hayır, akıntı yok."
+          },
+          {
+            "id": "burun_2",
+            "q": "Sık sık veya peş peşe hapşırma nöbetleri var mı?",
+            "default": "Hayır, hapşırmıyor."
+          },
+          {
+            "id": "burun_3",
+            "q": "Burun deliklerinde kuruluk, kabuklanma veya çatlak fark ettiniz mi?",
+            "default": "Burnunun nemi ve yapısı normal."
+          },
+          {
+            "id": "burun_4",
+            "q": "Burun kanaması veya burundan tek taraflı ses gelmesi yaşadınız mı?",
+            "default": "Hayır, yaşamadık."
+          }
+        ]
+      }
+    }
+  },
+  "noroloji": {
+    "label": "Nöroloji",
+    "icon": "🧠",
+    "subcategories": {
+      "nobet": {
+        "label": "Nöbet",
+        "questions": [
+          {
+            "id": "nobet_1",
+            "q": "Vücudunda istemsiz titreme veya kasılma nöbetleri oldu mu?",
+            "default": "Hayır, hiç kasılma olmadı."
+          },
+          {
+            "id": "nobet_2",
+            "q": "Kendinden geçip ağzından köpük gelme durumu yaşandı mı?",
+            "default": "Hayır, yaşanmadı."
+          },
+          {
+            "id": "nobet_3",
+            "q": "Bacaklarında anlık boşalma veya bayılma benzeri ataklar gördünüz mü?",
+            "default": "Hayır, görmedim."
+          },
+          {
+            "id": "nobet_4",
+            "q": "Belli aralıklarla boşluğa bakıp tepkisiz kaldığı anlar oluyor mu?",
+            "default": "Hayır, dikkati ve tepkileri yerinde."
+          }
+        ]
+      },
+      "yuruyus": {
+        "label": "Yürüyüş",
+        "questions": [
+          {
+            "id": "yuruyus_1",
+            "q": "Yürürken yalpalanma veya dengesini kaybetme durumu var mı?",
+            "default": "Hayır, gayet dengeli yürüyor."
+          },
+          {
+            "id": "yuruyus_2",
+            "q": "Patilerini yere basarken ters basma veya sürtme yapıyor mu?",
+            "default": "Patilerini yere düzgün basıyor."
+          },
+          {
+            "id": "yuruyus_3",
+            "q": "Arka bacaklarını sürükleme veya basmakta isteksizlik gözlemlediniz mi?",
+            "default": "Hayır, bacaklarını normal kullanıyor."
+          },
+          {
+            "id": "yuruyus_4",
+            "q": "Düz bir çizgide yürümekte veya koşmakta zorlanıyor mu?",
+            "default": "Zorlanmıyor."
+          }
+        ]
+      },
+      "bilinc": {
+        "label": "Bilinç",
+        "questions": [
+          {
+            "id": "bilinc_1",
+            "q": "İsmini çağırdığınızda veya seslendiğinizde her zamanki gibi tepki veriyor mu?",
+            "default": "Evet, hemen tepki veriyor."
+          },
+          {
+            "id": "bilinc_2",
+            "q": "Etrafta amaçsızca dönme veya duvara başını dayama hareketi var mı?",
+            "default": "Hayır, böyle bir hareketi yok."
+          },
+          {
+            "id": "bilinc_3",
+            "q": "Çevresindeki eşyaları algılamada bir zayıflık veya sersemlik sezdiniz mi?",
+            "default": "Çevresinin ve eşyaların farkında."
+          },
+          {
+            "id": "bilinc_4",
+            "q": "Gündüz ve gece algısında bozulma veya aşırı yön kaybı var mı?",
+            "default": "Hayır, bilinci gayet açık."
+          }
+        ]
+      },
+      "bas": {
+        "label": "Baş",
+        "questions": [
+          {
+            "id": "bas_1",
+            "q": "Kafasını sürekli tek bir yöne doğru eğik tutuyor mu?",
+            "default": "Hayır, baş duruşu düz ve simetrik."
+          },
+          {
+            "id": "bas_2",
+            "q": "Başında anlık istemsiz titremeler veya tikler oluşuyor mu?",
+            "default": "Hayır, olmuyor."
+          },
+          {
+            "id": "bas_3",
+            "q": "Kafasını sallama veya bir yerlere vurma davranışı var mı?",
+            "default": "Hayır, yok."
+          },
+          {
+            "id": "bas_4",
+            "q": "Başına dokunduğunuzda irkilme veya ağrılı bir çekilme yapıyor mu?",
+            "default": "Dokununca sakin kalıyor, bir tepkisi yok."
+          }
+        ]
+      }
+    }
+  },
+  "deri": {
+    "label": "Deri",
+    "icon": "🐾",
+    "subcategories": {
+      "kasinti": {
+        "label": "Kaşıntı",
+        "questions": [
+          {
+            "id": "kasinti_1",
+            "q": "Sürekli aynı bölgeyi kaşıma veya tırmalama huyu başladı mı?",
+            "default": "Hayır, normalden fazla kaşınmıyor."
+          },
+          {
+            "id": "kasinti_2",
+            "q": "Patilerini ya da bacaklarını takıntılı şekilde yalayıp kemiriyor mu?",
+            "default": "Hayır, kemirmiyor veya yalamıyor."
+          },
+          {
+            "id": "kasinti_3",
+            "q": "Kaşınmaktan dolayı uykusunun bölündüğü oluyor mu?",
+            "default": "Hayır, rahat uyuyor."
+          },
+          {
+            "id": "kasinti_4",
+            "q": "Vücudunu halıya veya mobilyalara sürtme ihtiyacı duyuyor mu?",
+            "default": "Hayır, sürtünmüyor."
+          }
+        ]
+      },
+      "dokuntu": {
+        "label": "Döküntü",
+        "questions": [
+          {
+            "id": "dokuntu_1",
+            "q": "Derisinde kızarıklık, yara veya sivilce benzeri kabarcıklar var mı?",
+            "default": "Derisi temiz ve pürüzsüz."
+          },
+          {
+            "id": "dokuntu_2",
+            "q": "Vücudunda kabuklanmış veya kepeklenmiş odaklar görüyor musunuz?",
+            "default": "Hayır, kabuklanma yok."
+          },
+          {
+            "id": "dokuntu_3",
+            "q": "Deri üzerinde elinize gelen herhangi bir şişlik veya kitle var mı?",
+            "default": "Hayır, şişlik veya kitle yok."
+          },
+          {
+            "id": "dokuntu_4",
+            "q": "Derisinde kötü veya alışılmışın dışında ağır bir koku var mı?",
+            "default": "Kötü bir koku yok."
+          }
+        ]
+      },
+      "tuy": {
+        "label": "Tüy",
+        "questions": [
+          {
+            "id": "tuy_1",
+            "q": "Mevsim normallerinin üzerinde aşırı bir tüy dökülmesi mevcut mu?",
+            "default": "Dökülme normal seviyede."
+          },
+          {
+            "id": "tuy_2",
+            "q": "Vücudunun belli yerlerinde bölgesel açılmalar veya kellik var mı?",
+            "default": "Hayır, tüyleri homojen dağılımlı."
+          },
+          {
+            "id": "tuy_3",
+            "q": "Tüylerinde kuruluk, keçeleşme veya matlaşma dikkatinizi çekti mi?",
+            "default": "Tüyleri parlak ve yumuşak."
+          },
+          {
+            "id": "tuy_4",
+            "q": "Tüylerini çekerken elinize tutam tutam gelme durumu yaşanıyor mu?",
+            "default": "Hayır, yaşanmıyor."
+          }
+        ]
+      },
+      "tirnak": {
+        "label": "Tırnak",
+        "questions": [
+          {
+            "id": "tirnak_1",
+            "q": "Tırnaklarında kırılma, çatlama veya içine doğru batma var mı?",
+            "default": "Tırnakları düzgün ve sağlam."
+          },
+          {
+            "id": "tirnak_2",
+            "q": "Tırnak diplerinde kızarıklık, iltihap veya şişlik gözlemlediniz mi?",
+            "default": "Tırnak dipleri temiz görünüyor."
+          },
+          {
+            "id": "tirnak_3",
+            "q": "Yürürken tırnağını basmaktan kaçındığı belirli bir pati var mı?",
+            "default": "Hayır, tüm patilerini rahat basıyor."
+          },
+          {
+            "id": "tirnak_4",
+            "q": "Tırnaklarının aşırı hızlı uzaması veya tabakalanarak soyulması oluyor mu?",
+            "default": "Hayır, olmuyor."
+          }
+        ]
+      }
+    }
+  },
+  "uroloji": {
+    "label": "Üroloji",
+    "icon": "🚽",
+    "subcategories": {
+      "i̇drar": {
+        "label": "İdrar",
+        "questions": [
+          {
+            "id": "i̇drar_1",
+            "q": "Günde kaç kez idrarını yapıyor, bir sıklık artışı oldu mu?",
+            "default": "Normal sıklıkta yapıyor."
+          },
+          {
+            "id": "i̇drar_2",
+            "q": "İdrar yaparken damlatma veya çok az yapabilme durumu var mı?",
+            "default": "Hayır, akışı rahat ve kesintisiz."
+          },
+          {
+            "id": "i̇drar_3",
+            "q": "İdrarını yaparken zorlanma, acı çekme veya inleme gözlemlediniz mi?",
+            "default": "Zorlanmadan rahatça yapıyor."
+          },
+          {
+            "id": "i̇drar_4",
+            "q": "İdrarının kokusunda veya berraklığında belirgin bir değişiklik fark ettiniz mi?",
+            "default": "İdrarı berrak ve kokusu normal."
+          }
+        ]
+      },
+      "kaza": {
+        "label": "Kaza",
+        "questions": [
+          {
+            "id": "kaza_1",
+            "q": "Tuvalet kabı veya dışarısı haricinde evin içine idrar kaçırdı mı?",
+            "default": "Hayır, hiç kaçırmadı."
+          },
+          {
+            "id": "kaza_2",
+            "q": "Uyurken veya yatarken farkında olmadan altına kaçırma durumu yaşandı mı?",
+            "default": "Hayır, yaşanmadı."
+          },
+          {
+            "id": "kaza_3",
+            "q": "Kapıya veya tuvalete yetişemeden aceleyle damlattığı oluyor mu?",
+            "default": "Tuvaletini rahatça tutabiliyor."
+          },
+          {
+            "id": "kaza_4",
+            "q": "Tuvalet eğitiminde son dönemde ani bir gerileme sezildi mi?",
+            "default": "Hayır, tuvalet alışkanlığı düzgün."
+          }
+        ]
+      },
+      "kan": {
+        "label": "Kan",
+        "questions": [
+          {
+            "id": "kan_1",
+            "q": "İdrarında pembe, kırmızı ya da kahverengi bir renk gördünüz mü?",
+            "default": "Hayır, rengi normal açık sarı."
+          },
+          {
+            "id": "kan_2",
+            "q": "İdrarını yaptıktan sonra damla şeklinde kırmızı sıvı geliyor mu?",
+            "default": "Hayır, gelmiyor."
+          },
+          {
+            "id": "kan_3",
+            "q": "Genital bölgesinde veya idrar çıkış deliğinde kan pıhtısı var mı?",
+            "default": "Hayır, bölge temiz."
+          },
+          {
+            "id": "kan_4",
+            "q": "İdrar kabında veya paspasında kırmızı lekelere rastladınız mı?",
+            "default": "Hayır, rastlamadım."
+          }
+        ]
+      }
+    }
+  },
+  "goz_kulak": {
+    "label": "Göz & Kulak",
+    "icon": "👁",
+    "subcategories": {
+      "goz": {
+        "label": "Göz",
+        "questions": [
+          {
+            "id": "goz_1",
+            "q": "Gözlerinde çapaklanma, sarı-yeşil akıntı veya sulanma var mı?",
+            "default": "Gözleri temiz ve berrak."
+          },
+          {
+            "id": "goz_2",
+            "q": "Gözlerini kısma, kırpıştırma veya ışıktan rahatsız olma durumu görüyor musunuz?",
+            "default": "Hayır, gözlerini rahatça açıyor."
+          },
+          {
+            "id": "goz_3",
+            "q": "Göz kapaklarında veya etrafında kızarıklık ve şişlik mevcut mu?",
+            "default": "Hayır, kızarıklık yok."
+          },
+          {
+            "id": "goz_4",
+            "q": "Korneasında matlaşma, mavimsi pus veya beyaz bir perde fark ettiniz mi?",
+            "default": "Göz merceği şeffaf ve parlak."
+          }
+        ]
+      },
+      "kulak": {
+        "label": "Kulak",
+        "questions": [
+          {
+            "id": "kulak_1",
+            "q": "Kulağında koyu renkli kir, akıntı veya kötü bir koku var mı?",
+            "default": "Kulak içi temiz ve kokusuz."
+          },
+          {
+            "id": "kulak_2",
+            "q": "Başını sık sık sallama veya kulaklarını bir yerlere sürtme yapıyor mu?",
+            "default": "Hayır, başını sallamıyor."
+          },
+          {
+            "id": "kulak_3",
+            "q": "Kulak kepçesinde kızarıklık, kabuklanma veya tüy dökülmesi var mı?",
+            "default": "Kulak kepçesi sağlıklı görünüyor."
+          },
+          {
+            "id": "kulak_4",
+            "q": "Kulağına dokunduğunuzda ciyaklama veya can acısı belirtisi veriyor mu?",
+            "default": "Kulağına dokunulmasından rahatsız olmuyor."
+          }
+        ]
+      }
+    }
+  },
+  "maruziyet": {
+    "label": "Maruziyet",
+    "icon": "🏠",
+    "subcategories": {
+      "disari": {
+        "label": "Dışarı",
+        "questions": [
+          {
+            "id": "disari_1",
+            "q": "Evden kaçma veya kontrolünüz dışında başıboş gezme durumu oldu mu?",
+            "default": "Hayır, her zaman gözetim altında."
+          },
+          {
+            "id": "disari_2",
+            "q": "Yakın zamanda sokakta veya bahçede başıboş hayvanlarla karşılaştı mı?",
+            "default": "Hayır, temas etmedi."
+          },
+          {
+            "id": "disari_3",
+            "q": "Parkta veya sokakta çöp, ölü hayvan veya şüpheli su tüketti mi?",
+            "default": "Dışarıdan hiçbir şey yemedi ve içmedi."
+          },
+          {
+            "id": "disari_4",
+            "q": "Yürüyüş sırasında yabancı bir maddeyi koklayıp yalama girişimi oldu mu?",
+            "default": "Hayır, olmadı."
+          }
+        ]
+      },
+      "kene_pire": {
+        "label": "Kene-Pire",
+        "questions": [
+          {
+            "id": "kene_pire_1",
+            "q": "Vücudunda tutunmuş bir kene veya yürüyen pire fark ettiniz mi?",
+            "default": "Hayır, hiçbir parazit görmedim."
+          },
+          {
+            "id": "kene_pire_2",
+            "q": "Düzenli iç ve dış parazit uygulamaları güncel olarak yapılıyor mu?",
+            "default": "Evet, tüm aşı ve ilaç uygulamaları güncel."
+          },
+          {
+            "id": "kene_pire_3",
+            "q": "Tüylerinin arasında siyah kum tanesi benzeri pire dışkısı var mı?",
+            "default": "Tüyleri ve cildi tamamen temiz."
+          },
+          {
+            "id": "kene_pire_4",
+            "q": "Yakın zamanda yüksek otluk, çalılık veya ormanlık bir alanda bulundu mu?",
+            "default": "Hayır, bulunmadı."
+          }
+        ]
+      },
+      "zehir": {
+        "label": "Zehir",
+        "questions": [
+          {
+            "id": "zehir_1",
+            "q": "Evdeki temizlik kimyasallarına, çamaşır suyuna veya deterjanlara erişimi oldu mu?",
+            "default": "Hayır, kimyasallara erişemez."
+          },
+          {
+            "id": "zehir_2",
+            "q": "Evde bulunan süs bitkilerini veya saksı çiçeklerini kemirdi mi?",
+            "default": "Hayır, bitkilerle ilgilenmez."
+          },
+          {
+            "id": "zehir_3",
+            "q": "Fare zehiri, böcek ilacı veya tarım ilacıyla temas ihtimali var mı?",
+            "default": "Ortamda bu tür zehirler bulunmuyor."
+          },
+          {
+            "id": "zehir_4",
+            "q": "Evde yere düşen insan ilaçlarından herhangi birini yutmuş olabilir mi?",
+            "default": "Hayır, ilaç yutmadı."
+          }
+        ]
+      },
+      "beslenme": {
+        "label": "Beslenme",
+        "questions": [
+          {
+            "id": "beslenme_1",
+            "q": "Kendi maması dışında çikolata, soğan veya sarımsak gibi gıdalar yedi mi?",
+            "default": "Hayır, asla yemedi."
+          },
+          {
+            "id": "beslenme_2",
+            "q": "Kemikli et, kılçıklı balık veya sert bir kemik çiğnedi mi?",
+            "default": "Kemik veya sert cisim verilmedi."
+          },
+          {
+            "id": "beslenme_3",
+            "q": "Son birkaç günde mamasının markasını veya türünü değiştirdiniz mi?",
+            "default": "Hayır, hep aynı mamayı tüketiyor."
+          },
+          {
+            "id": "beslenme_4",
+            "q": "Sofradan yağlı, baharatlı yemek artıkları tüketme alışkanlığı var mı?",
+            "default": "Ev yemeği hiç verilmiyor."
+          }
+        ]
+      }
+    }
+  },
+  "gecmis": {
+    "label": "Geçmiş",
+    "icon": "📅",
+    "subcategories": {
+      "hastalik": {
+        "label": "Hastalık",
+        "questions": [
+          {
+            "id": "hastalik_1",
+            "q": "Daha önce geçirdiği kronik veya teşhis edilmiş ciddi bir rahatsızlığı var mı?",
+            "default": "Bilinen hiçbir hastalığı yok."
+          },
+          {
+            "id": "hastalik_2",
+            "q": "Geçmişte benzer şikayetlerle veteriner hekime başvurmuş muydunuz?",
+            "default": "Hayır, daha önce bu tarz bir durum yaşanmadı."
+          },
+          {
+            "id": "hastalik_3",
+            "q": "Doğuştan gelen genetik veya ortopedik bir kusuru bulunuyor mu?",
+            "default": "Hayır, tamamen sağlıklı."
+          },
+          {
+            "id": "hastalik_4",
+            "q": "Düzenli takip gerektiren organ yetmezliği veya hormonal bir sorunu var mı?",
+            "default": "Hayır, herhangi bir kronik sorunu yok."
+          }
+        ]
+      },
+      "ameliyat": {
+        "label": "Ameliyat",
+        "questions": [
+          {
+            "id": "ameliyat_1",
+            "q": "Kısırlaştırma operasyonu yapıldı mı, üreme organları yerinde mi?",
+            "default": "Evet, operasyonu yapıldı ve sorunsuz iyileşti."
+          },
+          {
+            "id": "ameliyat_2",
+            "q": "Daha önce herhangi bir doku veya organ cerrahisi geçirdi mi?",
+            "default": "Hayır, başka bir ameliyat geçirmedi."
+          },
+          {
+            "id": "ameliyat_3",
+            "q": "Vücudunda eski bir operasyona bağlı platin veya protez var mı?",
+            "default": "Hayır, bulunmuyor."
+          },
+          {
+            "id": "ameliyat_4",
+            "q": "Eski cerrahi dikiş hatlarında açılma, fıtıklaşma veya şişlik hissediliyor mu?",
+            "default": "Ameliyat izi sorunsuz kapandı."
+          }
+        ]
+      },
+      "i̇lac": {
+        "label": "İlaç",
+        "questions": [
+          {
+            "id": "i̇lac_1",
+            "q": "Şu anda düzenli olarak kullandığı herhangi bir reçeteli ilaç var mı?",
+            "default": "Hayır, ilaç kullanmıyor."
+          },
+          {
+            "id": "i̇lac_2",
+            "q": "Son günlerde sizin verdiğiniz bir ağrı kesici veya vitamin oldu mu?",
+            "default": "Hayır, hiçbir takviye veya ilaç vermedim."
+          },
+          {
+            "id": "i̇lac_3",
+            "q": "Daha önce bir ilaca karşı alerjik reaksiyon gösterdiği oldu mu?",
+            "default": "Hayır, bilinen bir ilaç alerjisi yok."
+          },
+          {
+            "id": "i̇lac_4",
+            "q": "Kortizon veya antibiyotik tedavisi yakın zamanda tamamlandı mı?",
+            "default": "Yakın zamanda bu tür tedaviler almadı."
+          }
+        ]
+      },
+      "asi": {
+        "label": "Aşı",
+        "questions": [
+          {
+            "id": "asi_1",
+            "q": "Yıllık karma ve kuduz aşıları zamanında ve düzenli yapıldı mı?",
+            "default": "Evet, aşı takvimi eksiksiz."
+          },
+          {
+            "id": "asi_2",
+            "q": "Son aşı uygulamasının üzerinden ne kadar süre geçti?",
+            "default": "Son aşıları planlanan takvimde yapıldı."
+          },
+          {
+            "id": "asi_3",
+            "q": "Aşı yapıldıktan sonra aşırı halsizlik, yüzde şişme gibi reaksiyonlar yaşandı mı?",
+            "default": "Aşı sonrası hiçbir olumsuz tepki vermedi."
+          },
+          {
+            "id": "asi_4",
+            "q": "Elinizde mevcut aşı karnesi ve sağlık kayıtları bulunuyor mu?",
+            "default": "Evet, karnesi düzenli işlenmiş durumda."
+          }
+        ]
+      }
+    }
+  },
+  "genel": {
+    "label": "Genel Durum",
+    "icon": "⚖️",
+    "subcategories": {
+      "enerji": {
+        "label": "Enerji",
+        "questions": [
+          {
+            "id": "enerji_1",
+            "q": "Günlük aktivitelerinde veya oyun oynama isteğinde bir azalma var mı?",
+            "default": "Gayet enerjik ve hareketli."
+          },
+          {
+            "id": "enerji_2",
+            "q": "Sürekli yatma, uyuma veya odanın köşesine saklanma eğiliminde mi?",
+            "default": "Hayır, normal günlük rutinini sürdürüyor."
+          },
+          {
+            "id": "enerji_3",
+            "q": "Sizi kapıda karşılama ve ilgi isteme heyecanı devam ediyor mu?",
+            "default": "Evet, her zamanki gibi heyecanla karşılıyor."
+          },
+          {
+            "id": "enerji_4",
+            "q": "Çevreye karşı genel bir ilgisizlik veya donukluk seziyor musunuz?",
+            "default": "Hayır, çevresine karşı gayet uyanık."
+          }
+        ]
+      },
+      "agirlik": {
+        "label": "Ağırlık",
+        "questions": [
+          {
+            "id": "agirlik_1",
+            "q": "Son haftalarda belirgin bir kilo kaybı veya zayıflama fark ettiniz mi?",
+            "default": "Kilosu gayet dengeli ve sabit."
+          },
+          {
+            "id": "agirlik_2",
+            "q": "Kaburgaları veya omurgası aşırı derecede ele gelir hale geldi mi?",
+            "default": "Vücut kondisyonu normal düzeyde."
+          },
+          {
+            "id": "agirlik_3",
+            "q": "Kısa sürede anormal bir kilo artışı veya yağlanma oldu mu?",
+            "default": "Hayır, kilo alımı olmadı."
+          },
+          {
+            "id": "agirlik_4",
+            "q": "Tasması veya göğüs tasması vücuduna bol veya dar gelmeye başladı mı?",
+            "default": "Tasmaları her zamanki gibi tam oturuyor."
+          }
+        ]
+      },
+      "davranis": {
+        "label": "Davranış",
+        "questions": [
+          {
+            "id": "davranis_1",
+            "q": "Son zamanlarda sebepsiz yere agresifleşme veya hırlama eğilimi var mı?",
+            "default": "Hayır, son derece sakin ve uysal."
+          },
+          {
+            "id": "davranis_2",
+            "q": "Durup dururken korkma, sinme veya titreme nöbeti sergiliyor mu?",
+            "default": "Hayır, korku veya panik belirtisi yok."
+          },
+          {
+            "id": "davranis_3",
+            "q": "Karanlık yerlere saklanma veya insanlardan kaçma davranışı görüyor musunuz?",
+            "default": "Saklanmıyor, aileyle iletişim halinde."
+          },
+          {
+            "id": "davranis_4",
+            "q": "Sürekli huzursuzca evin içinde volta atma veya uyuyamama var mı?",
+            "default": "Hayır, gayet huzurlu ve rahat uyuyor."
+          }
+        ]
+      },
+      "agri": {
+        "label": "Ağrı",
+        "questions": [
+          {
+            "id": "agri_1",
+            "q": "Vücudunun herhangi bir yerine temas edildiğinde ağlama veya ısırma var mı?",
+            "default": "Dokunulduğunda gayet rahat, ağrısı yok."
+          },
+          {
+            "id": "agri_2",
+            "q": "Yattığı yerden kalkarken zorlanma, tutukluk veya inleme yapıyor mu?",
+            "default": "Rahatça ve serice ayağa kalkıyor."
+          },
+          {
+            "id": "agri_3",
+            "q": "Merdiven çıkarken veya yüksek bir yere zıplarken tereddüt ediyor mu?",
+            "default": "Zorlanmadan atlayıp tırmanabiliyor."
+          },
+          {
+            "id": "agri_4",
+            "q": "Dinlenirken belirli bir bacağını veya bölgesini koruma çabası sezdiniz mi?",
+            "default": "Hayır, ağrılı bir koruma hali yok."
+          }
+        ]
+      }
+    }
+  },
+  "sosyal": {
+    "label": "Sosyal",
+    "icon": "🤝",
+    "subcategories": {
+      "diger_hayvanlar": {
+        "label": "Diğer Hayvanlar",
+        "questions": [
+          {
+            "id": "diger_hayvanlar_1",
+            "q": "Evde veya dışarıda diğer evcil hayvanlarla iletişimi her zamanki gibi mi?",
+            "default": "Diğer hayvanlarla gayet uyumlu."
+          },
+          {
+            "id": "diger_hayvanlar_2",
+            "q": "Başka bir hayvanla son günlerde kavgaya veya sürtüşmeye karıştı mı?",
+            "default": "Hayır, hiçbir kavgaya karışmadı."
+          },
+          {
+            "id": "diger_hayvanlar_3",
+            "q": "Diğer hayvanların yanına yaklaştığında aşırı korku veya saldırganlık gösteriyor mu?",
+            "default": "Korku veya saldırganlık göstermiyor."
+          },
+          {
+            "id": "diger_hayvanlar_4",
+            "q": "Beraber yaşadığı diğer hayvanlarla mama veya oyuncak kavgası yaşandı mı?",
+            "default": "Hayır, sorunsuzca paylaşıyorlar."
+          }
+        ]
+      },
+      "temas": {
+        "label": "Temas",
+        "questions": [
+          {
+            "id": "temas_1",
+            "q": "İnsanların onu sevmesine veya kucağa almasına izin veriyor mu?",
+            "default": "Evet, sevilmekten ve kucaktan hoşlanıyor."
+          },
+          {
+            "id": "temas_2",
+            "q": "Tanıdığı kişilere karşı aniden gelişen yabancılaşma veya kaçma var mı?",
+            "default": "Herkese karşı dost canlısı ve ilgili."
+          },
+          {
+            "id": "temas_3",
+            "q": "Kendisine yaklaşıldığında savunma pozisyonu alma veya geri çekilme yapıyor mu?",
+            "default": "Hayır, çekinmeden yaklaşıyor."
+          },
+          {
+            "id": "temas_4",
+            "q": "Evdeki rutin temaslardan ve ilgiden kaçınma isteği gözlemlediniz mi?",
+            "default": "Hayır, temas kurmaktan kaçınmıyor."
+          }
+        ]
+      }
+    }
+  }
+}

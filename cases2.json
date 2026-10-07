@@ -351,6 +351,20 @@
       "stool": "Dışkı muayenesi: Flotasyon ve sedimantasyon testleri uygulandı. Parazit yumurtası veya protozoon kisti görülmedi. **Gizli Kan Testi: POZİTİF** 🔴 — gastrointestinal bariyer bozulması ve mikroskobik kanamalar ile uyumlu.",
       "skin": "Deri kazıntısı: Bu vakada deri kazıntısı endike değildir. Ektoparazit görülmedi.",
       "biopsy": "Biyopsi raporu: Bu vakada biyopsi endike değildir. Tanı elektrolit profili ve ACTH stimülasyon testi ile konulmaktadır."
+    },
+    "questionAnswers": {
+      "istah_1": "Evet, hiçbir şey yemiyor, mamayı koklayıp arkasını dönüyor.",
+      "istah_3": "Evet, son 2 gündür neredeyse hiç su içmedi.",
+      "kusma_1": "Evet, iştahsızlıkla beraber kusması ve mide bulantısı var.",
+      "kusma_2": "Köpüklü sıvı kusuyor.",
+      "dişkilama_1": "Dışkısı çok koyu, zift gibi simsiyah ve cıvık kıvamda.",
+      "agirlik_1": "Evet, çok hızlı kilo verdi, artık kaburgaları elle geliyor.",
+      "enerji_1": "Evet, dalgalı bir halsizliği var; bazı günler çok enerjikken bazı günler kalkacak gücü olmuyor.",
+      "noroloji_yürüyüş_3": "Evet, ayağa kalkarken arka bacakları titriyor ve vücudu zangır zangır sallanıyor.",
+      "genel_davranis_1": "Evet, stres ve yolculuk sonrası çok kötüleşiyor; dün misafir gelince tamamen yığıldı, kafasını bile kaldıramadı.",
+      "gecmis_hastalik_2": "Evet, bir ay önce serum alınca mucize gibi toparlamıştı ama birkaç haftada tekrar eski haline döndü.",
+      "gecmis_ilaç_1": "Hayır, düzenli kullandığı herhangi bir ilaç yok.",
+      "uroloji_idrar_1": "Evet, az su içtiği için günde sadece 1 kez çiş yapıyor."
     }
   },
   "hypoglycemia": {
@@ -705,6 +719,18 @@
       "stool": "Dışkı muayenesi: Flotasyon yöntemiyle **yoğun miktarda yuvarlak-oval parazit yumurtası** saptandı. 🔴 Yoğun gastrointestinal parazitizm — besin emilimini bozarak malabsorpsiyona ve glikojen depolarının tükenmesine katkıda bulunmuştur.",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
       "biopsy": "Biyopsi raporu: Bu vakada biyopsi endike değildir. Tanı kan glukozu ve hormon değerleriyle konulmaktadır."
+    },
+    "questionAnswers": {
+      "istah_1": "Evet, iştahı azaldı; sabah mamasını bitiremedi, önüne koyduğumuzda neredeyse hiç dokunmadı.",
+      "istah_2": "Dün akşam çok az yemişti, sabah da hiç dokunmadığı için yaklaşık 16-18 saattir aç.",
+      "kusma_1": "Dün sabah 1 kez kustu ama sonrasında geçti.",
+      "dişkilama_1": "2 gün önce hafif bir ishali vardı ama o da geçti.",
+      "enerji_1": "Evet, sabahtan beri çok halsizdi, kafasını bile dik tutmakta zorlanıyor.",
+      "noroloji_nöbet_1": "Evet; bacakları titredi, vücudu kaskatı kesilip yana yığıldı, gözleri geriye döndü ve yerde pedallar gibi hareketler yaptı.",
+      "noroloji_nöbet_2": "Kasılma yaklaşık 2-3 dakika sürdü, sonrasında gevşedi.",
+      "noroloji_yürüyüş_1": "Evet, arka bacakları çöktü ve sonrasında sendeleyerek yürüyüp eşyalara çarpmaya başladı.",
+      "noroloji_bilinç_1": "Evet, adını seslensek bile duymuyor gibi boş boş bakıyor ve etrafına karşı sersem gibi.",
+      "maruziyet_zehir_2": "Hayır, evde ilaç veya sakız gibi şeyler yok, zararlı bir maddeye ulaştığını sanmıyoruz."
     }
   },
   "hernia_dog": {
@@ -1059,6 +1085,17 @@
       "stool": "Dışkı muayenesi: Parazit yumurtası veya protozoon kisti görülmedi. Mide deplasmanına bağlı gastrointestinal pasaj yavaşlamış, dışkı miktarı az. Mikroskobik kanama (melena) bulgusu yok.",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
       "biopsy": "Biyopsi raporu: Bu vakada biyopsi endike değildir. Tanı görüntüleme ve klinik bulgularla konulmaktadır."
+    },
+    "questionAnswers": {
+      "solunum_nefes_1": "Evet, dinlenirken ve özellikle yan yatarken boğulur gibi çok zor ve hızlı nefes alıyor, o yüzden ön ayaklarını açıp dik oturmak istiyor.",
+      "solunum_nefes_3": "Evet, ağzını hiç kapatmıyor, dili dışarı fırlamış halde ağzı açık nefes alıp veriyor.",
+      "solunum_nefes_4": "Evet, artık iki adım atsa hemen yoruluyor ve nefes nefese kalıyor.",
+      "solunum_öksürük_1": "Evet, özellikle yatarken kuru öksürüğü oluyor.",
+      "kusma_1": "Evet, kazadan beri yediği en ufak mamayı bile köpüklü şekilde hemen kusuyor.",
+      "karin_1": "Karnı içeri göçmüş, bomboş gibi çok garip duruyor.",
+      "enerji_1": "Evet, eskiden saatlerce koşan hayvan artık sürekli ayakta veya dik pozisyonda durmaya çalışıyor, hemen yoruluyor.",
+      "gecmis_ameliyat_2": "Evet, araç çarpması ve yüksekten düşme şeklinde ciddi kaza ve travma geçmişi var.",
+      "gecmis_hastalik_1": "Hayır, kazadan önce saatlerce koşardı, bilinen hiçbir kalp ya da solunum rahatsızlığı yoktu."
     }
   },
   "dermatophytosis_dog": {
@@ -1416,6 +1453,17 @@
         "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Macroconidia_Microsporum_canis.JPG/1920px-Macroconidia_Microsporum_canis.JPG"
       },
       "biopsy": "Biyopsi raporu: Bu vakada rutin biyopsi endike değildir. Tanı Wood's lambası ve trikogram ile doğrulanmıştır."
+    },
+    "questionAnswers": {
+      "deri_kaşıntı_1": "Sürekli değil ama bazen yalamaya veya patisini yüzüne sürtüp kaşımaya çalışıyor.",
+      "deri_döküntü_1": "Tüysüz yerlerin derisi hafif kızarık ve kabuk bağlamış durumda.",
+      "deri_döküntü_2": "Evet, lekeler kuru, kepekli ve pullu duruyor; kabuklanma var.",
+      "deri_döküntü_3": "Evet, 2 hafta önce sağ kulağında başlamıştı ama şimdi diğer patiye, bacaklara, yüze ve gövdeye yayıldı.",
+      "deri_tüy_1": "Evet, o bölgelerdeki tüyler kırılarak kendiliğinden dökülüyor.",
+      "deri_tüy_2": "Evet, kafasında, kulak arkasında ve göz kenarında yuvarlak, bozuk para büyüklüğünde tüysüz alanlar oluştu.",
+      "sosyal_temas_1": "Evet, 3 hafta önce pet kuaföre gitti ve parkta diğer köpeklerle oynuyor.",
+      "sosyal_diğer_hayvanlar_4": "Evet, kızımın kollarında da halka şeklinde kırmızı ve kaşıntılı lekeler çıktı.",
+      "maruziyet_dışarı_2": "Evet, dışarıda parkta gezerken diğer köpeklerle temas ediyor ve oynuyor."
     }
   },
   "fiv": {
@@ -1770,6 +1818,18 @@
       "stool": "Dışkı muayenesi: Flotasyon yöntemiyle helmint yumurtası veya protozoon kistine rastlanmadı.",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
       "biopsy": "Biyopsi raporu: Bu vakada biyopsi endike değildir. Kesin tanı antikor testi (FIV hızlı kit) veya PCR ile konulmaktadır."
+    },
+    "questionAnswers": {
+      "istah_1": "Yemek istiyor ama ağzı çok acıyor; kuru mamayı ağzına alır almaz bağırarak geri tükürüyor.",
+      "agirlik_1": "Evet, 5-6 aydır yavaş yavaş zayıflıyor, artık omurgası sayılacak hale geldi.",
+      "goz_kulak_goz_1": "Evet, sol gözü 1 haftadır tamamen kapandı ve sürekli çapaklanıp akıyor.",
+      "solunum_burun_1": "Evet, burnundan koyu sarı-yeşil renkte akıntı geliyor.",
+      "solunum_burun_3": "Evet, antibiyotik bittikten sonra hapşırmaları ve halsizliği tekrar başladı.",
+      "deri_tüy_3": "Evet, tüyleri iyice keçeleşti ve bakımsız duruyor.",
+      "enerji_1": "Evet, eskiden çok hareketliydi ama şimdi köşelere saklanıyor ve ateş gibi yanıyor.",
+      "gecmis_hastalik_2": "Evet, geçen ay antibiyotik verildiğinde biraz toparlamıştı ama ilaç bitince hemen tekrar kötüleşti.",
+      "maruziyet_dışarı_2": "Evet, dışarı çıkan bir kedi ve sık sık kavga edip eve ısırık yaralarıyla gelirdi.",
+      "sosyal_temas_2": "Evet, sokakta diğer kedilerle sürekli temas halinde ve sık sık kavga ediyor."
     }
   },
   "felv": {
@@ -2124,6 +2184,18 @@
       "stool": "Dışkı muayenesi: Flotasyon ve natif muayenede helmint yumurtası veya protozoon kistine rastlanmadı. Sindirim derecesi normal, mikroskobik kan kanıtı yok.",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
       "biopsy": "Biyopsi raporu: Bu vakada öncelikli tanı hızlı antijen testi ile konulmaktadır. Kemik iliği biyopsisi hastalığın evrelemesi için gerekebilir."
+    },
+    "questionAnswers": {
+      "istah_1": "Evet, en sevdiği mamaya bile neredeyse dokunmuyor; kuru mamayı ağzına süremiyor, yaş mamayı denerken acıyıp hemen geri çekiliyor.",
+      "agirlik_1": "Evet, birkaç aydır yavaş yavaş kilo veriyordu ama son iki haftada aşırı zayıfladı.",
+      "enerji_1": "Evet, enerjisi tamamen bitti; eskiden böyle değildi ama son iki haftada çöktü ve sürekli uyuyor.",
+      "goz_kulak_goz_3": "Evet, gözlerinin beyazı ve kulaklarının içi sapsarı görünüyor.",
+      "uroloji_idrar_4": "Evet, idrarı her zamankinden çok daha koyu renkte çıkıyor.",
+      "solunum_nefes_1": "Evet, dinlenip yatarken bile göğsü çok hızlı inip kalkıyor.",
+      "solunum_nefes_2": "Evet, yatarken nefes alıp verirken hafif hırıltılı bir ses geliyor.",
+      "deri_tüy_3": "Evet, tüyleri iyice cansızlaşıp matlaştı.",
+      "gecmis_asi_1": "Hayır, sokaktan sahiplenmiştik ve lösemi aşısı hiç yapılmadı.",
+      "maruziyet_dışarı_2": "Evet, geceleri dışarı çıkıyor ve mahalledeki kedilerle kavga edip eve ısırık ve yaralarla geldiği oluyordu."
     }
   },
   "hyperaldosteronism": {
@@ -2478,6 +2550,18 @@
       "stool": "Dışkı muayenesi: Flotasyon ve natif muayenede paraziter unsura rastlanmadı. Sindirim derecesi normal.",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
       "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Tanı hormon paneli ve kan basıncı ölçümü ile konulmaktadır."
+    },
+    "questionAnswers": {
+      "istah_1": "Hayır, iştahı azalmadı aksine çok açıldı ama hiç kilo alamıyor.",
+      "istah_3": "Evet, aşırı miktarda su içiyor, su kabını yetiştiremiyoruz.",
+      "agirlik_1": "Evet, çok yemesine rağmen kilo alamıyor ve sırtındaki kemikleri resmen sayılıyor.",
+      "kusma_1": "Evet, haftada 1-2 kez yemek yedikten sonra beyaz köpüklü sıvı kusuyor.",
+      "uroloji_idrar_1": "Evet, çok sık idrara çıkıyor; tek seferde bol yapıyor ve kumunu günde 4-5 kez temizlemek zorunda kalıyoruz.",
+      "uroloji_idrar_4": "Evet, idrarı normalden çok daha açık renkli geliyor.",
+      "goz_kulak_goz_2": "Evet, göz bebekleri kocaman ve ışıkta küçülmüyor; hatta dün sabah sol gözünün içi kan gölü gibiydi.",
+      "noroloji_yürüyüş_1": "Evet, arka bacaklarında belirgin güçsüzlük var, yürürken ayakları birbirine dolanıyor ve kapı pervazlarına çarpıyor.",
+      "noroloji_baş_2": "Evet, son 2 gündür boynu aşağı bükük duruyor ve kafasını yerden hiç kaldıramıyor.",
+      "genel_davranis_1": "Evet, çok huzursuz; evin içinde kendi etrafında dönüp duruyor ve sebepsiz yere miyavlıyor."
     }
   },
   "fic": {
@@ -2832,6 +2916,17 @@
       "stool": "Dışkı muayenesi: Parazit yumurtası veya protozoon kistine rastlanmadı. ✓",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
       "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Tanı idrar analizi, USG ve klinik bulgularla konulmaktadır."
+    },
+    "questionAnswers": {
+      "uroloji_idrar_2": "Evet, kum kabına sık sık gidiyor ama ya hiç yapamıyor ya da sadece birkaç damla damlatabiliyor.",
+      "uroloji_idrar_3": "Evet, idrarını yaparken çok zorlanıp ıkınıyor, acıdan miyavlayıp kum kabından hemen fırlıyor.",
+      "uroloji_kaza_1": "Evet, kum kabı dışına da gidip halının üstüne damla damla yapmaya çalışıyor.",
+      "uroloji_kan_1": "Evet, idrarında pembe-kırmızı damlalar, hatta kumunda siyaha yakın koyu kırmızı lekeler gördük.",
+      "istah_1": "Evet, geçen haftadan beri neredeyse hiçbir şey yemiyor.",
+      "genel_davranis_1": "Evet, geçen hafta eve 3 gün kalabalık misafir gelip dolabın arkasına saklanmıştı, her şey o stresten sonra başladı.",
+      "gecmis_hastalik_2": "Veterinere gitmemiştik ama yaklaşık bir yıl önce de birkaç gün benzer şekilde olmuş, sonra kendiliğinden geçmişti.",
+      "maruziyet_beslenme_3": "Sadece kuru mama ile besliyoruz, normalde de suyu çok az içer.",
+      "sosyal_diğer_hayvanlar_1": "Hayır, evde tek kedi olarak yaşıyor ve tamamen iç mekanda kalıyor."
     }
   },
   "liver_failure": {
@@ -3186,6 +3281,19 @@
       "stool": "Dışkı muayenesi: Parazit yumurtası görülmedi. **Makroskobik olarak katran renginde (melena).** 🔴 Fekal gizli kan testi **kuvvetli pozitif** — gastrointestinal kanama veya koagülopati ile uyumlu.",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
       "biopsy": "Biyopsi raporu: Karaciğer biyopsisi tanı için endike olabilir (sirotik değişiklikler, bakır birikimi değerlendirmesi). Bu vakada klinik tablo yeterince ağır olduğundan öncelik stabilizasyona verilmiştir."
+    },
+    "questionAnswers": {
+      "istah_1": "Evet, iştahı tamamen kesildi, hiçbir şey yemiyor.",
+      "kusma_1": "Evet, kusmuğunda kahve telvesi gibi kahverengi pıhtılar gördük.",
+      "dişkilama_1": "Dışkısı katran gibi simsiyah, yapışkan bir kıvamda geliyor.",
+      "istah_3": "Evet, normalden belirgin şekilde daha fazla su içmeye başladı.",
+      "uroloji_idrar_4": "Evet, idrarının rengi çok koyu sarı, adeta turuncuya dönük çıkıyor.",
+      "karin_1": "Evet, son birkaç haftadır karnı davul gibi şişti ve giderek büyüyor.",
+      "agirlik_1": "Evet, karnı şiş olmasına rağmen sırtı ve bacaklarındaki kaslar resmen eridi.",
+      "goz_kulak_goz_3": "Evet, gözlerinin içi, kulaklarının içi ve diş etleri sapsarı oldu.",
+      "noroloji_bilinç_1": "Evet, çevreye tepkisi çok azaldı; adını seslendiğimizde bizi tanımıyor gibi boşluğa bakıyor ve kafasını duvara dayayıp dakikalarca öylece kalıyor.",
+      "genel_davranis_2": "Evet, evin içinde amaçsızca dolaşıp köşelere sıkışıp kalıyor.",
+      "maruziyet_zehir_2": "Hayır, evdeki ilaçlara ulaşamaz ve yabancı cisim yeme huyu da yoktur."
     }
   },
   "imha": {
@@ -3540,6 +3648,17 @@
       "stool": "Dışkı muayenesi: Normal kıvam, hafif sarımsı/kahverengi (sterkobilinojen artışı). Parazit yumurtası görülmedi. Gizli kan negatif.",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
       "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Tanı kan yayması ve klinik bulgularla konulmaktadır."
+    },
+    "questionAnswers": {
+      "istah_1": "Evet, 3-4 gündür hiçbir şey yemiyor, en sevdiği mamayı önüne koysak bile koklayıp yüzünü çeviriyor.",
+      "uroloji_idrar_4": "Evet, son 2 gündür idrarı demlenmiş çay gibi koyu kahverengi, kızıl ve turuncumsu çıkıyor.",
+      "solunum_nefes_1": "Evet, dinlenirken bile çok hızlı hızlı nefes alıp veriyor.",
+      "solunum_nefes_4": "Evet, birkaç adım atsa hemen yorulup yere çöküyor.",
+      "goz_kulak_goz_3": "Evet, gözlerinin beyazı, kulaklarının içi ve derisi sapsarı oldu.",
+      "enerji_1": "Evet, geçen haftaya kadar koşan hayvan son 3 günde tamamen çöktü, hiç keyfi yok.",
+      "maruziyet_zehir_2": "Hayır, yabancı cisim ya da soğan, sarımsak gibi zararlı bir şey yemedi.",
+      "maruziyet_kene_pire_1": "Hayır, kene damlasını düzenli yapıyoruz ve üzerinde hiç kene görmedik.",
+      "gecmis_ilaç_2": "Hayır, yakın zamanda herhangi bir ilaç verilmedi."
     }
   },
   "toxo": {
@@ -3894,6 +4013,19 @@
       "stool": "Dışkı muayenesi: Çinko sülfat flotasyon yöntemiyle **~10-12 mikrometre çapında, non-sporüle protozoon oositleri saptandı.** 🔴 Yavru kediler enfeksiyon sonrası 1-3 hafta boyunca oosit dökebilir. Kesin sistemik tanı seroloji veya PCR ile doğrulanır.",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
       "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Tanı seroloji (IgM/IgG), PCR veya klinik bulgularla konulmaktadır."
+    },
+    "questionAnswers": {
+      "istah_1": "Evet, iştahı tamamen kesildi, hiçbir şey yemiyor.",
+      "solunum_nefes_1": "Evet, dünden beri dinlenirken bile nefes nefese, göğsü ve karnı körük gibi çok hızlı inip kalkıyor.",
+      "solunum_öksürük_1": "Evet, hırıltılı bir şekilde öksürüyor.",
+      "goz_kulak_goz_1": "Evet, sol gözü dün akşam aniden bulanıklaştı, puslu bakıyor ve yaşarıp akıyor.",
+      "goz_kulak_goz_2": "Evet, sol gözünün içi kızardı ve gözünü sürekli kısıyor.",
+      "goz_kulak_goz_3": "Evet, kulak içleri ve diş etleri sapsarı oldu.",
+      "uroloji_idrar_4": "Evet, idrarı çok koyu sarı, neredeyse turuncu renkte çıkıyor.",
+      "noroloji_yürüyüş_1": "Evet, arka bacakları titriyor, dengesini sağlayamayıp sağa sola yalpalıyor ve sendeliyor.",
+      "noroloji_nöbet_1": "Büyük bir nöbet geçirmedi ama bacaklarında belirgin titremeler oluyor.",
+      "enerji_1": "Evet, vücudu ateşler içinde yanıyor ve sürekli karanlık köşelere saklanıp uyuyor.",
+      "maruziyet_beslenme_2": "Evet, geçen hafta çiğ kıyma yemişti ve bahçede fare kovaladı."
     }
   },
   "atopic_derm": {
@@ -4251,6 +4383,19 @@
         "imgUrl": null
       },
       "biopsy": "Biyopsi raporu: Bu vakada rutin biyopsi endike değildir. Tanı klinik bulgular, allerji öyküsü ve sitoloji ile konulmaktadır."
+    },
+    "questionAnswers": {
+      "deri_kaşıntı_1": "Evet, durmadan kaşınıyor ve karnını, bacak içlerini yalamaktan uyuyamıyor bile.",
+      "deri_kaşıntı_2": "Evet, özellikle bacak içlerini takıntılı şekilde yalayarak dişliyor ve tüylerini koparıyor.",
+      "deri_kaşıntı_3": "Evet, bahar aylarında ve camlar açılınca kaşıntı krizleri çok daha şiddetleniyor; geçen yıl da aynı mevsimde olmuştu.",
+      "deri_döküntü_1": "Evet, boynunda ve çene altında kırmızı kabarık yaralar var, karnındaki yaraları da yalamaktan kanattı.",
+      "deri_döküntü_2": "Evet, boyun ve çene altındaki yaralar kabuklu ve hafif ıslak duruyor.",
+      "deri_tüy_1": "Tüyleri kendiliğinden dökülmüyor ama yalayarak ve dişleyerek kopardığı için karnında hiç tüy kalmadı.",
+      "deri_tüy_2": "Evet, yalamaktan karnındaki ve bacak içlerindeki tüyleri tamamen kopardı.",
+      "maruziyet_kene_pire_1": "Hayır, üzerinde hiç pire veya kene görmedik.",
+      "maruziyet_kene_pire_2": "Evet, her ay düzenli olarak pire damlasını yaptırıyoruz.",
+      "gecmis_hastalik_2": "Geçen yıl da tam bu mevsimde benzer şikayetler olmuştu ama bu sene çok daha şiddetli tekrarladı.",
+      "sosyal_diğer_hayvanlar_4": "Hayır, evdeki diğer kedimizde ve ailemizde hiçbir sorun yok."
     }
   },
   "bacterial_cystitis": {
@@ -4605,6 +4750,15 @@
       "stool": "Dışkı muayenesi: Form ve renk normal. Parazit yumurtası görülmedi. ✓",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
       "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Tanı idrar sedimenti ve kültür ile konulmaktadır."
+    },
+    "questionAnswers": {
+      "uroloji_idrar_2": "Evet, sürekli kum kabına gidip geliyor ama sadece birkaç damla yapabiliyor, eskisi gibi topak oluşmuyor.",
+      "uroloji_idrar_3": "Evet, dakikalarca ıkınıp çok zorlanıyor ve tuvaletteyken canı yanıp acı acı miyavlıyor.",
+      "uroloji_kaza_1": "Evet, banyo paspasına ve fayanslara çişini kaçırıyor.",
+      "uroloji_kan_1": "Evet, yaptığı o birkaç damla çiş kıpkırmızı, resmen kan işiyor.",
+      "uroloji_kan_3": "Evet, paspasa damlattığı idrarın kokusu çok ağır ve oldukça keskin.",
+      "genel_davranis_1": "Evet, çok huzursuz; ayrıca genital bölgesini takıntılı şekilde yalayıp ıslak ve tahriş bırakıyor.",
+      "sosyal_diğer_hayvanlar_1": "Hayır, evde tek kedi olarak yaşıyor ve kum kabını başka bir hayvanla paylaşmıyor."
     }
   },
   "ehrlichiosis": {
@@ -4959,6 +5113,16 @@
       "stool": "Dışkı muayenesi: Parazit yumurtası görülmedi. **Fekal gizli kan (melena) testi POZİTİF** — gastrointestinal mukoza kanaması ile uyumlu. 🔴",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
       "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Tanı kan yayması ve klinik bulgularla konulmaktadır."
+    },
+    "questionAnswers": {
+      "istah_1": "Evet, son 1 haftadır neredeyse hiçbir şey yemiyor, iştahı tamamen kesildi.",
+      "agirlik_1": "Evet, gözümün önünde hızla zayıflıyor ve kilo kaybı çok belirginleşti.",
+      "enerji_1": "Evet, ateşi var ve aşırı derecede halsizleşti, yürümekte bile çok zorlanıyor.",
+      "dişkilama_1": "Evet, dünkü dışkısı zift gibi simsiyahtı.",
+      "goz_kulak_goz_1": "Evet, sol gözünün içi dün aniden kan oturmuş gibi kızardı, çapaklanıyor ve gözünü sürekli kısıyor.",
+      "solunum_nefes_4": "Evet, bacakları şiş olduğu için yürürken çok zorlanıyor ve hemen nefes nefese kalıyor.",
+      "maruziyet_kene_pire_1": "Evet, yaklaşık 1 ay önce kırsal alandayken üzerinde birkaç tane kene bulup koparmıştık.",
+      "maruziyet_kene_pire_2": "Hayır, kene damlasını düzenli olarak yaptırmamıştık."
     }
   }
 }
