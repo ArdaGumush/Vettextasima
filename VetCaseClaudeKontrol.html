@@ -2084,7 +2084,7 @@
   <div style="font-size:11px;color:var(--text-muted);letter-spacing:2px">Vaka veritabanı yükleniyor...</div>
   <div id="splash-status" style="font-size:10px;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;min-height:16px"></div>
   <button id="splash-retry" onclick="loadCaseData()" style="display:none;padding:8px 20px;background:rgba(0,212,255,0.1);border:1px solid var(--accent-cyan);border-radius:8px;color:var(--accent-cyan);font-family:'JetBrains Mono',monospace;font-size:10px;cursor:pointer">🔄 Tekrar Dene</button>
-  <button onclick="hideSplash()" style="margin-top:8px;padding:8px 20px;background:rgba(46,204,113,0.1);border:1px solid var(--accent-green);border-radius:8px;color:var(--accent-green);font-family:'JetBrains Mono',monospace;font-size:10px;cursor:pointer">▶ Manuel Devam</button>
+  <button onclick="var s=document.getElementById('splash');if(s){s.style.opacity='0';s.style.transition='opacity 0.5s';setTimeout(()=>s.remove(),500);}" style="margin-top:8px;padding:8px 20px;background:rgba(46,204,113,0.1);border:1px solid var(--accent-green);border-radius:8px;color:var(--accent-green);font-family:'JetBrains Mono',monospace;font-size:10px;cursor:pointer">▶ Manuel Devam</button>
   <div style="width:120px;height:2px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:8px">
     <div style="height:100%;background:var(--accent-cyan);animation:splashLoad 1.5s ease-in-out infinite alternate;border-radius:2px"></div>
   </div>
