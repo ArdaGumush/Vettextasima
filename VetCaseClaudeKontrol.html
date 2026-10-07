@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<script>
-function fc(msg, type) {
-  var body = document.getElementById('fake-console-body');
-  if (!body) return;
-  var line = document.createElement('div');
-  var colors = {log:'#ccc', ok:'#2ecc71', warn:'#f39c12', error:'#e74c3c'};
-  line.style.cssText = 'padding:2px 10px;border-bottom:1px solid #111;color:' + (colors[type||'log']||'#ccc');
-  var t = new Date().toLocaleTimeString('tr');
-  line.textContent = t + ' ' + msg;
-  body.appendChild(line);
-  body.scrollTop = body.scrollHeight;
-}
-window.onerror = function(msg,src,line) { fc('❌ '+msg+' (satır:'+line+')', 'error'); };
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vettex — Klinik Simülasyon</title>
@@ -2083,7 +2069,7 @@ window.onerror = function(msg,src,line) { fc('❌ '+msg+' (satır:'+line+')', 'e
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v3.12</span>
+      <span>v3.0</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -4393,7 +4379,6 @@ function startCase(caseKey) {
   const cb = document.getElementById('clinic-badge');
   if (cb) cb.remove();
   // Teşhis butonu
-  fc("startCase: addDiagnosisBtn setTimeout çağrılıyor");
   setTimeout(addDiagnosisBtn, 200);
   // Teşhis sonuç önbelleğini temizle
   const dh = document.getElementById('diagnosis-result-html');
@@ -5788,11 +5773,9 @@ function debugSetActions(n) {
 
 // Normal modda teşhis butonu (topbar'a ekle)
 function addDiagnosisBtn() {
-  fc("addDiagnosisBtn çağrıldı");
   const existingBtn = document.getElementById('diag-btn');
-  if (existingBtn) { existingBtn.style.display = 'flex'; fc("diag-btn gösterildi", "ok"); return; }
+  if (existingBtn) { existingBtn.style.display = 'flex'; return; }
   const topbar = document.querySelector('.topbar-meta');
-  fc("topbar: " + (topbar ? "BULUNDU" : "YOK"), topbar ? "ok" : "error");
   if (!topbar) return;
   const btn = document.createElement('div');
   btn.id = 'diag-btn';
@@ -5942,17 +5925,6 @@ document.addEventListener('visibilitychange', function() {
     <div id="result-body"></div>
     <div id="result-actions"></div>
   </div>
-</div>
-
-
-
-<!-- YAPAY KONSOL -->
-<div id="fake-console" style="position:fixed;bottom:0;left:0;right:0;z-index:999999;background:#0a0a0a;border-top:2px solid #00d4ff;font-family:monospace;font-size:11px;max-height:200px;display:flex;flex-direction:column">
-  <div style="padding:4px 10px;background:#001a2a;display:flex;justify-content:space-between;align-items:center;flex-shrink:0">
-    <span style="color:#00d4ff;font-weight:700">▶ KONSOL</span>
-    <span onclick="document.getElementById('fake-console').style.display='none'" style="cursor:pointer;color:#888;padding:0 6px">✕</span>
-  </div>
-  <div id="fake-console-body" style="overflow-y:auto;flex:1;padding:4px 0"></div>
 </div>
 </body>
 </html>
