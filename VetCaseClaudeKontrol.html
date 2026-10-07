@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+<script>
+window.onerror = function(msg, src, line, col, err) {
+  var div = document.getElementById('js-error-box');
+  if (!div) {
+    div = document.createElement('div');
+    div.id = 'js-error-box';
+    div.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:999999;background:#c0392b;color:#fff;font-family:monospace;font-size:11px;padding:8px 12px;';
+    document.body.appendChild(div);
+  }
+  div.innerHTML += '<div>❌ ' + msg + ' — satır:' + line + ' — ' + (src||'').split('/').pop() + '</div>';
+  return false;
+};
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vettex — Klinik Simülasyon</title>
@@ -2069,7 +2082,7 @@
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v3.1</span>
+      <span>v3.3</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -5172,7 +5185,7 @@ function renderAnamnezModal() {
       html += '<div id="aqqs_' + subId + '" style="display:none">';
       for (const q of (sub.questions||[])) {
         const asked = window._aqAnswered && window._aqAnswered[q.id];
-        html += '<div class="aq-q-item' + (asked?' aq-q-asked':'') + '" onclick="askAnamnezQ('' + q.id + '','' + catId + '','' + subId + '')">';
+        html += '<div class="aq-q-item' + (asked?' aq-q-asked':'') + '" onclick="askAnamnezQ(\'' + q.id + '\',\'' + catId + '\',\'' + subId + '\')">'; 
         html += '<span class="aq-q-bullet"></span>';
         html += '<span class="aq-q-text">' + q.q + '</span>';
         if (asked) html += '<span class="aq-q-badge">✓</span>';
