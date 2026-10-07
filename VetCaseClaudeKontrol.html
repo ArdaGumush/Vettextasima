@@ -2069,13 +2069,13 @@
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v3.2</span>
+      <span>v3.3</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
       <span id="d-date"></span>
     </div>
-    <div class="d-hint">OTOMATİK DEVAM EDİYOR</div>
+    <div class="d-hint" onclick="document.getElementById('disclaimer-screen').remove(); document.getElementById('splash').style.display='flex';" style="cursor:pointer;text-decoration:underline">OTOMATİK DEVAM EDİYOR — TIKLA</div>
   </div>
 </div>
 
@@ -2644,7 +2644,8 @@ async function loadCaseData() {
     try { const r3 = await fetch(CASES_URL3); if (r3.ok) data3 = await r3.json(); } catch(e3) {}
     CASE_DATA = { ...data1, ...data2, ...data3 };
     try { const ru = await fetch(USG_REPORTS_URL); if (ru.ok) window.USG_REPORTS = await ru.json(); } catch(eu) {}
-    try { const rq = await fetch(QUESTIONS_URL); if (rq.ok) window.QUESTIONS = await rq.json(); else window.QUESTIONS = {}; } catch(eq) { window.QUESTIONS = {}; }
+    // questions.json — arka planda yükle, bloklama
+    fetch(QUESTIONS_URL).then(r => r.ok ? r.json() : {}).then(d => { window.QUESTIONS = d; }).catch(() => { window.QUESTIONS = {}; });
     document.getElementById('splash-status').textContent = "Parametreler dolduruluyor...";
     Object.values(CASE_DATA).forEach(c => fillMissingParams(c));
     document.getElementById('splash-status').textContent = "Görseller atanıyor...";
