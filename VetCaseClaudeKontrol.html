@@ -2069,7 +2069,7 @@
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v3.3</span>
+      <span>v3.5</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -2195,6 +2195,7 @@
       ACİL MOD
     </div>
     <button onclick="openClinicSettings()" style="padding:5px 12px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:9px;cursor:pointer;letter-spacing:1px;">⚙</button>
+    <div id="diag-btn" class="tag" style="border-color:var(--accent-purple);color:var(--accent-purple);cursor:pointer;display:none" onclick="diagnosisSubmitted=false;openModal('NİHAİ TEŞHİS',buildDiagnosisHTML(false))">🔍 Teşhis</div>
   </div>
 </div>
 
@@ -5773,8 +5774,9 @@ function debugSetActions(n) {
 
 // Normal modda teşhis butonu (topbar'a ekle)
 function addDiagnosisBtn() {
+  const existingBtn = document.getElementById('diag-btn');
+  if (existingBtn) { existingBtn.style.display = 'flex'; return; }
   const topbar = document.querySelector('.topbar-meta');
-  if (document.getElementById('diag-btn')) return;
   const btn = document.createElement('div');
   btn.id = 'diag-btn';
   btn.className = 'tag';
