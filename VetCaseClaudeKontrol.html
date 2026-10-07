@@ -2069,7 +2069,7 @@
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v3.9</span>
+      <span>v3.10</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -5773,8 +5773,10 @@ function debugSetActions(n) {
 // Normal modda teşhis butonu (topbar'a ekle)
 function addDiagnosisBtn() {
   const existingBtn = document.getElementById('diag-btn');
-  if (existingBtn) { existingBtn.style.display = 'flex'; return; }
+  if (existingBtn) { existingBtn.style.display = 'flex'; showToast("DEBUG: diag-btn gösterildi"); return; }
   const topbar = document.querySelector('.topbar-meta');
+  showToast("DEBUG: topbar=" + (topbar ? "BULUNDU" : "YOK"));
+  if (!topbar) return;
   const btn = document.createElement('div');
   btn.id = 'diag-btn';
   btn.className = 'tag';
