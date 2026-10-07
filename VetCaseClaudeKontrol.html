@@ -2082,7 +2082,7 @@ window.onerror = function(msg, src, line, col, err) {
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v3.3</span>
+      <span>v3.4</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -5170,14 +5170,14 @@ function renderAnamnezModal() {
   let html = '';
   for (const [catId, cat] of Object.entries(Q)) {
     html += '<div class="aq-category">';
-    html += '<div class="aq-cat-header" onclick="toggleAqCat('' + catId + '')">';
+    html += '<div class="aq-cat-header" onclick="toggleAqCat(\'' + catId + '\')">>';
     html += '<span class="aq-cat-icon">' + (cat.icon||'📋') + '</span>';
     html += '<span class="aq-cat-label">' + cat.label + '</span>';
     html += '<span class="aq-cat-arrow" id="aqarr_' + catId + '">▼</span>';
     html += '</div>';
     html += '<div class="aq-subcats" id="aqsub_' + catId + '" style="display:none">';
     for (const [subId, sub] of Object.entries(cat.subcategories||{})) {
-      html += '<div class="aq-sub-header" onclick="toggleAqSub('' + subId + '')">';
+      html += '<div class="aq-sub-header" onclick="toggleAqSub(\'' + subId + '\')">>';
       html += '<span class="aq-sub-dot"></span>';
       html += '<span class="aq-sub-label">' + sub.label + '</span>';
       html += '<span class="aq-sub-arrow" id="aqsubarr_' + subId + '">▼</span>';
