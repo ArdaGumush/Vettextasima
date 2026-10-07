@@ -2069,7 +2069,7 @@
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v3.1</span>
+      <span>v3.3</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -2263,24 +2263,18 @@
       </button>
     </div>
 
-    <!-- AYIRICI TANI SORULARI -->
-    <div class="section-block">
-      <div class="section-title">Ayırıcı Tanı Soruları</div>
-      <div id="diff-section" class="locked">
 
-      </div>
-    </div>
   </div><!-- /left-panel -->
 
   <!-- ══ CENTER PANEL: KLİNİK İŞLEMLER ════════════════════════════ -->
   <div class="panel" id="center-panel">
-    <div class="panel-header">
+    <div class="panel-header" style="display:flex;align-items:center;justify-content:space-between">
       <h2><span class="dot" style="background:var(--accent-green);box-shadow:0 0 6px var(--accent-green)"></span>KLİNİK İŞLEMLER</h2>
+      <button onclick="openAnamnezModal()" style="padding:6px 14px;background:rgba(0,212,255,0.1);border:1px solid var(--accent-cyan);border-radius:6px;color:var(--accent-cyan);font-family:JetBrains Mono,monospace;font-size:10px;cursor:pointer;letter-spacing:0.5px">🔍 Anamnez Sor</button>
     </div>
 
     <div class="tab-bar">
-      <button class="tab-btn" onclick="openAnamnezModal()" id="btn-anamnez">🔍 Anamnez Sor</button>
-            <button class="tab-btn active" onclick="switchTab('fizik')">A. Fiziksel Muayene</button>
+      <button class="tab-btn active" onclick="switchTab('fizik')">A. Fiziksel Muayene</button>
       <button class="tab-btn" onclick="switchTab('ileri')">B. İleri Muayene</button>
       <button class="tab-btn" onclick="switchTab('goruntu')">C. Görüntüleme</button>
       <button class="tab-btn" onclick="switchTab('hemogram')">D. Hemogram</button>
@@ -3184,7 +3178,6 @@ function mobBuildClinicScreen() {
   // Aşama 2: Her soru bireysel blur arkasında (şikayet açılınca)
   // Aşama 3: Accordion açılır, cevap görünür (soru tıklanınca)
   const dqs = c.diffQuestions || [];
-  html += '<div style="padding:10px 16px 6px;font-family:JetBrains Mono,monospace;font-size:9px;color:var(--text-muted);letter-spacing:2px;background:var(--bg-panel);border-bottom:1px solid var(--border)">AYIRICI TANI SORULARI</div>';
   html += '<div id="mob-dq-wrapper">';
 
   // Sorular — bireysel blur, başta kilitli (tıklanamaz)
