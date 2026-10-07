@@ -2069,7 +2069,7 @@
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v3.0</span>
+      <span>v3.1</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -5771,23 +5771,8 @@ function debugSetActions(n) {
   showToast('Debug: Aksiyon → ' + n + '/5');
 }
 
-// Normal modda teşhis butonu (topbar'a ekle)
-function addDiagnosisBtn() {
-  const existingBtn = document.getElementById('diag-btn');
-  if (existingBtn) { existingBtn.style.display = 'flex'; return; }
-  const topbar = document.querySelector('.topbar-meta');
-  if (!topbar) return;
-  const btn = document.createElement('div');
-  btn.id = 'diag-btn';
-  btn.className = 'tag';
-  btn.style.cssText = 'border-color:var(--accent-purple);color:var(--accent-purple);cursor:pointer';
-  btn.textContent = '🔍 Nihai Teşhis';
-  btn.onclick = () => { diagnosisSubmitted = false; openModal('NİHAİ TEŞHİS — HASTALIK REFERANSİ', buildDiseaseReferenceHTML(
-    (() => { const g={}; const _l=(typeof DISEASE_LIBRARY!=='undefined')?DISEASE_LIBRARY:[]; _l.forEach(d=>{ if(!g[d.category])g[d.category]=[]; g[d.category].push(d); }); return g; })(),
-    {"Viral":"var(--accent-blue)","Paraziter":"var(--accent-orange)","Bakteriyel":"var(--accent-red)","Metabolik":"var(--accent-purple)","Travmatik":"var(--accent-cyan)","Solunum":"var(--accent-green)","Endokrinoloji":"var(--accent-orange)","Dermatoloji":"var(--accent-pink)","Nefroloji":"var(--accent-blue)","Paraziter (İç)":"var(--accent-orange)","Fungal":"var(--accent-yellow)"}
-  )); };
-  topbar.appendChild(btn);
-}
+// Normal modda teşhis butonu — kaldırıldı, klinik mod butonu kullanılıyor
+function addDiagnosisBtn() { }
 
 function onSinifChange(val) {
   var wrap = document.getElementById('reg-sinif-other-wrap');
