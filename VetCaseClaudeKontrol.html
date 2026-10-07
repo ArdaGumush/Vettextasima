@@ -2069,7 +2069,7 @@
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v3.0</span>
+      <span>v3.1</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -2623,6 +2623,13 @@ function fillMissingParams(caseData) {
 const CASES_URL2 = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/cases2.json";
 const CASES_URL3 = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/cases3.json";
 async function loadCaseData() {
+  // DEBUG: sorun bulununca kaldırılacak
+  const splashStatus = document.getElementById('splash-status');
+  function debugSplash(msg) {
+    console.log(msg);
+    if (splashStatus) splashStatus.textContent = msg;
+  }
+  debugSplash("⏳ Veriler yükleniyor...");
   try {
     // vetconfig.js yükle — CASE_INDEX, SPECIES_CASES, DISEASE_LIBRARY
     // DEBUG: sorun bulununca kaldırılacak
@@ -2640,6 +2647,7 @@ async function loadCaseData() {
     const r = await fetch(CASES_URL);
     if (!r.ok) throw new Error("HTTP " + r.status);
     const data1 = await r.json();
+    debugSplash("✓ Cases yüklendi");
     let data2 = {};
     try { const r2 = await fetch(CASES_URL2); if (r2.ok) data2 = await r2.json(); } catch(e2) {}
     let data3 = {};
@@ -2648,14 +2656,14 @@ async function loadCaseData() {
     // USG raporlarını yükle
     try { const ru = await fetch(USG_REPORTS_URL); if (ru.ok) window.USG_REPORTS = await ru.json(); } catch(eu) {}
     // DEBUG: sorun bulununca kaldırılacak
-    showToast("Debug: Questions yükleniyor...");
+    debugSplash("⏳ Sorular yükleniyor...");
     try {
       const rq = await fetch(QUESTIONS_URL);
       if (rq.ok) {
         window.QUESTIONS = await rq.json();
-        showToast("Debug: Questions yüklendi ✓ — " + Object.keys(window.QUESTIONS).length + " kategori");
-      } else { showToast("Debug HATA: questions.json HTTP " + rq.status); }
-    } catch(eq) { showToast("Debug HATA: questions.json — " + eq.message); }
+        debugSplash("✓ " + Object.keys(window.QUESTIONS).length + " soru kategorisi yüklendi");
+      } else { console.warn("Debug HATA: questions.json HTTP " + rq.status); window.QUESTIONS = {}; }
+    } catch(eq) { console.warn("Debug HATA: questions.json — " + eq.message); window.QUESTIONS = {}; }
     document.getElementById('splash-status').textContent = "Parametreler dolduruluyor...";
     Object.values(CASE_DATA).forEach(c => fillMissingParams(c));
     document.getElementById('splash-status').textContent = "Görseller atanıyor...";
