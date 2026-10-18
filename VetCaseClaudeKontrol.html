@@ -2083,7 +2083,7 @@ window.onerror = function(msg, src, line) { fc('❌ ' + msg + ' (satır:' + line
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v3.8</span>
+      <span>v3.9</span>
       <span class="d-dot">◆</span>
       <span>© 2025 Vettex</span>
       <span class="d-dot">◆</span>
@@ -2652,7 +2652,7 @@ async function loadCaseData() {
     CASE_DATA = { ...data1, ...data2, ...data3 };
     // USG raporlarını yükle
     try { const ru = await fetch(USG_REPORTS_URL); if (ru.ok) window.USG_REPORTS = await ru.json(); } catch(eu) {}
-    fetch(QUESTIONS_URL).then(r=>r.ok?r.json():{}).then(d=>{window.QUESTIONS=d;}).catch(e=>{window.QUESTIONS={};});
+    fetch(QUESTIONS_URL).then(r=>r.ok?r.json():{}).then(d=>{window.QUESTIONS=d;}).catch(e=>{window.QUESTIONS={};}); fetch(DIFFERENTIALS_URL).then(r=>{fc('DIFF:'+r.status,r.ok?'ok':'error');return r.ok?r.json():{};}).then(d=>{window.DIFFERENTIALS=d;fc('DIFF yüklendi:'+Object.keys(d).length,'ok');}).catch(e=>{window.DIFFERENTIALS={};fc('DIFF HATA:'+e.message,'error');});
     document.getElementById('splash-status').textContent = "Parametreler dolduruluyor...";
     Object.values(CASE_DATA).forEach(c => fillMissingParams(c));
     document.getElementById('splash-status').textContent = "Görseller atanıyor...";
