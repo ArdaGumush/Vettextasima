@@ -1,0 +1,203 @@
+{
+  "cat": {
+    "İnvaginasyon": "USG'de \"hedef tahtası\" (target sign) görünümü invaginasyona özgüyken, GIS obstrüksiyonunda yabancı cisme ait hiperekoik akustik gölge ve proksimal bağırsak dilatasyonu izlenir.",
+    "Parvo": "Parvo enfeksiyonu kemik iliğini baskılayarak şiddetli lökopeni (panlökopeni) oluştururken, GIS obstrüksiyonunda stres lökogramı veya lokal yangıya bağlı lökositoz görülür.",
+    "Pankreatit": "Pankreatitte fPLI (lipaz) belirgin şekilde yükselir ve USG'de pankreasta büyüme ile hipoekoik alanlar varken, GIS obstrüksiyonunda pankreas normaldir."
+  },
+  "dog": {
+    "Cushing": "Cushing'de ALP artışı çok karakteristiktir (>10 kat) ve post-ACTH kortizol yanıtı yüksektir; Diabetes Mellitus'ta ise tanı belirgin hiperglisemi ve idrarda yoğun glukoz (glukozüri) ile konur.",
+    "Hipotiroidi": "Hipotiroidide bradikardi, hiperkolesterolemi ve düşük T4 seviyesi varken, Diabetes Mellitus'ta poliüri/polidipsi ile birlikte idrarda keton ve glukoz varlığı ön plandadır.",
+    "Hiperaldosteronizm": "Hiperaldosteronizm şiddetli hipokalemi (kas güçsüzlüğü) ve artmış aldosteron seviyesi ile seyrederken, Diabetes Mellitus'ta temel sorun insülin eksikliğine bağlı hiperglisemik asidoz (ketonüri) tablosudur.",
+    "Hipoglisemi": "Hipoglisemide kan glukozu kritik seviyede düşük (örn. <40 mg/dL) olup nöroglikopenik nöbetler varken, Diabetes Mellitus'ta glukoz seviyesi çok yüksektir (>300 mg/dL)."
+  },
+  "fip": {
+    "Karaciğer Yetmezliği": "FIP efüzyonu yüksek proteinli, modifiye eksuda/transüda karakterindeyken, karaciğer yetmezliğinde hipoalbüminemiye bağlı düşük proteinli saf transüda (asit) toplanır.",
+    "Addison": "Addison'da şiddetli hiponatremi ve hiperkalemi (Na:K oranının <27 olması) tipikken, Islak FIP'te serum protein elektroforezinde poliklonal gamopati (A/G oranının <0.4) karakteristiktir.",
+    "FeLV": "FeLV sıklıkla kranial mediastinal kitle (lenfoma) veya non-rejeneratif anemi ile seyrederken, FIP sarı-visköz abdominal efüzyon ve pyogranülomatöz organ lezyonları ile öne çıkar.",
+    "Toxo": "Toksoplazmoziste kanda spesifik IgM/IgG antikorları saptanır ve akciğerlerde alveolar patern (pnömoni) görülürken, Islak FIP'te abdominal asit ve hiperglobulinemi belirgindir."
+  },
+  "parvo": {
+    "FPV": "Her ikisi de aynı viral ailedendir ve şiddetli panlökopeni yapar; ancak FPV kedilere özgüyken, Parvo köpekleri enfekte eden spesifik varyanttır.",
+    "Distemper": "Distemper kanda ve epitel hücrelerinde \"Lentz inklüzyon cisimcikleri\", nörolojik miyoklonus ve hiperkeratoz yaparken, Parvo şiddetli kanlı ishal ve derin lökopeni ile sınırlıdır.",
+    "Giardia": "Giardiasis'te kan tablosu normal veya eozinofilik olup dışkıda \"yaprak dökümü\" hareketi yapan trofozoitler saptanırken, Parvo'da yıkıcı bir panlökopeni ve ağır kanlı enterit mevcuttur.",
+    "IBD": "IBD kronik malabsorpsiyon, USG'de bağırsak duvar kalınlaşması ve düşük albümin ile ilerleyen yangısal bir süreçken, Parvo akut başlangıçlı, yüksek ateşli ve yüksek mortaliteli viral bir enfeksiyondur."
+  },
+  "hernia": {
+    "Herni(köpek)": "Klinik, mekanik ve radyolojik (diyafram hattının kaybı, göğüste bağırsak ansları) bulgular tamamen aynıdır; sadece tür farklılığı mevcuttur.",
+    "Astım": "Astımda radyografide hiperinflasyon ve peribronşiyal \"tramvay rayı\" çizgilenmeleri ile kanda eozinofili varken, hernide toraks içinde mide/bağırsak ansları saptanır ve akciğer kollabe olmuştur.",
+    "FIP": "FIP'te göğüs veya karın boşluğunda plevral/peritoneal yüksek proteinli sıvı toplanırken, diyafragmatik hernide serbest sıvı yerine anatomik organların (karaciğer, mide) toraksa deplasmanı görülür."
+  },
+  "uro": {
+    "FIC": "FIC'te (İdiyopatik Sistit) idrar kesesi genellikle küçük veya boş palpe edilirken, Üretral Obstrüksiyonda mesane palpasyonda sert, aşırı gergin ve idrar çıkışı tamamen tıkanmıştır.",
+    "Bakteriyel Sistit": "Bakteriyel sistitte idrar sedimentinde yoğun lökosit (aktif piyüri) ve bakteriler bulunurken, Üretral Obstrüksiyonda hiperkalemi ve prerenal/postrenal azotemi şoku ile birlikte anüri tablosu hakimdir."
+  },
+  "ascaris": {
+    "Giardia": "Giardia'da mikroskobik trofozoitler ve kistler saptanırken, Ascariasis'te ultrasonografide lümen içinde \"paralel çizgiler\" halinde yetişkin parazitler görülür ve kanda eozinofili belirgindir.",
+    "IBD": "IBD erişkin kedilerde bağırsak duvar katmanlarının kalınlaşması ve düşük serum B12 (cobalamin) ile seyrederken, Ascariasis özellikle genç yavrularda şiş karın (pot-bellied) ve kalın çeperli küresel yumurtalarla teşhis edilir.",
+    "FPV": "FPV enfeksiyonu şiddetli lökopeni, ateş ve akut sıvı kaybı yaparken, Ascariasis'te iştahın genelde korunmasına rağmen büyüme geriliği ve kanda eozinofilik lökositoz gözlenir."
+  },
+  "demodicosis": {
+    "Dermatofitozis": "Dermatofitoziste lezyonlar Wood lambasında yeşil floresans verir ve trikogramda artrosporlar görülürken, Demodicosis'te derin deri kazıntısında karakteristik \"timsah\" benzeri *Demodex* akarları saptanır.",
+    "Atopik Dermatit": "Atopik dermatit şiddetli kaşıntı (pruritus) ve kanda eozinofili ile karakterizeyken, Demodicosis lezyonları genellikle kaşıntısızdır ve altta yatan bir immünsupresyonla (örn. diyabet) birlikte görülür."
+  },
+  "pancreatitis": {
+    "GIS Obstrüksiyon": "Obstrüksiyonda USG'de yabancı cisim ve akustik gölgesi ile proksimal sıvı dilatasyonu saptanırken, Pankreatitte pankreasın boyutu artmış, hipoekoik ödemli bir yapıda izlenir ve fPLI/cPLI değerleri yüksektir.",
+    "İnvaginasyon": "İnvaginasyonda batın palpasyonunda \"sosis şeklinde\" kitle hissedilir ve USG'de iç içe geçmiş bağırsakların \"hedef tahtası\" (target sign) görüntüsü varken, pankreatit primer olarak şiddetli kranial abdominal ağrı (\"dua pozisyonu\") ile seyreder.",
+    "Karaciğer Yetmezliği": "Karaciğer yetmezliğinde BUN düşüklüğü, hipoalbüminemi ve mikrohepatika izlenirken, Pankreatitte belirgin lipaz/amilaz artışı, sekonder hipokalsemi ve hiperlipidemi karakteristiktir."
+  },
+  "invagination": {
+    "GIS Obstrüksiyon": "Basit obstrüksiyonda radyografide radyopak/radyolüsent yabancı cisim görünümü ön plandayken, İnvaginasyonda USG'de bağırsak katmanlarının iç içe geçmesiyle oluşan tipik çok katmanlı \"bull's eye / target sign\" (hedef tahtası) görünümü patognomoniktir.",
+    "Pankreatit": "Pankreatit pankreasa özgü enzim (cPLI/fPLI) artışı ve lokal ödem ile seyrederken, İnvaginasyonda klinik olarak kanlı, vişne jölesi kıvamında (currant jelly) sümüksü dışkı ve orta batında palpe edilebilir silindirik kitle mevcuttur.",
+    "Parvo": "Parvo viral yıkıma bağlı olarak kanda şiddetli panlökopeni yaparken, İnvaginasyonda bağırsaktaki nekroz ve doku yıkımına bağlı reaktif nötrofilik lökositoz saptanır."
+  },
+  "cushings": {
+    "Diabetes": "Diyabette tanı şiddetli hiperglisemi ve idrarda glukoz tespitiyle konurken, Cushing'de kan şekeri genelde normaldir ancak karakteristik ALP artışı (>10 kat) ve düşük idrar dansitesi izlenir.",
+    "Hipotiroidi": "Hipotiroidide bradikardi, \"trajik yüz ifadesi\" ve düşük T4 değerleri varken, Cushing'de belirgin PU/PD, iştah artışı, karın sarkıklığı ve yüksek bazal/post-ACTH kortizol seviyeleri mevcuttur.",
+    "Hiperaldosteronizm": "Hiperaldosteronizmde sistemik hipertansiyonla birlikte şiddetli hipokalemi (kas zayıflığı) belirginken, Cushing'de bilateral adrenal büyüme (USG) izlenir ve elektrolit tablosu genellikle normal sınırlardadır."
+  },
+  "dermatophytosis": {
+    "Demodicosis": "Demodicosis tanısı deriden alınan derin kazıntıda akarların görülmesiyle konarken, Dermatofitozis tanısı Wood lambası (floresans) ve dermatofit kültürü (DTM besiyerinde renk değişimi) ile konur.",
+    "Atopik Dermatit": "Atopik dermatitte eozinofilik plaklar ve şiddetli kaşıntı varken, Dermatofitoziste genellikle dairesel (anüler) kaşıntısız alopesi ve kepeklenme izlenir, hemogram eozinofili içermez."
+  },
+  "giardiasis": {
+    "Ascariasis": "Ascariasis'te dışkıda makroskobik nematodlar ve kalın çeperli yumurtalar bulunurken, Giardiasis'te direkt bakıda (saline smear) hareketli, \"yaprak dökümü\" tarzı yüzen trofozoitler ve kistler saptanır.",
+    "IBD": "IBD USG'de bağırsak duvarının diffüz kalınlaşması ve düşük serum folat/kobalamin ile seyreden kronik bir tabloyken, Giardiasis ELISA ile spesifik antijen pozitifliği veren primer paraziter bir enterittir.",
+    "Parvo": "Parvo yüksek ateş, kanlı ishal ve şiddetli lökopeni ile seyreden akut viral bir hastalıktır; Giardiasis ise iştahın genelde normal olduğu, yağlı (steatore) açık renkli ishal ile giden ve lökosit tablosunu çok bozmayan bir durumdur."
+  },
+  "hyperthyroidism": {
+    "Cushing": "Cushing'de yüksek kortizol, sarkık karın ve bilateral adrenal büyüme varken, Hipertiroidide servikal bölgede \"tiroid slip\" (hareketli kitle) palpe edilir ve kan T4 düzeyi belirgin derecede yüksektir.",
+    "Hiperaldosteronizm": "Hiperaldosteronizmde spesifik olarak yüksek aldosterona bağlı şiddetli hipokalemi varken, Hipertiroidide TSH baskılanmıştır, belirgin taşikardi (>200/dak) ve tirotoksik kardiyomiyopati (EKO'da sol ventrikül hipertrofisi) izlenir.",
+    "Diabetes": "Diyabette hiperglisemi ve idrarda glukoz (glukozüri) saptanırken, Hipertiroidide artan metabolizmaya rağmen kan glukozu normaldir ancak ALT/AST enzimlerinde yükselme ve eritrositoz izlenebilir."
+  },
+  "hypothyroidism": {
+    "Cushing": "Cushing'de su içme (PU/PD) ve iştah artışı ile yüksek kortizol varken, Hipotiroidide metabolizma yavaşlamasına bağlı bradikardi, uyuşukluk, iştahsızlığa rağmen kilo alımı ve düşük T4/yüksek TSH saptanır.",
+    "Diabetes": "Diyabette idrarda glukoz ve keton atılımına bağlı poliüri/polidipsi gelişirken, Hipotiroidide idrar parametreleri normaldir fakat kanda belirgin hiperkolesterolemi ve hipertrigliseridemi gözlenir.",
+    "Addison": "Addison'da şiddetli Na:K dengesizliği (hiponatremi, hiperkalemi) ve hipovolemik şok tablosu varken, Hipotiroidide elektrolitler tamamen normaldir ve semptomlar miksedem (\"trajik bakış\") ile simetrik alopesiyi içerir."
+  },
+  "asthma": {
+    "Kennel Cough": "Kennel Cough primer olarak PCR ile saptanan spesifik bakteriyel/viral (*B. bronchiseptica* vb.) bir üst solunum yolu reaksiyonuyken, Astım eozinofili ile seyreden alerjik bir hava yolu daralmasıdır.",
+    "FHV-FCV": "FHV-FCV kompleksinde yüksek ateş, şiddetli pürülan oküler konjonktivit ve oral/dendritik ülserler varken, Astımda ateş veya pürülan akıntı yoktur; solunum esnasında belirgin hışıltı (wheezing) ön plandadır.",
+    "Diyafragmatik Herni": "Diyafragmatik hernide röntgende göğüs boşluğunda mide/bağırsak ansları görülüp solunum sesleri tek taraflı kaybolurken, Astımda diyafram anatomik olarak sağlamdır ancak akciğerlerde hiperinflasyon saptanır."
+  },
+  "addison": {
+    "Karaciğer Yetmezliği": "Karaciğer yetmezliğinde safra asitleri yüksek, kolesterol düşük ve ikter (sarılık) varken, Addison hastalığında mineralokortikoid eksikliğine bağlı Na:K oranının bozulması (<27) ve bradikardi patognomoniktir.",
+    "FIP": "FIP'te serum protein elektroforezinde A/G oranının düşmesi (<0.4) ve hiperglobulinemi saptanırken, Addison'da ultrasonografide adrenal bez atrofisi (küçülmesi) ve \"ters stres lökogramı\" (beklenenin aksine yüksek lenfosit/eozinofil) izlenir.",
+    "Hipotiroidi": "Hipotiroidide primer olarak kilo alımı, yüksek kolesterol ve düşük T4 varken, Addison'da kan hacmi kaybı (hipovolemi), böbrek perfüzyonu azalmasına bağlı prerenal azotemi (yüksek CREA/BUN) ve kilo kaybı vardır."
+  },
+  "hypoglycemia": {
+    "Addison": "Addison'da hiponatremi ve hiperkalemi ile birlikte adrenal atrofi varken, fonksiyonel jüvenil hipoglisemide elektrolitler ve kortizol seviyesi tamamen normaldir, sadece kan glukozu kritik derecede (örn. <40 mg/dL) düşüktür.",
+    "Karaciğer Yetmezliği": "Karaciğer yetmezliğinde yüksek karaciğer enzimleri (ALT/AST), yüksek safra asitleri ve ikter varken, jüvenil hipoglisemide karaciğer parametreleri normaldir; nöroglikopenik belirtiler (nöbet) beyin glukozsuzluğuna bağlıdır.",
+    "Diabetes": "Diyabette aşırı yüksek glukoz (hiperglisemi) ve buna sekonder glukozüri kesin tanı kriteriyken, Hipoglisemide kan glukozu çok düşüktür ve idrarda açlığa/yağ asidi yıkımına bağlı keton (ketonüri) saptanabilir."
+  },
+  "hernia_dog": {
+    "Herni(kedi)": "Kedi ve köpek diyafragmatik hernisi anatomik, klinik ve radyolojik (diyaframın bütünlüğünü yitirip toraksa bağırsak dolması) açıdan aynı patofizyolojiye sahiptir, yalnızca etkilenen tür farklıdır.",
+    "Kennel Cough": "Kennel Cough toraks radyografisinde diyaframın intakt (sağlam) olduğu, üst solunum yollarında tıkanıklık yapan pürülan/mukoid karakterli bir enfeksiyonken, Hernide direkt travmaya bağlı organların yer değiştirmesi söz konusudur.",
+    "Astım": "Astımda eozinofilik inflamasyona bağlı bronşiyal patern (\"tramvay rayı\" çizgilenmeleri) varken, Hernide solunum seslerinin sol/sağ oskültasyonda tamamen kaybolması ve batının içeri çökmesi (tuck-up) karakteristiktir."
+  },
+  "dermatophytosis_dog": {
+    "Demodicosis": "Demodicosis'te derin kazıntıda kıl foliküllerinde *Demodex* akarı görülürken, Dermatofitozis'te Wood lambasında spesifik \"elma yeşili\" floresans parlama ve trikogramda ektotriks artrosporlar saptanır.",
+    "Atopik Dermatit": "Atopik dermatit şiddetli kaşıntılı (pruritus) ve hemogramda eozinofili ile seyreden alerjik bir formken, Dermatofitozis genellikle merkezinde kepeklenme (deskuamasyon) olan, kaşıntısız (non-pruritik) dairesel alopesi odakları yapar."
+  },
+  "fiv": {
+    "FeLV": "FeLV daha çok genç kedilerde kranial mediastinal lenfoma (dens kitle) ve non-rejeneratif anemi ile öne çıkarken, FIV özellikle yaşlı agresif sokak kedilerinde immün yetmezliğe sekonder inatçı gingivostomatitis (ağız ülserleri) yapar.",
+    "FIP": "FIP poliklonal gamopatiye bağlı hiperproteinemi ve efüzyon (veya organlarda pyogranülom) ile karakterizeyken, FIV'te T-lenfositlerin virüs tarafından yıkılmasına bağlı belirgin lenfopeni ve FIV spesifik antikor (ELISA) pozitifliği aranır.",
+    "Toxo": "Toksoplazmozis spesifik olarak koryoretinit (anterior üveit), nörolojik defisitler ve akciğerde interstisyel pnömoni yaparken, FIV primer olarak lenfadenomegali ve kronik sekonder enfeksiyonlarla ilerler."
+  },
+  "felv": {
+    "FIV": "FIV'te ısırılma yoluyla bulaş ve kronik gingivostomatit spesifikken, FeLV'de \"FeLV p27 Antijen\" pozitifliği ile birlikte lenfomaya (kanser) sekonder olarak gelişen şiddetli lökopeni ve takipneik solunum tablosu belirgindir.",
+    "FIP": "FIP'te idrar/kanda şiddetli yüksek protein ve sarı/viskoz asit sıvısı varken, FeLV'de periferik kanda metarubrisitlerin (çekirdekli eritrosit) çıkış yaptığı, makrositik ancak non-rejeneratif özellikli derin bir anemi görülür.",
+    "IMHA": "IMHA'da belirgin sferositoz, otoaglütinasyon ve kemik iliğinin aşırı yanıtına bağlı lökomoid reaksiyon (çok yüksek WBC) varken, FeLV'de anemi immün yıkımdan ziyade virüsün kemik iliğini baskılamasıyla (diseritropoezis) oluşur."
+  },
+  "hyperaldosteronism": {
+    "Cushing": "Cushing'de yüksek ALP (>10 kat), hepatomegali ve yüksek kortizol varken, hiperaldosteronizmde aldosteron hormonunun potasyum atılımını tetiklemesine bağlı sekonder şiddetli hipokalemi (boyun bükülmesi, kas zayıflığı) saptanır.",
+    "Hipertiroidi": "Hipertiroidide T4/T3 yüksekliği ve taşikardi görülürken, hiperaldosteronizmde tiroid hormonları normaldir ancak adrenal ultrasonografide tek/çift taraflı kitle (neoplazi) ve şiddetli sistemik hipertansiyon tespit edilir.",
+    "Diabetes": "Diyabette hiperglisemi ve poliüri/polidipsi (idrarda glukoz sızması) temel bulguyken, hiperaldosteronizmde kan şekeri normaldir fakat mineralokortikoid fazlalığı idrarla şiddetli potasyum kaybına ve sodyum tutulumuna neden olur."
+  },
+  "fic": {
+    "Üretral Obstrüksiyon": "Obstrüksiyonda anüriye bağlı idrar kesesi devasa ve taş gibi sert palpe edilir, hayatı tehdit eden hiperkalemi/azotemi gelişirken, FIC'te mesane spazm nedeniyle küçük veya boş palpe edilir ve idrar yolları anatomik olarak açıktır.",
+    "Bakteriyel Sistit": "Bakteriyel sistitte idrar sedimentinde yoğun dejenere nötrofiller (aktif piyüri) ve bakteri kümeleri izlenirken, FIC steril, strese sekonder idiyopatik bir inflamasyondur ve kültür her zaman negatiftir."
+  },
+  "liver_failure": {
+    "FIP": "FIP'te A/G oranının aşırı düşmesi (<0.4) ile şiddetli hiperglobulinemi varken, Karaciğer Yetmezliğinde organın sentez kapasitesinin çökmesine bağlı hipoalbüminemi, düşük BUN ve düşük kolesterol karakteristiktir.",
+    "Addison": "Addison'da aldosteron eksikliğine bağlı Na:K elektrolit orantısızlığı (örn. <27) ve belirgin bradikardi saptanırken, Karaciğer Yetmezliğinde elektrolitler genelde korunur ancak nörolojik olarak amonyak birikimine bağlı hepatik ensefalopati izlenir.",
+    "IMHA": "IMHA'da yoğun eritrosit yıkımına bağlı sferositoz, otoaglütinasyon ve rejeneratif anemi iktere yol açarken, Karaciğer Yetmezliğinde asıl sorun ALT, AST, GGT ve safra asitlerinin kanda aşırı yükselmesidir.",
+    "Lepto": "Leptospirozis \"Akut Böbrek Hasarı\" ile karakterize olup üre/kreatinin tavan yaparken (şiddetli azotemi), Kronik Karaciğer Yetmezliğinde böbrek atılımından ziyade hepatik atrofi (USG'de mikrohepatika) ve karaciğer fonksiyon sentez kaybı saptanır."
+  },
+  "imha": {
+    "Babezya": "Babesioziste periferik kanda eritrositlerin içinde \"armut biçimli\" ikili *Babesia* piroplazmları görülürken, IMHA'da mikroskobik olarak karakteristik yoğun sferosit (çekirdeksiz/küresel eritrosit) infiltrasyonu ve otoaglütinasyon patognomoniktir.",
+    "Ehrlichia": "Ehrlichiosis'te tüm kan serilerinin baskılandığı pansitopeni (ciddi lökopeni, trombositopeni) saptanırken, IMHA'da yoğun eritrosit yıkımına kemik iliğinin aşırı uyarılmasıyla (lökomoid reaksiyon) çok yüksek lökosit (WBC) seviyeleri eşlik eder.",
+    "Karaciğer Yetmezliği": "Karaciğer yetmezliğinde organın üretim yapamamasına bağlı düşük albümin ve BUN tablosu varken, IMHA'da primer hasar kan hücrelerindedir, serum total proteini normaldir ve hepatosplenomegali organın aşırı çalışmasından (fagositoz) kaynaklanır.",
+    "FeLV": "FeLV'nin yarattığı anemi makrositik ancak non-rejeneratiftir (kemik iliği baskısı); IMHA ise yüksek retikülosit sayısı (>60,000 /µL) ile kanıtlanan son derece rejeneratif, bağışıklık aracılı bir yıkım anemisidir."
+  },
+  "toxo": {
+    "FIV": "FIV kronik stomatit ve gingivit gibi ağız içi pürülan enfeksiyonlar yaparken, Toxoplasma klinik olarak koryoretinit (anterior üveit), miyozis ve solunum yollarında interstisyel-alveoler pnömoni tablosu ile seyreder.",
+    "Kuru FIP": "Kuru FIP'te serumda poliklonal gama-pati ve organlarda granülomatöz nodüller varken, Toksoplazmoziste kanda *T. gondii* spesifik IgM/IgG antikor pozitifliği saptanır ve dışkıda karakteristik non-sporüle oositler görülür.",
+    "Distemper": "Distemper köpeklere spesifiktir ve kanda *Lentz inklüzyon cisimcikleri* ile hiperkeratoz (hard pad) oluştururken, Toxo kedilerde akut solunum distressi ve nörolojik defisitler ile seyreden bir protozoon enfeksiyonudur."
+  },
+  "atopic_derm": {
+    "Demodicosis": "Demodicosis genellikle kaşıntısız (non-pruritik) olup deri kazıntısında *Demodex* folikül akarları saptanırken, Atopik dermatit şiddetli kaşıntı (pruritus) ve eozinofilik lenfosit infiltrasyonuna bağlı eozinofili ile karakterizedir.",
+    "Dermatofitozis": "Dermatofitoziste lezyonlar genelde Wood lambasında \"elma yeşili\" floresans veren dairesel anüler alopesi alanlarıyken, Atopik dermatitte aşırı yalanmaya sekonder (simetrik alopesi) ve kızarık eozinofilik plaklar saptanır."
+  },
+  "bacterial_cystitis": {
+    "FIC": "FIC enfeksiyöz olmayan steril ve stres kökenli bir inflamasyonken, Bakteriyel sistitte USG'de kalınlaşmış mesane duvarı ile birlikte idrar sedimentinde yoğun çubuk/kok bakteriler ve dejenere nötrofiller (aktif piyüri) kesin kanıttır.",
+    "Üretral Obstrüksiyon": "Üretral obstrüksiyonda tıkanıklığa bağlı genişlemiş, çok sert mesane ve böbreklere vuran anüri (hiperkalemi) saptanırken, Bakteriyel sistitte idrar geçişi damla damla ve kanlı (hematüri) da olsa açıktır, böbrek değerleri (Kreatinin) normal kalır."
+  },
+  "ehrlichiosis": {
+    "Babezya": "Babesiosis spesifik olarak şiddetli hemoglobinüri (çay rengi idrar) ve eritrosit içi piroplazmlarla karakterizeyken, Ehrlichiosis monositlerin sitoplazmasında \"morula\" inklüzyonları ve akut kanama (epistaksis/peteşi) ile seyreder.",
+    "IMHA": "IMHA çok şiddetli nötrofilik lökositoz ve yoğun retikülositozla karakterizeyken, Ehrlichiosis'te kemik iliği baskılanmasına bağlı olarak non-rejeneratif anemi ve tüm serileri kapsayan şiddetli pansitopeni (WBC ve PLT düşüklüğü) görülür.",
+    "Leishmania": "Leishmanioziste tırnaklarda anormal uzama (onikogrifozis) ve lenf nodlarında makrofaj içi amastigotlar varken, Ehrlichiosis akut ateş, trombosit tüketimi ve vaskülit kaynaklı noktasal kanamalarla (ekimoz) öne çıkar."
+  },
+  "distemper": {
+    "Parvo": "Parvo viral enfeksiyonu primer olarak kanlı ishal ve derin bir panlökopeni ile ilerlerken, Distemper'da respiratuar (sekonder bakteriyel pnömoni) ve nörolojik semptomlar (ritmik miyoklonus/çiğneme tiki) ön plandadır.",
+    "Kennel Cough": "Kennel Cough genel durumu iyi olan hastada trakeal palpasyonla tetiklenen kuru öksürükle seyrederken, Distemper yüksek çift dalgalı ateş, şiddetli pürülan oküler konjonktivit ve sistemik çöküş yaratır.",
+    "Toxo": "Toxo protozoer bir enfeksiyon olup serolojide IgG/IgM yüksekliği ile tanınırken, Distemper köpeklerde epitel ve lökosit sitoplazmasında \"Lentz inklüzyon cisimcikleri\" (viral kalıntılar) bırakmasıyla karakterizedir."
+  },
+  "kennel_cough": {
+    "Distemper": "Distemper hiperkeratoz (hard pad) ve nörolojik semptomlar içeren ölümcül sistemik bir hastalıkken, Kennel Cough (*Bordetella bronchiseptica*) organ fonksiyonlarını (biyokimyayı) etkilemeyen ve çoğunlukla sadece üst solunum yolunda sınırda kalan lokalize bir enfeksiyondur.",
+    "Astım": "Astım spesifik alerjen tetiklenmesine bağlı bronşiyal daralma ve kanda eozinofili ile ilerlerken, Kennel Cough bulaşıcı bir patojen maruziyeti sonrası nötrofilik lökositoz ve şiddetli trakeal irritasyon (öğürmeli öksürük) yapar.",
+    "FHV-FCV": "FHV-FCV (Kedi Solunum Yolu Kompleksi) pürülan göz akıntısı, dendritik kornea ülserleri ve oral/farenjiyal aft benzeri stomatitler ile saptanırken, Kennel Cough kedi/köpekte daha çok izole şiddetli öksürük ve hapşırma ile kısıtlıdır.",
+    "Diyafragmatik Herni": "Hernide travma geçmişi vardır, göğüs kafesinde sağ-sol solunum sesleri asimetriktir ve röntgende diyafram hattı yoktur; Kennel Cough'da diyafram ve akciğer parankimi anatomik olarak tamamen normaldir."
+  },
+  "leptospirosis": {
+    "CAV-1": "CAV-1 (Bulaşıcı Hepatit) tipik olarak \"hepatik mavi göz\" (korneal ödem) ve lökopeni ile seyrederken, Leptospirozis çok şiddetli nötrofilik lökositoz (sola kaymalı) ile birlikte anürik/oligürik Akut Böbrek Hasarı (yüksek Kreatinin/BUN) yapar.",
+    "Karaciğer Yetmezliği": "Kronik karaciğer yetmezliğinde atrofiye bağlı mikrohepatika saptanır ve enfeksiyon/ateş beklenmezken, Leptospirozis akut pyrexia (yüksek ateş), idrarda granüler silindirler ve ultrasonografide akut renomegali/hepatomegali ile ilerler.",
+    "Babezya": "Babesiosis kene kaynaklı olup eritrosit yıkımına bağlı şiddetli anemi ve hemoglobinüri yaratırken, Leptospirozis temas/su kaynaklıdır ve hemogramda anemi minimal düzeydeyken böbrek (azotemi) ve karaciğer enzimlerindeki sıçrama ölümcüldür."
+  },
+  "babesiosis": {
+    "IMHA": "IMHA'da yoğun mikroskobik sferositoz ve otoaglütinasyon (salin testi pozitif) varken, Babesioziste anemi kaynağı olan parazitler bizzat eritrosit içinde yerleşik, \"armut biçimli\" ikili (piroplazm) formasyonlar olarak saptanır.",
+    "Ehrlichiosis": "Ehrlichiosis primer olarak lökosit ve trombosit yıkımına bağlı pansitopeni ve epistaksis (burun kanaması) yaparken, Babesiozis masif eritrosit hemolizine sekonder hemoglobinüri (çay rengi idrar) ve ikter (sarılık) ile karakterizedir.",
+    "Lepto": "Leptospirozis'te hiperkalemik böbrek yetmezliği, izostenüri ve idrarda yoğun tübüler/granüler silindirler görülürken, Babesioziste böbrek fonksiyonları (kreatinin, üre) primer olarak etkilenmez, patoloji intravasküler yıkımdadır."
+  },
+  "leishmaniosis": {
+    "Ehrlichiosis": "Ehrlichiosis kene kaynaklı akut peteşiyal kanamalar ve ateş oluştururken, Leishmaniozis (kum sineği kaynaklı) genelde çok uzun kuluçka süresini takiben onikogrifozis (aşırı uzun tırnaklar) ve gözlük tarzı alopesi (eksfoliatif dermatit) yapar.",
+    "IMHA": "IMHA acil, şiddetli ve rejeneratif anemi tablosuyla sarılığa sebep olurken, Leishmaniozis yavaş gelişen, non-rejeneratif anemi ve lenf nodu sitolojisinde makrofaj içi Leishmania amastigotları (donovan cisimcikleri) ile doğrulanır.",
+    "Karaciğer Yetmezliği": "Karaciğer yetmezliğinde sentez kaybına bağlı hipoalbüminemi ve hipoproteinemi saptanırken, Leishmanioziste renal tutuluma bağlı idrarda protein kaybı (+++) olmasına rağmen poliklonal gamopati kaynaklı çok yüksek serum total proteini ve hiperglobulinemi bulunur."
+  },
+  "cav1_hepatitis": {
+    "Lepto": "Lepto enfeksiyonu eş zamanlı akut böbrek hasarı (aşırı yükselmiş kreatinin) yapıp lökositozla seyrederken, CAV-1 spesifik olarak karaciğer nekrozuna odaklanır, korneal ödem (mavi göz) oluşturur ve lökosit sayısını düşürür.",
+    "Karaciğer Yetmezliği": "Kronik karaciğer yetmezliği enfeksiyöz olmayan, büzüşmüş bir karaciğerle (mikrohepatika) seyrederken, CAV-1 aşısız genç köpeklerde yüksek ateş, karın ağrısı, farenkste tonsillit ve akut hepatomegali ile gelişir.",
+    "Distemper": "Distemper primer olarak pnömoni ve nörolojik miyoklonik tikler ile seyreden, inklüzyon cisimcikleriyle saptanan bir hastalıkken, CAV-1 endotel hasarına bağlı akut koagülopati (kanama diatezi) ve akut ikter (sarılık) yapar."
+  },
+  "ibd": {
+    "Ascariasis": "Ascariasis genç yavrularda bağırsakta canlı solucanlar/parazit yumurtaları ve eozinofilik tablolar oluştururken, IBD orta/ileri yaşta USG'de katman mimarisi korunan diffüz bağırsak duvar kalınlaşması ile seyreden spesifik bir kronik enteropatidir.",
+    "Giardia": "Giardiasiste dışkı analizinde hareketli trofozoitler veya ELISA antijen pozitifliği kanıtken, IBD kronik yangısal infiltrasyona bağlı kanda spesifik belirteçler olan düşük Serum Kobalamin (B12) ve düşük Folat seviyeleri ile ayrılır.",
+    "FPV": "FPV akut başlayan, ateşli, yüksek mortaliteli ve kemik iliğini tamamen çökerten (şiddetli panlökopeni) bir enfeksiyonken, IBD aylara yayılan kilo kaybı, normal veya hafif yüksek lökosit ve hipoproteinemi ile ilerler.",
+    "Kuru FIP": "Kuru FIP'te serumda yüksek protein, hiperglobulinemi (A/G <0.4) ve böbrek/karaciğerde pürüzlü pyogranülomlar varken, IBD primer olarak mide/bağırsakta kalır ve malabsorpsiyona sekonder olarak protein kaybeden enteropati (hipoproteinemi) yaratır."
+  },
+  "fpv": {
+    "Parvo": "FPV kedilerde spesifik panlökopeni yapan enfeksiyon etkeni olup gebe kedilerde fetüste serebellar hipoplazi oluşturabilirken, Parvo köpekleri enfekte eden ve serebellar bulgu yaratmayan ayrı bir patojendir.",
+    "IBD": "IBD sinsi ve kronik başlayan, malabsorpsiyon (şiddetli kilo kaybı) yapan inflamatuar bir süreçken, FPV akut başlayan yüksek ateş, şiddetli kanlı/sulu diyare ve kanda neredeyse yok denecek kadar az WBC (ör: <1.0) ile seyreden ölümcül bir virüstür.",
+    "FIP": "FIP (ıslak form) karında hiperglobulinemik modifiye transüda/eksuda toplanması ile seyrederken, FPV enfeksiyonunda serbest batın sıvısı yoktur, bağırsaklar gaz/sıvı distansiyonundadır ve hücresel bağışıklık tamamen yıkılmıştır."
+  },
+  "fip_dry": {
+    "Toxo": "Toksoplazmoziste akciğerlerde pnömoni odakları ve serolojide Toxo IgG/IgM yüksekliği saptanırken, Kuru FIP'te spesifik olarak plazmada poliklonal gamopati (hiperglobulinemi) ve böbreklerde hipoekoik subkapsüler \"halka\" görünümü tespit edilir.",
+    "FIV": "FIV primer lenfosit yıkımına bağlı kronik stomatit/gingivit ve fırsatçı enfeksiyonlara zemin hazırlarken, Kuru FIP gözde anterior üveit (aköz flare) ve santral sinir sisteminde granülomatöz meningoensefalit (ataksi) ile doğrudan lezyon yapar.",
+    "IBD": "IBD sadece mide/bağırsak mukozasında inflamasyon yaparak kanda malabsorpsiyona (düşük albümin/protein) neden olurken, Kuru FIP sistemik olarak serumda şiddetli yüksek protein ve anormal globulin artışı (A/G <0.4) yaratır.",
+    "Islak FIP": "Islak FIP'te toraks veya abdomen içinde yapışkan, yüksek proteinli fibrinöz sıvı birikimi klinik tabloya hakimken, Kuru FIP'te efüzyon saptanmaz, bunun yerine organ parankimlerinde (özellikle böbrek, karaciğer) pyogranülomatöz kitleler/düzensizlikler gelişir."
+  },
+  "fhv_fcv": {
+    "Kennel Cough": "Kennel Cough'da primer olarak trakea tutulumuna bağlı kuru, öğürmeli öksürük varken, Kedi Solunum Yolu Kompleksi (FHV-FCV) bilateral pürülan konjonktivit, kemozis ve yoğun sarı-yeşil nazal akıntı ile seyreder.",
+    "Astım": "Astım sistemik ateşin olmadığı, hemogramda eozinofili ile seyreden hışırtılı (wheezing) bir alerjik daralmayken, FHV-FCV yüksek ateş (ör: 39.8 °C) ve sekonder bakteriyel enfeksiyonlara bağlı nötrositoz ile ilerleyen bir virüs enfeksiyonudur.",
+    "Distemper": "Distemper'da köpeklere özgü hiperkeratoz (hard pad) ve nörolojik semptomlar ön plandayken, FHV-FCV kedilerde spesifik olarak dil/damakta ağrılı ülseratif stomatit (FCV) ve korneada dendritik ülserasyonlar (FHV) oluşturur."
+  }
+}
