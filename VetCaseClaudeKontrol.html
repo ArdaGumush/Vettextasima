@@ -2483,6 +2483,7 @@ const CASES_URL = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/ref
 const CONFIG_URL = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/vetconfig.json";
 const USG_REPORTS_URL = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/usg-reports.json";
 const QUESTIONS_URL = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/questions.json";
+const DIFFERENTIALS_URL = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/differentials.json";
 const SUPABASE_URL = "https://ugfolpromkgaskpkugmk.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_ijytFzxuaK1rhAed4qnsmQ_k8TlHkCj";
 
@@ -5583,6 +5584,25 @@ function openResultScreen(correct, selected, realDisease) {
   var diagInfo=correct?selected:realDisease;
   var bHtml='<div class="rb-sec"><div class="rb-sec-title g">KULLANILAN TEKNİKLER</div>'+buildTetkikChips(usedTetkikLog)+'</div>';
   bHtml+='<div class="rb-sec"><div class="rb-sec-title">'+(correct?'TANI BİLGİSİ':'DOĞRU TANI BİLGİSİ')+'</div><div style="padding:10px 14px;background:rgba(46,204,113,.06);border:1px solid rgba(46,204,113,.2);border-radius:8px;font-size:11px;color:var(--text-secondary);line-height:1.9"><div><span style="color:var(--text-muted)">Etken:</span> <strong style="color:var(--text-primary)">'+diagInfo.etken+'</strong></div><div style="margin-top:3px"><span style="color:var(--text-muted)">Semptomlar:</span> '+diagInfo.symptoms+'</div></div></div>';
+  // Ayırıcı tanı bölümü ekle
+  const caseKey = (currentCase || mobCurrentCase)?._realKey || currentCaseKey;
+  const diffs = window.DIFFERENTIALS && caseKey && window.DIFFERENTIALS[caseKey];
+  if (diffs && Object.keys(diffs).length > 0) {
+    let diffHtml = '<div class="rb-sec"><div class="rb-sec-title" style="color:var(--accent-purple)">🔬 AYIRici TANI NOTLARI</div>';
+    diffHtml += '<div style="display:flex;flex-direction:column;gap:6px">';
+    for (const [vs, text] of Object.entries(diffs)) {
+      diffHtml += `<div style="border:1px solid var(--border);border-radius:8px;overflow:hidden">
+        <div onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'" style="padding:8px 12px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:11px;font-family:JetBrains Mono,monospace">
+          <span style="color:var(--accent-purple)">vs ${vs}</span>
+          <span style="color:var(--text-muted)">▼</span>
+        </div>
+        <div style="display:none;padding:8px 12px;font-size:11px;color:var(--text-secondary);border-top:1px solid var(--border);line-height:1.7">${text}</div>
+      </div>`;
+    }
+    diffHtml += '</div></div>';
+    bHtml += diffHtml;
+  }
+
   body.innerHTML=bHtml;
   window._lastSelected=selected; window._lastReal=realDisease;
   var _ac=currentCase||mobCurrentCase||{};
