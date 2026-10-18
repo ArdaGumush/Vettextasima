@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vettex Tutorial</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { overflow: hidden; background: #0a0e1a; width: 100vw; height: 100vh; }
+
+#app-frame {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  border: none; z-index: 1; pointer-events: none;
+}
+#app-frame.interactive { pointer-events: auto; }
+
+/* Karartma — spotlight deliği box-shadow ile */
+#spotlight-box {
+  position: fixed;
+  border-radius: 12px;
+  box-shadow: 0 0 0 3px rgba(0,212,255,0.8), 0 0 0 9999px rgba(0,0,0,0.80);
+  z-index: 100;
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(.4,0,.2,1);
+  opacity: 0;
+  animation: none;
+}
+#spotlight-box.visible { opacity: 1; }
+#spotlight-box.pulse {
+  animation: sp-pulse 1.2s ease-in-out infinite;
+}
+@keyframes sp-pulse {
+  0%,100% { box-shadow: 0 0 0 3px rgba(0,212,255,0.6), 0 0 0 9999px rgba(0,0,0,0.80); }
+  50%      { box-shadow: 0 0 0 5px rgba(0,212,255,1.0), 0 0 30px rgba(0,212,255,0.4), 0 0 0 9999px rgba(0,0,0,0.80); }
+}
+
+/* Tooltip */
+#tut-tip {
+  position: fixed; z-index: 200;
+  background: #0b1220;
+  border: 1px solid rgba(0,212,255,0.45);
+  border-radius: 16px;
+  padding: 18px 20px 14px;
+  width: min(330px, 94vw);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 40px rgba(0,212,255,0.06);
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: auto;
+}
+#tut-tip.visible { opacity: 1; transform: translateY(0); }
+
+.tip-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 2px;
+  color: rgba(0,212,255,0.55);
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.tip-badge::after { content:''; flex:1; height:1px; background: rgba(0,212,255,0.12); }
+
+.tip-body {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; line-height: 1.85;
+  color: #c0d4ef; margin-bottom: 14px;
+}
+.tip-body strong { color: #00d4ff; }
+.tip-body em { color: #f39c12; font-style: normal; }
+
+.tip-actions { display: flex; align-items: center; justify-content: space-between; }
+
+.tip-skip {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  color: rgba(100,130,170,0.45); background: none; border: none;
+  cursor: pointer; padding: 4px 0; letter-spacing: 1px;
+  transition: color 0.2s;
+}
+.tip-skip:hover { color: rgba(100,130,170,0.9); }
+
+.tip-next {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  letter-spacing: 1px; color: #00d4ff;
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.4);
+  border-radius: 10px; padding: 9px 20px;
+  cursor: pointer; transition: all 0.2s;
+}
+.tip-next:hover { background: rgba(0,212,255,0.18); }
+.tip-next:disabled { opacity: 0.35; cursor: default; pointer-events: none; }
+
+/* Bekle göstergesi */
+.tip-wait {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  color: #f39c12; letter-spacing: 1px;
+  display: flex; align-items: center; gap: 6px;
+  animation: blink-wait 1s ease-in-out infinite;
+}
+@keyframes blink-wait { 0%,100%{opacity:.4} 50%{opacity:1} }
+
+/* Progress */
+#tut-progress {
+  position: fixed; top:0; left:0; right:0; height:2px;
+  background: rgba(255,255,255,0.05); z-index: 300;
+}
+#tut-progress-fill {
+  height:100%;
+  background: linear-gradient(90deg,#00d4ff,#2ecc71);
+  transition: width 0.5s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 0 8px rgba(0,212,255,0.5);
+}
+
+/* Dots */
+#tut-dots {
+  position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 7px; z-index: 300;
+}
+.tut-dot {
+  width:6px; height:6px; border-radius:50%;
+  background: rgba(255,255,255,0.1);
+  transition: all 0.3s;
+}
+.tut-dot.active { background:#00d4ff; transform:scale(1.45); box-shadow:0 0 6px rgba(0,212,255,0.7); }
+.tut-dot.done   { background: rgba(46,204,113,0.5); }
+
+/* Tamamlama */
+#tut-finish {
+  position:fixed; inset:0; background:rgba(10,14,26,0.96);
+  z-index:400; display:none;
+  align-items:center; justify-content:center;
+  flex-direction:column; gap:20px;
+  text-align:center; padding:32px;
+}
+#tut-finish.show { display:flex; animation:fadeIn 0.5s ease; }
+.fin-icon { font-size:50px; animation:bounceIn 0.6s 0.1s both; }
+.fin-title {
+  font-family:'Syne',sans-serif; font-size:22px;
+  font-weight:800; color:#00d4ff; letter-spacing:3px;
+}
+.fin-sub {
+  font-family:'JetBrains Mono',monospace; font-size:12px;
+  color:rgba(122,156,197,0.8); line-height:1.9; max-width:300px;
+}
+.fin-btn {
+  font-family:'JetBrains Mono',monospace; font-size:12px;
+  letter-spacing:1px; padding:12px 28px; border-radius:12px;
+  cursor:pointer; transition:all 0.2s; margin:4px;
+  border:1px solid rgba(0,212,255,0.4);
+  background:rgba(0,212,255,0.08); color:#00d4ff;
+}
+.fin-btn:hover { background:rgba(0,212,255,0.18); }
+.fin-btn.primary {
+  border-color:rgba(46,204,113,0.5);
+  background:rgba(46,204,113,0.1); color:#2ecc71;
+}
+.fin-btn.primary:hover { background:rgba(46,204,113,0.2); }
+
+@keyframes fadeIn  { from{opacity:0} to{opacity:1} }
+@keyframes bounceIn{ 0%{transform:scale(.3);opacity:0} 70%{transform:scale(1.1)} 100%{transform:scale(1);opacity:1} }
+</style>
+</head>
+<body>
+
+<iframe id="app-frame" src="VetCaseClaudeKontrol.html"></iframe>
+
+<div id="spotlight-box"></div>
+
+<div id="tut-tip">
+  <div class="tip-badge" id="tip-badge">ADIM 1 / 8</div>
+  <div class="tip-body" id="tip-body"></div>
+  <div class="tip-actions">
+    <button class="tip-skip" onclick="skipTutorial()">Atla</button>
+    <div id="tip-action-area">
+      <button class="tip-next" id="tip-next" onclick="nextStep()">Devam ›</button>
+    </div>
+  </div>
+</div>
+
+<div id="tut-progress"><div id="tut-progress-fill" style="width:0%"></div></div>
+<div id="tut-dots"></div>
+
+<div id="tut-finish">
+  <div class="fin-icon">🎉</div>
+  <div class="fin-title">TUTORIAL TAMAMLANDI</div>
+  <div class="fin-sub">
+    Harika! Artık Vettex'in tüm temel akışını gördün.<br>
+    İlk vakanı kendin çözmeye hazır mısın?
+  </div>
+  <div>
+    <button class="fin-btn primary" onclick="goToApp()">▶ KLİNİĞE GİR</button>
+    <button class="fin-btn" onclick="replayTutorial()">↺ Tekrar İzle</button>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────────────────────────
+// ADIM TANIMI
+// waitFor: { type: 'click'|'fn', ... }
+//   type:'click'  → query: iframe'deki CSS selector — kullanıcı o eleme tıklayınca geç
+//   type:'fn'     → check: her 300ms çalışan fonksiyon, true dönünce geç
+//   type:'none'   → kullanıcı "Devam" butonuna basınca geç
+// spotlight: iframe içinde CSS selector
+// ─────────────────────────────────────────────────────────────────
+const STEPS = [
+  // 0 — KARŞILAMA
+  {
+    badge: 'ADIM 1 / 8 — HOŞ GELDİN',
+    html: `Merhaba! 👋<br><br>
+<strong>Vettex</strong>'e hoş geldin — Türkiye'nin ilk dijital veteriner klinik simülasyonu.<br><br>
+Bu kısa turda uygulamayı bizzat kullanarak öğreneceksin. Hazır mısın?`,
+    spotlight: null,
+    waitFor: { type: 'none' },
+  },
+
+  // 1 — AYARLAR
+  {
+    badge: 'ADIM 2 / 8 — AYARLAR',
+    html: `İlk olarak <strong>⚙ Ayarlar</strong> sekmesine tıkla.<br><br>
+🚨 <strong>Acil Vaka</strong> — 5 eylemle hızlı tanı<br>
+📱 <strong>Mobil Mod</strong> — telefon görünümü<br>
+💰 <strong>Ekonomi</strong> — bütçeye göre test<br>
+☀️ <strong>Aydınlık Mod</strong> — tema değiştir<br><br>
+<em>Şimdi Ayarlar sekmesine tıkla →</em>`,
+    spotlight: 'button.wm-tab:nth-child(2)', // ⚙ Ayarlar butonu
+    waitFor: { type: 'click', query: 'button.wm-tab:nth-child(2)' },
+  },
+
+  // 2 — BAŞLAT
+  {
+    badge: 'ADIM 3 / 8 — BAŞLAT',
+    html: `Ayarları gördün. Şimdi <strong>▶ Başlat</strong> sekmesine tıkla.<br><br>
+<em>Başlat → Klinik Mod → Karışık</em> yolunu izleyeceğiz — sana özel bir kedi vakası geliyor! 🐱`,
+    spotlight: 'button.wm-tab.active, button.wm-tab:first-child',
+    waitFor: { type: 'click', query: 'button.wm-tab:first-child' },
+  },
+
+  // 3 — KLİNİK MOD SEÇ
+  {
+    badge: 'ADIM 4 / 8 — KLİNİK MOD',
+    html: `Şimdi <strong>KLİNİK MOD</strong>'u seç.<br><br>
+Klinik modda her eylem bir hak harcar, gerçek klinik baskısını hissedeceksin. 🏥`,
+    spotlight: '#wm-mod-cards .species-card:nth-child(2)', // KLİNİK MOD kartı
+    waitFor: { type: 'fn', check: () => {
+      try {
+        const doc = getDoc();
+        // openClinicMode çağrıldığında wm-mod-cards gizlenir
+        const cards = doc.getElementById('wm-mod-cards');
+        return cards && cards.style.display === 'none';
+      } catch(e) { return false; }
+    }},
+  },
+
+  // 4 — KARIŞ IK VAKA
+  {
+    badge: 'ADIM 5 / 8 — VAKA SEÇİMİ',
+    html: `Vaka türü seç — <strong>Karışık</strong>'a tıkla.<br><br>
+Bu seferlik sana bir <em>kedi vakası</em> gelecek. Hazır ol! 🐈`,
+    spotlight: null, // Klinik mod seçim ekranı açık olacak
+    waitFor: { type: 'fn', check: () => {
+      try {
+        const doc = getDoc();
+        // currentCase set olduysa vaka başladı
+        return !!(doc.defaultView && doc.defaultView.currentCase);
+      } catch(e) { return false; }
+    }},
+    onEnter: () => {
+      // Karışık vaka butonunu spotlight'la
+      setTimeout(() => {
+        try {
+          const doc = getDoc();
+          // Klinik mod seçim ekranında "Karışık" seçeneğini bul
+          const cards = doc.querySelectorAll('#clinic-mode-screen .species-card, #screen-clinic .species-card, [onclick*="any"]');
+          if (cards.length > 0) {
+            spotlightEl(cards[cards.length - 1]);
+          }
+        } catch(e) {}
+      }, 300);
+    }
+  },
+
+  // 5 — ANAMNEZ
+  {
+    badge: 'ADIM 6 / 8 — ANAMNEZ',
+    html: `Vaka geldi! 🎉<br><br>
+Şimdi <strong>🔍 Anamnez Sor</strong> butonuna bas.<br>
+<em>Genel → Davranış → "Yabancı cisim yeme alışkanlığı"</em> sorusunu sor.<br><br>
+Cevabı görünce bir sonraki adıma geçebilirsin.`,
+    spotlight: 'button[onclick="openAnamnezModal()"]',
+    waitFor: { type: 'fn', check: () => {
+      try {
+        const doc = getDoc();
+        const aq = doc.defaultView && doc.defaultView._aqAnswered;
+        return !!(aq && aq['davranis_5']);
+      } catch(e) { return false; }
+    }},
+  },
+
+  // 6 — RÖNTGEN
+  {
+    badge: 'ADIM 7 / 8 — RÖNTGEN',
+    html: `Harika! Yabancı cisim cevabını aldık. 🔍<br><br>
+Şimdi <strong>C. Görüntüleme</strong> sekmesine geç → <strong>Röntgen</strong> → <strong>İndirekt Röntgen</strong> çek.<br><br>
+<em>Abdominal grafide ne görüyorsun?</em>`,
+    spotlight: 'button[onclick="switchTab(\'goruntu\')"]',
+    waitFor: { type: 'fn', check: () => {
+      try {
+        const doc = getDoc();
+        // doImaging xray_indirect çağrıldı mı — result panel içinde kontrol
+        const modal = doc.querySelector('#modal-overlay, .modal-overlay, #mod-overlay');
+        if (modal && modal.style.display !== 'none') {
+          const txt = (modal.textContent || '').toLowerCase();
+          if (txt.includes('röntgen') || txt.includes('indirekt') || txt.includes('xray') || txt.includes('radyografi')) return true;
+        }
+        // ya da sonuç alanında görüntüleme oldu mu
+        const results = doc.querySelector('#exam-results, .exam-result, #result-panel');
+        if (results) {
+          const txt = (results.textContent || '').toLowerCase();
+          if (txt.includes('röntgen') || txt.includes('indirekt')) return true;
+        }
+        return false;
+      } catch(e) { return false; }
+    }},
+  },
+
+  // 7 — TEŞHİS
+  {
+    badge: 'ADIM 8 / 8 — TEŞHİS',
+    html: `Son adım! 🎯<br><br>
+Şimdi <strong>🔍 Teşhis</strong> butonuna bas ve doğru tanıyı seç:<br><br>
+<em>GIS Obstrüksiyon (Yabancı Cisim)</em><br><br>
+Teşhis verdikten sonra tutorial tamamlanacak!`,
+    spotlight: '#diag-btn',
+    waitFor: { type: 'fn', check: () => {
+      try {
+        const doc = getDoc();
+        return !!(doc.defaultView && doc.defaultView.diagnosisSubmitted);
+      } catch(e) { return false; }
+    }},
+  },
+];
+
+// ─────────────────────────────────────────────────────────────────
+
+let currentStep = 0;
+let waitInterval = null;
+let waitClickCleanup = null;
+
+function getDoc() {
+  return document.getElementById('app-frame').contentDocument
+      || document.getElementById('app-frame').contentWindow.document;
+}
+
+// iframe içindeki element rect'ini al (parent koordinatlarına çevir)
+function getIframeRect(el) {
+  const frame = document.getElementById('app-frame');
+  const fr = frame.getBoundingClientRect();
+  const r = el.getBoundingClientRect();
+  return {
+    left: fr.left + r.left, top: fr.top + r.top,
+    width: r.width, height: r.height
+  };
+}
+
+function spotlightEl(el) {
+  if (!el) { hideSpotlight(); return; }
+  const r = getIframeRect(el);
+  if (!r || r.width === 0) { hideSpotlight(); return; }
+  const pad = 8;
+  const sp = document.getElementById('spotlight-box');
+  sp.style.left   = (r.left - pad) + 'px';
+  sp.style.top    = (r.top - pad) + 'px';
+  sp.style.width  = (r.width + pad*2) + 'px';
+  sp.style.height = (r.height + pad*2) + 'px';
+  sp.classList.add('visible');
+}
+
+function spotlightQuery(q) {
+  if (!q) { hideSpotlight(); return; }
+  try {
+    const doc = getDoc();
+    const el = doc.querySelector(q);
+    if (el) spotlightEl(el);
+    else hideSpotlight();
+  } catch(e) { hideSpotlight(); }
+}
+
+function hideSpotlight() {
+  document.getElementById('spotlight-box').classList.remove('visible', 'pulse');
+}
+
+function positionTooltip(spotQ) {
+  const tip = document.getElementById('tut-tip');
+  const W = window.innerWidth, H = window.innerHeight;
+  const tw = tip.offsetWidth, th = tip.offsetHeight;
+
+  if (!spotQ) {
+    tip.style.left = ((W - tw) / 2) + 'px';
+    tip.style.top  = ((H - th) / 2) + 'px';
+    return;
+  }
+
+  try {
+    const doc = getDoc();
+    const el = doc.querySelector(spotQ);
+    if (!el) { tip.style.left = ((W-tw)/2)+'px'; tip.style.top = ((H-th)/2)+'px'; return; }
+    const r = getIframeRect(el);
+    const pad = 14;
+    let top = r.top + r.height + pad;
+    let left = r.left;
+    if (top + th > H - 40) top = r.top - th - pad;
+    if (top < 8) top = 8;
+    if (left + tw > W - 8) left = W - tw - 8;
+    if (left < 8) left = 8;
+    tip.style.top  = top + 'px';
+    tip.style.left = left + 'px';
+  } catch(e) {
+    tip.style.left = ((W-tw)/2)+'px'; tip.style.top = ((H-th)/2)+'px';
+  }
+}
+
+function renderStep(idx) {
+  const s = STEPS[idx];
+  clearWait();
+
+  // Tooltip içeriği
+  document.getElementById('tip-badge').textContent = s.badge;
+  document.getElementById('tip-body').innerHTML = s.html;
+
+  // Aksiyon alanı
+  const area = document.getElementById('tip-action-area');
+  if (s.waitFor.type === 'none') {
+    area.innerHTML = `<button class="tip-next" onclick="nextStep()">${idx===STEPS.length-1 ? 'Tamamla 🎉' : 'Devam ›'}</button>`;
+  } else {
+    area.innerHTML = `<span class="tip-wait">⏳ Aksiyonu bekliyor...</span>`;
+  }
+
+  // Progress
+  document.getElementById('tut-progress-fill').style.width = ((idx+1)/STEPS.length*100) + '%';
+
+  // Dots
+  const dots = document.getElementById('tut-dots');
+  dots.innerHTML = STEPS.map((_,i) =>
+    `<div class="tut-dot ${i<idx?'done':i===idx?'active':''}"></div>`
+  ).join('');
+
+  // Spotlight & tooltip
+  setTimeout(() => {
+    spotlightQuery(s.spotlight);
+    positionTooltip(s.spotlight);
+    const sp = document.getElementById('spotlight-box');
+    if (s.spotlight) sp.classList.add('pulse'); else sp.classList.remove('pulse');
+  }, 150);
+
+  // onEnter hook
+  if (s.onEnter) s.onEnter();
+
+  // Bekleme kurulumu
+  setupWait(s, idx);
+
+  // Tooltip göster
+  const tip = document.getElementById('tut-tip');
+  tip.classList.add('visible');
+}
+
+function setupWait(s, idx) {
+  if (s.waitFor.type === 'none') return;
+
+  if (s.waitFor.type === 'click') {
+    // iframe'e tıklanabilirlik ver, ilgili eleme tıklanınca ilerle
+    enableIframe();
+    const checkClick = () => {
+      try {
+        const doc = getDoc();
+        const el = doc.querySelector(s.waitFor.query);
+        if (el) {
+          const handler = () => {
+            el.removeEventListener('click', handler);
+            disableIframe();
+            setTimeout(nextStep, 350);
+          };
+          el.addEventListener('click', handler);
+          waitClickCleanup = () => el.removeEventListener('click', handler);
+        }
+      } catch(e) {}
+    };
+    // Bazen element henüz DOM'da olmayabilir, 500ms sonra tekrar dene
+    setTimeout(checkClick, 500);
+    return;
+  }
+
+  if (s.waitFor.type === 'fn') {
+    enableIframe();
+    waitInterval = setInterval(() => {
+      try {
+        if (s.waitFor.check()) {
+          clearWait();
+          disableIframe();
+          setTimeout(nextStep, 600);
+        }
+      } catch(e) {}
+    }, 300);
+  }
+}
+
+function clearWait() {
+  if (waitInterval) { clearInterval(waitInterval); waitInterval = null; }
+  if (waitClickCleanup) { waitClickCleanup(); waitClickCleanup = null; }
+}
+
+function enableIframe()  { document.getElementById('app-frame').classList.add('interactive'); }
+function disableIframe() { document.getElementById('app-frame').classList.remove('interactive'); }
+
+function nextStep() {
+  clearWait();
+  disableIframe();
+  const tip = document.getElementById('tut-tip');
+  tip.classList.remove('visible');
+  hideSpotlight();
+
+  if (currentStep >= STEPS.length - 1) {
+    setTimeout(finishTutorial, 350);
+    return;
+  }
+  currentStep++;
+  setTimeout(() => renderStep(currentStep), 350);
+}
+
+function finishTutorial() {
+  document.getElementById('tut-dots').style.display = 'none';
+  document.getElementById('tut-progress').style.display = 'none';
+  document.getElementById('tut-finish').classList.add('show');
+  enableIframe(); // arka planda uygulama çalışıyor
+}
+
+function skipTutorial() {
+  if (!confirm('Tutorialı atlamak istiyor musun?')) return;
+  clearWait();
+  enableIframe();
+  hideSpotlight();
+  document.getElementById('tut-tip').classList.remove('visible');
+  document.getElementById('tut-dots').style.display = 'none';
+  document.getElementById('tut-progress').style.display = 'none';
+}
+
+function goToApp() {
+  document.getElementById('tut-finish').classList.remove('show');
+}
+
+function replayTutorial() {
+  document.getElementById('tut-finish').classList.remove('show');
+  document.getElementById('tut-dots').style.display = 'flex';
+  document.getElementById('tut-progress').style.display = 'block';
+  disableIframe();
+  currentStep = 0;
+  document.getElementById('tut-tip').classList.remove('visible');
+  setTimeout(() => renderStep(0), 200);
+}
+
+// Spotlight güncel konumunu koru (scroll/resize)
+function refreshSpotlight() {
+  const s = STEPS[currentStep];
+  if (s && s.spotlight) {
+    spotlightQuery(s.spotlight);
+    positionTooltip(s.spotlight);
+  }
+}
+window.addEventListener('resize', refreshSpotlight);
+
+// iframe yüklenince başlat
+document.getElementById('app-frame').addEventListener('load', () => {
+  setTimeout(() => renderStep(0), 1000);
+
+  // iframe içindeki navigasyonlarda spotlight'ı güncelle
+  try {
+    const doc = getDoc();
+    const obs = new MutationObserver(() => {
+      refreshSpotlight();
+      // Karışık vaka seçim butonunu dinamik yakala
+      const s = STEPS[currentStep];
+      if (s && s.onEnter) s.onEnter();
+    });
+    obs.observe(doc.body, { childList:true, subtree:true, attributes:false });
+  } catch(e) {}
+});
+</script>
+</body>
+</html>
