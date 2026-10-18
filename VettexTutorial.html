@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vettex Tutorial</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { overflow: hidden; background: #0a0e1a; width: 100vw; height: 100vh; }
+
+/* ── GERÇEK UYGULAMA IFRAME ── */
+#app-frame {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 1;
+  /* pointer-events kapatılarak kullanıcının tutorial dışı tıklaması engellenir */
+  pointer-events: none;
+}
+
+/* ── KARARTMA KATMANI ── */
+#dark-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.78);
+  z-index: 100;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+/* ── SPOTLIGHT DELİĞİ (clip-path ile) ── */
+/* SVG filter yerine box-shadow trick kullanıyoruz */
+#spotlight-box {
+  position: fixed;
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 4px rgba(0,212,255,0.7),
+    0 0 0 9999px rgba(0,0,0,0.78);
+  z-index: 101;
+  pointer-events: none;
+  transition: all 0.55s cubic-bezier(.4,0,.2,1);
+  opacity: 0;
+}
+#spotlight-box.visible { opacity: 1; }
+
+/* ── TOOLTIP ── */
+#tut-tooltip {
+  position: fixed;
+  z-index: 200;
+  background: #0d1424;
+  border: 1px solid rgba(0,212,255,0.5);
+  border-radius: 16px;
+  padding: 20px 22px 16px;
+  width: min(340px, 92vw);
+  box-shadow:
+    0 0 0 1px rgba(0,212,255,0.1),
+    0 20px 60px rgba(0,0,0,0.7),
+    0 0 40px rgba(0,212,255,0.08);
+  transition: all 0.4s cubic-bezier(.4,0,.2,1);
+  opacity: 0;
+  transform: translateY(6px);
+}
+#tut-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tut-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: rgba(0,212,255,0.6);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tut-badge::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(0,212,255,0.15);
+}
+
+.tut-body {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  line-height: 1.8;
+  color: #c8d8f0;
+  margin-bottom: 16px;
+}
+.tut-body strong { color: #00d4ff; font-weight: 600; }
+.tut-body em { color: #f39c12; font-style: normal; }
+
+.tut-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.tut-skip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(122,156,197,0.5);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+.tut-skip:hover { color: rgba(122,156,197,0.9); }
+
+.tut-next {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #00d4ff;
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.4);
+  border-radius: 10px;
+  padding: 9px 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.tut-next:hover {
+  background: rgba(0,212,255,0.16);
+  box-shadow: 0 0 16px rgba(0,212,255,0.25);
+}
+
+/* ── PROGRESS BAR ── */
+#tut-progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: rgba(255,255,255,0.06);
+  z-index: 300;
+}
+#tut-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00d4ff, #2ecc71);
+  transition: width 0.5s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 0 8px rgba(0,212,255,0.6);
+}
+
+/* ── ADIM DOTS ── */
+#tut-dots {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+  z-index: 300;
+}
+.tut-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  transition: all 0.3s;
+}
+.tut-dot.active {
+  background: #00d4ff;
+  transform: scale(1.4);
+  box-shadow: 0 0 6px rgba(0,212,255,0.7);
+}
+.tut-dot.done { background: rgba(46,204,113,0.5); }
+
+/* ── TAMAMLAMA EKRANI ── */
+#tut-finish {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,14,26,0.95);
+  z-index: 400;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  padding: 32px;
+}
+#tut-finish.show { display: flex; animation: fadeIn 0.5s ease; }
+
+.finish-icon { font-size: 52px; animation: bounceIn 0.6s 0.1s both; }
+.finish-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #00d4ff;
+  letter-spacing: 3px;
+}
+.finish-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: rgba(122,156,197,0.8);
+  line-height: 1.9;
+  max-width: 300px;
+}
+.finish-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 13px 32px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid rgba(0,212,255,0.4);
+  background: rgba(0,212,255,0.08);
+  color: #00d4ff;
+  margin: 4px;
+}
+.finish-btn:hover { background: rgba(0,212,255,0.18); }
+.finish-btn.primary {
+  border-color: rgba(46,204,113,0.5);
+  background: rgba(46,204,113,0.1);
+  color: #2ecc71;
+}
+.finish-btn.primary:hover { background: rgba(46,204,113,0.2); }
+
+/* ── YÖNLENDİRME OKU ── */
+#tut-arrow {
+  position: fixed;
+  z-index: 199;
+  font-size: 22px;
+  animation: bounce-arrow 0.9s ease-in-out infinite;
+  pointer-events: none;
+  transition: all 0.4s;
+  opacity: 0;
+  color: #00d4ff;
+  text-shadow: 0 0 12px rgba(0,212,255,0.8);
+}
+#tut-arrow.visible { opacity: 1; }
+
+/* ── GEÇİŞ MESAJI ── */
+#tut-transition {
+  position: fixed;
+  inset: 0;
+  background: #0a0e1a;
+  z-index: 350;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+}
+#tut-transition.show { display: flex; }
+.trans-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: rgba(0,212,255,0.7);
+  letter-spacing: 2px;
+  animation: pulse 1.2s ease infinite;
+}
+
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes bounceIn { 0% { transform:scale(0.3); opacity:0; } 70% { transform:scale(1.1); } 100% { transform:scale(1); opacity:1; } }
+@keyframes bounce-arrow { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes pulse { 0%,100% { opacity:0.5; } 50% { opacity:1; } }
+</style>
+</head>
+<body>
+
+<!-- GERÇEK UYGULAMA -->
+<iframe id="app-frame" src="VetCaseClaudeKontrol.html"></iframe>
+
+<!-- TUTORIAL KATMANLARI -->
+<div id="dark-overlay"></div>
+<div id="spotlight-box"></div>
+<div id="tut-arrow">▼</div>
+
+<div id="tut-tooltip">
+  <div class="tut-badge" id="tut-badge">ADIM 1 / 9</div>
+  <div class="tut-body" id="tut-body"></div>
+  <div class="tut-actions">
+    <button class="tut-skip" onclick="skipTutorial()">Atla</button>
+    <button class="tut-next" id="tut-next-btn" onclick="nextStep()">Devam ›</button>
+  </div>
+</div>
+
+<div id="tut-progress"><div id="tut-progress-fill"></div></div>
+<div id="tut-dots"></div>
+
+<!-- GEÇİŞ -->
+<div id="tut-transition">
+  <div style="font-size:32px">⚕️</div>
+  <div class="trans-text" id="trans-text">YÜKLENİYOR...</div>
+</div>
+
+<!-- TAMAMLAMA -->
+<div id="tut-finish">
+  <div class="finish-icon">🎉</div>
+  <div class="finish-title">TUTORIAL TAMAMLANDI</div>
+  <div class="finish-sub">
+    Harika! Artık Vettex'in tüm temel özelliklerini gördün.<br>
+    İlk vakanı kendin çözmeye hazır mısın?
+  </div>
+  <div>
+    <button class="finish-btn primary" onclick="goToApp()">▶ KLİNİĞE GİR</button>
+    <button class="finish-btn" onclick="replayTutorial()">↺ Tekrar İzle</button>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────────────────
+// TUTORIAL ADIM TANIMI
+// Her adım: { title, html, spotlight, arrow, tooltipPos }
+//   spotlight: { selector, iframeQuery } — iframe içindeki elemi hedefle
+//   tooltipPos: 'below' | 'above' | 'center'
+// ─────────────────────────────────────────────────────────
+
+const STEPS = [
+  {
+    title: "ADIM 1 / 9 — HOŞ GELDİN",
+    html: `Merhaba! 👋<br><br>
+<strong>Vettex</strong> — Türkiye'nin ilk dijital veteriner klinik simülasyonuna hoş geldin.<br><br>
+Bu kısa turda uygulamanın nasıl çalıştığını adım adım göstereceğiz.`,
+    spotlight: null,
+    arrow: null,
+    tooltipPos: 'center',
+  },
+  {
+    title: "ADIM 2 / 9 — AYARLAR",
+    html: `İlk olarak <strong>Ayarlar</strong> kutusuna bakalım. 🔧<br><br>
+Sol üstteki <em>⚙ Ayarlar</em> bölümünde oyun modlarını ve tema ayarlarını değiştirebilirsin.`,
+    spotlight: { iframeQuery: '#settings-panel, .settings-box, [data-section="settings"], #panel-settings' },
+    arrow: '▲',
+    tooltipPos: 'below',
+  },
+  {
+    title: "ADIM 3 / 9 — MOD SEÇENEKLERİ",
+    html: `Burada 4 farklı mod var:<br><br>
+🚨 <strong>Acil Vaka Modu</strong> — 5 eylem hakkıyla hızlı tanı<br>
+📱 <strong>Mobil Mod</strong> — telefon için optimize görünüm<br>
+💰 <strong>Ekonomi Modu</strong> — bütçeye göre test seçimi<br>
+☀️ <strong>Aydınlık Mod</strong> — tema değişikliği`,
+    spotlight: { iframeQuery: '#settings-panel, .settings-box, [data-section="settings"], #panel-settings' },
+    arrow: null,
+    tooltipPos: 'below',
+  },
+  {
+    title: "ADIM 4 / 9 — BAŞLAT",
+    html: `Ayarlarını yaptıktan sonra <strong>BAŞLAT</strong> butonuna basıyorsun.<br><br>
+Bugün <em>Klinik Mod → Karışık</em> seçiyoruz ve sana özel bir kedi vakası geliyor! 🐱`,
+    spotlight: { iframeQuery: '#btn-start, button.start-btn, [data-action="start"], .btn-start' },
+    arrow: '▼',
+    tooltipPos: 'above',
+  },
+  {
+    title: "ADIM 5 / 9 — HASTA BİLGİLERİ",
+    html: `Kliniğe <strong>Pamuk</strong> adında 3 yaşında bir tekir kedi geldi. 🐈<br><br>
+<em>Şikayet:</em> 3 gündür yemiyor, kusuyor — ama karnında bir şey yok gibi, sadece sarı sıvı geliyor.<br><br>
+Genel bilgiler panelinden hastayı tanıyalım.`,
+    spotlight: { iframeQuery: '#case-info, .case-card, .patient-card, [data-section="info"]' },
+    arrow: null,
+    tooltipPos: 'below',
+  },
+  {
+    title: "ADIM 6 / 9 — ANAMNEZ",
+    html: `Şimdi <strong>Anamnez</strong> bölümüne geçiyoruz. 🔍<br><br>
+Genel Durum → Davranış kategorisine gidiyoruz ve şunu soruyoruz:<br><br>
+<em>"Yabancı cisim yeme alışkanlığı var mı?"</em><br><br>
+Cevap sürpriz değil... 😼`,
+    spotlight: { iframeQuery: '#anamnez-panel, .anamnez-section, [data-section="anamnez"], #panel-anamnez' },
+    arrow: null,
+    tooltipPos: 'below',
+  },
+  {
+    title: "ADIM 7 / 9 — KLİNİK İŞLEMLER",
+    html: `Anamnez tamamlandı — sıra <strong>Klinik İşlemler</strong>'de! ⚕️<br><br>
+<em>Görüntüleme → Röntgen → İndirekt</em> yolunu takip ediyoruz.<br><br>
+Abdominal radyografide proksimal bağırsak dilatasyonu görülüyor.`,
+    spotlight: { iframeQuery: '#clinical-panel, .clinical-section, [data-section="clinical"], #panel-clinical, .btn-goruntuleme' },
+    arrow: null,
+    tooltipPos: 'below',
+  },
+  {
+    title: "ADIM 8 / 9 — TEŞHİS VER",
+    html: `Artık teşhis koymaya hazırız! 🎯<br><br>
+Sağ paneldeki <strong>Teşhis Ver</strong> butonuna basıyoruz.<br><br>
+Ayırıcı tanılar arasından doğru teşhisi seç:<br>
+<em>GIS Obstrüksiyon (Yabancı Cisim)</em>`,
+    spotlight: { iframeQuery: '#diagnosis-panel, .diagnosis-section, [data-section="diagnosis"], #panel-diagnosis, .btn-teshis, #btn-teshis' },
+    arrow: null,
+    tooltipPos: 'above',
+  },
+  {
+    title: "ADIM 9 / 9 — SONUÇ",
+    html: `Tebrikler! ✅<br><br>
+Doğru teşhisi koydun. Sonuç ekranında:<br>
+📋 Ayırıcı tanılar listesi<br>
+🔬 Temel klinik bulgular<br>
+📊 Performans puanın görünecek.<br><br>
+Artık Vettex'i keşfetmeye hazırsın!`,
+    spotlight: null,
+    arrow: null,
+    tooltipPos: 'center',
+  }
+];
+
+let currentStep = 0;
+
+// iframe içindeki elementi bul ve konumunu al
+function getIframeElementRect(queryStr) {
+  try {
+    const frame = document.getElementById('app-frame');
+    const doc = frame.contentDocument || frame.contentWindow.document;
+    if (!doc) return null;
+    const selectors = queryStr.split(',').map(s => s.trim());
+    for (const sel of selectors) {
+      const el = doc.querySelector(sel);
+      if (el) {
+        const r = el.getBoundingClientRect();
+        const fr = frame.getBoundingClientRect();
+        return {
+          left: fr.left + r.left,
+          top: fr.top + r.top,
+          width: r.width,
+          height: r.height,
+          found: true
+        };
+      }
+    }
+  } catch(e) {}
+  return null;
+}
+
+function setSpotlight(step) {
+  const box = document.getElementById('spotlight-box');
+  if (!step.spotlight) {
+    box.classList.remove('visible');
+    return;
+  }
+  const rect = getIframeElementRect(step.spotlight.iframeQuery);
+  if (!rect || !rect.found || rect.width === 0) {
+    // element bulunamadı — spotlight'ı gizle
+    box.classList.remove('visible');
+    return;
+  }
+  const pad = 8;
+  box.style.left   = (rect.left - pad) + 'px';
+  box.style.top    = (rect.top - pad) + 'px';
+  box.style.width  = (rect.width + pad*2) + 'px';
+  box.style.height = (rect.height + pad*2) + 'px';
+  box.classList.add('visible');
+}
+
+function positionTooltip(step, spotRect) {
+  const tip = document.getElementById('tut-tooltip');
+  const W = window.innerWidth, H = window.innerHeight;
+  const tw = tip.offsetWidth, th = tip.offsetHeight;
+
+  if (step.tooltipPos === 'center' || !spotRect || !spotRect.found) {
+    tip.style.left = ((W - tw) / 2) + 'px';
+    tip.style.top  = ((H - th) / 2) + 'px';
+    return;
+  }
+
+  const pad = 8;
+  const sBottom = spotRect.top + spotRect.height;
+  const sTop    = spotRect.top;
+  const sLeft   = spotRect.left;
+
+  let top, left;
+
+  if (step.tooltipPos === 'below') {
+    top = sBottom + 16;
+    if (top + th > H - 40) top = sTop - th - 16;
+  } else { // above
+    top = sTop - th - 16;
+    if (top < 8) top = sBottom + 16;
+  }
+
+  left = sLeft;
+  if (left + tw > W - pad) left = W - tw - pad;
+  if (left < pad) left = pad;
+
+  tip.style.top  = Math.max(8, top) + 'px';
+  tip.style.left = left + 'px';
+}
+
+function positionArrow(step, spotRect) {
+  const arrow = document.getElementById('tut-arrow');
+  if (!step.arrow || !spotRect || !spotRect.found) {
+    arrow.classList.remove('visible');
+    return;
+  }
+  arrow.textContent = step.arrow;
+  const cx = spotRect.left + spotRect.width / 2;
+  if (step.arrow === '▼') {
+    arrow.style.top  = (spotRect.top - 36) + 'px';
+    arrow.style.left = (cx - 11) + 'px';
+  } else {
+    arrow.style.top  = (spotRect.top + spotRect.height + 8) + 'px';
+    arrow.style.left = (cx - 11) + 'px';
+  }
+  arrow.classList.add('visible');
+}
+
+function renderStep(idx) {
+  const s = STEPS[idx];
+  const tip = document.getElementById('tut-tooltip');
+
+  // Badge & metin
+  document.getElementById('tut-badge').textContent = s.title;
+  document.getElementById('tut-body').innerHTML = s.html;
+
+  // Son adım butonu
+  document.getElementById('tut-next-btn').textContent =
+    idx === STEPS.length - 1 ? 'Tamamla 🎉' : 'Devam ›';
+
+  // Progress bar
+  document.getElementById('tut-progress-fill').style.width =
+    ((idx + 1) / STEPS.length * 100) + '%';
+
+  // Dots
+  const dots = document.getElementById('tut-dots');
+  dots.innerHTML = STEPS.map((_,i) =>
+    `<div class="tut-dot ${i < idx ? 'done' : i === idx ? 'active' : ''}"></div>`
+  ).join('');
+
+  // Spotlight + tooltip konumu
+  let spotRect = null;
+  if (s.spotlight) {
+    spotRect = getIframeElementRect(s.spotlight.iframeQuery);
+  }
+  setSpotlight(s);
+  tip.classList.add('visible');
+
+  // Tooltip & arrow konumu küçük gecikmeyle (layout settle)
+  setTimeout(() => {
+    positionTooltip(s, spotRect);
+    positionArrow(s, spotRect);
+  }, 80);
+}
+
+function nextStep() {
+  const tip = document.getElementById('tut-tooltip');
+  tip.classList.remove('visible');
+  document.getElementById('tut-arrow').classList.remove('visible');
+  document.getElementById('spotlight-box').classList.remove('visible');
+
+  if (currentStep >= STEPS.length - 1) {
+    finishTutorial();
+    return;
+  }
+  currentStep++;
+  setTimeout(() => renderStep(currentStep), 350);
+}
+
+function finishTutorial() {
+  document.getElementById('dark-overlay').style.opacity = '0';
+  document.getElementById('tut-dots').style.display = 'none';
+  document.getElementById('tut-progress').style.display = 'none';
+  setTimeout(() => {
+    document.getElementById('dark-overlay').style.display = 'none';
+    document.getElementById('tut-finish').classList.add('show');
+  }, 400);
+}
+
+function skipTutorial() {
+  if (!confirm('Tutorialı atlamak istiyor musun?')) return;
+  document.getElementById('dark-overlay').style.opacity = '0';
+  document.getElementById('spotlight-box').classList.remove('visible');
+  document.getElementById('tut-tooltip').classList.remove('visible');
+  document.getElementById('tut-arrow').classList.remove('visible');
+  document.getElementById('tut-dots').style.display = 'none';
+  document.getElementById('tut-progress').style.display = 'none';
+  setTimeout(() => {
+    document.getElementById('dark-overlay').style.display = 'none';
+    document.getElementById('app-frame').style.pointerEvents = 'auto';
+  }, 400);
+}
+
+function goToApp() {
+  // Tutorial bitti, iframe'e tıklanabilirlik ver
+  document.getElementById('tut-finish').classList.remove('show');
+  document.getElementById('dark-overlay').style.display = 'none';
+  document.getElementById('app-frame').style.pointerEvents = 'auto';
+}
+
+function replayTutorial() {
+  document.getElementById('tut-finish').classList.remove('show');
+  document.getElementById('dark-overlay').style.display = 'block';
+  document.getElementById('dark-overlay').style.opacity = '1';
+  document.getElementById('tut-dots').style.display = 'flex';
+  document.getElementById('tut-progress').style.display = 'block';
+  currentStep = 0;
+  document.getElementById('tut-tooltip').classList.remove('visible');
+  setTimeout(() => renderStep(0), 200);
+}
+
+// iframe yüklenince başlat
+document.getElementById('app-frame').addEventListener('load', () => {
+  setTimeout(() => renderStep(0), 800);
+});
+
+// Resize'da konumları güncelle
+window.addEventListener('resize', () => {
+  if (currentStep < STEPS.length) renderStep(currentStep);
+});
+</script>
+</body>
+</html>
