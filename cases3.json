@@ -367,7 +367,7 @@
     "caseId": "VC-2025-037",
     "species": "Kedi",
     "icon": "🐱",
-    "diagnosis": "Felin Üst Solunum Yolu Kompleksi (Barınak Öksürüğü / Bordetella bronchiseptica)",
+    "diagnosis": "Felin Üst Solunum Yolu Kompleksi (Bordetella bronchiseptica)",
     "anamnez": {
       "name": "İsim: **Çorap** | Irk: **Domestic Shorthair**",
       "demog": "Yaş: **8 aylık** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmamış**",
@@ -1820,7 +1820,7 @@
     "caseId": "VC-2025-041",
     "species": "Köpek",
     "icon": "🐶",
-    "diagnosis": "Enfeksiyöz Köpek Hepatiti (Canine Adenovirus-1 / CAV-1)",
+    "diagnosis": "Enfeksiyöz Köpek Hepatiti (CAV-1)",
     "anamnez": {
       "name": "İsim: **Şimşek** | Irk: **Melez**",
       "demog": "Yaş: **9 aylık** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmamış**",
@@ -2918,7 +2918,7 @@
     "caseId": "VC-2025-044",
     "species": "Kedi",
     "icon": "🐱",
-    "diagnosis": "Kuru Form Kedi Enfeksiyöz Peritoniti (Non-effusive FIP)",
+    "diagnosis": "Kuru Form FIP (Non-effusive FIP)",
     "anamnez": {
       "name": "İsim: **Peri** | Irk: **British Shorthair**",
       "demog": "Yaş: **10 aylık** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmış (OVH, 1 ay önce)**",

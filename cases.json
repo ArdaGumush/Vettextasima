@@ -4023,7 +4023,7 @@
     "caseId": "VC-2025-013",
     "species": "Kedi",
     "icon": "🐱",
-    "diagnosis": "Dermatofitoz (Microsporum canis)",
+    "diagnosis": "Dermatofitoz (Microsporum canis) — Kedi",
     "anamnez": {
       "name": "İsim: **Fındık** | Irk: **Karışık Irk**",
       "demog": "Yaş: **2 yaş** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmış (OVH)**",
@@ -4757,7 +4757,7 @@
     "caseId": "VC-2025-015",
     "species": "Kedi",
     "icon": "🐱",
-    "diagnosis": "Felin Hipertiroidi (Hipertiroidizm)",
+    "diagnosis": "Felin Hipertiroidi",
     "anamnez": {
       "name": "İsim: **Pamuq** | Irk: **Karışık Irk (Ev Kedisi)**",
       "demog": "Yaş: **12 yaş** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmış (OVH)**",
@@ -5482,7 +5482,7 @@
     "caseId": "VC-2025-018",
     "species": "Kedi",
     "icon": "🐱",
-    "diagnosis": "Felin Astım (Alerjik Bronşit)",
+    "diagnosis": "Felin Bronşiyal Astım",
     "anamnez": {
       "name": "İsim: **Bulut** | Irk: **Karışık Irk (Domestic Shorthair)**",
       "demog": "Yaş: **3 yaş** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmış (OVH)**",

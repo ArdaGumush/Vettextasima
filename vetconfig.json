@@ -70,11 +70,6 @@
       "tag": "Endokrinoloji",
       "icon": "🐱"
     },
-    "ckd": {
-      "label": "Boncuk — Karışık Irk",
-      "tag": "Nefroloji",
-      "icon": "🐱"
-    },
     "hypothyroidism": {
       "label": "Amber — Golden Retriever",
       "tag": "Endokrinoloji",
@@ -185,11 +180,6 @@
       "tag": "Solunum",
       "icon": "🐱"
     },
-    "hcm_ate": {
-      "label": "Aslan — Maine Coon",
-      "tag": "Kardiyoloji ⚡ACİL",
-      "icon": "🐱"
-    },
     "addison": {
       "label": "Lola — Standart Poodle",
       "tag": "Endokrinoloji",
@@ -232,8 +222,7 @@
       "fpv",
       "fip_dry",
       "fhv_fcv",
-      "asthma",
-      "hcm_ate"
+      "asthma"
     ],
     "dog": [
       "dog",
