@@ -18,7 +18,7 @@ function replayTutorial() {
   location.href = 'VettexTutorial.html?replay=1';
 }
 </script>
-<title>Vettex — Klinik Simülasyon</title>
+<title>VetTEX — Klinik Simülasyon</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -168,6 +168,7 @@ function replayTutorial() {
     color: var(--accent-green);
     font-family: 'JetBrains Mono', monospace;
   }
+  .mob-accordion-header .mob-acc-status.pending { display: none; }
   .mob-accordion-header .mob-acc-status.pending {
     background: rgba(255,255,255,0.04);
     color: var(--text-muted);
@@ -404,6 +405,59 @@ function replayTutorial() {
     border-bottom: 1px solid var(--border);
     backdrop-filter: blur(12px);
   }
+  /* ── NOTLAR ── */
+  .note-pen {
+    background: none; border: 1px solid transparent; border-radius: 6px; cursor: pointer;
+    font-size: 12px; line-height: 1; padding: 3px 5px; margin: 0 6px 0 4px; opacity: .55;
+    transition: opacity .15s, background .15s, border-color .15s; vertical-align: middle;
+  }
+  .note-pen:hover { opacity: 1; background: rgba(0,212,255,.08); border-color: rgba(0,212,255,.3); }
+  .note-pen.noted { opacity: 1; background: rgba(46,204,113,.12); border-color: rgba(46,204,113,.4); }
+  .mob-accordion-body > .note-pen, .mob-popup-result > .note-pen { float: right; margin: -2px 0 4px 8px; font-size: 15px; padding: 5px 7px; opacity: .8; }
+  .note-pen-cell { width: 1%; white-space: nowrap; text-align: right; padding-left: 2px !important; }
+  .note-pen-cell .note-pen { margin: 0; }
+  .notes-count:not(:empty) {
+    margin-left: auto; font-size: 10px; letter-spacing: 0; padding: 1px 7px; border-radius: 10px;
+    background: rgba(0,212,255,.12); color: var(--accent-cyan);
+  }
+  .notes-list { display: flex; flex-direction: column; gap: 8px; }
+  .notes-empty { font-size: 11px; line-height: 1.6; color: var(--text-muted); padding: 10px 12px; border: 1px dashed var(--border); border-radius: 8px; }
+  .note-item { background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--accent-cyan); border-radius: 8px; padding: 8px 10px; }
+  .note-item.flash { animation: noteFlash .8s ease; }
+  @keyframes noteFlash { 0% { box-shadow: 0 0 0 2px var(--accent-cyan); } 100% { box-shadow: 0 0 0 0 transparent; } }
+  .note-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+  .note-src { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-cyan); }
+  .note-del { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 12px; padding: 2px 4px; }
+  .note-del:hover { color: var(--accent-red); }
+  .note-text { font-size: 12px; line-height: 1.55; color: var(--text-primary); }
+  .note-comment {
+    width: 100%; box-sizing: border-box; margin-top: 6px; resize: none; overflow: hidden;
+    background: var(--bg-base); border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px;
+    color: var(--accent-orange); font-family: inherit; font-size: 12px; line-height: 1.5;
+  }
+  .note-comment:focus { outline: none; border-color: var(--accent-orange); }
+  .note-comment-ro { margin-top: 6px; font-size: 12px; color: var(--accent-orange); line-height: 1.5; }
+  .notes-readonly { display: flex; flex-direction: column; gap: 6px; }
+  .mob-notes-badge {
+    position: absolute; top: 5px; right: 10px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 8px;
+    background: var(--accent-cyan); color: #04121a; font-size: 10px; font-weight: 700;
+    align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace;
+  }
+  body.mobile-mode .note-text, body.mobile-mode .note-comment, body.mobile-mode .note-comment-ro { font-size: 14px; }
+  body.mobile-mode .note-src { font-size: 11px; }
+  body.mobile-mode .notes-empty { font-size: 13px; }
+
+  /* Teşhis Ver: üst barın ana eylemi, diğer etiketlerden ayrışsın */
+  .diagnose-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 18px; border-radius: 8px; cursor: pointer;
+    background: var(--accent-green); color: #04140b;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    box-shadow: 0 0 16px rgba(46,204,113,0.35);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .diagnose-btn:hover { transform: translateY(-1px); box-shadow: 0 0 24px rgba(46,204,113,0.55); }
+  .diagnose-btn:active { transform: translateY(0); }
   #topbar .brand {
     display: flex;
     align-items: center;
@@ -739,6 +793,8 @@ function replayTutorial() {
     background: rgba(255,255,255,0.05);
     color: var(--text-muted);
   }
+  .anamnez-btn .btn-status:empty { display: none; }
+  .anamnez-btn.asked .btn-status { font-size: 12px; padding: 1px 7px; }
   .anamnez-btn.asked .btn-status {
     background: var(--glow-green);
     color: var(--accent-green);
@@ -1703,8 +1759,8 @@ window.onerror = function(msg, src, line) {
 <div id="welcome">
 
   <div class="wm-hero">
-    <div class="wm-logo">VETTEX</div>
-    <div class="wm-sub">Veteriner Klinik Simülasyon Sistemi v0.1</div>
+    <div class="wm-logo">VetTEX</div>
+    <div class="wm-sub">Veteriner Klinik Simülasyon Sistemi V1.0</div>
   </div>
 
   <div class="wm-container">
@@ -2017,7 +2073,7 @@ window.onerror = function(msg, src, line) {
 
   </div><!-- /wm-container -->
 
-  <div style="margin-top:20px;font-size:10px;color:var(--text-muted);letter-spacing:1px;">Vettex — Akademik veteriner klinik simülasyonu</div>
+  <div style="margin-top:20px;font-size:10px;color:var(--text-muted);letter-spacing:1px;">VetTEX — Akademik veteriner klinik simülasyonu</div>
 </div>
 
 <!-- Eski step2 wrapper — selectSpecies() hâlâ case-list id'sini kullanıyor, kaldı -->
@@ -2073,7 +2129,7 @@ window.onerror = function(msg, src, line) {
       <div class="d-pulse d-pulse2"></div>
       <div class="d-icon">🩺</div>
     </div>
-    <div class="d-logo">VET<span>TEX</span></div>
+    <div class="d-logo">Vet<span>TEX</span></div>
     <div class="d-tagline">Veteriner Klinik Simülasyonu</div>
     <div class="d-title">⚠ Önemli Uyarı</div>
     <div class="d-text">
@@ -2081,9 +2137,9 @@ window.onerror = function(msg, src, line) {
       Sunulan vakalar, laboratuvar değerleri ve klinik bulgular öğretim amacıyla tasarlanmış simülasyonlardır. Gerçek hastalarda tanı ve tedavi kararları için mutlaka <strong>lisanslı bir veteriner hekime</strong> başvurunuz.
     </div>
     <div class="d-footer">
-      <span>v3.0d</span>
+      <span>V1.0</span>
       <span class="d-dot">◆</span>
-      <span>© 2025 Vettex</span>
+      <span>© 2025 VetTEX</span>
       <span class="d-dot">◆</span>
       <span id="d-date"></span>
     </div>
@@ -2092,7 +2148,7 @@ window.onerror = function(msg, src, line) {
 </div>
 
 <div id="splash" style="position:fixed;inset:0;z-index:9999;background:var(--bg-base);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
-  <div style="font-family:'Syne',sans-serif;font-size:42px;font-weight:800;color:var(--accent-cyan);letter-spacing:4px;text-shadow:0 0 30px rgba(0,212,255,0.5)">Vettex</div>
+  <div style="font-family:'Syne',sans-serif;font-size:42px;font-weight:800;color:var(--accent-cyan);letter-spacing:4px;text-shadow:0 0 30px rgba(0,212,255,0.5)">VetTEX</div>
   <div style="font-size:11px;color:var(--text-muted);letter-spacing:2px">Vaka veritabanı yükleniyor...</div>
   <div id="splash-status" style="font-size:10px;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;min-height:16px"></div>
   <button id="splash-retry" onclick="loadCaseData()" style="display:none;padding:8px 20px;background:rgba(0,212,255,0.1);border:1px solid var(--accent-cyan);border-radius:8px;color:var(--accent-cyan);font-family:'JetBrains Mono',monospace;font-size:10px;cursor:pointer">🔄 Tekrar Dene</button>
@@ -2116,7 +2172,7 @@ window.onerror = function(msg, src, line) {
   <!-- Mobil Topbar -->
   <div id="mob-topbar">
     <button id="mob-back-btn" onclick="mobConfirmBack()" style="display:none;padding:5px 10px;background:rgba(231,76,60,0.08);border:1px solid var(--accent-red);border-radius:6px;color:var(--accent-red);font-family:'JetBrains Mono',monospace;font-size:9px;cursor:pointer;letter-spacing:1px;flex-shrink:0">← MENÜ</button>
-    <div class="mob-brand" id="mob-brand-logo" style="cursor:pointer" onclick="mobConfirmBack()">VET<span style="color:var(--text-secondary);font-weight:400">TEX</span></div>
+    <div class="mob-brand" id="mob-brand-logo" style="cursor:pointer" onclick="mobConfirmBack()">Vet<span style="color:var(--text-secondary);font-weight:400">TEX</span></div>
     <div class="mob-case-info" id="mob-case-info">— VAKA YOK —</div>
     <div id="mob-credit-badge" style="display:none">—/—</div>
   </div>
@@ -2135,7 +2191,7 @@ window.onerror = function(msg, src, line) {
     <!-- Giriş / Vaka Seçim Ekranı -->
     <div id="mob-home-screen">
       <div style="padding:24px 16px;text-align:center">
-        <div style="font-family:'Syne',sans-serif;font-size:48px;font-weight:800;color:var(--accent-cyan);letter-spacing:4px;text-shadow:0 0 30px rgba(0,212,255,0.4);margin-bottom:8px">Vettex</div>
+        <div style="font-family:'Syne',sans-serif;font-size:48px;font-weight:800;color:var(--accent-cyan);letter-spacing:4px;text-shadow:0 0 30px rgba(0,212,255,0.4);margin-bottom:8px">VetTEX</div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:3px;margin-bottom:40px">KLİNİK SİMÜLASYON</div>
         <button onclick="mobOpenClinic()" style="width:100%;padding:16px;background:rgba(0,212,255,0.08);border:2px solid var(--accent-cyan);border-radius:12px;color:var(--accent-cyan);font-family:'JetBrains Mono',monospace;font-size:13px;cursor:pointer;letter-spacing:2px;margin-bottom:10px">
           🏥 KLİNİK ÇALIŞMA MODU
@@ -2192,7 +2248,7 @@ window.onerror = function(msg, src, line) {
 <div id="topbar">
   <div class="brand">
     <div class="pulse-dot"></div>
-    VETTEX
+    VetTEX
     <span>// KLİNİK SİMÜLASYON</span>
   </div>
   <div class="topbar-meta">
@@ -2260,20 +2316,28 @@ window.onerror = function(msg, src, line) {
 
       <button class="anamnez-btn" id="btn-name" onclick="askAnamnez('name')">
         <span class="btn-icon">🏷️</span> İsim &amp; Irk
-        <span class="btn-status" id="st-name">SORULMADI</span>
+        <span class="btn-status" id="st-name"></span>
       </button>
       <button class="anamnez-btn" id="btn-demog" onclick="askAnamnez('demog')">
         <span class="btn-icon">📋</span> Yaş / Cinsiyet / Kısırlık
-        <span class="btn-status" id="st-demog">SORULMADI</span>
+        <span class="btn-status" id="st-demog"></span>
       </button>
       <button class="anamnez-btn" id="btn-vaccine" onclick="askAnamnez('vaccine')">
         <span class="btn-icon">💉</span> Aşı &amp; Parazit İlacı Durumu
-        <span class="btn-status" id="st-vaccine">SORULMADI</span>
+        <span class="btn-status" id="st-vaccine"></span>
       </button>
       <button class="anamnez-btn" id="btn-complaint" onclick="askAnamnez('complaint')">
         <span class="btn-icon">🩺</span> Şikayet
-        <span class="btn-status" id="st-complaint">SORULMADI</span>
+        <span class="btn-status" id="st-complaint"></span>
       </button>
+    </div>
+
+    <!-- NOTLARIM -->
+    <div class="section-block" id="notes-block">
+      <div class="section-title">Notlarım <span id="notes-count" class="notes-count"></span></div>
+      <div id="notes-list" class="notes-list">
+        <div class="notes-empty">Bulguların yanındaki ✏️ ile not ekle. Yanına kendi yorumunu da yazabilirsin.</div>
+      </div>
     </div>
 
 
@@ -2456,7 +2520,7 @@ window.onerror = function(msg, src, line) {
   <div id="usg-modal-paper" style="background:#fafaf8;width:100%;max-width:680px;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,0.5);position:relative;margin:auto">
     <div id="usg-modal-header" style="background:#1a3a5c;color:white;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;border-radius:4px 4px 0 0">
       <div>
-        <div style="font-size:14px;font-weight:700;letter-spacing:1px">Vettex Veteriner Kliniği</div>
+        <div style="font-size:14px;font-weight:700;letter-spacing:1px">VetTEX Veteriner Kliniği</div>
         <div style="font-size:10px;opacity:0.7;margin-top:2px">Radyoloji & Görüntüleme Birimi</div>
       </div>
       <div style="font-size:11px;background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:20px;letter-spacing:1px;font-weight:600">ABDOMİNAL USG</div>
@@ -2466,7 +2530,7 @@ window.onerror = function(msg, src, line) {
     <div id="usg-modal-body" style="padding:16px 20px;color:#1a1a1a"></div>
     <div style="background:#f0f4f8;border-top:1px solid #d0dae6;padding:8px 20px;display:flex;justify-content:space-between;font-size:9px;color:#8a9ab0;border-radius:0 0 4px 4px">
       <span style="color:#c0392b;font-weight:600">⚠ Bu rapor simülasyon amaçlıdır, gerçek tanı değildir.</span>
-      <span>Vettex v2.7 · Eğitim Simülasyonu</span>
+      <span>VetTEX V1.0 · Eğitim Simülasyonu</span>
     </div>
   </div>
 </div>
@@ -3025,6 +3089,7 @@ function mobStartCase(speciesFilter) {
   // Ortak durum: anamnez ağacı, teşhis ve sonuç ekranı currentCase'i okuyor
   currentCase = mobCurrentCase;
   currentCaseKey = key;
+  resetNotes();
   window._aqAnswered = {};
   diagnosisSubmitted = false;
 
@@ -3045,6 +3110,7 @@ function mobStartCase(speciesFilter) {
   document.getElementById('mob-bottombar').style.display = 'block';
   document.getElementById('mob-diagnosis-bar').style.display = 'block';
   mobBuildBottomBar();
+  renderNotes();
 }
 
 function mobUpdatePatientCard() {
@@ -3117,10 +3183,10 @@ function mobBuildClinicScreen() {
   const singleComplaint = complaints.length > 0 ? complaints[Math.floor(Math.random() * complaints.length)] : '—';
   html += `<div class="mob-accordion-item" id="mob-acc-complaint">
     <div class="mob-accordion-header" onclick="mobToggleAccordion('mob-acc-complaint')">
-      <div class="mob-acc-title">💬 Şikayet<span class="mob-acc-status pending" id="mob-status-complaint">SORULMADI</span></div>
+      <div class="mob-acc-title">💬 Şikayet<span class="mob-acc-status pending" id="mob-status-complaint"></span></div>
       <span class="mob-accordion-chevron">▼</span>
     </div>
-    <div class="mob-accordion-body">${parseMarkdown(singleComplaint)}</div>
+    <div class="mob-accordion-body">${notePenHTML('Şikayet', singleComplaint)}${parseMarkdown(singleComplaint)}</div>
   </div>`;
 
   // Fiziksel Muayene
@@ -3141,10 +3207,11 @@ function mobBuildClinicScreen() {
     const val = (item.src === 'tools' ? c.tools?.[item.key] : c.physical?.[item.key]) || '—';
     html += `<div class="mob-accordion-item" id="mob-acc-phys-${item.key}">
       <div class="mob-accordion-header" onclick="mobToggleAccordion('mob-acc-phys-${item.key}')">
-        <div class="mob-acc-title">${item.label}<span class="mob-acc-status pending">YAPILMADI</span></div>
+        <div class="mob-acc-title">${item.label}<span class="mob-acc-status pending"></span></div>
         <span class="mob-accordion-chevron">▼</span>
       </div>
       <div class="mob-accordion-body">
+        ${notePenHTML(item.label.replace(/^[^A-Za-zÇĞİÖŞÜçğıöşü]+/, ''), val)}
         <div class="mob-popup-result">${parseMarkdown(val)}</div>
       </div>
     </div>`;
@@ -3157,10 +3224,10 @@ function mobBuildClinicScreen() {
 function mobAccordionItem(label, value, key) {
   return `<div class="mob-accordion-item" id="mob-acc-${key}">
     <div class="mob-accordion-header" onclick="mobToggleAccordion('mob-acc-${key}')">
-      <div class="mob-acc-title">${label}<span class="mob-acc-status pending" id="mob-status-${key}">SORULMADI</span></div>
+      <div class="mob-acc-title">${label}<span class="mob-acc-status pending" id="mob-status-${key}"></span></div>
       <span class="mob-accordion-chevron">▼</span>
     </div>
-    <div class="mob-accordion-body">${parseMarkdown(value)}</div>
+    <div class="mob-accordion-body">${notePenHTML(label.replace(/^[^A-Za-zÇĞİÖŞÜçğıöşü]+/, ''), value)}${parseMarkdown(value)}</div>
   </div>`;
 }
 
@@ -3179,7 +3246,7 @@ function mobToggleAccordion(id) {
 
     // Status güncelle
     const status = item.querySelector('.mob-acc-status');
-    if (status) { status.classList.remove('pending'); status.textContent = id.startsWith('mob-acc-phys-') ? 'YAPILDI' : 'SORULDU'; }
+    if (status) { status.classList.remove('pending'); status.textContent = '✓'; }
 
   } else {
     // Açık — kapat
@@ -3206,6 +3273,7 @@ function mobBuildBottomBar() {
 
   const buttons = [
     { icon:'🔍', label:'Anamnez',         onclick:'openAnamnezModal()' },
+    { icon:'📝', label:'Notlar',          onclick:'mobOpenNotes()', notes:true },
     { icon:'🩺', label:'İleri Muayene',  onclick:'mobOpenAdvanced()' },
     { icon:'🖼', label:'Görüntüleme',    onclick:'mobOpenImaging()' },
     { icon:'🩸', label:'Hemogram',       onclick:'mobOpenHemogram()' },
@@ -3218,6 +3286,7 @@ function mobBuildBottomBar() {
 
   inner.innerHTML = buttons.map(b => `
     <button class="mob-bar-btn${b.final?' final-btn':''}" onclick="${b.onclick}">
+      ${b.notes ? '<span id="mob-notes-badge" class="mob-notes-badge" style="display:none">0</span>' : ''}
       <span class="mob-btn-icon">${b.icon}</span>
       <span class="mob-btn-label">${b.label}</span>
     </button>`).join('');
@@ -3252,7 +3321,7 @@ function mobDoTool(key) {
   if (!spendCredit(TETKIK_COSTS.tool, toolLabels[key]||key)) return;
   closeModal();
   const safeResult = text.replace(/"/g, '&quot;');
-  openModal('🔬 ' + (toolLabels[key]||key), `<div class="mob-popup-result">${parseMarkdown(text)}</div>`);
+  openModal('🔬 ' + (toolLabels[key]||key), `<div class="mob-popup-result">${notePenHTML(toolLabels[key]||key, text)}${parseMarkdown(text)}</div>`);
 }
 
 function mobOpenImaging() {
@@ -3309,7 +3378,9 @@ function mobUnlockPanel(btn) {
   SoundSystem.playUnlock();
   const container = btn.parentElement;
   const result = container.dataset.result || '';
-  container.innerHTML = '<div class="mob-popup-result" style="color:var(--accent-green)">' + parseMarkdown(result.replace(/&quot;/g,'"')) + '</div>';
+  const _txt = result.replace(/&quot;/g,'"');
+  const _src = (document.getElementById('modal-title')?.textContent || 'Bulgu').replace(/^[^A-Za-zÇĞİÖŞÜçğıöşü]+/, '');
+  container.innerHTML = '<div class="mob-popup-result" style="color:var(--accent-green)">' + notePenHTML(_src, _txt) + parseMarkdown(_txt) + '</div>';
 }
 
 function mobOpenHemogram() {
@@ -3329,6 +3400,7 @@ function mobOpenHemogram() {
   });
   html += '</table></div>';
   openModal('🩸 HEMOGRAM (CBC)', html);
+  addPensToTables(document.getElementById('modal-content'), 'Hemogram');
 }
 
 function mobOpenBiyo() {
@@ -3365,6 +3437,7 @@ function mobRunBiyo() {
   tableHtml += '</table></div>';
   closeModal();
   openModal('🧪 BİYOKİMYA SONUÇLARI', tableHtml);
+  addPensToTables(document.getElementById('modal-content'), 'Biyokimya');
 }
 
 function mobOpenHormon() {
@@ -3414,6 +3487,7 @@ function mobRunHormon() {
   tableHtml += '</table></div>';
   closeModal();
   openModal('⚗️ HORMON SONUÇLARI', tableHtml);
+  addPensToTables(document.getElementById('modal-content'), 'Hormon');
 }
 
 
@@ -3503,7 +3577,7 @@ function mobUseRapidKit(kitId, sampleType) {
   const badge = isPos
     ? '<span style="color:var(--accent-red);font-weight:bold;font-size:20px">● POZİTİF 🔴</span>'
     : '<span style="color:var(--accent-green);font-weight:bold;font-size:20px">● NEGATİF ✓</span>';
-  openModal('🧪 ' + kit.label, `<div style="text-align:center;padding:20px 0">${badge}</div>`);
+  openModal('🧪 ' + kit.label, `<div style="text-align:center;padding:20px 0">${badge}</div><div style="text-align:center">${notePenHTML('Hızlı Kit', kit.label + ': ' + result)} <span style="font-size:11px;color:var(--text-muted)">Notlara ekle</span></div>`);
 }
 
 function mobOpenRapidKit() {
@@ -4206,6 +4280,7 @@ function backToStep1() {
 function startCase(caseKey) {
   currentCase = CASE_DATA[caseKey];
   currentCaseKey = caseKey;
+  resetNotes();
   window._aqAnswered = {};
   complaintAsked = false;
 
@@ -4214,7 +4289,7 @@ function startCase(caseKey) {
     const btn = document.getElementById('btn-' + k);
     const st  = document.getElementById('st-' + k);
     if (btn) btn.classList.remove('asked');
-    if (st)  st.textContent = 'SORULMADI';
+    if (st)  st.textContent = '';
   });
   document.querySelectorAll('.exam-btn').forEach(b => b.classList.remove('done'));
   // New micro buttons reset
@@ -4318,7 +4393,7 @@ function askAnamnez(key) {
   if (!currentCase || btn.classList.contains('asked')) return;
 
   btn.classList.add('asked');
-  st.textContent = '✓ SORULDU';
+  st.textContent = '✓';
 
   let rawText = currentCase.anamnez[key];
   // Şikayet array ise (henüz seçilmemişse) rastgele birini seç
@@ -4353,7 +4428,8 @@ function askAnamnez(key) {
   }
 
   const entryType = key === 'complaint' ? 'success' : 'info';
-  addMonitorEntry(entryType, label, html);
+  const noteTxt = isDialog ? rawText.split('\n').map(l => l.trim()).filter(Boolean).slice(1).join(' ') : rawText;
+  addMonitorEntry(entryType, label, html, noteTxt);
 
   if (key === 'complaint') {
     complaintAsked = true;
@@ -4523,7 +4599,7 @@ function buildUSGReportHTML(caseKey, imgUrl) {
       ${sonuc}
     </div>
     ${gorselHTML}
-    <div class="usg-footer">⚠ Bu rapor simülasyon amaçlıdır, gerçek tanı değildir. · Vettex v2.4</div>
+    <div class="usg-footer">⚠ Bu rapor simülasyon amaçlıdır, gerçek tanı değildir. · VetTEX V1.0</div>
   </div>`;
 }
 
@@ -4804,6 +4880,7 @@ function runHemogram() {
   </table>`;
 
   document.getElementById('hemogram-preview').innerHTML = tableHTML;
+  addPensToTables(document.getElementById('hemogram-preview'), 'Hemogram');
   logTetkik('🩸 Hemogram');
   addMonitorEntry('lab', 'HEMOGRAM (CBC) SONUCU', tableHTML);
   showToast('Hemogram sonuçları hazır!');
@@ -5032,9 +5109,116 @@ function revealMicroInterp(type) {
 }
 
 // ═══════════════════════════════════════════════════════════════
+// NOTLAR
+// Bulguların yanındaki ✏️ ile not alınır: bulgu otomatik eklenir,
+// öğrenci yanına yorumunu yazar. Notlar sonuç ekranında da görünür,
+// yeni vaka başlayınca sıfırlanır.
+// ═══════════════════════════════════════════════════════════════
+let caseNotes = [];
+
+function noteEsc(s) {
+  return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function notePlain(html) {
+  const d = document.createElement('div');
+  d.innerHTML = String(html || '').replace(/<br\s*\/?>/gi, ' ').replace(/\*\*/g, '');
+  return (d.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 400);
+}
+function notePenHTML(src, text) {
+  const done = caseNotes.some(n => n.src === src && n.text === notePlain(text));
+  return `<button type="button" class="note-pen${done ? ' noted' : ''}" title="Notlara ekle" aria-label="Notlara ekle"
+    data-src="${noteEsc(src)}" data-text="${noteEsc(notePlain(text))}"
+    onclick="event.stopPropagation();addNoteFromBtn(this)">✏️</button>`;
+}
+function addNoteFromBtn(btn) { addNote(btn.dataset.src, btn.dataset.text, btn); }
+
+function addNote(src, text, btn) {
+  text = notePlain(text);
+  if (!text) return;
+  if (btn) btn.classList.add('noted');
+  const exist = caseNotes.find(n => n.src === src && n.text === text);
+  if (exist) { showToast('📝 Bu bulgu zaten notlarında'); focusNote(exist.id); return; }
+  const note = { id: 'n' + Date.now() + Math.floor(Math.random() * 1000), src, text, comment: '' };
+  caseNotes.push(note);
+  renderNotes();
+  showToast('📝 Notlara eklendi');
+  if (!mobileMode) focusNote(note.id);
+}
+function focusNote(id) {
+  const el = document.querySelector('#notes-list [data-note="' + id + '"]');
+  if (!el) return;
+  el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+  if (!mobileMode) el.querySelector('textarea')?.focus({ preventScroll: true });
+}
+function removeNote(id) {
+  caseNotes = caseNotes.filter(n => n.id !== id);
+  renderNotes();
+  // Silinen bulgunun kalemini de normale döndür
+  document.querySelectorAll('.note-pen.noted').forEach(b => {
+    if (!caseNotes.some(n => n.src === b.dataset.src && n.text === b.dataset.text)) b.classList.remove('noted');
+  });
+}
+function updateNoteComment(id, val) {
+  const n = caseNotes.find(x => x.id === id);
+  if (n) n.comment = val;
+}
+function noteAutoSize(t) { t.style.height = 'auto'; t.style.height = (t.scrollHeight + 2) + 'px'; }
+
+function notesListHTML() {
+  if (!caseNotes.length) {
+    return '<div class="notes-empty">Bulguların yanındaki ✏️ ile not ekle. Yanına kendi yorumunu da yazabilirsin.</div>';
+  }
+  return caseNotes.map(n => `
+    <div class="note-item" data-note="${n.id}">
+      <div class="note-head">
+        <span class="note-src">${noteEsc(n.src)}</span>
+        <button type="button" class="note-del" title="Notu sil" aria-label="Notu sil" onclick="removeNote('${n.id}')">✕</button>
+      </div>
+      <div class="note-text">${noteEsc(n.text)}</div>
+      <textarea class="note-comment" rows="1" placeholder="Yorumun…"
+        oninput="updateNoteComment('${n.id}', this.value); noteAutoSize(this)">${noteEsc(n.comment)}</textarea>
+    </div>`).join('');
+}
+function renderNotes() {
+  const list = document.getElementById('notes-list');
+  if (list) { list.innerHTML = notesListHTML(); list.querySelectorAll('textarea').forEach(noteAutoSize); }
+  const cnt = document.getElementById('notes-count');
+  if (cnt) cnt.textContent = caseNotes.length ? caseNotes.length : '';
+  const mb = document.getElementById('mob-notes-badge');
+  if (mb) { mb.textContent = caseNotes.length; mb.style.display = caseNotes.length ? 'flex' : 'none'; }
+  const ml = document.getElementById('mob-notes-list');
+  if (ml) { ml.innerHTML = notesListHTML(); ml.querySelectorAll('textarea').forEach(noteAutoSize); }
+}
+function resetNotes() { caseNotes = []; renderNotes(); }
+
+function mobOpenNotes() {
+  openModal('📝 NOTLARIM', '<div id="mob-notes-list" class="notes-list">' + notesListHTML() + '</div>');
+  document.querySelectorAll('#mob-notes-list textarea').forEach(noteAutoSize);
+}
+
+// Bir kaptaki tüm tablo satırlarına kalem ekle (lab sonuçları)
+function addPensToTables(root, src) {
+  if (!root) return;
+  root.querySelectorAll('table').forEach(tbl => {
+    tbl.querySelectorAll('tr').forEach(tr => {
+      if (tr.querySelector('.note-pen')) return;
+      const isHead = !!tr.querySelector('th');
+      const cell = document.createElement(isHead ? 'th' : 'td');
+      cell.className = 'note-pen-cell';
+      if (!isHead) {
+        const parts = [...tr.children].map(td => td.textContent.trim()).filter(x => x && x !== '—');
+        if (parts.length) cell.innerHTML = notePenHTML(src, parts.join(' · '));
+      }
+      tr.appendChild(cell);
+    });
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
 // MONITOR
 // ═══════════════════════════════════════════════════════════════
-function addMonitorEntry(type, label, content) {
+function addMonitorEntry(type, label, content, noteText) {
   SoundSystem.playClick();
   const output = document.getElementById('monitor-output');
   // Remove empty state
@@ -5046,10 +5230,18 @@ function addMonitorEntry(type, label, content) {
   const now = new Date();
   const time = now.toTimeString().slice(0,8);
 
+  // Not kalemi: tablolarda her satıra ayrı, diğerlerinde girdinin başlığına
+  const isTable = content.includes('<table') || content.includes('<tr');
+  const lockedOrSystem = label === 'SİSTEM' || label === 'NİHAİ TEŞHİS' || /🔒/.test(content);
+  let pen = '';
+  if (!isTable && !lockedOrSystem && noteText !== false) {
+    const txt = noteText || String(content).replace(/^🔓 Kilit Açıldı:\s*/, '');
+    pen = notePenHTML(label.replace(/^[^A-Za-zÇĞİÖŞÜçğıöşü]+/, ''), txt);
+  }
   entry.innerHTML = `
     <div class="entry-meta">
       <span class="entry-type">${label}</span>
-      <span class="entry-time">${time}</span>
+      <span class="entry-time">${pen}${time}</span>
     </div>
     <div class="entry-body tw" data-text="${encodeURIComponent(content)}"></div>
   `;
@@ -5060,8 +5252,9 @@ function addMonitorEntry(type, label, content) {
   // Typewriter for plain text, instant for HTML tables
   const bodyEl = entry.querySelector('.entry-body');
   const scrollToBottom = () => { monitor.scrollTop = monitor.scrollHeight; };
-  if (content.includes('<table') || content.includes('<tr')) {
+  if (isTable) {
     bodyEl.innerHTML = content;
+    addPensToTables(bodyEl, label);
     scrollToBottom();
   } else {
     typewrite(bodyEl, content, scrollToBottom);
@@ -5147,7 +5340,7 @@ function renderAnamnezModal() {
         if (asked) html += '<span class="aq-q-badge">✓</span>';
         html += '</div>';
         html += '<div class="aq-answer" id="aqans_' + q.id + '" style="display:' + (asked?'block':'none') + '">';
-        html += '<div class="aq-ans-label">SAHİBİ YANITI</div>';
+        html += '<div class="aq-ans-label">SAHİBİ YANITI' + (asked ? notePenHTML('ANAMNEZ', q.q + ' → ' + asked) : '') + '</div>';
         html += '<div>' + (asked||'') + '</div>';
         html += '</div>';
       }
@@ -5203,6 +5396,9 @@ function askAnamnezQ(qId, catId, subId) {
   if (ansDiv) {
     ansDiv.querySelector('div:last-child').textContent = answer;
     ansDiv.style.display = 'block';
+    const qObj = Q[catId]?.subcategories?.[subId]?.questions?.find(x => x.id === qId);
+    const lbl = ansDiv.querySelector('.aq-ans-label');
+    if (lbl && !lbl.querySelector('.note-pen')) lbl.insertAdjacentHTML('beforeend', notePenHTML('ANAMNEZ', (qObj ? qObj.q + ' → ' : '') + answer));
   }
 }
 
@@ -5425,9 +5621,8 @@ function startClinicMode(speciesFilter) {
     if (!document.getElementById('clinic-badge')) {
       const badge = document.createElement('div');
       badge.id = 'clinic-badge';
-      badge.className = 'tag';
-      badge.style.cssText = 'border-color:var(--accent-orange);color:var(--accent-orange);cursor:pointer';
-      badge.textContent = '🏥 KLİNİK MOD — Teşhis Ver';
+      badge.className = 'diagnose-btn';
+      badge.textContent = '🔍 TEŞHİS VER';
       badge.onclick = showDiagnosisPanel;
       topbar.appendChild(badge);
     }
@@ -5570,6 +5765,14 @@ function openResultScreen(correct, selected, realDisease) {
   var diagInfo=correct?selected:realDisease;
   var bHtml='<div class="rb-sec"><div class="rb-sec-title g">KULLANILAN TEKNİKLER</div>'+buildTetkikChips(usedTetkikLog)+'</div>';
   bHtml+='<div class="rb-sec"><div class="rb-sec-title">'+(correct?'TANI BİLGİSİ':'DOĞRU TANI BİLGİSİ')+'</div><div style="padding:10px 14px;background:rgba(46,204,113,.06);border:1px solid rgba(46,204,113,.2);border-radius:8px;font-size:11px;color:var(--text-secondary);line-height:1.9"><div><span style="color:var(--text-muted)">Etken:</span> <strong style="color:var(--text-primary)">'+diagInfo.etken+'</strong></div><div style="margin-top:3px"><span style="color:var(--text-muted)">Semptomlar:</span> '+diagInfo.symptoms+'</div></div></div>';
+  // Öğrencinin notları
+  if (caseNotes.length) {
+    bHtml += '<div class="rb-sec"><div class="rb-sec-title" style="color:var(--accent-cyan)">📝 NOTLARIN</div><div class="notes-readonly">'
+      + caseNotes.map(n => '<div class="note-item"><div class="note-head"><span class="note-src">' + noteEsc(n.src) + '</span></div>'
+        + '<div class="note-text">' + noteEsc(n.text) + '</div>'
+        + (n.comment ? '<div class="note-comment-ro">💭 ' + noteEsc(n.comment) + '</div>' : '') + '</div>').join('')
+      + '</div></div>';
+  }
   // Ayırıcı tanı bölümü ekle
   const _c = currentCase || mobCurrentCase || {};
   const caseKey = _c._realKey || currentCaseKey;
@@ -5716,6 +5919,7 @@ function debugLaunchCase(caseKey, forceEmergency) {
   // Direkt vakayı başlat
   currentCase = CASE_DATA[caseKey];
   currentCaseKey = caseKey;
+  resetNotes();
   complaintAsked = false;
 
   // Resetler
@@ -5723,7 +5927,7 @@ function debugLaunchCase(caseKey, forceEmergency) {
     const btn = document.getElementById('btn-' + k);
     const st  = document.getElementById('st-' + k);
     if (btn) btn.classList.remove('asked');
-    if (st)  st.textContent = 'SORULMADI';
+    if (st)  st.textContent = '';
   });
   document.querySelectorAll('.exam-btn').forEach(b => b.classList.remove('done'));
   // New micro buttons reset
@@ -5873,7 +6077,7 @@ document.addEventListener('visibilitychange', function() {
   <div id="reg-box">
     <div id="reg-header">
       <span class="reg-emoji">🩺</span>
-      <h2>Vettex'e Hoş Geldin</h2>
+      <h2>VetTEX'e Hoş Geldin</h2>
       <p>DEVAM ETMEK İÇİN BİLGİLERİNİ GİR</p>
     </div>
     <div id="reg-form">
