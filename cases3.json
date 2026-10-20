@@ -718,8 +718,6 @@
     },
     "questionAnswers": {
       "solunum_öksürük_1": "Evet, 3 gündür boğazına bir şey kaçmış gibi çok şiddetli öksürüyor.",
-      "solunum_öksürük_2": "Öksürüğü oldukça kuru; öksürük krizinden sonra öğürüp beyaz köpüklü sıvı çıkarıp geri yutuyor.",
-      "solunum_öksürük_4": "Evet, koştuğunda veya tasmasına, boğazına dokunulduğunda hemen öksürük krizi başlıyor.",
       "solunum_nefes_2": "Evet, nefes alıp verirken hırıltılı bir ıslık sesi duyuluyor.",
       "solunum_nefes_3": "Evet, bazen rahat nefes alabilmek için ağzını açarak nefes alıyor.",
       "solunum_burun_1": "Evet, burnu sürekli akıyor ve sarımsı-yeşilimsi akıntı birikiyor.",
@@ -727,8 +725,10 @@
       "istah_1": "Evet, dünden beri mamasına hiç dokunmuyor, yemek yemiyor.",
       "enerji_1": "Evet, enerjisi çok düştü, odanın bir köşesine çekilip halsiz şekilde uyuyor.",
       "diger_hayvanlar_5": "Evet, 10 gün önce sahiplendiğimiz kalabalık barınakta diğer köpekler de hapşırıp öksürüyordu.",
-      "sosyal_diğer_hayvanlar_4": "Evet, evdeki diğer köpeğimiz de dün akşamdan beri hafif hafif hapşırmaya başladı.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "diger_hayvanlar_6": "Evet, evdeki diğer köpeğimiz de dün akşamdan beri hafif hafif hapşırmaya başladı.",
+      "oksuruk_3": "Öksürüğü oldukça kuru; öksürük krizinden sonra öğürüp beyaz köpüklü sıvı çıkarıp geri yutuyor.",
+      "oksuruk_2": "Evet, koştuğunda veya tasmasına, boğazına dokunulduğunda hemen öksürük krizi başlıyor."
     }
   },
   "leptospirosis": {
@@ -1086,13 +1086,12 @@
       "dişkilama_1": "Dışkısı cıvık kıvamda, koyu kahverengi ve çok kötü kokuyor.",
       "uroloji_idrar_1": "Önce çok sık idrar yapıyordu ama sabahtan beri hiç çiş yapmadı.",
       "uroloji_idrar_4": "En son yaptığı idrarın rengi portakal rengindeydi.",
-      "goz_kulak_goz_3": "Evet, gözlerinin beyazı, kulak içleri ve diş etleri aniden sapsarı oldu.",
       "agri_1": "Evet, özellikle karnına veya beline dokununca canı çok yanıyor, ağlayıp kaçmaya çalışıyor.",
       "enerji_1": "Evet, vücudu ateş gibi yanıyor, dokununca titriyor ve kalkmaya mecali yok.",
-      "maruziyet_zehir_3": "Evet, geçen hafta kamptayken durgun bir gölete girdi ve o sudan içti.",
-      "maruziyet_dışarı_2": "Evet, durgun gölet suyunun yanında son zamanlarda bahçemizde birkaç ölü fare de bulmuştuk.",
       "gecmis_asi_1": "Sadece temel karma ve kuduz aşısı var, Leptospiroz aşısı yapılmadı.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "goz_6": "Evet, gözlerinin beyazı, kulak içleri ve diş etleri aniden sapsarı oldu.",
+      "disari_3": "Evet, geçen hafta kamptayken durgun bir gölete girdi ve o sudan içti; evet, durgun gölet suyunun yanında son zamanlarda bahçemizde birkaç ölü fare de bulmuştuk."
     }
   },
   "babesiosis": {
@@ -1447,11 +1446,11 @@
       "istah_1": "Evet, dünden beri tek lokma bile yemiyor, en sevdiği konserveye dahi bakmıyor.",
       "kusma_1": "Evet, dün akşam içtiği suyu sarı köpük şeklinde kustu.",
       "uroloji_idrar_4": "Evet, idrarı dün hafif koyuydu ama bu sabah demli çay ve kola gibi kapkara aktı.",
-      "goz_kulak_goz_3": "Evet, diş etleri bembeyaz pamuk gibi ve gözlerinin beyaz kısmı hafif sararmış durumda.",
       "enerji_1": "Evet, 2 gündür çok yüksek ateşi var; cayır cayır yanıyor ve kafasını bile kaldıramayacak kadar aşırı halsiz.",
       "maruziyet_kene_pire_1": "Evet, yaklaşık 2 hafta önce orman yürüyüşü sonrası boynundan ve kulak arkasından 3 tane şişmiş kene koparmıştık.",
       "gecmis_hastalik_1": "Hayır, bugüne kadar bilinen hiçbir kronik hastalığı yoktu, aşıları da tamdı.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "goz_6": "Evet, diş etleri bembeyaz pamuk gibi ve gözlerinin beyaz kısmı hafif sararmış durumda."
     }
   },
   "leishmaniosis": {
@@ -1809,11 +1808,11 @@
       "deri_döküntü_2": "Evet, derisi oldukça kurudu ve sürekli kepek döküyor.",
       "deri_tüy_2": "Evet, özellikle baş üstü, kulak kenarları ve göz çevresinde geçmeyen bölgesel tüy dökülmeleri var.",
       "goz_kulak_goz_1": "Evet, gözleri yaşarıyor, hafif kızarık ve puslu bakıyor.",
-      "noroloji_yürüyüş_2": "Evet, eklemleri şiş ve sıcak; geçen hafta sağ arkaya basamazken bu hafta sol ön bacağına basamayıp topallıyor.",
       "enerji_1": "Evet, eski neşesi hiç kalmadı, sürekli uyumak istiyor.",
-      "maruziyet_dışarı_1": "Evet, her yaz Muğla ve Aydın tarafındaki yazlığa gidiyoruz ve geceleri bahçede vakit geçiriyor.",
       "uroloji_idrar_1": "Evet, çok su içtiği için geceleri bile uyanıp sık sık çişe kalkıyor.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "disari_5": "Evet, her yaz Muğla ve Aydın tarafındaki yazlığa gidiyoruz ve geceleri bahçede vakit geçiriyor.",
+      "agri_4": "Evet, eklemleri şiş ve sıcak; geçen hafta sağ arkaya basamazken bu hafta sol ön bacağına basamayıp topallıyor."
     }
   },
   "cav1_hepatitis": {
@@ -2170,11 +2169,11 @@
       "dişkilama_1": "Kusmanın ardından kanlı, cıvık ve çok kötü kokulu bir ishal başladı.",
       "karin_1": "Evet, öğleye doğru karnı davul gibi şişti.",
       "agri_1": "Evet, karnına dokunulduğunda veya kucağa alınınca acıyla inleyip ısırmaya çalışıyor.",
-      "goz_kulak_goz_1": "Evet, dün akşam hafif buğuluydu ama bu sabah her iki gözünün üzerine de masmavi bir perde çekilmiş gibi oldu, gözbebekleri seçilmiyor.",
       "gecmis_asi_1": "Hayır, sokaktan sahiplendik ve aşıları düzenli yapılmadı.",
       "diger_hayvanlar_5": "Evet, parkta aşı geçmişi bilinmeyen diğer köpeklerle oynadı.",
-      "maruziyet_zehir_2": "Hayır, deterjan yalama veya toksik bir maddeye ulaşma ihtimali yok, her şey aniden başladı.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "goz_4": "Evet, dün akşam hafif buğuluydu ama bu sabah her iki gözünün üzerine de masmavi bir perde çekilmiş gibi oldu, gözbebekleri seçilmiyor.",
+      "zehir_1": "Hayır, deterjan yalama veya toksik bir maddeye ulaşma ihtimali yok, her şey aniden başladı."
     }
   },
   "ibd": {
@@ -2542,8 +2541,8 @@
       "deri_tüy_3": "Evet, kendini temizlemeyi bıraktığı için tüyleri matlaştı ve keçeleşti.",
       "karin_2": "Evet, karnına dokundurmak istemiyor ve kucağa aldığımızda canı yanıp ses çıkarıyor.",
       "maruziyet_beslenme_3": "Hayır, 2 yıldır düzenli olarak aynı hipoalerjenik mamayı kullanıyoruz, değişiklik olmadı.",
-      "sosyal_diğer_hayvanlar_4": "Hayır, evdeki diğer kedimiz tamamen sağlıklı ve normal.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "diger_hayvanlar_6": "Hayır, evdeki diğer kedimiz tamamen sağlıklı ve normal."
     }
   },
   "fpv": {
@@ -3271,13 +3270,13 @@
       "istah_1": "Evet, sadece biraz atıştırıyor, mamasını eskisi gibi iştahla yemiyor.",
       "agirlik_1": "Evet, inanılmaz hızlı kilo kaybetti; karnı içine çöktü ve omurgası elimize geliyor.",
       "enerji_1": "Evet, 2 haftadır düşmeyen ateşi var, sürekli saklanıyor ve hiç hali yok.",
-      "goz_kulak_goz_1": "Evet, 3-4 gündür sağ gözü puslu ve kanlı görünüyor; gözünü kısıp mobilyalara çarpıyor.",
       "noroloji_yürüyüş_1": "Evet, dengesini kuramıyor, sarhoş gibi sendeliyor ve yatağa zıplayamıyor.",
       "noroloji_yürüyüş_3": "Evet, arka bacaklarını toparlayamıyor; bacakları titriyor ve patisi ters katlanıyor gibi oluyor.",
       "deri_tüy_3": "Evet, tüyleri iyice matlaştı ve bakımsız görünüyor.",
       "gecmis_ameliyat_1": "Evet, yaklaşık 1 ay önce kısırlaştırma ameliyatı oldu ve o günden beri hiç toparlanamadı.",
       "diger_hayvanlar_5": "Evet, 3 aylıkken kalabalık bir kedi üreticisinden sahiplenmiştik.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "goz_4": "Evet, 3-4 gündür sağ gözü puslu ve kanlı görünüyor; gözünü kısıp mobilyalara çarpıyor."
     }
   },
   "fhv_fcv": {
@@ -3635,13 +3634,13 @@
     },
     "questionAnswers": {
       "solunum_burun_1": "Evet, burnundan 2 gündür sarı-yeşil ve koyu bir akıntı geliyor, burnu tıkalı.",
-      "solunum_burun_3": "Evet, 4-5 gün önce hafif başlamıştı ama şu an arka arkaya çok güçlü hapşırıyor.",
       "solunum_nefes_2": "Evet, uyurken burnundan hırıltı sesleri geliyor.",
       "goz_kulak_goz_1": "Evet, 2 gündür gözleri çapakla tamamen kapandı ve sürekli akıyor.",
       "istah_1": "Evet, 2 gündür hiçbir şey yemiyor; dilinde kırmızı yaralar olduğu için mama kabını koklayıp hemen geri dönüyor.",
       "enerji_1": "Evet, hiç keyfi yok; aşırı halsizleşti ve sürekli uyuyor.",
       "diger_hayvanlar_5": "Evet, 2 hafta önce sokaktan getirdiğimiz ve hapşıran yavru bir kediyle birkaç gün aynı odada kaldılar.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "burun_2": "Evet, 4-5 gün önce hafif başlamıştı ama şu an arka arkaya çok güçlü hapşırıyor."
     }
   }
 }

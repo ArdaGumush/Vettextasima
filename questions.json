@@ -287,6 +287,11 @@
             "id": "bas_4",
             "q": "Başına dokunduğunuzda irkilme veya ağrılı bir çekilme yapıyor mu?",
             "default": "Dokununca sakin kalıyor, bir tepkisi yok."
+          },
+          {
+            "id": "bas_5",
+            "q": "Başını dik tutmakta zorlanıyor mu, boynu aşağı doğru bükük mü duruyor?",
+            "default": "Hayır, başını normal şekilde dik tutuyor."
           }
         ]
       }
@@ -505,6 +510,16 @@
             "id": "goz_4",
             "q": "Korneasında matlaşma, mavimsi pus veya beyaz bir perde fark ettiniz mi?",
             "default": "Göz merceği şeffaf ve parlak."
+          },
+          {
+            "id": "goz_5",
+            "q": "Göz bebeklerinde büyüme, ışığa tepkisizlik veya göz içinde kanama fark ettiniz mi?",
+            "default": "Hayır, göz bebeklerinde veya göz içinde bir değişiklik fark etmedik."
+          },
+          {
+            "id": "goz_6",
+            "q": "Gözlerinin beyazında, kulak içlerinde veya diş etlerinde sararma ya da solukluk fark ettiniz mi?",
+            "default": "Hayır, sararma veya solukluk fark etmedik."
           }
         ]
       },
@@ -561,6 +576,11 @@
             "id": "disari_4",
             "q": "Yürüyüş sırasında yabancı bir maddeyi koklayıp yalama girişimi oldu mu?",
             "default": "Hayır, olmadı."
+          },
+          {
+            "id": "disari_5",
+            "q": "Son aylarda başka bir şehre veya bölgeye seyahat etti mi?",
+            "default": "Hayır, son aylarda başka bir yere seyahat etmedi."
           }
         ]
       },
@@ -636,6 +656,11 @@
             "id": "beslenme_4",
             "q": "Sofradan yağlı, baharatlı yemek artıkları tüketme alışkanlığı var mı?",
             "default": "Ev yemeği hiç verilmiyor."
+          },
+          {
+            "id": "beslenme_5",
+            "q": "Çiğ et yedi mi ya da fare, kuş gibi bir av yakalayıp yedi mi?",
+            "default": "Hayır, çiğ et yemedi ve av yakalamadı."
           }
         ]
       }
@@ -667,6 +692,11 @@
             "id": "hastalik_4",
             "q": "Düzenli takip gerektiren organ yetmezliği veya hormonal bir sorunu var mı?",
             "default": "Hayır, herhangi bir kronik sorunu yok."
+          },
+          {
+            "id": "hastalik_5",
+            "q": "Yakın zamanda veya geçmişte düşme, araç çarpması gibi bir travma yaşadı mı?",
+            "default": "Hayır, bilinen bir travma geçmişi yok."
           }
         ]
       },
@@ -773,6 +803,11 @@
             "id": "enerji_4",
             "q": "Çevreye karşı genel bir ilgisizlik veya donukluk seziyor musunuz?",
             "default": "Hayır, çevresine karşı gayet uyanık."
+          },
+          {
+            "id": "enerji_5",
+            "q": "Sürekli sıcak yerleri arıyor mu, soğuğa karşı aşırı hassas mı?",
+            "default": "Hayır, sıcaklık tercihinde bir değişiklik fark etmedik."
           }
         ]
       },
@@ -828,6 +863,11 @@
             "id": "davranis_5",
             "q": "Taş, plastik, kıyafet veya diğer yabancı cisimleri yeme alışkanlığı var mı?",
             "default": "Hayır, yabancı cisim yeme alışkanlığı yok."
+          },
+          {
+            "id": "davranis_6",
+            "q": "Stres, yolculuk veya misafir gibi durumlardan sonra belirgin şekilde kötüleşiyor mu?",
+            "default": "Hayır, böyle durumlardan sonra belirgin bir kötüleşme olmuyor."
           }
         ]
       },
@@ -889,6 +929,11 @@
             "id": "diger_hayvanlar_5",
             "q": "Son zamanlarda başka hayvanlarla ya da kalabalık bir ortamla (barınak, üretici, park, sokak) teması oldu mu?",
             "default": "Hayır, başka hayvanlarla ya da kalabalık bir ortamla teması olmadı."
+          },
+          {
+            "id": "diger_hayvanlar_6",
+            "q": "Evdeki diğer hayvanlarda veya ailede benzer belirtiler var mı?",
+            "default": "Hayır, evde başka kimsede benzer bir belirti yok."
           }
         ]
       },

@@ -724,8 +724,8 @@
       "uroloji_idrar_4": "Evet, idrarı çok açık sarı ve bazen tatlımsı bir kokusu geliyor.",
       "uroloji_kaza_1": "Evet, özellikle geceleri yetişemeyip bazen eve kaçırıyor.",
       "agirlik_1": "Evet, bu kadar çok yemesine rağmen son bir ayda 3 kilo verdi, kasları da eridi gibi.",
-      "goz_1": "Gözleri son günlerde bulanıklaştı, etraftaki eşyalara çarpıp duruyor.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "goz_4": "Gözleri son günlerde bulanıklaştı, etraftaki eşyalara çarpıp duruyor."
     }
   },
   "fip": {
@@ -1093,10 +1093,10 @@
       "solunum_nefes_4": "Evet, karnı şiştiğinden beri yürürken bile zorlanıyor, merdiven çıkınca hemen yorulup derin derin nefes alıyor.",
       "agirlik_1": "Evet, vücudu giderek inceliyor ve kilo kaybediyor ama garip bir şekilde sadece karnı büyüyor.",
       "enerji_1": "Evet, 3 haftadır çok halsiz ve hareket etmekte zorlanıyor.",
-      "goz_1": "Evet, eskiden gözleri çok parlaktı ama son zamanlarda bulanık bakmaya başladı.",
       "gecmis_hastalik_2": "Evet, daha önce antibiyotik ve ateş düşürücü verdiler ama ateşini tam düşüremedik, ilaçlar pek işe yaramadı.",
       "diger_hayvanlar_5": "Şu an evde tek kedi ama 3 aylıkken çok kalabalık bir üreticiden sahiplenmiştik.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "goz_4": "Evet, eskiden gözleri çok parlaktı ama son zamanlarda bulanık bakmaya başladı."
     }
   },
   "parvo": {
@@ -1836,9 +1836,9 @@
       "istah_3": "Sabahtan beri hiç su içmiyor, ağzına tek damla sürmedi.",
       "karin_1": "Şişlik değil de karnı çok garip duruyor, sanki içi tamamen boşalmış gibi.",
       "noroloji_yürüyüş_3": "Evet, kalkmakta çok zorlanıyor ve arka bacaklarını zar zor, sürükler gibi kullanıyor.",
-      "gecmis_ameliyat_2": "Hayır, daha önce hiç böyle bir düşme veya travma yaşamamıştı.",
-      "maruziyet_dışarı_1": "Dün gece 3. kattan aşağıya düştü, sabah bulabildik.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "hastalik_5": "Dün gece 3. kattan aşağıya düştü, sabah bulabildik.",
+      "ameliyat_2": "Hayır, daha önce hiç ameliyat olmadı."
     }
   },
   "uro": {
@@ -2213,8 +2213,8 @@
       "istah_1": "Evet, sabahtan beri önüne koyduğumuz mamadan hiçbir şey yemedi.",
       "istah_3": "Zaten normalde de suya pek yaklaşmaz, sabah biraz içti ama onu da hemen kustu.",
       "karin_1": "Evet, karın bölgesi özellikle gece yarısından beri aşırı gergin ve sert hissediliyor.",
-      "genel_davranis_1": "Normalde çok sessiz bir kedidir ama gece yarısından beri durmadan ağlıyor ve çok huzursuz.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "davranis_4": "Normalde çok sessiz bir kedidir ama gece yarısından beri durmadan ağlıyor ve çok huzursuz."
     }
   },
   "ascaris": {
@@ -2926,9 +2926,9 @@
       "istah_3": "Evet, son zamanlarda çok arttı; artık su kabını günde iki kez doldurmak zorunda kalıyorum.",
       "agirlik_1": "Evet, iştahı gayet yerinde olmasına rağmen kilo kaybediyor.",
       "enerji_1": "Evet, son zamanlarda belirgin şekilde halsizleşti.",
-      "gecmis_ilaç_2": "Evet, geçen ay alerji şüphesiyle kortizon iğnesi yapılmıştı, zaten dökülmeler de ondan sonra arttı.",
-      "sosyal_diğer_hayvanlar_1": "Bu sorun sadece bu kedimde var, evdeki diğer kedilerde hiçbir belirti görülmedi.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "diger_hayvanlar_6": "Bu sorun sadece bu kedimde var, evdeki diğer kedilerde hiçbir belirti görülmedi.",
+      "i̇lac_4": "Evet, geçen ay alerji şüphesiyle kortizon iğnesi yapılmıştı, zaten dökülmeler de ondan sonra arttı."
     }
   },
   "pancreatitis": {
@@ -3290,9 +3290,9 @@
       "karin_2": "Evet, karnına dokunmaya kalktığımızda bağırıyor, kaçıyor ve ağlıyor.",
       "agri_1": "Çok şiddetli ağrısı var, ayakta bile duramayıp sürekli inliyor ve dokunduğumuzda bağırıyor.",
       "enerji_1": "Evet, aşırı halsiz ve ayakta bile duramıyor; ön ayaklarını yere uzatıp arkasını havada tutarak bekliyor.",
-      "maruziyet_beslenme_1": "Evet, dün akşam mangaldan arta kalan et yağları ve kemikler verilmişti.",
       "gecmis_hastalik_2": "Hayır, ilk defa bu kadar şiddetli oluyor, daha önce hiç böyle bir şey yaşamamıştık.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "beslenme_4": "Evet, dün akşam mangaldan arta kalan et yağları ve kemikler verilmişti."
     }
   },
   "invagination": {
@@ -3656,8 +3656,8 @@
       "karin_2": "Evet, karnına dokunulduğunda çok acı çekip bağırıyor.",
       "agri_1": "Özellikle karnına dokunulduğunda bağıracak kadar çok şiddetli ağrısı var.",
       "enerji_1": "Evet, dünden beri aşırı halsiz ve yerinden hiç kalkmak istemiyor.",
-      "maruziyet_dışarı_1": "Evet, 2 gün önce bahçede koşarken karnının sağ tarafını kapı eşiğine çok sert çarptı.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "hastalik_5": "Evet, 2 gün önce bahçede koşarken karnının sağ tarafını kapı eşiğine çok sert çarptı."
     }
   },
   "cushings": {
@@ -4384,8 +4384,8 @@
       "deri_tüy_3": "Evet, tüyleri eskisi gibi değil; oldukça mat, bakımsız ve cansız görünüyor.",
       "istah_1": "Evet, biraz iştahı azaldı ama genel durumu fena değil.",
       "maruziyet_beslenme_3": "Hayır, son zamanlarda herhangi bir mama veya çevre değişikliği yapmadık.",
-      "sosyal_diğer_hayvanlar_4": "Evet, evdeki diğer kedimizin de kulak kenarlarında aynı anda tüy dökülmeleri ve açılmalar başladı.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "diger_hayvanlar_6": "Evet, evdeki diğer kedimizin de kulak kenarlarında aynı anda tüy dökülmeleri ve açılmalar başladı."
     }
   },
   "giardiasis": {
@@ -4742,15 +4742,14 @@
     "questionAnswers": {
       "dişkilama_1": "2 haftadır geçmeyen, bazen düzelip tekrar başlayan yumuşak bir ishali var; dışkısı açık renkli, yağlı gibi parlak ve çok kötü kokuyor.",
       "dişkilama_2": "Kan görmedim ama dışkısı bazen sümüksü bir yapıda oluyor.",
-      "dişkilama_3": "Evet çok arttı, eskiden günde 2 kez çıkarken şimdi günde 4-5 kez dışarı çıkmak istiyor.",
       "kusma_1": "Haftada 1-2 kez mide bulantısı gibi bir durumu oluyor ama asıl problemimiz ishal.",
       "istah_1": "Hayır hiç azalmadı, iştahı gayet yerinde ve çok yiyor.",
       "agirlik_1": "Evet, çok yemesine rağmen bir türlü kilo alamıyor, hatta kaburgaları sayılacak kadar zayıfladı.",
       "karin_1": "Karnından çok yüksek sesli gurultular geliyor ve çok fazla gaz çıkarıyor.",
       "karin_2": "Evet, karnı bazen çok gergin oluyor ve dokunduğumuzda inliyor.",
-      "genel_davranis_2": "Evet, halıları ve yerleri takıntılı bir şekilde yalamaya başladı.",
-      "maruziyet_zehir_3": "Evet, hafta sonları ormanlık alanda gezerken göletlerden su içiyor.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "diskilama_4": "Evet çok arttı, eskiden günde 2 kez çıkarken şimdi günde 4-5 kez dışarı çıkmak istiyor.",
+      "disari_3": "Evet, hafta sonları ormanlık alanda gezerken göletlerden su içiyor."
     }
   },
   "hyperthyroidism": {
@@ -5113,8 +5112,8 @@
       "deri_tüy_3": "Evet, artık kendini yalamayı bıraktığı için tüyleri çok bakımsız ve mat görünüyor.",
       "enerji_1": "Aktivitesi azalmadı, aksine geceleri bile uyumayıp evin içinde oradan oraya koşturuyor.",
       "genel_davranis_1": "Evet, çok hırçınlaştı ve sinirli oldu; sürekli tetikte duruyor, dokunmamıza bile izin vermiyor ve geceleri yüksek sesle bağırıyor.",
-      "noroloji_yürüyüş_4": "Evet, eskiden tezgaha tek hamlede zıplayıp çıkardı ama artık çıkamıyor.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "agri_3": "Evet, eskiden tezgaha tek hamlede zıplayıp çıkardı ama artık çıkamıyor."
     }
   },
   "hypothyroidism": {
@@ -5473,9 +5472,9 @@
       "deri_tüy_2": "Evet, özellikle kuyruğundaki tüyler tamamen döküldü, kuyruğu çıplak kaldı.",
       "enerji_1": "Evet, eskiden çok enerjikti ama şimdi bütün gün uyuyor ve hiç oyun oynamak istemiyor.",
       "solunum_nefes_4": "Evet, daha sokağın başına bile varmadan hemen yorulup duruyor ve dinlenmek istiyor.",
-      "genel_davranis_4": "Evet, komutlara tepkisi oldukça yavaşladı, seslendiğimizde eskisi gibi hemen gelmiyor.",
-      "genel_soguk_1": "Evet, sürekli evin en sıcak yerlerini arıyor ve battaniyenin altında yatmak istiyor.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "bilinc_1": "Hayır, komutlara tepkisi oldukça yavaşladı, seslendiğimizde eskisi gibi hemen gelmiyor.",
+      "enerji_5": "Evet, sürekli evin en sıcak yerlerini arıyor ve battaniyenin altında yatmak istiyor."
     }
   },
   "asthma": {
@@ -5833,15 +5832,14 @@
     },
     "questionAnswers": {
       "solunum_öksürük_1": "Evet, 2 gündür yere çömelip boynunu öne doğru uzatarak öksürüyor.",
-      "solunum_öksürük_2": "Öksürüğü tamamen kuru, hiçbir şey kusmuyor ya da çıkarmıyor.",
-      "solunum_öksürük_4": "Evet; parfümlü kum, oda spreyi, tütsü, sigara dumanı ve tadilat tozu gibi durumlar hemen krizi tetikliyor.",
       "solunum_nefes_1": "Evet, dinlenirken bile göğsü ve karnı körük gibi çok hızlı inip kalkıyor.",
       "solunum_nefes_2": "Evet, nefes alırken boğulur gibi belirgin bir hırıltı sesi geliyor.",
       "solunum_nefes_4": "Evet, iki adım koşsa hemen yoruluyor ve nefes nefese kalıyor.",
       "kusma_1": "Hayır, kusması yok; sadece kuru kuru öksürüp halsiz düşüyor.",
       "enerji_1": "Evet, hiç oyun oynamıyor, çabuk yoruluyor ve duman veya koku olunca köşelere saklanıyor.",
-      "maruziyet_zehir_1": "Evet, evde sigara içiliyor; ayrıca oda spreyi, parfümlü kedi kumu, kokulu mumlar ve esansiyel yağlar kullanılıyor.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "maruziyet_zehir_1": "Evet, evde sigara içiliyor; ayrıca oda spreyi, parfümlü kedi kumu, kokulu mumlar ve esansiyel yağlar kullanılıyor. Parfümlü kum, oda spreyi, tütsü, sigara dumanı ya da tadilat tozu olunca öksürük krizi hemen başlıyor.",
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "oksuruk_3": "Hayır, öksürüğü tamamen kuru; öğürüp bir şey çıkarmıyor."
     }
   }
 }
