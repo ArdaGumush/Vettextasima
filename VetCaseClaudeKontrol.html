@@ -1961,10 +1961,10 @@ window.onerror = function(msg, src, line) {
         <div class="sr-label">Profil Sıfırla 🔄<span>Kayıtlı kullanıcı bilgilerini siler</span></div>
         <button onclick="resetUserProfile()" style="padding:8px 18px;background:rgba(231,76,60,0.08);border:1px solid var(--accent-red);border-radius:6px;color:var(--accent-red);font-family:'JetBrains Mono',monospace;font-size:10px;cursor:pointer;">🔄 PROFİLİ SIFIRLA</button>
       </div>
-      <div class="settings-row" style="flex-direction:column;align-items:flex-start;gap:8px">
+      <div class="settings-row" id="missing-images-row" style="flex-direction:column;align-items:flex-start;gap:8px;display:none">
         <div class="sr-label">
           Eksik Görseller 📋
-          <span>Henüz eklenmemiş görsel slotlarını listeler</span>
+          <span>Geliştirici aracı — vaka verisinden canlı olarak hesaplanır (teşhisleri gösterir, sadece Debug açıkken görünür)</span>
         </div>
         <button onclick="openMissingImages()" style="padding:8px 18px;background:rgba(243,156,18,0.08);border:1px solid var(--accent-orange);border-radius:6px;color:var(--accent-orange);font-family:'JetBrains Mono',monospace;font-size:10px;cursor:pointer;letter-spacing:1px;">📋 EKSİK GÖRSELLERİ GÖSTER</button>
       </div>
@@ -3723,6 +3723,8 @@ function onSettingsDebugToggle(checked) {
   const btn = document.getElementById('debug-toggle-btn');
   const panel = document.getElementById('debug-panel');
   const fcBox = document.getElementById('fc-box');
+  const mir = document.getElementById('missing-images-row');
+  if (mir) mir.style.display = checked ? 'flex' : 'none';
   if (checked) {
     btn.style.display = 'block';
     if (fcBox) fcBox.style.display = 'flex';
@@ -3847,28 +3849,68 @@ const IMAGE_GALLERY = [
 ];
 
 
-function openMissingImages() {
-  const missing = [];
-  IMAGE_GALLERY.forEach(group => {
-    group.images.forEach(img => {
-      if (!img.url) {
-        missing.push({ case: group.case, code: img.code, label: img.label });
-      }
+// Eksik görseller artık elle tutulan listeden değil, doğrudan vaka verisinden hesaplanır:
+// 1) Vaka dosyasında görsel beklenen (hasImage veya "Görsel sonradan eklenecektir") ama imgUrl'i olmayan alanlar
+// 2) Galeride url'i boş olan ve vaka dosyasında hâlâ görseli olmayan slotlar
+const MISSING_FIELD_LABELS = {
+  usg:'USG', xray_direct:'Direkt Röntgen', xray_indirect:'İndirekt Röntgen', echo:'EKO', bt:'BT', tomo:'Tomografi', mr:'MR',
+  blood:'Kan Yayması', urine:'İdrar Mikroskobisi', stool:'Dışkı Mikroskobisi', skin:'Deri Kazıntısı', biopsy:'Biyopsi',
+  ophthalmo:'Oftalmoskopi', otoscope:'Otoskopi', pharyngo:'Faringoskopi', woodslamp:"Wood's Lambası"
+};
+function galleryCodeToField(code, label) {
+  const m = String(code).match(/^V\d+([A-Z]+)\d+$/); if (!m) return null;
+  const t = m[1], l = String(label).toLowerCase();
+  if (t === 'U') return ['imaging','usg'];
+  if (t === 'DR') return ['imaging','xray_direct'];
+  if (t === 'IR') return ['imaging','xray_indirect'];
+  if (t === 'E') return ['imaging','echo'];
+  if (t === 'M') return ['microscopy', l.includes('dışkı') ? 'stool' : l.includes('deri') ? 'skin' : l.includes('idrar') ? 'urine' : l.includes('biyopsi') ? 'biopsy' : 'blood'];
+  if (t === 'I') return ['tools', l.includes('oftalmo') ? 'ophthalmo' : l.includes('otosk') ? 'otoscope' : l.includes('faring') ? 'pharyngo' : 'inspection'];
+  return null;
+}
+function collectMissingImages() {
+  const out = [], seen = new Set();
+  const byId = {};
+  Object.entries(CASE_DATA).forEach(([k, c]) => { if (k !== '__clinic__' && c && c.caseId) byId[c.caseId] = k; });
+  const push = (key, sec, f, src) => {
+    const id = key + '|' + sec + '|' + f; if (seen.has(id)) return; seen.add(id);
+    const c = CASE_DATA[key];
+    const nm = ((c.anamnez && c.anamnez.name || '').match(/İsim:\s*\*\*([^*]+)\*\*/) || [])[1] || key;
+    out.push({ caseId: c.caseId, key, name: nm, diagnosis: c.diagnosis, sec, f, label: MISSING_FIELD_LABELS[f] || f, src });
+  };
+  Object.entries(CASE_DATA).forEach(([key, c]) => {
+    if (key === '__clinic__' || !c) return;
+    ['imaging','microscopy','tools'].forEach(sec => {
+      Object.entries(c[sec] || {}).forEach(([f, t]) => {
+        if (!t || typeof t !== 'object') return;
+        const txt = t.result || t.text || '';
+        if ((t.hasImage || /Görsel sonradan/i.test(txt)) && !t.imgUrl) push(key, sec, f, 'vaka');
+      });
     });
   });
-
+  IMAGE_GALLERY.forEach(g => g.images.forEach(img => {
+    if (img.url) return;
+    const cid = (g.case.match(/VC-\d{4}-\d{3}/) || [])[0]; const key = byId[cid]; if (!key) return;
+    const fld = galleryCodeToField(img.code, img.label); if (!fld) return;
+    const t = (CASE_DATA[key][fld[0]] || {})[fld[1]];
+    if (t && typeof t === 'object' && t.imgUrl) return;   // vakaya eklenmiş, galeri eski
+    push(key, fld[0], fld[1], 'galeri ' + img.code);
+  }));
+  return out.sort((a, b) => a.caseId.localeCompare(b.caseId));
+}
+function openMissingImages() {
+  const missing = collectMissingImages();
   if (missing.length === 0) {
     openModal('📋 EKSİK GÖRSELLER', '<div style="text-align:center;color:var(--accent-green);padding:20px;font-family:\'JetBrains Mono\',monospace;font-size:12px">✅ Tüm görseller eklenmiş!</div>');
     return;
   }
-
   let html = '<div style="display:flex;flex-direction:column;gap:8px">';
-  html += `<div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;letter-spacing:1px">${missing.length} eksik görsel bulundu:</div>`;
+  html += `<div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;letter-spacing:1px">${missing.length} eksik görsel · ${new Set(missing.map(m => m.key)).size} vaka</div>`;
   missing.forEach((m, i) => {
     html += `<div style="background:var(--bg-card);border:1px solid var(--accent-orange);border-radius:8px;padding:10px 12px">
-      <div style="font-size:9px;color:var(--accent-orange);letter-spacing:1px;margin-bottom:4px">${String(i+1).padStart(2,'0')} — ${m.code}</div>
+      <div style="font-size:9px;color:var(--accent-orange);letter-spacing:1px;margin-bottom:4px">${String(i+1).padStart(2,'0')} — ${m.caseId} · ${m.sec}.${m.f}</div>
       <div style="font-size:11px;color:var(--text-primary);font-family:'JetBrains Mono',monospace;margin-bottom:2px">${m.label}</div>
-      <div style="font-size:9px;color:var(--text-muted)">${m.case}</div>
+      <div style="font-size:9px;color:var(--text-muted)">${m.name} / ${m.diagnosis}</div>
     </div>`;
   });
   html += '</div>';
