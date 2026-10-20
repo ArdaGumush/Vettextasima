@@ -3612,7 +3612,8 @@ function mobDoMicro(type) {
 
 function mobDoRapidKit(sampleType) {
   if (!mobCurrentCase) return;
-  const kits = RAPID_KITS.filter(k => k.sample.includes(sampleType));
+  const kits = kitsFor(mobCurrentCase, sampleType);
+  if (!kits.length) { showToast('Bu örnek için bu türde uygun hızlı kit yok.'); return; }
   let html = '<div style="display:flex;flex-direction:column;gap:8px">';
   kits.forEach(k => {
     const used = usedRapidKits.has(k.id);
@@ -5105,13 +5106,13 @@ function runHormon() {
 // ═══════════════════════════════════════════════════════════════
 
 const RAPID_KITS = [
-  { id: "fiv_felv", label: "FIV Ab / FeLV Ag Combo",  desc: "Temel FIV/FeLV tarama kiti",        sample: ["blood"] },
-  { id: "fcov_ab",    label: "FCoV Ab",                  desc: "Feline Coronavirus Antikor",        sample: ["blood"] },
-  { id: "fpv_ag",     label: "FPV Ag",                   desc: "Feline Panleukopenia Antijen",      sample: ["blood", "stool"] },
-  { id: "fcov_ag",    label: "FCoV Ag",                  desc: "Coronavirus Antijen (efüzyon/dışkı)", sample: ["stool"] },
-  { id: "ntprobnp",   label: "Feline NT-proBNP",         desc: "Kalp yetmezliği / Kardiyomiyopati", sample: ["blood"] },
-  { id: "fsaa",       label: "fSAA",                     desc: "Serum Amyloid A — Akut inflamasyon", sample: ["blood"] },
-  { id: "giardia_ag", label: "Giardia Ag (SNAP)",         desc: "Giardia antijen hızlı testi",        sample: ["stool"] },
+  { id: "fiv_felv", label: "FIV Ab / FeLV Ag Combo",  desc: "Temel FIV/FeLV tarama kiti",        sample: ["blood"], species: ["cat"] },
+  { id: "fcov_ab",    label: "FCoV Ab",                  desc: "Feline Coronavirus Antikor",        sample: ["blood"], species: ["cat"] },
+  { id: "fpv_ag",     label: "FPV Ag",                   desc: "Feline Panleukopenia Antijen",      sample: ["blood", "stool"], species: ["cat"] },
+  { id: "fcov_ag",    label: "FCoV Ag",                  desc: "Coronavirus Antijen (efüzyon/dışkı)", sample: ["stool"], species: ["cat"] },
+  { id: "ntprobnp",   label: "Feline NT-proBNP",         desc: "Kalp yetmezliği / Kardiyomiyopati", sample: ["blood"], species: ["cat"] },
+  { id: "fsaa",       label: "fSAA",                     desc: "Serum Amyloid A — Akut inflamasyon", sample: ["blood"], species: ["cat"] },
+  { id: "giardia_ag", label: "Giardia Ag (SNAP)",         desc: "Giardia antijen hızlı testi",        sample: ["stool"], species: ["cat", "dog"] },
 ];
 
 // Kit sonucunu vaka verisinden oku. Veri "POZİTİF", "FPV Ag POZİTİF 🔴" ya da
@@ -5136,12 +5137,19 @@ function rapidKitBadge(res, size) {
 // Bu vakada uygulanan kitler (menüdeki "✓ Kullanıldı" rozeti için)
 let usedRapidKits = new Set();
 
+// Kitler türe özel: kedi kitleri köpek vakasında listelenmez
+function kitsFor(caseData, sampleType) {
+  const sp = caseData && caseData.species === 'Köpek' ? 'dog' : 'cat';
+  return RAPID_KITS.filter(k => k.sample.includes(sampleType) && (!k.species || k.species.includes(sp)));
+}
+
 function openRapidKitMenu(sampleType) {
   if (!currentCase) return;
   const kits = currentCase.rapidKits || {};
 
-  const rows = RAPID_KITS
-    .filter(k => k.sample.includes(sampleType))
+  const avail = kitsFor(currentCase, sampleType);
+  if (!avail.length) { showToast('Bu örnek için bu türde uygun hızlı kit yok.'); return; }
+  const rows = avail
     .map(k => {
       const usedBadge = usedRapidKits.has(k.id)
         ? '<span style="color:var(--text-muted);font-size:9px">✓ Kullanıldı</span>'

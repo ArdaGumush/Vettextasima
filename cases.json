@@ -41,7 +41,7 @@
     "physical": {
       "temp": "Vücut sıcaklığı: **39.8°C** (Referans: 38.0–39.2°C)",
       "resp": "Solunum sayısı: **28/dak** (Referans: 20–30/dak)",
-      "hr": "Kalp atım sayısı: **196/dak** (Referans: 120–220/dak)",
+      "hr": "Kalp atım sayısı: **196/dak** (Referans: 140–220/dak)",
       "mucosa": "Mukoza rengi: **Soluk pembe / hafif sarımsı** | CRT: **2.5 sn** (Referans <2 sn)",
       "lymph": "Lenf nodları: **Mandibular ve inguinal LN'ler hafif ele gelir büyüklükte** | Hassas değil",
       "palp": "Karın palpasyonu: Orta hatta ve sağ kadranda **belirgin ağrı ve hassasiyet**. Gerilmiş bağırsak ansları ele gelmekte. Sağ kraniyal abdomende sert, hareketli kitle palpe edilebilir. CRT: 2 sn."
@@ -52,7 +52,7 @@
       "pharyngo": "Faringoskopi: Oral kavite ve farinksde patolojik bulgu yok. Ağız mukozası solgun pembe.",
       "reflex": "Refleks muayenesi: Patellar ve karpal refleksler normal. Ağrı refleksi (karın bölgesi) belirgin şekilde artmış. +++ ağrı yanıtı.",
       "woodslamp": "Wood's Lambası: Deri lezyonu olmadığından rutin muayenede uygulanmadı.",
-      "inspection": "İnspeksiyon: Postür — karın bölgesini koruyarak çömelmiş duruş. Bilinç açık, uyaranlara yanıt veriyor. Deri ve tüy yapısı normal. **Deri turgoru azalmış.** Sarılık yok. Salya akışı yok. Görünür mukozalar solgun pembe.",
+      "inspection": "İnspeksiyon: Postür — karın bölgesini koruyarak çömelmiş duruş. Bilinç açık, uyaranlara yanıt veriyor. Deri ve tüy yapısı normal. **Deri turgoru azalmış.** **Sklerada hafif sararma.** Salya akışı yok. Görünür mukozalar solgun pembe.",
       "auscultation": "Oskültasyon: **Akciğer sesleri:** Her iki hemitoraksta veziküler sesler normal. Krepitasyon, wheeze yok. **Kalp sesleri:** S1-S2 ritmik, üfürüm yok. **Bağırsak sesleri:** Belirgin şekilde **azalmış/yok**."
     },
     "imaging": {
@@ -166,7 +166,7 @@
         "value": "4",
         "unit": "%",
         "ref": "1–4",
-        "flag": "H"
+        "flag": ""
       },
       {
         "param": "Eoz%",
@@ -351,7 +351,7 @@
         "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
       },
       "urine": "İdrar muayenesi: Renk koyu sarı, bulanık. Spesifik ağırlık: 1.040. pH: 6.5. Epitel hücreleri (+). Granüler silendir (+). Protein (+). Hematüri yok.",
-      "stool": "Dışkı muayenesi: Kıvam normal. Bağırsak tıkanıklığında dışkı çıkışı durabilir veya çok az olabilir. Parazit yumurtası görülmedi.",
+      "stool": "Dışkı muayenesi: Rektumdan çok az miktarda, sert kıvamlı dışkı alınabildi. Parazit yumurtası görülmedi.",
       "skin": "Deri kazıntısı: Deri tüylü, sağlıklı görünümde. Parazit veya mantar elemanı görülmedi. Yüzeyel kazıntı normal sınırlarda.",
       "biopsy": "Biyopsi raporu: Rutin biyopsi bu vakada endike değildir. Cerrahi eksplorasyon tanı ve tedaviyi birlikte sağlar."
     },
@@ -366,7 +366,10 @@
       "karin_2": "Evet, karnına dokunulduğunda irkiliyor ve acı çekiyor. Kaldırılmaya çalışıldığında da tepki veriyor.",
       "karin_3": "Karın bölgesinde belirgin sertlik mevcuttur.",
       "agri_1": "Karnına dokunulduğunda ağrısı vardır, irkilir ve kaldırılmaya çalışıldığında acı çeker.",
-      "davranis_5": "Evet, yün yumağı, kapak, bozuk para gibi cisimlerle oynamayı çok sever ve zaman zaman yutabiliyor."
+      "davranis_5": "Evet, yün yumağı, kapak, bozuk para gibi cisimlerle oynamayı çok sever ve zaman zaman yutabiliyor.",
+      "enerji_1": "Normalde çok hareketlidir ama 2 gündür halsiz, sadece yatıyor.",
+      "kene_pire_2": "Aşıları güncel ama son 6 aydır parazit ilacı vermedik.",
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
     }
   },
   "dog": {
@@ -409,12 +412,12 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **38.6°C** (Referans: 37.5–39.2°C)",
+      "temp": "Vücut sıcaklığı: **38.6°C** (Referans: 37.8–39.2°C)",
       "resp": "Solunum sayısı: **22/dak** (Referans: 10–30/dak)",
-      "hr": "Kalp atım sayısı: **88/dak** (Referans: 60–120/dak)",
+      "hr": "Kalp atım sayısı: **88/dak** (Referans: 60–140/dak)",
       "mucosa": "Mukoza rengi: **Pembe, ıslak** | CRT: **1.5 sn**",
       "lymph": "Lenf nodları: **Palpe edilebilir büyüklükte, reaktif görünümlü** | Genel LN bütünlüğü normal",
-      "palp": "Karın palpasyonu: **Karaciğer hafif büyümüş (Hepatomegali +)** | Ağrı yok | BKİ: Obez (BCS: 8/9)"
+      "palp": "Karın palpasyonu: **Karaciğer hafif büyümüş (Hepatomegali +)** | Ağrı yok | BCS: 4/9, kas kütlesi azalmış"
     },
     "tools": {
       "otoscope": "Otoskopi: Her iki kulak kanalı temiz. Kulak zarları sağlam. Patolojik bulgu yok.",
@@ -679,10 +682,10 @@
         "flag": ""
       },
       "İnsülin": {
-        "value": "42",
+        "value": "3",
         "unit": "µIU/mL",
         "ref": "5–30",
-        "flag": "H"
+        "flag": "L"
       },
       "Progesteron": {
         "value": "0.3",
@@ -725,7 +728,8 @@
       "uroloji_kaza_1": "Evet, özellikle geceleri yetişemeyip bazen eve kaçırıyor.",
       "agirlik_1": "Evet, bu kadar çok yemesine rağmen son bir ayda 3 kilo verdi, kasları da eridi gibi.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
-      "goz_4": "Gözleri son günlerde bulanıklaştı, etraftaki eşyalara çarpıp duruyor."
+      "goz_4": "Gözleri son günlerde bulanıklaştı, etraftaki eşyalara çarpıp duruyor.",
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
     }
   },
   "fip": {
@@ -770,7 +774,7 @@
     "physical": {
       "temp": "Vücut sıcaklığı: **39.9°C** (Referans: 38.0–39.2°C)",
       "resp": "Solunum sayısı: **45/dak** (Referans: 20–30/dak)",
-      "hr": "Kalp atım sayısı: **180/dak** (Referans: 120–220/dak)",
+      "hr": "Kalp atım sayısı: **180/dak** (Referans: 140–220/dak)",
       "mucosa": "Mukoza rengi: **Hafif ikterik ve solgun** | CRT: **2 sn**",
       "lymph": "Lenf nodları: Mezenterik lenf nodları belirgin şekilde büyümüş ve sert.",
       "palp": "Karın palpasyonu: **Belirgin abdominal distansiyon** | Fluktuasyon (+++) — sıvı dalgalanması hissediliyor | Organlar sıvı içinde seçilemiyor"
@@ -1096,7 +1100,12 @@
       "gecmis_hastalik_2": "Evet, daha önce antibiyotik ve ateş düşürücü verdiler ama ateşini tam düşüremedik, ilaçlar pek işe yaramadı.",
       "diger_hayvanlar_5": "Şu an evde tek kedi ama 3 aylıkken çok kalabalık bir üreticiden sahiplenmiştik.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
-      "goz_4": "Evet, eskiden gözleri çok parlaktı ama son zamanlarda bulanık bakmaya başladı."
+      "goz_4": "Evet, eskiden gözleri çok parlaktı ama son zamanlarda bulanık bakmaya başladı.",
+      "enerji_2": "Evet, sürekli köşede ya da kucağımda yatıyor, hiç dolaşmıyor.",
+      "agri_3": "Evet, karnı şiştiğinden beri yükseğe zıplamıyor, merdivende hemen yoruluyor.",
+      "agirlik_3": "Karnı büyüdüğü için önce kilo aldı sandık ama aslında vücudu inceldi.",
+      "i̇lac_4": "Evet, ateşi için antibiyotik ve ateş düşürücü verildi ama işe yaramadı.",
+      "ameliyat_1": "Evet, kısırlaştırıldı (kastrasyon) ve sorunsuz iyileşti."
     }
   },
   "parvo": {
@@ -1139,9 +1148,9 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **39.9°C** (Referans: 37.5–39.2°C)",
+      "temp": "Vücut sıcaklığı: **39.9°C** (Referans: 37.8–39.2°C)",
       "resp": "Solunum sayısı: **50/dak** (Referans: 10–30/dak)",
-      "hr": "Kalp atım sayısı: **160/dak** (Referans: 60–120/dak)",
+      "hr": "Kalp atım sayısı: **190/dak** (Yavru referans: 110–180/dak)",
       "mucosa": "Mukoza rengi: **Kuru ve mat** | CRT: **4 sn** (Referans <2 sn)",
       "lymph": "Lenf nodları: **Mezenterik lenf nodları palpasyonda büyümüş.**",
       "palp": "Karın palpasyonu: **Abdominal bölgede şiddetli ağrı (+++)** | Bağırsak anslarında sıvı birikimi ve gerginlik hissediliyor | Diffüz hassasiyet"
@@ -1451,7 +1460,7 @@
       "stool": "Dışkı muayenesi: Makroskobik olarak **hemorajik, kötü kokulu sıvı dışkı**. 🔴 Parazit yumurtası görülmedi. Hızlı tanı kiti uygulanması önerilir.",
       "woodslamp": "Wood's Lambası: Bu vakada deri mantar lezyonu şüphesi bulunmadığından uygulanmadı.",
       "skin": "Deri kazıntısı: Deri turgoru ileri düzeyde azalmış — ciddi dehidrasyon. Ektoparazit görülmedi. Bu vakada deri muayenesi primer tanı aracı değildir.",
-      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endikasyonu yoktur. Tanı snap testi ve klinik tablo ile konulmuştur. Bağırsak biyopsisi yalnızca kronik vakalarda düşünülür."
+      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endikasyonu yoktur. Bağırsak biyopsisi yalnızca kronik vakalarda düşünülür."
     },
     "questionAnswers": {
       "kusma_1": "Dün sabahtan beri neredeyse saat başı durmadan kusuyor.",
@@ -1466,7 +1475,13 @@
       "agri_1": "Özellikle karnına dokunduğumuzda çok acı çekiyor, inleyip kaçmaya çalışıyor.",
       "gecmis_asi_1": "Hayır, aşıları ne yazık ki tam yaptırılmamıştı.",
       "diger_hayvanlar_5": "Evet, 5 gün önce köpek parkında diğer köpeklerle, geçen hafta da bahçede sahipsiz bir yavruyla oynadı.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "disari_2": "Evet, 5 gün önce köpek parkında diğer köpeklerle, geçen hafta da bahçede sahipsiz bir yavruyla oynadı.",
+      "kene_pire_2": "İç parazit ilacı 1 ay önce yapıldı ama aşıları hiç yapılmadı.",
+      "asi_2": "Hiç aşı yapılmadı.",
+      "asi_3": "Hiç aşı yapılmadığı için bilmiyoruz.",
+      "asi_4": "Hayır, karnesi yok.",
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
     }
   },
   "hernia": {
@@ -1512,7 +1527,7 @@
     "physical": {
       "temp": "Vücut sıcaklığı: **37.0°C** (Referans: 38.0–39.2°C)",
       "resp": "Solunum sayısı: **65/dak** (Referans: 20–30/dak)",
-      "hr": "Kalp atım sayısı: **190/dak** (Referans: 120–220/dak)",
+      "hr": "Kalp atım sayısı: **190/dak** (Referans: 140–220/dak)",
       "mucosa": "Mukoza rengi: **Solgun pembe / siyanotik** | CRT: **>3 sn**",
       "lymph": "Lenf nodları: Normal büyüklükte, palpasyonda ağrısız.",
       "palp": "Toraks palpasyonu: **Sol tarafta kalp sesleri derinden ve uzak geliyor.** | Karın palpasyonu: **Boşluk hissi.**"
@@ -1838,7 +1853,13 @@
       "noroloji_yürüyüş_3": "Evet, kalkmakta çok zorlanıyor ve arka bacaklarını zar zor, sürükler gibi kullanıyor.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
       "hastalik_5": "Dün gece 3. kattan aşağıya düştü, sabah bulabildik.",
-      "ameliyat_2": "Hayır, daha önce hiç ameliyat olmadı."
+      "ameliyat_2": "Hayır, daha önce hiç ameliyat olmadı.",
+      "enerji_2": "Düştükten sonra bir yere saklandı; şimdi kıpırdamadan yatıyor.",
+      "kene_pire_2": "Bilmiyoruz, parazit uygulamalarını takip etmedik.",
+      "asi_1": "Hayır, en son 6 aylıkken aşılandı, sonra devam etmedik.",
+      "asi_2": "Yaklaşık 6 ay önce.",
+      "asi_4": "Karnesi var ama son aşıları işlenmemiş.",
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
     }
   },
   "uro": {
@@ -1883,7 +1904,7 @@
     "physical": {
       "temp": "Vücut sıcaklığı: **37.8°C** (Referans: 38.0–39.2°C)",
       "resp": "Solunum sayısı: **55/dak** (Referans: 20–30/dak)",
-      "hr": "Kalp atım sayısı: **220/dak** (Referans: 120–220/dak)",
+      "hr": "Kalp atım sayısı: **130/dak** (Referans: 140–220/dak)",
       "mucosa": "Mukoza rengi: **Solgun pembe, mat** | CRT: **3 sn**",
       "lymph": "Lenf nodları: Normal büyüklükte, palpe edilebilir. Reaktif değil.",
       "palp": "Karın palpasyonu: **Kaudal abdomende mesane aşırı gergin, sert, portakal büyüklüğünde.** Palpasyonda şiddetli ağrı reaksiyonu (+++)."
@@ -1893,8 +1914,8 @@
       "ophthalmo": "Oftalmoskopi: Göz içi basınç normal. Retina normal. Sklera normal renkli. Patolojik bulgu yok.",
       "pharyngo": "Faringoskopi: **Ağız içi kuru ve mat.** Oral mukoza solgun. Farinks normal.",
       "reflex": "Refleks muayenesi: Patellar refleks bilateral normal. Propriyosepsiyon intakt. Nörolojik defisit yok.",
-      "inspection": "İnspeksiyon: **Strangüri pozisyonu** — sürekli ıkınma, idrar yapamama. Perianal bölge ıslak. Abdominal bölge gergin. Bilinç açık ama ağrılı. Mukozalar pembe.",
-      "auscultation": "Oskültasyon: **Akciğer sesleri:** Bilateral normal. **Kalp sesleri:** Taşikardik, üfürüm yok. **Bağırsak sesleri:** Azalmış.",
+      "inspection": "İnspeksiyon: **Strangüri pozisyonu** — sürekli ıkınma, idrar yapamama. Perianal bölge ıslak. Abdominal bölge gergin. Bilinç açık ama ağrılı. Mukozalar solgun.",
+      "auscultation": "Oskültasyon: **Akciğer sesleri:** Bilateral normal. **Kalp sesleri:** Bradikardik, üfürüm yok. **Bağırsak sesleri:** Azalmış.",
       "woodslamp": "Wood's Lambası: Bu vakada uygulanmadı."
     },
     "imaging": {
@@ -2103,7 +2124,7 @@
         "value": "145",
         "unit": "mEq/L",
         "ref": "147–162",
-        "flag": ""
+        "flag": "L"
       },
       "K": {
         "value": "8.2",
@@ -2214,7 +2235,10 @@
       "istah_3": "Zaten normalde de suya pek yaklaşmaz, sabah biraz içti ama onu da hemen kustu.",
       "karin_1": "Evet, karın bölgesi özellikle gece yarısından beri aşırı gergin ve sert hissediliyor.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
-      "davranis_4": "Normalde çok sessiz bir kedidir ama gece yarısından beri durmadan ağlıyor ve çok huzursuz."
+      "davranis_4": "Normalde çok sessiz bir kedidir ama gece yarısından beri durmadan ağlıyor ve çok huzursuz.",
+      "kusma_1": "Bir kez; sabah içtiği suyu hemen kustu.",
+      "diskilama_3": "Kum kabında çok ıkınıyor ama bence çişini yapamıyor; dışkısını en son dün normal yaptı.",
+      "ameliyat_1": "Evet, kısırlaştırıldı (kastrasyon) ve sorunsuz iyileşti."
     }
   },
   "ascaris": {
@@ -2257,9 +2281,9 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **38.6°C** (Referans: 37.5–39.2°C)",
+      "temp": "Vücut sıcaklığı: **38.6°C** (Referans: 37.8–39.2°C)",
       "resp": "Solunum sayısı: **32/dak** (Referans: 10–30/dak)",
-      "hr": "Kalp atım sayısı: **120/dak** (Referans: 60–120/dak)",
+      "hr": "Kalp atım sayısı: **190/dak** (Yavru referans: 110–180/dak)",
       "mucosa": "Mukoza rengi: **Solgun pembe** | CRT: **2 sn**",
       "lymph": "Lenf nodları: **Submandibuler ve preskapular LN'ler hafif reaktif (büyümüş)**, ağrısız.",
       "palp": "Karın palpasyonu: **Abdomen gergin ve şiş (pot-bellied görünüm).** İnce bağırsak ansları dolgun, yer yer **kitle benzeri yapılar** hissediliyor."
@@ -2580,7 +2604,13 @@
       "solunum_nefes_4": "Evet, birazcık oyun oynasa hemen yoruluyor ve çabuk nefes nefese kalıyor.",
       "karin_1": "Evet, karnı giderek şişti ve şu an davul gibi duruyor.",
       "maruziyet_kene_pire_2": "Hayır, annesi sokaktan gelmişti ve parazit ilacı hiç yapılmadı.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "kusma_1": "Evet, dün kustu ve kusmuğunda canlı solucanlar vardı.",
+      "enerji_1": "Biraz oynayınca hemen yoruluyor, eskisi kadar oyuncu değil.",
+      "asi_1": "Hayır, aşıları eksik.",
+      "asi_2": "Tam bilmiyoruz, eksik kaldı.",
+      "asi_4": "Karnesi var ama aşıları eksik.",
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
     }
   },
   "demodicosis": {
@@ -2624,7 +2654,7 @@
     ],
     "physical": {
       "temp": "Vücut sıcaklığı: **38.4°C** (Referans: 38.0–39.2°C)",
-      "resp": "Solunum sayısı: **24/dak** (Referans: 16–30/dak)",
+      "resp": "Solunum sayısı: **24/dak** (Referans: 20–30/dak)",
       "hr": "Kalp atım sayısı: **180/dak** (Referans: 140–220/dak)",
       "mucosa": "Mukoza rengi: **Pembe** | CRT: **< 2 sn**",
       "lymph": "Lenf nodları: **Submandibuler lenf nodları hafif reaktif (büyümüş)**, ağrısız.",
@@ -2636,7 +2666,7 @@
       "pharyngo": "Faringoskopi: Orofarinks doğal, patolojik bulgu yok.",
       "reflex": "Refleks muayenesi: Patellar ve fleksör refleksler normal. Nörolojik defisit yok.",
       "inspection": "İnspeksiyon: **Baş, göz çevresi ve ekstremitelerde sirküler alopesi alanları belirgin.** Lezyon sınırları düzensiz, üzeri kepekli ve eritematöz. Tüyler mat ve kırılgan.",
-      "auscultation": "Oskültasyon: **Akciğer sesleri:** Bilateral normal. **Kalp sesleri:** Alt sınırda taşikardik. **Bağırsak sesleri:** Normal.",
+      "auscultation": "Oskültasyon: **Akciğer sesleri:** Bilateral normal. **Kalp sesleri:** Ritmik, üfürüm yok. **Bağırsak sesleri:** Normal.",
       "woodslamp": "Wood's Lambası: Floresan parlama negatif."
     },
     "imaging": {
@@ -2785,7 +2815,7 @@
       "Total Bili.": {
         "value": "0.4",
         "unit": "mg/dL",
-        "ref": "0–0.5",
+        "ref": "0–0.4",
         "flag": ""
       },
       "Glukoz": {
@@ -2833,7 +2863,7 @@
       "K": {
         "value": "4.0",
         "unit": "mEq/L",
-        "ref": "3.5–5.0",
+        "ref": "3.5–5.8",
         "flag": ""
       }
     },
@@ -2859,7 +2889,7 @@
       "Kortizol": {
         "value": "3.2",
         "unit": "µg/dL",
-        "ref": "1.0–5.0",
+        "ref": "0.5–5.0",
         "flag": ""
       },
       "Aldosteron": {
@@ -2908,7 +2938,7 @@
         "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
       },
       "urine": "İdrar muayenesi: SpGr: **1.015**. pH: **6.0**. **Glukoz: +++**. Keton: Negatif. Protein: Negatif. Sediment: Patolojik bulgu yok. ▸ Glukozüri — altta yatan bir metabolik/endokrin nedenin değerlendirilmesi önerilir. ⚠",
-      "woodslamp": "Wood's Lambası: Bu vakada uygulanmadı.",
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
       "stool": "Dışkı muayenesi: Parazit yumurtası görülmedi. Bu vakada dışkı muayenesi endike değildir.",
       "skin": {
         "text": "Deri Kazıntısı (Derin Kazıntı): **Mikroskobik incelemede karakteristik 8 bacaklı, sigara şeklinde akarlar** görüldü. 🔴 Erişkin, larva ve yumurta formları tespit edildi. Yoğun enfestasyon ile uyumlu.",
@@ -2928,7 +2958,10 @@
       "enerji_1": "Evet, son zamanlarda belirgin şekilde halsizleşti.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
       "diger_hayvanlar_6": "Bu sorun sadece bu kedimde var, evdeki diğer kedilerde hiçbir belirti görülmedi.",
-      "i̇lac_4": "Evet, geçen ay alerji şüphesiyle kortizon iğnesi yapılmıştı, zaten dökülmeler de ondan sonra arttı."
+      "i̇lac_4": "Evet, geçen ay alerji şüphesiyle kortizon iğnesi yapılmıştı, zaten dökülmeler de ondan sonra arttı.",
+      "i̇drar_1": "Evet, son zamanlarda çok sık kuma gidiyor, topaklar da büyüdü.",
+      "kene_pire_2": "Düzenli değil; akarlara karşı etkili bir ürün kullanmadık.",
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
     }
   },
   "pancreatitis": {
@@ -2971,9 +3004,9 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **39.5°C** (Referans: 38.0–39.2°C)",
+      "temp": "Vücut sıcaklığı: **39.5°C** (Referans: 37.8–39.2°C)",
       "resp": "Solunum sayısı: **40/dak** (Referans: 10–30/dak)",
-      "hr": "Kalp atım sayısı: **140/dak** (Referans: 60–120/dak)",
+      "hr": "Kalp atım sayısı: **160/dak** (Referans: 60–140/dak)",
       "mucosa": "Mukoza rengi: **Pembe** | CRT: **3 sn**",
       "lymph": "Lenf nodları: **Genellikle normal**, şiddetli vakalarda mezenterik LN'lerde reaktif büyüme görülebilir.",
       "palp": "Karın palpasyonu: **Kranial abdomende şiddetli ağrı ve koruma**. **Dua pozisyonu (prayer position)** — ön ayaklar öne, arka kısım yukarıda. Karın kasları gergin."
@@ -3276,7 +3309,7 @@
         "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
       },
       "urine": "İdrar muayenesi: SpGr: **>1.050** — dehidrasyona bağlı çok konsantre idrar. Protein: **(+)**. Glukoz: **Negatif**. Keton: **(+)**. Sediment: granüler silendir (+). **Prerenal azotemi ile uyumlu.**",
-      "stool": "Dışkı muayenesi: Kıvam yumuşak, renk açık-sarı. **Steatore şüphesi** — yağlı, kötü kokulu dışkı pankreatik eksokrin yetmezliğini düşündürür. Gizli kan: Negatif. Parazit yumurtası görülmedi.",
+      "stool": "Dışkı muayenesi: Kıvam yumuşak, renk açık-sarı. **Steatore şüphesi** — yağlı ve kötü kokulu dışkı. Gizli kan: Negatif. Parazit yumurtası görülmedi.",
       "skin": "Deri kazıntısı: Bu vakada deri kazıntısı endike değildir. Ektoparazit görülmedi.",
       "biopsy": "Biyopsi raporu: Akut vakada biyopsi kontrendikedir. Tanı klinik bulgular, enzim yüksekliği ve görüntüleme ile konulur. Kronik/tekrarlayan vakalarda patoloji değerlendirmesi düşünülebilir."
     },
@@ -3292,7 +3325,9 @@
       "enerji_1": "Evet, aşırı halsiz ve ayakta bile duramıyor; ön ayaklarını yere uzatıp arkasını havada tutarak bekliyor.",
       "gecmis_hastalik_2": "Hayır, ilk defa bu kadar şiddetli oluyor, daha önce hiç böyle bir şey yaşamamıştık.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
-      "beslenme_4": "Evet, dün akşam mangaldan arta kalan et yağları ve kemikler verilmişti."
+      "beslenme_4": "Evet, dün akşam mangaldan arta kalan et yağları ve kemikler verilmişti.",
+      "beslenme_2": "Evet, dün akşam mangal artıklarının içinde kemikler de vardı.",
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
     }
   },
   "invagination": {
@@ -3335,9 +3370,9 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **38.9°C** (Referans: 37.5–39.2°C)",
+      "temp": "Vücut sıcaklığı: **38.9°C** (Referans: 37.8–39.2°C)",
       "resp": "Solunum sayısı: **48/dak** (Referans: 10–30/dak)",
-      "hr": "Kalp atım sayısı: **160/dak** (Referans: 60–120/dak)",
+      "hr": "Kalp atım sayısı: **160/dak** (Referans: 60–140/dak)",
       "mucosa": "Mukoza rengi: **Koyu pembe, yapışkan** | CRT: **2.5 sn**",
       "lymph": "Lenf nodları: Periferik LN'ler normal. **Mezenterik bölgede palpasyonda hassasiyet** mevcut.",
       "palp": "Karın palpasyonu: **Sosis biçiminde, sert, ağrılı abdominal kitle** palpe ediliyor. Sağ kranial kadranda belirgin. Karın duvarında koruma refleksi mevcut."
@@ -3363,7 +3398,7 @@
         "imgUrl": "https://onlinelibrary.wiley.com/cms/asset/31af4a19-f31b-4634-8a07-9ddf7f6232d7/vms3920-fig-0001-m.png"
       },
       "xray_direct": {
-        "result": "Abdominal Röntgen: **Karın boşluğunda darbe bölgesinde yumuşak doku yoğunluğu artışı.** İnce bağırsaklarda **belirgin obstrüktif gaz paterni** görülüyor. 🔴 Bağırsak düğümlenmesiyle uyumlu tablo.",
+        "result": "Abdominal Röntgen: **Karın boşluğunda darbe bölgesinde yumuşak doku yoğunluğu artışı.** İnce bağırsaklarda **belirgin obstrüktif gaz paterni** görülüyor. 🔴 Mekanik obstrüksiyonla uyumlu tablo.",
         "hasImage": true,
         "imgUrl": "https://onlinelibrary.wiley.com/cms/asset/c1a06411-06e7-41b8-ac63-e433d1cf52b9/vms3920-fig-0002-m.jpg"
       },
@@ -3657,7 +3692,8 @@
       "agri_1": "Özellikle karnına dokunulduğunda bağıracak kadar çok şiddetli ağrısı var.",
       "enerji_1": "Evet, dünden beri aşırı halsiz ve yerinden hiç kalkmak istemiyor.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
-      "hastalik_5": "Evet, 2 gün önce bahçede koşarken karnının sağ tarafını kapı eşiğine çok sert çarptı."
+      "hastalik_5": "Evet, 2 gün önce bahçede koşarken karnının sağ tarafını kapı eşiğine çok sert çarptı.",
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
     }
   },
   "cushings": {
@@ -3700,9 +3736,9 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **38.4°C** (Referans: 37.5–39.2°C)",
+      "temp": "Vücut sıcaklığı: **38.4°C** (Referans: 37.8–39.2°C)",
       "resp": "Solunum sayısı: **52/dak** (Referans: 10–30/dak)",
-      "hr": "Kalp atım sayısı: **125/dak** (Referans: 60–120/dak)",
+      "hr": "Kalp atım sayısı: **125/dak** (Referans: 60–140/dak)",
       "mucosa": "Mukoza rengi: **Pembe** | CRT: **1.5 sn**",
       "lymph": "Lenf nodları: Tüm periferik lenf nodları normal boyutta ve ağrısız.",
       "palp": "Karın palpasyonu: **Pendülöz (sarkık) karın** — abdominal kas atrofisi belirgin. Karaciğer büyümüş (hepatomegali). Karın gergin ama ağrısız."
@@ -3728,7 +3764,7 @@
         "imgUrl": null
       },
       "xray_direct": {
-        "result": "Direkt Röntgen: Bu vakada direkt radyografi planlanmamıştır. İndirekt radyografi tercih edilmiştir.",
+        "result": "Direkt Röntgen: Bu vakada direkt radyografi rutin olarak endike değildir.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -3749,7 +3785,7 @@
       }
     },
     "rapidKits": {
-      "woodslamp": "Wood's Lambası: Bu vakada deri mantar lezyonu şüphesi bulunmadığından uygulanmadı.",
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
       "ntprobnp": "NEGATİF",
       "giardia_ag": "NEGATİF"
     },
@@ -3836,7 +3872,7 @@
         "value": "0",
         "unit": "%",
         "ref": "0–9",
-        "flag": "L"
+        "flag": ""
       }
     ],
     "biochemistry": {
@@ -4000,11 +4036,11 @@
       }
     },
     "microscopy": {
-      "blood": "Kan yayması: Stres lökogramı — nötrofili, lenfopeni, eozinopeni. Eritrositler normositik normokromik. Trombositler yeterli. Parazit görülmedi.",
+      "blood": "Kan yayması: Stres lökogramı — nötrofili, lenfopeni, yaymada eozinofil görülmedi. Eritrositler normositik normokromik. Trombositler yeterli. Parazit görülmedi.",
       "urine": "İdrar muayenesi: Renk açık sarı/renksiz, berrak. SpGr: **1.004** (**Hipostenüri**) 🔴 — kortizol fazlalığına bağlı idrar konsantrasyon kaybı. pH: 6.5. Protein: (+). Glukoz: Negatif. Keton: Negatif. Sediment: Nadir yassı epitel, mikroorganizma yok.",
       "stool": "Dışkı muayenesi: Kıvam normal. Parazit yumurtasına rastlanmadı. Sindirim normal görünümde.",
       "skin": "Deri kazıntısı: Tüy dökülen bölgelerde deri ince ve frajil. **Ektoparazit görülmedi.** Kalınlaşmış epidermis veya hiperkeratoz bulgusu yok. Alopesi non-enflamatuar niteliktedir — endokrin kökenli.",
-      "biopsy": "Biyopsi raporu: Bu vakada rutin deri biyopsisi endike değildir. Tanı ACTH stimülasyon testi ve USG ile konulmuştur. Karaciğer biyopsisi ancak vakuoler hepatopatinin ilerlediği durumlarda düşünülür."
+      "biopsy": "Biyopsi raporu: Bu vakada rutin deri biyopsisi endike değildir. Karaciğer biyopsisi ancak vakuoler hepatopatinin ilerlediği durumlarda düşünülür."
     },
     "questionAnswers": {
       "istah_1": "Hayır, hiç azalmadı; sürekli aç gibi kendi mamasını hemen bitirip mutfaktan yemek çalmaya çalışıyor.",
@@ -4016,7 +4052,10 @@
       "karin_1": "Evet, son 4-5 aydır karnı yavaş yavaş şişti ve şu an balon gibi duruyor.",
       "solunum_nefes_4": "Evet, kasları eridiği için merdiven çıkarken bile hemen nefes nefese kalıyor ve yürümekte zorlanıyor.",
       "gecmis_ilaç_1": "Hayır, son iki yıldır düzenli olarak hiçbir ilaç kullanmadı.",
-      "davranis_5": "Hayır, öyle bir huyu yok."
+      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "i̇drar_1": "Evet, çok sık ve bol idrar yapıyor; geceleri tutamayıp eve kaçırıyor.",
+      "agri_3": "Evet, artık merdiven çıkamıyor, koltuğa zıplayamıyor.",
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
     }
   },
   "dermatophytosis": {
@@ -4059,9 +4098,9 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **38.6°C** (Referans: 38.1–39.2°C)",
-      "resp": "Solunum sayısı: **28/dak** (Referans: 16–30/dak)",
-      "hr": "Kalp atım sayısı: **120/dak** (Referans: 140–220/dak)",
+      "temp": "Vücut sıcaklığı: **38.6°C** (Referans: 38.0–39.2°C)",
+      "resp": "Solunum sayısı: **28/dak** (Referans: 20–30/dak)",
+      "hr": "Kalp atım sayısı: **180/dak** (Referans: 140–220/dak)",
       "mucosa": "Mukoza rengi: **Pembe** | CRT: **< 2 sn**",
       "lymph": "Lenf nodları: **Submandibular lenf nodları hafif büyümüş**, ağrısız.",
       "palp": "Karın palpasyonu: Normal. **Baş ve ekstremitelerde sirküler alopesi, eritem ve yoğun skuam (kepeklenme)** gözlemleniyor. Lezyonlar halka şeklinde."
@@ -4072,7 +4111,7 @@
       "pharyngo": "Faringoskopi: Oral mukoza normal. Patolojik bulgu yok.",
       "reflex": "Refleks muayenesi: Patellar refleks normal. Nörolojik defisit yok.",
       "inspection": "İnspeksiyon: **Baş, yüz ve kulak kepçesi çevresinde sirküler, iyi sınırlı alopesi alanları.** Lezyon kenarları düzensiz, üzeri gri-beyaz skuamla kaplı. Tüyler kırılgan. Sarılık yok.",
-      "auscultation": "Oskültasyon: Akciğer sesleri bilateral normal. Kalp sesleri alt sınırda taşikardik. Bağırsak sesleri normal. Oskültasyonda spesifik patolojik bulgu beklenmez.",
+      "auscultation": "Oskültasyon: Akciğer sesleri bilateral normal. Kalp sesleri ritmik, üfürüm yok. Bağırsak sesleri normal. Oskültasyonda spesifik patolojik bulgu beklenmez.",
       "woodslamp": "Wood's Lambası: Tüylerde **elma yeşili floresan parlama POZİTİF.**"
     },
     "imaging": {
@@ -4385,7 +4424,10 @@
       "istah_1": "Evet, biraz iştahı azaldı ama genel durumu fena değil.",
       "maruziyet_beslenme_3": "Hayır, son zamanlarda herhangi bir mama veya çevre değişikliği yapmadık.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
-      "diger_hayvanlar_6": "Evet, evdeki diğer kedimizin de kulak kenarlarında aynı anda tüy dökülmeleri ve açılmalar başladı."
+      "diger_hayvanlar_6": "Evet, evdeki diğer kedimizin de kulak kenarlarında aynı anda tüy dökülmeleri ve açılmalar başladı.",
+      "kasinti_2": "Evet, özellikle ön bacaklarını sürekli yalıyor.",
+      "kulak_3": "Evet, kulak arkalarında ve kenarlarında tüy dökülmesi ve kepeklenme var.",
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
     }
   },
   "giardiasis": {
@@ -4428,9 +4470,9 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **38.6°C** (Referans: 37.5–39.2°C)",
+      "temp": "Vücut sıcaklığı: **38.6°C** (Referans: 37.8–39.2°C)",
       "resp": "Solunum sayısı: **24/dak** (Referans: 10–30/dak)",
-      "hr": "Kalp atım sayısı: **110/dak** (Referans: 60–120/dak)",
+      "hr": "Kalp atım sayısı: **110/dak** (Yavru referans: 110–180/dak)",
       "mucosa": "Mukoza rengi: **Pembe** | CRT: **< 2 sn**",
       "lymph": "Lenf nodları: Mandibular ve popliteal lenf nodları normal büyüklükte, hassasiyet yok.",
       "palp": "Karın palpasyonu: **Hafif abdominal gerginlik** ve **mezenterik bölgede hafif hassasiyet** mevcut. Vücut Kondisyon Skoru: **3/9 — Zayıf.**"
@@ -4749,7 +4791,10 @@
       "karin_2": "Evet, karnı bazen çok gergin oluyor ve dokunduğumuzda inliyor.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
       "diskilama_4": "Evet çok arttı, eskiden günde 2 kez çıkarken şimdi günde 4-5 kez dışarı çıkmak istiyor.",
-      "disari_3": "Evet, hafta sonları ormanlık alanda gezerken göletlerden su içiyor."
+      "disari_3": "Evet, hafta sonları ormanlık alanda gezerken göletlerden su içiyor.",
+      "kene_pire_4": "Evet, hafta sonları ormanlık alanda yürüyüşe çıkıyoruz.",
+      "kene_pire_2": "Aşıları güncel ama son 3 aydır parazit ilacını aksattık.",
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
     }
   },
   "hyperthyroidism": {
@@ -4793,7 +4838,7 @@
     ],
     "physical": {
       "temp": "Vücut sıcaklığı: **39.2°C** (Referans: 38.0–39.2°C)",
-      "resp": "Solunum sayısı: **42/dak** (Referans: 16–30/dak)",
+      "resp": "Solunum sayısı: **42/dak** (Referans: 20–30/dak)",
       "hr": "Kalp atım sayısı: **240/dak** (Referans: 140–220/dak)",
       "mucosa": "Mukoza rengi: **Pembe** | CRT: **< 2 sn**",
       "lymph": "Lenf nodları: Mandibular, preskapular ve popliteal lenf nodları normal boyutta, ağrısız.",
@@ -4820,7 +4865,7 @@
         "imgUrl": null
       },
       "xray_direct": {
-        "result": "Direkt Röntgen: Bu vakada direkt radyografi planlanmamıştır. İndirekt radyografi tercih edilmiştir.",
+        "result": "Direkt Röntgen: Bu vakada direkt radyografi rutin olarak endike değildir.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -5113,7 +5158,9 @@
       "enerji_1": "Aktivitesi azalmadı, aksine geceleri bile uyumayıp evin içinde oradan oraya koşturuyor.",
       "genel_davranis_1": "Evet, çok hırçınlaştı ve sinirli oldu; sürekli tetikte duruyor, dokunmamıza bile izin vermiyor ve geceleri yüksek sesle bağırıyor.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
-      "agri_3": "Evet, eskiden tezgaha tek hamlede zıplayıp çıkardı ama artık çıkamıyor."
+      "agri_3": "Evet, eskiden tezgaha tek hamlede zıplayıp çıkardı ama artık çıkamıyor.",
+      "davranis_4": "Evet, geceleri evin içinde koşturup yüksek sesle bağırıyor, hiç uyumuyor.",
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
     }
   },
   "hypothyroidism": {
@@ -5158,7 +5205,7 @@
     "physical": {
       "temp": "Vücut sıcaklığı: **37.5°C** (Referans: 37.8–39.2°C)",
       "resp": "Solunum sayısı: **14/dak** (Referans: 10–30/dak)",
-      "hr": "Kalp atım sayısı: **58/dak** (Referans: 60–120/dak)",
+      "hr": "Kalp atım sayısı: **58/dak** (Referans: 60–140/dak)",
       "mucosa": "Mukoza rengi: **Pembe/Hafif solgun** | CRT: **2 sn**",
       "lymph": "Lenf nodları: Tüm periferik lenf nodları normal büyüklükte ve ağrısız.",
       "palp": "Vücut palpasyonu: **Nabız zayıf.** Abdominal yağlanma artmış. Tiroid bezleri palpe edilemiyor. **Bilateral simetrik gövde alopesisi** mevcut."
@@ -5474,7 +5521,8 @@
       "solunum_nefes_4": "Evet, daha sokağın başına bile varmadan hemen yorulup duruyor ve dinlenmek istiyor.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
       "bilinc_1": "Hayır, komutlara tepkisi oldukça yavaşladı, seslendiğimizde eskisi gibi hemen gelmiyor.",
-      "enerji_5": "Evet, sürekli evin en sıcak yerlerini arıyor ve battaniyenin altında yatmak istiyor."
+      "enerji_5": "Evet, sürekli evin en sıcak yerlerini arıyor ve battaniyenin altında yatmak istiyor.",
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
     }
   },
   "asthma": {
@@ -5518,7 +5566,7 @@
     ],
     "physical": {
       "temp": "Vücut sıcaklığı: **38.6°C** (Referans: 38.0–39.2°C)",
-      "resp": "Solunum sayısı: **42/dak** (Referans: 16–30/dak)",
+      "resp": "Solunum sayısı: **42/dak** (Referans: 20–30/dak)",
       "hr": "Kalp atım sayısı: **185/dak** (Referans: 140–220/dak)",
       "mucosa": "Mukoza rengi: **Pembe** | CRT: **1.5 sn**",
       "lymph": "Lenf nodları: Submandibular, preskapular ve popliteal LN'ler normal büyüklükte, ağrısız, yumuşak — Sistemik lenfadenomegali yok",
@@ -5839,7 +5887,9 @@
       "enerji_1": "Evet, hiç oyun oynamıyor, çabuk yoruluyor ve duman veya koku olunca köşelere saklanıyor.",
       "maruziyet_zehir_1": "Evet, evde sigara içiliyor; ayrıca oda spreyi, parfümlü kedi kumu, kokulu mumlar ve esansiyel yağlar kullanılıyor. Parfümlü kum, oda spreyi, tütsü, sigara dumanı ya da tadilat tozu olunca öksürük krizi hemen başlıyor.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
-      "oksuruk_3": "Hayır, öksürüğü tamamen kuru; öğürüp bir şey çıkarmıyor."
+      "oksuruk_3": "Hayır, öksürüğü tamamen kuru; öğürüp bir şey çıkarmıyor.",
+      "enerji_2": "Duman ya da koku olunca köşeye, koltuğun altına saklanıyor.",
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
     }
   }
 }
