@@ -544,26 +544,6 @@
       "symptoms": "Dispne, paradoksal solunum, bağırsak sesleri göğüste, şok"
     },
     {
-      "id": "v18",
-      "name": "Feline Immunodeficiency Virus (FIV) Enfeksiyonu",
-      "species": [
-        "cat"
-      ],
-      "category": "Viral",
-      "etken": "Feline Immunodeficiency Virus (Lentivirus)",
-      "symptoms": "Kronik gingivitis, oral ülser, tekrarlayan enfeksiyonlar, lenfadenopati, lökopeni, kilo kaybı"
-    },
-    {
-      "id": "p05",
-      "name": "Toksoplazmozis (Toxoplasma gondii)",
-      "species": [
-        "cat"
-      ],
-      "category": "Paraziter",
-      "etken": "Toxoplasma gondii",
-      "symptoms": "Ateş, letarji, anterior üveit, dispne, ataksi, hepatomegali, sarılık, multisistemik tutulum"
-    },
-    {
       "id": "r01",
       "name": "Felin Bronşiyal Astım",
       "species": [
@@ -602,16 +582,6 @@
       "category": "Endokrinoloji",
       "etken": "Glikojen depo yetersizliği, açlık, parazitizm",
       "symptoms": "Nöbet, stupor, tremor, bradikardi, hipotermia, kan glukozu <60 mg/dL, toy ırk yavru"
-    },
-    {
-      "id": "t12",
-      "name": "Travmatik Diyafragmatik Herni (Köpek)",
-      "species": [
-        "dog"
-      ],
-      "category": "Travmatik",
-      "etken": "Künt karın/göğüs travması",
-      "symptoms": "Dispne, bağırsak sesleri göğüste, göğüs asimetrisi, siyanoz, azalmış abdominal hacim"
     },
     {
       "id": "d02",
@@ -682,16 +652,6 @@
       "category": "Gastroenteroloji",
       "etken": "Yağlı diyet, idiyopatik",
       "symptoms": "Kusma, abdominal ağrı, dua pozisyonu, lipaz yüksek, USG pankreatik ödem"
-    },
-    {
-      "id": "v09",
-      "name": "Feline Panleukopenia Virus (FPV)",
-      "species": [
-        "cat"
-      ],
-      "category": "Viral",
-      "etken": "Feline Panleukopenia Virus (Parvovirus)",
-      "symptoms": "Şiddetli panlökopeni (WBC<1.0), kanlı ishal, kusma, enoftalmi, FPV Ag POZİTİF, aşısız yavru kedi"
     }
   ]
 }

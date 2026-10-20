@@ -206,7 +206,7 @@ function clickPen(el) { if (el) el.click(); }
 //   'interactive'  → alan kullanılabilir, Devam ile ilerler
 // fallback: takılırsa "Bu adımı geç" ile çalışacak eylem
 // ═══════════════════════════════════════════════════════════════
-const STEPS = [
+const STEPS_D = [
   // ── AYARLAR ──
   { ch: 'Hoş geldin', mode: 'click',
     text: `<strong>VetTEX Dijital Eğitici Veteriner Klinik Simülasyonu'na hoş geldiniz!</strong><br>Ayarlarla başlayalım: parlayan <strong>Ayarlar</strong> sekmesine dokun.`,
@@ -498,7 +498,267 @@ const STEPS = [
       return [...D().querySelectorAll('#result-body .rb-sec')].find(s => s.textContent.includes('NOTLARIN')) || q('#result-body');
     } },
 ];
-STEPS.forEach(s => { if (!s.lesson) s.lesson = 1; });
+
+// ════════════════════════════════════════════════════════════════
+// MOBİL SENARYO — masaüstüyle aynı iki ders, mobil ekranlara uyarlanmış
+// ════════════════════════════════════════════════════════════════
+const mq = sel => q(sel);
+const STEPS_M = [
+  // ── AYARLAR ──
+  { ch: 'Hoş geldin', mode: 'click',
+    text: `<strong>VetTEX Dijital Eğitici Veteriner Klinik Simülasyonu'na hoş geldiniz!</strong><br>Ayarlarla başlayalım: <strong>Ayarlar</strong>'a dokun.`,
+    target: () => mq(`#mob-home-screen button[onclick="mobOpenSettings()"]`),
+    fallback: () => ev(`mobOpenSettings()`) },
+  { ch: 'Ayarlar', mode: 'next',
+    text: `Bazı vakalarımız <strong>acil</strong> oluyor. Bu vakalarda klinikteki aceleyi yansıtabilmek için sana <strong>5 eylem hakkı</strong> veriliyor; anamnezden teşhise en hızlı yoldan ilerlemen gerekiyor. Kalan hakkın üst barda görünür.`,
+    target: () => mq('#settings-emergency-toggle')?.closest('.settings-row') },
+  { ch: 'Ayarlar', mode: 'next',
+    text: `<strong>Mobil Mod</strong> şu an açık; telefonda otomatik açılır. Kapatırsan masaüstü düzenine geçersin.`,
+    target: () => mq('#settings-mobile-toggle')?.closest('.settings-row') },
+  { ch: 'Ayarlar', mode: 'next',
+    text: `<strong>Ekonomi Modu</strong>'nda hasta sahibine bir bütçe atanır. Maddi durumu düşükse pahalı testler yapılamaz; elindeki imkânlarla teşhise ulaşman beklenir.`,
+    target: () => mq('#settings-economy-toggle')?.closest('.settings-row') },
+  { ch: 'Ayarlar', mode: 'next',
+    text: `<strong>Aydınlık Mod</strong> ile açık temaya geçebilirsin.<br><br>Ayarlarımız şimdilik bu kadar.`,
+    target: () => mq('#settings-lightmode-toggle')?.closest('.settings-row') },
+  { ch: 'Ayarlar', mode: 'click',
+    text: `<strong>Geri</strong> dön.`,
+    target: () => mq('.mob-settings-back'),
+    fallback: () => ev(`mobCloseSettings()`) },
+
+  // ── KLİNİĞE GİRİŞ ──
+  { ch: 'Kliniğe giriş', mode: 'click',
+    text: `Şimdi kliniğe girelim: <strong>Klinik Çalışma Modu</strong>. Burada vakalar hastalık adı gösterilmeden gelir, teşhisi sen koyarsın.`,
+    target: () => mq(`#mob-home-screen button[onclick="mobOpenClinic()"]`),
+    fallback: () => ev(`mobOpenClinic()`) },
+  { ch: 'Kliniğe giriş', mode: 'click', delay: 600,
+    text: `<strong>Rastgele</strong>'ye dokun, bakalım kliniğe kim gelmiş.`,
+    enter: () => armCase(),
+    target: () => mq(`#mob-species-screen button[onclick="mobStartCase('any')"]`),
+    fallback: () => { armCase(); ev(`mobStartCase('any')`); } },
+
+  // ── GENEL BİLGİLER ──
+  { ch: 'Genel bilgiler', mode: 'click',
+    text: `<strong>Kliniğe hoş geldin!</strong> Şu an kliniğimizde bir kedi bulunuyor. Genel bilgilerini alarak başlayalım: <strong>İsim & Irk</strong>.`,
+    enter: () => ensureCase(),
+    target: () => mq('#mob-acc-name .mob-accordion-header'),
+    fallback: () => ev(`mobToggleAccordion('mob-acc-name')`) },
+  { ch: 'Genel bilgiler', mode: 'click',
+    text: `Şimdi <strong>Yaş / Cinsiyet / Kısırlık</strong>.`,
+    target: () => mq('#mob-acc-demog .mob-accordion-header'),
+    fallback: () => ev(`mobToggleAccordion('mob-acc-demog')`) },
+  { ch: 'Genel bilgiler', mode: 'click',
+    text: `<strong>Aşı & Parazit İlacı</strong>.`,
+    target: () => mq('#mob-acc-vaccine .mob-accordion-header'),
+    fallback: () => ev(`mobToggleAccordion('mob-acc-vaccine')`) },
+  { ch: 'Genel bilgiler', mode: 'click',
+    text: `Son olarak <strong>Şikayet</strong>: hasta sahibi neden geldiğini anlatsın.`,
+    enter: () => setComplaint(),
+    target: () => mq('#mob-acc-complaint .mob-accordion-header'),
+    fallback: () => ev(`mobToggleAccordion('mob-acc-complaint')`) },
+  { ch: 'Genel bilgiler', mode: 'next',
+    text: `Yeme içme yok, kusuyor ama gıda içeriği de gelmiyor. Hadi anamnezi derinleştirelim.`,
+    target: () => mq('#mob-acc-complaint .mob-accordion-body') },
+
+  // ── ANAMNEZ ──
+  { ch: 'Anamnez', mode: 'click',
+    text: `Alttaki <strong>Anamnez</strong>'e dokun.`,
+    target: () => mq('#mbb-anamnez'),
+    fallback: () => ev(`openAnamnezModal()`) },
+  { ch: 'Anamnez', mode: 'click',
+    text: `Burada istediğin sistemden istediğin soruyu sorabilirsin. GIS obstrüksiyon şüphesiyle yabancı cisim yutma huyu var mı, onu soralım.<br>Önce <strong>Genel Durum</strong>.`,
+    target: () => mq(`#anamnez-modal-body .aq-cat-header[onclick*="'genel'"]`),
+    fallback: () => ev(`toggleAqCat('genel')`) },
+  { ch: 'Anamnez', mode: 'click',
+    text: `Sonra <strong>Davranış</strong>.`,
+    target: () => mq(`#anamnez-modal-body .aq-sub-header[onclick*="'davranis'"]`),
+    fallback: () => ev(`document.getElementById('aqsub_genel').style.display='block'; toggleAqSub('davranis')`) },
+  { ch: 'Anamnez', mode: 'click',
+    text: `Yabancı cisimlerle ilgili soruyu sor.`,
+    target: () => mq(`#anamnez-modal-body .aq-q-item[onclick*="'davranis_5'"]`),
+    fallback: () => ev(`askAnamnezQ('davranis_5','genel','davranis')`) },
+  { ch: 'Anamnez', mode: 'next',
+    text: `Cevap şüphemizi güçlendiriyor: yabancı cisimlerle oynamayı seviyor ve zaman zaman yutabiliyor.`,
+    target: () => mq('#aqans_davranis_5'),
+    leave: () => ev(`closeAnamnezModal()`) },
+
+  // ── RÖNTGEN ──
+  { ch: 'Görüntüleme', mode: 'click',
+    text: `GIS obstrüksiyondan emin olmak için bir röntgene bakalım. Alttaki <strong>Görüntü</strong>'ye dokun.`,
+    enter: () => ev(`closeAnamnezModal()`),
+    target: () => mq('#mbb-goruntu'),
+    fallback: () => ev(`mobOpenImaging()`) },
+  { ch: 'Görüntüleme', mode: 'click', delay: 600,
+    text: `<strong>İndirekt Röntgen</strong>'i seç.`,
+    target: () => mq(`#modal-content button[onclick="mobDoImaging('xray_indirect')"]`),
+    fallback: () => ev(`mobDoImaging('xray_indirect')`) },
+  { ch: 'Görüntüleme', mode: 'interactive',
+    text: `Görüldüğü gibi burada tıkanıklık belli oluyor.`,
+    target: () => mq('#modal-content .xray-viewport') },
+  { ch: 'Görüntüleme', mode: 'interactive',
+    text: `Alttaki çubuklardan <strong>kontrastı</strong> ve <strong>yakınlaştırmayı</strong> ayarlayabilirsin. İki parmağınla yakınlaşıp uzaklaşabilir, sürükleyerek ya da <strong>ok tuşlarıyla</strong> gezebilirsin. İstersen şimdi dene.`,
+    target: () => mq('#modal-content .xray-viewer') },
+  { ch: 'Görüntüleme', mode: 'interactive',
+    text: `Alttaki <strong>kilit</strong>'e dokunarak doğrudan yorumu öğrenebilirsin.`,
+    target: () => mq('#mob-interp-lock-xray_indirect'),
+    leave: () => ev(`closeModal()`) },
+
+  // ── TEŞHİS ──
+  { ch: 'Teşhis', mode: 'click',
+    text: `Artık teşhisimizi koymaya hazırız! <strong>Nihai Teşhis</strong>'e dokun.`,
+    enter: () => ev(`closeModal()`),
+    target: () => mq('#mob-diagnosis-bar button'),
+    fallback: () => ev(`mobOpenDiagnosis()`) },
+  { ch: 'Teşhis', mode: 'click', delay: 600,
+    text: `Listeden <strong>${GIS_NAME}</strong>'u seç. Üstteki kutuya yazarak da arayabilirsin.`,
+    target: () => mq(`#modal-content .dx-item[onclick="submitDiagnosis('${gisId()}')"]`),
+    fallback: () => ev(`submitDiagnosis('${gisId()}')`) },
+  { ch: 'Teşhis', mode: 'next',
+    text: `<strong>İlk vakamızı tamamladık!</strong> Burada hastalıkta görülen semptomları ve ayırıcı teşhisleri görebilirsin.<br><br>Sırada ikinci ders var.`,
+    target: () => (q('#result-overlay.open') ? q('#result-body') : null) },
+
+  // ════════════ 2. DERS ════════════
+  { lesson: 2, ch: 'Notlarla düşünmek', mode: 'next',
+    text: `<strong>2. Ders: Notlarla düşünmek</strong><br>Gerçek bir vakada ipuçları farklı yerlerden gelir. Bu derste bulguların yanındaki <strong>✏️</strong> ile önemli olanları not defterine taşıyacak, en sonda yan yana koyup teşhise ulaşacağız.`,
+    enter: () => ev(`closeModal(); if (typeof closeResultScreen === 'function') closeResultScreen(); mobGoHome();`) },
+  { lesson: 2, ch: 'Kliniğe giriş', mode: 'click',
+    text: `<strong>Klinik Çalışma Modu</strong>.`,
+    target: () => mq(`#mob-home-screen button[onclick="mobOpenClinic()"]`),
+    fallback: () => ev(`mobOpenClinic()`) },
+  { lesson: 2, ch: 'Kliniğe giriş', mode: 'click', delay: 600,
+    text: `Bu sefer <strong>Kedi</strong>'yi seç.`,
+    enter: () => armCase(FIP_CASE),
+    target: () => mq(`#mob-species-screen button[onclick="mobStartCase('cat')"]`),
+    fallback: () => { armCase(FIP_CASE); ev(`mobStartCase('cat')`); } },
+  { lesson: 2, ch: 'Şikayet', mode: 'click',
+    text: `Kliniğe bir kedi daha geldi. Doğrudan <strong>Şikayet</strong>'i aç.`,
+    enter: () => ensureCase(FIP_CASE, FIP_COMPLAINT, 'cat'),
+    target: () => mq('#mob-acc-complaint .mob-accordion-header'),
+    fallback: () => ev(`mobToggleAccordion('mob-acc-complaint')`) },
+  { lesson: 2, ch: 'Şikayet', mode: 'click',
+    text: `Karnı şişiyor ama vücudu inceliyor, ateşi de düşmüyor. Önemli bir ipucu: sağdaki <strong>✏️</strong>'e dokun.`,
+    target: () => mq('#mob-acc-complaint .note-pen'),
+    fallback: () => clickPen(mq('#mob-acc-complaint .note-pen')) },
+  { lesson: 2, ch: 'Şikayet', mode: 'next',
+    text: `Bulgu notlarına eklendi. Notlarını alttaki <strong>Notlar</strong>'dan görebilir, yanına yorum yazabilirsin; bu derste yorumları ben yazıyorum.`,
+    enter: () => autoComment('Karın şişliği + kilo kaybı + antibiyotiğe yanıtsız ateş → abdominal efüzyon?'),
+    target: () => mq('#mbb-notlar') },
+
+  { lesson: 2, ch: 'Anamnez', mode: 'click',
+    text: `Şimdi geçmişine bakalım: <strong>Anamnez</strong>.`,
+    target: () => mq('#mbb-anamnez'),
+    fallback: () => ev(`openAnamnezModal()`) },
+  { lesson: 2, ch: 'Anamnez', mode: 'click',
+    text: `Genç bir kedide nereden geldiği çok önemli. <strong>Sosyal</strong>'i aç.`,
+    target: () => mq(`#anamnez-modal-body .aq-cat-header[onclick*="'sosyal'"]`),
+    fallback: () => ev(`toggleAqCat('sosyal')`) },
+  { lesson: 2, ch: 'Anamnez', mode: 'click',
+    text: `<strong>Diğer Hayvanlar</strong>.`,
+    target: () => mq(`#anamnez-modal-body .aq-sub-header[onclick*="'diger_hayvanlar'"]`),
+    fallback: () => ev(`document.getElementById('aqsub_sosyal').style.display='block'; toggleAqSub('diger_hayvanlar')`) },
+  { lesson: 2, ch: 'Anamnez', mode: 'click',
+    text: `Kalabalık bir ortamla teması olmuş mu, soralım.`,
+    target: () => mq(`#anamnez-modal-body .aq-q-item[onclick*="'diger_hayvanlar_5'"]`),
+    fallback: () => ev(`askAnamnezQ('diger_hayvanlar_5','sosyal','diger_hayvanlar')`) },
+  { lesson: 2, ch: 'Anamnez', mode: 'click',
+    text: `Kalabalık bir üreticiden gelmiş; çok kedili ortamlar koronavirüsün en kolay yayıldığı yerlerdir. Cevabın yanındaki <strong>✏️</strong>'e dokun.`,
+    target: () => mq('#aqans_diger_hayvanlar_5 .note-pen'),
+    fallback: () => clickPen(mq('#aqans_diger_hayvanlar_5 .note-pen')) },
+  { lesson: 2, ch: 'Anamnez', mode: 'next',
+    text: `Genç yaş ve çok kedili ortam geçmişi, FIP için klasik bir başlangıç.`,
+    enter: () => { ev(`closeAnamnezModal()`); autoComment('Kalabalık üretici geçmişi → FCoV maruziyeti riski'); },
+    target: () => mq('#mbb-notlar') },
+
+  { lesson: 2, ch: 'Hemogram', mode: 'click',
+    text: `Laboratuvara geçelim: <strong>Lab</strong>.`,
+    target: () => mq('#mbb-lab'),
+    fallback: () => ev(`mobOpenLab()`) },
+  { lesson: 2, ch: 'Hemogram', mode: 'click', delay: 500,
+    text: `<strong>Hemogram</strong>.`,
+    target: () => mq('#lab-hemo'),
+    fallback: () => ev(`closeModal(); mobOpenHemogram()`) },
+  { lesson: 2, ch: 'Hemogram', mode: 'click',
+    text: `Lenfosit düşük, nötrofil yüksek: bir <strong>stres lökogramı</strong>, bağışıklık sisteminin baskılandığını gösterir. <strong>Lenf%</strong> satırındaki ✏️'e dokun.`,
+    target: () => rowPen(mq('#modal-content'), 'Lenf%'),
+    fallback: () => clickPen(rowPen(mq('#modal-content'), 'Lenf%')) },
+  { lesson: 2, ch: 'Hemogram', mode: 'next',
+    text: `Not alındı.`,
+    enter: () => { autoComment('Lenfopeni + nötrofili → stres lökogramı, immün sistemde baskı'); },
+    leave: () => ev(`closeModal()`),
+    target: () => rowPen(mq('#modal-content'), 'Lenf%')?.closest('tr') },
+
+  { lesson: 2, ch: 'Biyokimya', mode: 'click',
+    text: `Tekrar <strong>Lab</strong>.`,
+    enter: () => ev(`closeModal()`),
+    target: () => mq('#mbb-lab'),
+    fallback: () => ev(`mobOpenLab()`) },
+  { lesson: 2, ch: 'Biyokimya', mode: 'click', delay: 500,
+    text: `<strong>Biyokimya</strong>.`,
+    target: () => mq('#lab-biyo'),
+    fallback: () => ev(`closeModal(); mobOpenBiyo()`) },
+  { lesson: 2, ch: 'Biyokimya', mode: 'click', delay: 500,
+    text: `Proteinlere bakalım. <strong>Total Protein, Albümin ve Globulin</strong>'i senin için seçtim. Paneli iste.`,
+    enter: () => ev(`document.querySelectorAll('.mob-biyo-chip').forEach(function (c) {
+      if (['Total Prot.', 'ALB', 'Glob'].indexOf(c.dataset.param) > -1 && !c.classList.contains('selected')) mobToggleChip(c);
+    });`),
+    target: () => mq(`#modal-content button[onclick="mobRunBiyo()"]`),
+    fallback: () => ev(`mobRunBiyo()`) },
+  { lesson: 2, ch: 'Biyokimya', mode: 'click',
+    text: `Globulin 7.6 ile çok yüksek, albümin 2.2. <strong>A/G = 2.2 ÷ 7.6 ≈ 0.29</strong>; 0.4'ün altı FIP lehine güçlü bir bulgudur. <strong>Glob</strong> satırındaki ✏️'e dokun.`,
+    target: () => rowPen(mq('#modal-content'), 'Glob'),
+    fallback: () => clickPen(rowPen(mq('#modal-content'), 'Glob')) },
+  { lesson: 2, ch: 'Biyokimya', mode: 'next',
+    text: `Not alındı.`,
+    enter: () => autoComment('A/G = 2.2 / 7.6 ≈ 0.29 (< 0.4) → hiperglobulinemi, FIP lehine'),
+    leave: () => ev(`closeModal()`),
+    target: () => rowPen(mq('#modal-content'), 'Glob')?.closest('tr') },
+
+  { lesson: 2, ch: 'Görüntüleme', mode: 'click',
+    text: `Karın şişliğinin nedenini görelim: <strong>Görüntü</strong>.`,
+    enter: () => ev(`closeModal()`),
+    target: () => mq('#mbb-goruntu'),
+    fallback: () => ev(`mobOpenImaging()`) },
+  { lesson: 2, ch: 'Görüntüleme', mode: 'click', delay: 600,
+    text: `<strong>USG</strong>.`,
+    target: () => mq(`#modal-content button[onclick="mobDoImaging('usg')"]`),
+    fallback: () => ev(`mobDoImaging('usg')`) },
+  { lesson: 2, ch: 'Görüntüleme', mode: 'click',
+    text: `Radyoloji raporunun <strong>sonucuna</strong> bak: karın boşluğunda yaygın serbest sıvı, yani <strong>efüzyon</strong>; FIP'in ıslak formu. Sonucun yanındaki ✏️'e dokun.`,
+    target: () => mq('#usg-modal-body .note-pen'),
+    fallback: () => clickPen(mq('#usg-modal-body .note-pen')) },
+  { lesson: 2, ch: 'Görüntüleme', mode: 'next',
+    text: `Not alındı.`,
+    enter: () => { ev(`closeUSGModal()`); autoComment('Diffüz peritoneal efüzyon + mezenterik lenfadenomegali → efüzif (ıslak) form'); },
+    target: () => mq('#mbb-notlar') },
+
+  { lesson: 2, ch: 'Toparlama', mode: 'click',
+    text: `Şimdi notlarına bir bakalım: <strong>Notlar</strong>.`,
+    target: () => mq('#mbb-notlar'),
+    fallback: () => ev(`mobOpenNotes()`) },
+  { lesson: 2, ch: 'Toparlama', mode: 'next',
+    text: `Notlarına yukarıdan aşağı bak:<br>· Genç kedi, inatçı ateş, karında sıvı<br>· Kalabalık üretici geçmişi<br>· Stres lökogramı<br>· A/G 0.4'ün altında<br>· USG'de efüzyon<br>Tek başına hiçbiri kesin değil, ama yan yana gelince tablo çok net: <strong>FIP</strong>.`,
+    target: () => mq('#mob-notes-list'),
+    leave: () => ev(`closeModal()`) },
+  { lesson: 2, ch: 'Teşhis', mode: 'click',
+    text: `Teşhisi koyalım: <strong>Nihai Teşhis</strong>.`,
+    enter: () => ev(`closeModal()`),
+    target: () => mq('#mob-diagnosis-bar button'),
+    fallback: () => ev(`mobOpenDiagnosis()`) },
+  { lesson: 2, ch: 'Teşhis', mode: 'click', delay: 600,
+    text: `<strong>${FIP_NAME}</strong>'u seç. Listede Kuru Form FIP de var; efüzyon gördüğümüz için ıslak form.`,
+    target: () => mq(`#modal-content .dx-item[onclick="submitDiagnosis('${fipId()}')"]`),
+    fallback: () => ev(`submitDiagnosis('${fipId()}')`) },
+  { lesson: 2, ch: 'Teşhis', mode: 'next', last: true,
+    text: `<strong>İkinci dersi de tamamladın!</strong> Notların yorumlarıyla birlikte sonuç ekranında duruyor. Kendi vakalarında da bulguları not al ve teşhisten önce notlarına bir göz at.`,
+    target: () => {
+      if (!q('#result-overlay.open')) return null;
+      return [...D().querySelectorAll('#result-body .rb-sec')].find(s => s.textContent.includes('NOTLARIN')) || q('#result-body');
+    } },
+];
+STEPS_D.forEach(s => { if (!s.lesson) s.lesson = 1; });
+STEPS_M.forEach(s => { if (!s.lesson) s.lesson = 1; });
+let STEPS = STEPS_D;
+let tutMobile = false;
 
 // ═══════════════════════════════════════════════════════════════
 // TUTORIAL VAKASI
@@ -528,13 +788,16 @@ function ensureCase(key = TUT_CASE, complaint = TUT_COMPLAINT, species = 'any') 
   if (cur !== key) {
     log('Tutorial vakası yüklenmemiş, yeniden başlatılıyor. Mevcut:', cur);
     armCase(key);
-    ev(`document.getElementById('welcome').style.display='none'; document.getElementById('welcome-clinic').style.display='none'; startClinicMode(${JSON.stringify(species)})`);
+    if (tutMobile) ev(`mobStartCase(${JSON.stringify(species)})`);
+    else ev(`document.getElementById('welcome').style.display='none'; document.getElementById('welcome-clinic').style.display='none'; startClinicMode(${JSON.stringify(species)})`);
   }
   setComplaint(complaint);
 }
 
 function setComplaint(text = TUT_COMPLAINT) {
-  ev(`if (currentCase && currentCase.anamnez) currentCase.anamnez.complaint = [${JSON.stringify(text)}];`);
+  ev(`if (currentCase && currentCase.anamnez) currentCase.anamnez.complaint = [${JSON.stringify(text)}];
+    if (mobileMode) { var _b = document.querySelector('#mob-acc-complaint .mob-accordion-body');
+      if (_b) _b.innerHTML = notePenHTML('Şikayet', ${JSON.stringify(text)}) + parseMarkdown(${JSON.stringify(text)}); }`);
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -548,6 +811,14 @@ let saved = null;
 function prepareApp() {
   saved = ev(`({ mobile: !!mobileMode, eco: !!economyMode, emerg: !!emergencyModeEnabled })`) || { mobile: false, eco: false, emerg: false };
   log('Kayıtlı ayarlar', saved);
+  // Telefonda (mobil mod açıkken) mobil senaryo, aksi halde masaüstü senaryo
+  tutMobile = !!saved.mobile;
+  STEPS = tutMobile ? STEPS_M : STEPS_D;
+  log('Senaryo:', tutMobile ? 'mobil' : 'masaüstü');
+  if (tutMobile) {
+    ev(`economyMode = false; emergencyModeEnabled = false; if (typeof updateCreditUI === 'function') updateCreditUI(); mobShowScreen('mob-home-screen');`);
+    return;
+  }
   ev(`
     mobileMode = false; document.body.classList.remove('mobile-mode');
     economyMode = false; emergencyModeEnabled = false;

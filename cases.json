@@ -708,7 +708,13 @@
     },
     "rapidKits": {
       "ntprobnp": "NEGATİF",
-      "giardia_ag": "NEGATİF"
+      "giardia_ag": "NEGATİF",
+      "cpv_ag": "NEGATİF",
+      "cdv_ag": "NEGATİF",
+      "cpl": "NEGATİF",
+      "leish_ab": "NEGATİF",
+      "lepto_ab": "NEGATİF",
+      "snap4dx": "Ehrlichia NEGATİF / Anaplasma NEGATİF / Borrelia NEGATİF / Dirofilaria NEGATİF"
     },
     "microscopy": {
       "blood": {
@@ -1449,7 +1455,13 @@
     },
     "rapidKits": {
       "ntprobnp": "NEGATİF",
-      "giardia_ag": "NEGATİF"
+      "giardia_ag": "NEGATİF",
+      "cpv_ag": "POZİTİF",
+      "cdv_ag": "NEGATİF",
+      "cpl": "NEGATİF",
+      "leish_ab": "NEGATİF",
+      "lepto_ab": "NEGATİF",
+      "snap4dx": "Ehrlichia NEGATİF / Anaplasma NEGATİF / Borrelia NEGATİF / Dirofilaria NEGATİF"
     },
     "microscopy": {
       "blood": {
@@ -2577,7 +2589,13 @@
     },
     "rapidKits": {
       "ntprobnp": "NEGATİF",
-      "giardia_ag": "NEGATİF"
+      "giardia_ag": "NEGATİF",
+      "cpv_ag": "NEGATİF",
+      "cdv_ag": "NEGATİF",
+      "cpl": "NEGATİF",
+      "leish_ab": "NEGATİF",
+      "lepto_ab": "NEGATİF",
+      "snap4dx": "Ehrlichia NEGATİF / Anaplasma NEGATİF / Borrelia NEGATİF / Dirofilaria NEGATİF"
     },
     "microscopy": {
       "blood": {
@@ -3055,7 +3073,13 @@
     "rapidKits": {
       "woodslamp": "Wood's Lambası: Bu vakada deri mantar lezyonu şüphesi bulunmadığından uygulanmadı.",
       "ntprobnp": "NEGATİF",
-      "giardia_ag": "NEGATİF"
+      "giardia_ag": "NEGATİF",
+      "cpv_ag": "NEGATİF",
+      "cdv_ag": "NEGATİF",
+      "cpl": "POZİTİF",
+      "leish_ab": "NEGATİF",
+      "lepto_ab": "NEGATİF",
+      "snap4dx": "Ehrlichia NEGATİF / Anaplasma NEGATİF / Borrelia NEGATİF / Dirofilaria NEGATİF"
     },
     "hemogram": [
       {
@@ -3421,7 +3445,13 @@
     "rapidKits": {
       "woodslamp": "Wood's Lambası: Bu vakada deri mantar lezyonu şüphesi bulunmadığından uygulanmadı.",
       "ntprobnp": "NEGATİF",
-      "giardia_ag": "NEGATİF"
+      "giardia_ag": "NEGATİF",
+      "cpv_ag": "NEGATİF",
+      "cdv_ag": "NEGATİF",
+      "cpl": "NEGATİF",
+      "leish_ab": "NEGATİF",
+      "lepto_ab": "NEGATİF",
+      "snap4dx": "Ehrlichia NEGATİF / Anaplasma NEGATİF / Borrelia NEGATİF / Dirofilaria NEGATİF"
     },
     "hemogram": [
       {
@@ -3787,7 +3817,13 @@
     "rapidKits": {
       "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
       "ntprobnp": "NEGATİF",
-      "giardia_ag": "NEGATİF"
+      "giardia_ag": "NEGATİF",
+      "cpv_ag": "NEGATİF",
+      "cdv_ag": "NEGATİF",
+      "cpl": "NEGATİF",
+      "leish_ab": "NEGATİF",
+      "lepto_ab": "NEGATİF",
+      "snap4dx": "Ehrlichia NEGATİF / Anaplasma NEGATİF / Borrelia NEGATİF / Dirofilaria NEGATİF"
     },
     "hemogram": [
       {
@@ -4520,7 +4556,13 @@
     },
     "rapidKits": {
       "ntprobnp": "NEGATİF",
-      "giardia_ag": "POZİTİF"
+      "giardia_ag": "POZİTİF",
+      "cpv_ag": "NEGATİF",
+      "cdv_ag": "NEGATİF",
+      "cpl": "NEGATİF",
+      "leish_ab": "NEGATİF",
+      "lepto_ab": "NEGATİF",
+      "snap4dx": "Ehrlichia NEGATİF / Anaplasma NEGATİF / Borrelia NEGATİF / Dirofilaria NEGATİF"
     },
     "hemogram": [
       {
@@ -5253,7 +5295,13 @@
     },
     "rapidKits": {
       "ntprobnp": "NEGATİF",
-      "giardia_ag": "NEGATİF"
+      "giardia_ag": "NEGATİF",
+      "cpv_ag": "NEGATİF",
+      "cdv_ag": "NEGATİF",
+      "cpl": "NEGATİF",
+      "leish_ab": "NEGATİF",
+      "lepto_ab": "NEGATİF",
+      "snap4dx": "Ehrlichia NEGATİF / Anaplasma NEGATİF / Borrelia NEGATİF / Dirofilaria NEGATİF"
     },
     "hemogram": [
       {

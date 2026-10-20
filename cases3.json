@@ -89,7 +89,13 @@
     },
     "rapidKits": {
       "ntprobnp": "NEGATİF",
-      "giardia_ag": "NEGATİF"
+      "giardia_ag": "NEGATİF",
+      "cpv_ag": "NEGATİF",
+      "cdv_ag": "POZİTİF",
+      "cpl": "NEGATİF",
+      "leish_ab": "NEGATİF",
+      "lepto_ab": "NEGATİF",
+      "snap4dx": "Ehrlichia NEGATİF / Anaplasma NEGATİF / Borrelia NEGATİF / Dirofilaria NEGATİF"
     },
     "hemogram": [
       {
@@ -837,7 +843,13 @@
     },
     "rapidKits": {
       "ntprobnp": "NEGATİF",
-      "giardia_ag": "NEGATİF"
+      "giardia_ag": "NEGATİF",
+      "cpv_ag": "NEGATİF",
+      "cdv_ag": "NEGATİF",
+      "cpl": "NEGATİF",
+      "leish_ab": "NEGATİF",
+      "lepto_ab": "POZİTİF",
+      "snap4dx": "Ehrlichia NEGATİF / Anaplasma NEGATİF / Borrelia NEGATİF / Dirofilaria NEGATİF"
     },
     "hemogram": [
       {
@@ -1203,7 +1215,13 @@
     },
     "rapidKits": {
       "ntprobnp": "NEGATİF",
-      "giardia_ag": "NEGATİF"
+      "giardia_ag": "NEGATİF",
+      "cpv_ag": "NEGATİF",
+      "cdv_ag": "NEGATİF",
+      "cpl": "NEGATİF",
+      "leish_ab": "NEGATİF",
+      "lepto_ab": "NEGATİF",
+      "snap4dx": "Ehrlichia NEGATİF / Anaplasma NEGATİF / Borrelia NEGATİF / Dirofilaria NEGATİF"
     },
     "hemogram": [
       {
@@ -1567,7 +1585,13 @@
     },
     "rapidKits": {
       "ntprobnp": "NEGATİF",
-      "giardia_ag": "NEGATİF"
+      "giardia_ag": "NEGATİF",
+      "cpv_ag": "NEGATİF",
+      "cdv_ag": "NEGATİF",
+      "cpl": "NEGATİF",
+      "leish_ab": "POZİTİF",
+      "lepto_ab": "NEGATİF",
+      "snap4dx": "Ehrlichia NEGATİF / Anaplasma NEGATİF / Borrelia NEGATİF / Dirofilaria NEGATİF"
     },
     "hemogram": [
       {
@@ -1935,7 +1959,13 @@
     },
     "rapidKits": {
       "ntprobnp": "NEGATİF",
-      "giardia_ag": "NEGATİF"
+      "giardia_ag": "NEGATİF",
+      "cpv_ag": "NEGATİF",
+      "cdv_ag": "NEGATİF",
+      "cpl": "NEGATİF",
+      "leish_ab": "NEGATİF",
+      "lepto_ab": "NEGATİF",
+      "snap4dx": "Ehrlichia NEGATİF / Anaplasma NEGATİF / Borrelia NEGATİF / Dirofilaria NEGATİF"
     },
     "hemogram": [
       {
