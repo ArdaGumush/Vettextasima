@@ -1017,6 +1017,7 @@ function replayTutorial() {
   }
 
   /* Tab bar */
+  #welcome.in-case-settings .wm-tabs { display: none; }
   .wm-tabs {
     display: flex;
     border-bottom: 1px solid var(--border);
@@ -2903,6 +2904,8 @@ function onMobileModeToggle(checked) {
   localStorage.setItem('vetcase-mobile', checked ? '1' : '0');
   document.body.classList.toggle('mobile-mode', checked);
   const welcome = document.getElementById('welcome');
+  if (welcome) welcome.classList.remove('in-case-settings');
+  document.querySelector('#wmp-ayarlar .back-from-settings')?.remove();
   if (checked) {
     // Mobil açılınca welcome'ı gizle, mob-wrapper'ı göster
     if (welcome) welcome.style.cssText = 'display:none!important';
@@ -4050,27 +4053,29 @@ function hideSplash() {
 }
 
 function openClinicSettings() {
-  // Welcome ekranındaki ayarlar sekmesini aç
-  document.getElementById('welcome').style.display = 'flex';
+  // Vaka sürerken ayarlar: giriş ekranı ayarlar sekmesiyle üste açılır, vaka altta
+  // olduğu gibi kalır. Sekmeler gizlenir ki oyuncu yanlışlıkla yeni vaka başlatmasın.
+  const welcome = document.getElementById('welcome');
+  welcome.classList.add('in-case-settings');
+  welcome.style.display = 'flex';
   document.getElementById('welcome-clinic').style.display = 'none';
   wmTab('ayarlar');
-  // Geri dön — klinik moddan geliyorsak
-  const wasInClinic = currentCase !== null;
-  if (wasInClinic) {
-    const backBtn = document.querySelector('#wmp-ayarlar .back-from-settings');
-    if (!backBtn) {
-      const btn = document.createElement('button');
-      btn.className = 'back-from-settings';
-      btn.textContent = '← Kliniğe Dön';
-      btn.style.cssText = 'margin-top:16px;width:100%;padding:9px;background:rgba(0,212,255,0.06);border:1px solid var(--accent-cyan);border-radius:8px;color:var(--accent-cyan);font-family:"JetBrains Mono",monospace;font-size:10px;cursor:pointer;letter-spacing:1px';
-      btn.onclick = () => {
-        document.getElementById('welcome').style.display = 'none';
-        document.getElementById('welcome-clinic').style.display = 'flex';
-        btn.remove();
-      };
-      document.getElementById('wmp-ayarlar').appendChild(btn);
-    }
+  const panel = document.getElementById('wmp-ayarlar');
+  if (!panel.querySelector('.back-from-settings')) {
+    const btn = document.createElement('button');
+    btn.className = 'back-from-settings';
+    btn.textContent = '← Vakaya Dön';
+    btn.style.cssText = 'margin-bottom:16px;width:100%;padding:11px;background:rgba(0,212,255,0.08);border:1px solid var(--accent-cyan);border-radius:8px;color:var(--accent-cyan);font-family:"JetBrains Mono",monospace;font-size:11px;cursor:pointer;letter-spacing:1px';
+    btn.onclick = closeClinicSettings;
+    panel.insertBefore(btn, panel.firstChild);
   }
+}
+
+function closeClinicSettings() {
+  const welcome = document.getElementById('welcome');
+  welcome.classList.remove('in-case-settings');
+  welcome.style.display = 'none';
+  document.querySelector('#wmp-ayarlar .back-from-settings')?.remove();
 }
 
 // Sayfa yüklenince vaka verisini çek
@@ -5366,6 +5371,8 @@ function backToMainMenu() {
   if (cd) cd.style.display = 'none';
 
   document.getElementById('welcome-clinic').style.display = 'none';
+  document.getElementById('welcome').classList.remove('in-case-settings');
+  document.querySelector('#wmp-ayarlar .back-from-settings')?.remove();
   document.getElementById('welcome').style.display = 'flex';
   // Başlat panelini sıfırla
   wmHideNormal();
