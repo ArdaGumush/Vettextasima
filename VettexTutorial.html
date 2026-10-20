@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Vettex Tutorial</title>
+<script>
+// Tutorial bir kez tamamlandıysa tekrar gösterilmez; Ayarlar'dan ?replay=1 ile açılır.
+(function () {
+  try {
+    var replay = new URLSearchParams(location.search).has('replay');
+    if (!replay && localStorage.getItem('vettex-tutorial-done') === '1') location.replace('VetCaseClaudeKontrol.html');
+  } catch (e) {}
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -67,10 +76,6 @@
 
   .card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
   #chapter { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 15px; color: var(--cyan); letter-spacing: .3px; }
-  #skip {
-    background: none; border: 0; color: var(--muted); font: inherit; font-size: 12px;
-    cursor: pointer; padding: 4px 2px; text-decoration: underline; text-underline-offset: 3px;
-  }
   #progress { height: 3px; background: rgba(255,255,255,.07); border-radius: 2px; margin-bottom: 12px; overflow: hidden; }
   #progress-fill { height: 100%; width: 0; background: var(--cyan); transition: width .35s ease; }
   #text { font-size: 15px; line-height: 1.6; max-width: 62ch; }
@@ -88,7 +93,7 @@
   .btn:hover { background: rgba(0,212,255,.2); }
   .btn.ghost { border-color: rgba(255,255,255,.18); background: transparent; color: var(--muted); font-weight: 500; }
   .btn.primary { background: var(--cyan); color: #04121a; }
-  .btn:focus-visible, #skip:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
   .hidden { display: none !important; }
 
   /* Bitiş ekranı */
@@ -124,7 +129,6 @@
 <div id="card" class="at-bottom" role="dialog" aria-live="polite">
   <div class="card-head">
     <div id="chapter">Hazırlanıyor</div>
-    <button id="skip" type="button">Tutorial'ı atla</button>
   </div>
   <div id="progress"><div id="progress-fill"></div></div>
   <div id="text">Klinik hazırlanıyor…</div>
@@ -295,11 +299,11 @@ const STEPS = [
 
   { ch: 'Görüntüleme', mode: 'interactive',
     text: `Görüldüğü gibi burada tıkanıklık belli oluyor.`,
-    target: () => q('#modal-content .xray-container') },
+    target: () => q('#modal-content .xray-viewport') },
 
   { ch: 'Görüntüleme', mode: 'interactive',
-    text: `Alttaki çubuktan kontrastı ayarlayabilir, parmaklarını kullanarak yakınlaşıp uzaklaştırabilirsin. İstersen şimdi dene.`,
-    target: () => q('#modal-content .xray-controls') },
+    text: `Alttaki çubuklardan <strong>kontrastı</strong> ve <strong>yakınlaştırmayı</strong> ayarlayabilirsin. Parmaklarınla da yakınlaşıp uzaklaştırabilir, görüntüyü sürükleyerek ya da <strong>ok tuşlarıyla</strong> gezebilirsin. İstersen şimdi dene.`,
+    target: () => q('#modal-content .xray-viewer') },
 
   { ch: 'Görüntüleme', mode: 'interactive',
     text: `Alttaki <strong>kilit</strong> simgesine dokunarak doğrudan yorumu öğrenebilirsin.`,
@@ -508,13 +512,6 @@ $('btn-pass').addEventListener('click', () => {
   try { if (cur.fallback) cur.fallback(); } catch (e) {}
   advance(cur.fallback ? 500 : 0);
 });
-$('skip').addEventListener('click', () => {
-  if (!running) { hideAll(); return; }
-  if (!confirm("Tutorial'ı atlamak istiyor musun?")) return;
-  if (cur && cur.leave) cur.leave();
-  stop();
-  restoreApp();
-});
 
 function hideAll() {
   layer.classList.remove('on');
@@ -536,12 +533,9 @@ function finish() {
   log('Tutorial tamamlandı');
 }
 
-$('btn-enter').addEventListener('click', () => {
-  $('finish').classList.remove('show');
-  ev(`if (typeof closeResultScreen === 'function') closeResultScreen(); closeModal(); if (typeof backToMainMenu === 'function') backToMainMenu();`);
-  restoreApp();
-});
-$('btn-replay').addEventListener('click', () => { location.reload(); });
+// Kliniğe gir: oyunu tutorial çerçevesi olmadan, kullanıcının kendi ayarlarıyla aç
+$('btn-enter').addEventListener('click', () => { location.replace('VetCaseClaudeKontrol.html'); });
+$('btn-replay').addEventListener('click', () => { location.replace('VettexTutorial.html?replay=1'); });
 
 // ═══════════════════════════════════════════════════════════════
 // BAŞLATMA

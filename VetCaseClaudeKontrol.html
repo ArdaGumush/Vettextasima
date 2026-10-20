@@ -3,6 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+// İlk açılışta tutorial zorunlu: tamamlanmadıysa tutorial sayfasına yönlendir.
+// Tutorial oyunu iframe içinde açtığı için iframe içindeyken yönlendirme yapılmaz.
+(function () {
+  try {
+    if (window.top === window.self && localStorage.getItem('vettex-tutorial-done') !== '1') {
+      location.replace('VettexTutorial.html');
+    }
+  } catch (e) {}
+})();
+function replayTutorial() {
+  if (window.top !== window.self) return;
+  location.href = 'VettexTutorial.html?replay=1';
+}
+</script>
 <title>Vettex — Klinik Simülasyon</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -418,6 +433,27 @@
     height: 3px;
     cursor: pointer;
   }
+  /* ── RÖNTGEN GÖRÜNTÜLEYİCİ: zoom / pan ── */
+  .xray-viewport { touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none; }
+  .xray-viewport.dragging { cursor: grabbing; }
+  .xray-stage { transform-origin: center center; will-change: transform; transition: transform .15s ease-out; }
+  .xray-viewport.dragging .xray-stage { transition: none; }
+  .xray-stage img { -webkit-user-drag: none; pointer-events: none; }
+  .xray-zoom-badge {
+    position: absolute; top: 8px; left: 10px; z-index: 3;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent-cyan);
+    background: rgba(0,0,0,.55); border: 1px solid rgba(0,212,255,.3); border-radius: 4px; padding: 2px 6px;
+    opacity: 0; transition: opacity .2s;
+  }
+  .xray-zoom-badge.on { opacity: 1; }
+  .xray-pan { display: flex; gap: 6px; margin: 0 0 12px; }
+  .xray-pan button {
+    flex: 1; min-height: 38px; background: rgba(0,212,255,.06); border: 1px solid rgba(0,212,255,.35);
+    border-radius: 8px; color: var(--accent-cyan); font-size: 14px; cursor: pointer; font-family: 'JetBrains Mono', monospace;
+  }
+  .xray-pan button:active { background: rgba(0,212,255,.18); }
+  .xray-pan button.xr-reset { flex: 1.6; font-size: 10px; letter-spacing: 1px; }
+  .xray-pan button:disabled { opacity: .35; cursor: default; }
   .xray-img.revealed {
     clip-path: inset(0% 0 0 0);
     transition: clip-path 2.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1871,6 +1907,13 @@ window.onerror = function(msg, src, line) {
           <input type="checkbox" id="settings-lightmode-toggle" onchange="onSettingsLightModeToggle(this.checked)">
           <div class="toggle-slider"></div>
         </label>
+      </div>
+      <div class="settings-row">
+        <div class="sr-label">
+          Başlangıç Turu 🎓
+          <span>Tutorial'ı baştan yeniden oynat</span>
+        </div>
+        <button onclick="replayTutorial()" style="padding:8px 14px;background:rgba(0,212,255,0.08);border:1px solid var(--accent-cyan);border-radius:6px;color:var(--accent-cyan);font-family:'JetBrains Mono',monospace;font-size:10px;cursor:pointer;letter-spacing:1px;white-space:nowrap">▶ OYNAT</button>
       </div>
       <div class="settings-row" style="flex-direction:column;align-items:flex-start;gap:8px">
         <div class="sr-label">
@@ -3395,16 +3438,7 @@ function mobDoImaging(key) {
   let html = '';
   if (imgUrl) {
     if (key === 'xray_direct' || key === 'xray_indirect') {
-      const imgId = 'mob-xray-' + Date.now();
-      const scanId = 'mob-scan-' + Date.now();
-      html += `<div class="xray-container" style="margin-bottom:12px">
-        <img id="${imgId}" class="xray-img" src="${imgUrl}" alt="${imagingLabels[key]||key}">
-        <div id="${scanId}" class="xray-scan-line"></div>
-      </div>`;
-      setTimeout(() => {
-        document.getElementById(imgId)?.classList.add('revealed');
-        document.getElementById(scanId)?.classList.add('scanning');
-      }, 80);
+      html += xrayViewerHTML(imgUrl, imagingLabels[key]||key);
     } else {
       html += `<img src="${imgUrl}" style="width:100%;border-radius:8px;margin-bottom:12px">`;
     }
@@ -4688,6 +4722,169 @@ function buildUSGReportHTML(caseKey, imgUrl) {
   </div>`;
 }
 
+// ═══════════════════════════════════════════════════════════════
+// RÖNTGEN GÖRÜNTÜLEYİCİ
+// Parmakla zoom (pinch) ve pan, zoom çubuğu, ok tuşları, kontrast.
+// Çift dokunuş: 2.5× yakınlaştır / sıfırla.
+// ═══════════════════════════════════════════════════════════════
+const XRAY_MIN_ZOOM = 1, XRAY_MAX_ZOOM = 4;
+
+function xrayViewerHTML(imgUrl, label) {
+  const id = 'xv' + Date.now() + Math.floor(Math.random() * 1000);
+  setTimeout(() => initXrayViewer(id), 80);
+  return `<div class="xray-viewer" id="${id}">
+    <div class="xray-container xray-viewport" id="${id}-vp">
+      <div class="xray-stage" id="${id}-stage">
+        <img id="${id}-img" class="xray-img" src="${imgUrl}" alt="${label}" draggable="false">
+      </div>
+      <div id="${id}-scan" class="xray-scan-line"></div>
+      <div id="${id}-lbl" class="xray-label">☢ ${label}</div>
+      <div id="${id}-badge" class="xray-zoom-badge">1.0×</div>
+    </div>
+    <div class="xray-tools">
+      <div class="xray-controls">
+        <span title="Kontrast">🔆</span>
+        <input type="range" id="${id}-con" min="0.5" max="2.5" step="0.05" value="1.1" aria-label="Kontrast">
+        <span style="min-width:34px;text-align:right" id="${id}-conval">1.10×</span>
+      </div>
+      <div class="xray-controls">
+        <span title="Yakınlaştırma">🔍</span>
+        <input type="range" id="${id}-zoom" min="${XRAY_MIN_ZOOM}" max="${XRAY_MAX_ZOOM}" step="0.1" value="1" aria-label="Yakınlaştırma">
+        <span style="min-width:34px;text-align:right" id="${id}-zoomval">1.0×</span>
+      </div>
+      <div class="xray-pan">
+        <button type="button" data-pan="left"  aria-label="Sola kaydır">◀</button>
+        <button type="button" data-pan="up"    aria-label="Yukarı kaydır">▲</button>
+        <button type="button" data-pan="down"  aria-label="Aşağı kaydır">▼</button>
+        <button type="button" data-pan="right" aria-label="Sağa kaydır">▶</button>
+        <button type="button" data-pan="reset" class="xr-reset" aria-label="Görüntüyü sıfırla">⟲ SIFIRLA</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function initXrayViewer(id) {
+  const $ = s => document.getElementById(id + s);
+  const vp = $('-vp'), stage = $('-stage'), img = $('-img');
+  if (!vp || !stage || !img) return;
+  const zoomSl = $('-zoom'), zoomVal = $('-zoomval'), badge = $('-badge');
+  const conSl = $('-con'), conVal = $('-conval');
+  const st = { s: 1, x: 0, y: 0 };
+  let badgeTimer = null;
+
+  // Tarama animasyonu
+  img.classList.add('revealed');
+  $('-scan')?.classList.add('scanning');
+  setTimeout(() => $('-lbl')?.classList.add('visible'), 2000);
+
+  function clamp() {
+    const maxX = vp.clientWidth  * (st.s - 1) / 2;
+    const maxY = vp.clientHeight * (st.s - 1) / 2;
+    st.x = Math.max(-maxX, Math.min(maxX, st.x));
+    st.y = Math.max(-maxY, Math.min(maxY, st.y));
+  }
+  function apply() {
+    clamp();
+    stage.style.transform = `translate(${st.x}px, ${st.y}px) scale(${st.s})`;
+    zoomSl.value = st.s;
+    zoomVal.textContent = st.s.toFixed(1) + '×';
+    badge.textContent = st.s.toFixed(1) + '×';
+    badge.classList.toggle('on', st.s > 1.01);
+    clearTimeout(badgeTimer);
+    badgeTimer = setTimeout(() => badge.classList.remove('on'), 1200);
+    document.querySelectorAll('#' + id + ' .xray-pan button:not(.xr-reset)').forEach(b => b.disabled = st.s <= 1.01);
+  }
+  // (cx, cy): görüntü merkezine göre yakınlaştırma noktası
+  function zoomTo(ns, cx = 0, cy = 0) {
+    ns = Math.max(XRAY_MIN_ZOOM, Math.min(XRAY_MAX_ZOOM, ns));
+    st.x = cx - (cx - st.x) * (ns / st.s);
+    st.y = cy - (cy - st.y) * (ns / st.s);
+    st.s = ns;
+    apply();
+  }
+  function local(e) {
+    const r = vp.getBoundingClientRect();
+    return { x: e.clientX - r.left - r.width / 2, y: e.clientY - r.top - r.height / 2 };
+  }
+
+  // Parmak / fare: tek parmakla sürükle, iki parmakla pinch
+  const pts = new Map();
+  let lastDist = 0, lastMid = null, lastTap = 0;
+  vp.addEventListener('pointerdown', e => {
+    vp.setPointerCapture(e.pointerId);
+    pts.set(e.pointerId, local(e));
+    vp.classList.add('dragging');
+    if (pts.size === 2) {
+      const [a, b] = [...pts.values()];
+      lastDist = Math.hypot(a.x - b.x, a.y - b.y);
+      lastMid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+    }
+    // Çift dokunuş
+    if (pts.size === 1) {
+      const now = Date.now();
+      if (now - lastTap < 300) {
+        const p = local(e);
+        st.s > 1.01 ? (st.s = 1, st.x = 0, st.y = 0, apply()) : zoomTo(2.5, p.x, p.y);
+        lastTap = 0;
+      } else lastTap = now;
+    }
+  });
+  vp.addEventListener('pointermove', e => {
+    if (!pts.has(e.pointerId)) return;
+    const prev = pts.get(e.pointerId), cur = local(e);
+    pts.set(e.pointerId, cur);
+    if (pts.size >= 2) {
+      const [a, b] = [...pts.values()];
+      const dist = Math.hypot(a.x - b.x, a.y - b.y);
+      const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      if (lastDist > 0) {
+        st.x += mid.x - lastMid.x; st.y += mid.y - lastMid.y;
+        zoomTo(st.s * dist / lastDist, mid.x, mid.y);
+      }
+      lastDist = dist; lastMid = mid;
+    } else if (st.s > 1.01) {
+      st.x += cur.x - prev.x; st.y += cur.y - prev.y;
+      apply();
+    }
+  });
+  const end = e => {
+    pts.delete(e.pointerId);
+    if (pts.size < 2) { lastDist = 0; lastMid = null; }
+    if (pts.size === 0) vp.classList.remove('dragging');
+  };
+  vp.addEventListener('pointerup', end);
+  vp.addEventListener('pointercancel', end);
+  // Masaüstünde Ctrl + tekerlek ile zoom
+  vp.addEventListener('wheel', e => {
+    if (!e.ctrlKey) return;
+    e.preventDefault();
+    const p = local(e);
+    zoomTo(st.s * (e.deltaY < 0 ? 1.15 : 1 / 1.15), p.x, p.y);
+  }, { passive: false });
+
+  // Çubuklar
+  zoomSl.addEventListener('input', () => zoomTo(parseFloat(zoomSl.value)));
+  conSl.addEventListener('input', () => {
+    img.style.filter = 'contrast(' + conSl.value + ') brightness(0.9)';
+    conVal.textContent = parseFloat(conSl.value).toFixed(2) + '×';
+  });
+
+  // Ok tuşları: görüntünün o tarafını göster
+  document.querySelectorAll('#' + id + ' .xray-pan button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const step = vp.clientWidth * 0.15;
+      const d = btn.dataset.pan;
+      if (d === 'reset') { st.s = 1; st.x = 0; st.y = 0; conSl.value = 1.1; conSl.dispatchEvent(new Event('input')); apply(); return; }
+      if (d === 'left')  st.x += step;
+      if (d === 'right') st.x -= step;
+      if (d === 'up')    st.y += step;
+      if (d === 'down')  st.y -= step;
+      apply();
+    });
+  });
+  apply();
+}
+
 function doImaging(key) {
   if (!currentCase) return;
   const data = currentCase.imaging[key];
@@ -4717,39 +4914,12 @@ function doImaging(key) {
     const lblId  = 'xray-lbl-' + Date.now();
 
     if (isXray) {
-      const contrastId = 'xray-contrast-' + Date.now();
-      imgBlock = `<div class="xray-container">
-        <img id="${imgId}" class="xray-img" src="${data.imgUrl}" alt="${imagingLabels[key]||key}">
-        <div id="${scanId}" class="xray-scan-line"></div>
-        <div id="${lblId}" class="xray-label">☢ ${imagingLabels[key]||key}</div>
-      </div>
-      <div class="xray-controls">
-        <span>🔆</span>
-        <input type="range" id="${contrastId}" min="0.5" max="2.5" step="0.05" value="1.1"
-          oninput="document.getElementById('${imgId}').style.filter='contrast('+this.value+') brightness(0.9)'">
-        <span style="min-width:28px;text-align:right" id="${contrastId}-val">1.1×</span>
-      </div>
+      imgBlock = xrayViewerHTML(data.imgUrl, imagingLabels[key]||key) + `
       <div id="interp-lock-${key}" data-monitor-label="GÖRÜNTÜLEME — ${key.toUpperCase()}" data-result="${safeResult}" style="margin-bottom:4px">
         <button onclick="unlockPanel(this)" style="width:100%;padding:10px 16px;background:rgba(243,156,18,0.08);border:1px solid var(--accent-orange);border-radius:8px;color:var(--accent-orange);font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;letter-spacing:1px;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px">
           🔒 Yorumunuzu yaptıktan sonra açıklamayı görmek için tıklayın
         </button>
       </div>`;
-      // Animasyonu modal açıldıktan sonra başlat
-      setTimeout(() => {
-        const img  = document.getElementById(imgId);
-        const scan = document.getElementById(scanId);
-        const lbl  = document.getElementById(lblId);
-        const sl   = document.getElementById(contrastId);
-        if (img)  img.classList.add('revealed');
-        if (scan) scan.classList.add('scanning');
-        if (lbl)  setTimeout(() => lbl.classList.add('visible'), 2000);
-        // Slider value göster
-        if (sl) sl.addEventListener('input', function() {
-          const v = parseFloat(this.value).toFixed(2);
-          const vEl = document.getElementById(contrastId + '-val');
-          if (vEl) vEl.textContent = v + '×';
-        });
-      }, 80);
     } else {
       imgBlock = '<div style="margin-bottom:16px;border-radius:8px;overflow:hidden;border:1px solid var(--border)">'
         + '<img src="' + data.imgUrl + '" alt="' + (imagingLabels[key]||key) + '" style="width:100%;display:block;border-radius:7px">'
