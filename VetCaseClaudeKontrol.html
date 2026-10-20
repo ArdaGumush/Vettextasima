@@ -282,19 +282,7 @@ function replayTutorial() {
     padding: 4px 0;
   }
 
-  /* Mobil giriş ekranı */
-  #mob-welcome {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 200;
-    background: var(--bg-base);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-  }
-  body.mobile-mode #mob-welcome { display: flex; }
+  /* Mobil modda masaüstü giriş ekranını gizle */
   body.mobile-mode #welcome { display: none; }
 
   /* ── LIGHT MODE ─────────────────────────────────────────── */
@@ -2675,9 +2663,7 @@ const CASES_URL3 = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/re
 async function loadCaseData() {
   fc("▶ loadCaseData başladı");
   try {
-    // vetconfig.js yükle — CASE_INDEX, SPECIES_CASES, DISEASE_LIBRARY
-    // DEBUG: sorun bulununca kaldırılacak
-    showToast("Debug: vetconfig.js yükleniyor...");
+    // vetconfig.json yükle — CASE_INDEX, SPECIES_CASES, DISEASE_LIBRARY
     try {
       const rc = await fetch(CONFIG_URL);
       if (rc.ok) {
@@ -2720,8 +2706,8 @@ async function loadCaseData() {
 // ═══════════════════════════════════════════════════════════════
 // VAKA DİZİNİ
 // ═══════════════════════════════════════════════════════════════
-// CASE_INDEX — vetconfig.js'ten yükleniyor
-// SPECIES_CASES — vetconfig.js'ten yükleniyor
+// CASE_INDEX — vetconfig.json'dan yükleniyor
+// SPECIES_CASES — vetconfig.json'dan yükleniyor
 
 // ═══════════════════════════════════════════════════════════════
 // ACİL MOD STATE
@@ -3164,7 +3150,7 @@ function mobUpdatePatientCard() {
   tags.appendChild(kgSpan);
 
   // Case info
-  document.getElementById('mob-case-info').textContent = (c.caseId || '') + ' • ' + (c.diagnosis || '').substring(0, 20);
+  document.getElementById('mob-case-info').textContent = 'VAKA ' + (c.caseId || '—');
 
   // Kredi badge
   mobUpdateCreditBadge();
@@ -3317,7 +3303,7 @@ function mobToggleAccordion(id) {
 
     // Status güncelle
     const status = item.querySelector('.mob-acc-status');
-    if (status) { status.classList.remove('pending'); status.textContent = 'SORULDU'; }
+    if (status) { status.classList.remove('pending'); status.textContent = id.startsWith('mob-acc-phys-') ? 'YAPILDI' : 'SORULDU'; }
 
     // Şikayet açılınca bireysel blurları tıklanabilir yap
     if (id === 'mob-acc-complaint') {
@@ -3420,7 +3406,7 @@ function mobOpenImaging() {
     </button>`;
   });
   html += '</div>';
-  openModal('GÖRÜNTÜLEMEler', html);
+  openModal('GÖRÜNTÜLEME', html);
 }
 
 function mobDoImaging(key) {
@@ -3513,20 +3499,6 @@ function mobRunBiyo() {
   tableHtml += '</table></div>';
   closeModal();
   openModal('🧪 BİYOKİMYA SONUÇLARI', tableHtml);
-}
-
-function mobRunBiyo_old_DISABLED() {
-  closeModal();
-  const data = mobCurrentCase.biochemistry || {};
-  let html = '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-family:JetBrains Mono,monospace;font-size:10px">';
-  html += '<tr style="background:var(--bg-hover)"><th style="padding:6px 8px;text-align:left;color:var(--text-muted)">Param</th><th style="padding:6px 8px;text-align:right">Değer</th><th style="padding:6px 8px;text-align:right;font-size:9px;color:var(--text-muted)">Ref</th><th>F</th></tr>';
-  selected.forEach(p => {
-    const r = data[p]; if (!r) return;
-    const fc = r.flag==='H'?'var(--accent-red)':r.flag==='L'?'var(--accent-blue)':'var(--text-muted)';
-    html += `<tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 8px;color:var(--text-primary)">${p}</td><td style="padding:7px 8px;text-align:right;color:${r.flag?fc:'var(--text-secondary)'};font-weight:${r.flag?600:400}">${r.value} <span style="font-size:8px;color:var(--text-muted)">${r.unit}</span></td><td style="padding:7px 8px;text-align:right;font-size:9px;color:var(--text-muted)">${r.ref}</td><td style="text-align:center;color:${fc};font-weight:700">${r.flag||''}</td></tr>`;
-  });
-  html += '</table></div>';
-  openModal('🧪 BİYOKİMYA SONUÇLARI', html);
 }
 
 function mobOpenHormon() {
@@ -3740,10 +3712,13 @@ function onSettingsEmergencyToggle(checked) {
 function onSettingsDebugToggle(checked) {
   const btn = document.getElementById('debug-toggle-btn');
   const panel = document.getElementById('debug-panel');
+  const fcBox = document.getElementById('fc-box');
   if (checked) {
     btn.style.display = 'block';
+    if (fcBox) fcBox.style.display = 'flex';
   } else {
     btn.style.display = 'none';
+    if (fcBox) fcBox.style.display = 'none';
     if (panel.classList.contains('open')) toggleDebug();
   }
   showToast(checked ? '⚙ Debug Modu AKTİF' : '⚙ Debug Modu kapatıldı');
@@ -3851,13 +3826,6 @@ const IMAGE_GALLERY = [
     images: [
       { code:"V15U1",  label:"Tiroid USG — Bilateral büyüme, hipoekoik nodül", url:null, ref:"Henüz görsel eklenmedi." },
       { code:"V15DR1", label:"Toraks Röntgeni — Kardiyomegali",                url:null, ref:"Henüz görsel eklenmedi." },
-    ]
-  },
-  {
-    case: "VC-2025-016 — Boncuk / Kronik Böbrek Yetmezliği",
-    images: [
-      { code:"V16U1",  label:"Böbrek USG — Atrofi, artmış ekojenite, CMD kaybı", url:null, ref:"Henüz görsel eklenmedi." },
-      { code:"V16DR1", label:"Abdominal Röntgen — Küçük böbrekler",               url:null, ref:"Henüz görsel eklenmedi." },
     ]
   },
   {
@@ -5500,7 +5468,7 @@ function parseMarkdown(text) {
 // ═══════════════════════════════════════════════════════════════
 // 50 HASTALIK LİSTESİ — KLİNİK MOD
 // ═══════════════════════════════════════════════════════════════
-// DISEASE_LIBRARY — vetconfig.js'ten yükleniyor
+// DISEASE_LIBRARY — vetconfig.json'dan yükleniyor
 
 // İsim havuzları
 const DOG_NAMES = ["Max","Pango","Zeus","Apollo","Rex","Titan","Diesel","Thor","Odin","Leo","Ares","Atlas","Rifki","Akdo","Luna","Tavuk Pilav","Ezgi","Hera","Maya","Tansel"];
@@ -6114,10 +6082,7 @@ document.addEventListener('visibilitychange', function() {
   </div>
 </div>
 
-  <div id="fc-body" style="overflow-y:auto;flex:1;padding:4px 0"></div>
-</div>
-
-<div id="fc-box" style="position:fixed;bottom:0;left:0;right:0;z-index:999999;background:#0a0a0a;border-top:2px solid #00d4ff;font-family:monospace;font-size:11px;max-height:160px;display:flex;flex-direction:column">
+<div id="fc-box" style="position:fixed;bottom:0;left:0;right:0;z-index:999999;background:#0a0a0a;border-top:2px solid #00d4ff;font-family:monospace;font-size:11px;max-height:160px;display:none;flex-direction:column">
   <div style="padding:3px 10px;background:#001a2a;display:flex;justify-content:space-between;flex-shrink:0">
     <span style="color:#00d4ff;font-weight:700">KONSOL</span>
     <button onclick="document.getElementById('fc-box').style.display='none'" style="background:none;border:none;color:#888;cursor:pointer;font-size:14px">x</button>

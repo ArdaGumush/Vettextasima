@@ -243,7 +243,8 @@
       "distemper",
       "leptospirosis",
       "babesiosis",
-      "cav1_hepatitis"
+      "cav1_hepatitis",
+      "leishmaniosis"
     ]
   },
   "disease_library": [
