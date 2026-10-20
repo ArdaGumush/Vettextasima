@@ -86,7 +86,7 @@
       "icon": "🐱"
     },
     "hyperaldosteronism": {
-      "label": "Minnoş — Domestic Shorthair",
+      "label": "Tarçın — Domestic Shorthair",
       "tag": "Endokrinoloji",
       "icon": "🐱"
     },
@@ -101,12 +101,12 @@
       "icon": "🐶"
     },
     "imha": {
-      "label": "Bella — Amerikan Cocker Spaniel",
+      "label": "Lili — Amerikan Cocker Spaniel",
       "tag": "Hematoloji",
       "icon": "🐶"
     },
     "toxo": {
-      "label": "Tekir — Domestic Shorthair",
+      "label": "Aslan — British Shorthair",
       "tag": "Parazitoloji",
       "icon": "🐱"
     },
@@ -126,7 +126,7 @@
       "icon": "🐶"
     },
     "distemper": {
-      "label": "Pamuk — Melez",
+      "label": "Kuki — Melez",
       "tag": "Viral ⚡ACİL",
       "icon": "🐶"
     },
@@ -136,12 +136,12 @@
       "icon": "🐱"
     },
     "leptospirosis": {
-      "label": "Duman — Golden Retriever",
+      "label": "Karamel — Golden Retriever",
       "tag": "Bakteriyel",
       "icon": "🐶"
     },
     "babesiosis": {
-      "label": "Rex — Labrador Retriever",
+      "label": "Zeus — Labrador Retriever",
       "tag": "Paraziter (Kene)",
       "icon": "🐶"
     },
@@ -151,12 +151,12 @@
       "icon": "🐶"
     },
     "leishmaniosis": {
-      "label": "Zara — Boxer",
+      "label": "Leydi — Boxer",
       "tag": "Paraziter",
       "icon": "🐶"
     },
     "ibd": {
-      "label": "Bulut — Domestic Shorthair",
+      "label": "Mia — Domestic Shorthair",
       "tag": "Gastroenteroloji",
       "icon": "🐱"
     },
@@ -176,7 +176,7 @@
       "icon": "🐱"
     },
     "asthma": {
-      "label": "Pamuk — British Shorthair",
+      "label": "Bulut — Karışık Irk (Domestic Shorthair)",
       "tag": "Solunum",
       "icon": "🐱"
     },
@@ -196,7 +196,7 @@
       "icon": "🐶"
     },
     "dermatophytosis_dog": {
-      "label": "Boncuk — Yorkshire Terrier",
+      "label": "Bıdık — Yorkshire Terrier",
       "tag": "Dermatoloji",
       "icon": "🐶"
     }

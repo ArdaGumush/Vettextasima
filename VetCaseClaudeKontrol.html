@@ -282,6 +282,39 @@ function replayTutorial() {
     padding: 4px 0;
   }
 
+  /* ── MOBİL TİPOGRAFİ ──
+     Gövde metni 14px, etiketler 11–12px. JS'in ürettiği satır içi küçük
+     boyutlar (8–11px) mobil modda burada büyütülür. */
+  .mob-section-title {
+    padding: 12px 16px 7px; font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--text-muted); letter-spacing: 2px; background: var(--bg-panel); border-bottom: 1px solid var(--border);
+  }
+  body.mobile-mode #mob-topbar .mob-case-info { font-size: 11px; }
+  body.mobile-mode .mob-patient-name { font-size: 17px; }
+  body.mobile-mode .mob-patient-tag { font-size: 12px; padding: 3px 8px; }
+  body.mobile-mode .mob-accordion-header { padding: 15px 16px; }
+  body.mobile-mode .mob-accordion-header .mob-acc-title { font-size: 14px; letter-spacing: .3px; }
+  body.mobile-mode .mob-accordion-header .mob-acc-status { font-size: 11px; }
+  body.mobile-mode .mob-accordion-body,
+  body.mobile-mode .mob-popup-result { font-size: 14px; line-height: 1.7; }
+  body.mobile-mode .mob-bar-btn { min-width: 70px; }
+  body.mobile-mode .mob-bar-btn .mob-btn-icon { font-size: 20px; }
+  body.mobile-mode .mob-bar-btn .mob-btn-label { font-size: 11px; }
+  body.mobile-mode #mob-bottombar-inner { height: 62px; }
+  body.mobile-mode #mob-wrapper [style*="font-size:8px"],
+  body.mobile-mode #mob-wrapper [style*="font-size:9px"],
+  body.mobile-mode #modal-box [style*="font-size:8px"],
+  body.mobile-mode #modal-box [style*="font-size:9px"] { font-size: 11px !important; }
+  body.mobile-mode #mob-wrapper [style*="font-size:10px"],
+  body.mobile-mode #modal-box [style*="font-size:10px"] { font-size: 12px !important; }
+  body.mobile-mode #mob-wrapper [style*="font-size:11px"],
+  body.mobile-mode #modal-box [style*="font-size:11px"] { font-size: 14px !important; }
+  body.mobile-mode #modal-title { font-size: 15px; }
+  body.mobile-mode #anamnez-modal-body .aq-cat-label,
+  body.mobile-mode #anamnez-modal-body .aq-q-text,
+  body.mobile-mode #anamnez-modal-body .aq-answer { font-size: 14px !important; }
+  body.mobile-mode #anamnez-modal-body .aq-sub-label { font-size: 13px !important; }
+
   /* Mobil modda masaüstü giriş ekranını gizle */
   body.mobile-mode #welcome { display: none; }
 
@@ -710,74 +743,6 @@ function replayTutorial() {
     background: var(--glow-green);
     color: var(--accent-green);
   }
-
-  /* ── DIFF DIAGNOSIS SECTION ─────────────────────────── */
-  #diff-section {
-    margin: 0 16px 16px;
-    padding: 12px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    position: relative;
-  }
-  #diff-section.locked::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(10,14,26,0.7);
-    border-radius: 8px;
-    backdrop-filter: blur(3px);
-  }
-  #diff-lock-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    border-radius: 8px;
-  }
-  #diff-lock-overlay .lock-icon { font-size: 24px; }
-  #diff-lock-overlay p {
-    font-size: 10px;
-    color: var(--accent-orange);
-    letter-spacing: 1px;
-    text-align: center;
-  }
-  .diff-section-title {
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--accent-orange);
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .diff-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    padding: 8px 10px;
-    margin-bottom: 4px;
-    background: rgba(243,156,18,0.05);
-    border: 1px solid rgba(243,156,18,0.2);
-    border-radius: 6px;
-    color: var(--text-muted);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    cursor: pointer;
-    text-align: left;
-    transition: all 0.25s;
-    position: relative;
-  }
-  .diff-btn.blurred { filter: blur(4px); pointer-events: auto; }
-  .diff-btn.revealed { filter: none; color: var(--text-secondary); border-color: rgba(243,156,18,0.4); }
-  .diff-btn.asked { filter: none; color: var(--accent-orange); border-color: var(--accent-orange); background: var(--glow-orange); }
-  .diff-btn:hover:not(:disabled) { background: rgba(243,156,18,0.1); }
 
   /* ── CENTER PANEL TABS ──────────────────────────────── */
   .tab-bar {
@@ -1807,7 +1772,7 @@ window.onerror = function(msg, src, line) {
       <div class="settings-row">
         <div class="sr-label">
           📱 Mobil Mod
-          <span>Dikey kullanım için optimize edilmiş arayüz</span>
+          <span>Dikey kullanım için optimize edilmiş arayüz. Telefonda otomatik açılır.</span>
         </div>
         <label class="toggle-switch">
           <input type="checkbox" id="settings-mobile-toggle" onchange="onMobileModeToggle(this.checked)">
@@ -2790,7 +2755,6 @@ function consumeAction(actionName) {
 let currentCase = null;
 let currentCaseKey = null;
 let complaintAsked = false;
-let diffStates = {};
 let startTime = null;
 let timerInterval = null;
 
@@ -2933,7 +2897,6 @@ function onEconomyToggle(checked) {
 
 let mobileMode = false;
 let mobCurrentCase = null;
-let mobKg = null;
 
 function onMobileModeToggle(checked) {
   mobileMode = checked;
@@ -3000,44 +2963,6 @@ function mobToggleChip(btn) {
   }
 }
 
-function mobRevealDq(i) {
-  const blur = document.getElementById('mob-dq-blur-' + i);
-  if (!blur) return;
-  // Şikayet açılmadıysa engelle
-  if (blur.dataset.unlocked !== '1') {
-    showToast('Önce şikayeti öğren!');
-    return;
-  }
-  // İlk tık — blur'u kaldır, soru görünür olsun
-  blur.style.transition = 'opacity 0.25s ease';
-  blur.style.opacity = '0';
-  setTimeout(() => {
-    blur.remove();
-    // Soru div'ine tıklama dinleyici ekle
-    const item = document.getElementById('mob-dq-item-' + i);
-    if (item) {
-      const qDiv = item.querySelector('div[style*="padding:13px"]');
-      if (qDiv) {
-        qDiv.style.cursor = 'pointer';
-        qDiv.onclick = function() {
-          const answer = document.getElementById('mob-dq-answer-' + i);
-          if (answer) {
-            answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
-            SoundSystem.playUnlock && SoundSystem.playUnlock();
-          }
-        };
-      }
-    }
-  }, 250);
-}
-
-function mobUnlockDq(btn, idx) {
-  SoundSystem.playUnlock();
-  const container = btn.parentElement;
-  const result = container.dataset.result || '';
-  container.innerHTML = '<div style="color:var(--accent-cyan);font-family:JetBrains Mono,monospace;font-size:11px;line-height:1.7">"' + result.replace(/&quot;/g,'"') + '"</div>';
-}
-
 function mobConfirmBack() {
   if (!mobCurrentCase) {
     // Zaten ana ekrandaysa bir şey yapma
@@ -3063,6 +2988,7 @@ function mobConfirmBack() {
 
 function mobGoHome() {
   mobCurrentCase = null;
+  currentCase = null; currentCaseKey = null;
   currentOwner = null; remainingCredit = 0;
   mobShowScreen('mob-home-screen');
   document.getElementById('mob-bottombar').style.display = 'none';
@@ -3093,7 +3019,11 @@ function mobStartCase(speciesFilter) {
   if (keys.length === 0) { showToast('Bu tür için vaka bulunamadı.'); return; }
   const key = keys[Math.floor(Math.random() * keys.length)];
   mobCurrentCase = CASE_DATA[key];
-  mobKg = null;
+  // Ortak durum: anamnez ağacı, teşhis ve sonuç ekranı currentCase'i okuyor
+  currentCase = mobCurrentCase;
+  currentCaseKey = key;
+  window._aqAnswered = {};
+  diagnosisSubmitted = false;
 
   // Kredi sistemi
   initEconomy();
@@ -3138,16 +3068,6 @@ function mobUpdatePatientCard() {
     tags.appendChild(span);
   });
 
-  // KG tag
-  const kgSpan = document.createElement('span');
-  kgSpan.className = 'mob-patient-tag';
-  kgSpan.id = 'mob-kg-tag';
-  kgSpan.style.cursor = 'pointer';
-  kgSpan.style.borderColor = 'var(--accent-cyan)';
-  kgSpan.style.color = 'var(--accent-cyan)';
-  kgSpan.textContent = mobKg ? mobKg + ' kg' : '⚖ KG?';
-  kgSpan.onclick = mobAskKg;
-  tags.appendChild(kgSpan);
 
   // Case info
   document.getElementById('mob-case-info').textContent = 'VAKA ' + (c.caseId || '—');
@@ -3167,27 +3087,6 @@ function mobUpdateCreditBadge() {
   badge.textContent = remainingCredit + '/' + (currentOwner?.credit || '—') + ' kr';
 }
 
-function mobAskKg() {
-  const html = `<div style="padding:8px 0">
-    <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px;font-family:'JetBrains Mono',monospace">Hastanın ağırlığını girin (kg):</div>
-    <input type="number" id="mob-kg-input" min="0.1" max="100" step="0.1" placeholder="örn: 4.5"
-      style="width:100%;padding:10px;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;color:var(--text-primary);font-family:'JetBrains Mono',monospace;font-size:14px;box-sizing:border-box">
-    <button onclick="mobSaveKg()" style="margin-top:10px;width:100%;padding:10px;background:rgba(0,212,255,0.1);border:1px solid var(--accent-cyan);border-radius:8px;color:var(--accent-cyan);font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer">
-      KAYDET
-    </button>
-  </div>`;
-  openModal('⚖ HASTA AĞIRLIĞI', html);
-}
-
-function mobSaveKg() {
-  const val = parseFloat(document.getElementById('mob-kg-input')?.value);
-  if (!val || val <= 0) { showToast('Geçerli bir değer girin.'); return; }
-  mobKg = val;
-  closeModal();
-  const tag = document.getElementById('mob-kg-tag');
-  if (tag) { tag.textContent = val + ' kg'; tag.style.color = 'var(--accent-green)'; }
-}
-
 function mobBuildClinicScreen() {
   const c = mobCurrentCase;
   if (!c) return;
@@ -3203,7 +3102,7 @@ function mobBuildClinicScreen() {
   let html = '<div style="padding-bottom:80px">';
 
   // Genel Anamnez
-  html += '<div style="padding:10px 16px 6px;font-family:JetBrains Mono,monospace;font-size:9px;color:var(--text-muted);letter-spacing:2px;background:var(--bg-panel);border-bottom:1px solid var(--border)">GENEL ANAMNEZ</div>';
+  html += '<div class="mob-section-title">GENEL ANAMNEZ</div>';
 
   anamnezItems.forEach(item => {
     const val = c.anamnez?.[item.key] || '—';
@@ -3221,32 +3120,6 @@ function mobBuildClinicScreen() {
     <div class="mob-accordion-body">${parseMarkdown(singleComplaint)}</div>
   </div>`;
 
-  // Ayırıcı Tanı Soruları — şikayet sorulmadan blur
-  // Ayırıcı Tanı — 3 Aşamalı Sistem (sadece mobil)
-  // Aşama 1: Büyük blur (şikayet açılmadan)
-  // Aşama 2: Her soru bireysel blur arkasında (şikayet açılınca)
-  // Aşama 3: Accordion açılır, cevap görünür (soru tıklanınca)
-  const dqs = c.diffQuestions || [];
-  html += '<div id="mob-dq-wrapper" style="display:none">';
-
-  // Sorular — bireysel blur, başta kilitli (tıklanamaz)
-  let complaintOpened = false;
-  dqs.forEach((dq, i) => {
-    const safeAnswer = dq.a.replace(/`/g, "&#96;").replace(/"/g, '&quot;');
-    html += `<div class="mob-dq-item" id="mob-dq-item-${i}" style="border-bottom:1px solid var(--border);position:relative">
-      <!-- Bireysel blur — başta kilitli, şikayet açılınca tıklanabilir -->
-      <div class="mob-dq-item-blur" id="mob-dq-blur-${i}" data-unlocked="0" style="position:absolute;inset:0;z-index:5;backdrop-filter:blur(5px);background:rgba(10,14,26,0.75);display:flex;align-items:center;justify-content:center;cursor:not-allowed" onclick="mobRevealDq(${i})">
-        <span style="font-family:JetBrains Mono,monospace;font-size:10px;color:var(--text-muted)">🔒 Önce şikayeti öğren</span>
-      </div>
-      <!-- Soru başlığı (blur arkasında) -->
-      <div style="padding:13px 16px;font-family:JetBrains Mono,monospace;font-size:10px;color:var(--text-secondary);line-height:1.5">${dq.q}</div>
-      <!-- Cevap accordion — 2. tıkta açılır -->
-      <div id="mob-dq-answer-${i}" style="display:none;padding:10px 16px 14px;background:var(--bg-base);border-top:1px solid var(--border);font-family:JetBrains Mono,monospace;font-size:11px;color:var(--accent-cyan);line-height:1.7">"${dq.a}"</div>
-    </div>`;
-  });
-
-  html += '</div>';
-
   // Fiziksel Muayene
   const physItems = [
     { key:'temp',        label:'🌡 Vücut Sıcaklığı',  src:'physical' },
@@ -3259,7 +3132,7 @@ function mobBuildClinicScreen() {
     { key:'auscultation',label:'🩺 Oskültasyon',        src:'tools' },
   ];
 
-  html += '<div style="padding:10px 16px 6px;font-family:JetBrains Mono,monospace;font-size:9px;color:var(--text-muted);letter-spacing:2px;background:var(--bg-panel);border-bottom:1px solid var(--border)">FİZİKSEL MUAYENE</div>';
+  html += '<div class="mob-section-title">FİZİKSEL MUAYENE</div>';
 
   physItems.forEach(item => {
     const val = (item.src === 'tools' ? c.tools?.[item.key] : c.physical?.[item.key]) || '—';
@@ -3304,16 +3177,6 @@ function mobToggleAccordion(id) {
     // Status güncelle
     const status = item.querySelector('.mob-acc-status');
     if (status) { status.classList.remove('pending'); status.textContent = id.startsWith('mob-acc-phys-') ? 'YAPILDI' : 'SORULDU'; }
-
-    // Şikayet açılınca bireysel blurları tıklanabilir yap
-    if (id === 'mob-acc-complaint') {
-      document.querySelectorAll('.mob-dq-item-blur').forEach(blur => {
-        blur.style.cursor = 'pointer';
-        blur.dataset.unlocked = '1';
-        const span = blur.querySelector('span');
-        if (span) span.textContent = '🔒 Görmek için tıkla';
-      });
-    }
 
   } else {
     // Açık — kapat
@@ -3676,21 +3539,26 @@ function mobSubmitDiagnosis() {
   const input = document.getElementById('mob-diagnosis-input')?.value?.trim();
   if (!input) { showToast('Lütfen bir teşhis yazın.'); return; }
 
-  // Seçilen hastalığı DISEASE_LIBRARY'den bul — id veya isim eşleşmesi
-  const selectedDisease = DISEASE_LIBRARY.find(d => d.name.toLowerCase() === input.toLowerCase())
-    || DISEASE_LIBRARY.find(d => d.name.toLowerCase().includes(input.toLowerCase()))
-    || DISEASE_LIBRARY.find(d => input.toLowerCase().includes(d.name.toLowerCase().split(/[\s(]/)[0].toLowerCase()))
+  // Seçilen hastalığı DISEASE_LIBRARY'den bul. Kısmi eşleşme için en az 4 harf gerekir,
+  // yoksa "a" gibi bir giriş listedeki ilk hastalığa düşerdi.
+  const inp = input.toLowerCase();
+  const selectedDisease = DISEASE_LIBRARY.find(d => d.name.toLowerCase() === inp)
+    || (inp.length >= 4 && DISEASE_LIBRARY.find(d => d.name.toLowerCase().includes(inp)))
+    || (inp.length >= 4 && DISEASE_LIBRARY.find(d => { const w = d.name.toLowerCase().split(/[\s(]/)[0]; return w.length >= 4 && inp.includes(w); }))
     || { name: input, id: 'unknown', etken: '—', symptoms: '—' };
 
   // Desktop submitDiagnosis ile aynı akışa yönlendir
   closeModal();
-  const realKey = currentCase?._realDiagnosis || mobCurrentCase?.diagnosis || '—';
+  const _mc = mobCurrentCase || currentCase || {};
+  const realKey = _mc._realDiagnosis || _mc.diagnosis || '—';
   const realDisease = DISEASE_LIBRARY.find(d => d.name.toLowerCase() === realKey.toLowerCase())
     || DISEASE_LIBRARY.find(d => d.name.toLowerCase().includes(realKey.toLowerCase()))
     || { name: realKey, id: 'unknown', etken: '—', symptoms: '—' };
 
-  const correct = selectedDisease.name.toLowerCase() === realDisease.name.toLowerCase()
-    || selectedDisease.id === realDisease.id;
+  // 'unknown' hiçbir zaman doğru sayılmaz
+  const correct = selectedDisease.id !== 'unknown' && realDisease.id !== 'unknown'
+    && selectedDisease.id === realDisease.id;
+  if (realDisease.id === 'unknown') console.warn('[Teşhis] Vakanın teşhisi kütüphanede yok:', realKey);
 
   diagnosisSubmitted = true;
   addMonitorEntry(correct ? 'success' : 'danger', 'NİHAİ TEŞHİS',
@@ -4239,6 +4107,16 @@ function onSettingsLightModeToggle(checked) {
 }
 
 // ── UYGULAMA BAŞLANGICINDA localStorage AYARLARINI YÜKLEelim ──
+// ── CİHAZ TESPİTİ ──
+// Android'in kuralı: ekranın kısa kenarı 600'ün altındaysa telefon, üstündeyse tablet.
+// Kısa kenara bakıldığı için cihazı yan çevirmek sonucu değiştirmez.
+function getDeviceType() {
+  const touch = window.matchMedia && matchMedia('(pointer: coarse)').matches;
+  if (!touch) return 'desktop';
+  const shortSide = Math.min(screen.width, screen.height);
+  return shortSide >= 600 ? 'tablet' : 'phone';
+}
+
 window.addEventListener('DOMContentLoaded', function initSettings() {
   try {
     const eco = localStorage.getItem("vetcase-economy");
@@ -4249,7 +4127,15 @@ window.addEventListener('DOMContentLoaded', function initSettings() {
     if (eco === "1") { economyMode = true; const t = document.getElementById("settings-economy-toggle"); if(t) t.checked=true; }
       if (lm  === "1") { document.body.classList.add('light-mode'); const t = document.getElementById('settings-lightmode-toggle'); if(t) t.checked=true; }
 
-    if (mob === "1") {
+    // Kullanıcı Mobil Mod'u hiç elle değiştirmediyse cihaza göre otomatik seç
+    let useMobile = mob === "1";
+    if (mob === null) {
+      const dev = getDeviceType();
+      useMobile = dev === 'phone' || (dev === 'tablet' && window.innerWidth < 1000);
+      console.log('[Cihaz] ' + dev + ', genişlik ' + window.innerWidth + ' → ' + (useMobile ? 'mobil' : 'standart') + ' görünüm');
+    }
+
+    if (useMobile) {
       mobileMode = true;
       document.body.classList.add("mobile-mode");
       const t = document.getElementById("settings-mobile-toggle"); if(t) t.checked=true;
@@ -4317,7 +4203,6 @@ function startCase(caseKey) {
   currentCaseKey = caseKey;
   window._aqAnswered = {};
   complaintAsked = false;
-  diffStates = {};
 
   // Butonları sıfırla
   ['name','demog','vaccine','complaint'].forEach(k => {
@@ -4353,7 +4238,6 @@ function startCase(caseKey) {
   if (_diagBtn) _diagBtn.style.display = 'none';
 
   // Build diff questions
-  buildDiffQuestions();
 
   // Build lab chips (sıfırla)
   selectedBiyo = new Set();
@@ -4468,64 +4352,12 @@ function askAnamnez(key) {
 
   if (key === 'complaint') {
     complaintAsked = true;
-    unlockDiff();
   }
 
   // Irk bilgisini patient card'a yaz
   if (key === 'name') {
     const breedMatch = rawText.match(/Irk:\s*\*\*([^*]+)\*\*/);
     if (breedMatch) document.getElementById('pt-breed').textContent = breedMatch[1];
-  }
-}
-
-function buildDiffQuestions() {
-  const container = document.getElementById('diff-questions');
-  if (!container) return;
-  container.innerHTML = '';
-  if (!currentCase) return;
-  currentCase.diffQuestions.forEach((item, i) => {
-    diffStates[i] = 'blurred';
-    const btn = document.createElement('button');
-    btn.className = 'diff-btn blurred';
-    btn.id = 'diff-btn-' + i;
-    btn.dataset.index = i;
-    btn.innerHTML = `<span>🔍</span> <span class="diff-q-text">???</span>`;
-    btn.onclick = () => handleDiffClick(i);
-    container.appendChild(btn);
-  });
-}
-
-function unlockDiff() {
-  const sec = document.getElementById('diff-section');
-  sec.classList.remove('locked');
-  document.getElementById('diff-lock-overlay').style.display = 'none';
-
-  // Reveal questions as blurred but clickable
-  currentCase.diffQuestions.forEach((item, i) => {
-    const btn = document.getElementById('diff-btn-' + i);
-    btn.querySelector('.diff-q-text').textContent = item.q;
-    btn.classList.remove('blurred');
-    btn.style.filter = 'blur(4px)';
-    diffStates[i] = 'blurred';
-  });
-  showToast('Ayırıcı tanı sorularının kilidi açıldı!');
-}
-
-function handleDiffClick(i) {
-  if (!complaintAsked) return;
-  const btn = document.getElementById('diff-btn-' + i);
-  const state = diffStates[i];
-
-  if (state === 'blurred') {
-    btn.style.filter = 'none';
-    btn.classList.add('revealed');
-    diffStates[i] = 'revealed';
-  } else if (state === 'revealed') {
-    btn.classList.remove('revealed');
-    btn.classList.add('asked');
-    diffStates[i] = 'asked';
-    const item = currentCase.diffQuestions[i];
-    addMonitorEntry('warning', 'DİFF. TANI SORUSU', `<strong>S:</strong> ${item.q}<br><strong>C:</strong> ${item.a}`);
   }
 }
 
@@ -5757,9 +5589,12 @@ function openResultScreen(correct, selected, realDisease) {
   var sp=_ac.species==='Köpek'?'dog':'cat';
   var sl=_ac.species==='Köpek'?'🐶 Köpek':'🐱 Kedi';
   var sp2=sp, sl2=sl;
-  var aHtml='<button class="ra-btn ra-primary" onclick="closeResultScreen();startClinicMode(\''+ sp2 +'\')">' + '🎲 Yeni ' + sl2 + ' Vakası</button>'
-    +'<button class="ra-btn ra-blue" onclick="closeResultScreen();startClinicMode(\'any\')">🎲 Karışık Vaka</button>'
-    +'<button class="ra-btn ra-muted" onclick="closeResultScreen();backToMainMenu()">← Ana Menü</button>';
+  // Mobilde sonuç ekranı mobil akışta kalsın
+  var _start = mobileMode ? 'mobStartCase' : 'startClinicMode';
+  var _home  = mobileMode ? 'mobGoHome' : 'backToMainMenu';
+  var aHtml='<button class="ra-btn ra-primary" onclick="closeResultScreen();'+_start+'(\''+ sp2 +'\')">' + '🎲 Yeni ' + sl2 + ' Vakası</button>'
+    +'<button class="ra-btn ra-blue" onclick="closeResultScreen();'+_start+'(\'any\')">🎲 Karışık Vaka</button>'
+    +'<button class="ra-btn ra-muted" onclick="closeResultScreen();'+_home+'()">← Ana Menü</button>';
   if (!correct) aHtml+='<button class="ra-btn ra-diff" id="diff-btn" onclick="showDiffPanel()">🔬 Farklılıklar</button>';
   aHtml+='<button class="ra-btn" style="flex-basis:100%;background:rgba(255,255,255,.03);border:1px solid var(--border) !important;color:var(--text-muted);cursor:not-allowed;opacity:.6" disabled>💊 Tedavi Seçenekleri — Yakında</button>';
   actions.innerHTML=aHtml;
@@ -5787,7 +5622,12 @@ function submitDiagnosis(selectedId) {
     || DISEASE_LIBRARY.find(function(d){ return d.name.toLowerCase().includes(realKey.toLowerCase()); })
     || DISEASE_LIBRARY.find(function(d){ return realKey.toLowerCase().includes(d.name.toLowerCase().split(/[\s(]/)[0].toLowerCase()); })
     || { name: realKey, id: 'unknown', etken: '—', symptoms: '—' };
-  var correct = selected && (selected.id===realDisease.id || selected.name.toLowerCase()===realDisease.name.toLowerCase());
+  // Doğru cevap kütüphanede bulunamadıysa ('unknown'), id karşılaştırması asla doğru sayılmaz
+  var correct = !!selected && (
+    (realDisease.id !== 'unknown' && selected.id === realDisease.id) ||
+    selected.name.toLowerCase() === String(realKey).toLowerCase()
+  );
+  if (realDisease.id === 'unknown') console.warn('[Teşhis] Vakanın teşhisi kütüphanede yok:', realKey);
   diagnosisSubmitted = true;
   addMonitorEntry(correct?'success':'danger','NİHAİ TEŞHİS', correct
     ? '✓ Doğru: <strong>'+selected.name+'</strong>'
@@ -5870,7 +5710,6 @@ function debugLaunchCase(caseKey, forceEmergency) {
   currentCase = CASE_DATA[caseKey];
   currentCaseKey = caseKey;
   complaintAsked = false;
-  diffStates = {};
 
   // Resetler
   ['name','demog','vaccine','complaint'].forEach(k => {
@@ -5896,7 +5735,6 @@ function debugLaunchCase(caseKey, forceEmergency) {
   selectedBiyo = new Set();
   selectedHormon = new Set();
   usedTetkikLog = [];
-  buildDiffQuestions();
   buildBiyoChips();
   buildHormonChips();
 

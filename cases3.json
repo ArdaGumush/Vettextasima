@@ -5,7 +5,7 @@
     "icon": "🐶",
     "diagnosis": "Canine Distemper Virüsü (Köpek Gençlik Hastalığı)",
     "anamnez": {
-      "name": "İsim: **Pamuk** | Irk: **Melez**",
+      "name": "İsim: **Kuki** | Irk: **Melez**",
       "demog": "Yaş: **4 aylık** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmamış**",
       "vaccine": "Aşılar: **Yok (sokaktan sahiplenilmiş)** | Parazit ilacı: **Yapılmamış**",
       "complaint": [
@@ -737,7 +737,7 @@
     "icon": "🐶",
     "diagnosis": "Leptospirozis (Akut Böbrek Hasarı + İkterik Form)",
     "anamnez": {
-      "name": "İsim: **Duman** | Irk: **Golden Retriever**",
+      "name": "İsim: **Karamel** | Irk: **Golden Retriever**",
       "demog": "Yaş: **3 yaş** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmış (Orşiektomi)**",
       "vaccine": "Aşılar: **Karma + Kuduz güncel, Leptospira aşısı yok** | Parazit ilacı: **Güncel**",
       "complaint": [
@@ -1101,7 +1101,7 @@
     "icon": "🐶",
     "diagnosis": "Babesiozis (Babesia canis)",
     "anamnez": {
-      "name": "İsim: **Rex** | Irk: **Labrador Retriever**",
+      "name": "İsim: **Zeus** | Irk: **Labrador Retriever**",
       "demog": "Yaş: **3 yaş** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmamış**",
       "vaccine": "Aşılar: **Güncel (DHPPI + Kuduz)** | Parazit ilacı: **Düzensiz — son 4 aydır uygulanmamış**",
       "complaint": [
@@ -1460,7 +1460,7 @@
     "icon": "🐶",
     "diagnosis": "Leishmaniozis (Leishmania infantum)",
     "anamnez": {
-      "name": "İsim: **Zara** | Irk: **Boxer**",
+      "name": "İsim: **Leydi** | Irk: **Boxer**",
       "demog": "Yaş: **4 yaş** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmış (OVH)**",
       "vaccine": "Aşılar: **DHPPI + Kuduz güncel, Leishmania aşısı yok** | Parazit ilacı: **Düzenli endoparazit, tatarcık kovucu repellan yok**",
       "complaint": [
@@ -2183,7 +2183,7 @@
     "icon": "🐱",
     "diagnosis": "İnflamatuar Bağırsak Hastalığı (IBD - Lenfositik-Plazmasitik Form)",
     "anamnez": {
-      "name": "İsim: **Bulut** | Irk: **Domestic Shorthair**",
+      "name": "İsim: **Mia** | Irk: **Domestic Shorthair**",
       "demog": "Yaş: **6 yaş** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmış (OVH)**",
       "vaccine": "Aşılar: **Güncel (FVRCP + Kuduz)** | Parazit ilacı: **Düzenli, her 2 ayda bir (son 3 yıl)**",
       "complaint": [

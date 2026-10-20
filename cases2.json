@@ -1092,7 +1092,7 @@
     "icon": "🐶",
     "diagnosis": "Dermatofitoz (Microsporum canis) — Köpek",
     "anamnez": {
-      "name": "İsim: **Boncuk** | Irk: **Yorkshire Terrier**",
+      "name": "İsim: **Bıdık** | Irk: **Yorkshire Terrier**",
       "demog": "Yaş: **4 aylık** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmamış**",
       "vaccine": "Aşılar: **Güncel (Karma + Kuduz, yaşa uygun takvimde)** | Parazit ilacı: **Güncel, ayda bir**",
       "complaint": [
@@ -2190,7 +2190,7 @@
     "icon": "🐱",
     "diagnosis": "Primer Hiperaldosteronizm (Conn Sendromu)",
     "anamnez": {
-      "name": "İsim: **Minnoş** | Irk: **Domestic Shorthair**",
+      "name": "İsim: **Tarçın** | Irk: **Domestic Shorthair**",
       "demog": "Yaş: **12 yaş** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmış (OVH)**",
       "vaccine": "Aşılar: **Güncel (Karma + Kuduz)** | Parazit ilacı: **Düzenli**",
       "complaint": [
@@ -3290,7 +3290,7 @@
     "icon": "🐶",
     "diagnosis": "İmmün Aracılı Hemolitik Anemi (IMHA)",
     "anamnez": {
-      "name": "İsim: **Bella** | Irk: **Amerikan Cocker Spaniel**",
+      "name": "İsim: **Lili** | Irk: **Amerikan Cocker Spaniel**",
       "demog": "Yaş: **6 yaş** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmış (OVH)**",
       "vaccine": "Aşılar: **Güncel (DHPPi + Kuduz + Leptospira)** | Parazit ilacı: **Güncel, son 1 ay içinde**",
       "complaint": [
