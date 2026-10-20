@@ -3613,10 +3613,9 @@ function mobDoMicro(type) {
 function mobDoRapidKit(sampleType) {
   if (!mobCurrentCase) return;
   const kits = RAPID_KITS.filter(k => k.sample.includes(sampleType));
-  const usedKits = mobCurrentCase.rapidKits || {};
   let html = '<div style="display:flex;flex-direction:column;gap:8px">';
   kits.forEach(k => {
-    const used = usedKits[k.id];
+    const used = usedRapidKits.has(k.id);
     html += `<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;gap:10px">
       <div>
         <div style="font-size:11px;color:var(--text-primary);font-family:'JetBrains Mono',monospace;margin-bottom:2px">${k.label}</div>
@@ -3637,12 +3636,10 @@ function mobUseRapidKit(kitId, sampleType) {
   if (!spendCredit(TETKIK_COSTS.rapid_kit, 'Hızlı Kit')) return;
   closeModal();
   const kit = RAPID_KITS.find(k => k.id === kitId);
-  const result = mobCurrentCase.rapidKits?.[kitId] || 'NEGATİF';
-  const isPos = result === 'POZİTİF';
-  const badge = isPos
-    ? '<span style="color:var(--accent-red);font-weight:bold;font-size:20px">● POZİTİF 🔴</span>'
-    : '<span style="color:var(--accent-green);font-weight:bold;font-size:20px">● NEGATİF ✓</span>';
-  openModal('🧪 ' + kit.label, `<div style="text-align:center;padding:20px 0">${badge}</div><div style="text-align:center">${notePenHTML('Hızlı Kit', kit.label + ': ' + result)} <span style="font-size:11px;color:var(--text-muted)">Notlara ekle</span></div>`);
+  usedRapidKits.add(kitId);
+  if (typeof logTetkik === 'function') logTetkik('⚡ Hızlı Kit: ' + kit.label);
+  const res = rapidKitResult(mobCurrentCase, kitId);
+  openModal('🧪 ' + kit.label, `<div style="text-align:center;padding:20px 0">${rapidKitBadge(res, 20)}</div><div style="text-align:center">${notePenHTML('Hızlı Kit', kit.label + ': ' + res.text)} <span style="font-size:11px;color:var(--text-muted)">Notlara ekle</span></div>`);
 }
 
 function mobOpenRapidKit() {
@@ -5108,7 +5105,7 @@ function runHormon() {
 // ═══════════════════════════════════════════════════════════════
 
 const RAPID_KITS = [
-  { id: "fiv",   label: "FIV Ab / FeLV Ag Combo",  desc: "Temel FIV/FeLV tarama kiti",        sample: ["blood"] },
+  { id: "fiv_felv", label: "FIV Ab / FeLV Ag Combo",  desc: "Temel FIV/FeLV tarama kiti",        sample: ["blood"] },
   { id: "fcov_ab",    label: "FCoV Ab",                  desc: "Feline Coronavirus Antikor",        sample: ["blood"] },
   { id: "fpv_ag",     label: "FPV Ag",                   desc: "Feline Panleukopenia Antijen",      sample: ["blood", "stool"] },
   { id: "fcov_ag",    label: "FCoV Ag",                  desc: "Coronavirus Antijen (efüzyon/dışkı)", sample: ["stool"] },
@@ -5117,6 +5114,28 @@ const RAPID_KITS = [
   { id: "giardia_ag", label: "Giardia Ag (SNAP)",         desc: "Giardia antijen hızlı testi",        sample: ["stool"] },
 ];
 
+// Kit sonucunu vaka verisinden oku. Veri "POZİTİF", "FPV Ag POZİTİF 🔴" ya da
+// kombine kitlerde "FIV POZİTİF 🔴 / FeLV NEGATİF" biçiminde olabilir.
+function rapidKitResult(caseData, kitId) {
+  const raw = String(((caseData && caseData.rapidKits) || {})[kitId] || 'NEGATİF');
+  const clean = t => t.replace(/🔴|✓/g, '').replace(/\s+/g, ' ').trim();
+  const parts = raw.split('/').map(clean).filter(Boolean);
+  const isCombo = kitId === 'fiv_felv' && parts.length > 1;
+  const items = isCombo
+    ? parts.map(p => ({ name: (p.match(/^(FIV|FeLV)/i) || [''])[0], pos: /POZİTİF/i.test(p) }))
+    : [{ name: '', pos: /POZİTİF/i.test(raw) }];
+  return { items, anyPos: items.some(i => i.pos),
+    text: items.map(i => (i.name ? i.name + ': ' : '') + (i.pos ? 'POZİTİF' : 'NEGATİF')).join(' / ') };
+}
+function rapidKitBadge(res, size) {
+  const fs = size ? 'font-size:' + size + 'px;' : '';
+  return res.items.map(i => (i.name ? '<span style="color:var(--text-secondary);' + fs + '">' + i.name + ':</span> ' : '')
+    + (i.pos ? '<span style="color:var(--accent-red);font-weight:bold;' + fs + '">● POZİTİF</span>'
+             : '<span style="color:var(--accent-green);font-weight:bold;' + fs + '">● NEGATİF</span>')).join(' &nbsp;/&nbsp; ');
+}
+// Bu vakada uygulanan kitler (menüdeki "✓ Kullanıldı" rozeti için)
+let usedRapidKits = new Set();
+
 function openRapidKitMenu(sampleType) {
   if (!currentCase) return;
   const kits = currentCase.rapidKits || {};
@@ -5124,8 +5143,7 @@ function openRapidKitMenu(sampleType) {
   const rows = RAPID_KITS
     .filter(k => k.sample.includes(sampleType))
     .map(k => {
-      const result = kits[k.id];
-      const usedBadge = result
+      const usedBadge = usedRapidKits.has(k.id)
         ? '<span style="color:var(--text-muted);font-size:9px">✓ Kullanıldı</span>'
         : '';
 
@@ -5155,17 +5173,12 @@ function useRapidKit(kitId, sampleType) {
   closeModal();
 
   const kit = RAPID_KITS.find(k => k.id === kitId);
-  const kits = currentCase.rapidKits || {};
-  const result = kits[kitId] || 'NEGATİF';
-  const isPos = result === 'POZİTİF';
-
-  const badge = isPos
-    ? '<span style="color:var(--accent-red);font-weight:bold">● POZİTİF 🔴</span>'
-    : '<span style="color:var(--accent-green);font-weight:bold">● NEGATİF ✓</span>';
-
-  addMonitorEntry(isPos ? 'danger' : 'normal',
+  usedRapidKits.add(kitId);
+  const res = rapidKitResult(currentCase, kitId);
+  addMonitorEntry(res.anyPos ? 'danger' : 'normal',
     '🧪 HIZLI KİT — ' + kit.label,
-    'Örnek: ' + (sampleType === 'blood' ? 'Kan' : 'Dışkı') + ' | Sonuç: ' + badge
+    'Örnek: ' + (sampleType === 'blood' ? 'Kan' : 'Dışkı') + ' | Sonuç: ' + rapidKitBadge(res),
+    kit.label + ': ' + res.text
   );
 }
 
@@ -5319,7 +5332,8 @@ function renderNotes() {
   const ml = document.getElementById('mob-notes-list');
   if (ml) { ml.innerHTML = notesListHTML(); ml.querySelectorAll('textarea').forEach(noteAutoSize); }
 }
-function resetNotes() { caseNotes = []; renderNotes(); }
+// Vaka başlangıcında çağrılır: notları ve vakaya özel kit kayıtlarını sıfırlar
+function resetNotes() { caseNotes = []; renderNotes(); if (typeof usedRapidKits !== 'undefined') usedRapidKits = new Set(); }
 
 function mobOpenNotes() {
   openModal('📝 NOTLARIM', '<div id="mob-notes-list" class="notes-list">' + notesListHTML() + '</div>');
