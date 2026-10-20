@@ -363,6 +363,7 @@ function replayTutorial() {
     color: var(--text-primary);
     font-family: 'JetBrains Mono', monospace;
     height: 100vh;
+    height: 100dvh; /* mobil tarayıcılarda adres çubuğu payını doğru hesaplar */
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -635,6 +636,7 @@ function replayTutorial() {
     grid-template-columns: 320px 1fr 340px;
     gap: 0;
     height: calc(100vh - 52px);
+    height: calc(100dvh - 52px);
   }
 
   /* ── PANELS ─────────────────────────────────────────── */
@@ -4249,6 +4251,27 @@ function onSettingsLightModeToggle(checked) {
 }
 
 // ── UYGULAMA BAŞLANGICINDA localStorage AYARLARINI YÜKLEelim ──
+// ── SAYFA KAYMASI KORUMASI ──
+// Sayfa tek ekran olarak tasarlandı; kök belge hiç kaymamalı. Yazı kutusundan
+// çıkıldığında ya da ekran klavyesi kapandığında kaymayı sıfırla.
+function resetRootScroll() {
+  if (window.scrollY || document.documentElement.scrollTop || document.body.scrollTop) {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }
+}
+document.addEventListener('focusout', () => setTimeout(resetRootScroll, 150));
+if (window.visualViewport) {
+  let _lastVV = window.visualViewport.height;
+  window.visualViewport.addEventListener('resize', () => {
+    const h = window.visualViewport.height;
+    if (h > _lastVV + 80) setTimeout(resetRootScroll, 100); // klavye kapandı
+    _lastVV = h;
+  });
+}
+window.addEventListener('orientationchange', () => setTimeout(resetRootScroll, 300));
+
 // ── CİHAZ TESPİTİ ──
 // Android'in kuralı: ekranın kısa kenarı 600'ün altındaysa telefon, üstündeyse tablet.
 // Kısa kenara bakıldığı için cihazı yan çevirmek sonucu değiştirmez.
@@ -5212,7 +5235,8 @@ function focusNote(id) {
   if (!el) return;
   el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
-  if (!mobileMode) el.querySelector('textarea')?.focus({ preventScroll: true });
+  const touch = window.matchMedia && matchMedia('(pointer: coarse)').matches;
+  if (!mobileMode && !touch) el.querySelector('textarea')?.focus({ preventScroll: true });
 }
 function removeNote(id) {
   caseNotes = caseNotes.filter(n => n.id !== id);
