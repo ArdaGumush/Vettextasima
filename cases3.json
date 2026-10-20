@@ -39,21 +39,21 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **40.5°C** (Referans: 37.8–39.2°C) → Yüksek ateş — enfeksiyonun akut fazında bifazik ateşin ikinci yükselme evresi 🔴",
-      "resp": "Solunum sayısı: **44/dak** (Referans: 10–30/dak) → Belirgin takipne — sekonder bakteriyel bronkopnömoni 🔴",
-      "hr": "Kalp atım sayısı: **148/dak** (Referans: 70–120/dak) → Taşikardi — ateş, dehidrasyon ve sistemik enfeksiyon 🔴",
-      "mucosa": "Mukoza rengi: **Kirli pembe, kuru** | CRT: **3.5 sn** → Dehidrasyon ve endotoksemiye bağlı perfüzyon yetersizliği 🔴",
-      "lymph": "Lenf nodları: Submandibular ve preskapular lenf nodları bilateral büyümüş, ağrılı ve reaktif — lenfoid doku invazyonu. 🔴",
-      "palp": "Karın palpasyonu: Bağırsak lopları gaz ve sıvı ile dolu, yaygın abdominal ağrı. **Ayak tabanı (pad) ve burun ucunda aşırı hiperkeratoz (Hard pad hastalığı).** 🔴"
+      "temp": "Vücut sıcaklığı: **40.5°C** (Referans: 37.8–39.2°C)",
+      "resp": "Solunum sayısı: **44/dak** (Referans: 10–30/dak)",
+      "hr": "Kalp atım sayısı: **148/dak** (Referans: 70–120/dak)",
+      "mucosa": "Mukoza rengi: **Kirli pembe, kuru** | CRT: **3.5 sn**",
+      "lymph": "Lenf nodları: Submandibular ve preskapular lenf nodları bilateral büyümüş ve ağrılı.",
+      "palp": "Karın palpasyonu: Bağırsak lopları gaz ve sıvı ile dolu, yaygın abdominal ağrı. **Ayak tabanı (pad) ve burun ucunda aşırı hiperkeratoz (Hard pad hastalığı).**"
     },
     "tools": {
-      "otoscope": "Otoskopi: Kulak kanalları açık. **Kulak kepçesinin iç tüysüz kısımlarında püstüler dermatoz odakları** tespit edildi. Timpanik zar doğal. 🔴",
-      "ophthalmo": "Oftalmoskopi: **Şiddetli bilateral keratokonjonktivitis sikka.** 🔴 Korneada matlaşma ve retinada **'madalyon lezyonları'** olarak bilinen atrofik koryoretinit odakları gözlendi. 🔴",
-      "pharyngo": "Faringoskopi: Tonsiller yaygın hiperemik ve büyümüş. **Mukopurulent eksüdat soluk borusu girişine yapışmış.** 🔴",
-      "reflex": "Refleks muayenesi: Patellar refleks **hiperaktif.** ⚠ Temporal ve çiğneme kaslarında **ritmik miyoklonus** (sakız çiğneme benzeri kasılmalar). 🔴 Proprioseptif yanıtlar yavaşlamış — nörolojik faz başlangıcı.",
+      "otoscope": "Otoskopi: Kulak kanalları açık. **Kulak kepçesinin iç tüysüz kısımlarında püstüler dermatoz odakları** tespit edildi. Timpanik zar doğal.",
+      "ophthalmo": "Oftalmoskopi: **Şiddetli bilateral göz kuruluğu ve konjonktivit.** Korneada matlaşma, retinada **hiperreflektif madalyon şeklinde atrofik odaklar** gözlendi.",
+      "pharyngo": "Faringoskopi: Tonsiller yaygın hiperemik ve büyümüş. **Mukopurulent eksüdat soluk borusu girişine yapışmış.**",
+      "reflex": "Refleks muayenesi: Patellar refleks **hiperaktif.** Temporal ve çiğneme kaslarında **ritmik miyoklonus** (sakız çiğneme benzeri kasılmalar). Proprioseptif yanıtlar yavaşlamış.",
       "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
-      "inspection": "İnspeksiyon: **Mukopurulent göz ve burun akıntısı, hiperkeratoz (hard pad), miyoklonus, letarji.** 🔴 Genel durum kritik.",
-      "auscultation": "Oskültasyon: **Akciğer:** Bilateral yaş raller ve bronkointerstisyel sesler — bronkopnömoni. 🔴 **Kalp:** Taşikardik, üfürüm yok. **Bağırsak:** Artmış, sıvı guruldama sesleri."
+      "inspection": "İnspeksiyon: **Mukopurulent göz ve burun akıntısı, hiperkeratoz (hard pad), miyoklonus, letarji.** Genel durum kritik.",
+      "auscultation": "Oskültasyon: **Akciğer:** Bilateral yaş raller ve bronkointerstisyel sesler. **Kalp:** Taşikardik, üfürüm yok. **Bağırsak:** Artmış, sıvı guruldama sesleri."
     },
     "imaging": {
       "echo": {
@@ -403,21 +403,21 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **39.6°C** (Referans: 38.1–39.2°C) → Hafif ateş — akut üst solunum yolu enfeksiyonunda yangısal yanıt ⚠",
-      "resp": "Solunum sayısı: **36/dak** (Referans: 20–42/dak) → Normal üst sınıra yakın — konjesyon ve mukopurulent akıntı ⚠",
-      "hr": "Kalp atım sayısı: **185/dak** (Referans: 140–220/dak) → Normal — ateş ve klinik strese bağlı fizyolojik artış ✓",
-      "mucosa": "Mukoza rengi: **Pembe, hafif konjestif** | CRT: **2 sn** → Perfüzyon normal, farenks mukozasında irritasyona bağlı hafif kızarıklık ✓",
-      "lymph": "Lenf nodları: Mandibular lenf nodları bilateral hafif büyümüş ve hassas. Preskapular ve popliteal lenf nodları normal. ⚠",
-      "palp": "Karın palpasyonu: Organlar normal, ağrı veya kitle yok. **Trakeal palpasyonda şiddetli ve kolay tetiklenen trakeal refleks** (öksürük krizi). 🔴"
+      "temp": "Vücut sıcaklığı: **39.6°C** (Referans: 38.1–39.2°C)",
+      "resp": "Solunum sayısı: **36/dak** (Referans: 20–42/dak)",
+      "hr": "Kalp atım sayısı: **185/dak** (Referans: 140–220/dak)",
+      "mucosa": "Mukoza rengi: **Pembe, hafif konjestif** | CRT: **2 sn**",
+      "lymph": "Lenf nodları: Mandibular lenf nodları bilateral hafif büyümüş ve hassas. Preskapular ve popliteal lenf nodları normal.",
+      "palp": "Karın palpasyonu: Organlar normal, ağrı veya kitle yok. **Trakeal palpasyonda şiddetli ve kolay tetiklenen trakeal refleks** (öksürük krizi)."
     },
     "tools": {
-      "otoscope": "Otoskopi: Kulak kanalları açık ve temiz, timpanik zar doğal. Kulak kepçesinde lezyon yok. ✓",
-      "ophthalmo": "Oftalmoskopi: **Bilateral konjonktivit** — konjonktivalarda hiperemi ve seromukozal akıntı kalıntıları. Kornea ve retina doğal. ⚠",
-      "pharyngo": "Faringoskopi: Tonsiller hafif hiperemik ve şiş. **Yumuşak damak ve farenks arkasında mukozal kızarıklık ve köpüklü-mukoid salgı birikimi.** 🔴 Yabancı cisim veya kitle yok.",
-      "reflex": "Refleks muayenesi: Patellar refleks bilateral normal. Motor nöron veya refleks arkı patolojisi yok. ✓",
+      "otoscope": "Otoskopi: Kulak kanalları açık ve temiz, timpanik zar doğal. Kulak kepçesinde lezyon yok.",
+      "ophthalmo": "Oftalmoskopi: **Bilateral konjonktivit** — konjonktivalarda hiperemi ve seromukozal akıntı kalıntıları. Kornea ve retina doğal.",
+      "pharyngo": "Faringoskopi: Tonsiller hafif hiperemik ve şiş. **Yumuşak damak ve farenks arkasında mukozal kızarıklık ve köpüklü-mukoid salgı birikimi.** Yabancı cisim veya kitle yok.",
+      "reflex": "Refleks muayenesi: Patellar refleks bilateral normal. Motor nöron veya refleks arkı patolojisi yok.",
       "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
-      "inspection": "İnspeksiyon: Seromukopurulent oküler ve nazal akıntı, ekspiratuvar nefes güçlüğü, letarji. **Trakeal bölgede hassasiyet.** ⚠",
-      "auscultation": "Oskültasyon: **Akciğer:** Hafif bronkovesiküler ses artışı, kaba sesler. Konsolidasyon bulgusu yok. ⚠ **Kalp:** Normal ritim, üfürüm yok. **Bağırsak:** Normal."
+      "inspection": "İnspeksiyon: Seromukopurulent oküler ve nazal akıntı, ekspiratuvar nefes güçlüğü, letarji. **Trakeal bölgede hassasiyet.**",
+      "auscultation": "Oskültasyon: **Akciğer:** Hafif bronkovesiküler ses artışı, kaba sesler. **Kalp:** Normal ritim, üfürüm yok. **Bağırsak:** Normal."
     },
     "imaging": {
       "echo": {
@@ -771,21 +771,21 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **40.2°C** (Referans: 37.8–39.2°C) → Yüksek ateş — bakteriyel enfeksiyona ve sistemik inflamasyona bağlı 🔴",
-      "resp": "Solunum sayısı: **42/dak** (Referans: 10–30/dak) → Takipne — ateş, karın ağrısı ve üremik asidoz 🔴",
-      "hr": "Kalp atım sayısı: **150/dak** (Referans: 60–140/dak) → Taşikardi — enfeksiyon, ağrı ve dehidrasyon ⚠",
-      "mucosa": "Mukoza rengi: **Belirgin İkterik (sapsarı), kuru** | CRT: **3 sn** → İntrahepatik kolestaz + dehidrasyon 🔴",
-      "lymph": "Lenf nodları: Submandibular ve preskapular bilateral reaktif, büyümüş ve ağrılı. 🔴",
-      "palp": "Karın palpasyonu: Kranial batında (karaciğer) ve böbrek lojunda **şiddetli ağrı ve defans.** 🔴 Böbrekler palpasyonda hafif büyük ve sert — akut parankimal şişme ile uyumlu."
+      "temp": "Vücut sıcaklığı: **40.2°C** (Referans: 37.8–39.2°C)",
+      "resp": "Solunum sayısı: **42/dak** (Referans: 10–30/dak)",
+      "hr": "Kalp atım sayısı: **150/dak** (Referans: 60–140/dak)",
+      "mucosa": "Mukoza rengi: **Belirgin İkterik (sapsarı), kuru** | CRT: **3 sn**",
+      "lymph": "Lenf nodları: Submandibular ve preskapular bilateral reaktif, büyümüş ve ağrılı.",
+      "palp": "Karın palpasyonu: Kraniyal abdomende ve böbrek lojunda **şiddetli ağrı ve defans.** Böbrekler palpasyonda hafif büyük ve sert."
     },
     "tools": {
-      "otoscope": "Otoskopi: Kulak kanalı temiz, kulak zarı intakt. **Kulak kepçesi mukozasında belirgin ikter ve küçük peteşiyal kanama odakları.** 🔴",
-      "ophthalmo": "Oftalmoskopi: **Sklera şiddetli ikterik.** 🔴 Retinal muayenede **sekonder üveit ve küçük vasküler kanamalar** — sistemik vaskülit ve trombositopeni bulgusu. 🔴",
-      "pharyngo": "Faringoskopi: Oral mukoza sapsarı. **Dil ve yanak içlerinde akut üremiye sekonder fokal üremik ülserasyonlar.** 🔴",
-      "reflex": "Refleks muayenesi: Spinal refleksler normal, ancak şiddetli mental depresyon nedeniyle genel tepkiler yavaş. ⚠",
+      "otoscope": "Otoskopi: Kulak kanalı temiz, kulak zarı intakt. **Kulak kepçesi mukozasında belirgin sararma ve küçük peteşiyal kanama odakları.**",
+      "ophthalmo": "Oftalmoskopi: **Sklera şiddetli sarı.** Ön kamarada hücre/ışık huzmesi, **retinada küçük vasküler kanamalar.**",
+      "pharyngo": "Faringoskopi: Oral mukoza sapsarı. **Dil ve yanak içlerinde fokal ülserasyonlar**, ağızda amonyak benzeri koku.",
+      "reflex": "Refleks muayenesi: Spinal refleksler normal, genel tepkiler yavaş.",
       "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
-      "inspection": "İnspeksiyon: Yaygın ikter, letarji, ağrı davranışı, oligüri. Genel durum kritik. 🔴",
-      "auscultation": "Oskültasyon: **Akciğer:** Hafif takipne, temiz veziküler sesler. **Kalp:** Taşikardik, üfürüm yok. **Bağırsak:** Azalmış — üremik gastroparezi. ⚠"
+      "inspection": "İnspeksiyon: Yaygın sararma, letarji, ağrı davranışı. Genel durum kritik.",
+      "auscultation": "Oskültasyon: **Akciğer:** Hafif takipne, temiz veziküler sesler. **Kalp:** Taşikardik, üfürüm yok. **Bağırsak:** Azalmış."
     },
     "imaging": {
       "echo": {
@@ -1077,7 +1077,7 @@
       "urine": "İdrar muayenesi (Sistosentez): **Koyu portakal/kahverengi, bulanık.** SpGr: **1.012** — izostenüri, böbrek konsantrasyon yeteneği kaybolmuş. 🔴 pH: 6.0. Protein: **(+++)** — tübüler hasar. 🔴 **Glukoz: (++) — normoglisemik glukozüri** — tübüler reabsorpsiyon bozukluğu. 🔴 Keton: Negatif. **Sediment:** Bol granüler silendir (renal tübüler nekroz), lökositler ve bilirubin kristalleri. 🔴",
       "stool": "Dışkı muayenesi: Makroskobik olarak çok koyu ve cıvık (melena). Parazit yumurtası görülmedi. **Fekal gizli kan testi POZİTİF** — üremik ülserasyon kanaması. 🔴",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
-      "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Kesin tanı Leptospira PCR ve MAT (Mikroskobik Aglütinasyon Testi) ile konulmaktadır."
+      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endike değildir."
     },
     "questionAnswers": {
       "istah_1": "Evet, dünden beri iştahı tamamen kesildi, hiçbir şey yemiyor.",
@@ -1135,21 +1135,21 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **40.5°C** (Referans: 37.8–39.2°C) → Şiddetli ateş — protozoen enfeksiyona bağlı pirojen salınımı 🔴",
-      "resp": "Solunum sayısı: **38/dak** (Referans: 10–30/dak) → Takipne — anemiye bağlı doku hipoksisi 🔴",
-      "hr": "Kalp atım sayısı: **142/dak** (Referans: 60–120/dak) → Taşikardi ve bounding nabız — şiddetli anemiye bağlı kardiyak debi artışı 🔴",
-      "mucosa": "Mukoza rengi: **Solgun ve hafif ikterik** | CRT: **3 sn** → Anemi, hipoperfüzyon ve pre-hepatik hemolize bağlı ikterus 🔴",
-      "lymph": "Lenf nodları: Mandibular, preskapular ve popliteal bilateral hafif büyümüş ve hassas — sistemik enfeksiyona bağlı reaktif lenfadenomegali. ⚠",
-      "palp": "Karın palpasyonu: Sol kranyal kadranda **belirgin splenomegali** ve karaciğer bölgesinde hafif hassasiyet. 🔴 Yoğun ekstravasküler hemoliz nedeniyle dalakta reaktif hiperplazi."
+      "temp": "Vücut sıcaklığı: **40.5°C** (Referans: 37.8–39.2°C)",
+      "resp": "Solunum sayısı: **38/dak** (Referans: 10–30/dak)",
+      "hr": "Kalp atım sayısı: **142/dak** (Referans: 60–120/dak)",
+      "mucosa": "Mukoza rengi: **Solgun ve hafif sarı** | CRT: **3 sn**",
+      "lymph": "Lenf nodları: Mandibular, preskapular ve popliteal lenf nodları bilateral hafif büyümüş ve hassas.",
+      "palp": "Karın palpasyonu: Sol kraniyal kadranda **belirgin dalak büyümesi** ve karaciğer bölgesinde hafif hassasiyet."
     },
     "tools": {
-      "otoscope": "Otoskopi: Kulak kanalları açık. **Sol kulak kepçesinin iç kısmında kene ısırığına bağlı 'kene krateri' (tick crater)** saptandı. Timpanik membran intakt. 🔴",
-      "ophthalmo": "Oftalmoskopi: **Anemiye bağlı retinal solgunluk.** Hafif konjonktival ikterus mevcut. Üveit bulgusuna rastlanmadı. ⚠",
-      "pharyngo": "Faringoskopi: **Oral mukozalar belirgin derecede solgun, peteşiyal kanama odakları mevcut.** 🔴 Tonsiller normal.",
-      "reflex": "Refleks muayenesi: Patellar ve pedal refleksler normal. Merkezi sinir sistemi tutulumu yok. ✓",
+      "otoscope": "Otoskopi: Kulak kanalları açık. **Sol kulak kepçesinin iç kısmında kene tutunma izi (krater şeklinde lezyon)** saptandı. Timpanik membran intakt.",
+      "ophthalmo": "Oftalmoskopi: **Retinada solgunluk.** Konjonktivada hafif sararma mevcut.",
+      "pharyngo": "Faringoskopi: **Oral mukozalar belirgin derecede solgun, peteşiyal kanama odakları mevcut.** Tonsiller normal.",
+      "reflex": "Refleks muayenesi: Patellar ve pedal refleksler normal. Merkezi sinir sistemi tutulumu yok.",
       "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
-      "inspection": "İnspeksiyon: **Şiddetli solgunluk, hafif ikter, peteşiler, halsizlik.** 🔴 Sol kulak arkasında kene ısırık izi. Genel durum ağır.",
-      "auscultation": "Oskültasyon: **Kalp:** Taşikardik, bounding kalite, **anemik sistolik üfürüm (Grade II/VI).** 🔴 **Akciğer:** Temiz veziküler. **Bağırsak:** Normal."
+      "inspection": "İnspeksiyon: **Şiddetli solgunluk, hafif sararma, peteşiler, halsizlik.** Sol kulak arkasında kene ısırık izi. Genel durum ağır.",
+      "auscultation": "Oskültasyon: **Kalp:** Taşikardik, bounding kalite, **anemik sistolik üfürüm (Grade II/VI).** **Akciğer:** Temiz veziküler. **Bağırsak:** Normal."
     },
     "imaging": {
       "echo": {
@@ -1435,7 +1435,7 @@
     },
     "microscopy": {
       "blood": {
-        "text": "Kan Yayması (Giemsa): Eritrositlerin içinde tekli veya karakteristik **armut biçiminde ikili (piroplasm) yerleşim gösteren büyük Babesia formları** saptandı. 🔴 Yoğun sferositler ve **oto-aglütinasyon pozitif.** Trombositler her sahada 1-2 adet — kritik trombositopeni. 🔴",
+        "text": "Kan Yayması (Giemsa): Eritrositlerin içinde tekli veya **armut biçiminde ikili (piroplazm) yerleşim gösteren büyük intraeritrositik formlar** saptandı. 🔴 Yoğun sferositler ve **oto-aglütinasyon pozitif.** Trombositler her sahada 1-2 adet — kritik trombositopeni. 🔴",
         "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
       },
       "urine": "İdrar muayenesi: **Koyu kırmızı/kahverengi (çay rengi).** Berrak — santrifüj sonrası renk değişmedi, **hemoglobinüri doğrulandı** (hematüri ekarte). SpGr: 1.028. pH: 6.5. Protein: (+) — hemoglobinüriye bağlı yalancı proteinüri. Glukoz: Negatif. Keton: Negatif. Sediment: Eritrosit görülmedi, birkaç bilirubin kristali izlendi. 🔴",
@@ -1494,21 +1494,21 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **39.4°C** (Referans: 37.8–39.2°C) → Hafif subfebril — kronik granülomatöz enfeksiyona bağlı intermitent ateş ⚠",
-      "resp": "Solunum sayısı: **24/dak** (Referans: 10–30/dak) → Normal ✓",
-      "hr": "Kalp atım sayısı: **105/dak** (Referans: 60–120/dak) → Normal ✓",
-      "mucosa": "Mukoza rengi: **Solgun pembe** | CRT: **2 sn** → Kronik hastalık anemisi ⚠",
-      "lymph": "Lenf nodları: Mandibular, preskapular ve popliteal bilateral belirgin büyümüş, ağrısız ve sert. 🔴 Generalize lenfadenomegali.",
-      "palp": "Karın palpasyonu: **Orta derece splenomegali ve hepatomegali.** 🔴 **Temporal ve masseter kaslarında belirgin simetrik atrofi.** 🔴 Sol carpus ekleminde hafif efüzyon ve krepitasyon. ⚠"
+      "temp": "Vücut sıcaklığı: **39.4°C** (Referans: 37.8–39.2°C)",
+      "resp": "Solunum sayısı: **24/dak** (Referans: 10–30/dak)",
+      "hr": "Kalp atım sayısı: **105/dak** (Referans: 60–120/dak)",
+      "mucosa": "Mukoza rengi: **Solgun pembe** | CRT: **2 sn**",
+      "lymph": "Lenf nodları: Mandibular, preskapular ve popliteal bilateral belirgin büyümüş, ağrısız ve sert. Generalize lenfadenomegali.",
+      "palp": "Karın palpasyonu: **Orta derece splenomegali ve hepatomegali.** **Temporal ve masseter kaslarında belirgin simetrik atrofi.** Sol carpus ekleminde hafif efüzyon ve krepitasyon."
     },
     "tools": {
-      "otoscope": "Otoskopi: **Kulak kepçesi kenarlarında karakteristik kuru, simetrik, skuamöz döküntüler ve ülseröz yaralar.** 🔴 Kulak kanalları temiz, timpanik membran intakt.",
-      "ophthalmo": "Oftalmoskopi: **Bilateral anterior üveit, konjonktivit ve korneal ödem (puslu görünüm).** 🔴 Retinada hafif vaskülit ve immün kompleks birikimi.",
-      "pharyngo": "Faringoskopi: Oral mukozada ülser yok. Tonsiller hafif reaktif. ✓",
-      "reflex": "Refleks muayenesi: Proprioseptif ve spinal refleksler normal — topallık nörolojik değil, poliartrite bağlı. ✓",
-      "woodslamp": "Wood's Lambası: Floresan parlama negatif — dermatofit dışlandı. ✓",
-      "inspection": "İnspeksiyon: **Perioküler ve auriküler bölgede simetrik alopesi + skuamöz döküntüler.** 🔴 **Onişogrifoz (kaşıntısız tırnak uzaması + kıvrılması).** 🔴 Temporal kas atrofisi belirgin.",
-      "auscultation": "Oskültasyon: Kalp ve akciğer sesleri normal. Eklem krepitasyonu sol carpus bölgesinde hissedilmekte. ✓"
+      "otoscope": "Otoskopi: **Kulak kepçesi kenarlarında kuru, simetrik, skuamöz döküntüler ve ülseröz yaralar.** Kulak kanalları temiz, timpanik membran intakt.",
+      "ophthalmo": "Oftalmoskopi: **Bilateral ön kamarada hücre/ışık huzmesi, konjonktivit ve korneal ödem (puslu görünüm).** Retinal damarlarda hafif kılıflanma.",
+      "pharyngo": "Faringoskopi: Oral mukozada ülser yok. Tonsiller hafif reaktif.",
+      "reflex": "Refleks muayenesi: Proprioseptif ve spinal refleksler normal.",
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
+      "inspection": "İnspeksiyon: **Perioküler ve auriküler bölgede simetrik alopesi + skuamöz döküntüler.** **Onişogrifoz (kaşıntısız tırnak uzaması + kıvrılması).** Temporal kas atrofisi belirgin.",
+      "auscultation": "Oskültasyon: Kalp ve akciğer sesleri normal. Eklem krepitasyonu sol carpus bölgesinde hissedilmekte."
     },
     "imaging": {
       "echo": {
@@ -1799,7 +1799,7 @@
       },
       "urine": "İdrar muayenesi: Açık sarı, hafif bulanık. SpGr: **1.014** — glomerülonefrite bağlı konsantrasyon yeteneğinde azalma. ⚠ pH: 6.8. Protein: **(+++)** — glomerüler hasara bağlı masif proteinüri, UPC >2.0. 🔴 Glukoz: Negatif. Keton: Negatif. Sediment: Birkaç hiyalin ve granüler silendir — aktif olmayan renal proteinüri tablosu.",
       "stool": "Dışkı muayenesi: Parazit yumurtası veya protozoon saptanmadı. Normal flora elemanları izlendi. ✓",
-      "skin": "Deri kazıntısı: Derin kazıntıda Demodex veya Sarcoptes akarı görülmedi. Skuamöz değişiklikler kaşıntısız ve simetrik — dermatofitozdan farklı klinik patern. Tırnaklarda onişogrifoz bulgusu belirgin. 🔴",
+      "skin": "Deri kazıntısı: Derin kazıntıda Demodex veya Sarcoptes akarı görülmedi. Skuamöz değişiklikler kaşıntısız ve simetrik. Tırnaklarda onişogrifoz bulgusu belirgin. 🔴",
       "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Kesin tanı lenf nodu veya kemik iliği aspirasyonunda Leishman-Donovan cisimciklerinin görülmesiyle ve/veya seroloji ile konulmaktadır."
     },
     "questionAnswers": {
@@ -1856,21 +1856,21 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **40.8°C** (Referans: 37.8–39.2°C) → Şiddetli ateş — akut viremi aşamasında bifazik ateş 🔴",
-      "resp": "Solunum sayısı: **42/dak** (Referans: 10–30/dak) → Takipne — ateş, karın ağrısı ve pulmoner vasküler hasara sekonder 🔴",
-      "hr": "Kalp atım sayısı: **150/dak** (Referans: 60–120/dak) → Taşikardi — dehidrasyon, septisemi ve ağrı 🔴",
-      "mucosa": "Mukoza rengi: **Solgun ve belirgin ikterik, peteşi + ekimozlar yaygın** | CRT: **3.5 sn** → Akut karaciğer nekrozu + tüketim koagülopatisi (DIC) 🔴",
-      "lymph": "Lenf nodları: Mandibular ve preskapular bilateral büyümüş, ödemli, hafif hassas — viral lenfoid tutulum. 🔴",
-      "palp": "Karın palpasyonu: Sağ kranyal kadranda **şiddetli defans ve belirgin hepatomegali.** 🔴 **Asit** — abdomen flüktüasyon veriyor."
+      "temp": "Vücut sıcaklığı: **40.8°C** (Referans: 37.8–39.2°C)",
+      "resp": "Solunum sayısı: **42/dak** (Referans: 10–30/dak)",
+      "hr": "Kalp atım sayısı: **150/dak** (Referans: 60–120/dak)",
+      "mucosa": "Mukoza rengi: **Solgun ve belirgin sarı, yaygın peteşi ve ekimozlar** | CRT: **3.5 sn**",
+      "lymph": "Lenf nodları: Mandibular ve preskapular lenf nodları bilateral büyümüş, ödemli, hafif hassas.",
+      "palp": "Karın palpasyonu: Sağ kraniyal kadranda **şiddetli defans ve belirgin karaciğer büyümesi.** **Abdomende fluktuasyon** alınıyor."
     },
     "tools": {
-      "otoscope": "Otoskopi: Kulak kanalları açık, timpanik membran intakt. **Kulak kepçesinin iç derisinde peteşiyal kanamalar.** 🔴",
-      "ophthalmo": "Oftalmoskopi: **Bilateral yaygın korneal ödem — 'Hepatitis Blue Eye' / Mavi Göz bulgusu** (CAV-1'e karşı tip-III immün kompleks reaksiyonu). 🔴 Anterior kamarada hafif hipopyon ve üveit.",
-      "pharyngo": "Faringoskopi: **Tonsiller bilateral şiddetli derecede büyümüş, konjestiyonlu ve peteşili.** 🔴 Akut tonsillitis — CAV-1 için ayırt edici triadın parçası.",
-      "reflex": "Refleks muayenesi: Spinal refleksler zayıf — karaciğer yetmezliğine sekonder erken hepatik ensefalopati. **Mental küntlük (stupor) hali hakim.** ⚠",
+      "otoscope": "Otoskopi: Kulak kanalları açık, timpanik membran intakt. **Kulak kepçesinin iç derisinde peteşiyal kanamalar.**",
+      "ophthalmo": "Oftalmoskopi: **Bilateral yaygın korneal ödem — her iki korneada mavimsi bulanıklık.** Ön kamarada hafif hipopiyon ve hücre/ışık huzmesi.",
+      "pharyngo": "Faringoskopi: **Tonsiller bilateral şiddetli derecede büyümüş, konjestiyonlu ve peteşili.**",
+      "reflex": "Refleks muayenesi: Spinal refleksler zayıf. **Mental küntlük (stupor) hali hakim.**",
       "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
-      "inspection": "İnspeksiyon: **Bilateral mavi göz, mukozal peteşi/ekimoz, karın şişliği, stupor.** 🔴 Genel durum kritik.",
-      "auscultation": "Oskültasyon: **Kalp:** Taşikardik. **Akciğer:** Takipneik, bronkovesiküler sesler artmış. **Karın:** Sıvı dalgalanma sesi (asit). 🔴"
+      "inspection": "İnspeksiyon: **Her iki korneada mavimsi bulanıklık, mukozalarda peteşi/ekimoz, karın şişliği, stupor.** Genel durum kritik.",
+      "auscultation": "Oskültasyon: **Kalp:** Taşikardik. **Akciğer:** Takipneik, bronkovesiküler sesler artmış. **Karın:** Sıvı dalgalanma sesi (asit)."
     },
     "imaging": {
       "echo": {
@@ -2162,7 +2162,7 @@
       "urine": "İdrar muayenesi: Koyu sarı/kahverengi, hafif bulanık. SpGr: 1.035 — dehidrasyon. pH: 6.0. Protein: (++) — immün kompleks glomerülonefriti veya ateşsel proteinüri. Glukoz: Negatif. Keton: Negatif. **Sediment:** Yaygın bilirubin kristalleri, yoğun renal epitel hücre dökülmesi ve birkaç granüler silendir. 🔴",
       "stool": "Dışkı muayenesi: **Kanlı ve mukoid.** Mikroskobik incelemede eritrosit ve lökosit artışı (hemorajik enterit). Paraziter etken saptanmadı. 🔴",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
-      "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Kesin tanı asit sıvısı veya doku PCR ile CAV-1 DNA'sının saptanmasıyla konulmaktadır."
+      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endike değildir."
     },
     "questionAnswers": {
       "enerji_1": "Evet, dün sabahtan beri birden çöktü; kalkmaya hiç mecali yok, gözleri kapanıyor ve yüksek ateşi var.",
@@ -2217,21 +2217,21 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **38.3°C** (Referans: 38.0–39.2°C) → Normotermik — IBD non-enfeksiyöz kronik yangısal bir süreçtir ✓",
-      "resp": "Solunum sayısı: **24/dak** (Referans: 20–30/dak) → Normal ✓",
-      "hr": "Kalp atım sayısı: **180/dak** (Referans: 140–220/dak) → Normal (klinik strese bağlı hafif üst sınıra yakın) ✓",
-      "mucosa": "Mukoza rengi: **Pembe** | CRT: **1.5 sn** → Hafif dehidrasyona rağmen perfüzyon normal; anemi sınırda olduğundan mukoza solukluğu belirgin değil ✓",
-      "lymph": "Lenf nodları: Mandibular, preskapular ve popliteal lenf nodları normal büyüklükte ve ağrısız. **Abdominal lenf nodları palpasyonda reaktif.** ⚠",
-      "palp": "Karın palpasyonu: **Bağırsak looplarında kalınlaşma ve kaba yapı** hissedilmektedir. 🔴 Yaygın intestinal hassasiyet ve orta derece abdominal ağrı. BCS: **3/9 (Zayıf)**, kas kondisyon skoru düşük — belirgin kas atrofisi ve omurga çıkıntısı. Hafif kifotik duruş (abdominal rahatsızlık kaynaklı)."
+      "temp": "Vücut sıcaklığı: **38.3°C** (Referans: 38.0–39.2°C)",
+      "resp": "Solunum sayısı: **24/dak** (Referans: 20–30/dak)",
+      "hr": "Kalp atım sayısı: **180/dak** (Referans: 140–220/dak)",
+      "mucosa": "Mukoza rengi: **Pembe** | CRT: **1.5 sn**",
+      "lymph": "Lenf nodları: Mandibular, preskapular ve popliteal lenf nodları normal büyüklükte ve ağrısız. **Abdominal lenf nodları palpasyonda reaktif.**",
+      "palp": "Karın palpasyonu: **Bağırsak anslarında kalınlaşma ve kaba yapı** hissediliyor. Yaygın intestinal hassasiyet ve orta derece abdominal ağrı. BCS: **3/9 (Zayıf)**, belirgin kas atrofisi ve omurga çıkıntısı. Hafif kifotik duruş."
     },
     "tools": {
-      "otoscope": "Otoskopi: Kulak kanalı bilateral temiz, timpanik membran intakt. Akıntı veya eksüda yok. ✓",
-      "ophthalmo": "Oftalmoskopi: Göz içi yapılar normal, retina ve optik disk fizyolojik görünümde. Sistemik enfeksiyon veya hipertansiyon bulgusu yok. ✓",
-      "pharyngo": "Faringoskopi: Oral kavite mukozası pembe ve nemli. Farinks ve tonsiller doğal büyüklükte. Ülserasyon veya yangısal üretime rastlanmadı. ✓",
-      "reflex": "Refleks muayenesi: Patellar refleks ve ön ekstremite refleksleri bilateral normoreflektif. Nörolojik defisit yok. ✓",
+      "otoscope": "Otoskopi: Kulak kanalı bilateral temiz, timpanik membran intakt. Akıntı veya eksüda yok.",
+      "ophthalmo": "Oftalmoskopi: Göz içi yapılar normal, retina ve optik disk fizyolojik görünümde.",
+      "pharyngo": "Faringoskopi: Oral kavite mukozası pembe ve nemli. Farinks ve tonsiller doğal büyüklükte. Ülserasyon veya yangısal üretime rastlanmadı.",
+      "reflex": "Refleks muayenesi: Patellar refleks ve ön ekstremite refleksleri bilateral normoreflektif. Nörolojik defisit yok.",
       "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
-      "inspection": "İnspeksiyon: Letarjik ve depresif genel görünüm. **Kronik malabsorbsiyona bağlı belirgin kas atrofisi** — omurga ve ileum kanatları görünür durumda. 🔴 Tüyler mat, kuru ve keçeleşmiş (grooming azalması). **Hafif tuck-up abdomen ve kifotik duruş** mevcut. BCS: 3/9.",
-      "auscultation": "Oskültasyon: **Kalp sesleri:** Ritmik, üfürüm veya ritim bozukluğu yok. ✓ **Akciğer:** Patolojik solunum sesi yok. ✓ **Abdomen:** İntestinal hipermotiliteye bağlı **borborismus (bağırsak sesleri artışı)** izlendi. 🔴"
+      "inspection": "İnspeksiyon: Letarjik ve depresif genel görünüm. **Belirgin kas atrofisi** — omurga ve ilium kanatları görünür durumda. Tüyler mat, kuru ve keçeleşmiş. **Hafif tuck-up abdomen ve kifotik duruş** mevcut. BCS: 3/9.",
+      "auscultation": "Oskültasyon: **Kalp sesleri:** Ritmik, üfürüm veya ritim bozukluğu yok. **Akciğer:** Patolojik solunum sesi yok. **Abdomen:** **Bağırsak seslerinde artış (borborygmus)** izlendi."
     },
     "imaging": {
       "echo": {
@@ -2240,7 +2240,7 @@
         "imgUrl": null
       },
       "usg": {
-        "result": "Abdominal USG: Duodenum ve jejunum segmentlerinde **diffüz musküler tabaka kalınlaşması** saptandı. Total bağırsak duvar kalınlığı artmış (>2.5mm). 🔴 **Mezenterik lenf nodları büyümüş ve hipoekoik** (lenfadenomegali). ⚠ Bağırsak katman mimarisi korunmuş — lenfoma yerine öncelikle IBD lehinedir. Görsel sonradan eklenecektir.",
+        "result": "Abdominal USG: Duodenum ve jejunum segmentlerinde **diffüz musküler tabaka kalınlaşması** saptandı. Total bağırsak duvar kalınlığı artmış (>2.5mm). 🔴 **Mezenterik lenf nodları büyümüş ve hipoekoik** (lenfadenomegali). ⚠ Bağırsak katman mimarisi korunmuş. Görsel sonradan eklenecektir.",
         "hasImage": true,
         "imgUrl": null
       },
@@ -2522,13 +2522,13 @@
     },
     "microscopy": {
       "blood": {
-        "text": "Kan yayması: Eritrositler normositik normokromik. Rejenerasyon bulgusu (polikromazi, retikülosit) izlenmedi — **non-rejeneratif anemi.** Lökosit formülünde nötrofili ağırlıklı, atipik veya blast hücre yok (lenfoma ekarte destekleyici). Parazit saptanmadı. Trombositler kümeleşme eğiliminde, sayıca normal.",
+        "text": "Kan yayması: Eritrositler normositik normokromik. Rejenerasyon bulgusu (polikromazi, retikülosit) izlenmedi — **non-rejeneratif anemi.** Lökosit formülünde nötrofili ağırlıklı, atipik veya blast hücre yok. Parazit saptanmadı. Trombositler kümeleşme eğiliminde, sayıca normal.",
         "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
       },
       "urine": "İdrar muayenesi: Açık sarı, berrak. SpGr: 1.040 — idrar konsantrasyonu korunmuş. pH: 6.5. Protein: Negatif. Glukoz: Negatif. Keton: Negatif. Sediment: Her sahada 1-2 eritrosit, kristal veya silindir görülmedi — inaktif.",
       "stool": "Dışkı muayenesi: **Makroskobik:** Cıvık-püre kıvamında, açık kahverengi-sarımtırak, yoğun mukus içerikli, keskin kokusu olan dışkı. 🔴 **Parazitolojik:** Nematod, sestod, Giardia kisti, Tritrichomonas, Cryptosporidium saptanmadı. **Sitolojik yayma:** Yoğun nötrofil ve yer yer lenfosit infiltrasyonu — mukozal yangı bulgusu. 🔴 **Sindirim muayenesi:** Sindirilmemiş kas lifleri (proteoliz bozukluğu) ve **nötral yağ damlacıkları (steatorre — malabsorbsiyon kanıtı)** izlendi. 🔴",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
-      "biopsy": "Biyopsi raporu: Kesin tanı için **endoskopik ince bağırsak biyopsisi** altın standarttır. Histopatoloji: Lenfosit ve plazma hücresi ağırlıklı lamina propria infiltrasyonu — lenfositik-plazmasitik form ile uyumlu. Lenfoma ekarte edilmesi için PARR (klon analizi) gerekebilir."
+      "biopsy": "Biyopsi raporu: Kesin tanı için **endoskopik ince bağırsak biyopsisi** altın standarttır. Histopatoloji: Lenfosit ve plazma hücresi ağırlıklı lamina propria infiltrasyonu. Ayırıcı tanı için PARR (klon analizi) gerekebilir."
     },
     "questionAnswers": {
       "kusma_1": "Evet, 3-4 aydır haftada 1-2 kez kusuyor ve tüy macununa rağmen hiç geçmedi.",
@@ -2586,21 +2586,21 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **40.3°C** (Referans: 38.1–39.2°C) → Hipertermi — FPV enfeksiyonunun akut döneminde karakteristik yüksek ateş (terminal dönemde hipotermiye dönebilir) 🔴",
-      "resp": "Solunum sayısı: **38/dak** (Referans: 20–40/dak) → Normal-hafif takipneik — ateş ve ağrıya sekonder ⚠",
-      "hr": "Kalp atım sayısı: **230/dak** (Referans: 140–220/dak) → Taşikardi — şiddetli dehidrasyon, hipovolemi ve ateş 🔴",
-      "mucosa": "Mukoza rengi: **Solgun pembe, kuru/yapışkan** | CRT: **3.5 sn** → >%10 şiddetli dehidrasyon, hipovolemik şok başlangıcı 🔴",
-      "lymph": "Lenf nodları: Mandibular ve preskapular normal boyutta. **Mezenterik lenf nodları abdominal palpasyonda belirgin büyümüş ve ağrılı.** 🔴",
-      "palp": "Karın palpasyonu: **Yaygın şiddetli abdominal ağrı ve defans.** 🔴 Bağırsak lopları gaz ve sıvı ile dolu, **kalınlaşmış ve kordon gibi hissediliyor.** Deri turgoru belirgin azalmış. **Su kabının üzerinde başı öne eğik karakteristik bekleyiş pozisyonu** ve sternal rekumbens."
+      "temp": "Vücut sıcaklığı: **40.3°C** (Referans: 38.1–39.2°C)",
+      "resp": "Solunum sayısı: **38/dak** (Referans: 20–40/dak)",
+      "hr": "Kalp atım sayısı: **230/dak** (Referans: 140–220/dak)",
+      "mucosa": "Mukoza rengi: **Solgun pembe, kuru/yapışkan** | CRT: **3.5 sn**",
+      "lymph": "Lenf nodları: Mandibular ve preskapular normal boyutta. **Mezenterik lenf nodları abdominal palpasyonda belirgin büyümüş ve ağrılı.**",
+      "palp": "Karın palpasyonu: **Yaygın şiddetli abdominal ağrı ve defans.** Bağırsak ansları gaz ve sıvı ile dolu, **kalınlaşmış ve kordon gibi hissediliyor.** Deri turgoru belirgin azalmış. **Su kabının üzerinde başı öne eğik bekleyiş pozisyonu** ve sternal rekumbens."
     },
     "tools": {
-      "otoscope": "Otoskopi: Kulak kanalı ve kulak zarı bilateral doğal, patoloji saptanmadı. ✓",
-      "ophthalmo": "Oftalmoskopi: Göz içi ve retina bulguları normal. Konjonktivalar **dehidrasyona bağlı kuru ve hafif enjekte.** ⚠ Göz kürelerinde **enoftalmi** (çökme) — şiddetli dehidrasyon bulgusu. 🔴",
-      "pharyngo": "Faringoskopi: Oral kavite kuru, tükürük kıvamlı ve ipliksi. Farinkste hafif hiperemi, ülserasyon saptanmadı. ⚠",
-      "reflex": "Refleks muayenesi: Spinal refleksler (patellar vb.) korunmuş ancak genel düşkünlük nedeniyle zayıf motor yanıt. ⚠",
+      "otoscope": "Otoskopi: Kulak kanalı ve kulak zarı bilateral doğal, patoloji saptanmadı.",
+      "ophthalmo": "Oftalmoskopi: Göz içi ve retina bulguları normal. Konjonktivalar **kuru ve hafif enjekte.** Göz kürelerinde **enoftalmi** (çökme).",
+      "pharyngo": "Faringoskopi: Oral kavite kuru, tükürük kıvamlı ve ipliksi. Farinkste hafif hiperemi, ülserasyon saptanmadı.",
+      "reflex": "Refleks muayenesi: Spinal refleksler (patellar vb.) korunmuş, motor yanıt zayıf.",
       "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
-      "inspection": "İnspeksiyon: **Şiddetli depresyon, sternal rekumbens, su kabında karakteristik baş-öne eğik bekleyiş pozisyonu.** 🔴 **Enoftalmi** (göz küresi çökmesi) ve mat tüy yapısı. Abdominal ağrıya bağlı kambur duruş.",
-      "auscultation": "Oskültasyon: **Kalp:** Taşikardik, üfürüm yok. **Akciğer:** Dehidrasyona sekonder zayıf solunum sesleri. **Bağırsak:** Başlangıçta hipermotilite, ilerleyen saatlerde hipomotilite/ileus bulguları. 🔴"
+      "inspection": "İnspeksiyon: **Şiddetli depresyon, sternal rekumbens, su kabının başında başı öne eğik bekleyiş pozisyonu.** **Enoftalmi** (göz küresi çökmesi) ve mat tüy yapısı. Kambur duruş.",
+      "auscultation": "Oskültasyon: **Kalp:** Taşikardik, üfürüm yok. **Akciğer:** Zayıf solunum sesleri. **Bağırsak:** Başlangıçta hipermotilite, ilerleyen saatlerde hipomotilite."
     },
     "imaging": {
       "echo": {
@@ -2895,9 +2895,9 @@
         "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
       },
       "urine": "İdrar muayenesi: Koyu sarı, berrak. SpGr: **1.055** — prerenal azotemi, böbrekler maksimum konsantrasyon çabasında. 🔴 pH: 6.0. Protein: (+) — dehidrasyon ve ateşe bağlı geçici. Glukoz: Negatif. Keton: Negatif. Sediment: Tek tük epitel hücresi, kristal veya silindir yok.",
-      "stool": "Dışkı muayenesi: Natif muayenede **bol miktarda eritrosit**, deskuame bağırsak epitel hücreleri ve yoğun mikrobiyal flora. 🔴 Parazit oositine rastlanmadı. **FPV Ag hızlı test: POZİTİF** — kesin tanı doğrulandı. 🔴",
+      "stool": "Dışkı muayenesi: Natif muayenede **bol miktarda eritrosit**, deskuame bağırsak epitel hücreleri ve yoğun mikrobiyal flora. 🔴 Parazit oositine rastlanmadı.",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
-      "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Kesin tanı FPV Ag hızlı testi ve RT-PCR ile konulmaktadır."
+      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endike değildir."
     },
     "questionAnswers": {
       "istah_1": "Evet, 2 gün önce mama yemeyi tamamen kesti, hiçbir şey yemiyor.",
@@ -2954,21 +2954,21 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **39.9°C** (Referans: 38.1–39.2°C) → Antibiyotik tedavisine yanıt vermeyen inatçı, dalgalı hipertermi 🔴",
-      "resp": "Solunum sayısı: **28/dak** (Referans: 20–40/dak) → Normal — plevral efüzyon olmadığı için dispne yok ✓",
-      "hr": "Kalp atım sayısı: **190/dak** (Referans: 140–220/dak) → Normal sınırda, ateşe bağlı fizyolojik taşikardi ⚠",
-      "mucosa": "Mukoza rengi: **Solgun pembe, hafif ikterik** | CRT: **2 sn** → Kronik non-rejeneratif anemi + pyogranülomatöz hepatit komplikasyonu başlangıcı 🔴",
-      "lymph": "Lenf nodları: Popliteal ve preskapular normal. **Mezenterik lenf nodları abdominal palpasyonda nodüler tarzda büyümüş, sert ve hafif hassas.** 🔴",
-      "palp": "Karın palpasyonu: Pyogranülomlara bağlı **organlar üzerinde düzensizlik ve engebeli yapı.** 🔴 **Bilateral böbrekler büyümüş, yüzeyleri pürüzlü ve lobüllü.** 🔴 Serbest sıvı yok. Spinal hat boyunca şiddetli kas atrofisi."
+      "temp": "Vücut sıcaklığı: **39.9°C** (Referans: 38.1–39.2°C)",
+      "resp": "Solunum sayısı: **28/dak** (Referans: 20–40/dak)",
+      "hr": "Kalp atım sayısı: **190/dak** (Referans: 140–220/dak)",
+      "mucosa": "Mukoza rengi: **Solgun pembe, hafif sarı** | CRT: **2 sn**",
+      "lymph": "Lenf nodları: Popliteal ve preskapular normal. **Mezenterik lenf nodları abdominal palpasyonda nodüler tarzda büyümüş, sert ve hafif hassas.**",
+      "palp": "Karın palpasyonu: **Organlar üzerinde düzensizlik ve engebeli yapı.** **Bilateral böbrekler büyümüş, yüzeyleri pürüzlü ve lobüllü.** Serbest sıvı yok. Spinal hat boyunca şiddetli kas atrofisi."
     },
     "tools": {
-      "otoscope": "Otoskopi: Kulak kanalları temiz, kulak zarları bilateral intakt. ✓",
-      "ophthalmo": "Oftalmoskopi: Sağ gözde **anterior üveit** — ön kamarada keratik presipitatlar, aköz flare, iris hiperemi ve **retinal perivasküler manşetlenme (retinal vaskülit).** 🔴",
-      "pharyngo": "Faringoskopi: Oral mukozalar hafif solgun. Tonsiller doğal. Farinkste ülser veya kitle odağı saptanmadı. ✓",
-      "reflex": "Refleks muayenesi: Arka bacaklarda patellar ve tibial refleksler **hiperreflektif** — Üst Motor Nöron lezyonu, FIP'in MSS tutulumu ile uyumlu. 🔴 **Proprioseptif defisit ve ataksi** mevcut.",
+      "otoscope": "Otoskopi: Kulak kanalları temiz, kulak zarları bilateral intakt.",
+      "ophthalmo": "Oftalmoskopi: Sağ gözde ön kamarada keratik presipitatlar, aköz flare, iris hiperemisi ve **retinal damarlar etrafında kılıflanma.**",
+      "pharyngo": "Faringoskopi: Oral mukozalar hafif solgun. Tonsiller doğal. Farinkste ülser veya kitle odağı saptanmadı.",
+      "reflex": "Refleks muayenesi: Arka bacaklarda patellar ve tibial refleksler **hiperreflektif.** **Proprioseptif defisit ve ataksi** mevcut.",
       "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
-      "inspection": "İnspeksiyon: **Mental depresyon, letarji, ataksi ve arka bacaklarda paraparezi.** 🔴 Kas atrofisi belirgin. Sağ göz kısık ve ışığa duyarlı (fotofob).",
-      "auscultation": "Oskültasyon: **Kalp ve akciğer sesleri fizyolojik.** Plevral efüzyon düşündürecek ses boğuklaşması yok — kuru form ile uyumlu. ✓"
+      "inspection": "İnspeksiyon: **Mental depresyon, letarji, ataksi ve arka bacaklarda paraparezi.** Kas atrofisi belirgin. Sağ göz kısık ve ışığa duyarlı (fotofob).",
+      "auscultation": "Oskültasyon: **Kalp ve akciğer sesleri fizyolojik.** Ses boğuklaşması yok."
     },
     "imaging": {
       "echo": {
@@ -2977,7 +2977,7 @@
         "imgUrl": null
       },
       "usg": {
-        "result": "Abdominal USG: Karaciğer parankiminde heterojenite ve büyüme. **Bilateral böbrek korteksinde kalınlaşma ve FIP için karakteristik hipoekoik subkapsüler halka/hat görünümü.** 🔴 Mezenterik lenf nodlarında belirgin büyüme. Serbest sıvı yok. Görsel sonradan eklenecektir.",
+        "result": "Abdominal USG: Karaciğer parankiminde heterojenite ve büyüme. **Bilateral böbrek korteksinde kalınlaşma ve hipoekoik subkapsüler halka/hat görünümü.** 🔴 Mezenterik lenf nodlarında belirgin büyüme. Serbest sıvı yok. Görsel sonradan eklenecektir.",
         "hasImage": true,
         "imgUrl": null
       },
@@ -3265,7 +3265,7 @@
       "urine": "İdrar muayenesi: Koyu sarı-kehribar, berrak. SpGr: 1.038. pH: 6.5. Protein: Eser (+). Glukoz: Negatif. Keton: Negatif. Sediment: Nadir hiyalin silindir ve birkaç transizyonel epitel hücresi — inaktif.",
       "stool": "Dışkı muayenesi: Flotasyon ve natif muayenede helmint yumurtası veya protozoon saptanmadı. (Feline Enteric Coronavirus dışkı PCR yapılabilir ancak kuru form için patognomonik değildir). ✓",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
-      "biopsy": "Biyopsi raporu: Kesin tanı için organdaki pyogranülom dokusunun histopatolojisi ve immunohistokimyası (FCoV antijen) altın standarttır. Serum protein elektroforezi: **Gamma-globulin fraksiyonunda poliklonal artış (gama-pati)** — kuru form FIP'i yüksek oranda doğrular. 🔴"
+      "biopsy": "Biyopsi raporu: Kesin tanı için organdaki pyogranülom dokusunun histopatolojisi ve immunohistokimyası altın standarttır. Serum protein elektroforezi: **Gamma-globulin fraksiyonunda poliklonal artış (gamopati).** 🔴"
     },
     "questionAnswers": {
       "istah_1": "Evet, sadece biraz atıştırıyor, mamasını eskisi gibi iştahla yemiyor.",
@@ -3320,21 +3320,21 @@
       }
     ],
     "physical": {
-      "temp": "Vücut sıcaklığı: **39.8°C** (Referans: 38.1–39.2°C) → Hipertermi — viral replikasyon ve sekonder bakteriyel enfeksiyona bağlı akut yangısal yanıt 🔴",
-      "resp": "Solunum sayısı: **38/dak** (Referans: 20–40/dak) → Hafif takipne — üst solunum yolu tıkanıklığına bağlı stertor ⚠",
-      "hr": "Kalp atım sayısı: **190/dak** (Referans: 140–220/dak) → Normal-hafif taşikardi — ateş ve dehidrasyon ⚠",
-      "mucosa": "Mukoza rengi: **Hafif solgun ve kuru pembe** | CRT: **2.5 sn** → %6-8 dehidrasyon ⚠",
-      "lymph": "Lenf nodları: Mandibular lenf nodları bilateral reaktif, büyümüş ve hafif hassas. 🔴 Diğer periferik lenf nodları normal.",
-      "palp": "Karın palpasyonu: Organomegali saptanmadı, normal. **Trakeal palpasyonda hafif hassasiyet** mevcut. ⚠ Deri turgoru hafif azalmış."
+      "temp": "Vücut sıcaklığı: **39.8°C** (Referans: 38.1–39.2°C)",
+      "resp": "Solunum sayısı: **38/dak** (Referans: 20–40/dak)",
+      "hr": "Kalp atım sayısı: **190/dak** (Referans: 140–220/dak)",
+      "mucosa": "Mukoza rengi: **Hafif solgun ve kuru pembe** | CRT: **2.5 sn**",
+      "lymph": "Lenf nodları: Mandibular lenf nodları bilateral reaktif, büyümüş ve hafif hassas. Diğer periferik lenf nodları normal.",
+      "palp": "Karın palpasyonu: Organomegali saptanmadı, normal. **Trakeal palpasyonda hafif hassasiyet** mevcut. Deri turgoru hafif azalmış."
     },
     "tools": {
-      "otoscope": "Otoskopi: Kulak kanalları açık ve temiz, timpanik zar intakt. Kulak kepçesinde patoloji yok. ✓",
-      "ophthalmo": "Oftalmoskopi: **Bilateral şiddetli konjonktivit, kemozis (konjonktiva ödemi) ve purulent oküler akıntı.** 🔴 Korneada FHV-1 ile uyumlu **hafif dendritik ülser odakları** izlendi. 🔴",
-      "pharyngo": "Faringoskopi: Dil yüzeyinde ve sert damakta **FCV ile uyumlu ağrılı ülseratif stomatit/glossit odakları.** 🔴 Yumuşak damak ve farinks konjestif ve hiperemik.",
-      "reflex": "Refleks muayenesi: Patellar ve fleksör refleksler normal. Nörolojik defisit yok. ✓",
+      "otoscope": "Otoskopi: Kulak kanalları açık ve temiz, timpanik zar intakt. Kulak kepçesinde patoloji yok.",
+      "ophthalmo": "Oftalmoskopi: **Bilateral şiddetli konjonktivit, kemozis (konjonktiva ödemi) ve purulent oküler akıntı.** Korneada **hafif dendritik ülser odakları** izlendi.",
+      "pharyngo": "Faringoskopi: Dil yüzeyinde ve sert damakta **ağrılı ülseratif stomatit/glossit odakları.** Yumuşak damak ve farinks konjestif ve hiperemik.",
+      "reflex": "Refleks muayenesi: Patellar ve fleksör refleksler normal. Nörolojik defisit yok.",
       "woodslamp": "Wood's Lambası: Bu vakada endike değildir.",
-      "inspection": "İnspeksiyon: **Bilateral mukopurulent oküler ve nazal akıntı, oral ülserler, üst solunum yolu stertoru.** 🔴 Letarji ve iştahsızlık belirgin.",
-      "auscultation": "Oskültasyon: **Kalp:** Normal, üfürüm yok. **Akciğer:** Alt solunum yolu tutulumu yok, temiz. **Üst solunum yolu:** Stertor (nazal tıkanıklığa bağlı hırıltı). ⚠"
+      "inspection": "İnspeksiyon: **Bilateral mukopurulent oküler ve nazal akıntı, oral ülserler, üst solunum yolu stertoru.** Letarji ve iştahsızlık belirgin.",
+      "auscultation": "Oskültasyon: **Kalp:** Normal, üfürüm yok. **Akciğer:** Temiz. **Üst solunum yolu:** Stertor (nazal hırıltı)."
     },
     "imaging": {
       "echo": {
@@ -3631,7 +3631,7 @@
       "urine": "İdrar muayenesi: Koyu sarı, berrak. SpGr: 1.045 — konsantre idrar, dehidrasyon doğrulandı. pH: 6.5. Protein: Negatif. Glukoz: Negatif. Keton: Negatif. Sediment: Aktif yangı hücresi veya kristal yok — inaktif. ✓",
       "stool": "Dışkı muayenesi: Flotasyon ve natif muayenede helmint yumurtası veya protozoon kistine rastlanmadı. ✓",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
-      "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Kesin tanı oküler/oral lezyon sürüntüsünden PCR panel (FHV-1 + FCV) ile konulmaktadır."
+      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endike değildir."
     },
     "questionAnswers": {
       "solunum_burun_1": "Evet, burnundan 2 gündür sarı-yeşil ve koyu bir akıntı geliyor, burnu tıkalı.",
