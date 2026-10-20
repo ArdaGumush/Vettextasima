@@ -823,6 +823,11 @@
             "id": "davranis_4",
             "q": "Sürekli huzursuzca evin içinde volta atma veya uyuyamama var mı?",
             "default": "Hayır, gayet huzurlu ve rahat uyuyor."
+          },
+          {
+            "id": "davranis_5",
+            "q": "Taş, plastik, kıyafet veya diğer yabancı cisimleri yeme alışkanlığı var mı?",
+            "default": "Hayır, yabancı cisim yeme alışkanlığı yok."
           }
         ]
       },
@@ -879,6 +884,11 @@
             "id": "diger_hayvanlar_4",
             "q": "Beraber yaşadığı diğer hayvanlarla mama veya oyuncak kavgası yaşandı mı?",
             "default": "Hayır, sorunsuzca paylaşıyorlar."
+          },
+          {
+            "id": "diger_hayvanlar_5",
+            "q": "Son zamanlarda başka hayvanlarla ya da kalabalık bir ortamla (barınak, üretici, park, sokak) teması oldu mu?",
+            "default": "Hayır, başka hayvanlarla ya da kalabalık bir ortamla teması olmadı."
           }
         ]
       },

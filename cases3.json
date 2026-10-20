@@ -359,7 +359,7 @@
       "noroloji_nöbet_1": "Evet, birkaç saat önce başladı; her 10 dakikada bir çenesini ritmik sallıyor, ağzından köpük akıyor ve o sırada gözleri sabitlenip tepki vermiyor.",
       "noroloji_yürüyüş_3": "Evet, pati altları taş gibi sertleştiği için basarken canı yanıyor ve bacakları titriyor.",
       "gecmis_asi_1": "Hayır, 2 hafta önce sokaktan bulduk, bilinen hiçbir aşısı yapılmadı.",
-      "sosyal_temas_2": "Evet, sokaktayken gözleri ve burnu akan diğer sokak köpekleriyle oynuyordu.",
+      "diger_hayvanlar_5": "Evet, sokaktayken gözleri ve burnu akan diğer sokak köpekleriyle oynuyordu.",
       "davranis_5": "Hayır, öyle bir huyu yok."
     }
   },
@@ -726,7 +726,7 @@
       "goz_kulak_goz_1": "Evet, gözleri sürekli akıyor ve sarımsı-yeşilimsi çapaklar oluşuyor.",
       "istah_1": "Evet, dünden beri mamasına hiç dokunmuyor, yemek yemiyor.",
       "enerji_1": "Evet, enerjisi çok düştü, odanın bir köşesine çekilip halsiz şekilde uyuyor.",
-      "sosyal_temas_2": "Evet, 10 gün önce sahiplendiğimiz kalabalık barınakta diğer köpekler de hapşırıp öksürüyordu.",
+      "diger_hayvanlar_5": "Evet, 10 gün önce sahiplendiğimiz kalabalık barınakta diğer köpekler de hapşırıp öksürüyordu.",
       "sosyal_diğer_hayvanlar_4": "Evet, evdeki diğer köpeğimiz de dün akşamdan beri hafif hafif hapşırmaya başladı.",
       "davranis_5": "Hayır, öyle bir huyu yok."
     }
@@ -2172,7 +2172,7 @@
       "agri_1": "Evet, karnına dokunulduğunda veya kucağa alınınca acıyla inleyip ısırmaya çalışıyor.",
       "goz_kulak_goz_1": "Evet, dün akşam hafif buğuluydu ama bu sabah her iki gözünün üzerine de masmavi bir perde çekilmiş gibi oldu, gözbebekleri seçilmiyor.",
       "gecmis_asi_1": "Hayır, sokaktan sahiplendik ve aşıları düzenli yapılmadı.",
-      "sosyal_temas_2": "Evet, parkta aşı geçmişi bilinmeyen diğer köpeklerle oynadı.",
+      "diger_hayvanlar_5": "Evet, parkta aşı geçmişi bilinmeyen diğer köpeklerle oynadı.",
       "maruziyet_zehir_2": "Hayır, deterjan yalama veya toksik bir maddeye ulaşma ihtimali yok, her şey aniden başladı.",
       "davranis_5": "Hayır, öyle bir huyu yok."
     }
@@ -2910,7 +2910,7 @@
       "karin_2": "Evet, karnına dokunulduğunda canı acıdığı için miyavlayarak tepki veriyor.",
       "enerji_1": "Evet, alev gibi ateşi var; kafasını bile kaldıramıyor ve koltuğun arkasına saklanıp gözlerini hiç açmıyor.",
       "gecmis_asi_1": "Hayır, 1 hafta önce sokaktan sahiplendik ve hiçbir aşısı yapılmadı.",
-      "sosyal_temas_2": "Sokaktan yeni geldiği için dışarıdaki diğer kedilerle teması olmuş olabilir.",
+      "diger_hayvanlar_5": "Sokaktan yeni geldiği için dışarıdaki diğer kedilerle teması olmuş olabilir.",
       "davranis_5": "Hayır, öyle bir huyu yok."
     }
   },
@@ -3276,7 +3276,7 @@
       "noroloji_yürüyüş_3": "Evet, arka bacaklarını toparlayamıyor; bacakları titriyor ve patisi ters katlanıyor gibi oluyor.",
       "deri_tüy_3": "Evet, tüyleri iyice matlaştı ve bakımsız görünüyor.",
       "gecmis_ameliyat_1": "Evet, yaklaşık 1 ay önce kısırlaştırma ameliyatı oldu ve o günden beri hiç toparlanamadı.",
-      "sosyal_temas_2": "Evet, 3 aylıkken kalabalık bir kedi üreticisinden sahiplenmiştik.",
+      "diger_hayvanlar_5": "Evet, 3 aylıkken kalabalık bir kedi üreticisinden sahiplenmiştik.",
       "davranis_5": "Hayır, öyle bir huyu yok."
     }
   },
@@ -3640,7 +3640,7 @@
       "goz_kulak_goz_1": "Evet, 2 gündür gözleri çapakla tamamen kapandı ve sürekli akıyor.",
       "istah_1": "Evet, 2 gündür hiçbir şey yemiyor; dilinde kırmızı yaralar olduğu için mama kabını koklayıp hemen geri dönüyor.",
       "enerji_1": "Evet, hiç keyfi yok; aşırı halsizleşti ve sürekli uyuyor.",
-      "sosyal_temas_2": "Evet, 2 hafta önce sokaktan getirdiğimiz ve hapşıran yavru bir kediyle birkaç gün aynı odada kaldılar.",
+      "diger_hayvanlar_5": "Evet, 2 hafta önce sokaktan getirdiğimiz ve hapşıran yavru bir kediyle birkaç gün aynı odada kaldılar.",
       "davranis_5": "Hayır, öyle bir huyu yok."
     }
   }

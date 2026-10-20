@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Vettex Tutorial</title>
+<title>VetTEX Tutorial</title>
 <script>
 // Tutorial bir kez tamamlandıysa tekrar gösterilmez; Ayarlar'dan ?replay=1 ile açılır.
 (function () {
@@ -116,7 +116,7 @@
 </head>
 <body>
 
-<iframe id="app" src="VetCaseClaudeKontrol.html" title="Vettex"></iframe>
+<iframe id="app" src="VetCaseClaudeKontrol.html" title="VetTEX"></iframe>
 
 <div id="tut-layer">
   <div class="shade" id="sh-top"></div>
@@ -142,8 +142,8 @@
 <div id="finish">
   <div class="finish-box">
     <div class="paw">🐾</div>
-    <h2>İlk vakan tamam!</h2>
-    <p>Vettex'in temel akışını gördün: genel bilgiler, anamnez, görüntüleme ve teşhis. Artık kendi vakalarını çözmeye hazırsın.</p>
+    <h2>İki ders de tamam!</h2>
+    <p>VetTEX'in temel akışını ve notlarla düşünmeyi öğrendin: anamnez, laboratuvar, görüntüleme, not alma ve teşhis. Artık kendi vakalarını çözmeye hazırsın.</p>
     <div class="row">
       <button class="btn ghost" id="btn-replay" type="button">Tekrar izle</button>
       <button class="btn primary" id="btn-enter" type="button">Kliniğe gir</button>
@@ -176,7 +176,27 @@ const log = (...a) => console.log('%c[VettexTutorial]', 'color:#00d4ff;font-weig
 const TUT_CASE = 'cat';   // Luna — Yabancı Cisim Obstrüksiyonu (GIS)
 const TUT_COMPLAINT = 'Sahibi endişeli bir ifadeyle anlatıyor:\n\n"3 gündür hiçbir şey yemiyor, su bile içmek istemiyor. Bir de sürekli kusuyor, ama karnında hiçbir şey yok gibi — sadece sarı sıvı geliyor."';
 const GIS_NAME = 'Yabancı Cisim Obstrüksiyonu (GIS)';
-function gisId() { return ev(`(DISEASE_LIBRARY.find(d => d.name === ${JSON.stringify(GIS_NAME)}) || {}).id`) || 't02'; }
+function diagId(name, fb) { return ev(`(DISEASE_LIBRARY.find(d => d.name === ${JSON.stringify(name)}) || {}).id`) || fb; }
+function gisId() { return diagId(GIS_NAME, 't02'); }
+
+// 2. ders vakası: Duman — FIP (ıslak form)
+const FIP_CASE = 'fip';
+const FIP_COMPLAINT = 'Sahibi sakin ama ciddi bir endişeyle anlatıyor:\n\n"Bir süredir karnının şiştiğini fark ettik. Önce kilo aldı sandık ama tam tersi — vücudu inceldi, sadece karnı büyüdü. Bir de ateşi var, düşmüyor bir türlü. Yemek yemiyor neredeyse."';
+const FIP_NAME = 'Feline Infectious Peritonitis (Islak Form)';
+function fipId() { return diagId(FIP_NAME, 'v11'); }
+
+// Not yardımcıları
+function lastNote() { return q('#notes-list .note-item:last-child'); }
+function autoComment(text) {
+  ev(`(function(){ var n = caseNotes[caseNotes.length - 1]; if (n) { n.comment = ${JSON.stringify(text)}; renderNotes(); } })()`);
+}
+function rowPen(root, param) {
+  if (!root) return null;
+  const tr = [...root.querySelectorAll('tr')].find(r => r.cells[0] && r.cells[0].textContent.trim() === param);
+  return tr ? tr.querySelector('.note-pen') : null;
+}
+function lastEntry() { return q('#monitor-output .monitor-entry:last-child'); }
+function clickPen(el) { if (el) el.click(); }
 
 // ═══════════════════════════════════════════════════════════════
 // ADIMLAR
@@ -189,7 +209,7 @@ function gisId() { return ev(`(DISEASE_LIBRARY.find(d => d.name === ${JSON.strin
 const STEPS = [
   // ── AYARLAR ──
   { ch: 'Hoş geldin', mode: 'click',
-    text: `<strong>Vettex Dijital Eğitici Veteriner Klinik Simülasyonu'na hoş geldiniz!</strong><br>Ayarlarla başlayalım: parlayan <strong>Ayarlar</strong> sekmesine dokun.`,
+    text: `<strong>VetTEX Dijital Eğitici Veteriner Klinik Simülasyonu'na hoş geldiniz!</strong><br>Ayarlarla başlayalım: parlayan <strong>Ayarlar</strong> sekmesine dokun.`,
     target: () => q(`button.wm-tab[onclick="wmTab('ayarlar')"]`),
     fallback: () => ev(`wmTab('ayarlar')`) },
 
@@ -322,10 +342,163 @@ const STEPS = [
     target: () => q(`#modal-content [onclick="submitDiagnosis('${gisId()}')"]`),
     fallback: () => ev(`submitDiagnosis('${gisId()}')`) },
 
-  { ch: 'Teşhis', mode: 'next', last: true,
-    text: `<strong>İlk vakamızı tamamladık!</strong> Burada hastalıkta görülen semptomları ve ayırıcı teşhisleri görebilirsin.`,
+  { ch: 'Teşhis', mode: 'next',
+    text: `<strong>İlk vakamızı tamamladık!</strong> Burada hastalıkta görülen semptomları ve ayırıcı teşhisleri görebilirsin.<br><br>Sırada ikinci ders var.`,
     target: () => (q('#result-overlay.open') ? q('#result-body') : null) },
+
+  // ════════════ 2. DERS: NOTLARLA DÜŞÜNMEK (FIP) ════════════
+  { lesson: 2, ch: 'Notlarla düşünmek', mode: 'next',
+    text: `<strong>2. Ders: Notlarla düşünmek</strong><br>Gerçek bir vakada ipuçları farklı yerlerden gelir: şikayetten, anamnezden, laboratuvardan, görüntülemeden. Bu derste bulguların yanındaki <strong>✏️</strong> ile önemli olanları not defterine taşıyacak, en sonda hepsini yan yana koyup teşhise ulaşacağız.`,
+    enter: () => ev(`closeModal(); if (typeof closeResultScreen === 'function') closeResultScreen(); backToMainMenu();`) },
+
+  { lesson: 2, ch: 'Kliniğe giriş', mode: 'click',
+    text: `<strong>Klinik Mod</strong>'u seç.`,
+    enter: () => ev(`if (typeof wmHideNormal === 'function') wmHideNormal();`),
+    target: () => q(`#wm-mod-cards [onclick="openClinicMode()"]`),
+    fallback: () => ev(`openClinicMode()`) },
+
+  { lesson: 2, ch: 'Kliniğe giriş', mode: 'click', delay: 700,
+    text: `Bu sefer <strong>Kedi</strong>'yi seç.`,
+    enter: () => armCase(FIP_CASE),
+    target: () => q(`#welcome-clinic [onclick="startClinicMode('cat')"]`),
+    fallback: () => { armCase(FIP_CASE); ev(`startClinicMode('cat')`); } },
+
+  { lesson: 2, ch: 'Şikayet', mode: 'click', delay: 600,
+    text: `Kliniğe bir kedi daha geldi. Bu sefer doğrudan <strong>Şikayet</strong>'i soralım.`,
+    enter: () => ensureCase(FIP_CASE, FIP_COMPLAINT, 'cat'),
+    target: () => q('#btn-complaint'),
+    fallback: () => { setComplaint(FIP_COMPLAINT); ev(`askAnamnez('complaint')`); } },
+
+  { lesson: 2, ch: 'Şikayet', mode: 'click',
+    text: `Karnı şişiyor ama vücudu inceliyor, ateşi de düşmüyor. Bu önemli bir ipucu. Monitördeki kaydın sağ üstündeki <strong>✏️</strong>'e dokun.`,
+    target: () => lastEntry()?.querySelector('.entry-meta .note-pen'),
+    fallback: () => clickPen(lastEntry()?.querySelector('.note-pen')) },
+
+  { lesson: 2, ch: 'Şikayet', mode: 'next',
+    text: `Bulgu sol paneldeki <strong>Notlarım</strong>'a geldi. Altındaki kutu senin yorumun için; bu derste yorumları ben yazıyorum.`,
+    enter: () => autoComment('Karın şişliği + kilo kaybı + antibiyotiğe yanıtsız ateş → abdominal efüzyon?'),
+    target: () => lastNote() },
+
+  { lesson: 2, ch: 'Anamnez', mode: 'click',
+    text: `Şimdi geçmişine bakalım. <strong>Anamnez Sor</strong>'a dokun.`,
+    target: () => q(`#center-panel button[onclick="openAnamnezModal()"]`),
+    fallback: () => ev(`openAnamnezModal()`) },
+
+  { lesson: 2, ch: 'Anamnez', mode: 'click',
+    text: `Genç bir kedide nereden geldiği çok önemli. <strong>Sosyal</strong>'i aç.`,
+    target: () => q(`#anamnez-modal-body .aq-cat-header[onclick*="'sosyal'"]`),
+    fallback: () => ev(`toggleAqCat('sosyal')`) },
+
+  { lesson: 2, ch: 'Anamnez', mode: 'click',
+    text: `<strong>Diğer Hayvanlar</strong>.`,
+    target: () => q(`#anamnez-modal-body .aq-sub-header[onclick*="'diger_hayvanlar'"]`),
+    fallback: () => ev(`document.getElementById('aqsub_sosyal').style.display='block'; toggleAqSub('diger_hayvanlar')`) },
+
+  { lesson: 2, ch: 'Anamnez', mode: 'click',
+    text: `Kalabalık bir ortamla teması olmuş mu, soralım.`,
+    target: () => q(`#anamnez-modal-body .aq-q-item[onclick*="'diger_hayvanlar_5'"]`),
+    fallback: () => ev(`askAnamnezQ('diger_hayvanlar_5','sosyal','diger_hayvanlar')`) },
+
+  { lesson: 2, ch: 'Anamnez', mode: 'click',
+    text: `Kalabalık bir üreticiden gelmiş. Çok kedili ortamlar koronavirüsün en kolay yayıldığı yerlerdir. Cevabın yanındaki <strong>✏️</strong>'e dokun.`,
+    target: () => q('#aqans_diger_hayvanlar_5 .note-pen'),
+    fallback: () => clickPen(q('#aqans_diger_hayvanlar_5 .note-pen')) },
+
+  { lesson: 2, ch: 'Anamnez', mode: 'next',
+    text: `Genç yaş ve çok kedili ortam geçmişi, FIP için klasik bir başlangıç.`,
+    enter: () => { ev(`closeAnamnezModal()`); autoComment('Kalabalık üretici geçmişi → FCoV maruziyeti riski'); },
+    target: () => lastNote() },
+
+  // ── Hemogram ──
+  { lesson: 2, ch: 'Hemogram', mode: 'click',
+    text: `Laboratuvara geçelim: <strong>Hemogram</strong> sekmesi.`,
+    target: () => q(`#center-panel .tab-btn[onclick="switchTab('hemogram')"]`),
+    fallback: () => ev(`switchTab('hemogram')`) },
+
+  { lesson: 2, ch: 'Hemogram', mode: 'click',
+    text: `Hemogramı iste.`,
+    target: () => q(`#tab-hemogram button[onclick="runHemogram()"]`),
+    fallback: () => ev(`runHemogram()`) },
+
+  { lesson: 2, ch: 'Hemogram', mode: 'click',
+    text: `Lenfosit %10 (düşük), nötrofil %82 (yüksek). Bu bir <strong>stres lökogramı</strong>; bağışıklık sisteminin baskılandığını gösterir. <strong>Lenf%</strong> satırındaki ✏️'e dokun.`,
+    target: () => rowPen(q('#hemogram-preview'), 'Lenf%'),
+    fallback: () => clickPen(rowPen(q('#hemogram-preview'), 'Lenf%')) },
+
+  { lesson: 2, ch: 'Hemogram', mode: 'next',
+    text: `Not alındı.`,
+    enter: () => autoComment('Lenfopeni + nötrofili → stres lökogramı, immün sistemde baskı'),
+    target: () => lastNote() },
+
+  // ── Biyokimya ──
+  { lesson: 2, ch: 'Biyokimya', mode: 'click',
+    text: `Şimdi <strong>Biyokimya</strong> sekmesi.`,
+    target: () => q(`#center-panel .tab-btn[onclick="switchTab('biyo')"]`),
+    fallback: () => ev(`switchTab('biyo')`) },
+
+  { lesson: 2, ch: 'Biyokimya', mode: 'click',
+    text: `Proteinlere bakalım. <strong>Total Protein, Albümin ve Globulin</strong>'i senin için seçtim. Paneli iste.`,
+    enter: () => ev(`document.querySelectorAll('#biyo-chips .lab-chip').forEach(function (c) {
+      var t = c.textContent.trim();
+      if (['Total Prot.', 'ALB', 'Glob'].indexOf(t) > -1 && !c.classList.contains('selected')) c.click();
+    });`),
+    target: () => q(`#tab-biyo button[onclick="runBiyo()"]`),
+    fallback: () => ev(`runBiyo()`) },
+
+  { lesson: 2, ch: 'Biyokimya', mode: 'click',
+    text: `Globulin 7.6 ile çok yüksek, albümin 2.2. <strong>A/G oranı = 2.2 ÷ 7.6 ≈ 0.29</strong>. 0.4'ün altındaki A/G oranı FIP lehine güçlü bir bulgudur. <strong>Glob</strong> satırındaki ✏️'e dokun.`,
+    target: () => rowPen(lastEntry(), 'Glob'),
+    fallback: () => clickPen(rowPen(lastEntry(), 'Glob')) },
+
+  { lesson: 2, ch: 'Biyokimya', mode: 'next',
+    text: `Not alındı.`,
+    enter: () => autoComment('A/G = 2.2 / 7.6 ≈ 0.29 (< 0.4) → hiperglobulinemi, FIP lehine'),
+    target: () => lastNote() },
+
+  // ── USG ──
+  { lesson: 2, ch: 'Görüntüleme', mode: 'click',
+    text: `Karın şişliğinin nedenini görelim: <strong>Görüntüleme</strong>.`,
+    target: () => q(`#center-panel .tab-btn[onclick="switchTab('goruntu')"]`),
+    fallback: () => ev(`switchTab('goruntu')`) },
+
+  { lesson: 2, ch: 'Görüntüleme', mode: 'click', delay: 600,
+    text: `<strong>USG</strong>'ye dokun.`,
+    target: () => q('#ex-usg'),
+    fallback: () => ev(`doImaging('usg')`) },
+
+  { lesson: 2, ch: 'Görüntüleme', mode: 'click',
+    text: `Radyoloji raporunun <strong>sonucuna</strong> bak: karın boşluğunda yaygın serbest sıvı, yani <strong>efüzyon</strong>. Bu, FIP'in efüzif (ıslak) formunu gösterir. Sonucun yanındaki ✏️'e dokun.`,
+    target: () => q('#usg-modal-body .note-pen'),
+    fallback: () => clickPen(q('#usg-modal-body .note-pen')) },
+
+  { lesson: 2, ch: 'Görüntüleme', mode: 'next',
+    text: `Not alındı.`,
+    enter: () => { ev(`closeUSGModal()`); autoComment('Diffüz peritoneal efüzyon + mezenterik lenfadenomegali → efüzif (ıslak) form'); },
+    target: () => lastNote() },
+
+  // ── Toparlama ve teşhis ──
+  { lesson: 2, ch: 'Toparlama', mode: 'next',
+    text: `Şimdi notlarına yukarıdan aşağı bak:<br>· Genç kedi, inatçı ateş, karında sıvı<br>· Kalabalık üretici geçmişi<br>· Stres lökogramı<br>· A/G oranı 0.4'ün altında<br>· USG'de efüzyon<br>Hiçbiri tek başına kesin değil, ama yan yana gelince tablo çok net: <strong>FIP</strong>.`,
+    target: () => q('#notes-block') },
+
+  { lesson: 2, ch: 'Teşhis', mode: 'click',
+    text: `Teşhisi koyalım: <strong>Teşhis Ver</strong>.`,
+    target: () => q('#clinic-badge'),
+    fallback: () => ev(`showDiagnosisPanel()`) },
+
+  { lesson: 2, ch: 'Teşhis', mode: 'click', delay: 600,
+    text: `<strong>${FIP_NAME}</strong>'u seç. Listede Kuru Form FIP de var; ama efüzyon gördüğümüz için ıslak form.`,
+    target: () => q(`#modal-content [onclick="submitDiagnosis('${fipId()}')"]`),
+    fallback: () => ev(`submitDiagnosis('${fipId()}')`) },
+
+  { lesson: 2, ch: 'Teşhis', mode: 'next', last: true,
+    text: `<strong>İkinci dersi de tamamladın!</strong> Notların yorumlarıyla birlikte sonuç ekranında duruyor. Kendi vakalarında da bulguları not al ve teşhisten önce notlarına bir göz at.`,
+    target: () => {
+      if (!q('#result-overlay.open')) return null;
+      return [...D().querySelectorAll('#result-body .rb-sec')].find(s => s.textContent.includes('NOTLARIN')) || q('#result-body');
+    } },
 ];
+STEPS.forEach(s => { if (!s.lesson) s.lesson = 1; });
 
 // ═══════════════════════════════════════════════════════════════
 // TUTORIAL VAKASI
@@ -333,7 +506,7 @@ const STEPS = [
 // Luna'yı (GIS) döndürecek şekilde yamalanıyor. Böylece oyunun kendi
 // startClinicMode akışı aynen çalışıyor, ekran titremiyor.
 // ═══════════════════════════════════════════════════════════════
-function armCase() {
+function armCase(key = TUT_CASE) {
   ev(`
     if (!window.__tutOrigPick) {
       window.__tutOrigPick = pickRandom;
@@ -344,24 +517,24 @@ function armCase() {
         return window.__tutOrigPick(a);
       };
     }
-    window.__tutForceKey = ${JSON.stringify(TUT_CASE)};
-    if (typeof clinicPlayedCases !== 'undefined') clinicPlayedCases.delete(${JSON.stringify(TUT_CASE)});
+    window.__tutForceKey = ${JSON.stringify(key)};
+    if (typeof clinicPlayedCases !== 'undefined') clinicPlayedCases.delete(${JSON.stringify(key)});
   `);
 }
 
-function ensureCase() {
+function ensureCase(key = TUT_CASE, complaint = TUT_COMPLAINT, species = 'any') {
   // Yama tutmadıysa (beklenmedik durum) vakayı doğrudan başlat
-  const key = ev(`currentCase && currentCase._realKey`);
-  if (key !== TUT_CASE) {
-    log('Tutorial vakası yüklenmemiş, yeniden başlatılıyor. Mevcut:', key);
-    armCase();
-    ev(`document.getElementById('welcome').style.display='none'; startClinicMode('any')`);
+  const cur = ev(`currentCase && currentCase._realKey`);
+  if (cur !== key) {
+    log('Tutorial vakası yüklenmemiş, yeniden başlatılıyor. Mevcut:', cur);
+    armCase(key);
+    ev(`document.getElementById('welcome').style.display='none'; document.getElementById('welcome-clinic').style.display='none'; startClinicMode(${JSON.stringify(species)})`);
   }
-  setComplaint();
+  setComplaint(complaint);
 }
 
-function setComplaint() {
-  ev(`if (currentCase && currentCase.anamnez) currentCase.anamnez.complaint = [${JSON.stringify(TUT_COMPLAINT)}];`);
+function setComplaint(text = TUT_COMPLAINT) {
+  ev(`if (currentCase && currentCase.anamnez) currentCase.anamnez.complaint = [${JSON.stringify(text)}];`);
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -412,9 +585,10 @@ function go(i) {
   if (cur && cur.leave) cur.leave();
   idx = i; cur = STEPS[i]; el = null; scrolledEl = null; advancing = false; stepStart = Date.now();
   log(`Adım ${i + 1}/${STEPS.length}: ${cur.ch}`);
-  $('chapter').textContent = cur.ch;
+  $('chapter').textContent = 'Ders ' + cur.lesson + ' · ' + cur.ch;
   $('text').innerHTML = cur.text;
-  $('progress-fill').style.width = ((i + 1) / STEPS.length * 100) + '%';
+  const ls = STEPS.filter(s => s.lesson === cur.lesson);
+  $('progress-fill').style.width = ((ls.indexOf(cur) + 1) / ls.length * 100) + '%';
   const reading = cur.mode !== 'click';
   $('btn-next').classList.toggle('hidden', !reading);
   $('btn-next').textContent = cur.last ? 'Bitir' : 'Devam';
@@ -470,7 +644,7 @@ function tick() {
     }
     place(el ? el.getBoundingClientRect() : null);
     // Hedef uzun süre bulunamazsa çıkış yolu göster
-    const stuck = !el && Date.now() - stepStart > 7000;
+    const stuck = !!cur.target && !el && Date.now() - stepStart > 7000;
     if (stuck) {
       $('btn-pass').classList.remove('hidden');
       $('hint-text').textContent = 'Ekran bekleniyor…';

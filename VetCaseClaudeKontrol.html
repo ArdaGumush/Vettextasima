@@ -5207,7 +5207,9 @@ function addPensToTables(root, src) {
       const cell = document.createElement(isHead ? 'th' : 'td');
       cell.className = 'note-pen-cell';
       if (!isHead) {
-        const parts = [...tr.children].map(td => td.textContent.trim()).filter(x => x && x !== '—');
+        // Değer hücresindeki H/L rozetini sayıdan ayır: "10L" değil "10 L"
+        const parts = [...tr.children].map(td => [...td.childNodes].map(n => n.textContent.trim()).filter(Boolean).join(' '))
+          .filter(x => x && x !== '—');
         if (parts.length) cell.innerHTML = notePenHTML(src, parts.join(' · '));
       }
       tr.appendChild(cell);
@@ -5367,12 +5369,25 @@ function toggleAqSub(id) {
   arr.textContent = open ? '▲' : '▼';
 }
 
+// Vaka dosyalarındaki cevap anahtarları soru ağacından farklı yazılmış olabiliyor
+// (ör. "sosyal_diğer_hayvanlar_1" ↔ "diger_hayvanlar_1", "istah_1" ↔ "i̇stah_1").
+// Türkçe karakterler ve kategori öneki yok sayılarak eşleştirilir.
+function normQKey(s) {
+  return String(s).toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/ı/g, 'i');
+}
+function findCaseAnswer(answers, qId, catId) {
+  if (answers[qId]) return answers[qId];
+  const want = [normQKey(qId), normQKey(catId + '_' + qId)];
+  for (const k in answers) if (want.includes(normQKey(k))) return answers[k];
+  return null;
+}
+
 function askAnamnezQ(qId, catId, subId) {
   if (!window._aqAnswered) window._aqAnswered = {};
   if (window._aqAnswered[qId]) return;
   const answers = (currentCase && currentCase.questionAnswers) || {};
   const Q = window.QUESTIONS;
-  let answer = answers[qId] || null;
+  let answer = findCaseAnswer(answers, qId, catId);
   if (!answer) {
     const cat = Q[catId];
     const sub = cat && cat.subcategories && cat.subcategories[subId];
@@ -5443,7 +5458,7 @@ function openUSGModal(caseKey, imgUrl) {
 
   if (sonuc) {
     html += `<div style="background:#edf2f7;border:1px solid #c0d0e0;border-left:4px solid #1a3a5c;border-radius:0 4px 4px 0;padding:12px 16px;margin-top:14px">
-      <div style="font-size:10px;font-weight:800;letter-spacing:2px;color:#1a3a5c;text-transform:uppercase;margin-bottom:6px">Radyoloji Sonucu</div>
+      <div style="font-size:10px;font-weight:800;letter-spacing:2px;color:#1a3a5c;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between">Radyoloji Sonucu ${notePenHTML('USG Raporu', sonuc)}</div>
       <div style="font-size:12.5px;line-height:1.75;color:#1a2a3a">${sonuc}</div>
     </div>`;
   }
