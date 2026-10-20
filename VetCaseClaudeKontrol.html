@@ -1079,6 +1079,25 @@ function replayTutorial() {
     border-bottom: 1px solid var(--border);
     background: var(--bg-base);
   }
+  /* ── İletişim ── */
+  .contact-intro { font-size: 12px; line-height: 1.6; color: var(--text-secondary); text-align: center; margin: 0 0 18px; max-width: 360px; }
+  .contact-list { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 380px; }
+  .contact-card {
+    display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 10px;
+    background: var(--bg-card); border: 1px solid var(--border); text-decoration: none; color: inherit;
+    transition: border-color .15s, background .15s;
+  }
+  a.contact-card:hover { border-color: var(--accent-cyan); background: rgba(0,212,255,.05); }
+  .contact-icon { font-size: 22px; }
+  .contact-body { flex: 1; min-width: 0; }
+  .contact-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3px; }
+  .contact-value { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent-cyan); text-decoration: none; word-break: break-all; }
+  .contact-copy, .contact-go {
+    flex-shrink: 0; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 6px 10px; border-radius: 6px;
+    background: rgba(0,212,255,.08); border: 1px solid rgba(0,212,255,.35); color: var(--accent-cyan); cursor: pointer;
+  }
+  .wm-tabs { overflow-x: auto; scrollbar-width: none; }
+  .wm-tabs::-webkit-scrollbar { display: none; }
   .wm-tab {
     flex: 1;
     padding: 14px 8px;
@@ -1774,6 +1793,7 @@ window.onerror = function(msg, src, line) {
       <button class="wm-tab" onclick="wmTab('ayarlar')">⚙ Ayarlar</button>
       <button class="wm-tab" onclick="wmTab('emek')">♥ Emeği Geçenler</button>
       <button class="wm-tab" onclick="wmTab('ref')">📄 Referanslar</button>
+      <button class="wm-tab" onclick="wmTab('iletisim')">✉ İletişim</button>
     </div>
 
     <!-- ── BAŞLAT ── -->
@@ -1960,6 +1980,30 @@ window.onerror = function(msg, src, line) {
         <div class="ci-name">—</div>
       </div>
       <div style="font-size:10px;color:var(--text-muted);margin-top:14px;text-align:center;letter-spacing:1px;">Katkıda bulunanlar eklenecek.</div>
+    </div>
+
+    <!-- ── İLETİŞİM ── -->
+    <div class="wm-panel" id="wmp-iletisim">
+      <div style="font-size:10px;color:var(--text-secondary);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;text-align:center;width:100%">İletişim</div>
+      <p class="contact-intro">Görüş, öneri, hata bildirimi ya da iş birliği için bize yazabilirsin.</p>
+      <div class="contact-list">
+        <div class="contact-card">
+          <span class="contact-icon">✉️</span>
+          <div class="contact-body">
+            <div class="contact-label">E-posta</div>
+            <a class="contact-value" href="mailto:vettex.app@gmail.com">vettex.app@gmail.com</a>
+          </div>
+          <button type="button" class="contact-copy" onclick="copyContact('vettex.app@gmail.com')">Kopyala</button>
+        </div>
+        <a class="contact-card" href="https://www.instagram.com/vettex_app/" target="_blank" rel="noopener">
+          <span class="contact-icon">📷</span>
+          <div class="contact-body">
+            <div class="contact-label">Instagram</div>
+            <div class="contact-value">@vettex_app</div>
+          </div>
+          <span class="contact-go">Aç ↗</span>
+        </a>
+      </div>
     </div>
 
     <!-- ── REFERANSLAR ── -->
@@ -2204,6 +2248,9 @@ window.onerror = function(msg, src, line) {
         </button>
         <button onclick="mobOpenSettings()" style="width:100%;padding:14px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;letter-spacing:1px">
           ⚙ AYARLAR
+        </button>
+        <button onclick="mobOpenContact()" style="margin-top:10px;width:100%;padding:14px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;letter-spacing:1px">
+          ✉ İLETİŞİM
         </button>
       </div>
     </div>
@@ -2997,18 +3044,20 @@ function mobOpenClinic() {
   mobShowScreen('mob-species-screen');
 }
 
-function mobOpenSettings() {
-  // Welcome ekranını inline style ile göster (CSS override)
+function mobOpenSettings() { mobOpenWelcomePanel('ayarlar'); }
+function mobOpenContact() { mobOpenWelcomePanel('iletisim'); }
+
+// Mobil modda giriş ekranının bir sekmesini (Ayarlar, İletişim) geri butonuyla aç
+function mobOpenWelcomePanel(tab) {
   const welcome = document.getElementById('welcome');
   if (welcome) { welcome.style.cssText = 'display:flex!important'; }
-  wmTab('ayarlar');
-  // Mobil geri dön butonu
-  const panel = document.getElementById('wmp-ayarlar');
+  wmTab(tab);
+  const panel = document.getElementById('wmp-' + tab);
   if (panel && !panel.querySelector('.mob-back-btn')) {
     const btn = document.createElement('button');
     btn.className = 'mob-back-btn';
     btn.textContent = '← Mobil Moda Dön';
-    btn.style.cssText = 'margin-top:16px;width:100%;padding:9px;background:rgba(0,212,255,0.06);border:1px solid var(--accent-cyan);border-radius:8px;color:var(--accent-cyan);font-family:"JetBrains Mono",monospace;font-size:10px;cursor:pointer;letter-spacing:1px';
+    btn.style.cssText = 'margin-top:16px;width:100%;max-width:380px;padding:9px;background:rgba(0,212,255,0.06);border:1px solid var(--accent-cyan);border-radius:8px;color:var(--accent-cyan);font-family:"JetBrains Mono",monospace;font-size:10px;cursor:pointer;letter-spacing:1px';
     btn.onclick = () => {
       const w = document.getElementById('welcome');
       if (w) w.style.cssText = 'display:none!important';
@@ -3016,6 +3065,17 @@ function mobOpenSettings() {
       mobShowScreen('mob-home-screen');
     };
     panel.appendChild(btn);
+  }
+}
+
+function copyContact(text) {
+  const done = () => showToast('📋 Kopyalandı: ' + text);
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done, () => showToast(text));
+  } else {
+    const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) { showToast(text); }
+    ta.remove();
   }
 }
 
