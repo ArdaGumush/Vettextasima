@@ -2,779 +2,597 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Vettex Tutorial</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { overflow: hidden; background: #0a0e1a; width: 100vw; height: 100vh; }
+  :root {
+    --shade: rgba(4, 8, 18, 0.72);
+    --panel: #0f1626;
+    --line: rgba(0, 212, 255, 0.28);
+    --cyan: #00d4ff;
+    --text: #e8eef6;
+    --muted: #8a9bb3;
+    --green: #2ecc71;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #0a0e1a; }
+  body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; color: var(--text); }
 
-#app-frame {
-  position: fixed; inset: 0; width: 100%; height: 100%;
-  border: none; z-index: 1; pointer-events: none;
-}
-#app-frame.interactive { pointer-events: auto; }
+  #app { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; }
 
-/* Spotlight */
-#spotlight-box {
-  position: fixed; border-radius: 12px;
-  box-shadow: 0 0 0 3px rgba(0,212,255,0.85), 0 0 0 9999px rgba(0,0,0,0.78);
-  z-index: 100; pointer-events: none;
-  transition: all 0.5s cubic-bezier(.4,0,.2,1);
-  opacity: 0;
-}
-#spotlight-box.visible { opacity: 1; }
-#spotlight-box.pulse { animation: sp-pulse 1.3s ease-in-out infinite; }
-@keyframes sp-pulse {
-  0%,100% { box-shadow: 0 0 0 3px rgba(0,212,255,0.6), 0 0 0 9999px rgba(0,0,0,0.78); }
-  50%      { box-shadow: 0 0 0 6px rgba(0,212,255,1), 0 0 28px rgba(0,212,255,0.4), 0 0 0 9999px rgba(0,0,0,0.78); }
-}
+  /* Gölge katmanı: spotlight deliğinin etrafındaki dört parça.
+     Delik açık kalır, böylece sadece parlayan alana dokunulabilir. */
+  #tut-layer { position: fixed; inset: 0; z-index: 10; pointer-events: none; }
+  #tut-layer.on .shade { pointer-events: auto; }
+  .shade { position: fixed; background: var(--shade); transition: opacity .25s; }
+  #tut-layer:not(.on) .shade { opacity: 0; }
 
-/* Tooltip */
-#tut-tip {
-  position: fixed; z-index: 200;
-  background: #0b1220;
-  border: 1px solid rgba(0,212,255,0.4);
-  border-radius: 16px;
-  padding: 18px 20px 14px;
-  width: min(340px, 94vw);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.85), 0 0 40px rgba(0,212,255,0.05);
-  opacity: 0; transform: translateY(8px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
-  pointer-events: auto;
-}
-#tut-tip.visible { opacity: 1; transform: translateY(0); }
+  #ring {
+    position: fixed; border-radius: 12px; pointer-events: none;
+    box-shadow: 0 0 0 2px var(--cyan), 0 0 22px 4px rgba(0, 212, 255, 0.45);
+    opacity: 0; transition: opacity .2s;
+  }
+  #ring.show { opacity: 1; animation: ringPulse 1.6s ease-in-out infinite; }
+  #ring.block { pointer-events: auto; }
+  #ring.flash { animation: ringFlash .45s ease-out; }
+  @keyframes ringPulse {
+    0%, 100% { box-shadow: 0 0 0 2px var(--cyan), 0 0 18px 3px rgba(0,212,255,.35); }
+    50%      { box-shadow: 0 0 0 3px var(--cyan), 0 0 32px 8px rgba(0,212,255,.6); }
+  }
+  @keyframes ringFlash {
+    0% { box-shadow: 0 0 0 6px #fff, 0 0 40px 12px rgba(0,212,255,.9); }
+    100% { box-shadow: 0 0 0 2px var(--cyan), 0 0 22px 4px rgba(0,212,255,.45); }
+  }
 
-.tip-badge {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px; letter-spacing: 2px;
-  color: rgba(0,212,255,0.55); margin-bottom: 10px;
-  display: flex; align-items: center; gap: 8px;
-}
-.tip-badge::after { content:''; flex:1; height:1px; background: rgba(0,212,255,0.12); }
+  /* Rehber kartı */
+  #card {
+    position: fixed; z-index: 20; left: 50%; transform: translateX(-50%);
+    width: min(440px, calc(100vw - 24px));
+    background: var(--panel); border: 1px solid var(--line); border-radius: 16px;
+    padding: 16px 18px 14px; box-shadow: 0 18px 50px rgba(0,0,0,.55);
+    opacity: 0; transition: opacity .2s, top .3s ease, bottom .3s ease;
+    pointer-events: auto;
+  }
+  #card.show { opacity: 1; }
+  #card.at-bottom { bottom: max(14px, env(safe-area-inset-bottom)); top: auto; }
+  #card.at-top { top: max(14px, env(safe-area-inset-top)); bottom: auto; }
+  #card.shake { animation: shake .35s; }
+  @keyframes shake {
+    0%,100% { transform: translateX(-50%); }
+    25% { transform: translateX(calc(-50% - 6px)); }
+    75% { transform: translateX(calc(-50% + 6px)); }
+  }
 
-.tip-body {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px; line-height: 1.9;
-  color: #c0d4ef; margin-bottom: 14px;
-}
-.tip-body strong { color: #00d4ff; }
-.tip-body em { color: #f39c12; font-style: normal; }
+  .card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+  #chapter { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 15px; color: var(--cyan); letter-spacing: .3px; }
+  #skip {
+    background: none; border: 0; color: var(--muted); font: inherit; font-size: 12px;
+    cursor: pointer; padding: 4px 2px; text-decoration: underline; text-underline-offset: 3px;
+  }
+  #progress { height: 3px; background: rgba(255,255,255,.07); border-radius: 2px; margin-bottom: 12px; overflow: hidden; }
+  #progress-fill { height: 100%; width: 0; background: var(--cyan); transition: width .35s ease; }
+  #text { font-size: 15px; line-height: 1.6; max-width: 62ch; }
+  #text strong { color: #fff; font-weight: 600; }
+  #text .quote { display: block; margin-top: 8px; padding: 8px 10px; border-left: 2px solid var(--green); background: rgba(46,204,113,.06); border-radius: 0 6px 6px 0; font-size: 14px; color: #cfe9da; }
 
-.tip-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .actions { display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: 14px; min-height: 36px; }
+  #hint { margin-right: auto; font-size: 12.5px; color: var(--muted); display: flex; align-items: center; gap: 7px; }
+  #hint .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); animation: dotPulse 1.2s infinite; }
+  @keyframes dotPulse { 50% { opacity: .3; } }
+  .btn {
+    font: inherit; font-size: 14px; font-weight: 600; border-radius: 10px; padding: 9px 18px; cursor: pointer;
+    border: 1px solid var(--cyan); background: rgba(0,212,255,.12); color: var(--cyan);
+  }
+  .btn:hover { background: rgba(0,212,255,.2); }
+  .btn.ghost { border-color: rgba(255,255,255,.18); background: transparent; color: var(--muted); font-weight: 500; }
+  .btn.primary { background: var(--cyan); color: #04121a; }
+  .btn:focus-visible, #skip:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .hidden { display: none !important; }
 
-.tip-skip {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
-  color: rgba(100,130,170,0.4); background: none; border: none;
-  cursor: pointer; padding: 4px 0; letter-spacing: 1px; transition: color 0.2s;
-}
-.tip-skip:hover { color: rgba(100,130,170,0.85); }
+  /* Bitiş ekranı */
+  #finish {
+    position: fixed; inset: 0; z-index: 30; display: none; align-items: center; justify-content: center;
+    background: rgba(4, 8, 18, .85); padding: 20px;
+  }
+  #finish.show { display: flex; }
+  .finish-box { width: min(400px, 100%); text-align: center; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 28px 22px 22px; }
+  .finish-box h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 24px; margin: 6px 0 8px; color: #fff; }
+  .finish-box p { color: var(--muted); line-height: 1.6; margin: 0 0 20px; font-size: 14.5px; }
+  .finish-box .row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .paw { font-size: 40px; }
 
-.tip-next {
-  font-family: 'JetBrains Mono', monospace; font-size: 11px;
-  letter-spacing: 1px; color: #00d4ff;
-  background: rgba(0,212,255,0.08);
-  border: 1px solid rgba(0,212,255,0.4);
-  border-radius: 10px; padding: 9px 20px;
-  cursor: pointer; transition: all 0.2s;
-}
-.tip-next:hover { background: rgba(0,212,255,0.18); }
-
-.tip-pass {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
-  color: rgba(122,156,197,0.5);
-  background: none;
-  border: 1px solid rgba(122,156,197,0.2);
-  border-radius: 8px; padding: 7px 14px;
-  cursor: pointer; transition: all 0.2s; letter-spacing: 1px;
-}
-.tip-pass:hover { color: rgba(122,156,197,0.8); border-color: rgba(122,156,197,0.4); }
-
-.tip-wait {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
-  color: #f39c12; letter-spacing: 1px;
-  display: flex; align-items: center; gap: 6px;
-  animation: blink-w 1s ease-in-out infinite;
-}
-@keyframes blink-w { 0%,100%{opacity:.35} 50%{opacity:1} }
-
-/* Progress */
-#tut-progress {
-  position: fixed; top:0; left:0; right:0; height:2px;
-  background: rgba(255,255,255,0.05); z-index: 300;
-}
-#tut-progress-fill {
-  height:100%;
-  background: linear-gradient(90deg,#00d4ff,#2ecc71);
-  transition: width 0.5s cubic-bezier(.4,0,.2,1);
-  box-shadow: 0 0 8px rgba(0,212,255,0.5);
-}
-
-/* Dots */
-#tut-dots {
-  position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
-  display: flex; gap: 7px; z-index: 300;
-}
-.tut-dot { width:6px; height:6px; border-radius:50%; background: rgba(255,255,255,0.1); transition: all 0.3s; }
-.tut-dot.active { background:#00d4ff; transform:scale(1.45); box-shadow:0 0 6px rgba(0,212,255,0.7); }
-.tut-dot.done   { background: rgba(46,204,113,0.5); }
-
-/* Tamamlama */
-#tut-finish {
-  position:fixed; inset:0; background:rgba(10,14,26,0.96);
-  z-index:400; display:none; align-items:center; justify-content:center;
-  flex-direction:column; gap:20px; text-align:center; padding:32px;
-}
-#tut-finish.show { display:flex; animation:fadeIn 0.5s ease; }
-.fin-icon { font-size:50px; animation:bounceIn 0.6s 0.1s both; }
-.fin-title { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; color:#00d4ff; letter-spacing:3px; }
-.fin-sub { font-family:'JetBrains Mono',monospace; font-size:12px; color:rgba(122,156,197,0.8); line-height:1.9; max-width:300px; }
-.fin-btn {
-  font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:1px;
-  padding:12px 28px; border-radius:12px; cursor:pointer; transition:all 0.2s; margin:4px;
-  border:1px solid rgba(0,212,255,0.4); background:rgba(0,212,255,0.08); color:#00d4ff;
-}
-.fin-btn:hover { background:rgba(0,212,255,0.18); }
-.fin-btn.primary { border-color:rgba(46,204,113,0.5); background:rgba(46,204,113,0.1); color:#2ecc71; }
-.fin-btn.primary:hover { background:rgba(46,204,113,0.2); }
-
-@keyframes fadeIn  { from{opacity:0} to{opacity:1} }
-@keyframes bounceIn{ 0%{transform:scale(.3);opacity:0} 70%{transform:scale(1.1)} 100%{transform:scale(1);opacity:1} }
+  @media (prefers-reduced-motion: reduce) {
+    #ring.show, #hint .dot { animation: none; }
+    #card, #progress-fill { transition: none; }
+  }
 </style>
 </head>
 <body>
 
-<iframe id="app-frame" src="VetCaseClaudeKontrol.html"></iframe>
-<div id="spotlight-box"></div>
+<iframe id="app" src="VetCaseClaudeKontrol.html" title="Vettex"></iframe>
 
-<div id="tut-tip">
-  <div class="tip-badge" id="tip-badge">ADIM 1 / 8</div>
-  <div class="tip-body" id="tip-body"></div>
-  <div class="tip-actions">
-    <button class="tip-skip" onclick="skipTutorial()">Atla</button>
-    <div id="tip-action-area"></div>
+<div id="tut-layer">
+  <div class="shade" id="sh-top"></div>
+  <div class="shade" id="sh-bottom"></div>
+  <div class="shade" id="sh-left"></div>
+  <div class="shade" id="sh-right"></div>
+  <div id="ring"></div>
+</div>
+
+<div id="card" class="at-bottom" role="dialog" aria-live="polite">
+  <div class="card-head">
+    <div id="chapter">Hazırlanıyor</div>
+    <button id="skip" type="button">Tutorial'ı atla</button>
+  </div>
+  <div id="progress"><div id="progress-fill"></div></div>
+  <div id="text">Klinik hazırlanıyor…</div>
+  <div class="actions">
+    <div id="hint" class="hidden"><span class="dot"></span><span id="hint-text">Parlayan alana dokun</span></div>
+    <button id="btn-pass" class="btn ghost hidden" type="button">Bu adımı geç</button>
+    <button id="btn-next" class="btn hidden" type="button">Devam</button>
   </div>
 </div>
 
-<div id="tut-progress"><div id="tut-progress-fill" style="width:0%"></div></div>
-<div id="tut-dots"></div>
-
-<div id="tut-finish">
-  <div class="fin-icon">🎉</div>
-  <div class="fin-title">TUTORIAL TAMAMLANDI</div>
-  <div class="fin-sub">Harika! Vettex'in tüm temel akışını gördün.<br>Şimdi kendi vakalarını çözmeye hazırsın!</div>
-  <div>
-    <button class="fin-btn primary" onclick="goToApp()">▶ KLİNİĞE GİR</button>
-    <button class="fin-btn" onclick="replayTutorial()">↺ Tekrar İzle</button>
+<div id="finish">
+  <div class="finish-box">
+    <div class="paw">🐾</div>
+    <h2>İlk vakan tamam!</h2>
+    <p>Vettex'in temel akışını gördün: genel bilgiler, anamnez, görüntüleme ve teşhis. Artık kendi vakalarını çözmeye hazırsın.</p>
+    <div class="row">
+      <button class="btn ghost" id="btn-replay" type="button">Tekrar izle</button>
+      <button class="btn primary" id="btn-enter" type="button">Kliniğe gir</button>
+    </div>
   </div>
 </div>
 
 <script>
 // ═══════════════════════════════════════════════════════════════
-// CONSOLE LOG YARDIMCI
+// YARDIMCILAR
+// Ana oyundaki CASE_DATA, currentCase gibi değişkenler `let` ile
+// tanımlı, window üzerinden görünmezler. Bu yüzden iframe'in kendi
+// global kapsamında eval ile okuyup yazıyoruz (aynı origin gerekir).
 // ═══════════════════════════════════════════════════════════════
-function tlog(msg, data) {
-  const ts = new Date().toLocaleTimeString('tr-TR');
-  if (data !== undefined) {
-    console.log(`%c[VettexTutorial ${ts}] ${msg}`, 'color:#00d4ff;font-weight:bold', data);
-  } else {
-    console.log(`%c[VettexTutorial ${ts}] ${msg}`, 'color:#00d4ff;font-weight:bold');
-  }
+const frame = document.getElementById('app');
+const W = () => frame.contentWindow;
+const D = () => frame.contentDocument;
+function ev(code) { try { return W().eval(code); } catch (e) { console.warn('[Tutorial] eval hatası:', code, e.message); return undefined; } }
+function q(sel)  { try { return D().querySelector(sel); } catch (e) { return null; } }
+function shown(el) {
+  if (!el || !el.isConnected) return false;
+  const r = el.getBoundingClientRect();
+  if (r.width < 2 || r.height < 2) return false;
+  const cs = W().getComputedStyle(el);
+  return cs.visibility !== 'hidden' && cs.display !== 'none' && parseFloat(cs.opacity) > 0.05;
 }
+const log = (...a) => console.log('%c[VettexTutorial]', 'color:#00d4ff;font-weight:bold', ...a);
+
+// Tutorial vakası ve teşhisi
+const TUT_CASE = 'cat';   // Luna — Yabancı Cisim Obstrüksiyonu (GIS)
+const TUT_COMPLAINT = 'Sahibi endişeli bir ifadeyle anlatıyor:\n\n"3 gündür hiçbir şey yemiyor, su bile içmek istemiyor. Bir de sürekli kusuyor, ama karnında hiçbir şey yok gibi — sadece sarı sıvı geliyor."';
+const GIS_NAME = 'Yabancı Cisim Obstrüksiyonu (GIS)';
+function gisId() { return ev(`(DISEASE_LIBRARY.find(d => d.name === ${JSON.stringify(GIS_NAME)}) || {}).id`) || 't02'; }
 
 // ═══════════════════════════════════════════════════════════════
-// ADIM TANIMI
-// waitFor:
-//   'none'  → Devam / Geç butonuyla
-//   'click' → query: iframe CSS selector, kullanıcı tıklayınca
-//   'fn'    → check(): true dönünce
-// showPass: true → "Geç" butonu göster (opsiyonel atlama)
+// ADIMLAR
+// mode:
+//   'click'        → parlayan alana dokununca ilerler
+//   'next'         → okuma adımı, Devam ile ilerler (alan tıklanamaz)
+//   'interactive'  → alan kullanılabilir, Devam ile ilerler
+// fallback: takılırsa "Bu adımı geç" ile çalışacak eylem
 // ═══════════════════════════════════════════════════════════════
 const STEPS = [
+  // ── AYARLAR ──
+  { ch: 'Hoş geldin', mode: 'click',
+    text: `<strong>Vettex Dijital Eğitici Veteriner Klinik Simülasyonu'na hoş geldiniz!</strong><br>Ayarlarla başlayalım: parlayan <strong>Ayarlar</strong> sekmesine dokun.`,
+    target: () => q(`button.wm-tab[onclick="wmTab('ayarlar')"]`),
+    fallback: () => ev(`wmTab('ayarlar')`) },
 
-  // 0 ── AYARLAR (ana ekran açıldığında başlar)
-  {
-    badge: 'ADIM 1 / 8 — AYARLAR',
-    html: `Sol üstteki <strong>⚙ Ayarlar</strong> sekmesini inceleyelim.<br><br>
-🚨 <strong>Acil Vaka Modu</strong> — 5 eylem hakkıyla hızlı tanı zorunluluğu<br>
-📱 <strong>Mobil Mod</strong> — telefon ekranı için optimize görünüm<br>
-💰 <strong>Ekonomi Modu</strong> — hasta sahibi bütçesine göre test seçimi<br>
-☀️ <strong>Aydınlık Mod</strong> — tema değişikliği<br><br>
-<em>İstersen ayarlarla oyna, hazır olunca devam et.</em>`,
-    spotlight: null, // Ayarlar sekmesini ilk açmak için
-    waitFor: 'none',
-    showPass: true,
-    onEnter: () => {
-      tlog('Adım 0: Ayarlar adımı başladı');
-      // Ayarlar sekmesini otomatik aç
-      try {
-        const doc = getDoc();
-        const tabs = doc.querySelectorAll('button.wm-tab');
-        tlog('Adım 0: wm-tab butonları bulundu', tabs.length);
-        // İkinci tab = Ayarlar
-        if (tabs[1]) {
-          tabs[1].click();
-          tlog('Adım 0: Ayarlar sekmesi tıklandı');
-          setTimeout(() => {
-            spotlightQuery('button.wm-tab:nth-child(2)');
-            positionTooltip(null);
-          }, 200);
-        }
-      } catch(e) { tlog('Adım 0 HATA', e.message); }
-    }
-  },
+  { ch: 'Ayarlar', mode: 'next',
+    text: `Bazı vakalarımız <strong>acil</strong> oluyor. Bu vakalarda klinikteki aceleyi yansıtabilmek için sana <strong>5 eylem hakkı</strong> veriliyor; anamnezden teşhise en hızlı yoldan ilerlemen gerekiyor.`,
+    target: () => q('#settings-emergency-toggle')?.closest('.settings-row') },
 
-  // 1 ── BAŞLAT
-  {
-    badge: 'ADIM 2 / 8 — BAŞLAT',
-    html: `Harika! Şimdi <strong>▶ Başlat</strong> sekmesine tıkla.<br><br>
-Klinik moda gireceğiz — bir kedi vakası seni bekliyor! 🐱`,
-    spotlight: 'button.wm-tab:first-child',
-    waitFor: 'click',
-    waitQuery: 'button.wm-tab:first-child',
-    onEnter: () => {
-      tlog('Adım 1: Başlat tıklama bekleniyor');
-      setTimeout(() => spotlightQuery('button.wm-tab:first-child'), 100);
-    }
-  },
+  { ch: 'Ayarlar', mode: 'next',
+    text: `<strong>Mobil Mod</strong>, mobil kullanıcılarımızın uygulamayı daha rahat kullanabilmesi için var.`,
+    target: () => q('#settings-mobile-toggle')?.closest('.settings-row') },
 
-  // 2 ── KLİNİK MOD
-  {
-    badge: 'ADIM 3 / 8 — KLİNİK MOD',
-    html: `<strong>KLİNİK MOD</strong>'a tıkla! 🏥<br><br>
-Klinik modda her işlem bir hak harcar — gerçek klinik baskısını hissedeceksin.`,
-    spotlight: null,
-    waitFor: 'fn',
-    showPass: false,
-    onEnter: () => {
-      tlog('Adım 2: Klinik Mod bekleniyor');
-      // Klinik mod kartını spotlight'la
-      setTimeout(() => {
-        try {
-          const doc = getDoc();
-          // "openClinicMode" onclick olan kart
-          const cards = doc.querySelectorAll('.species-card');
-          tlog('Adım 2: species-card sayısı', cards.length);
-          cards.forEach((c,i) => tlog(`  card[${i}]`, c.textContent.trim().substring(0,40)));
-          // KLİNİK MOD kartı — openClinicMode çağırıyor
-          const klinik = Array.from(cards).find(c => c.getAttribute('onclick') && c.getAttribute('onclick').includes('openClinicMode'));
-          if (klinik) { spotlightEl(klinik); tlog('Adım 2: KLİNİK MOD kartı spotlight'); }
-          else { tlog('Adım 2: KLİNİK MOD kartı bulunamadı, tüm onclick listesi:');
-            cards.forEach(c => tlog('  onclick:', c.getAttribute('onclick'))); }
-        } catch(e) { tlog('Adım 2 HATA', e.message); }
-      }, 300);
-    },
-    checkFn: () => {
-      try {
-        const doc = getDoc();
-        // openClinicMode çağrılınca wm-mod-cards gizleniyor
-        const cards = doc.getElementById('wm-mod-cards');
-        const hidden = cards && cards.style.display === 'none';
-        if (hidden) tlog('Adım 2: Klinik mod seçildi ✓');
-        return hidden;
-      } catch(e) { return false; }
-    }
-  },
+  { ch: 'Ayarlar', mode: 'next',
+    text: `<strong>Ekonomi Modu</strong>'nda hasta sahibine bir bütçe atanır ve ona göre hareket edersin. Hasta sahibinin maddi durumu düşükse pahalı testler yapılamaz; elindeki imkânlarla teşhise ulaşman beklenir.`,
+    target: () => q('#settings-economy-toggle')?.closest('.settings-row') },
 
-  // 3 ── KARIŞ IK / RASTGELE VAKA
-  {
-    badge: 'ADIM 4 / 8 — VAKA SEÇİMİ',
-    html: `Şimdi <strong>Karışık</strong>'a tıkla — rastgele bir vaka gelecek.<br><br>
-<em>⚡ Tutorial için GIS Obstrüksiyon vakası yüklenecek.</em>`,
-    spotlight: null,
-    waitFor: 'fn',
-    showPass: false,
-    onEnter: () => {
-      tlog('Adım 3: Vaka seçimi bekleniyor');
-      setTimeout(() => {
-        try {
-          const doc = getDoc();
-          // "welcome-clinic" görünür mü kontrol et
-          const wc = doc.getElementById('welcome-clinic');
-          tlog('Adım 3: welcome-clinic display', wc ? wc.style.display : 'bulunamadı');
+  { ch: 'Ayarlar', mode: 'next',
+    text: `<strong>Aydınlık Mod</strong> ile açık temaya geçebilirsin.<br><br>Ayarlarımız şimdilik bu kadar. Şimdi kliniğimize girebiliriz!`,
+    target: () => q('#settings-lightmode-toggle')?.closest('.settings-row') },
 
-          // Klinik seçim ekranındaki karışık butonu bul
-          const allBtns = doc.querySelectorAll('[onclick*="startClinicMode"]');
-          tlog('Adım 3: startClinicMode butonları', allBtns.length);
-          allBtns.forEach((b,i) => tlog(`  btn[${i}] onclick:`, b.getAttribute('onclick'), '| text:', b.textContent.trim().substring(0,30)));
+  // ── KLİNİĞE GİRİŞ ──
+  { ch: 'Kliniğe giriş', mode: 'click',
+    text: `<strong>Başlat</strong> sekmesine dokun.`,
+    target: () => q(`button.wm-tab[onclick="wmTab('basla')"]`),
+    fallback: () => ev(`wmTab('basla')`) },
 
-          // "any" olan buton = Karışık
-          const karinik = Array.from(allBtns).find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes("'any'"));
-          if (karinik) {
-            spotlightEl(karinik);
-            tlog('Adım 3: Karışık butonu spotlight');
-          } else {
-            // Fallback: tüm species-card listele
-            const sc = doc.querySelectorAll('.species-card');
-            tlog('Adım 3 fallback: species-card sayısı', sc.length);
-            if (sc.length > 0) spotlightEl(sc[sc.length-1]);
-          }
-        } catch(e) { tlog('Adım 3 HATA', e.message); }
-      }, 400);
-    },
-    checkFn: () => {
-      try {
-        const doc = getDoc();
-        const win = doc.defaultView;
-        const has = !!(win && win.currentCase);
-        if (has) tlog('Adım 3: currentCase yüklendi ✓', win.currentCase?.diagnosis || win.currentCase?._realDiagnosis || '?');
-        return has;
-      } catch(e) { return false; }
-    },
-    // Vaka yüklendiğinde GIS obstrüksiyon'u zorla yükle
-    onComplete: () => {
-      tlog('Adım 3 tamamlandı: GIS obstrüksiyon vakasını zorla yüklüyorum...');
-      setTimeout(() => forceGISCase(), 300);
-    }
-  },
+  { ch: 'Kliniğe giriş', mode: 'click',
+    text: `<strong>Klinik Mod</strong>'u seç. Burada vakalar hastalık adı gösterilmeden gelir, teşhisi sen koyarsın.`,
+    enter: () => ev(`if (typeof wmHideNormal === 'function') wmHideNormal();`),
+    target: () => q(`#wm-mod-cards [onclick="openClinicMode()"]`),
+    fallback: () => ev(`openClinicMode()`) },
 
-  // 4 ── GENEL BİLGİLER (pasif, okusun)
-  {
-    badge: 'ADIM 5 / 8 — HASTA BİLGİLERİ',
-    html: `Kliniğe <strong>bir kedi</strong> geldi! 🐈<br><br>
-<em>Şikayet:</em> 3 gündür yemiyor, sürekli kusuyor — ama mide boş gibi, sadece sarı sıvı geliyor.<br><br>
-Sol panelde genel bilgileri incele, hazır olunca devam et.`,
-    spotlight: null,
-    waitFor: 'none',
-    showPass: true,
-    onEnter: () => {
-      tlog('Adım 4: Hasta bilgileri adımı');
-      setTimeout(() => {
-        try {
-          const doc = getDoc();
-          // Sol panel / patient card spotlight
-          const panel = doc.querySelector('.patient-panel, .left-panel, #left-panel, .case-info, #case-info, [class*="patient"]');
-          tlog('Adım 4: Sol panel', panel ? panel.className : 'bulunamadı');
-          if (panel) spotlightEl(panel);
-          else hideSpotlight();
-        } catch(e) { tlog('Adım 4 HATA', e.message); }
-      }, 300);
-    }
-  },
+  { ch: 'Kliniğe giriş', mode: 'click', delay: 700,
+    text: `<strong>Karışık</strong>'a dokun, bakalım kliniğe kim gelmiş.`,
+    enter: () => armCase(),
+    target: () => q(`#welcome-clinic [onclick="startClinicMode('any')"]`),
+    fallback: () => { armCase(); ev(`startClinicMode('any')`); } },
 
-  // 5 ── ANAMNEZ
-  {
-    badge: 'ADIM 6 / 8 — ANAMNEZ',
-    html: `Şimdi <strong>🔍 Anamnez Sor</strong> butonuna bas.<br><br>
-<em>Genel → Davranış</em> kategorisini aç ve<br>
-<strong>"Yabancı cisim yeme alışkanlığı var mı?"</strong><br>sorusunu sor.<br><br>
-Cevabı görünce bir sonraki adıma geçebilirsin.`,
-    spotlight: 'button[onclick="openAnamnezModal()"]',
-    waitFor: 'fn',
-    showPass: false,
-    onEnter: () => {
-      tlog('Adım 5: Anamnez adımı — davranis_5 bekleniyor');
-      setTimeout(() => spotlightQuery('button[onclick="openAnamnezModal()"]'), 200);
-    },
-    checkFn: () => {
-      try {
-        const doc = getDoc();
-        const win = doc.defaultView;
-        const answered = !!(win && win._aqAnswered && win._aqAnswered['davranis_5']);
-        if (answered) tlog('Adım 5: davranis_5 cevaplandı ✓', win._aqAnswered['davranis_5']);
-        return answered;
-      } catch(e) { return false; }
-    }
-  },
+  // ── GENEL BİLGİLER ──
+  { ch: 'Genel bilgiler', mode: 'click',
+    text: `<strong>Kliniğe hoş geldin!</strong> Şu an kliniğimizde bir kedi bulunuyor. Hadi genel bilgilerini alarak başlayalım: <strong>İsim & Irk</strong>.`,
+    enter: () => ensureCase(),
+    target: () => q('#btn-name'),
+    fallback: () => ev(`askAnamnez('name')`) },
 
-  // 6 ── RÖNTGEN
-  {
-    badge: 'ADIM 7 / 8 — RÖNTGEN',
-    html: `GIS obstrüksiyon şüphesi var — röntgen zamanı! ☢️<br><br>
-<strong>C. Görüntüleme</strong> sekmesine geç →<br>
-<strong>Röntgen</strong> butonuna bas →<br>
-<strong>İndirekt Röntgen</strong>'i seç.<br><br>
-<em>Abdominal grafide ne görüyorsun?</em>`,
-    spotlight: 'button[onclick="switchTab(\'goruntu\')"]',
-    waitFor: 'fn',
-    showPass: false,
-    onEnter: () => {
-      tlog('Adım 6: Röntgen adımı');
-      setTimeout(() => spotlightQuery("button[onclick=\"switchTab('goruntu')\"]"), 200);
-    },
-    checkFn: () => {
-      try {
-        const doc = getDoc();
-        const win = doc.defaultView;
-        // _usedActions veya imaging yapıldı mı kontrol et
-        const usedImaging = win && win._usedImaging && (win._usedImaging['xray_indirect'] || win._usedImaging['xray_direct']);
-        // Alternatif: modal açık ve röntgen içeriyor
-        const modal = doc.querySelector('#modal-overlay, .modal-overlay, #mod-overlay');
-        const modalHasXray = modal && modal.style.display !== 'none' &&
-          (modal.textContent||'').toLowerCase().match(/röntgen|indirekt|radyografi|xray/);
-        // Alternatif 2: sonuç panelinde röntgen geçiyor
-        const resultPanel = doc.querySelector('#result-panel, .result-area, #exam-results');
-        const resultHasXray = resultPanel && (resultPanel.textContent||'').toLowerCase().match(/röntgen|indirekt|radyografi/);
+  { ch: 'Genel bilgiler', mode: 'click',
+    text: `Şimdi <strong>Yaş / Cinsiyet / Kısırlık</strong>.`,
+    target: () => q('#btn-demog'),
+    fallback: () => ev(`askAnamnez('demog')`) },
 
-        tlog('Adım 6 check: usedImaging=', usedImaging, '| modalXray=', !!modalHasXray, '| resultXray=', !!resultHasXray);
-        return !!(usedImaging || modalHasXray || resultHasXray);
-      } catch(e) { tlog('Adım 6 checkFn HATA', e.message); return false; }
-    }
-  },
+  { ch: 'Genel bilgiler', mode: 'click',
+    text: `<strong>Aşı & Parazit İlacı Durumu</strong>.`,
+    target: () => q('#btn-vaccine'),
+    fallback: () => ev(`askAnamnez('vaccine')`) },
 
-  // 7 ── TEŞHİS
-  {
-    badge: 'ADIM 8 / 8 — TEŞHİS',
-    html: `Son adım! 🎯<br><br>
-<strong>🔍 Teşhis</strong> butonuna bas ve doğru tanıyı seç:<br><br>
-<em>GIS Obstrüksiyon (Yabancı Cisim)</em><br><br>
-Teşhis verdikten sonra tutorial tamamlanacak! 🏆`,
-    spotlight: '#diag-btn, [onclick*="TEŞHİS"], [onclick*="showDiagnosisPanel"]',
-    waitFor: 'fn',
-    showPass: false,
-    onEnter: () => {
-      tlog('Adım 7: Teşhis adımı — diagnosisSubmitted bekleniyor');
-      setTimeout(() => {
-        spotlightQuery('#diag-btn');
-        // diag-btn görünür mü?
-        try {
-          const doc = getDoc();
-          const btn = doc.getElementById('diag-btn');
-          tlog('Adım 7: diag-btn', btn ? `display:${btn.style.display}` : 'bulunamadı');
-        } catch(e) {}
-      }, 200);
-    },
-    checkFn: () => {
-      try {
-        const doc = getDoc();
-        const win = doc.defaultView;
-        const done = !!(win && win.diagnosisSubmitted);
-        if (done) tlog('Adım 7: diagnosisSubmitted = true ✓');
-        return done;
-      } catch(e) { return false; }
-    }
-  },
+  { ch: 'Genel bilgiler', mode: 'click',
+    text: `Son olarak <strong>Şikayet</strong>: hasta sahibi neden geldiğini anlatsın.`,
+    enter: () => setComplaint(),
+    target: () => q('#btn-complaint'),
+    fallback: () => { setComplaint(); ev(`askAnamnez('complaint')`); } },
+
+  { ch: 'Genel bilgiler', mode: 'next',
+    text: `Yeme içme yok, kusuyor ama gıda içeriği de gelmiyor. Hadi anamnezi derinleştirelim.`,
+    target: () => q('#monitor-output')?.lastElementChild },
+
+  // ── ANAMNEZ ──
+  { ch: 'Anamnez', mode: 'click',
+    text: `<strong>Anamnez Sor</strong>'a dokun.`,
+    target: () => q(`#center-panel button[onclick="openAnamnezModal()"]`),
+    fallback: () => ev(`openAnamnezModal()`) },
+
+  { ch: 'Anamnez', mode: 'click',
+    text: `Burada istediğin sistemden istediğin soruyu sorabilirsin. Şimdilik gıda ve su alımı olmadığı için, GIS obstrüksiyon şüphesiyle yabancı cisimlerle oynama ve yutma huyu var mı, onu soralım.<br><br>Önce <strong>Genel Durum</strong>'u aç.`,
+    target: () => q(`#anamnez-modal-body .aq-cat-header[onclick*="'genel'"]`),
+    fallback: () => ev(`toggleAqCat('genel')`) },
+
+  { ch: 'Anamnez', mode: 'click',
+    text: `Sonra <strong>Davranış</strong>.`,
+    target: () => q(`#anamnez-modal-body .aq-sub-header[onclick*="'davranis'"]`),
+    fallback: () => ev(`document.getElementById('aqsub_genel').style.display='block'; toggleAqSub('davranis')`) },
+
+  { ch: 'Anamnez', mode: 'click',
+    text: `Yabancı cisimlerle ilgili soruyu sor.`,
+    target: () => q(`#anamnez-modal-body .aq-q-item[onclick*="'davranis_5'"]`),
+    fallback: () => ev(`askAnamnezQ('davranis_5','genel','davranis')`) },
+
+  { ch: 'Anamnez', mode: 'next',
+    text: `Cevap şüphemizi güçlendiriyor: kedimiz yabancı cisimlerle oynamayı seviyor ve zaman zaman yutabiliyor.`,
+    target: () => q('#aqans_davranis_5'),
+    leave: () => ev(`closeAnamnezModal()`) },
+
+  // ── RÖNTGEN ──
+  { ch: 'Görüntüleme', mode: 'click',
+    text: `Artık GIS obstrüksiyon teşhisinden kesin emin olmak için bir de röntgene bakalım. Klinik İşlemler'den <strong>Görüntüleme</strong>'ye geç.`,
+    enter: () => ev(`closeAnamnezModal()`),
+    target: () => q(`#center-panel .tab-btn[onclick="switchTab('goruntu')"]`),
+    fallback: () => ev(`switchTab('goruntu')`) },
+
+  { ch: 'Görüntüleme', mode: 'click',
+    text: `<strong>Röntgen</strong>'e dokun.`,
+    target: () => q('#ex-xray'),
+    fallback: () => ev(`openXrayMenu()`) },
+
+  { ch: 'Görüntüleme', mode: 'click', delay: 600,
+    text: `<strong>İndirekt Röntgen</strong>'i seç.`,
+    target: () => q(`#modal-content button[onclick*="xray_indirect"]`),
+    fallback: () => ev(`closeModal(); doImaging('xray_indirect')`) },
+
+  { ch: 'Görüntüleme', mode: 'interactive',
+    text: `Görüldüğü gibi burada tıkanıklık belli oluyor.`,
+    target: () => q('#modal-content .xray-container') },
+
+  { ch: 'Görüntüleme', mode: 'interactive',
+    text: `Alttaki çubuktan kontrastı ayarlayabilir, parmaklarını kullanarak yakınlaşıp uzaklaştırabilirsin. İstersen şimdi dene.`,
+    target: () => q('#modal-content .xray-controls') },
+
+  { ch: 'Görüntüleme', mode: 'interactive',
+    text: `Alttaki <strong>kilit</strong> simgesine dokunarak doğrudan yorumu öğrenebilirsin.`,
+    target: () => q('#interp-lock-xray_indirect'),
+    leave: () => ev(`closeModal()`) },
+
+  // ── TEŞHİS ──
+  { ch: 'Teşhis', mode: 'click',
+    text: `Artık teşhisimizi koymaya hazırız! <strong>Teşhis Ver</strong>'e dokun.`,
+    enter: () => ev(`closeModal()`),
+    target: () => q('#clinic-badge'),
+    fallback: () => ev(`showDiagnosisPanel()`) },
+
+  { ch: 'Teşhis', mode: 'click', delay: 600,
+    text: `<strong>${GIS_NAME}</strong>'u seç.`,
+    target: () => q(`#modal-content [onclick="submitDiagnosis('${gisId()}')"]`),
+    fallback: () => ev(`submitDiagnosis('${gisId()}')`) },
+
+  { ch: 'Teşhis', mode: 'next', last: true,
+    text: `<strong>İlk vakamızı tamamladık!</strong> Burada hastalıkta görülen semptomları ve ayırıcı teşhisleri görebilirsin.`,
+    target: () => (q('#result-overlay.open') ? q('#result-body') : null) },
 ];
 
 // ═══════════════════════════════════════════════════════════════
-// GIS OBSTRÜKSIYON ZORLA YÜKLEME
-// Kullanıcı hangi vakayı seçerse seçsin, tutorial için GIS'i yükle
+// TUTORIAL VAKASI
+// Oyuncu Karışık'a gerçekten dokunuyor, ama pickRandom bir kerelik
+// Luna'yı (GIS) döndürecek şekilde yamalanıyor. Böylece oyunun kendi
+// startClinicMode akışı aynen çalışıyor, ekran titremiyor.
 // ═══════════════════════════════════════════════════════════════
-function forceGISCase() {
-  try {
-    const doc = getDoc();
-    const win = doc.defaultView;
-    if (!win) { tlog('forceGISCase: win yok'); return; }
-    if (!win.CASE_DATA) { tlog('forceGISCase: CASE_DATA yok'); return; }
-
-    const keys = Object.keys(win.CASE_DATA);
-    tlog('forceGISCase: Tüm CASE_DATA keyleri', keys);
-
-    // GIS / obstrüksiyon / Luna içeren key'i bul
-    let gisKey = null;
-    for (const k of keys) {
-      const c = win.CASE_DATA[k];
-      const diag = (c.diagnosis || c._realDiagnosis || '').toLowerCase();
-      const name = (c.patientName || c.name || '').toLowerCase();
-      tlog(`  key="${k}" | diagnosis="${diag}" | name="${name}"`);
-      if (diag.includes('gis') || diag.includes('obstru') || name.includes('luna') || k.includes('001') || k.includes('gis')) {
-        gisKey = k;
-        tlog(`forceGISCase: GIS key bulundu → "${gisKey}"`);
-        break;
-      }
+function armCase() {
+  ev(`
+    if (!window.__tutOrigPick) {
+      window.__tutOrigPick = pickRandom;
+      pickRandom = function (a) {
+        if (window.__tutForceKey && Array.isArray(a) && a.indexOf(window.__tutForceKey) > -1) {
+          var k = window.__tutForceKey; window.__tutForceKey = null; return k;
+        }
+        return window.__tutOrigPick(a);
+      };
     }
+    window.__tutForceKey = ${JSON.stringify(TUT_CASE)};
+    if (typeof clinicPlayedCases !== 'undefined') clinicPlayedCases.delete(${JSON.stringify(TUT_CASE)});
+  `);
+}
 
-    if (!gisKey) {
-      tlog('forceGISCase: GIS key bulunamadı — mevcut vakayı bırakıyorum');
+function ensureCase() {
+  // Yama tutmadıysa (beklenmedik durum) vakayı doğrudan başlat
+  const key = ev(`currentCase && currentCase._realKey`);
+  if (key !== TUT_CASE) {
+    log('Tutorial vakası yüklenmemiş, yeniden başlatılıyor. Mevcut:', key);
+    armCase();
+    ev(`document.getElementById('welcome').style.display='none'; startClinicMode('any')`);
+  }
+  setComplaint();
+}
+
+function setComplaint() {
+  ev(`if (currentCase && currentCase.anamnez) currentCase.anamnez.complaint = [${JSON.stringify(TUT_COMPLAINT)}];`);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// AYARLARIN KORUNMASI
+// Senaryo standart (masaüstü) ekran düzenini anlatıyor. Tutorial
+// süresince mobil mod, acil mod ve ekonomi modu geçici olarak
+// kapatılır; kullanıcının tercihleri localStorage'a dokunulmadan
+// tutorial bitince geri yüklenir.
+// ═══════════════════════════════════════════════════════════════
+let saved = null;
+function prepareApp() {
+  saved = ev(`({ mobile: !!mobileMode, eco: !!economyMode, emerg: !!emergencyModeEnabled })`) || { mobile: false, eco: false, emerg: false };
+  log('Kayıtlı ayarlar', saved);
+  ev(`
+    mobileMode = false; document.body.classList.remove('mobile-mode');
+    economyMode = false; emergencyModeEnabled = false;
+    var _w = document.getElementById('welcome'); if (_w) _w.style.cssText = '';
+    var _wc = document.getElementById('welcome-clinic'); if (_wc) _wc.style.display = 'none';
+  `);
+}
+
+function restoreApp() {
+  if (!saved) return;
+  ev(`
+    if (window.__tutOrigPick) { pickRandom = window.__tutOrigPick; delete window.__tutOrigPick; }
+    window.__tutForceKey = null;
+    economyMode = ${saved.eco}; emergencyModeEnabled = ${saved.emerg};
+    if (typeof updateCreditUI === 'function') updateCreditUI();
+  `);
+  if (saved.mobile) {
+    ev(`
+      mobileMode = true; document.body.classList.add('mobile-mode');
+      var _w = document.getElementById('welcome'); if (_w) _w.style.cssText = 'display:none!important';
+      if (typeof mobShowScreen === 'function') mobShowScreen('mob-home-screen');
+    `);
+  }
+  saved = null;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// MOTOR
+// ═══════════════════════════════════════════════════════════════
+const $ = id => document.getElementById(id);
+const layer = $('tut-layer'), ring = $('ring'), card = $('card');
+let idx = -1, cur = null, el = null, stepStart = 0, advancing = false, scrolledEl = null, running = false;
+
+function go(i) {
+  if (cur && cur.leave) cur.leave();
+  idx = i; cur = STEPS[i]; el = null; scrolledEl = null; advancing = false; stepStart = Date.now();
+  log(`Adım ${i + 1}/${STEPS.length}: ${cur.ch}`);
+  $('chapter').textContent = cur.ch;
+  $('text').innerHTML = cur.text;
+  $('progress-fill').style.width = ((i + 1) / STEPS.length * 100) + '%';
+  const reading = cur.mode !== 'click';
+  $('btn-next').classList.toggle('hidden', !reading);
+  $('btn-next').textContent = cur.last ? 'Bitir' : 'Devam';
+  $('hint').classList.toggle('hidden', reading);
+  $('hint-text').textContent = 'Parlayan alana dokun';
+  $('btn-pass').classList.add('hidden');
+  ring.classList.toggle('block', cur.mode === 'next');
+  if (cur.enter) cur.enter();
+}
+
+function advance(delay) {
+  if (advancing) return;
+  advancing = true;
+  setTimeout(() => {
+    if (cur && cur.last) { finish(); return; }
+    if (idx + 1 < STEPS.length) go(idx + 1); else finish();
+  }, delay || 0);
+}
+
+function place(r) {
+  const vw = innerWidth, vh = innerHeight, pad = 6;
+  const st = (id, x, y, w, h) => { const s = $(id).style; s.left = x + 'px'; s.top = y + 'px'; s.width = Math.max(0, w) + 'px'; s.height = Math.max(0, h) + 'px'; };
+  if (!r) {
+    st('sh-top', 0, 0, vw, vh); st('sh-bottom', 0, 0, 0, 0); st('sh-left', 0, 0, 0, 0); st('sh-right', 0, 0, 0, 0);
+    ring.classList.remove('show');
+    card.classList.remove('at-top'); card.classList.add('at-bottom');
+    return;
+  }
+  const x = Math.max(0, r.left - pad), y = Math.max(0, r.top - pad);
+  const x2 = Math.min(vw, r.right + pad), y2 = Math.min(vh, r.bottom + pad);
+  st('sh-top', 0, 0, vw, y);
+  st('sh-bottom', 0, y2, vw, vh - y2);
+  st('sh-left', 0, y, x, y2 - y);
+  st('sh-right', x2, y, vw - x2, y2 - y);
+  const rs = ring.style; rs.left = x + 'px'; rs.top = y + 'px'; rs.width = (x2 - x) + 'px'; rs.height = (y2 - y) + 'px';
+  ring.classList.add('show');
+  // Kartı hedefin karşı tarafına koy
+  const ch = card.offsetHeight + 28;
+  const spaceBelow = vh - y2, spaceAbove = y;
+  const top = spaceBelow < ch && spaceAbove > spaceBelow;
+  card.classList.toggle('at-top', top);
+  card.classList.toggle('at-bottom', !top);
+}
+
+function tick() {
+  if (running && cur) {
+    let t = null;
+    try { t = cur.target ? cur.target() : null; } catch (e) { t = null; }
+    el = shown(t) ? t : null;
+    if (el && el !== scrolledEl) {
+      scrolledEl = el;
+      try { el.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'smooth' }); } catch (e) {}
+    }
+    place(el ? el.getBoundingClientRect() : null);
+    // Hedef uzun süre bulunamazsa çıkış yolu göster
+    const stuck = !el && Date.now() - stepStart > 7000;
+    if (stuck) {
+      $('btn-pass').classList.remove('hidden');
+      $('hint-text').textContent = 'Ekran bekleniyor…';
+    }
+  }
+  requestAnimationFrame(tick);
+}
+
+// Hedefe yapılan tıklamayı yakala (oyunun kendi tıklaması da çalışır)
+function onAppClick(e) {
+  if (!running || !cur || cur.mode !== 'click' || !el) return;
+  if (el.contains(e.target)) {
+    ring.classList.remove('flash'); void ring.offsetWidth; ring.classList.add('flash');
+    advance(cur.delay || 450);
+    return;
+  }
+  // Dokunuş parlayan alanın içinde ama hedefin önünde başka bir öğe var
+  // (dar ekranda paneller üst üste binebiliyor): tıklamayı hedefe yönlendir.
+  const r = el.getBoundingClientRect();
+  if (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom) {
+    e.preventDefault(); e.stopPropagation();
+    const target = el;
+    ring.classList.remove('flash'); void ring.offsetWidth; ring.classList.add('flash');
+    advance(cur.delay || 450);
+    setTimeout(() => target.click(), 0);
+  }
+}
+
+function nudge() {
+  card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake');
+  if (el) { ring.classList.remove('flash'); void ring.offsetWidth; ring.classList.add('flash'); }
+}
+document.querySelectorAll('.shade').forEach(s => s.addEventListener('click', nudge));
+ring.addEventListener('click', nudge);
+
+$('btn-next').addEventListener('click', () => advance(0));
+$('btn-pass').addEventListener('click', () => {
+  log(`Adım ${idx + 1} geçildi (fallback)`);
+  try { if (cur.fallback) cur.fallback(); } catch (e) {}
+  advance(cur.fallback ? 500 : 0);
+});
+$('skip').addEventListener('click', () => {
+  if (!running) { hideAll(); return; }
+  if (!confirm("Tutorial'ı atlamak istiyor musun?")) return;
+  if (cur && cur.leave) cur.leave();
+  stop();
+  restoreApp();
+});
+
+function hideAll() {
+  layer.classList.remove('on');
+  card.classList.remove('show');
+  place(null);
+  $('sh-top').style.width = '0px';
+}
+
+function stop() {
+  running = false; cur = null; idx = -1;
+  hideAll();
+}
+
+function finish() {
+  if (cur && cur.leave) cur.leave();
+  stop();
+  try { localStorage.setItem('vettex-tutorial-done', '1'); } catch (e) {}
+  $('finish').classList.add('show');
+  log('Tutorial tamamlandı');
+}
+
+$('btn-enter').addEventListener('click', () => {
+  $('finish').classList.remove('show');
+  ev(`if (typeof closeResultScreen === 'function') closeResultScreen(); closeModal(); if (typeof backToMainMenu === 'function') backToMainMenu();`);
+  restoreApp();
+});
+$('btn-replay').addEventListener('click', () => { location.reload(); });
+
+// ═══════════════════════════════════════════════════════════════
+// BAŞLATMA
+// Splash bitsin, vaka verisi ve soru havuzu yüklensin, kayıt formu
+// doldurulmuşsa tutorial başlar.
+// ═══════════════════════════════════════════════════════════════
+function appState() {
+  const doc = D(); if (!doc || !doc.body) return 'loading';
+  const splash = doc.getElementById('splash');
+  const splashGone = !splash || !splash.isConnected || W().getComputedStyle(splash).display === 'none' || parseFloat(W().getComputedStyle(splash).opacity) < 0.05;
+  const dataOk = ev(`typeof CASE_DATA !== 'undefined' && !!CASE_DATA[${JSON.stringify(TUT_CASE)}] && typeof DISEASE_LIBRARY !== 'undefined' && !!window.QUESTIONS && Object.keys(window.QUESTIONS).length > 0`);
+  if (!splashGone || !dataOk) return 'loading';
+  if (doc.getElementById('reg-overlay')?.classList.contains('open')) return 'register';
+  return 'ready';
+}
+
+function waitForApp() {
+  card.classList.add('show');
+  $('chapter').textContent = 'Hazırlanıyor';
+  let tries = 0;
+  const timer = setInterval(() => {
+    tries++;
+    let s;
+    try { s = appState(); } catch (e) {
+      clearInterval(timer);
+      $('text').innerHTML = 'Tutorial oyuna bağlanamadı. Sayfa ile oyun aynı adresten açılmalı (dosyayı doğrudan açmak yerine bir sunucu veya uygulama içinden aç).';
+      console.error('[VettexTutorial] iframe erişim hatası:', e);
       return;
     }
-
-    // startClinicMode mantığını taklit et ama GIS vakasını yükle
-    if (win.randomizePatientMeta && win.startCase) {
-      const randomized = win.randomizePatientMeta(gisKey);
-      win.CASE_DATA['__clinic__'] = randomized;
-      win.CASE_DATA['__clinic__']._clinicMode = true;
-      win.CASE_DATA['__clinic__']._realDiagnosis = randomized.diagnosis || 'GIS Obstrüksiyon';
-      win.CASE_DATA['__clinic__']._realKey = gisKey;
-      win.startCase('__clinic__');
-      tlog('forceGISCase: GIS vakası başarıyla yüklendi ✓');
-    } else if (win.startCase) {
-      win.startCase(gisKey);
-      tlog('forceGISCase: startCase(gisKey) çağrıldı');
-    } else {
-      tlog('forceGISCase: startCase fonksiyonu bulunamadı!');
+    if (s === 'register') {
+      layer.classList.remove('on');
+      $('text').innerHTML = 'Önce kayıt formunu doldur, tutorial ardından başlayacak.';
+      card.classList.remove('at-bottom'); card.classList.add('at-top');
+      return;
     }
-
-  } catch(e) { tlog('forceGISCase HATA', e.message); }
-}
-
-// ═══════════════════════════════════════════════════════════════
-// CORE
-// ═══════════════════════════════════════════════════════════════
-let currentStep = 0;
-let waitInterval = null;
-let waitClickCleanup = null;
-let tutorialStarted = false;
-
-function getDoc() {
-  const f = document.getElementById('app-frame');
-  return f.contentDocument || f.contentWindow.document;
-}
-
-function getIframeRect(el) {
-  const frame = document.getElementById('app-frame');
-  const fr = frame.getBoundingClientRect();
-  const r  = el.getBoundingClientRect();
-  return { left: fr.left + r.left, top: fr.top + r.top, width: r.width, height: r.height };
-}
-
-function spotlightEl(el) {
-  if (!el) { hideSpotlight(); return; }
-  const r = getIframeRect(el);
-  if (!r || r.width === 0) { hideSpotlight(); return; }
-  const pad = 8;
-  const sp  = document.getElementById('spotlight-box');
-  sp.style.left   = (r.left - pad) + 'px';
-  sp.style.top    = (r.top  - pad) + 'px';
-  sp.style.width  = (r.width  + pad*2) + 'px';
-  sp.style.height = (r.height + pad*2) + 'px';
-  sp.classList.add('visible', 'pulse');
-}
-
-function spotlightQuery(q) {
-  if (!q) { hideSpotlight(); return; }
-  try {
-    const doc = getDoc();
-    // birden fazla selector dene
-    const selectors = q.split(',').map(s => s.trim());
-    for (const sel of selectors) {
-      const el = doc.querySelector(sel);
-      if (el) { tlog('spotlight bulundu: ' + sel); spotlightEl(el); return; }
+    if (s === 'loading') {
+      $('text').textContent = tries > 80 ? 'Vaka verisi hâlâ yükleniyor. İnternet bağlantını kontrol et.' : 'Klinik hazırlanıyor…';
+      return;
     }
-    tlog('spotlight bulunamadı: ' + q);
-    hideSpotlight();
-  } catch(e) { hideSpotlight(); }
-}
-
-function hideSpotlight() {
-  const sp = document.getElementById('spotlight-box');
-  sp.classList.remove('visible', 'pulse');
-}
-
-function positionTooltip(spotQ) {
-  const tip = document.getElementById('tut-tip');
-  const W = window.innerWidth, H = window.innerHeight;
-  const tw = tip.offsetWidth, th = tip.offsetHeight;
-
-  if (!spotQ) {
-    tip.style.left = Math.max(8, (W - tw) / 2) + 'px';
-    tip.style.top  = Math.max(8, (H - th) / 2) + 'px';
-    return;
-  }
-  try {
-    const doc = getDoc();
-    const selectors = spotQ.split(',').map(s=>s.trim());
-    let el = null;
-    for (const s of selectors) { el = doc.querySelector(s); if (el) break; }
-    if (!el) { positionTooltip(null); return; }
-    const r   = getIframeRect(el);
-    const pad = 16;
-    let top  = r.top + r.height + pad;
-    let left = r.left;
-    if (top + th > H - 50) top = r.top - th - pad;
-    if (top < 8) top = 8;
-    if (left + tw > W - 8) left = W - tw - 8;
-    if (left < 8) left = 8;
-    tip.style.top  = top + 'px';
-    tip.style.left = left + 'px';
-  } catch(e) { positionTooltip(null); }
-}
-
-function renderStep(idx) {
-  tlog(`renderStep(${idx})`);
-  clearWait();
-  const s = STEPS[idx];
-
-  document.getElementById('tip-badge').textContent = s.badge;
-  document.getElementById('tip-body').innerHTML    = s.html;
-
-  // Aksiyon alanı
-  const area = document.getElementById('tip-action-area');
-  if (s.waitFor === 'none') {
-    let html = `<button class="tip-next" onclick="nextStep()">Devam ›</button>`;
-    if (s.showPass) {
-      html = `<button class="tip-pass" onclick="nextStep()">Geç</button>` + html;
-    }
-    area.innerHTML = html;
-  } else {
-    let html = `<span class="tip-wait">⏳ Aksiyonu bekliyor...</span>`;
-    if (s.showPass) html += ` <button class="tip-pass" onclick="forceNext()" style="margin-left:8px">Geç</button>`;
-    area.innerHTML = html;
-  }
-
-  // Progress & dots
-  document.getElementById('tut-progress-fill').style.width = ((idx+1)/STEPS.length*100) + '%';
-  const dots = document.getElementById('tut-dots');
-  dots.innerHTML = STEPS.map((_,i) =>
-    `<div class="tut-dot ${i<idx?'done':i===idx?'active':''}"></div>`
-  ).join('');
-
-  // Tooltip göster
-  const tip = document.getElementById('tut-tip');
-  tip.classList.add('visible');
-
-  // onEnter hook
-  if (s.onEnter) s.onEnter();
-
-  // Spotlight & pozisyon (kısa gecikmeyle)
-  setTimeout(() => {
-    if (s.spotlight) {
-      spotlightQuery(s.spotlight);
-      positionTooltip(s.spotlight);
-    } else {
-      hideSpotlight();
-      positionTooltip(null);
-    }
-  }, 200);
-
-  // Bekleme kur
-  setupWait(s, idx);
-}
-
-function setupWait(s, idx) {
-  if (s.waitFor === 'none') return;
-  enableIframe();
-
-  if (s.waitFor === 'click' && s.waitQuery) {
-    const attach = () => {
-      try {
-        const doc = getDoc();
-        const el  = doc.querySelector(s.waitQuery);
-        tlog(`setupWait click: query="${s.waitQuery}"`, el ? 'bulundu' : 'bulunamadı');
-        if (!el) { setTimeout(attach, 500); return; }
-        const handler = () => {
-          tlog(`Tıklama algılandı: ${s.waitQuery}`);
-          el.removeEventListener('click', handler);
-          disableIframe();
-          if (s.onComplete) s.onComplete();
-          setTimeout(nextStep, 400);
-        };
-        el.addEventListener('click', handler);
-        waitClickCleanup = () => el.removeEventListener('click', handler);
-      } catch(e) { tlog('setupWait click HATA', e.message); }
-    };
-    setTimeout(attach, 600);
-    return;
-  }
-
-  if (s.waitFor === 'fn' && s.checkFn) {
-    waitInterval = setInterval(() => {
-      try {
-        if (s.checkFn()) {
-          clearWait();
-          disableIframe();
-          if (s.onComplete) s.onComplete();
-          setTimeout(nextStep, 500);
-        }
-      } catch(e) { tlog('waitInterval HATA', e.message); }
-    }, 350);
-  }
-}
-
-function clearWait() {
-  if (waitInterval)    { clearInterval(waitInterval); waitInterval = null; }
-  if (waitClickCleanup){ waitClickCleanup(); waitClickCleanup = null; }
-}
-
-function enableIframe()  { document.getElementById('app-frame').classList.add('interactive'); }
-function disableIframe() { document.getElementById('app-frame').classList.remove('interactive'); }
-
-function nextStep() {
-  clearWait();
-  disableIframe();
-  const tip = document.getElementById('tut-tip');
-  tip.classList.remove('visible');
-  hideSpotlight();
-  if (currentStep >= STEPS.length - 1) { setTimeout(finishTutorial, 350); return; }
-  currentStep++;
-  tlog('nextStep → ' + currentStep);
-  setTimeout(() => renderStep(currentStep), 350);
-}
-
-// Geç butonu — zorla ilerle
-function forceNext() {
-  clearWait();
-  disableIframe();
-  tlog('forceNext: Adım zorla geçildi — ' + currentStep);
-  nextStep();
-}
-
-function finishTutorial() {
-  tlog('Tutorial tamamlandı!');
-  document.getElementById('tut-dots').style.display = 'none';
-  document.getElementById('tut-progress').style.display = 'none';
-  document.getElementById('tut-finish').classList.add('show');
-  enableIframe();
-}
-
-function skipTutorial() {
-  if (!confirm('Tutorialı atlamak istiyor musun?')) return;
-  tlog('Tutorial atlandı');
-  clearWait();
-  enableIframe();
-  hideSpotlight();
-  document.getElementById('tut-tip').classList.remove('visible');
-  document.getElementById('tut-dots').style.display = 'none';
-  document.getElementById('tut-progress').style.display = 'none';
-}
-
-function goToApp()      { document.getElementById('tut-finish').classList.remove('show'); }
-function replayTutorial() {
-  document.getElementById('tut-finish').classList.remove('show');
-  document.getElementById('tut-dots').style.display = 'flex';
-  document.getElementById('tut-progress').style.display = 'block';
-  disableIframe();
-  currentStep = 0;
-  document.getElementById('tut-tip').classList.remove('visible');
-  setTimeout(() => renderStep(0), 200);
-}
-
-// ═══════════════════════════════════════════════════════════════
-// IFRAME YÜKLEME — ANA EKRAN AÇILINCA BAŞLAT (splash değil)
-// ═══════════════════════════════════════════════════════════════
-document.getElementById('app-frame').addEventListener('load', () => {
-  tlog('iframe load event tetiklendi');
-
-  // Splash geçene kadar bekle — wm-tab butonları görünür olunca başlat
-  let attempts = 0;
-  const waitForMainScreen = setInterval(() => {
-    attempts++;
-    try {
-      const doc = getDoc();
-      // Splash kaldırıldı mı? (splash elemanı yok veya gizlendi)
-      const splash = doc.getElementById('splash');
-      const splashGone = !splash || splash.style.display === 'none' || splash.style.opacity === '0' || !doc.body.contains(splash);
-      // wm-tab butonları var mı?
-      const tabs = doc.querySelectorAll('button.wm-tab');
-
-      tlog(`waitForMainScreen denemesi ${attempts}: splashGone=${splashGone}, tabs=${tabs.length}`);
-
-      if (splashGone && tabs.length >= 2 && !tutorialStarted) {
-        clearInterval(waitForMainScreen);
-        tutorialStarted = true;
-        tlog('Ana ekran hazır — tutorial başlıyor!');
-        setTimeout(() => renderStep(0), 800);
-      }
-
-      if (attempts > 60) { // 15 sn sonra zorla başlat
-        clearInterval(waitForMainScreen);
-        if (!tutorialStarted) {
-          tutorialStarted = true;
-          tlog('Zaman aşımı — tutorial zorla başlatılıyor');
-          setTimeout(() => renderStep(0), 500);
-        }
-      }
-    } catch(e) { tlog('waitForMainScreen HATA', e.message); }
+    clearInterval(timer);
+    D().addEventListener('click', onAppClick, true);
+    prepareApp();
+    layer.classList.add('on');
+    running = true;
+    setTimeout(() => go(0), 300);
   }, 250);
-});
+}
 
-window.addEventListener('resize', () => {
-  if (currentStep < STEPS.length && tutorialStarted) {
-    const s = STEPS[currentStep];
-    if (s.spotlight) { spotlightQuery(s.spotlight); positionTooltip(s.spotlight); }
-    else positionTooltip(null);
-  }
-});
+frame.addEventListener('load', () => { log('Oyun yüklendi'); waitForApp(); });
+window.addEventListener('resize', () => { scrolledEl = null; });
+requestAnimationFrame(tick);
 </script>
 </body>
 </html>
