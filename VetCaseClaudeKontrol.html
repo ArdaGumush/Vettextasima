@@ -439,6 +439,44 @@ function replayTutorial() {
   #mob-settings-body .settings-row { margin-bottom: 10px; }
   #mob-settings-body > div:first-child:not(.settings-row) { display: none; }
 
+  /* ── SERBEST ÇALIŞMA ── */
+  .fl-wrap { display: flex; flex-direction: column; gap: 8px; }
+  .fl-sec { font-size: 10px; letter-spacing: 2px; color: var(--accent-green); margin: 6px 0 2px; }
+  .fl-card { display: flex; gap: 6px; align-items: stretch; }
+  .fl-main {
+    flex: 1; display: flex; align-items: center; gap: 12px; padding: 12px 14px; text-align: left; cursor: pointer;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; color: var(--text-primary); font-family: inherit;
+  }
+  .fl-main:hover, .fl-main:active { border-color: var(--accent-green); }
+  .fl-main:disabled { opacity: .45; cursor: not-allowed; }
+  .fl-icon { font-size: 22px; }
+  .fl-txt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .fl-name { font-size: 13px; font-weight: 600; }
+  .fl-meta { font-size: 11px; color: var(--text-muted); }
+  .fl-ok { color: var(--accent-green); } .fl-bad { color: var(--accent-red); }
+  .fl-mini {
+    width: 40px; flex-shrink: 0; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    color: var(--text-secondary); font-size: 14px; cursor: pointer;
+  }
+  .fl-empty, .fl-note { font-size: 11px; color: var(--text-muted); line-height: 1.6; }
+  .fl-note { margin-top: 6px; }
+  .fl-new {
+    padding: 12px; background: rgba(46,204,113,.06); border: 1px dashed rgba(46,204,113,.5); border-radius: 10px;
+    color: var(--accent-green); font-family: inherit; font-size: 12px; letter-spacing: 1px; cursor: pointer;
+  }
+  #fl-editor { max-height: 46vh; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding-right: 2px; }
+  .fl-grp-h { display: flex; justify-content: space-between; align-items: center; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 4px; }
+  .fl-all { background: none; border: 1px solid var(--border); border-radius: 6px; color: var(--text-muted); font-family: inherit; font-size: 10px; padding: 2px 8px; cursor: pointer; }
+  .fl-chk { display: flex; align-items: center; gap: 10px; padding: 9px 10px; margin-bottom: 4px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; font-size: 12px; color: var(--text-primary); cursor: pointer; }
+  .fl-chk input { width: 16px; height: 16px; accent-color: var(--accent-green); flex-shrink: 0; }
+  .fl-chk:has(input:checked) { border-color: rgba(46,204,113,.55); background: rgba(46,204,113,.06); }
+  .fl-actions { display: flex; gap: 8px; margin-top: 4px; }
+  .fl-cancel, .fl-save { flex: 1; padding: 11px; border-radius: 8px; font-family: inherit; font-size: 12px; cursor: pointer; }
+  .fl-cancel { background: var(--bg-hover); border: 1px solid var(--border); color: var(--text-secondary); }
+  .fl-save { background: rgba(46,204,113,.12); border: 1px solid var(--accent-green); color: var(--accent-green); }
+  .fl-save.fl-danger { background: rgba(231,76,60,.1); border-color: var(--accent-red); color: var(--accent-red); }
+  .fl-result { padding: 9px 12px; margin-bottom: 12px; border: 1px solid rgba(46,204,113,.3); background: rgba(46,204,113,.05); border-radius: 8px; font-size: 11px; color: var(--text-secondary); }
+
   /* ── TEŞHİS SEÇİCİ ── */
   .dx-search {
     width: 100%; box-sizing: border-box; padding: 10px 12px; margin-bottom: 12px;
@@ -1864,6 +1902,11 @@ window.onerror = function(msg, src, line) {
           <div class="s-name" style="font-size:13px;color:var(--accent-orange)">KLİNİK MOD</div>
           <div class="s-hint">Körlemesine teşhis</div>
         </div>
+        <div class="species-card" onclick="openFreeStudy()" id="wm-card-free" style="border-color:rgba(46,204,113,0.4)">
+          <div class="s-icon">📚</div>
+          <div class="s-name" style="font-size:13px;color:var(--accent-green)">SERBEST ÇALIŞMA</div>
+          <div class="s-hint">Konu listeleriyle çalış</div>
+        </div>
       </div>
       <!-- Çalışma modu: tür seçimi -->
       <div id="wm-species-select" style="display:none;flex-direction:column;align-items:center;width:100%">
@@ -3101,6 +3144,7 @@ function mobShowScreen(screenId) {
 }
 
 function mobOpenClinic() {
+  activeFreeList = null;
   mobShowScreen('mob-species-screen');
 }
 
@@ -3212,30 +3256,16 @@ function mobGoHome() {
   document.getElementById('mob-credit-badge').style.display = 'none';
 }
 
-function mobOpenFreeStudy() {
-  showToast('📚 Serbest Çalışma Modu yakında eklenecek!');
-}
+function mobOpenFreeStudy() { openFreeStudy(); }
 
 function mobStartCase(speciesFilter) {
   if (!CASE_DATA || Object.keys(CASE_DATA).length === 0) {
     showToast('⏳ Vaka verisi yükleniyor, lütfen bekleyin...');
     return;
   }
-  // Masaüstü klinik moduyla aynı seçim: oynananları dışla, rastgele isim/ırk/şikayet
-  const fits = k => {
-    if (k === '__clinic__') return false;
-    if (speciesFilter === 'any' || !speciesFilter) return true;
-    return (CASE_DATA[k].species === 'Köpek' ? 'dog' : 'cat') === speciesFilter;
-  };
-  let available = Object.keys(CASE_DATA).filter(k => fits(k) && !clinicPlayedCases.has(k));
-  if (available.length === 0) {
-    clinicPlayedCases.clear();
-    available = Object.keys(CASE_DATA).filter(fits);
-    if (!available.length) { showToast('Bu tür için vaka bulunamadı.'); return; }
-    showToast('🔄 Tüm vakalar tamamlandı — liste sıfırlandı!');
-  }
-  const key = pickRandom(available);
-  clinicPlayedCases.add(key);
+  // Masaüstü klinik moduyla aynı seçim (serbest çalışma listesi aktifse o listeden)
+  const key = pickNextCaseKey(speciesFilter);
+  if (!key) return;
   const rc = randomizePatientMeta(key);
   rc._clinicMode = true;
   rc._realDiagnosis = rc.diagnosis || 'Bilinmiyor';
@@ -5819,6 +5849,7 @@ function randomizePatientMeta(caseKey) {
 
 // ── KLİNİK MOD FONKSİYONLARI ───────────────────────────────────
 function openClinicMode() {
+  activeFreeList = null;
   document.getElementById('welcome').style.display = 'none';
   document.getElementById('welcome-clinic').style.display = 'flex';
 }
@@ -5856,30 +5887,193 @@ function backToMainMenu() {
 // Klinik modda oynanan vakaları takip et
 const clinicPlayedCases = new Set();
 
-function startClinicMode(speciesFilter) {
-  // Elimizdeki vakalardan uygun olanı seç — daha önce oynananları dışla
-  let available = Object.keys(CASE_DATA).filter(k => {
-    if (k === '__clinic__') return false;
-    if (clinicPlayedCases.has(k)) return false;
-    if (speciesFilter === 'any') return true;
-    const s = CASE_DATA[k].species === 'Köpek' ? 'dog' : 'cat';
-    return s === speciesFilter;
-  });
-
-  // Tüm vakalar oynanmışsa sıfırla
-  if (available.length === 0) {
-    clinicPlayedCases.clear();
-    available = Object.keys(CASE_DATA).filter(k => {
-      if (k === '__clinic__') return false;
-      if (speciesFilter === 'any') return true;
-      const s = CASE_DATA[k].species === 'Köpek' ? 'dog' : 'cat';
-      return s === speciesFilter;
-    });
-    showToast('🔄 Tüm vakalar tamamlandı — liste sıfırlandı!');
+// Sıradaki vakayı seç: klinik modda türe göre, serbest çalışmada aktif listeden.
+// Oynananlar havuz bitene kadar tekrar gelmez.
+function pickNextCaseKey(speciesFilter) {
+  let pool, played;
+  if (activeFreeList) {
+    const l = freeFindList(activeFreeList);
+    pool = l ? freeCaseKeys(l) : [];
+    played = freePlayed[activeFreeList] = freePlayed[activeFreeList] || new Set();
+  } else {
+    pool = Object.keys(CASE_DATA).filter(k => k !== '__clinic__' &&
+      (!speciesFilter || speciesFilter === 'any' || caseSpeciesCode(CASE_DATA[k]) === speciesFilter));
+    played = clinicPlayedCases;
   }
+  if (!pool.length) { showToast('Uygun vaka bulunamadı.'); return null; }
+  let avail = pool.filter(k => !played.has(k));
+  if (!avail.length) {
+    played.clear(); avail = pool.slice();
+    showToast(activeFreeList ? '🔄 Listedeki tüm vakaları gördün — liste baştan başlıyor!' : '🔄 Tüm vakalar tamamlandı — liste sıfırlandı!');
+  }
+  const key = pickRandom(avail);
+  played.add(key);
+  return key;
+}
 
-  const caseKey = pickRandom(available);
-  clinicPlayedCases.add(caseKey);
+// ═══════════════════════════════════════════════════════════════
+// SERBEST ÇALIŞMA — hazır konu listeleri + kullanıcının kendi listeleri
+// Listeler ve skorlar bu cihazda (localStorage) tutulur; klinik moda karışmaz.
+// ═══════════════════════════════════════════════════════════════
+const FREE_PRESETS = [
+  { id:'p-viral', icon:'🦠', name:'Viral Hastalıklar',      cats:['Viral'] },
+  { id:'p-para',  icon:'🪱', name:'Paraziter Hastalıklar',  cats:['Paraziter'] },
+  { id:'p-endo',  icon:'⚗️', name:'Endokrin & Metabolik',   cats:['Endokrinoloji','Metabolik'] },
+  { id:'p-enf',   icon:'🧫', name:'Enfeksiyöz Hastalıklar', cats:['Viral','Bakteriyel','Paraziter'], hint:'Viral + bakteriyel + paraziter' },
+  { id:'p-acil',  icon:'🚑', name:'Acil & Cerrahi',         cats:['Travmatik','Cerrahi'] },
+];
+let activeFreeList = null;
+const freePlayed = {};
+
+function freeLS(key, val) {
+  try {
+    if (val === undefined) return JSON.parse(localStorage.getItem(key) || 'null');
+    localStorage.setItem(key, JSON.stringify(val));
+  } catch (e) { return null; }
+}
+function freeUserLists() { return freeLS('vettex-free-lists') || []; }
+function freeStats()     { return freeLS('vettex-free-stats') || {}; }
+function freeEsc(t) { return String(t).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
+function caseDisease(k) { const c = CASE_DATA[k]; return c ? resolveDisease(c.diagnosis, c) : null; }
+function freeCaseKeys(l) {
+  const keys = Object.keys(CASE_DATA).filter(k => k !== '__clinic__');
+  if (l.cats) return keys.filter(k => l.cats.includes(caseDisease(k).category));
+  return (l.cases || []).filter(k => CASE_DATA[k]);
+}
+function freeFindList(id) { return FREE_PRESETS.find(l => l.id === id) || freeUserLists().find(l => l.id === id); }
+function freeProgress(l) {
+  const keys = freeCaseKeys(l), st = freeStats()[l.id] || {};
+  const done = keys.filter(k => k in st), ok = done.filter(k => st[k]).length;
+  return { total: keys.length, done: done.length, ok, bad: done.length - ok };
+}
+
+function freeListCard(l, own) {
+  const pr = freeProgress(l);
+  const meta = (l.hint ? l.hint + ' · ' : '') + (pr.done
+    ? `<span class="fl-ok">✓ ${pr.ok}</span> <span class="fl-bad">✗ ${pr.bad}</span> · ${pr.done}/${pr.total} vaka`
+    : `${pr.total} vaka`);
+  return `<div class="fl-card">
+    <button type="button" class="fl-main" id="fl-${l.id}" onclick="startFreeList('${l.id}')" ${pr.total ? '' : 'disabled'}>
+      <span class="fl-icon">${own ? '⭐' : l.icon}</span>
+      <span class="fl-txt"><span class="fl-name">${freeEsc(l.name)}</span><span class="fl-meta">${meta}</span></span>
+    </button>
+    ${own ? `<button type="button" class="fl-mini" onclick="freeEditList('${l.id}')" title="Düzenle">✎</button><button type="button" class="fl-mini" onclick="freeDeleteList('${l.id}')" title="Sil">🗑</button>` : ''}
+    ${pr.done ? `<button type="button" class="fl-mini" onclick="freeResetStats('${l.id}')" title="Skoru sıfırla">↺</button>` : ''}
+  </div>`;
+}
+
+function openFreeStudy() {
+  if (!CASE_DATA || Object.keys(CASE_DATA).length === 0) { showToast('⏳ Vaka verisi yükleniyor, lütfen bekleyin...'); return; }
+  const own = freeUserLists();
+  const html = '<div class="fl-wrap">'
+    + '<div class="fl-sec">HAZIR LİSTELER</div>' + FREE_PRESETS.map(l => freeListCard(l, false)).join('')
+    + '<div class="fl-sec">LİSTELERİM</div>'
+    + (own.length ? own.map(l => freeListCard(l, true)).join('') : '<div class="fl-empty">Henüz kendi listen yok.</div>')
+    + '<button type="button" class="fl-new" id="fl-new" onclick="freeEditList()">＋ Yeni Liste Oluştur</button>'
+    + '<div class="fl-note">Vakalar listeden rastgele ve körlemesine gelir. Teşhis ekranında yine tüm hastalıklar listelenir. Skorlar sadece bu cihazda tutulur.</div>'
+    + '</div>';
+  openModal('📚 SERBEST ÇALIŞMA', html);
+}
+
+function startFreeList(id) {
+  const l = freeFindList(id);
+  if (!l || !freeCaseKeys(l).length) { showToast('Bu listede vaka yok.'); return; }
+  activeFreeList = id;
+  closeModal();
+  if (mobileMode) mobStartCase('any'); else startClinicMode('any');
+  const pr = freeProgress(l);
+  showToast('📚 ' + l.name + ' · ' + pr.total + ' vaka');
+}
+
+function freeEditList(id) {
+  const ex = id ? freeUserLists().find(l => l.id === id) : null;
+  const sel = new Set(ex ? ex.cases : []);
+  const groups = {};
+  Object.keys(CASE_DATA).filter(k => k !== '__clinic__').forEach(k => {
+    const d = caseDisease(k), cat = d.category || 'Diğer';
+    (groups[cat] = groups[cat] || []).push({ k, name: d.id !== 'unknown' ? d.name : k, sp: CASE_DATA[k].species === 'Köpek' ? '🐶' : '🐱' });
+  });
+  let html = `<div class="fl-wrap">
+    <input id="fl-name" class="dx-search" maxlength="40" placeholder="Liste adı (ör. Vize — İç Hastalıkları)" value="${ex ? freeEsc(ex.name) : ''}">
+    <input type="search" class="dx-search" placeholder="🔍 Hastalık ara" oninput="freeFilterEditor(this)" autocomplete="off">
+    <div id="fl-editor">`;
+  Object.keys(groups).sort((a, b) => a.localeCompare(b, 'tr')).forEach(cat => {
+    html += `<div class="fl-grp"><div class="fl-grp-h"><span>${cat}</span><button type="button" class="fl-all" onclick="freeToggleGroup(this)">tümü</button></div>`;
+    groups[cat].sort((a, b) => a.name.localeCompare(b.name, 'tr')).forEach(x => {
+      html += `<label class="fl-chk" data-search="${freeEsc(x.name)}"><input type="checkbox" value="${x.k}" ${sel.has(x.k) ? 'checked' : ''} onchange="freeCountSel()"><span>${x.sp} ${freeEsc(x.name)}</span></label>`;
+    });
+    html += '</div>';
+  });
+  html += `</div>
+    <div class="fl-actions">
+      <button type="button" class="fl-cancel" onclick="openFreeStudy()">← Vazgeç</button>
+      <button type="button" class="fl-save" id="fl-save" onclick="freeSaveList('${ex ? ex.id : ''}')">💾 Kaydet (<span id="fl-count">${sel.size}</span>)</button>
+    </div></div>`;
+  openModal(ex ? '✎ LİSTEYİ DÜZENLE' : '＋ YENİ LİSTE', html);
+}
+function freeCountSel() {
+  const n = document.querySelectorAll('#fl-editor input:checked').length;
+  const el = document.getElementById('fl-count'); if (el) el.textContent = n;
+}
+function freeToggleGroup(btn) {
+  const boxes = [...btn.closest('.fl-grp').querySelectorAll('.fl-chk')].filter(l => l.style.display !== 'none').map(l => l.querySelector('input'));
+  const all = boxes.every(b => b.checked);
+  boxes.forEach(b => b.checked = !all);
+  freeCountSel();
+}
+function freeFilterEditor(input) {
+  const q = trFold(input.value.trim());
+  document.querySelectorAll('#fl-editor .fl-chk').forEach(l => { l.style.display = !q || trFold(l.dataset.search).includes(q) ? '' : 'none'; });
+  document.querySelectorAll('#fl-editor .fl-grp').forEach(g => {
+    g.style.display = [...g.querySelectorAll('.fl-chk')].some(l => l.style.display !== 'none') ? '' : 'none';
+  });
+}
+function freeSaveList(id) {
+  const name = (document.getElementById('fl-name').value || '').trim();
+  const cases = [...document.querySelectorAll('#fl-editor input:checked')].map(b => b.value);
+  if (!name) { showToast('✏️ Listeye bir ad ver.'); document.getElementById('fl-name').focus(); return; }
+  if (!cases.length) { showToast('En az bir hastalık seç.'); return; }
+  const lists = freeUserLists();
+  const ex = id && lists.find(l => l.id === id);
+  if (ex) { ex.name = name; ex.cases = cases; delete freePlayed[id]; }
+  else lists.push({ id: 'u-' + Date.now().toString(36), name, cases });
+  freeLS('vettex-free-lists', lists);
+  showToast(ex ? '✓ Liste güncellendi' : '✓ Liste kaydedildi');
+  openFreeStudy();
+}
+function freeDeleteList(id, sure) {
+  const l = freeUserLists().find(x => x.id === id);
+  if (!l) return;
+  if (!sure) {
+    openModal('🗑 LİSTEYİ SİL', `<div style="text-align:center;padding:6px 0">
+      <div style="font-size:13px;color:var(--text-primary);margin-bottom:18px"><strong>${freeEsc(l.name)}</strong> silinsin mi?</div>
+      <div class="fl-actions"><button type="button" class="fl-cancel" onclick="openFreeStudy()">Vazgeç</button>
+      <button type="button" class="fl-save fl-danger" onclick="freeDeleteList('${id}', true)">Sil</button></div></div>`);
+    return;
+  }
+  freeLS('vettex-free-lists', freeUserLists().filter(x => x.id !== id));
+  const st = freeStats(); delete st[id]; freeLS('vettex-free-stats', st);
+  delete freePlayed[id];
+  showToast('Liste silindi');
+  openFreeStudy();
+}
+function freeResetStats(id) {
+  const st = freeStats(); delete st[id]; freeLS('vettex-free-stats', st);
+  delete freePlayed[id];
+  showToast('↺ Skor sıfırlandı');
+  openFreeStudy();
+}
+function freeRecordResult(correct) {
+  if (!activeFreeList || !currentCase || !currentCase._realKey) return;
+  const st = freeStats();
+  (st[activeFreeList] = st[activeFreeList] || {})[currentCase._realKey] = !!correct;
+  freeLS('vettex-free-stats', st);
+}
+
+function startClinicMode(speciesFilter) {
+  const caseKey = pickNextCaseKey(speciesFilter);
+  if (!caseKey) return;
+  document.getElementById('welcome').style.display = 'none';
 
   // Rastgele isim/ırk uygula
   const randomizedCase = randomizePatientMeta(caseKey);
@@ -6110,6 +6304,14 @@ function openResultScreen(correct, selected, realDisease) {
   var aHtml='<button class="ra-btn ra-primary" onclick="closeResultScreen();'+_start+'(\''+ sp2 +'\')">' + '🎲 Yeni ' + sl2 + ' Vakası</button>'
     +'<button class="ra-btn ra-blue" onclick="closeResultScreen();'+_start+'(\'any\')">🎲 Karışık Vaka</button>'
     +'<button class="ra-btn ra-muted" onclick="closeResultScreen();'+_home+'()">← Ana Menü</button>';
+  var _fl = activeFreeList && freeFindList(activeFreeList);
+  if (_fl) {
+    var _pr = freeProgress(_fl);
+    body.insertAdjacentHTML('afterbegin', '<div class="fl-result">📚 ' + freeEsc(_fl.name) + ' · <span class="fl-ok">✓ ' + _pr.ok + '</span> <span class="fl-bad">✗ ' + _pr.bad + '</span> · ' + _pr.done + '/' + _pr.total + ' vaka</div>');
+    aHtml = '<button class="ra-btn ra-primary" id="fl-next" onclick="closeResultScreen();startFreeList(\'' + _fl.id + '\')">🎲 Listeden Sonraki Vaka</button>'
+      + '<button class="ra-btn ra-blue" onclick="closeResultScreen();' + _home + '();openFreeStudy()">📚 Listeler</button>'
+      + '<button class="ra-btn ra-muted" onclick="closeResultScreen();' + _home + '()">← Ana Menü</button>';
+  }
   if (!correct) aHtml+='<button class="ra-btn ra-diff" id="diff-btn" onclick="showDiffPanel()">🔬 Farklılıklar</button>';
   aHtml+='<button class="ra-btn" style="flex-basis:100%;background:rgba(255,255,255,.03);border:1px solid var(--border) !important;color:var(--text-muted);cursor:not-allowed;opacity:.6" disabled>💊 Tedavi Seçenekleri — Yakında</button>';
   actions.innerHTML=aHtml;
@@ -6142,6 +6344,7 @@ function submitDiagnosis(selectedId) {
   );
   if (realDisease.id === 'unknown') console.warn('[Teşhis] Vakanın teşhisi kütüphanede yok:', realKey);
   diagnosisSubmitted = true;
+  freeRecordResult(correct);
   addMonitorEntry(correct?'success':'danger','NİHAİ TEŞHİS', correct
     ? '✓ Doğru: <strong>'+selected.name+'</strong>'
     : '✗ Yanlış. Doğru: <strong>'+realDisease.name+'</strong>');
