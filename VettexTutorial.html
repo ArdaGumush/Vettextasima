@@ -721,7 +721,10 @@ function appState() {
   const splash = doc.getElementById('splash');
   const splashGone = !splash || !splash.isConnected || W().getComputedStyle(splash).display === 'none' || parseFloat(W().getComputedStyle(splash).opacity) < 0.05;
   const dataOk = ev(`typeof CASE_DATA !== 'undefined' && !!CASE_DATA[${JSON.stringify(TUT_CASE)}] && typeof DISEASE_LIBRARY !== 'undefined' && !!window.QUESTIONS && Object.keys(window.QUESTIONS).length > 0`);
-  if (!splashGone || !dataOk) return 'loading';
+  // Açılıştaki "Önemli Uyarı" ekranı da kapanmış olmalı; tutorial ana menüde başlar
+  const disc = doc.getElementById('disclaimer-screen');
+  const discGone = !disc || !disc.isConnected || disc.classList.contains('fade-out');
+  if (!splashGone || !dataOk || !discGone) return 'loading';
   if (doc.getElementById('reg-overlay')?.classList.contains('open')) return 'register';
   return 'ready';
 }

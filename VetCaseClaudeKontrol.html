@@ -1609,10 +1609,13 @@ function replayTutorial() {
   #result-overlay {
     display:none; position:fixed; inset:0; z-index:290;
     background:rgba(0,0,0,0.92); backdrop-filter:blur(12px);
-    align-items:center; justify-content:center; overflow-y:auto; padding:20px;
+    align-items:flex-start; justify-content:center; overflow-y:auto; padding:20px;
   }
   #result-overlay.open { display:flex; }
+  /* margin:auto: sığarsa ortalar, sığmazsa üstten başlar ve kaydırılabilir
+     (align-items:center uzun kutunun üstünü ekran dışında bırakıyordu) */
   #result-box {
+    margin:auto;
     width:540px; max-width:96vw; background:var(--bg-panel);
     border-radius:16px; overflow:hidden;
     box-shadow:0 0 60px rgba(0,0,0,0.6);
