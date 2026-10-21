@@ -3419,12 +3419,12 @@
       "usg": {
         "result": "Abdominal USG: **Karakteristik 'hedef (target sign)' görüntüsü** — iç içe geçmiş bağırsak katmanları. 🔴 Etkilenen segmentte kan akımı azalmış. Proksimalde bağırsak dilatasyonu mevcut.",
         "hasImage": true,
-        "imgUrl": "https://onlinelibrary.wiley.com/cms/asset/31af4a19-f31b-4634-8a07-9ddf7f6232d7/vms3920-fig-0001-m.png"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/Screenshot_20261021_164834.jpg"
       },
       "xray_direct": {
         "result": "Abdominal Röntgen: **Karın boşluğunda darbe bölgesinde yumuşak doku yoğunluğu artışı.** İnce bağırsaklarda **belirgin obstrüktif gaz paterni** görülüyor. 🔴 Mekanik obstrüksiyonla uyumlu tablo.",
         "hasImage": true,
-        "imgUrl": "https://onlinelibrary.wiley.com/cms/asset/c1a06411-06e7-41b8-ac63-e433d1cf52b9/vms3920-fig-0002-m.jpg"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/invagination-xray.png"
       },
       "xray_indirect": {
         "result": "İndirekt Radyografi: Bu vakada endike değildir.",
@@ -5643,7 +5643,7 @@
       "xray_direct": {
         "result": "Toraks Radyografisi (Lateral + VD): **Bilateral yaygın bronşiyal patolojik desen artışı** — 'tram çizgileri' ve 'doughnut' kesit görünümleri izlenmektedir. 🔴 Akut hafif **hiperinflasyon** bulgusu — diyafram kranio-kaudal hatta hafif düzleşme. Akciğer radyolüsensisinde hafif artış. Kardiyak siluet normal (VHS normal).",
         "hasImage": true,
-        "imgUrl": "https://www.researchgate.net/publication/389533809/figure/fig3/AS:11431281432021566@1746837903248/Frontal-radiographic-image-of-a-cat-with-suspected-feline-asthma-The-diagnosis-of-feline_W640.jpg"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/asthma-xray.jpg"
       },
       "xray_indirect": {
         "result": "İndirekt Radyografi: Bu vakada endike değildir.",
