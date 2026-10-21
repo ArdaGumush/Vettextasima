@@ -430,6 +430,21 @@ const STEPS_D = [
     enter: () => autoComment('Lenfopeni + nötrofili → stres lökogramı, immün sistemde baskı'),
     target: () => lastNote() },
 
+  // ── Genel muayene ──
+  { lesson: 2, ch: 'Genel muayene', mode: 'click',
+    text: `Sırada <strong>biyokimya</strong> var, ama o pahalı bir tetkik. Gerçek klinikte olduğu gibi VetTEX'te de <strong>genel muayene</strong> yapmadan biyokimya, hormon, BT/MR ve biyopsi isteyemezsin; sahip izin vermez. <strong>A. Fiziksel Muayene</strong> sekmesine geç.`,
+    target: () => q(`#center-panel .tab-btn[onclick="switchTab('fizik')"]`),
+    fallback: () => ev(`switchTab('fizik')`) },
+
+  { lesson: 2, ch: 'Genel muayene', mode: 'click',
+    text: `<strong>⚡ Tam Fiziksel Muayene</strong>'ye dokun: ateş, solunum, nabız, mukoza, lenf nodları ve palpasyon tek seferde yapılır.`,
+    target: () => q(`#tab-fizik button[onclick="doAllExam()"]`),
+    fallback: () => ev(`doAllExam()`) },
+
+  { lesson: 2, ch: 'Genel muayene', mode: 'next',
+    text: `Ateş <strong>39.9°C</strong>, mukoza hafif ikterik ve karın palpasyonunda <strong>fluktuasyon</strong> var: karında sıvı birikimi düşündürüyor. Muayene tamam, artık biyokimya isteyebilirsin.`,
+    target: () => lastEntry() },
+
   // ── Biyokimya ──
   { lesson: 2, ch: 'Biyokimya', mode: 'click',
     text: `Şimdi <strong>Biyokimya</strong> sekmesi.`,
@@ -687,6 +702,14 @@ const STEPS_M = [
     leave: () => ev(`closeModal()`),
     target: () => rowPen(mq('#modal-content'), 'Lenf%')?.closest('tr') },
 
+  { lesson: 2, ch: 'Genel muayene', mode: 'click',
+    text: `Sırada <strong>biyokimya</strong> var, ama o pahalı bir tetkik. Gerçek klinikte olduğu gibi <strong>genel muayene</strong> yapmadan biyokimya, hormon, BT/MR ve biyopsi isteyemezsin; sahip izin vermez. <strong>⚡ Genel muayeneyi yap</strong>'a dokun.`,
+    enter: () => ev(`closeModal(); var b = document.getElementById('mob-exam-all'); if (b) b.scrollIntoView({ block: 'center' });`),
+    target: () => mq('#mob-exam-all'),
+    fallback: () => ev(`mobDoAllExam()`) },
+  { lesson: 2, ch: 'Genel muayene', mode: 'next', delay: 400,
+    text: `Ateş <strong>39.9°C</strong>, mukoza hafif ikterik, karında <strong>fluktuasyon</strong>: sıvı birikimi düşündürüyor. Muayene tamam, artık biyokimya isteyebilirsin.`,
+    target: () => mq('#mob-acc-phys-palp') },
   { lesson: 2, ch: 'Biyokimya', mode: 'click',
     text: `Tekrar <strong>Lab</strong>.`,
     enter: () => ev(`closeModal()`),

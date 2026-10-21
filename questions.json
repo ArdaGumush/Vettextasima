@@ -14,17 +14,20 @@
           {
             "id": "kusma_2",
             "q": "Kustuysa içinde mama, safra veya yabancı cisim var mıydı?",
-            "default": "Kusmadı."
+            "default": "Kusmadı.",
+            "ifSymptom": "İçine tam bakmadım açıkçası."
           },
           {
             "id": "kusma_3",
             "q": "Kusma yemekten hemen sonra mı gerçekleşiyor?",
-            "default": "Kusma sorunu yok."
+            "default": "Kusma sorunu yok.",
+            "ifSymptom": "Yemekle bir bağlantısı var mı, pek dikkat etmedim."
           },
           {
             "id": "kusma_4",
             "q": "Kusarken aşırı bir karın eforu sarf ediyor mu?",
-            "default": "Hayır, kusmuyor."
+            "default": "Hayır, kusmuyor.",
+            "ifSymptom": "Kusarken çok zorlandığını fark etmedim."
           }
         ]
       },
@@ -34,7 +37,8 @@
           {
             "id": "diskilama_1",
             "q": "Dışkısının kıvamında ishal veya sertlik var mı?",
-            "default": "Dışkısı normal kıvamda."
+            "default": "Dışkısı normal kıvamda.",
+            "ifSymptom": "Kıvamına çok dikkat edemedim."
           },
           {
             "id": "diskilama_2",
@@ -49,7 +53,8 @@
           {
             "id": "diskilama_4",
             "q": "Günde ortalama kaç kez büyük tuvaletine çıkıyor?",
-            "default": "Günde bir iki kez normal şekilde yapıyor."
+            "default": "Günde bir iki kez normal şekilde yapıyor.",
+            "ifSymptom": "Kaç kez yaptığını tam saymadım."
           }
         ]
       },
@@ -59,17 +64,20 @@
           {
             "id": "i̇stah_1",
             "q": "Son günlerde mama yeme isteğinde bir azalma var mı?",
-            "default": "İştahı gayet yerinde."
+            "default": "İştahı gayet yerinde.",
+            "ifSymptom": "Yeme isteğine çok dikkat edemedim."
           },
           {
             "id": "i̇stah_2",
             "q": "Günlük öğünlerinin tamamını bitiriyor mu?",
-            "default": "Evet, hepsini bitiriyor."
+            "default": "Evet, hepsini bitiriyor.",
+            "ifSymptom": "Öğünlerini ne kadar bitirdiğine tam dikkat etmedim."
           },
           {
             "id": "i̇stah_3",
             "q": "Su içme miktarında belirgin bir artış veya azalış oldu mu?",
-            "default": "Normal miktarda su içiyor."
+            "default": "Normal miktarda su içiyor.",
+            "ifSymptom": "Su içişini pek takip etmedim."
           },
           {
             "id": "i̇stah_4",
@@ -84,7 +92,7 @@
           {
             "id": "karin_1",
             "q": "Karnında belirgin bir şişlik veya gaz fark ettiniz mi?",
-            "default": "Hayır, karnı normal."
+            "default": "Hayır, şişlik fark etmedim."
           },
           {
             "id": "karin_2",
@@ -120,7 +128,8 @@
           {
             "id": "oksuruk_2",
             "q": "Öksürük nöbetleri özellikle hareket ettikten sonra mı artıyor?",
-            "default": "Öksürüğü yok."
+            "default": "Öksürüğü yok.",
+            "ifSymptom": "Hareketle bağlantısına pek dikkat etmedim."
           },
           {
             "id": "oksuruk_3",
@@ -140,7 +149,8 @@
           {
             "id": "nefes_1",
             "q": "Dinlenme halindeyken hızlı veya zor nefes alıp veriyor mu?",
-            "default": "Nefes alıp verişi sakin ve normal."
+            "default": "Nefes alıp verişi sakin ve normal.",
+            "ifSymptom": "Dinlenirken nasıl nefes aldığına dikkat etmedim."
           },
           {
             "id": "nefes_2",
@@ -155,7 +165,8 @@
           {
             "id": "nefes_4",
             "q": "En ufak bir harekette çabuk yorulup nefessiz kalıyor mu?",
-            "default": "Hayır, kondisyonu iyi."
+            "default": "Hayır, kondisyonu iyi.",
+            "ifSymptom": "Hareket edince nasıl olduğuna pek dikkat etmedim."
           }
         ]
       },
@@ -332,7 +343,8 @@
           {
             "id": "dokuntu_1",
             "q": "Derisinde kızarıklık, yara veya sivilce benzeri kabarcıklar var mı?",
-            "default": "Derisi temiz ve pürüzsüz."
+            "default": "Derisi temiz ve pürüzsüz.",
+            "ifSymptom": "Derisinin her yerine bakmadım."
           },
           {
             "id": "dokuntu_2",
@@ -357,7 +369,8 @@
           {
             "id": "tuy_1",
             "q": "Mevsim normallerinin üzerinde aşırı bir tüy dökülmesi mevcut mu?",
-            "default": "Dökülme normal seviyede."
+            "default": "Dökülme normal seviyede.",
+            "ifSymptom": "Dökülmeye çok dikkat etmedim."
           },
           {
             "id": "tuy_2",
@@ -367,7 +380,8 @@
           {
             "id": "tuy_3",
             "q": "Tüylerinde kuruluk, keçeleşme veya matlaşma dikkatinizi çekti mi?",
-            "default": "Tüyleri parlak ve yumuşak."
+            "default": "Tüyleri parlak ve yumuşak.",
+            "ifSymptom": "Tüylerinin genel durumuna pek dikkat etmedim."
           },
           {
             "id": "tuy_4",
@@ -413,7 +427,8 @@
           {
             "id": "i̇drar_1",
             "q": "Günde kaç kez idrarını yapıyor, bir sıklık artışı oldu mu?",
-            "default": "Normal sıklıkta yapıyor."
+            "default": "Normal sıklıkta yapıyor.",
+            "ifSymptom": "Kaç kez yaptığını saymadım."
           },
           {
             "id": "i̇drar_2",
@@ -423,12 +438,14 @@
           {
             "id": "i̇drar_3",
             "q": "İdrarını yaparken zorlanma, acı çekme veya inleme gözlemlediniz mi?",
-            "default": "Zorlanmadan rahatça yapıyor."
+            "default": "Zorlanmadan rahatça yapıyor.",
+            "ifSymptom": "Yaparken nasıl olduğunu tam göremedim."
           },
           {
             "id": "i̇drar_4",
             "q": "İdrarının kokusunda veya berraklığında belirgin bir değişiklik fark ettiniz mi?",
-            "default": "İdrarı berrak ve kokusu normal."
+            "default": "İdrarı berrak ve kokusu normal.",
+            "ifSymptom": "İdrarının rengine kokusuna bakmadım."
           }
         ]
       },
@@ -494,7 +511,8 @@
           {
             "id": "goz_1",
             "q": "Gözlerinde çapaklanma, sarı-yeşil akıntı veya sulanma var mı?",
-            "default": "Gözleri temiz ve berrak."
+            "default": "Gözleri temiz ve berrak.",
+            "ifSymptom": "Gözlerine çok yakından bakmadım."
           },
           {
             "id": "goz_2",
@@ -509,7 +527,8 @@
           {
             "id": "goz_4",
             "q": "Korneasında matlaşma, mavimsi pus veya beyaz bir perde fark ettiniz mi?",
-            "default": "Göz merceği şeffaf ve parlak."
+            "default": "Göz merceği şeffaf ve parlak.",
+            "ifSymptom": "Gözlerinin içine yakından bakmadım."
           },
           {
             "id": "goz_5",
@@ -529,7 +548,8 @@
           {
             "id": "kulak_1",
             "q": "Kulağında koyu renkli kir, akıntı veya kötü bir koku var mı?",
-            "default": "Kulak içi temiz ve kokusuz."
+            "default": "Kulak içi temiz ve kokusuz.",
+            "ifSymptom": "Kulağının içine bakmadım."
           },
           {
             "id": "kulak_2",
@@ -676,7 +696,8 @@
           {
             "id": "hastalik_1",
             "q": "Daha önce geçirdiği kronik veya teşhis edilmiş ciddi bir rahatsızlığı var mı?",
-            "default": "Bilinen hiçbir hastalığı yok."
+            "default": "Bilinen hiçbir hastalığı yok.",
+            "ifSymptom": "Bildiğim başka bir hastalığı yok."
           },
           {
             "id": "hastalik_2",
@@ -686,7 +707,8 @@
           {
             "id": "hastalik_3",
             "q": "Doğuştan gelen genetik veya ortopedik bir kusuru bulunuyor mu?",
-            "default": "Hayır, tamamen sağlıklı."
+            "default": "Hayır, tamamen sağlıklı.",
+            "ifSymptom": "Bildiğim başka bir sorunu yok."
           },
           {
             "id": "hastalik_4",
@@ -787,7 +809,8 @@
           {
             "id": "enerji_1",
             "q": "Günlük aktivitelerinde veya oyun oynama isteğinde bir azalma var mı?",
-            "default": "Gayet enerjik ve hareketli."
+            "default": "Gayet enerjik ve hareketli.",
+            "ifSymptom": "Son günlerde ne kadar oynadığını pek gözlemleyemedim."
           },
           {
             "id": "enerji_2",
@@ -797,7 +820,8 @@
           {
             "id": "enerji_3",
             "q": "Sizi kapıda karşılama ve ilgi isteme heyecanı devam ediyor mu?",
-            "default": "Evet, her zamanki gibi heyecanla karşılıyor."
+            "default": "Evet, her zamanki gibi heyecanla karşılıyor.",
+            "ifSymptom": "Son günlerde buna dikkat edemedim."
           },
           {
             "id": "enerji_4",
@@ -817,12 +841,14 @@
           {
             "id": "agirlik_1",
             "q": "Son haftalarda belirgin bir kilo kaybı veya zayıflama fark ettiniz mi?",
-            "default": "Kilosu gayet dengeli ve sabit."
+            "default": "Kilosu gayet dengeli ve sabit.",
+            "ifSymptom": "Kilosunu tartmadık, emin değilim."
           },
           {
             "id": "agirlik_2",
             "q": "Kaburgaları veya omurgası aşırı derecede ele gelir hale geldi mi?",
-            "default": "Vücut kondisyonu normal düzeyde."
+            "default": "Vücut kondisyonu normal düzeyde.",
+            "ifSymptom": "Kaburgalarını hiç yoklamadım, bilmiyorum."
           },
           {
             "id": "agirlik_3",
@@ -832,7 +858,8 @@
           {
             "id": "agirlik_4",
             "q": "Tasması veya göğüs tasması vücuduna bol veya dar gelmeye başladı mı?",
-            "default": "Tasmaları her zamanki gibi tam oturuyor."
+            "default": "Tasmaları her zamanki gibi tam oturuyor.",
+            "ifSymptom": "Tasmasına dikkat etmedim."
           }
         ]
       },
@@ -877,17 +904,20 @@
           {
             "id": "agri_1",
             "q": "Vücudunun herhangi bir yerine temas edildiğinde ağlama veya ısırma var mı?",
-            "default": "Dokunulduğunda gayet rahat, ağrısı yok."
+            "default": "Dokunulduğunda gayet rahat, ağrısı yok.",
+            "ifSymptom": "Her yerine dokunmadım, emin değilim."
           },
           {
             "id": "agri_2",
             "q": "Yattığı yerden kalkarken zorlanma, tutukluk veya inleme yapıyor mu?",
-            "default": "Rahatça ve serice ayağa kalkıyor."
+            "default": "Rahatça ve serice ayağa kalkıyor.",
+            "ifSymptom": "Kalkarken nasıl olduğuna dikkat etmedim."
           },
           {
             "id": "agri_3",
             "q": "Merdiven çıkarken veya yüksek bir yere zıplarken tereddüt ediyor mu?",
-            "default": "Zorlanmadan atlayıp tırmanabiliyor."
+            "default": "Zorlanmadan atlayıp tırmanabiliyor.",
+            "ifSymptom": "Son günlerde zıplarken pek görmedim."
           },
           {
             "id": "agri_4",

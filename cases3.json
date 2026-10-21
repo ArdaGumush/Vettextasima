@@ -727,7 +727,7 @@
       "urine": "İdrar muayenesi: Açık sarı, berrak. SpGr: 1.038. pH: 6.5. Protein: Negatif. Glukoz: Negatif. Keton: Negatif. Sediment: Silindir, kristal, lökosit veya eritrosit yok — inaktif. ✓",
       "stool": "Dışkı muayenesi: Baermann tekniği ve flotasyon muayenesi negatif — akciğer kıl kurdu (Aelurostrongylus abstrusus) dışlandı. ✓",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
-      "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Kesin tanı derin farenks/trakea swap PCR paneli ile konulmaktadır."
+      "biopsy": "Biyopsi raporu: Bu vakada endike değildir."
     },
     "questionAnswers": {
       "solunum_öksürük_1": "Evet, 3 gündür boğazına bir şey kaçmış gibi çok şiddetli öksürüyor.",
@@ -1477,7 +1477,7 @@
       "urine": "İdrar muayenesi: **Koyu kırmızı/kahverengi (çay rengi).** Berrak — santrifüj sonrası renk değişmedi, **hemoglobinüri doğrulandı** (hematüri ekarte). SpGr: 1.028. pH: 6.5. Protein: (+) — hemoglobinüriye bağlı yalancı proteinüri. Glukoz: Negatif. Keton: Negatif. Sediment: Eritrosit görülmedi, birkaç bilirubin kristali izlendi. 🔴",
       "stool": "Dışkı muayenesi: Natif ve flotasyon yönteminde parazit yumurtasına veya protozoona rastlanmadı. ✓",
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
-      "biopsy": "Biyopsi raporu: Bu vakada endike değildir. Tanı kan yayması (Giemsa) ile konulmaktadır."
+      "biopsy": "Biyopsi raporu: Bu vakada endike değildir."
     },
     "questionAnswers": {
       "istah_1": "Evet, dünden beri tek lokma bile yemiyor, en sevdiği konserveye dahi bakmıyor.",
@@ -1932,7 +1932,7 @@
         "imgUrl": null
       },
       "usg": {
-        "result": "Abdominal USG: Karaciğerde şiddetli büyüme, heterojen hipoekoik alanlar (akut nekrotizan hepatit). Safra kesesi duvarında ödem ve çift duvar görünümü. Karın boşluğunda serbest sıvı. 🔴 Görüntüleme destekleyici niteliktedir.",
+        "result": "Abdominal USG: Karaciğerde şiddetli büyüme, heterojen hipoekoik alanlar (akut nekrotik süreçle uyumlu). Safra kesesi duvarında ödem ve çift duvar görünümü. Karın boşluğunda serbest sıvı. 🔴 Görüntüleme destekleyici niteliktedir.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -2959,7 +2959,7 @@
     },
     "microscopy": {
       "blood": {
-        "text": "Kan yayması: Eritrositler normositik normokromik. **Dehidrasyona bağlı belirgin rouleaux formasyonu.** Lökosit formülünde neredeyse hiç lökosit yok — **şiddetli panlökopeni doğrulandı.** 🔴 Mevcut az sayıdaki nötrofilde **toksik granülasyon ve Döhle cisimcikleri** (endotoksemi bulgusu). Trombositler azalmış, kümelenme zayıf. Hemoparazit görülmedi.",
+        "text": "Kan yayması: Eritrositler normositik normokromik. **Dehidrasyona bağlı belirgin rouleaux formasyonu.** Lökosit formülünde neredeyse hiç lökosit yok — **şiddetli lökopeni doğrulandı.** 🔴 Mevcut az sayıdaki nötrofilde **toksik granülasyon ve Döhle cisimcikleri** (endotoksemi bulgusu). Trombositler azalmış, kümelenme zayıf. Hemoparazit görülmedi.",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Koyu sarı, berrak. SpGr: **1.055** — prerenal azotemi, böbrekler maksimum konsantrasyon çabasında. 🔴 pH: 6.0. Protein: (+) — dehidrasyon ve ateşe bağlı geçici. Glukoz: Negatif. Keton: Negatif. Sediment: Tek tük epitel hücresi, kristal veya silindir yok.",

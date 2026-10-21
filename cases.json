@@ -1177,12 +1177,12 @@
         "imgUrl": null
       },
       "usg": {
-        "result": "Abdominal USG: Bağırsak duvarı kalınlaşması ve mezenterik reaktivite mevcut. Bu vakada tanı klinik bulgular ve hızlı antijen testi ile konulmaktadır — USG rutin endike değildir.",
+        "result": "Abdominal USG: Bağırsak duvarı kalınlaşması ve mezenterik reaktivite mevcut.",
         "hasImage": false,
         "imgUrl": null
       },
       "xray_direct": {
-        "result": "Direkt Röntgen: Bu vakada rutin radyografi endike değildir. Tanı klinik bulgular ve hızlı antijen testi ile konulmaktadır.",
+        "result": "Direkt Röntgen: Bu vakada rutin radyografi endike değildir.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -2609,7 +2609,7 @@
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/636183ec34a2b078.jpg"
       },
       "skin": "Deri kazıntısı: Ektoparazit görülmedi. Bu vakada deri kazıntısı tanı aracı değildir.",
-      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endikasyonu yoktur. Tanı dışkı flotasyonu, klinik bulgular ve görüntüleme ile konulmuştur."
+      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endikasyonu yoktur."
     },
     "questionAnswers": {
       "kusma_2": "Dün kustu ve kusmuğunun içinde canlı solucanlar vardı.",
@@ -3335,7 +3335,7 @@
       "urine": "İdrar muayenesi: SpGr: **>1.050** — dehidrasyona bağlı çok konsantre idrar. Protein: **(+)**. Glukoz: **Negatif**. Keton: **(+)**. Sediment: granüler silendir (+). **Prerenal azotemi ile uyumlu.**",
       "stool": "Dışkı muayenesi: Kıvam yumuşak, renk açık-sarı. **Steatore şüphesi** — yağlı ve kötü kokulu dışkı. Gizli kan: Negatif. Parazit yumurtası görülmedi.",
       "skin": "Deri kazıntısı: Bu vakada deri kazıntısı endike değildir. Ektoparazit görülmedi.",
-      "biopsy": "Biyopsi raporu: Akut vakada biyopsi kontrendikedir. Tanı klinik bulgular, enzim yüksekliği ve görüntüleme ile konulur. Kronik/tekrarlayan vakalarda patoloji değerlendirmesi düşünülebilir."
+      "biopsy": "Biyopsi raporu: Akut vakada biyopsi kontrendikedir. Kronik/tekrarlayan vakalarda patoloji değerlendirmesi düşünülebilir."
     },
     "questionAnswers": {
       "kusma_1": "Sabahtan beri durmadan kusuyor, bugün 5-6 kez kustu.",
@@ -4821,7 +4821,7 @@
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/4c6956fc305858fa.jpg"
       },
       "skin": "Deri kazıntısı: Ektoparazit görülmedi. Bu vakada deri bulgularında spesifik patoloji beklenmez.",
-      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endike değildir. Tanı dışkı mikroskobu ve ELISA testi ile doğrulanmıştır. Kronik malabsorpsiyon vakalarında ince bağırsak biyopsisi düşünülebilir."
+      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endike değildir. Kronik malabsorpsiyon vakalarında ince bağırsak biyopsisi düşünülebilir."
     },
     "questionAnswers": {
       "dişkilama_1": "2 haftadır geçmeyen, bazen düzelip tekrar başlayan yumuşak bir ishali var; dışkısı açık renkli, yağlı gibi parlak ve çok kötü kokuyor.",
@@ -4917,7 +4917,7 @@
         "imgUrl": null
       },
       "bt": {
-        "result": "BT: Bu vakada BT endike değildir. Tanı USG ve T4 seviyesi ile konulmaktadır.",
+        "result": "BT: Bu vakada BT endike değildir.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -5187,7 +5187,7 @@
       "urine": "İdrar muayenesi: Açık sarı, berrak. SpGr: **1.025** (Referans: >1.035) — Poliüri nedeniyle idrar konsantrasyonunda düşüş. ⚠ Protein: Negatif. Glukoz: Negatif. Sediment: Sakin.",
       "stool": "Dışkı muayenesi: **Hacimli dışkı, steatore şüphesi** — yağ emilim bozukluğu. ⚠ Parazit yumurtası görülmedi.",
       "skin": "Deri kazıntısı: Ektoparazit görülmedi. Deri tüy kalitesinde bozulma mevcut ancak lezyonsuz. Bu vakada deri kazıntısı primer tanı aracı değildir.",
-      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endike değildir. Tanı T4 yüksekliği ve klinik bulgularla konulmaktadır. Tiroid kitlesi şüphesinde ince iğne aspirasyonu düşünülebilir."
+      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endike değildir. Tiroid kitlesi şüphesinde ince iğne aspirasyonu düşünülebilir."
     },
     "questionAnswers": {
       "istah_1": "Hayır, aksine çok yiyor, iştahında bir azalma yok.",
@@ -5268,7 +5268,7 @@
         "imgUrl": null
       },
       "usg": {
-        "result": "Tiroid USG: Bu vakada görüntüleme endike değildir. Tanı hormon değerleri (T4/TSH) ve klinik bulgularla konulmaktadır.",
+        "result": "Tiroid USG: Bu vakada görüntüleme endike değildir.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -5283,7 +5283,7 @@
         "imgUrl": null
       },
       "bt": {
-        "result": "BT: Bu vakada endike değildir. Tanı hormon değerleri ve klinik bulgularla konulmaktadır.",
+        "result": "BT: Bu vakada endike değildir.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -5557,7 +5557,7 @@
       "urine": "İdrar muayenesi: SpGr: **1.025** — Normal yoğunluk. pH: 6.5. Protein: Negatif. Glukoz: Negatif. Keton: Negatif. Sediment: Sakin. Renal fonksiyon normal.",
       "stool": "Dışkı muayenesi: Parazit yumurtasına rastlanmadı. Kıvam normal. Primer dışkı bulgusu bu vakada beklenmez.",
       "skin": "Deri kazıntısı: Ektoparazit görülmedi. **Tüy dökülen bölgelerde hiperkeratoz ve hiperpigmentasyon** mevcut — endokrin alopesi ile uyumlu. Mantar elemanı yok.",
-      "biopsy": "Biyopsi raporu: Deri biyopsisi bu vakada endike değildir. Tanı T4/TSH değerleri ve klinik bulgularla konulmaktadır. Dirençli vakalarda deri biyopsisi miksödem değişikliklerini gösterebilir."
+      "biopsy": "Biyopsi raporu: Deri biyopsisi bu vakada endike değildir. Dirençli vakalarda deri biyopsisi miksödem değişikliklerini gösterebilir."
     },
     "questionAnswers": {
       "istah_1": "Evet, iştahı azaldı, önüne koyduğumuz yemeği bitirmekte bile zorlanıyor.",

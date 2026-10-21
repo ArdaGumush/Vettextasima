@@ -484,6 +484,45 @@ function replayTutorial() {
   .pw-active { padding:12px; border-radius:10px; text-align:center; background:rgba(46,204,113,.08); border:1px solid rgba(46,204,113,.4); color:var(--accent-green); font-size:12px; }
   .pw-acc { font-size:10px; color:var(--text-muted); text-align:center; }
 
+  /* ── GENEL MUAYENE KURALI ── */
+  .ge-wrap { display: flex; flex-direction: column; gap: 12px; }
+  .ge-say { font-size: 14px; line-height: 1.6; color: var(--text-primary); font-style: italic; padding: 12px 14px; border-left: 3px solid var(--accent-orange); background: rgba(243,156,18,.06); border-radius: 0 8px 8px 0; }
+  .ge-box { font-size: 12px; color: var(--text-secondary); padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); }
+  .ge-title { margin-bottom: 6px; color: var(--text-primary); }
+  .ge-box ul { margin: 0; padding-left: 18px; line-height: 1.8; }
+  .ge-btn { padding: 11px; border-radius: 8px; cursor: pointer; font-family: inherit; font-size: 12px; background: rgba(46,204,113,.1); border: 1px solid var(--accent-green); color: var(--accent-green); }
+  .mob-exam-all {
+    display: block; width: calc(100% - 28px); margin: 10px 14px; padding: 12px; border-radius: 10px; cursor: pointer; text-align: center;
+    background: rgba(46,204,113,.08); border: 1px solid rgba(46,204,113,.5); color: var(--accent-green); font-family: inherit; font-size: 13px; font-weight: 600;
+  }
+  .mob-exam-all span { display: block; margin-top: 3px; font-size: 10px; font-weight: 400; color: var(--text-muted); }
+  .mob-exam-all.done { opacity: .45; }
+
+  /* ── ORAN HESAPLAYICI ── */
+  .notes-title { display: flex; align-items: center; gap: 6px; }
+  .rc-open {
+    margin-left: auto; padding: 3px 8px; border-radius: 6px; cursor: pointer; font-family: inherit; font-size: 10px; letter-spacing: .5px;
+    background: rgba(0,212,255,.06); border: 1px solid rgba(0,212,255,.4); color: var(--accent-cyan); text-transform: none;
+  }
+  .rc-open-m { display: block; width: 100%; margin: 0 0 12px; padding: 11px; font-size: 13px; }
+  .rc-wrap { display: flex; flex-direction: column; gap: 8px; }
+  .rc-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); }
+  .rc-presets { display: flex; flex-wrap: wrap; gap: 6px; }
+  .rc-chip { padding: 7px 12px; border-radius: 16px; cursor: pointer; font-family: inherit; font-size: 12px; background: var(--bg-card); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); }
+  .rc-sel { width: 100%; padding: 10px 12px; border-radius: 8px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-primary); font-family: inherit; font-size: 13px; }
+  .rc-div { text-align: center; font-size: 20px; color: var(--text-muted); line-height: 1; }
+  .rc-result { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 14px; border-radius: 10px; background: rgba(0,212,255,.06); border: 1px solid rgba(0,212,255,.3); }
+  .rc-name { font-size: 11px; color: var(--text-muted); letter-spacing: 1px; }
+  .rc-val { font-size: 28px; font-weight: 700; color: var(--accent-cyan); }
+  .rc-calc { font-size: 11px; color: var(--text-secondary); }
+  .rc-add { padding: 11px; border-radius: 8px; cursor: pointer; font-family: inherit; font-size: 12px; background: rgba(46,204,113,.1); border: 1px solid var(--accent-green); color: var(--accent-green); }
+  .rc-hint, .rc-empty { font-size: 11px; color: var(--text-muted); line-height: 1.6; }
+
+  /* Alt bar: 6 buton ekran genişliğini eşit paylaşsın (taşmasın) */
+  body.mobile-mode #mob-bottombar-inner { min-width: 0; width: 100%; }
+  body.mobile-mode .mob-bar-btn { min-width: 0 !important; flex: 1 1 0; padding: 0 2px; }
+  body.mobile-mode .mob-bar-btn .mob-btn-label { font-size: 10px; white-space: nowrap; }
+
   /* ── SERBEST ÇALIŞMA ── */
   .fl-wrap { display: flex; flex-direction: column; gap: 8px; }
   .fl-sec { font-size: 10px; letter-spacing: 2px; color: var(--accent-green); margin: 6px 0 2px; }
@@ -2538,7 +2577,8 @@ window.onerror = function(msg, src, line) {
 
     <!-- NOTLARIM -->
     <div class="section-block" id="notes-block">
-      <div class="section-title">Notlarım <span id="notes-count" class="notes-count"></span></div>
+      <div class="section-title notes-title">Notlarım <span id="notes-count" class="notes-count"></span>
+        <button type="button" class="rc-open" onclick="openRatioCalc()" title="Oran hesapla">🧮 Oran</button></div>
       <div id="notes-list" class="notes-list">
         <div class="notes-empty">Bulguların yanındaki ✏️ ile not ekle. Yanına kendi yorumunu da yazabilirsin.</div>
       </div>
@@ -3038,6 +3078,7 @@ function consumeAction(actionName) {
 let currentCase = null;
 let currentCaseKey = null;
 let complaintAsked = false;
+let examDone = new Set();   // yapılan fizik muayene adımları (temp, resp, hr, mucosa, lymph, palp…)
 let startTime = null;
 let timerInterval = null;
 
@@ -3479,6 +3520,7 @@ function mobBuildClinicScreen() {
   ];
 
   html += '<div class="mob-section-title">FİZİKSEL MUAYENE</div>';
+  html += '<button type="button" id="mob-exam-all" class="mob-exam-all" onclick="mobDoAllExam()">⚡ Genel muayeneyi yap <span>ateş · solunum · nabız · mukoza · lenf · palpasyon</span></button>';
 
   physItems.forEach(item => {
     const val = (item.src === 'tools' ? c.tools?.[item.key] : c.physical?.[item.key]) || '—';
@@ -3521,9 +3563,11 @@ function mobToggleAccordion(id) {
     if (id.startsWith('mob-acc-phys-') && !item.dataset.done) {
       if (!consumeAction('Fiziksel Muayene')) return;
       item.dataset.done = '1';
+      examDone.add(id.replace('mob-acc-phys-', ''));
       const lbl = item.querySelector('.mob-acc-title')?.childNodes[0]?.textContent?.trim() || '';
       logTetkik('🩺 ' + lbl.replace(/^[^A-Za-zÇĞİÖŞÜçğıöşü]+/, ''));
     }
+    if (id === 'mob-acc-complaint') complaintAsked = true;
     // Accordion aç — hepsi direkt açılır
     item.classList.add('open');
     item.dataset.locked = '0';
@@ -3537,6 +3581,25 @@ function mobToggleAccordion(id) {
     item.classList.remove('open');
     item.dataset.locked = '0';
   }
+}
+
+function mobDoAllExam() {
+  if (!mobCurrentCase) return;
+  const todo = EXAM_CORE.filter(k => {
+    const el = document.getElementById('mob-acc-phys-' + k);
+    return el && !el.dataset.done;
+  });
+  if (!todo.length) { showToast('Genel muayene zaten yapıldı.'); return; }
+  if (!consumeAction('Tam Fiziksel Muayene')) return;
+  todo.forEach(k => {
+    const el = document.getElementById('mob-acc-phys-' + k);
+    el.dataset.done = '1'; el.classList.add('open'); el.dataset.locked = '0';
+    const st = el.querySelector('.mob-acc-status'); if (st) { st.classList.remove('pending'); st.textContent = '✓'; }
+    examDone.add(k);
+    logTetkik('🩺 ' + (EXAM_CORE_LABELS[k] || k));
+  });
+  document.getElementById('mob-exam-all')?.classList.add('done');
+  showToast('🩺 Genel muayene tamamlandı');
 }
 
 function mobUnlockAccordion(id) {
@@ -3643,6 +3706,8 @@ function mobOpenImaging() {
 
 function mobDoImaging(key) {
   if (!mobCurrentCase) return;
+  const _exp = { bt: 'BT', mr: 'MR', tomo: 'tomografi' }[key];
+  if (_exp && !requireGeneralExam(_exp)) return;
   const data = mobCurrentCase.imaging?.[key];
   if (!data) { showToast('Bu görüntüleme bu vakada tanımlı değil.'); return; }
   const costMap = {echo:TETKIK_COSTS.echo,usg:TETKIK_COSTS.usg,xray_direct:TETKIK_COSTS.xray,xray_indirect:TETKIK_COSTS.xray,bt:TETKIK_COSTS.bt,mr:TETKIK_COSTS.mr};
@@ -3716,6 +3781,7 @@ function mobOpenHemogram() {
 
 function mobOpenBiyo() {
   if (!mobCurrentCase) return;
+  if (!requireGeneralExam('biyokimya')) return;
   // Chip seçim modalı
   const params = Object.keys(mobCurrentCase.biochemistry || {});
   let html = '<div style="margin-bottom:10px;font-size:10px;color:var(--text-muted);font-family:JetBrains Mono,monospace">Parametreleri seçin:</div>';
@@ -3756,6 +3822,7 @@ function mobRunBiyo() {
 
 function mobOpenHormon() {
   if (!mobCurrentCase) return;
+  if (!requireGeneralExam('hormon paneli')) return;
   const hormones = mobCurrentCase.hormones || {};
   const params = Object.keys(hormones);
   let html = '<div style="margin-bottom:10px;font-size:10px;color:var(--text-muted);font-family:JetBrains Mono,monospace">Parametreleri seçin (gri = bu vakada yok):</div>';
@@ -3831,6 +3898,7 @@ function mobOpenMicro() {
 
 function mobDoMicro(type) {
   if (!mobCurrentCase) return;
+  if (type === 'biopsy' && !requireGeneralExam('biyopsi')) return;
   const micro = mobCurrentCase.microscopy?.[type];
   if (!micro) { showToast('Bu bakı bu vakada tanımlı değil.'); return; }
   const cost = type==='skin' ? TETKIK_COSTS.skin_micro : type==='biopsy' ? TETKIK_COSTS.biopsy : TETKIK_COSTS.microscopy;
@@ -4609,6 +4677,7 @@ function startCase(caseKey) {
   resetNotes();
   window._aqAnswered = {};
   complaintAsked = false;
+  examDone = new Set();
 
   // Butonları sıfırla
   ['name','demog','vaccine','complaint'].forEach(k => {
@@ -4792,6 +4861,7 @@ function doExam(key) {
   if (btn.classList.contains('done')) return;
   if (!consumeAction('Fiziksel Muayene')) return;
   btn.classList.add('done');
+  examDone.add(key);
   logTetkik('🩺 ' + examLabels[key]);
   addMonitorEntry('success', 'FİZİKSEL MUAYENE — ' + examLabels[key], parseMarkdown(currentCase.physical[key]));
 }
@@ -4800,6 +4870,7 @@ function doAllExam() {
   if (!consumeAction('Tam Fiziksel Muayene')) return;
   Object.keys(examKeys).forEach(k => {
     const btn = document.getElementById('ex-' + k);
+    examDone.add(k);
     if (!btn.classList.contains('done')) {
       btn.classList.add('done');
       addMonitorEntry('success', 'FİZİKSEL MUAYENE — ' + examLabels[k], parseMarkdown(currentCase.physical[k]));
@@ -5095,6 +5166,8 @@ function initXrayViewer(id) {
 
 function doImaging(key) {
   if (!currentCase) return;
+  const _exp = { bt: 'BT', mr: 'MR', tomo: 'tomografi' }[key];
+  if (_exp && !requireGeneralExam(_exp)) return;
   const data = currentCase.imaging[key];
   if (!data) { showToast('Bu vakada ' + (imagingLabels[key]||key) + ' verisi bulunamadı.'); return; }
   
@@ -5237,6 +5310,7 @@ function buildBiyoChips() {
 }
 
 function runBiyo() {
+  if (!requireGeneralExam('biyokimya')) return;
   SoundSystem.playResult();
   const biyoCost = calcBiyoCost(selectedBiyo);
   if (!spendCredit(biyoCost, "Biyokimya Paneli")) return;
@@ -5281,6 +5355,7 @@ function buildHormonChips() {
 }
 
 function runHormon() {
+  if (!requireGeneralExam('hormon paneli')) return;
   const hormonCost = calcHormonCost(selectedHormon);
   if (!spendCredit(hormonCost, "Hormon Paneli")) return;
   if (!currentCase || selectedHormon.size === 0) { showToast('Lütfen en az 1 hormon seçin!'); return; }
@@ -5403,6 +5478,7 @@ function useRapidKit(kitId, sampleType) {
 
 function doMicro(type) {
   if (!currentCase) return;
+  if (type === 'biopsy' && !requireGeneralExam('biyopsi')) return;
   
   // 1. Parametre ve etiketleri hazırla
   const labels = { blood: 'KAN', urine: 'İDRAR', stool: 'DIŞKI', skin: 'DERİ KAZINTISI', biopsy: 'BİYOPSİ' };
@@ -5467,6 +5543,46 @@ function revealMicroInterp(type) {
   lockEl.innerHTML = '<div class="modal-result-text" style="animation:slideIn .3s ease">' + text + '</div>';
   const labels2 = { blood: 'KAN MİKROSKOBİSİ', urine: 'İDRAR MİKROSKOBİSİ', stool: 'DIŞKI MUAYENESİ' };
   addMonitorEntry('lab', 'MİKROSKOBİK BAKI — ' + (labels2[type]||type) + ' YORUMU', text);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// GENEL MUAYENE KURALI — gerçek klinikteki gibi: şikayet dinlenip genel muayene
+// yapılmadan pahalı tetkik (biyokimya, hormon, BT/MR/tomografi, biyopsi) istenemez.
+// Acil vakada uygulanmaz (sahip "ne gerekiyorsa yapın" der).
+// ═══════════════════════════════════════════════════════════════
+const EXAM_CORE = ['temp', 'resp', 'hr', 'mucosa', 'lymph', 'palp'];
+const EXAM_CORE_LABELS = { temp: 'Vücut sıcaklığı', resp: 'Solunum sayısı', hr: 'Kalp atım sayısı', mucosa: 'Mukoza / KDZ', lymph: 'Lenf nodları', palp: 'Palpasyon' };
+function generalExamMissing() {
+  const c = currentCase || mobCurrentCase;
+  const miss = [];
+  if (!complaintAsked) miss.push('Şikayeti dinlemek');
+  EXAM_CORE.forEach(k => { if (!examDone.has(k) && c && c.physical && c.physical[k]) miss.push(EXAM_CORE_LABELS[k]); });
+  return miss;
+}
+function requireGeneralExam(testName) {
+  if (!(currentCase || mobCurrentCase)) return true;
+  if (typeof isEmergencyActive !== 'undefined' && isEmergencyActive) return true;
+  const miss = generalExamMissing();
+  if (!miss.length) return true;
+  const say = !complaintAsked
+    ? `“Daha ne şikayetle geldiğimizi bile sormadınız. Neden hemen ${testName} istiyorsunuz?”`
+    : `“Daha hayvanıma doğru dürüst bakmadınız bile. Bu kadar pahalı bir tetkikten önce bir muayene etmez misiniz?”`;
+  openModal('💬 HASTA SAHİBİ', `<div class="ge-wrap">
+      <div class="ge-say">${say}</div>
+      <div class="ge-box"><div class="ge-title">${testName.charAt(0).toUpperCase() + testName.slice(1)} için önce genel muayeneyi tamamla:</div>
+        <ul>${miss.map(m => '<li>' + m + '</li>').join('')}</ul></div>
+      <button type="button" class="ge-btn" onclick="goToGeneralExam()">🩺 Muayeneye dön</button>
+    </div>`);
+  return false;
+}
+function goToGeneralExam() {
+  closeModal();
+  if (mobileMode) {
+    const el = !complaintAsked ? document.getElementById('mob-acc-complaint') : document.getElementById('mob-exam-all');
+    el && el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  } else if (typeof switchTab === 'function') {
+    switchTab(complaintAsked ? 'fizik' : 'fizik');
+  }
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -5552,11 +5668,77 @@ function renderNotes() {
   const ml = document.getElementById('mob-notes-list');
   if (ml) { ml.innerHTML = notesListHTML(); ml.querySelectorAll('textarea').forEach(noteAutoSize); }
 }
-// Vaka başlangıcında çağrılır: notları ve vakaya özel kit kayıtlarını sıfırlar
-function resetNotes() { caseNotes = []; renderNotes(); if (typeof usedRapidKits !== 'undefined') usedRapidKits = new Set(); }
+// Vaka başlangıcında çağrılır: notları, görülen lab değerlerini ve vakaya özel kit kayıtlarını sıfırlar
+function resetNotes() { caseNotes = []; seenLabValues = {}; renderNotes(); if (typeof usedRapidKits !== 'undefined') usedRapidKits = new Set(); }
+
+// ═══════════════════════════════════════════════════════════════
+// ORAN HESAPLAYICI — öğrencinin GÖRDÜĞÜ lab değerlerinden iki tanesini oranlar
+// (Na:K, A/G, NLR…). Yorum yapmaz; yorum öğrenciye kalır.
+// ═══════════════════════════════════════════════════════════════
+let seenLabValues = {};
+function rememberLabRow(tr, src) {
+  const tds = [...tr.children].filter(td => !td.classList.contains('note-pen-cell'));
+  if (tds.length < 2) return;
+  const param = tds[0].textContent.trim();
+  const vtxt = tds[1].textContent.replace(',', '.').trim();
+  const m = vtxt.match(/-?\d+(?:\.\d+)?/);
+  if (!param || !m || param.length > 30) return;
+  const unit = vtxt.slice(vtxt.indexOf(m[0]) + m[0].length).replace(/\s+[HL]$/, '').trim();
+  seenLabValues[param] = { value: parseFloat(m[0]), unit, src };
+}
+const RATIO_PRESETS = [
+  ['Na', 'K', 'Na : K'],
+  ['ALB', 'Glob', 'A / G'],
+  ['BUN', 'CREA', 'BUN / Kreatinin'],
+  ['Nöt%', 'Lenf%', 'Nötrofil / Lenfosit'],
+];
+function ratioFmt(x) { return (Math.round(x * 100) / 100).toLocaleString('tr-TR'); }
+function openRatioCalc(a, b) {
+  const keys = Object.keys(seenLabValues);
+  if (keys.length < 2) {
+    openModal('🧮 ORAN HESAPLA', '<div class="rc-empty">Henüz yeterli değer yok. Önce bir tetkik yap (ör. biyokimya, hemogram); gördüğün değerler burada listelenir ve iki tanesini seçip oranlarını hesaplayabilirsin.</div>');
+    return;
+  }
+  const preset = RATIO_PRESETS.filter(p => seenLabValues[p[0]] && seenLabValues[p[1]]);
+  if (!a || !seenLabValues[a]) a = preset.length ? preset[0][0] : keys[0];
+  if (!b || !seenLabValues[b]) b = preset.length ? preset[0][1] : keys.find(k => k !== a);
+  const opt = sel => keys.map(k => `<option value="${noteEsc(k)}"${k === sel ? ' selected' : ''}>${noteEsc(k)} — ${ratioFmt(seenLabValues[k].value)} ${noteEsc(seenLabValues[k].unit)}</option>`).join('');
+  const html = '<div class="rc-wrap">'
+    + (preset.length ? '<div class="rc-label">Hızlı seçim</div><div class="rc-presets">' + preset.map(p =>
+        `<button type="button" class="rc-chip" onclick="openRatioCalc('${noteEsc(p[0])}','${noteEsc(p[1])}')">${p[2]}</button>`).join('') + '</div>' : '')
+    + '<div class="rc-label">Pay</div><select id="rc-a" class="rc-sel" onchange="ratioUpdate()">' + opt(a) + '</select>'
+    + '<div class="rc-div">÷</div>'
+    + '<div class="rc-label">Payda</div><select id="rc-b" class="rc-sel" onchange="ratioUpdate()">' + opt(b) + '</select>'
+    + '<div id="rc-result" class="rc-result"></div>'
+    + '<button type="button" class="rc-add" onclick="ratioToNote()">📝 Notlara ekle</button>'
+    + '<div class="rc-hint">Sadece yaptığın tetkiklerde gördüğün değerler listelenir.</div>'
+    + '</div>';
+  openModal('🧮 ORAN HESAPLA', html);
+  ratioUpdate();
+}
+function ratioCurrent() {
+  const a = document.getElementById('rc-a')?.value, b = document.getElementById('rc-b')?.value;
+  const va = seenLabValues[a], vb = seenLabValues[b];
+  if (!va || !vb) return null;
+  const preset = RATIO_PRESETS.find(p => p[0] === a && p[1] === b);
+  return { a, b, va: va.value, vb: vb.value, name: preset ? preset[2] : a + ' / ' + b, r: vb.value ? va.value / vb.value : NaN };
+}
+function ratioUpdate() {
+  const c = ratioCurrent(), el = document.getElementById('rc-result');
+  if (!el) return;
+  el.innerHTML = !c ? '—' : !isFinite(c.r) ? 'Sıfıra bölünemez'
+    : `<span class="rc-name">${noteEsc(c.name)}</span><span class="rc-val">${ratioFmt(c.r)}</span><span class="rc-calc">${ratioFmt(c.va)} ÷ ${ratioFmt(c.vb)}</span>`;
+}
+function ratioToNote() {
+  const c = ratioCurrent();
+  if (!c || !isFinite(c.r)) return;
+  addNote('Hesaplama', `${c.name} = ${ratioFmt(c.r)} (${ratioFmt(c.va)} ÷ ${ratioFmt(c.vb)})`);
+  closeModal();
+}
 
 function mobOpenNotes() {
-  openModal('📝 NOTLARIM', '<div id="mob-notes-list" class="notes-list">' + notesListHTML() + '</div>');
+  openModal('📝 NOTLARIM', '<button type="button" class="rc-open rc-open-m" onclick="openRatioCalc()">🧮 Oran hesapla (Na:K, A/G…)</button>'
+    + '<div id="mob-notes-list" class="notes-list">' + notesListHTML() + '</div>');
   document.querySelectorAll('#mob-notes-list textarea').forEach(noteAutoSize);
 }
 
@@ -5569,6 +5751,7 @@ function addPensToTables(root, src) {
       const isHead = !!tr.querySelector('th');
       const cell = document.createElement(isHead ? 'th' : 'td');
       cell.className = 'note-pen-cell';
+      if (!isHead) rememberLabRow(tr, src);
       if (!isHead) {
         // Değer hücresindeki H/L rozetini sayıdan ayır: "10L" değil "10 L"
         const parts = [...tr.children].map(td => [...td.childNodes].map(n => n.textContent.trim()).filter(Boolean).join(' '))
@@ -5745,6 +5928,9 @@ function findCaseAnswer(answers, qId, catId) {
   return null;
 }
 
+function isAbnormalAnswer(a) {
+  return !!a && !/^\s*["“]?\s*(hayır|yok|hiç|normal|gayet|bilinen|evet,?\s*(her zamanki|aşı|tüm|karnesi|operasyonu|sevil|hemen))/i.test(a);
+}
 function askAnamnezQ(qId, catId, subId) {
   if (!window._aqAnswered) window._aqAnswered = {};
   if (window._aqAnswered[qId]) return;
@@ -5756,6 +5942,11 @@ function askAnamnezQ(qId, catId, subId) {
     const sub = cat && cat.subcategories && cat.subcategories[subId];
     const q = sub && sub.questions && sub.questions.find(x => x.id === qId);
     answer = (q && q.default) || 'Bu konuda bilgi alınamadı.';
+    // Aynı başlıkta sahibi bir belirti tarif ettiyse, cevabı yazılmamış yan soru
+    // o belirtiyi inkar etmesin (ör. "kusuyor" dedikten sonra "kusma sorunu yok" demesin)
+    if (q && q.ifSymptom && sub.questions.some(x => x.id !== qId && isAbnormalAnswer(findCaseAnswer(answers, x.id, catId)))) {
+      answer = q.ifSymptom;
+    }
   }
   window._aqAnswered[qId] = answer;
   const items = document.querySelectorAll('.aq-q-item');
@@ -6750,6 +6941,7 @@ function debugLaunchCase(caseKey, forceEmergency) {
   currentCaseKey = caseKey;
   resetNotes();
   complaintAsked = false;
+  examDone = new Set();
 
   // Resetler
   ['name','demog','vaccine','complaint'].forEach(k => {
