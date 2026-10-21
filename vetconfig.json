@@ -320,7 +320,7 @@
     },
     {
       "id": "v08",
-      "name": "Felin Üst Solunum Yolu Kompleksi (FHV-1 + FCV)",
+      "name": "Felin Viral Üst Solunum Yolu Enfeksiyonu (FHV-1 + FCV)",
       "species": [
         "cat"
       ],
@@ -390,13 +390,13 @@
     },
     {
       "id": "b02",
-      "name": "Felin Üst Solunum Yolu Kompleksi (Bordetella bronchiseptica)",
+      "name": "Felin Bordetellozis (Bordetella bronchiseptica)",
       "species": [
         "cat"
       ],
       "category": "Bakteriyel",
-      "etken": "Bordetella bronchiseptica, FCV, FHV-1",
-      "symptoms": "Trakeal refleks, mukopurulent akıntı, bilateral konjonktivit, barınak geçmişi, nötrofilik lökositoz, tonsillitis, PCR pozitif"
+      "etken": "Bordetella bronchiseptica",
+      "symptoms": "Belirgin öksürük (trakeal refleks pozitif), mukopurulent nazal akıntı, bilateral konjonktivit, barınak geçmişi, nötrofilik lökositoz, tonsillitis; PCR panelinde Bordetella pozitif"
     },
     {
       "id": "b01",

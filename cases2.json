@@ -1871,7 +1871,7 @@
     "anamnez": {
       "name": "İsim: **Pati** | Irk: **Tekir (Domestic Shorthair)**",
       "demog": "Yaş: **3 yaş** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmamış**",
-      "vaccine": "Aşılar: **FeLV aşısı yok, diğerleri güncel değil** | Parazit ilacı: **Düzensiz**",
+      "vaccine": "Aşılar: **Eksik / güncel değil** | Parazit ilacı: **Düzensiz**",
       "complaint": [
         "Sahibi üzülerek anlatıyor:\n\n\"Son birkaç haftadır tüyleri çok matlaştı, sürekli uyuyor ve önüne en sevdiği mamayı koysak bile neredeyse hiç dokunmuyor, aşırı zayıfladı.\"",
         "Sahibi endişeyle anlatıyor:\n\n\"Ağzının içi çok kötü kokuyor, diş etleri kıpkırmızı olmuş ve mama yerken sanki canı acıyormuş gibi ağzından mamayı düşürüp ağlıyor.\"",

@@ -1036,5 +1036,22 @@ frame.addEventListener('load', () => { log('Oyun yüklendi'); waitForApp(); });
 window.addEventListener('resize', () => { scrolledEl = null; });
 requestAnimationFrame(tick);
 </script>
+<script>
+// Android geri tuşu (uygulamada): tutorial sırasında sadece açık pencereleri kapatır, akışı bozmaz
+(function () {
+  const cap = window.Capacitor;
+  const isApp = (cap && cap.isNativePlatform && cap.isNativePlatform()) ||
+                (location.hostname === 'localhost' && /Android/i.test(navigator.userAgent));
+  if (!isApp) return;
+  const back = () => { try { const w = W(); if (w && w.__vtxBack) w.__vtxBack({ tutorial: true }); } catch (e) {} };
+  let App = null;
+  try { App = (cap && cap.Plugins && cap.Plugins.App) || (cap && cap.registerPlugin && cap.registerPlugin('App')); } catch (e) {}
+  try { if (App && App.addListener) App.addListener('backButton', back); } catch (e) {}
+  const guard = () => { if (!history.state || !history.state.vtx) history.pushState({ vtx: 1 }, ''); };
+  guard();
+  window.addEventListener('popstate', () => { back(); guard(); });
+  document.addEventListener('click', guard, true);
+})();
+</script>
 </body>
 </html>

@@ -380,7 +380,7 @@
     "caseId": "VC-2025-037",
     "species": "Kedi",
     "icon": "🐱",
-    "diagnosis": "Felin Üst Solunum Yolu Kompleksi (Bordetella bronchiseptica)",
+    "diagnosis": "Felin Bordetellozis (Bordetella bronchiseptica)",
     "anamnez": {
       "name": "İsim: **Çorap** | Irk: **Domestic Shorthair**",
       "demog": "Yaş: **8 aylık** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmamış**",
@@ -761,7 +761,7 @@
     "anamnez": {
       "name": "İsim: **Karamel** | Irk: **Golden Retriever**",
       "demog": "Yaş: **3 yaş** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmış (Orşiektomi)**",
-      "vaccine": "Aşılar: **Karma + Kuduz güncel, Leptospira aşısı yok** | Parazit ilacı: **Güncel**",
+      "vaccine": "Aşılar: **Eksik (bazı aşıları yapılmamış)** | Parazit ilacı: **Güncel**",
       "complaint": [
         "Sahibi korkarak anlatıyor:\n\n\"Gözlerinin beyazı, diş etleri ve hatta kulaklarının içi aniden sapsarı oldu.\"",
         "Sahibi üzülerek anlatıyor:\n\n\"Dünden beri hiçbir şey yemiyor ve içtiği suyu bile hemen sarı köpük şeklinde kusuyor.\"",
@@ -788,8 +788,8 @@
         "a": "Kusmuğunda kan yoktu ama dışkısı çok cıvık, koyu kahverengi ve çok kötü kokuluydu."
       },
       {
-        "q": "Aşı karnesinde Leptospirozis aşısı ibaresi hatırlıyor musunuz?",
-        "a": "Hayır, sadece temel karma ve kuduz aşılarını yaptırdık, ekstra bir aşı yaptırmadık."
+        "q": "Aşı karnesindeki aşıların hepsi tamam mı?",
+        "a": "Hayır, bazı aşıları eksik kaldı, takvimi tamamlamadık"
       }
     ],
     "physical": {
@@ -821,7 +821,7 @@
         "imgUrl": null
       },
       "xray_direct": {
-        "result": "Direkt Röntgen: Görsel gelecek sürümde eklenecektir.",
+        "result": "Direkt Röntgen: Toraks ve abdomen normal sınırlar içinde. Patolojik bulgu yok.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -1116,12 +1116,12 @@
       "uroloji_idrar_4": "En son yaptığı idrarın rengi portakal rengindeydi.",
       "agri_1": "Evet, özellikle karnına veya beline dokununca canı çok yanıyor, ağlayıp kaçmaya çalışıyor.",
       "enerji_1": "Evet, vücudu ateş gibi yanıyor, dokununca titriyor ve kalkmaya mecali yok.",
-      "gecmis_asi_1": "Sadece temel karma ve kuduz aşısı var, Leptospiroz aşısı yapılmadı.",
+      "gecmis_asi_1": "Temel aşılarından bazıları yapıldı ama aşı takvimi eksik kaldı.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
       "goz_6": "Evet, gözlerinin beyazı, kulak içleri ve diş etleri aniden sapsarı oldu.",
       "disari_3": "Evet, geçen hafta kamptayken durgun bir gölete girip o sudan içti. Ayrıca son zamanlarda bahçemizde birkaç ölü fare bulmuştuk.",
       "karin_2": "Evet, karnına ve beline dokununca ağlayıp kaçıyor.",
-      "kene_pire_2": "Parazit ilaçları güncel ama Leptospira aşısı yapılmadı.",
+      "kene_pire_2": "Parazit ilaçları güncel, düzenli kullanıyoruz.",
       "ameliyat_1": "Evet, kısırlaştırıldı (kastrasyon) ve sorunsuz iyileşti."
     }
   },
@@ -1503,7 +1503,7 @@
     "anamnez": {
       "name": "İsim: **Leydi** | Irk: **Boxer**",
       "demog": "Yaş: **4 yaş** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmış (OVH)**",
-      "vaccine": "Aşılar: **DHPPI + Kuduz güncel, Leishmania aşısı yok** | Parazit ilacı: **Düzenli endoparazit, tatarcık kovucu repellan yok**",
+      "vaccine": "Aşılar: **Temel aşılar güncel (DHPPI + Kuduz)** | Parazit ilacı: **Düzenli endoparazit, tatarcık kovucu repellan yok**",
       "complaint": [
         "Sahibi endişeyle anlatıyor:\n\n\"Son birkaç aydır özellikle başının üstünde, kulak kenarlarında ve gözlerinin etrafında hiç geçmeyen bir tüysüzlük başladı. Derisi kurudu, pul pul kepek döküyor ve hiç kaşınmıyor.\"",
         "Sahibi üzülerek anlatıyor:\n\n\"İştahı normal, hatta bazen her zamankinden çok yiyor ama gözümün önünde eridi resmen. Özellikle kafasının üstündeki kemikler dışarı fırladı, şakakları çöktü.\"",
@@ -1937,7 +1937,7 @@
         "imgUrl": null
       },
       "xray_direct": {
-        "result": "Direkt Röntgen: Görsel gelecek sürümde eklenecektir.",
+        "result": "Direkt Röntgen: Toraks ve abdomen normal sınırlar içinde. Patolojik bulgu yok.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -2682,7 +2682,7 @@
         "imgUrl": null
       },
       "xray_direct": {
-        "result": "Direkt Röntgen: Görsel gelecek sürümde eklenecektir.",
+        "result": "Direkt Röntgen: Toraks ve abdomen normal sınırlar içinde. Patolojik bulgu yok.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -3057,7 +3057,7 @@
         "imgUrl": null
       },
       "xray_direct": {
-        "result": "Direkt Röntgen: Görsel gelecek sürümde eklenecektir.",
+        "result": "Direkt Röntgen: Toraks ve abdomen normal sınırlar içinde. Patolojik bulgu yok.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -3362,11 +3362,11 @@
     "caseId": "VC-2025-045",
     "species": "Kedi",
     "icon": "🐱",
-    "diagnosis": "Felin Üst Solunum Yolu Kompleksi (FHV-1 + FCV)",
+    "diagnosis": "Felin Viral Üst Solunum Yolu Enfeksiyonu (FHV-1 + FCV)",
     "anamnez": {
       "name": "İsim: **Şıllık** | Irk: **Domestic Shorthair**",
       "demog": "Yaş: **4 aylık** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmamış**",
-      "vaccine": "Aşılar: **Aşısız veya eksik aşılı (FVRCP yapılmamış)** | Parazit ilacı: **Düzensiz/Yapılmamış**",
+      "vaccine": "Aşılar: **Eksik / yapılmamış** | Parazit ilacı: **Düzensiz/Yapılmamış**",
       "complaint": [
         "Sahibi endişeyle anlatıyor:\n\n\"Yaklaşık 4-5 gün önce hafif bir hapşırıkla başladı. Son iki gündür gözleri resmen çapakla kapandı, açamıyor. Burnundan da sarı-yeşil, koyu bir sıvı geliyor.\"",
         "Sahibi üzülerek anlatıyor:\n\n\"Hiç keyfi yok, sürekli uyuyor. Mama kabının yanına gidiyor ama koklayıp geri dönüyor, sanırım burnu tıkalı olduğu için kokusunu alamıyor. Ayrıca ağzını açtığında dilinin üzerinde kırmızı yaralar gördüm, canı acıyor herhalde.\"",
@@ -3721,7 +3721,7 @@
       "davranis_5": "Hayır, öyle bir huyu yok.",
       "burun_2": "Evet, 4-5 gün önce hafif başlamıştı ama şu an arka arkaya çok güçlü hapşırıyor.",
       "kene_pire_2": "Hayır, düzenli yapılmadı.",
-      "asi_1": "Hayır, karma aşısı yapılmadı.",
+      "asi_1": "Hayır, aşıları yapılmadı.",
       "asi_2": "Hiç aşı yapılmadı.",
       "asi_3": "Hiç aşı yapılmadığı için bilmiyoruz.",
       "asi_4": "Hayır, karnesi yok.",
