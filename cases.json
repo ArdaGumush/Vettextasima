@@ -63,17 +63,17 @@
       "usg": {
         "result": "Abdominal USG: **Proksimal ince bağırsakta dilatasyon** mevcut. Distal segmentte dilate lümende hiperekojenik materyal + akustik gölge. ⚠ Peristaltizm yok. Serbest sıvı mevcut. 🔴",
         "hasImage": true,
-        "imgUrl": "https://i.ibb.co/Z6NGTdZm/V1U1.png"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/579dc9d2f96787b8.png"
       },
       "xray_direct": {
         "result": "Direkt Röntgen: **Ince bağırsak anslarında dilatasyon ve gaz birikimi** (>2 cm). Proksimalinde dilate, distalinde kollabe segment. Serbest karın gazı yok. 🔴",
         "hasImage": true,
-        "imgUrl": "https://i.ibb.co/DP2hRh2q/V1DR1.png"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/36dd1eb0dd0c6bca.png"
       },
       "xray_indirect": {
         "result": "İndirekt Röntgen: Kontrastlı incelemede proksimal segmentte kontrast birikimi ve ilerleyememe — mekanik tıkanıklık ile uyumlu bulgular. 🔴",
         "hasImage": true,
-        "imgUrl": "https://i.ibb.co/M5fjtHMh/V1-R1.png"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/eb762362e6f0e3c2.png"
       },
       "bt": {
         "result": "BT: Bu vakada endike değildir. USG ve radyografi yeterli bilgi sağlamaktadır.",
@@ -348,7 +348,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normokromik-normositik. Nötrofiller baskın, toksik granülasyon (+). Trombositopeni görsel olarak onaylandı. Hemoparazit görülmüyor.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Renk koyu sarı, bulanık. Spesifik ağırlık: 1.040. pH: 6.5. Epitel hücreleri (+). Granüler silendir (+). Protein (+). Hematüri yok.",
       "stool": "Dışkı muayenesi: Rektumdan çok az miktarda, sert kıvamlı dışkı alınabildi. Parazit yumurtası görülmedi.",
@@ -719,7 +719,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Normal dağılım. Anizositoz yok. Nötrofiller mature, toksik granülasyon yok. Hemoparazit görülmüyor.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Renk açık sarı, berrak. SpGr: **1.018** (hafif düşük). pH: 6.5. **Glukoz: +++ (glikozüri)** 🔴 — kan glukozunun renal eşiğini aşmasıyla uyumlu. Keton: (+). Sediment: hafif granüler silendir.",
       "stool": "Dışkı muayenesi: Normal kıvam. Parazit yumurtası görülmedi. Bu vakada dışkı muayenesinde spesifik patolojik bulgu beklenmez.",
@@ -803,12 +803,12 @@
       "usg": {
         "result": "Abdominal USG: **Belirgin asit (peritoneal efüzyon)** mevcut. 🔴 Karaciğerde fokal hipoekoik alanlar. Mezenterde nodüler kalınlaşmalar. Dalak büyümüş.",
         "hasImage": true,
-        "imgUrl": "https://i.ibb.co/TMjrCnnb/V5U1.jpg"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/94bc896560b7550f.jpg"
       },
       "xray_direct": {
         "result": "Lateral Röntgen: **Abdomende organ sınırlarının seçilemediği yaygın buzlu cam manzarası.** Karın kavitesi homojen opasite — masif asit. Akciğer alanları normal. ▸ Massif abdominal efüzyon nedeniyle tüm organ konturları kaybolmuş.",
         "hasImage": true,
-        "imgUrl": "https://i.ibb.co/MDLMtDMf/V5R1.jpg"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/1fd74af05e5b8c06.jpg"
       },
       "xray_indirect": {
         "result": "İndirekt Radyografi: Bu vakada indirekt radyografi planlanmamıştır.",
@@ -1089,7 +1089,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Rejeneratif olmayan anemi bulguları — normokromik normositik eritrositler. Lenfopeni teyit edildi. **Nötrofillerde toksik granülasyonlar mevcut** — sistemik inflamasyon. Trombositopeni görsel olarak onaylandı.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: SpGr: **1.030**. Protein: **(+)**. Bilirübinüri: **(+)** — karaciğer tutulumu ile uyumlu. Sediment: granüler silendir (+).",
       "woodslamp": "Wood's Lambası: Bu vakada deri mantar lezyonu şüphesi bulunmadığından uygulanmadı.",
@@ -1466,7 +1466,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: **Şiddetli lökopeni** — lenfopeni ve nötropeni çok belirgin. Eritrositlerde rulo oluşumu (dehidrasyona bağlı). Trombositopeni görsel olarak onaylandı. Toksik değişiklik yok. Hemoparazit yok.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: SpGr: **1.055** (Çok yüksek — ciddi dehidrasyon). Protein: **(+)**. Bilirubin: **Negatif**. Keton: **Negatif**. Sediment: Granüler silendir (+). **Prerenal azotemi ile uyumlu konsantre idrar.** 🔴",
       "stool": "Dışkı muayenesi: Makroskobik olarak **hemorajik, kötü kokulu sıvı dışkı**. 🔴 Parazit yumurtası görülmedi. Hızlı tanı kiti uygulanması önerilir.",
@@ -1567,7 +1567,7 @@
       "xray_direct": {
         "result": "Toraks Grafisi: **Sol hemitoraksta bağırsak gaz gölgeleri** mevcut. 🔴 Kalp gölgesi sağa deviye. Diyafram çizgisi sağda seçilebilir, solda kaybolmuş. Pnömotoraks yok.",
         "hasImage": true,
-        "imgUrl": "https://i.ibb.co/6RbKz6RX/Gemini-Generated-mage-g99xyag99xyag99x.png"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/8d94a3c558331f5c.png"
       },
       "xray_indirect": {
         "result": "İndirekt Radyografi: Bu vakada indirekt radyografi planlanmamıştır.",
@@ -1848,7 +1848,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Rejeneratif olmayan anemi bulguları — normokromik normositik eritrositler, retikülosit artışı yok. Belirgin nötrofili — stres lökogramı. Trombositopeni mevcut.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar: Alınamadı — hasta kritik durumda.",
       "woodslamp": "Wood's Lambası: Bu vakada deri mantar lezyonu şüphesi bulunmadığından uygulanmadı.",
@@ -1939,12 +1939,12 @@
       "usg": {
         "result": "Abdominal USG: **Mesane duvarında belirgin kalınlaşma mevcut.** Lumen içerisinde yoğun hiperekoik sediment birikimi (kristal/sludge) görülüyor. **Mesane aşırı distande** — spontan rüptür riski var. Üreter ağızları normal. ▸ Hiperekoik lümen içeriği: strüvit kristal birikimi ile uyumlu. ACİL KATETERİZASYON ENDİKASYONU. 🔴",
         "hasImage": true,
-        "imgUrl": "https://i.ibb.co/whqZ3RVR/V7U1.jpg"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/b9ba02526bcb2b08.jpg"
       },
       "xray_direct": {
         "result": "Lateral Röntgen: **Mesane aşırı dolu ve gergin** — kaudalden kraniale uzanan büyük mesane gölgesi. Üretra izahında küçük radyoopak odaklar görülüyor — kristal/taş tıkanıklığı ile uyumlu. Diğer karın organları normal.",
         "hasImage": true,
-        "imgUrl": "https://i.ibb.co/hJ730ffK/V7R1.png"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/6a285e55f09b62c8.png"
       },
       "xray_indirect": {
         "result": "İndirekt Radyografi: Bu vakada indirekt radyografi planlanmamıştır.",
@@ -2225,11 +2225,11 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Normal eritrosit morfolojisi. **Stres lökogramı teyit edildi** — nötrofili, lenfopeni. Toksik granülasyon yok. Hemoparazit görülmüyor.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": {
         "text": "İdrar Sediment Bakısı: **Yoğun strüvit kristalleri** — tabut kapağı (coffin-lid) şekilli, karakteristik görünüm. Bol miktarda eritrosit (hematüri). Orta derecede lökosit. Bakteri görülmedi — steril inflamasyon. SpGr: **1.050**, pH: **7.0**, Protein: **(3+)**. ▸ Strüvit kristalleri: magnezyum amonyum fosfat — alkali idrarda oluşur, kuru mama ile ilişkili.",
-        "imgUrl": "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/Struvite_crystals_(urine)_-_Str%C3%BCvit_kristalleri_(idrar)_-_01.png",
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/bd14b18db4985469.png",
         "citation": "Doruk Salancı, CC BY-SA 3.0, via Wikimedia Commons"
       },
       "stool": "Dışkı muayenesi: Kıvam sert, pellet biçimli. Parazit yumurtası görülmedi. Gizli kan negatif. Ürolojik tıkanıklıkla doğrudan ilişkisi yok.",
@@ -2318,7 +2318,7 @@
       "usg": {
         "result": "Abdominal USG: **İnce bağırsak lümeninde enine kesitlerde 'hedef tahtası' (target sign) görünümü.** Boyuna kesitlerde hiperekojenik, paralel çizgiler şeklinde **hareketli yetişkin askaritler** izleniyor. 🔴 Bağırsak duvarı kalınlığı sınırda. Karaciğer ve böbrekler normal.",
         "hasImage": true,
-        "imgUrl": "https://i.ibb.co/5XnMgtCj/V8U1.jpg"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/7d5fe4fd09b34cca.jpg"
       },
       "xray_direct": {
         "result": "Direkt Röntgen: Bu vakada direkt radyografi planlanmamıştır. İndirekt radyografi tercih edilmiştir.",
@@ -2328,7 +2328,7 @@
       "xray_indirect": {
         "result": "İndirekt Radyografi: **Abdominal distansiyon belirgin.** Bağırsaklarda gaz ve sıvı artışı mevcut. **Akciğerlerde larval göçe bağlı yamalı interstisyel patern** gözlemleniyor. 🔴 Bağırsak ansları arasında radyoopak paralel çizgiler — yoğun askarit varlığıyla uyumlu.",
         "hasImage": true,
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Ascaris_infection_in_the_x-ray_image-_ascaris_arranged_tidily_along_the_long_axis_of_the_small_bowel_%28South_Africa%29_%2816424840021%29_%282%29.jpg"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/22ddc0b062f85ddd.jpg"
       },
       "bt": {
         "result": "BT: Bu vakada bilgisayarlı tomografi endike değildir.",
@@ -2600,7 +2600,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normositik normokromik. **Belirgin eozinofili** — paraziter enfestasyonla uyumlu. Kan parazitine rastlanmadı. Toksik granülasyon yok.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: SpGr: **1.025**. pH: **6.5**. Protein: **Negatif**. Glukoz: **Negatif**. Sedimentte patolojik bulgu yok — renal tutulum yok.",
       "woodslamp": "Wood's Lambası: Bu vakada deri mantar lezyonu şüphesi bulunmadığından uygulanmadı.",
@@ -2953,14 +2953,14 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: **Stres lökogramı** — nötrofili ve lenfopeni mevcut. Eritrositler normositik normokromik. Morfolojik bozukluk yok. Hemoparazit görülmedi.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: SpGr: **1.015**. pH: **6.0**. **Glukoz: +++**. Keton: Negatif. Protein: Negatif. Sediment: Patolojik bulgu yok. ▸ Glukozüri — altta yatan bir metabolik/endokrin nedenin değerlendirilmesi önerilir. ⚠",
       "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
       "stool": "Dışkı muayenesi: Parazit yumurtası görülmedi. Bu vakada dışkı muayenesi endike değildir.",
       "skin": {
         "text": "Deri Kazıntısı (Derin Kazıntı): **Mikroskobik incelemede karakteristik 8 bacaklı, sigara şeklinde akarlar** görüldü. 🔴 Erişkin, larva ve yumurta formları tespit edildi. Yoğun enfestasyon ile uyumlu.",
-        "imgUrl": "https://i.ibb.co/xtG6PMNd/MG-20260517-151350.jpg",
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/15f121cc69110ca9.jpg",
         "imgRef": "Ribeiro et al. (2024). Otitis externa associated with Demodex cati - case report. Arquivo Brasileiro de Medicina Veterinária e Zootecnia, 76, 109-113. DOI: 10.1590/1678-4162-13004"
       },
       "biopsy": "Biyopsi raporu: Bu vakada rutin biyopsi endikasyonu yoktur. Deri kazıntısı tanı için yeterlidir. Kronik veya dirençli vakalarda foliküler biyopsi düşünülebilir."
@@ -3047,12 +3047,12 @@
       "usg": {
         "result": "Abdominal USG: **Pankreas boyutu artmış**, çevresi düzensiz. Peripankreatik yağ dokusunda ekojenite artışı (yağ nekrozu). 🔴 Pankreas çevresinde serbest sıvı. Dalak ve karaciğer normal.",
         "hasImage": true,
-        "imgUrl": "https://i.ibb.co/wrx4zXdX/MG-20260517-152058.jpg"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/38850b726ac24c5a.jpg"
       },
       "xray_direct": {
         "result": "Abdominal Röntgen: Kranial abdomende **'ground glass' görünümü** — lokal peritonit ile uyumlu. ⚠ Duodenum gaz gölgesi belirginleşmiş. Obstrüksiyon bulgusu yok.",
         "hasImage": true,
-        "imgUrl": "https://i.ibb.co/wNvxHwB0/2-Figure1-2.png"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/abb9c9bd8e528c51.png"
       },
       "xray_indirect": {
         "result": "İndirekt Radyografi: Bu vakada endike değildir.",
@@ -3330,7 +3330,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: **Belirgin nötrofili** — toksik nötrofiller görülüyor (vakuolizasyon, toksik granülasyon). Lökositoz ve sol kayma — aktif inflamasyonla uyumlu. Hemokonsantrasyon bulguları (RBC rulo oluşumu). Trombositopeni — DIC riski açısından takip edilmeli. 🔴",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: SpGr: **>1.050** — dehidrasyona bağlı çok konsantre idrar. Protein: **(+)**. Glukoz: **Negatif**. Keton: **(+)**. Sediment: granüler silendir (+). **Prerenal azotemi ile uyumlu.**",
       "stool": "Dışkı muayenesi: Kıvam yumuşak, renk açık-sarı. **Steatore şüphesi** — yağlı ve kötü kokulu dışkı. Gizli kan: Negatif. Parazit yumurtası görülmedi.",
@@ -3702,7 +3702,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Parazit görülmedi. **Şistositler** (travmatik mekanik hasar belirtisi) nadiren izlendi. Nötrofili — stres lökogramı ile uyumlu.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: SpGr: **1.050** — konsantre idrar. **Hafif hematüri** — travma kaynaklı olabilir. Protein: (+). Sediment: Eritrosit (+).",
       "stool": "Dışkı muayenesi: **Kanlı-sümüksü dışkı** mevcut. 🔴 Parazit yumurtası görülmedi. Dışkı bulgusunun spesifik tanısal değeri sınırlıdır.",
@@ -4441,7 +4441,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrosit morfolojisi normal. Lökosit dağılımı dengeli — parazit enfeksiyonuna işaret eden eozinofili yok. Trombositler yeterli. Hemoparazit görülmedi.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Renk sarı, berrak. SpGr: **1.045**. pH: **6.5**. Diğer tüm parametreler negatif. Renal tutulum yok.",
       "stool": "Dışkı muayenesi: Normal kıvam. Parazit yumurtası görülmedi. Primer dışkı bulgusu bu vakada beklenmez.",
@@ -4531,12 +4531,12 @@
       "usg": {
         "result": "Abdominal USG: **İnce bağırsak anslarında hafif sıvı birikimi** ve duvar kalınlığında minimal artış mevcut. Non-spesifik enterit bulguları — paraziter veya inflamatuar kökenli olabilir. ⚠",
         "hasImage": true,
-        "imgUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/362b/12823995/e7570eb1605b/frai-08-1707957-g001.jpg"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/70401671c0fa8065.jpg"
       },
       "xray_direct": {
         "result": "Abdominal Röntgen: **Bağırsaklarda gaz miktarında artış (meteorizm)** gözlemleniyor. ⚠ Obstrüksiyon bulgusu yok. Serbest gaz yok.",
         "hasImage": true,
-        "imgUrl": "https://i.ibb.co/TdNgr1H/Screenshot-20260517-214436.jpg"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/26b2e150d1401487.jpg"
       },
       "xray_indirect": {
         "result": "İndirekt Radyografi: Bu vakada endike değildir.",
@@ -4813,12 +4813,12 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normositik normokromik. **Eozinofiller belirgin** — parazitizme bağlı tipik bulgu. ⚠ Parazit görülmedi. Trombositler kümelenmiş.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Renk açık sarı, berrak. SpGr: **1.025**. pH: **6.5**. Protein, glukoz, keton negatif. Sedimentte patolojik bulgu yok.",
       "stool": {
         "text": "Dışkı muayenesi: **Direkt Bakı:** Hareketli, armut biçimli, karakteristik yaprak dökümü gibi hareket eden **protozoon trophozoitleri** görüldü. 🔴 | **Flotasyon:** Oval yapıda **protozoon kistleri** tespit edildi. 🔴 | **ELISA Hızlı Test:** Spesifik antijen — **POZİTİF** 🔴",
-        "imgUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/c07c/12831248/46e6f739bbdf/13071_2025_7168_Fig1_HTML.jpg"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/4c6956fc305858fa.jpg"
       },
       "skin": "Deri kazıntısı: Ektoparazit görülmedi. Bu vakada deri bulgularında spesifik patoloji beklenmez.",
       "biopsy": "Biyopsi raporu: Bu vakada biyopsi endike değildir. Tanı dışkı mikroskobu ve ELISA testi ile doğrulanmıştır. Kronik malabsorpsiyon vakalarında ince bağırsak biyopsisi düşünülebilir."
@@ -5552,7 +5552,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: **Hafif non-rejeneratif normositik normokromik anemi** — eritropoietin yeterliliğine rağmen metabolik baskılanma. Polikromazi yok. Lökosit dağılımı normal. Parazit görülmedi.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: SpGr: **1.025** — Normal yoğunluk. pH: 6.5. Protein: Negatif. Glukoz: Negatif. Keton: Negatif. Sediment: Sakin. Renal fonksiyon normal.",
       "stool": "Dışkı muayenesi: Parazit yumurtasına rastlanmadı. Kıvam normal. Primer dışkı bulgusu bu vakada beklenmez.",
@@ -5919,7 +5919,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrosit morfolojisi normositik normokromik. **Eozinofil sayısında belirgin artış** — alerjik hava yolu inflamasyonunu destekleyen karakteristik bulgu. 🔴 İntraeritrositer veya intralökositer parazite rastlanmadı. Trombositler yeterli.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Açık sarı, berrak. SpGr: **1.040** — iyi konsantrasyon. pH: 6.5. Protein, glukoz, keton negatif. Sediment: nadir transizyonel epitel hücresi dışında patolojik bulgu yok. ✓",
       "stool": "Dışkı muayenesi: Flotasyon ve sedimantasyon yöntemleriyle incelendi. Akciğer kıl kurtlarına ait larva veya parazit yumurtası görülmedi. **Sonuç: Negatif** ✓ — Paraziter bronşit dışlandı.",

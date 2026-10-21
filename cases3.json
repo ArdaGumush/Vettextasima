@@ -69,7 +69,7 @@
       "xray_direct": {
         "result": "Toraks Radyografisi: Yaygın, belirgin alveoler ve bronkointerstisyel akciğer paterni mevcut — sekonder bakteriyel bronkopnömoni ile uyumlu radyoopasite artışları. 🔴 Görsel henüz mevcut değildir — klinik bulgularla devam ediniz.\n[Kaynak: PMC9308435]",
         "hasImage": true,
-        "imgUrl": "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/Screenshot_20261018_005150_com.android.chrome.png"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/4b8945a1b3a0516d.png"
       },
       "xray_indirect": {
         "result": "İndirekt Radyografi: Bu vakada endike değildir.",
@@ -346,7 +346,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normositik normokromik. **Şiddetli lenfopeni** — lenfoid doku yıkımı ile uyumlu. 🔴 Diff-Quik boyamada lenfosit ve nötrofil sitoplazmasında **Lentz inklüzyon cisimcikleri** (asidofilik viral inklüzyonlar) tespit edildi. 🔴 Hafif trombositopeni mevcut.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Koyu sarı, berrak. SpGr: 1.040 — dehidrasyona bağlı konsantre idrar. pH: 6.0. Protein: Eser. Glukoz: Negatif. Keton: Negatif. Sediment: Epitel hücrelerinde sitoplazmik inklüzyon arandı, aktif sediment patolojisi saptanmadı.",
       "stool": "Dışkı muayenesi: Flotasyon ve natif muayenede parazit yumurtasına rastlanmadı — paraziter gastroenterit dışlandı. ✓",
@@ -446,7 +446,7 @@
       "xray_direct": {
         "result": "Toraks Radyografisi: Trakeal lümende hafif daralma (ödem kaynaklı) ve peribronşiyal çizgilenmelerde hafif artış (bronşiyal tıkızlık). Akciğer parankiminde konsolidasyon veya pnömoni bulgusu saptanmadı. Görsel henüz mevcut değildir — klinik bulgularla devam ediniz.\n[Kaynak: PMC35878363]",
         "hasImage": true,
-        "imgUrl": "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/Screenshot_20261018_005417_com.android.chrome.png"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/0ad6ed5553d794f5.png"
       },
       "xray_indirect": {
         "result": "İndirekt Radyografi: Bu vakada endike değildir.",
@@ -722,7 +722,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normositik normokromik. Segmenter nötrofillerde hafif toksik değişimler izlendi. Kan paraziti görülmedi. Trombositler normal morfoloji ve sayıda. ✓",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Açık sarı, berrak. SpGr: 1.038. pH: 6.5. Protein: Negatif. Glukoz: Negatif. Keton: Negatif. Sediment: Silindir, kristal, lökosit veya eritrosit yok — inaktif. ✓",
       "stool": "Dışkı muayenesi: Baermann tekniği ve flotasyon muayenesi negatif — akciğer kıl kurdu (Aelurostrongylus abstrusus) dışlandı. ✓",
@@ -1100,7 +1100,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Nötrofillerde belirgin toksik değişiklikler (Döhle cisimcikleri, sitoplazmik vakuolizasyon). Trombositler her sahada azalmış. 🔴 Kan paraziti görülmedi.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi (Sistosentez): **Koyu portakal/kahverengi, bulanık.** SpGr: **1.012** — izostenüri, böbrek konsantrasyon yeteneği kaybolmuş. 🔴 pH: 6.0. Protein: **(+++)** — tübüler hasar. 🔴 **Glukoz: (++) — normoglisemik glukozüri** — tübüler reabsorpsiyon bozukluğu. 🔴 Keton: Negatif. **Sediment:** Bol granüler silendir (renal tübüler nekroz), lökositler ve bilirubin kristalleri. 🔴",
       "stool": "Dışkı muayenesi: Makroskobik olarak çok koyu ve cıvık (melena). Parazit yumurtası görülmedi. **Fekal gizli kan testi POZİTİF** — üremik ülserasyon kanaması. 🔴",
@@ -1472,7 +1472,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan Yayması (Giemsa): Eritrositlerin içinde tekli veya **armut biçiminde ikili (piroplazm) yerleşim gösteren büyük intraeritrositik formlar** saptandı. 🔴 Yoğun sferositler ve **oto-aglütinasyon pozitif.** Trombositler her sahada 1-2 adet — kritik trombositopeni. 🔴",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: **Koyu kırmızı/kahverengi (çay rengi).** Berrak — santrifüj sonrası renk değişmedi, **hemoglobinüri doğrulandı** (hematüri ekarte). SpGr: 1.028. pH: 6.5. Protein: (+) — hemoglobinüriye bağlı yalancı proteinüri. Glukoz: Negatif. Keton: Negatif. Sediment: Eritrosit görülmedi, birkaç bilirubin kristali izlendi. 🔴",
       "stool": "Dışkı muayenesi: Natif ve flotasyon yönteminde parazit yumurtasına veya protozoona rastlanmadı. ✓",
@@ -1842,7 +1842,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normositik normokromik. **Hiperglobulinemiye bağlı belirgin rouleaux (rulo) formasyonu.** ⚠ Monositik seride vakuolleşme saptandı. Periferik kanda serbest parazite rastlanmadı. Trombositler sayıca hafif azalmış. (Kesin tanı: Popliteal lenf nodu aspirasyonunda makrofajlar içinde **hücre içi amastigot formları** görüldü.) 🔴",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Açık sarı, hafif bulanık. SpGr: **1.014** — glomerülonefrite bağlı konsantrasyon yeteneğinde azalma. ⚠ pH: 6.8. Protein: **(+++)** — glomerüler hasara bağlı masif proteinüri, UPC >2.0. 🔴 Glukoz: Negatif. Keton: Negatif. Sediment: Birkaç hiyalin ve granüler silendir — aktif olmayan renal proteinüri tablosu.",
       "stool": "Dışkı muayenesi: Parazit yumurtası veya protozoon saptanmadı. Normal flora elemanları izlendi. ✓",
@@ -2216,7 +2216,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositlerde hafif polikromazi. Lökopeni teyit edildi — **nötrofillerde toksik değişimler (Döhle cisimcikleri, sitoplazmik vakuolleşme).** ⚠ **Trombositopeni belirgin** — yaymada neredeyse hiç trombosit kümesi yok. 🔴 Pıhtılaşma zamanı (PT + APTT) 2 kattan fazla uzamış — **DIC bulgusu.** 🔴",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Koyu sarı/kahverengi, hafif bulanık. SpGr: 1.035 — dehidrasyon. pH: 6.0. Protein: (++) — immün kompleks glomerülonefriti veya ateşsel proteinüri. Glukoz: Negatif. Keton: Negatif. **Sediment:** Yaygın bilirubin kristalleri, yoğun renal epitel hücre dökülmesi ve birkaç granüler silendir. 🔴",
       "stool": "Dışkı muayenesi: **Kanlı ve mukoid.** Mikroskobik incelemede eritrosit ve lökosit artışı (hemorajik enterit). Paraziter etken saptanmadı. 🔴",
@@ -2590,7 +2590,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normositik normokromik. Rejenerasyon bulgusu (polikromazi, retikülosit) izlenmedi — **non-rejeneratif anemi.** Lökosit formülünde nötrofili ağırlıklı, atipik veya blast hücre yok. Parazit saptanmadı. Trombositler kümeleşme eğiliminde, sayıca normal.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Açık sarı, berrak. SpGr: 1.040 — idrar konsantrasyonu korunmuş. pH: 6.5. Protein: Negatif. Glukoz: Negatif. Keton: Negatif. Sediment: Her sahada 1-2 eritrosit, kristal veya silindir görülmedi — inaktif.",
       "stool": "Dışkı muayenesi: **Makroskobik:** Cıvık-püre kıvamında, açık kahverengi-sarımtırak, yoğun mukus içerikli, keskin kokusu olan dışkı. 🔴 **Parazitolojik:** Nematod, sestod, Giardia kisti, Tritrichomonas, Cryptosporidium saptanmadı. **Sitolojik yayma:** Yoğun nötrofil ve yer yer lenfosit infiltrasyonu — mukozal yangı bulgusu. 🔴 **Sindirim muayenesi:** Sindirilmemiş kas lifleri (proteoliz bozukluğu) ve **nötral yağ damlacıkları (steatorre — malabsorbsiyon kanıtı)** izlendi. 🔴",
@@ -2960,7 +2960,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normositik normokromik. **Dehidrasyona bağlı belirgin rouleaux formasyonu.** Lökosit formülünde neredeyse hiç lökosit yok — **şiddetli panlökopeni doğrulandı.** 🔴 Mevcut az sayıdaki nötrofilde **toksik granülasyon ve Döhle cisimcikleri** (endotoksemi bulgusu). Trombositler azalmış, kümelenme zayıf. Hemoparazit görülmedi.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Koyu sarı, berrak. SpGr: **1.055** — prerenal azotemi, böbrekler maksimum konsantrasyon çabasında. 🔴 pH: 6.0. Protein: (+) — dehidrasyon ve ateşe bağlı geçici. Glukoz: Negatif. Keton: Negatif. Sediment: Tek tük epitel hücresi, kristal veya silindir yok.",
       "stool": "Dışkı muayenesi: Natif muayenede **bol miktarda eritrosit**, deskuame bağırsak epitel hücreleri ve yoğun mikrobiyal flora. 🔴 Parazit oositine rastlanmadı.",
@@ -3335,7 +3335,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositlerde anizositoz ve hafif polikromazi. Non-rejeneratif anemi. Olgun nötrofil ve monositlerde belirgin artış — pyogranülomatöz yanıt. Lenfopeni teyit edildi. **Makrotrombositler** mevcut. Kan paraziti görülmedi.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Koyu sarı-kehribar, berrak. SpGr: 1.038. pH: 6.5. Protein: Eser (+). Glukoz: Negatif. Keton: Negatif. Sediment: Nadir hiyalin silindir ve birkaç transizyonel epitel hücresi — inaktif.",
       "stool": "Dışkı muayenesi: Flotasyon ve natif muayenede helmint yumurtası veya protozoon saptanmadı. ✓",
@@ -3704,7 +3704,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normositik normokromik. Lökosit formülünde nötrofil hakimiyeti doğrulandı, sola kayma minimal. Kan paraziti görülmedi. Trombosit kümelenmeleri izlendi. ✓",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Koyu sarı, berrak. SpGr: 1.045 — konsantre idrar, dehidrasyon doğrulandı. pH: 6.5. Protein: Negatif. Glukoz: Negatif. Keton: Negatif. Sediment: Aktif yangı hücresi veya kristal yok — inaktif. ✓",
       "stool": "Dışkı muayenesi: Flotasyon ve natif muayenede helmint yumurtası veya protozoon kistine rastlanmadı. ✓",

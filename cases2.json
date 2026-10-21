@@ -346,7 +346,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normositik normokromik, **rulo formasyonu** izlendi — dehidrasyon ile uyumlu. Nötrofiller ve lenfositler normal morfolojide. **Ters stres lökogramı** — ağır stresteki bir köpekte lenfopeni ve eozinopeni beklenirken lenfositler yüksek, eozinofiller sıfırlanmamış. 🔴 Parazit bulgusu yok. Trombositler kümeleşmiş, yeterli.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Açık sarı, berrak. SpGr: **1.018** ⚠ — Ağır dehidrasyon varlığında idrarın yoğunlaşması beklenirken (>1.030) konsantrasyon yetersiz — paradoks ve tanı için kritik bulgu. pH: 6.0. Protein: Negatif. Glukoz: Negatif. Sediment: Silindir, kristal veya lökosit kümesi yok.",
       "stool": "Dışkı muayenesi: Flotasyon ve sedimantasyon testleri uygulandı. Parazit yumurtası veya protozoon kisti görülmedi. **Gizli Kan Testi: POZİTİF** 🔴 — gastrointestinal bariyer bozulması ve mikroskobik kanamalar ile uyumlu.",
@@ -720,7 +720,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normositik normokromik. Lökosit formülü normal. Toksik nötrofil veya sola kayma yok. Periferik kan paraziti görülmedi. Trombositler kümeleşmiş, yeterli.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Açık sarı, berrak. SpGr: 1.022, pH: 6.5. Protein: Negatif. Glukoz: Negatif (kan glukozu böbrek eşiğinin altında). **Keton: Hafif Pozitif (+)** ⚠ — uzun süreli açlıkta yağ asidi yıkımına bağlı ketonüri. Sediment inaktif.",
       "stool": "Dışkı muayenesi: Flotasyon yöntemiyle **yoğun miktarda yuvarlak-oval parazit yumurtası** saptandı. 🔴 Yoğun gastrointestinal parazitizm — besin emilimini bozarak malabsorpsiyona ve glikojen depolarının tükenmesine katkıda bulunmuştur.",
@@ -817,7 +817,7 @@
       "xray_direct": {
         "result": "Lateral ve VD Toraks Grafisi: **Diyafram hattının bütünlüğü bozulmuş.** 🔴 Kalp gölgesi sağa deplase. Sol akciğer lobları kollabe (atelektatik). Göğüs boşluğunda mide gaz kabarcığı, dalak gölgesi ve radyopak bağırsak ansları net olarak izleniyor.",
         "hasImage": true,
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Diaphragmatic-rupture_dog.jpg"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/e20db78fdc12fd8a.jpg"
       },
       "xray_indirect": {
         "result": "İndirekt Radyografi: Bu vakada endike değildir.",
@@ -1094,7 +1094,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normositik normokromik. Segmenter nötrofil artışı (stres yanıtı) — sola kayma yok. Periferik kan paraziti yok. Trombositler kümeleşmiş.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Koyu sarı, berrak. SpGr: **1.035** — konsantrasyon korunmuş, dehidrasyon ile uyumlu prerenal tablo. pH: 6.0. Protein: Negatif. Glukoz: Negatif. Keton: Negatif. Sediment inaktif.",
       "stool": "Dışkı muayenesi: Parazit yumurtası veya protozoon kisti görülmedi. Mide deplasmanına bağlı gastrointestinal pasaj yavaşlamış, dışkı miktarı az. Mikroskobik kanama (melena) bulgusu yok.",
@@ -1463,7 +1463,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normositik normokromik. Lökosit formülü normal dağılımda, sola kayma veya toksik değişiklik yok. Trombositler lam üzerinde yeterli kümelenmede. Kan paraziti görülmedi.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Açık sarı, berrak. SpGr: 1.025. pH: 6.5. Protein: Negatif. Glukoz: Negatif. Keton: Negatif. Sediment inaktif.",
       "stool": "Dışkı muayenesi: Flotasyon yöntemiyle helmint yumurtası veya protozoon kisti görülmedi.",
@@ -1832,7 +1832,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normositik normokromik, rejenerasyon bulgusu yok (non-rejeneratif anemi). **Belirgin lenfopeni ve reaktif monosit artışı.** 🔴 İntraeritrositer kan paraziti görülmedi. Trombositler azalmış, kümeleşme eğilimi zayıf.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Açık sarı, berrak. SpGr: 1.035. pH: 6.5. Protein: Negatif. Glukoz: Negatif. Keton: Negatif. Sediment: Kristal, silindir, hematüri veya piyüri yok — inaktif.",
       "stool": "Dışkı muayenesi: Flotasyon yöntemiyle helmint yumurtası veya protozoon kistine rastlanmadı.",
@@ -2209,7 +2209,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: **Belirgin anizositoz ve poikilositoz.** Polikromazi yok — non-rejeneratif anemi. **Çekirdekli eritrositler (metarubrisit)** görüldü — kemik iliği bariyeri bozulması. 🔴 Lenfopeni ve nötropeni doğrulandı, toksik nötrofiller not edildi. Gerçek trombositopeni mevcut. İntraeritrositer parazit görülmedi.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: **Koyu sarı/amber** — bilirubinüriye bağlı. Berrak. SpGr: 1.035. pH: 6.5. Protein: Eser (+). Glukoz: Negatif. Keton: Negatif. Sediment: Nadir skuamöz epitel hücresi. Bilirubin kristalleri izlenebilir.",
       "stool": "Dışkı muayenesi: Flotasyon ve natif muayenede helmint yumurtası veya protozoon kistine rastlanmadı. Sindirim derecesi normal, mikroskobik kan kanıtı yok.",
@@ -2586,7 +2586,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normositik normokromik. Hafif stres lökogramı — nötrofili, lenfopeni. Trombosit kümelenmesi doğal. Kan paraziti görülmedi.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: **Açık sarı/su gibi soluk.** Berrak. SpGr: **1.014** ⚠ — hipokalemik nefropati, idrarı konsantre etme yeteneği bozulmuş. pH: **7.5** — hafif alkalik. Protein: **(+)** — hipertansif nefropati. Glukoz: Negatif. Keton: Negatif. Sediment: Her sahada **1-2 hiyalin silindir**, nadir böbrek epitel hücresi. Kristalüri, hematüri veya piyüri yok.",
       "stool": "Dışkı muayenesi: Flotasyon ve natif muayenede paraziter unsura rastlanmadı. Sindirim derecesi normal.",
@@ -2675,7 +2675,7 @@
       "usg": {
         "result": "Mesane USG: **Mesane duvarı kalınlaşmış (>2mm)**, düzensiz iç kontur. Lümende ekojenik debris ve hücresel materyal mevcut. 🔴 Radyopak taş veya kum kristali görülmedi. Böbrekler bilateral normal.",
         "hasImage": true,
-        "imgUrl": "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/Screenshot_20260710_161641_com.android.chrome.png"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/f654f022e6079a2e.png"
       },
       "xray_direct": {
         "result": "Abdominal Röntgen: Üriner sistemde radyopak taş veya mineralizasyon saptanmadı. Mesane normal pozisyonda, hafif opaklaşma mevcut. Diğer abdominal organlar normal.",
@@ -2956,11 +2956,11 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normositik normokromik. Lökosit formülü normal. Stres lökogramı yok. Trombositler yeterli. Kan paraziti görülmedi. ✓",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": {
         "text": "İdrar muayenesi: **Renk: Kırmızı-kahve (hematüri).** Bulanık. SpGr: **1.055** — yüksek konsantrasyon, düşük su tüketimi ile uyumlu. pH: **6.5.** Protein: **(++)** 🔴 Glukoz: Negatif. Keton: Negatif. **Sediment:** Yoğun eritrosit, lökosit kümeleri, epitel hücreleri, mukus iplikleri ve strüvit kristal şüpheli amorf materyal. 🔴 Bakteri: Yok.",
-        "imgUrl": "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/1792275142214.jpg",
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/6427d9120dcf9ef8.jpg",
         "citation": "AI generated"
       },
       "stool": "Dışkı muayenesi: Parazit yumurtası veya protozoon kistine rastlanmadı. ✓",
@@ -3052,7 +3052,7 @@
       "xray_direct": {
         "result": "Abdominal Röntgen: Serbest sıvıya bağlı genel detay kaybı (buzlu cam görünümü) mevcut. 🔴 Karaciğer silüeti normal anatomik sınırlarının gerisinde (mikrohepatika).",
         "hasImage": true,
-        "imgUrl": "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/Screenshot_20260710_164247_com.android.chrome.png"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/377032e3a099833e.png"
       },
       "xray_indirect": {
         "result": "İndirekt Radyografi: Bu vakada endike değildir.",
@@ -3329,7 +3329,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: **Belirgin mikrositoz** saptandı — kronik hastalık anemisi. Rejenerasyon bulgusu (polikromazi) izlenmedi. Lökositler normal morfolojide. Kan paraziti yok. Trombositler azalmış, morfolojik olarak normal.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: **Turuncuya dönük koyu sarı.** SpGr: 1.020. pH: 6.5. **Bilirubin: +++ (Kuvvetli Pozitif)** 🔴 Protein: Eser. Sediment: **Nadir amonyum ürat kristalleri** — hepatik disfonksiyon şüphesini güçlendiriyor. 🔴",
       "stool": "Dışkı muayenesi: Parazit yumurtası görülmedi. **Makroskobik olarak katran renginde (melena).** 🔴 Fekal gizli kan testi **kuvvetli pozitif** — gastrointestinal kanama veya koagülopati ile uyumlu.",
@@ -3420,7 +3420,7 @@
       "usg": {
         "result": "Abdominal USG: **Belirgin splenomegali** ve **hafif hepatomegali** saptandı. 🔴 **Safra kesesinde çamur (sludge)** yoğunlaşması mevcut — hemolize bağlı bilirubin artışıyla uyumlu. Serbest sıvı saptanmadı.",
         "hasImage": true,
-        "imgUrl": "https://i.ibb.co/dsz1sxmr/Screenshot-20260717-121705-com-android-chrome.png"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/d1a463f479cbb0c2.png"
       },
       "xray_direct": {
         "result": "Direkt Röntgen: Bu vakada direkt radyografi rutin olarak endike değildir.",
@@ -3702,7 +3702,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: **Belirgin anizositoz, polikromazi ve çekirdekli eritrositler (metarubrisit)** — güçlü rejeneratif yanıt. 🔴 **Her sahada yoğun sferosit** — küçük, merkezi solgunluğu olmayan, koyu küresel eritrositler — immün yıkımın patognomonik bulgusu. 🔴 **Lam üzerinde mikroskobik eritrosit kümelenmesi (oto-aglütinasyon)** mevcut. Salin aglütinasyon testi POZİTİF. Hemoparazit görülmedi.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: **Koyu portakal/çay rengi.** Berrak. SpGr: 1.032. pH: 6.5. **Protein: (+)** — hemoglobinüriye bağlı. Glukoz: Negatif. Keton: Negatif. Sediment: Santrifüj sonrası renk açılmadı — **hemoglobinüri doğrulandı**, hematüri ekarte. Nadir bilirubin kristali.",
       "stool": "Dışkı muayenesi: Normal kıvam, hafif sarımsı/kahverengi (sterkobilinojen artışı). Parazit yumurtası görülmedi. Gizli kan negatif.",
@@ -4070,12 +4070,12 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normositik normokromik. **Belirgin monositoz, lenfopeni ve toksik nötrofiller (Döhle cisimcikleri)** izlendi. 🔴 Trombositopeni mevcut. Kan paraziti saptanmadı.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: **Koyu sarı/amber (bilirubinüri).** Berrak. SpGr: 1.040. pH: 6.5. Protein: (+). Glukoz: Negatif. Keton: Negatif. Sediment: Nadir epitel hücresi, aktif enfeksiyöz sedimentasyon yok.",
       "stool": {
         "text": "Dışkı muayenesi: Çinko sülfat flotasyon yöntemiyle **~10-12 mikrometre çapında, non-sporüle protozoon oositleri saptandı.** 🔴 Yavru kediler enfeksiyon sonrası 1-3 hafta boyunca oosit dökebilir. Kesin sistemik tanı seroloji veya PCR ile doğrulanır.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Toxoplasma_gondii%2C_Ausstrich.jpg",
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/c2c5412fe1b209ae.jpg",
         "citation": "Danny S., CC BY-SA 4.0, via Wikimedia Commons"
       },
       "skin": "Deri kazıntısı: Bu vakada endike değildir. Ektoparazit görülmedi.",
@@ -4452,7 +4452,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrosit ve lökosit morfolojisi normal. **Alan başına belirgin eozinofil artışı** izlendi. 🔴 Kan paraziti yok.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Açık sarı, berrak. SpGr: 1.045. pH: 6.5. Protein: Negatif. Glukoz: Negatif. Keton: Negatif. Sediment: Hücresel eleman veya kristal yok — inaktif. ✓",
       "stool": "Dışkı muayenesi: Natif ve flotasyon yöntemiyle parazit yumurtasına rastlanmadı — eozinofili intestinal parazit kaynaklı değil. ✓",
@@ -4544,7 +4544,7 @@
       "usg": {
         "result": "Mesane USG: **Mesane duvarında irregüler, şiddetli kalınlaşma** mevcut — sistit tablosu. 🔴 Lümende hiperekoik, yer çekimiyle yer değiştiren **bakteriyel debris ve hücresel döküntü (sediment)** izlendi. 🔴 Ürolit (taş) bulgusu saptanmadı.",
         "hasImage": true,
-        "imgUrl": "https://i.ibb.co/KcJkvCFZ/Screenshot-20260717-130853-com-android-chrome.png"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/e727a80b60d8c493.png"
       },
       "xray_direct": {
         "result": "Direkt Röntgen: Bu vakada direkt radyografi rutin olarak endike değildir.",
@@ -4825,11 +4825,11 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrosit ve lökosit morfolojisi normal. Kan paraziti yok. Trombositler yeterli. ✓",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": {
         "text": "İdrar muayenesi (Sistosentez): **Kırmızı/kanlı, bulanık.** SpGr: 1.040. pH: **7.5** (alkali — bakteri üremesiyle uyumlu). Protein: **(++)** Glukoz: Negatif. Keton: Negatif. **Sediment:** Her büyük büyütme alanında **yoğun eritrosit (>50/HPF)** ve **dejenere nötrofiller (piyüri, >20 WBC/HPF).** 🔴 **Hücre dışı ve fagositoza uğramış bakteri formasyonları (çomak/basil)** net izlendi. 🔴 Kültür-antibiyogram için sevk edildi.",
-        "imgUrl": "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/Bacterial_UTI_picture_of_urine_microscopy_showing_plenty_of_pus_cells_and_bacteria.jpg",
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/8c407bf2e1491890.jpg",
         "citation": "Ajay Kumar Chaurasiya, CC BY-SA 4.0, via Wikimedia Commons"
       },
       "stool": "Dışkı muayenesi: Form ve renk normal. Parazit yumurtası görülmedi. ✓",
@@ -5196,7 +5196,7 @@
     "microscopy": {
       "blood": {
         "text": "Kan yayması: Eritrositler normositik normokromik. Trombositler her sahada nadir — gerçek trombositopeni. 🔴 **Monositlerin sitoplazmasında morulalar** tespit edildi. 🔴 Eritrosit içi kan paraziti görülmedi.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: **Kırmızımsı, bulanık (hematüri).** SpGr: 1.025. pH: 6.5. Protein: (++) — kanamaya bağlı. Glukoz: Negatif. Keton: Negatif. **Sediment:** Trombositopeniye sekonder üriner sızıntı kanamasına bağlı **bol taze eritrosit** saptandı. 🔴",
       "stool": "Dışkı muayenesi: Parazit yumurtası görülmedi. **Fekal gizli kan (melena) testi POZİTİF** — gastrointestinal mukoza kanaması ile uyumlu. 🔴",
