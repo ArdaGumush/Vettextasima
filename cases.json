@@ -2606,7 +2606,7 @@
       "woodslamp": "Wood's Lambası: Bu vakada deri mantar lezyonu şüphesi bulunmadığından uygulanmadı.",
       "stool": {
         "text": "Dışkı muayenesi: **Flotasyon yöntemiyle yuvarlak-oval yapıda parazit yumurtaları** görüldü. 🔴 Yumurta yüzeyi kabarcıklı, dış tabakası kalın.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Toxocara_canis.JPG/960px-Toxocara_canis.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/636183ec34a2b078.jpg"
       },
       "skin": "Deri kazıntısı: Ektoparazit görülmedi. Bu vakada deri kazıntısı tanı aracı değildir.",
       "biopsy": "Biyopsi raporu: Bu vakada biyopsi endikasyonu yoktur. Tanı dışkı flotasyonu, klinik bulgular ve görüntüleme ile konulmuştur."
@@ -4447,7 +4447,7 @@
       "stool": "Dışkı muayenesi: Normal kıvam. Parazit yumurtası görülmedi. Primer dışkı bulgusu bu vakada beklenmez.",
       "skin": {
         "text": "Deri Kazıntısı ve Trikogram: Şeffaf bant sitolojisinde malassezia veya bakteri artışı görülmedi. **Trikogramda kıl şaftı etrafında artrospor kümeleri** gözlendi — fungal enfeksiyonla uyumlu. 🔴 | **Kültür:** 7. günde koloni üremesiyle eş zamanlı ortam rengi sarıdan kırmızıya dönüşüm — **POZİTİF.** 🔴",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Macroconidia_Microsporum_canis.JPG/1920px-Macroconidia_Microsporum_canis.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/5e7308f1dca9423f.jpg"
       },
       "biopsy": "Biyopsi raporu: Rutin biyopsi bu vakada endike değildir. Kültür ve Wood's lambası tanı için yeterlidir. Kronik/dirençli vakalarda foliküler biyopsi düşünülebilir."
     },

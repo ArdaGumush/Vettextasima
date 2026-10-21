@@ -1469,7 +1469,7 @@
       "stool": "Dışkı muayenesi: Flotasyon yöntemiyle helmint yumurtası veya protozoon kisti görülmedi.",
       "skin": {
         "text": "Deri Kazıntısı ve Trikogram: Derin ve yüzeysel deri kazıntısında paraziter akar görülmedi. **Trikogramda tüy şaftı etrafında ektotriks artrospor kümeleri ve hiyalin hif yapıları** net olarak izlendi 🔴 — fungal enfeksiyon ile kesin uyumlu.",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Macroconidia_Microsporum_canis.JPG/1920px-Macroconidia_Microsporum_canis.JPG"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/5e7308f1dca9423f.jpg"
       },
       "biopsy": "Biyopsi raporu: Bu vakada rutin biyopsi endike değildir. Tanı Wood's lambası ve trikogram ile doğrulanmıştır."
     },
@@ -2680,7 +2680,7 @@
       "xray_direct": {
         "result": "Abdominal Röntgen: Üriner sistemde radyopak taş veya mineralizasyon saptanmadı. Mesane normal pozisyonda, hafif opaklaşma mevcut. Diğer abdominal organlar normal.",
         "hasImage": true,
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Radio_abdominale_chat_-_LL_G_-_normale.jpg/1920px-Radio_abdominale_chat_-_LL_G_-_normale.jpg"
+        "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/dcbf595a25a8379f.jpg"
       },
       "xray_indirect": {
         "result": "İndirekt Radyografi: Bu vakada endike değildir.",
