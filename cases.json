@@ -51,13 +51,13 @@
       "ophthalmo": "Oftalmoskopi: Göz içi basınç normal. Retina normal görünümlü. Sklera hafif ikterik görünüyor.",
       "pharyngo": "Faringoskopi: Oral kavite ve farinksde patolojik bulgu yok. Ağız mukozası solgun pembe.",
       "reflex": "Refleks muayenesi: Patellar ve karpal refleksler normal. Ağrı refleksi (karın bölgesi) belirgin şekilde artmış. +++ ağrı yanıtı.",
-      "woodslamp": "Wood's Lambası: Deri lezyonu olmadığından rutin muayenede uygulanmadı.",
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
       "inspection": "İnspeksiyon: Postür — karın bölgesini koruyarak çömelmiş duruş. Bilinç açık, uyaranlara yanıt veriyor. Deri ve tüy yapısı normal. **Deri turgoru azalmış.** **Sklerada hafif sararma.** Salya akışı yok. Görünür mukozalar solgun pembe.",
       "auscultation": "Oskültasyon: **Akciğer sesleri:** Her iki hemitoraksta veziküler sesler normal. Krepitasyon, wheeze yok. **Kalp sesleri:** S1-S2 ritmik, üfürüm yok. **Bağırsak sesleri:** Belirgin şekilde **azalmış/yok**."
     },
     "imaging": {
       "echo": {
-        "result": "Kardiyak EKO: Kalp boyutları normal. Duvar hareketleri normal. Kapak patolojisi yok. Klinik olarak kardiyak kaynaklı semptom dışlanabilir.",
+        "result": "Kardiyak EKO: Kalp boyutları normal. Duvar hareketleri normal. Kapak patolojisi yok.",
         "hasImage": false
       },
       "usg": {
@@ -76,16 +76,16 @@
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/eb762362e6f0e3c2.png"
       },
       "bt": {
-        "result": "BT: Bu vakada endike değildir. USG ve radyografi yeterli bilgi sağlamaktadır.",
+        "result": "BT: Proksimal ince bağırsakta dilatasyon ve lümen içinde lineer hiperdens materyal. Distal segment kollabe. Az miktarda serbest sıvı.",
         "hasImage": false,
         "imgUrl": null
       },
       "tomo": {
-        "result": "Tomografi: BT ile uyumlu bulgular. Cerrahi planlama için ek bilgi: Lezyon craniomesenteric artere uzak. Vasküler yapılar sağlam görünüyor.",
+        "result": "Tomografi: Proksimal ince bağırsakta dilatasyon ve lineer intraluminal materyal. Lezyon kraniyal mezenterik artere uzak, vasküler yapılar sağlam.",
         "hasImage": false
       },
       "mr": {
-        "result": "MR: Bu vakada manyetik rezonans görüntüleme endike değildir.",
+        "result": "MR: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       }
@@ -183,18 +183,6 @@
         "ref": "10–80",
         "flag": "H"
       },
-      "Glukoz": {
-        "value": "142",
-        "unit": "mg/dL",
-        "ref": "70–120",
-        "flag": "H"
-      },
-      "Fruktozamin": {
-        "value": "280",
-        "unit": "µmol/L",
-        "ref": "190–365",
-        "flag": ""
-      },
       "ALP": {
         "value": "42",
         "unit": "U/L",
@@ -223,6 +211,36 @@
         "value": "12",
         "unit": "µmol/L",
         "ref": "0–10",
+        "flag": "H"
+      },
+      "Glukoz": {
+        "value": "142",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": "H"
+      },
+      "Fruktozamin": {
+        "value": "280",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "Kolesterol": {
+        "value": "160",
+        "unit": "mg/dL",
+        "ref": "65–225",
+        "flag": ""
+      },
+      "Trigliserit": {
+        "value": "80",
+        "unit": "mg/dL",
+        "ref": "10–115",
+        "flag": ""
+      },
+      "BUN": {
+        "value": "48",
+        "unit": "mg/dL",
+        "ref": "16–36",
         "flag": "H"
       },
       "CREA": {
@@ -277,6 +295,12 @@
         "value": "9.4",
         "unit": "mg/dL",
         "ref": "8.8–11.9",
+        "flag": ""
+      },
+      "Lipaz": {
+        "value": "30",
+        "unit": "U/L",
+        "ref": "10–40",
         "flag": ""
       }
     },
@@ -347,13 +371,14 @@
     },
     "microscopy": {
       "blood": {
-        "text": "Kan yayması: Eritrositler normokromik-normositik. Nötrofiller baskın, toksik granülasyon (+). Trombositopeni görsel olarak onaylandı. Hemoparazit görülmüyor.",
+        "text": "Kan yayması: Eritrositler normokromik-normositik. Nötrofiller baskın, toksik granülasyon (+). Trombositler azalmış. Hemoparazit görülmüyor.",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Renk koyu sarı, bulanık. Spesifik ağırlık: 1.040. pH: 6.5. Epitel hücreleri (+). Granüler silendir (+). Protein (+). Hematüri yok.",
       "stool": "Dışkı muayenesi: Rektumdan çok az miktarda, sert kıvamlı dışkı alınabildi. Parazit yumurtası görülmedi.",
       "skin": "Deri kazıntısı: Deri tüylü, sağlıklı görünümde. Parazit veya mantar elemanı görülmedi. Yüzeyel kazıntı normal sınırlarda.",
-      "biopsy": "Biyopsi raporu: Rutin biyopsi bu vakada endike değildir. Cerrahi eksplorasyon tanı ve tedaviyi birlikte sağlar."
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Abdominosentez: Az miktarda **hafif bulanık, sarı** sıvı alındı. Total protein: **3.2 g/dL**. Hücre sayısı: **6.500/µL** (dejenere olmayan nötrofiller), bakteri görülmedi. Rivalta testi: NEGATİF."
     },
     "questionAnswers": {
       "kusma_1": "İplik yuttuktan sonra başladı ve son 3 gündür sürekli kusuyor. Günde 3 ila 5 kez sarı, köpüklü sıvı çıkarıyor.",
@@ -424,13 +449,13 @@
       "ophthalmo": "Oftalmoskopi: **Her iki gözde lens opasitesi belirgin.** Lens opasitesi nedeniyle retina değerlendirilemiyor.",
       "pharyngo": "Faringoskopi: Oral mukoza pembe ve normal. Diş taşı (+). Farinks normal.",
       "reflex": "Refleks muayenesi: Patellar refleks normal. Propriyosepsiyon intakt. Nörolojik defisit yok.",
-      "woodslamp": "Wood's Lambası: Bu vakada uygulanmadı.",
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
       "inspection": "İnspeksiyon: Postür güçsüz, hareketleri yavaş. Bilinç açık ama letarjik. Deri turgoru azalmış. **Gözlerde bilateral lens opasitesi** hemen göze çarpıyor. Sarılık yok. Salya akışı yok.",
       "auscultation": "Oskültasyon: **Akciğer sesleri:** Bilateral veziküler sesler normal. **Kalp sesleri:** S1-S2 ritmik ve net, üfürüm yok. **Bağırsak sesleri:** Artmış borborygmus."
     },
     "imaging": {
       "echo": {
-        "result": "Kardiyak EKO: Kalp boyutları normal. Duvar kalınlıkları normal. Kapak patolojisi yok. Kardiyak komplikasyon şimdilik dışlandı.",
+        "result": "Kardiyak EKO: Kalp boyutları normal. Duvar kalınlıkları normal. Kapak patolojisi yok.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -445,17 +470,17 @@
         "imgUrl": null
       },
       "xray_indirect": {
-        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "result": "İndirekt Radyografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "bt": {
-        "result": "BT: Bu vakada bilgisayarlı tomografi endike değildir.",
+        "result": "BT: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "mr": {
-        "result": "MR: Bu vakada manyetik rezonans görüntüleme endike değildir.",
+        "result": "MR: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       }
@@ -553,18 +578,6 @@
         "ref": "10–125",
         "flag": "H"
       },
-      "Glukoz": {
-        "value": "420",
-        "unit": "mg/dL",
-        "ref": "70–120",
-        "flag": "H"
-      },
-      "Fruktozamin": {
-        "value": "512",
-        "unit": "µmol/L",
-        "ref": "190–365",
-        "flag": "H"
-      },
       "ALP": {
         "value": "310",
         "unit": "U/L",
@@ -593,6 +606,36 @@
         "value": "8",
         "unit": "µmol/L",
         "ref": "0–10",
+        "flag": ""
+      },
+      "Glukoz": {
+        "value": "420",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": "H"
+      },
+      "Fruktozamin": {
+        "value": "512",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": "H"
+      },
+      "Kolesterol": {
+        "value": "420",
+        "unit": "mg/dL",
+        "ref": "110–320",
+        "flag": "H"
+      },
+      "Trigliserit": {
+        "value": "380",
+        "unit": "mg/dL",
+        "ref": "20–150",
+        "flag": "H"
+      },
+      "BUN": {
+        "value": "22",
+        "unit": "mg/dL",
+        "ref": "7–27",
         "flag": ""
       },
       "CREA": {
@@ -647,6 +690,12 @@
         "value": "10.2",
         "unit": "mg/dL",
         "ref": "7.9–12.0",
+        "flag": ""
+      },
+      "Lipaz": {
+        "value": "95",
+        "unit": "U/L",
+        "ref": "24–108",
         "flag": ""
       }
     },
@@ -721,10 +770,11 @@
         "text": "Kan yayması: Normal dağılım. Anizositoz yok. Nötrofiller mature, toksik granülasyon yok. Hemoparazit görülmüyor.",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
-      "urine": "İdrar muayenesi: Renk açık sarı, berrak. SpGr: **1.018** (hafif düşük). pH: 6.5. **Glukoz: +++ (glikozüri)** 🔴 — kan glukozunun renal eşiğini aşmasıyla uyumlu. Keton: (+). Sediment: hafif granüler silendir.",
-      "stool": "Dışkı muayenesi: Normal kıvam. Parazit yumurtası görülmedi. Bu vakada dışkı muayenesinde spesifik patolojik bulgu beklenmez.",
-      "skin": "Deri kazıntısı: Ektoparazit görülmedi. Deri değişiklikleri endokrin kökenli görünmekte. Sekonder bakteriyel enfeksiyon bulgusu yok.",
-      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endikasyonu bulunmamaktadır. Karaciğer biyopsisi ilerleyen evrede hepatomegali takibi için düşünülebilir."
+      "urine": "İdrar muayenesi: Renk açık sarı, berrak. SpGr: **1.018** (hafif düşük). pH: 6.5. **Glukoz: +++ (glikozüri)** 🔴. Keton: (+). Sediment: hafif granüler silendir.",
+      "stool": "Dışkı muayenesi: Normal kıvam. Parazit yumurtası görülmedi.",
+      "skin": "Deri kazıntısı: Ektoparazit görülmedi. Sekonder bakteriyel enfeksiyon bulgusu yok.",
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Abdominosentez: USG eşliğinde ponksiyon yapıldı, sıvı elde edilemedi. Rivalta testi yapılamadı."
     },
     "questionAnswers": {
       "istah_1": "Hayır, hiç azalmadı, aksine her zamankinin iki katı mama yiyor.",
@@ -792,26 +842,26 @@
       "reflex": "Refleks muayenesi: Patellar ve tibial refleksler bilateral normal. Propriyosepsiyon intakt. Nörolojik defisit yok.",
       "inspection": "İnspeksiyon: Postür halsiz, karın belirgin şişmiş. **Abdominal distansiyon** inspeksiyonla net görülüyor. Tüy yapısı mat. **Sklerada hafif sararma.**",
       "auscultation": "Oskültasyon: **Akciğer sesleri:** Sağ hemitoraksta sesler **azalmış**. Sol taraf normal. **Kalp sesleri:** Uzaktan ve matlaşmış duyuluyor. **Bağırsak sesleri:** Azalmış.",
-      "woodslamp": "Wood's Lambası: Bu vakada uygulanmadı."
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif."
     },
     "imaging": {
       "echo": {
-        "result": "EKO: Perikardiyal efüzyon saptandı. ⚠ Kalp yapıları değerlendirilebilir durumda. Kardiyak tamponad bulgusu yok.",
+        "result": "EKO: Perikardiyal efüzyon saptandı. Kardiyak tamponad bulgusu yok.",
         "hasImage": false,
         "imgUrl": null
       },
       "usg": {
-        "result": "Abdominal USG: **Belirgin asit (peritoneal efüzyon)** mevcut. 🔴 Karaciğerde fokal hipoekoik alanlar. Mezenterde nodüler kalınlaşmalar. Dalak büyümüş.",
+        "result": "Abdominal USG: **Belirgin asit (peritoneal efüzyon)** mevcut. 🔴 Karaciğerde fokal hipoekoik alanlar. Mezenterde nodüler kalınlaşmalar.",
         "hasImage": true,
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/94bc896560b7550f.jpg"
       },
       "xray_direct": {
-        "result": "Lateral Röntgen: **Abdomende organ sınırlarının seçilemediği yaygın buzlu cam manzarası.** Karın kavitesi homojen opasite — masif asit. Akciğer alanları normal. ▸ Massif abdominal efüzyon nedeniyle tüm organ konturları kaybolmuş.",
+        "result": "Lateral Röntgen: **Abdomende organ sınırlarının seçilemediği yaygın buzlu cam manzarası.** Karın kavitesi homojen opasite — masif asit. Akciğer alanları normal.",
         "hasImage": true,
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/1fd74af05e5b8c06.jpg"
       },
       "xray_indirect": {
-        "result": "İndirekt Radyografi: Bu vakada indirekt radyografi planlanmamıştır.",
+        "result": "İndirekt Radyografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -821,12 +871,12 @@
         "imgUrl": null
       },
       "tomo": {
-        "result": "Tomografi: Bu vaka için gerek duyulmadı.",
+        "result": "Tomografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "mr": {
-        "result": "MR: Bu vakada BT yeterli bilgi sağlamaktadır — MR endike değildir.",
+        "result": "MR: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       }
@@ -924,18 +974,6 @@
         "ref": "10–80",
         "flag": "H"
       },
-      "Glukoz": {
-        "value": "88",
-        "unit": "mg/dL",
-        "ref": "70–120",
-        "flag": ""
-      },
-      "Fruktozamin": {
-        "value": "245",
-        "unit": "µmol/L",
-        "ref": "190–365",
-        "flag": ""
-      },
       "ALP": {
         "value": "45",
         "unit": "U/L",
@@ -964,6 +1002,36 @@
         "value": "6",
         "unit": "µmol/L",
         "ref": "0–10",
+        "flag": ""
+      },
+      "Glukoz": {
+        "value": "88",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": ""
+      },
+      "Fruktozamin": {
+        "value": "245",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "Kolesterol": {
+        "value": "140",
+        "unit": "mg/dL",
+        "ref": "65–225",
+        "flag": ""
+      },
+      "Trigliserit": {
+        "value": "60",
+        "unit": "mg/dL",
+        "ref": "10–115",
+        "flag": ""
+      },
+      "BUN": {
+        "value": "28",
+        "unit": "mg/dL",
+        "ref": "16–36",
         "flag": ""
       },
       "CREA": {
@@ -1018,6 +1086,12 @@
         "value": "9.2",
         "unit": "mg/dL",
         "ref": "8.8–11.9",
+        "flag": ""
+      },
+      "Lipaz": {
+        "value": "22",
+        "unit": "U/L",
+        "ref": "10–40",
         "flag": ""
       }
     },
@@ -1088,14 +1162,15 @@
     },
     "microscopy": {
       "blood": {
-        "text": "Kan yayması: Rejeneratif olmayan anemi bulguları — normokromik normositik eritrositler. Lenfopeni teyit edildi. **Nötrofillerde toksik granülasyonlar mevcut** — sistemik inflamasyon. Trombositopeni görsel olarak onaylandı.",
+        "text": "Kan yayması: Rejeneratif olmayan anemi bulguları — normokromik normositik eritrositler. Lenfopeni teyit edildi. **Nötrofillerde toksik granülasyonlar mevcut**. Trombositopeni görsel olarak onaylandı.",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
-      "urine": "İdrar muayenesi: SpGr: **1.030**. Protein: **(+)**. Bilirübinüri: **(+)** — karaciğer tutulumu ile uyumlu. Sediment: granüler silendir (+).",
-      "woodslamp": "Wood's Lambası: Bu vakada deri mantar lezyonu şüphesi bulunmadığından uygulanmadı.",
-      "stool": "Dışkı muayenesi: Normal kıvam. Parazit yumurtası görülmedi. Primer dışkı bulgusu bu vakada beklenmez.",
-      "skin": "Deri kazıntısı: Deri normal görünümde. Ektoparazit görülmedi. Primer deri tutulumu bu vakada beklenmez.",
-      "biopsy": "Biyopsi raporu: Efüzyon sitolojisi tanısal değer taşır. Büyük granülosit/lenfosit oranı yüksek. Efüzyonda protein yüksek, hücre sayısı düşük — pirinç suyu görünümü. Kesin tanı için PCR veya immünokimyasal boyama gereklidir."
+      "urine": "İdrar muayenesi: SpGr: **1.030**. Protein: **(+)**. Bilirübinüri: **(+)**. Sediment: granüler silendir (+).",
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
+      "stool": "Dışkı muayenesi: Normal kıvam. Parazit yumurtası görülmedi.",
+      "skin": "Deri kazıntısı: Deri normal görünümde. Ektoparazit görülmedi.",
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Abdominosentez: Yaklaşık 180 mL sıvı alındı. **Saman sarısı, hafif bulanık, viskoz ve köpüklü.** Total protein: **6.4 g/dL**. Hücre sayısı: **2.400/µL** (ağırlıklı nötrofil ve makrofaj). **Rivalta testi: POZİTİF** (damla dağılmadan çöktü). 🔴"
     },
     "questionAnswers": {
       "istah_1": "Evet, yaklaşık 3 haftadır iştahı çok az, neredeyse hiçbir şey yemek istemiyor.",
@@ -1168,11 +1243,11 @@
       "reflex": "Refleks muayenesi: **Genel düşkünlük ve kas güçsüzlüğü belirgin.** Patellar refleks zayıf. Propriyosepsiyon değerlendirilemeyecek kadar halsiz. Hasta ayakta duramıyor.",
       "inspection": "İnspeksiyon: **Kritik görünüm.** Letarjik, başını kaldıramıyor. Derin dehidrasyon — gözler çukurlaşmış. Perianal bölge kirli, **hemorajik ishal** izi mevcut. Mukozalar soluk. Sarılık yok.",
       "auscultation": "Oskültasyon: **Akciğer sesleri:** Bilateral veziküler sesler hafif artmış. **Kalp sesleri:** Taşikardik ritim, üfürüm yok. **Bağırsak sesleri:** Çok artmış, şiddetli borborygmus.",
-      "woodslamp": "Wood's Lambası: Bu vakada uygulanmadı."
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif."
     },
     "imaging": {
       "echo": {
-        "result": "Kardiyak EKO: Kalp boyutları ve duvar hareketleri normal. Hipovolemi nedeniyle kalp boşlukları görece küçük. Perikardiyal efüzyon yok. Kardiyak patoloji dışlandı.",
+        "result": "Kardiyak EKO: Kalp boyutları ve duvar hareketleri normal. Hipovolemi nedeniyle kalp boşlukları görece küçük. Perikardiyal efüzyon yok.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -1182,27 +1257,27 @@
         "imgUrl": null
       },
       "xray_direct": {
-        "result": "Direkt Röntgen: Bu vakada rutin radyografi endike değildir.",
+        "result": "Abdominal Röntgen: İnce bağırsak anslarında yaygın gaz ve sıvı birikimi, ansların çapı hafif artmış. Abdominal detay korunmuş, serbest gaz yok. Toraks normal sınırlarda.",
         "hasImage": false,
         "imgUrl": null
       },
       "xray_indirect": {
-        "result": "İndirekt Radyografi: Bu vakada indirekt radyografi planlanmamıştır.",
+        "result": "İndirekt Radyografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "bt": {
-        "result": "BT: Bu vakada bilgisayarlı tomografi endike değildir.",
+        "result": "BT: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "tomo": {
-        "result": "Tomografi: Bu vaka için gerek duyulmadı.",
+        "result": "Tomografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "mr": {
-        "result": "MR: Bu vakada manyetik rezonans görüntüleme endike değildir.",
+        "result": "MR: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       }
@@ -1266,24 +1341,24 @@
       },
       {
         "param": "Nöt%",
-        "value": "40",
+        "value": "72",
         "unit": "%",
         "ref": "60–77",
-        "flag": "L"
+        "flag": ""
       },
       {
         "param": "Lenf%",
-        "value": "5",
+        "value": "22",
         "unit": "%",
         "ref": "12–30",
-        "flag": "L"
+        "flag": ""
       },
       {
         "param": "Mon%",
-        "value": "2",
+        "value": "5",
         "unit": "%",
         "ref": "3–10",
-        "flag": "L"
+        "flag": ""
       },
       {
         "param": "Eoz%",
@@ -1298,18 +1373,6 @@
         "value": "40",
         "unit": "U/L",
         "ref": "10–125",
-        "flag": ""
-      },
-      "Glukoz": {
-        "value": "62",
-        "unit": "mg/dL",
-        "ref": "70–120",
-        "flag": "L"
-      },
-      "Fruktozamin": {
-        "value": "210",
-        "unit": "µmol/L",
-        "ref": "190–365",
         "flag": ""
       },
       "ALP": {
@@ -1341,6 +1404,36 @@
         "unit": "µmol/L",
         "ref": "0–10",
         "flag": ""
+      },
+      "Glukoz": {
+        "value": "62",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": "L"
+      },
+      "Fruktozamin": {
+        "value": "210",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "Kolesterol": {
+        "value": "105",
+        "unit": "mg/dL",
+        "ref": "110–320",
+        "flag": "L"
+      },
+      "Trigliserit": {
+        "value": "45",
+        "unit": "mg/dL",
+        "ref": "20–150",
+        "flag": ""
+      },
+      "BUN": {
+        "value": "58",
+        "unit": "mg/dL",
+        "ref": "7–27",
+        "flag": "H"
       },
       "CREA": {
         "value": "2.2",
@@ -1395,6 +1488,12 @@
         "unit": "mg/dL",
         "ref": "7.9–12.0",
         "flag": ""
+      },
+      "Lipaz": {
+        "value": "140",
+        "unit": "U/L",
+        "ref": "24–108",
+        "flag": "H"
       }
     },
     "hormones": {
@@ -1465,14 +1564,15 @@
     },
     "microscopy": {
       "blood": {
-        "text": "Kan yayması: **Şiddetli lökopeni** — lenfopeni ve nötropeni çok belirgin. Eritrositlerde rulo oluşumu (dehidrasyona bağlı). Trombositopeni görsel olarak onaylandı. Toksik değişiklik yok. Hemoparazit yok.",
+        "text": "Kan yayması: **Şiddetli lökopeni** — lenfopeni ve nötropeni çok belirgin. Eritrositlerde rulo oluşumu. Trombositopeni görsel olarak onaylandı. Toksik değişiklik yok. Hemoparazit yok.",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
-      "urine": "İdrar muayenesi: SpGr: **1.055** (Çok yüksek — ciddi dehidrasyon). Protein: **(+)**. Bilirubin: **Negatif**. Keton: **Negatif**. Sediment: Granüler silendir (+). **Prerenal azotemi ile uyumlu konsantre idrar.** 🔴",
-      "stool": "Dışkı muayenesi: Makroskobik olarak **hemorajik, kötü kokulu sıvı dışkı**. 🔴 Parazit yumurtası görülmedi. Hızlı tanı kiti uygulanması önerilir.",
-      "woodslamp": "Wood's Lambası: Bu vakada deri mantar lezyonu şüphesi bulunmadığından uygulanmadı.",
-      "skin": "Deri kazıntısı: Deri turgoru ileri düzeyde azalmış — ciddi dehidrasyon. Ektoparazit görülmedi. Bu vakada deri muayenesi primer tanı aracı değildir.",
-      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endikasyonu yoktur. Bağırsak biyopsisi yalnızca kronik vakalarda düşünülür."
+      "urine": "İdrar muayenesi: SpGr: **1.055**. Protein: **(+)**. Bilirubin: **Negatif**. Keton: **Negatif**. Sediment: Granüler silendir (+). 🔴",
+      "stool": "Dışkı muayenesi: Makroskobik olarak **hemorajik, kötü kokulu sıvı dışkı**. 🔴 Parazit yumurtası görülmedi.",
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
+      "skin": "Deri kazıntısı: Deri turgoru ileri düzeyde azalmış. Ektoparazit görülmedi.",
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Abdominosentez: USG eşliğinde ponksiyon yapıldı, sıvı elde edilemedi. Rivalta testi yapılamadı."
     },
     "questionAnswers": {
       "kusma_1": "Dün sabahtan beri neredeyse saat başı durmadan kusuyor.",
@@ -1551,16 +1651,16 @@
       "reflex": "Refleks muayenesi: **Patellar refleks bilateral zayıf.** Ağrı duyusu mevcut. Derin ağrı yanıtı değerlendirilecek.",
       "inspection": "İnspeksiyon: **Kritik tablo.** Ağız açık solunum, siyanotik mukozalar. Göğüs duvarı asimetrik. Karın duvarında sağ tarafta **ekimoz** görülüyor. Postür ortopneik.",
       "auscultation": "Oskültasyon: **Sol hemitoraksta bağırsak sesleri duyuluyor.** Sağ akciğer sesleri azalmış. Kalp sesleri sağa kaymış, zayıf duyuluyor.",
-      "woodslamp": "Wood's Lambası: Bu vakada uygulanmadı."
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif."
     },
     "imaging": {
       "echo": {
-        "result": "EKO: Bu vakada gerek duyulmadı.",
+        "result": "EKO: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "usg": {
-        "result": "USG: Bu vakada gerek duyulmadı.",
+        "result": "USG: Diyafram hattında süreklilik kaybı; karaciğer ve ince bağırsak ansları toraksa yer değiştirmiş.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -1570,7 +1670,7 @@
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/8d94a3c558331f5c.png"
       },
       "xray_indirect": {
-        "result": "İndirekt Radyografi: Bu vakada indirekt radyografi planlanmamıştır.",
+        "result": "İndirekt Radyografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -1580,12 +1680,12 @@
         "imgUrl": null
       },
       "tomo": {
-        "result": "Tomografi: Bu vakada gerek duyulmadı.",
+        "result": "Tomografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "mr": {
-        "result": "MR: Travma vakasında BT tercih edilir — MR endike değildir.",
+        "result": "MR: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       }
@@ -1683,18 +1783,6 @@
         "ref": "10–80",
         "flag": "H"
       },
-      "Glukoz": {
-        "value": "158",
-        "unit": "mg/dL",
-        "ref": "70–120",
-        "flag": "H"
-      },
-      "Fruktozamin": {
-        "value": "295",
-        "unit": "µmol/L",
-        "ref": "190–365",
-        "flag": ""
-      },
       "ALP": {
         "value": "45",
         "unit": "U/L",
@@ -1724,6 +1812,36 @@
         "unit": "µmol/L",
         "ref": "0–10",
         "flag": ""
+      },
+      "Glukoz": {
+        "value": "158",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": "H"
+      },
+      "Fruktozamin": {
+        "value": "295",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "Kolesterol": {
+        "value": "150",
+        "unit": "mg/dL",
+        "ref": "65–225",
+        "flag": ""
+      },
+      "Trigliserit": {
+        "value": "70",
+        "unit": "mg/dL",
+        "ref": "10–115",
+        "flag": ""
+      },
+      "BUN": {
+        "value": "38",
+        "unit": "mg/dL",
+        "ref": "16–36",
+        "flag": "H"
       },
       "CREA": {
         "value": "1.5",
@@ -1778,6 +1896,12 @@
         "unit": "mg/dL",
         "ref": "8.8–11.9",
         "flag": "L"
+      },
+      "Lipaz": {
+        "value": "25",
+        "unit": "U/L",
+        "ref": "10–40",
+        "flag": ""
       }
     },
     "hormones": {
@@ -1851,10 +1975,11 @@
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar: Alınamadı — hasta kritik durumda.",
-      "woodslamp": "Wood's Lambası: Bu vakada deri mantar lezyonu şüphesi bulunmadığından uygulanmadı.",
-      "stool": "Dışkı muayenesi: Bu vakada öncelikli değil. Hasta kritik solunum sıkıntısında — dışkı örneği almak için durum uygun değil.",
-      "skin": "Deri kazıntısı: Toraks ve karın bölgesinde ezilme yaralanmaları mevcut. Ektoparazit görülmedi. Deri altı amfizem şüphesi — palpasyon ile krepitasyon (+). 🔴",
-      "biopsy": "Biyopsi raporu: Travma vakasında biyopsi uygun değil. Acil cerrahi müdahale önceliklidir. Biyopsi operasyon sonrası değerlendirme için saklanabilir."
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
+      "stool": "Dışkı muayenesi: Patolojik bulguya rastlanmadı.",
+      "skin": "Deri kazıntısı: Toraks ve karın bölgesinde ezilme yaralanmaları mevcut. Ektoparazit görülmedi.",
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Abdominosentez: USG eşliğinde ponksiyon yapıldı, sıvı elde edilemedi. Rivalta testi yapılamadı."
     },
     "questionAnswers": {
       "solunum_nefes_1": "Evet, nefes almakta çok zorlanıyor, sanki göğsü hiç çalışmıyor gibi karnıyla nefes alıyor.",
@@ -1928,41 +2053,41 @@
       "reflex": "Refleks muayenesi: Patellar refleks bilateral normal. Propriyosepsiyon intakt. Nörolojik defisit yok.",
       "inspection": "İnspeksiyon: **Strangüri pozisyonu** — sürekli ıkınma, idrar yapamama. Perianal bölge ıslak. Abdominal bölge gergin. Bilinç açık ama ağrılı. Mukozalar solgun.",
       "auscultation": "Oskültasyon: **Akciğer sesleri:** Bilateral normal. **Kalp sesleri:** Bradikardik, üfürüm yok. **Bağırsak sesleri:** Azalmış.",
-      "woodslamp": "Wood's Lambası: Bu vakada uygulanmadı."
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif."
     },
     "imaging": {
       "echo": {
-        "result": "EKO: Bu vakada gerek duyulmadı.",
+        "result": "EKO: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "usg": {
-        "result": "Abdominal USG: **Mesane duvarında belirgin kalınlaşma mevcut.** Lumen içerisinde yoğun hiperekoik sediment birikimi (kristal/sludge) görülüyor. **Mesane aşırı distande** — spontan rüptür riski var. Üreter ağızları normal. ▸ Hiperekoik lümen içeriği: strüvit kristal birikimi ile uyumlu. ACİL KATETERİZASYON ENDİKASYONU. 🔴",
+        "result": "Abdominal USG: **Mesane duvarında belirgin kalınlaşma mevcut.** Lumen içerisinde yoğun hiperekoik sediment birikimi (kristal/sludge) görülüyor. **Mesane aşırı distande** — spontan rüptür riski var. Üreter ağızları normal.",
         "hasImage": true,
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/b9ba02526bcb2b08.jpg"
       },
       "xray_direct": {
-        "result": "Lateral Röntgen: **Mesane aşırı dolu ve gergin** — kaudalden kraniale uzanan büyük mesane gölgesi. Üretra izahında küçük radyoopak odaklar görülüyor — kristal/taş tıkanıklığı ile uyumlu. Diğer karın organları normal.",
+        "result": "Lateral Röntgen: **Mesane aşırı dolu ve gergin** — kaudalden kraniale uzanan büyük mesane gölgesi. Üretra hizasında küçük radyoopak odaklar görülüyor. Diğer karın organları normal.",
         "hasImage": true,
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/6a285e55f09b62c8.png"
       },
       "xray_indirect": {
-        "result": "İndirekt Radyografi: Bu vakada indirekt radyografi planlanmamıştır.",
+        "result": "İndirekt Radyografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "bt": {
-        "result": "BT: Bu vakada bilgisayarlı tomografi endike değildir.",
+        "result": "BT: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "tomo": {
-        "result": "Tomografi: Bu vakada gerek duyulmadı.",
+        "result": "Tomografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "mr": {
-        "result": "MR: Bu vakada manyetik rezonans görüntüleme endike değildir.",
+        "result": "MR: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       }
@@ -2060,18 +2185,6 @@
         "ref": "10–80",
         "flag": ""
       },
-      "Glukoz": {
-        "value": "130",
-        "unit": "mg/dL",
-        "ref": "70–120",
-        "flag": "H"
-      },
-      "Fruktozamin": {
-        "value": "260",
-        "unit": "µmol/L",
-        "ref": "190–365",
-        "flag": ""
-      },
       "ALP": {
         "value": "40",
         "unit": "U/L",
@@ -2101,6 +2214,36 @@
         "unit": "µmol/L",
         "ref": "0–10",
         "flag": ""
+      },
+      "Glukoz": {
+        "value": "130",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": "H"
+      },
+      "Fruktozamin": {
+        "value": "260",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "Kolesterol": {
+        "value": "170",
+        "unit": "mg/dL",
+        "ref": "65–225",
+        "flag": ""
+      },
+      "Trigliserit": {
+        "value": "90",
+        "unit": "mg/dL",
+        "ref": "10–115",
+        "flag": ""
+      },
+      "BUN": {
+        "value": "180",
+        "unit": "mg/dL",
+        "ref": "16–36",
+        "flag": "H"
       },
       "CREA": {
         "value": "8.5",
@@ -2155,6 +2298,12 @@
         "unit": "mg/dL",
         "ref": "8.8–11.9",
         "flag": "L"
+      },
+      "Lipaz": {
+        "value": "38",
+        "unit": "U/L",
+        "ref": "10–40",
+        "flag": ""
       }
     },
     "hormones": {
@@ -2228,14 +2377,15 @@
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": {
-        "text": "İdrar Sediment Bakısı: **Yoğun strüvit kristalleri** — tabut kapağı (coffin-lid) şekilli, karakteristik görünüm. Bol miktarda eritrosit (hematüri). Orta derecede lökosit. Bakteri görülmedi — steril inflamasyon. SpGr: **1.050**, pH: **7.0**, Protein: **(3+)**. ▸ Strüvit kristalleri: magnezyum amonyum fosfat — alkali idrarda oluşur, kuru mama ile ilişkili.",
+        "text": "İdrar Sediment Bakısı: **Yoğun strüvit kristalleri** — tabut kapağı (coffin-lid) şekilli. Bol miktarda eritrosit (hematüri). Orta derecede lökosit. Bakteri görülmedi. SpGr: **1.050**, pH: **7.0**, Protein: **(3+)**.",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/bd14b18db4985469.png",
         "citation": "Doruk Salancı, CC BY-SA 3.0, via Wikimedia Commons"
       },
       "stool": "Dışkı muayenesi: Kıvam sert, pellet biçimli. Parazit yumurtası görülmedi. Gizli kan negatif. Ürolojik tıkanıklıkla doğrudan ilişkisi yok.",
-      "woodslamp": "Wood's Lambası: Bu vakada deri mantar lezyonu şüphesi bulunmadığından uygulanmadı.",
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
       "skin": "Deri kazıntısı: Deri normal görünümde. Ektoparazit yok. Kasık ve perine bölgesinde hafif ıslaklık — idrar damlatmaya bağlı.",
-      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endikasyonu yoktur. Mesane ya da üretra biyopsisi yalnızca kronik tıkanıklık veya tümör şüphesinde gereklidir."
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Abdominosentez: USG eşliğinde ponksiyon yapıldı, sıvı elde edilemedi. Rivalta testi yapılamadı."
     },
     "questionAnswers": {
       "uroloji_idrar_1": "Dün akşam az yapıyordu ama sabahtan beri hiç yapamıyor, sadece son iki saatte en az 6-7 kez kuma girdi.",
@@ -2307,7 +2457,7 @@
       "reflex": "Refleks muayenesi: Patellar ve fleksör refleksler normal. Nörolojik defisit yok.",
       "inspection": "İnspeksiyon: **Pot-bellied görünümü belirgin.** Kaburgalar sayılıyor — kas kütlesi azalmış. Tüy yapısı mat. Büyüme geriliği var. Mukozalar solgun pembe.",
       "auscultation": "Oskültasyon: **Akciğer sesleri:** **Bilateral ince krepitasyon** duyuluyor. **Kalp sesleri:** Taşikardik. **Bağırsak sesleri:** Artmış, düzensiz.",
-      "woodslamp": "Wood's Lambası: Bu vakada uygulanmadı."
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif."
     },
     "imaging": {
       "echo": {
@@ -2321,7 +2471,7 @@
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/7d5fe4fd09b34cca.jpg"
       },
       "xray_direct": {
-        "result": "Direkt Röntgen: Bu vakada direkt radyografi planlanmamıştır. İndirekt radyografi tercih edilmiştir.",
+        "result": "Direkt Röntgen: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -2331,12 +2481,12 @@
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/22ddc0b062f85ddd.jpg"
       },
       "bt": {
-        "result": "BT: Bu vakada bilgisayarlı tomografi endike değildir.",
+        "result": "BT: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "mr": {
-        "result": "MR: Bu vakada manyetik rezonans görüntüleme endike değildir.",
+        "result": "MR: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       }
@@ -2434,18 +2584,6 @@
         "ref": "10–125",
         "flag": ""
       },
-      "Glukoz": {
-        "value": "88",
-        "unit": "mg/dL",
-        "ref": "70–120",
-        "flag": ""
-      },
-      "Fruktozamin": {
-        "value": "230",
-        "unit": "µmol/L",
-        "ref": "190–365",
-        "flag": ""
-      },
       "ALP": {
         "value": "180",
         "unit": "U/L",
@@ -2474,6 +2612,36 @@
         "value": "6",
         "unit": "µmol/L",
         "ref": "0–10",
+        "flag": ""
+      },
+      "Glukoz": {
+        "value": "88",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": ""
+      },
+      "Fruktozamin": {
+        "value": "230",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "Kolesterol": {
+        "value": "130",
+        "unit": "mg/dL",
+        "ref": "110–320",
+        "flag": ""
+      },
+      "Trigliserit": {
+        "value": "60",
+        "unit": "mg/dL",
+        "ref": "20–150",
+        "flag": ""
+      },
+      "BUN": {
+        "value": "9",
+        "unit": "mg/dL",
+        "ref": "7–27",
         "flag": ""
       },
       "CREA": {
@@ -2528,6 +2696,12 @@
         "value": "9.0",
         "unit": "mg/dL",
         "ref": "7.9–12.0",
+        "flag": ""
+      },
+      "Lipaz": {
+        "value": "60",
+        "unit": "U/L",
+        "ref": "24–108",
         "flag": ""
       }
     },
@@ -2599,17 +2773,18 @@
     },
     "microscopy": {
       "blood": {
-        "text": "Kan yayması: Eritrositler normositik normokromik. **Belirgin eozinofili** — paraziter enfestasyonla uyumlu. Kan parazitine rastlanmadı. Toksik granülasyon yok.",
+        "text": "Kan yayması: Eritrositler normositik normokromik. **Belirgin eozinofili**. Kan parazitine rastlanmadı. Toksik granülasyon yok.",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: SpGr: **1.025**. pH: **6.5**. Protein: **Negatif**. Glukoz: **Negatif**. Sedimentte patolojik bulgu yok — renal tutulum yok.",
-      "woodslamp": "Wood's Lambası: Bu vakada deri mantar lezyonu şüphesi bulunmadığından uygulanmadı.",
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
       "stool": {
         "text": "Dışkı muayenesi: **Flotasyon yöntemiyle yuvarlak-oval yapıda parazit yumurtaları** görüldü. 🔴 Yumurta yüzeyi kabarcıklı, dış tabakası kalın.",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/636183ec34a2b078.jpg"
       },
-      "skin": "Deri kazıntısı: Ektoparazit görülmedi. Bu vakada deri kazıntısı tanı aracı değildir.",
-      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endikasyonu yoktur."
+      "skin": "Deri kazıntısı: Ektoparazit görülmedi.",
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Abdominosentez: USG eşliğinde ponksiyon yapıldı, sıvı elde edilemedi. Rivalta testi yapılamadı."
     },
     "questionAnswers": {
       "kusma_2": "Dün kustu ve kusmuğunun içinde canlı solucanlar vardı.",
@@ -2704,17 +2879,17 @@
         "imgUrl": null
       },
       "xray_indirect": {
-        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "result": "İndirekt Radyografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "bt": {
-        "result": "BT: Bu vakada bilgisayarlı tomografi endike değildir.",
+        "result": "BT: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "mr": {
-        "result": "MR: Bu vakada manyetik rezonans görüntüleme endike değildir.",
+        "result": "MR: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       }
@@ -2848,6 +3023,24 @@
         "ref": "190–365",
         "flag": "H"
       },
+      "Kolesterol": {
+        "value": "260",
+        "unit": "mg/dL",
+        "ref": "65–225",
+        "flag": "H"
+      },
+      "Trigliserit": {
+        "value": "240",
+        "unit": "mg/dL",
+        "ref": "10–115",
+        "flag": "H"
+      },
+      "BUN": {
+        "value": "30",
+        "unit": "mg/dL",
+        "ref": "16–36",
+        "flag": ""
+      },
       "CREA": {
         "value": "1.2",
         "unit": "mg/dL",
@@ -2882,6 +3075,12 @@
         "value": "4.0",
         "unit": "mEq/L",
         "ref": "3.5–5.8",
+        "flag": ""
+      },
+      "Lipaz": {
+        "value": "30",
+        "unit": "U/L",
+        "ref": "10–40",
         "flag": ""
       }
     },
@@ -2947,7 +3146,7 @@
       "fpv_ag": "NEGATİF",
       "fcov_ag": "NEGATİF",
       "ntprobnp": "NEGATİF",
-      "fsaa": "POZİTİF",
+      "fsaa": "NEGATİF",
       "giardia_ag": "NEGATİF"
     },
     "microscopy": {
@@ -2955,15 +3154,16 @@
         "text": "Kan yayması: **Stres lökogramı** — nötrofili ve lenfopeni mevcut. Eritrositler normositik normokromik. Morfolojik bozukluk yok. Hemoparazit görülmedi.",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
-      "urine": "İdrar muayenesi: SpGr: **1.015**. pH: **6.0**. **Glukoz: +++**. Keton: Negatif. Protein: Negatif. Sediment: Patolojik bulgu yok. ▸ Glukozüri — altta yatan bir metabolik/endokrin nedenin değerlendirilmesi önerilir. ⚠",
+      "urine": "İdrar muayenesi: SpGr: **1.015**. pH: **6.0**. **Glukoz: +++**. Keton: Negatif. Protein: Negatif. Sediment: Patolojik bulgu yok.",
       "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
-      "stool": "Dışkı muayenesi: Parazit yumurtası görülmedi. Bu vakada dışkı muayenesi endike değildir.",
+      "stool": "Dışkı muayenesi: Parazit yumurtası görülmedi.",
       "skin": {
-        "text": "Deri Kazıntısı (Derin Kazıntı): **Mikroskobik incelemede karakteristik 8 bacaklı, sigara şeklinde akarlar** görüldü. 🔴 Erişkin, larva ve yumurta formları tespit edildi. Yoğun enfestasyon ile uyumlu.",
+        "text": "Deri Kazıntısı (Derin Kazıntı): **Mikroskobik incelemede karakteristik 8 bacaklı, sigara şeklinde akarlar** görüldü. 🔴 Erişkin, larva ve yumurta formları tespit edildi.",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/15f121cc69110ca9.jpg",
         "imgRef": "Ribeiro et al. (2024). Otitis externa associated with Demodex cati - case report. Arquivo Brasileiro de Medicina Veterinária e Zootecnia, 76, 109-113. DOI: 10.1590/1678-4162-13004"
       },
-      "biopsy": "Biyopsi raporu: Bu vakada rutin biyopsi endikasyonu yoktur. Deri kazıntısı tanı için yeterlidir. Kronik veya dirençli vakalarda foliküler biyopsi düşünülebilir."
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Abdominosentez: USG eşliğinde ponksiyon yapıldı, sıvı elde edilemedi. Rivalta testi yapılamadı."
     },
     "questionAnswers": {
       "deri_kaşıntı_1": "Hayır, hiç kaşınmıyor, tüyleri kendiliğinden döküldü.",
@@ -3036,7 +3236,7 @@
       "reflex": "Refleks muayenesi: Spinal refleksler normal. **Abdominal koruma refleksi artmış.**",
       "inspection": "İnspeksiyon: **Dua pozisyonu (prayer position)** — ön ayakları öne uzatılmış, arka kısım yukarıda. Karın duvarı gergin. Bilinç açık, ağrılı. Mukozalar pembe, CRT uzamış.",
       "auscultation": "Oskültasyon: **Akciğer sesleri:** Artmış, sığ solunum. **Kalp sesleri:** Belirgin taşikardi, üfürüm yok. **Bağırsak sesleri:** Azalmış/yok.",
-      "woodslamp": "Wood's Lambası: Bu vakada uygulanmadı."
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif."
     },
     "imaging": {
       "echo": {
@@ -3050,12 +3250,12 @@
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/38850b726ac24c5a.jpg"
       },
       "xray_direct": {
-        "result": "Abdominal Röntgen: Kranial abdomende **'ground glass' görünümü** — lokal peritonit ile uyumlu. ⚠ Duodenum gaz gölgesi belirginleşmiş. Obstrüksiyon bulgusu yok.",
+        "result": "Abdominal Röntgen: Kranial abdomende **'ground glass' görünümü**. ⚠ Duodenum gaz gölgesi belirginleşmiş. Obstrüksiyon bulgusu yok.",
         "hasImage": true,
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/abb9c9bd8e528c51.png"
       },
       "xray_indirect": {
-        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "result": "İndirekt Radyografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -3065,7 +3265,7 @@
         "imgUrl": null
       },
       "mr": {
-        "result": "MR: Bu vakada BT tercih edilir — akut dönemde MR endike değildir.",
+        "result": "MR: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       }
@@ -3216,6 +3416,24 @@
         "ref": "190–365",
         "flag": ""
       },
+      "Kolesterol": {
+        "value": "380",
+        "unit": "mg/dL",
+        "ref": "110–320",
+        "flag": "H"
+      },
+      "Trigliserit": {
+        "value": "420",
+        "unit": "mg/dL",
+        "ref": "20–150",
+        "flag": "H"
+      },
+      "BUN": {
+        "value": "52",
+        "unit": "mg/dL",
+        "ref": "7–27",
+        "flag": "H"
+      },
       "CREA": {
         "value": "2.1",
         "unit": "mg/dL",
@@ -3269,6 +3487,12 @@
         "unit": "mg/dL",
         "ref": "7.9–12.0",
         "flag": "L"
+      },
+      "Lipaz": {
+        "value": "980",
+        "unit": "U/L",
+        "ref": "24–108",
+        "flag": "H"
       }
     },
     "hormones": {
@@ -3329,13 +3553,14 @@
     },
     "microscopy": {
       "blood": {
-        "text": "Kan yayması: **Belirgin nötrofili** — toksik nötrofiller görülüyor (vakuolizasyon, toksik granülasyon). Lökositoz ve sol kayma — aktif inflamasyonla uyumlu. Hemokonsantrasyon bulguları (RBC rulo oluşumu). Trombositopeni — DIC riski açısından takip edilmeli. 🔴",
+        "text": "Kan yayması: **Belirgin nötrofili** — toksik nötrofiller görülüyor (vakuolizasyon, toksik granülasyon). Lökositoz ve sol kayma. Hemokonsantrasyon bulguları (RBC rulo oluşumu). Trombositopeni. 🔴",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
-      "urine": "İdrar muayenesi: SpGr: **>1.050** — dehidrasyona bağlı çok konsantre idrar. Protein: **(+)**. Glukoz: **Negatif**. Keton: **(+)**. Sediment: granüler silendir (+). **Prerenal azotemi ile uyumlu.**",
-      "stool": "Dışkı muayenesi: Kıvam yumuşak, renk açık-sarı. **Steatore şüphesi** — yağlı ve kötü kokulu dışkı. Gizli kan: Negatif. Parazit yumurtası görülmedi.",
-      "skin": "Deri kazıntısı: Bu vakada deri kazıntısı endike değildir. Ektoparazit görülmedi.",
-      "biopsy": "Biyopsi raporu: Akut vakada biyopsi kontrendikedir. Kronik/tekrarlayan vakalarda patoloji değerlendirmesi düşünülebilir."
+      "urine": "İdrar muayenesi: SpGr: **>1.050**. Protein: **(+)**. Glukoz: **Negatif**. Keton: **(+)**. Sediment: granüler silendir (+).",
+      "stool": "Dışkı muayenesi: Kıvam yumuşak, renk açık-sarı. Kötü kokulu. Gizli kan: Negatif. Parazit yumurtası görülmedi.",
+      "skin": "Deri kazıntısı: Ektoparazit görülmedi.",
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Abdominosentez: Az miktarda **serosanguinöz, hafif bulanık** sıvı alındı. Total protein: **3.6 g/dL**. Hücre sayısı: **9.200/µL** (dejenere olmayan nötrofiller), bakteri görülmedi. **Rivalta testi: POZİTİF.**"
     },
     "questionAnswers": {
       "kusma_1": "Sabahtan beri durmadan kusuyor, bugün 5-6 kez kustu.",
@@ -3408,7 +3633,7 @@
       "reflex": "Refleks muayenesi: **Derin ağrı ve spinal refleksler normal.**",
       "inspection": "İnspeksiyon: Bilinç açık, ağrılı. Karın duvarı gergin, sağ tarafta ekimoz. **Sosis biçiminde karın kitlesi** görülüyor. Perianal bölgede **kanlı-sümüksü ishal** izi.",
       "auscultation": "Oskültasyon: **Akciğer sesleri:** Artmış. **Kalp sesleri:** Belirgin taşikardi. **Bağırsak sesleri:** Kraniyal bölgede artmış, kaudalde alınmıyor.",
-      "woodslamp": "Wood's Lambası: Bu vakada uygulanmadı."
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif."
     },
     "imaging": {
       "echo": {
@@ -3422,12 +3647,12 @@
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/Screenshot_20261021_164834.jpg"
       },
       "xray_direct": {
-        "result": "Abdominal Röntgen: **Karın boşluğunda darbe bölgesinde yumuşak doku yoğunluğu artışı.** İnce bağırsaklarda **belirgin obstrüktif gaz paterni** görülüyor. 🔴 Mekanik obstrüksiyonla uyumlu tablo.",
+        "result": "Abdominal Röntgen: **Karın boşluğunda darbe bölgesinde yumuşak doku yoğunluğu artışı.** İnce bağırsaklarda **belirgin obstrüktif gaz paterni** görülüyor. 🔴",
         "hasImage": true,
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/invagination-xray.png"
       },
       "xray_indirect": {
-        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "result": "İndirekt Radyografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -3437,7 +3662,7 @@
         "imgUrl": null
       },
       "mr": {
-        "result": "MR: Bu vakada acil cerrahi öncelikli — MR endike değildir.",
+        "result": "MR: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       }
@@ -3588,6 +3813,24 @@
         "ref": "190–365",
         "flag": ""
       },
+      "Kolesterol": {
+        "value": "210",
+        "unit": "mg/dL",
+        "ref": "110–320",
+        "flag": ""
+      },
+      "Trigliserit": {
+        "value": "90",
+        "unit": "mg/dL",
+        "ref": "20–150",
+        "flag": ""
+      },
+      "BUN": {
+        "value": "45",
+        "unit": "mg/dL",
+        "ref": "7–27",
+        "flag": "H"
+      },
       "CREA": {
         "value": "1.9",
         "unit": "mg/dL",
@@ -3635,6 +3878,12 @@
         "unit": "mEq/L",
         "ref": "102–120",
         "flag": "L"
+      },
+      "Lipaz": {
+        "value": "130",
+        "unit": "U/L",
+        "ref": "24–108",
+        "flag": "H"
       },
       "CK": {
         "value": "850",
@@ -3701,13 +3950,14 @@
     },
     "microscopy": {
       "blood": {
-        "text": "Kan yayması: Parazit görülmedi. **Şistositler** (travmatik mekanik hasar belirtisi) nadiren izlendi. Nötrofili — stres lökogramı ile uyumlu.",
+        "text": "Kan yayması: Parazit görülmedi. **Şistositler** nadiren izlendi. Nötrofili.",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
-      "urine": "İdrar muayenesi: SpGr: **1.050** — konsantre idrar. **Hafif hematüri** — travma kaynaklı olabilir. Protein: (+). Sediment: Eritrosit (+).",
-      "stool": "Dışkı muayenesi: **Kanlı-sümüksü dışkı** mevcut. 🔴 Parazit yumurtası görülmedi. Dışkı bulgusunun spesifik tanısal değeri sınırlıdır.",
+      "urine": "İdrar muayenesi: SpGr: **1.050** — konsantre idrar. **Hafif hematüri**. Protein: (+). Sediment: Eritrosit (+).",
+      "stool": "Dışkı muayenesi: **Kanlı-sümüksü dışkı** mevcut. 🔴 Parazit yumurtası görülmedi.",
       "skin": "Deri kazıntısı: Sağ karın duvarında ekimoz (morarma) dışında deri normal. Ektoparazit görülmedi.",
-      "biopsy": "Biyopsi raporu: Bu vakada acil cerrahi müdahale önceliklidir. İnvagine bağırsak segmentinin viabilitesi operasyon sırasında değerlendirilecek; nekrotik doku saptanırsa rezeksiyon-anastomoz planlanmalıdır."
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Abdominosentez: Az miktarda **serosanguinöz** sıvı alındı. Total protein: **2.9 g/dL**. Hücre sayısı: **3.100/µL**, bakteri görülmedi. Rivalta testi: NEGATİF."
     },
     "questionAnswers": {
       "kusma_1": "2 gün önceki kazanın olduğu akşam başladı ve dünden beri hiçbir şeyi midesinde tutamıyor.",
@@ -3784,32 +4034,32 @@
     },
     "imaging": {
       "echo": {
-        "result": "EKO: **Sol ventrikül duvarında hafif hipertrofi** saptandı — sistemik hipertansiyon bulgusu. ⚠ Kapak patolojisi yok. Ritim normal.",
+        "result": "EKO: **Sol ventrikül duvarında hafif hipertrofi** saptandı. ⚠ Kapak patolojisi yok. Ritim normal.",
         "hasImage": false,
         "imgUrl": null
       },
       "usg": {
-        "result": "Abdominal USG: **Her iki adrenal bezde belirgin büyüme** — Sol: **8.2 mm**, Sağ: **8.5 mm** (Referans: <7.4 mm). 🔴 **Karaciğerde vakuoler hepatopati ile uyumlu difüz hiperekojenite artışı** mevcut. Böbrekler normal boyutta.",
+        "result": "Abdominal USG: **Her iki adrenal bezde belirgin büyüme** — Sol: **8.2 mm**, Sağ: **8.5 mm** (Referans: <7.4 mm). 🔴 **Karaciğerde difüz hiperekojenite artışı** mevcut. Böbrekler normal boyutta.",
         "hasImage": false,
         "imgUrl": null
       },
       "xray_direct": {
-        "result": "Direkt Röntgen: Bu vakada direkt radyografi rutin olarak endike değildir.",
+        "result": "Abdominal Röntgen: Karaciğer gölgesi belirgin büyümüş, kenarları kaudal kostal arkın gerisine taşmış. Abdomen sarkık görünümde, intraabdominal yağ artmış. Mesane distandü.",
         "hasImage": false,
         "imgUrl": null
       },
       "xray_indirect": {
-        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "result": "İndirekt Radyografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "bt": {
-        "result": "Abdominal BT: **Bilateral adrenal bez hiperplazisi** konfirme edildi. Sol adrenal: 9.1mm, Sağ adrenal: 8.8mm. Adrenal kitle (adenom/karsinom) dışlandı — PDH (hipofiz kaynaklı) ile uyumlu.",
+        "result": "Abdominal BT: **Bilateral adrenal bez hiperplazisi**. Sol adrenal: 9.1mm, Sağ adrenal: 8.8mm. Adrenal kitle (adenom/karsinom) dışlandı.",
         "hasImage": false,
         "imgUrl": null
       },
       "mr": {
-        "result": "Beyin MR: **Hipofizde 4mm hipointens lezyon** — mikroadenom ile uyumlu. 🔴 Kitle etkisi yok, optik kiazma normal. Hipofiz kaynaklı hastalığı destekleyen bulgu.",
+        "result": "Beyin MR: **Hipofizde 4mm hipointens lezyon**. 🔴 Kitle etkisi yok, optik kiazma normal.",
         "hasImage": false,
         "imgUrl": null
       }
@@ -3960,6 +4210,24 @@
         "ref": "190–365",
         "flag": ""
       },
+      "Kolesterol": {
+        "value": "410",
+        "unit": "mg/dL",
+        "ref": "110–320",
+        "flag": "H"
+      },
+      "Trigliserit": {
+        "value": "290",
+        "unit": "mg/dL",
+        "ref": "20–150",
+        "flag": "H"
+      },
+      "BUN": {
+        "value": "12",
+        "unit": "mg/dL",
+        "ref": "7–27",
+        "flag": ""
+      },
       "CREA": {
         "value": "0.7",
         "unit": "mg/dL",
@@ -4012,6 +4280,12 @@
         "value": "10.4",
         "unit": "mg/dL",
         "ref": "7.9–12.0",
+        "flag": ""
+      },
+      "Lipaz": {
+        "value": "100",
+        "unit": "U/L",
+        "ref": "24–108",
         "flag": ""
       }
     },
@@ -4073,10 +4347,11 @@
     },
     "microscopy": {
       "blood": "Kan yayması: Stres lökogramı — nötrofili, lenfopeni, yaymada eozinofil görülmedi. Eritrositler normositik normokromik. Trombositler yeterli. Parazit görülmedi.",
-      "urine": "İdrar muayenesi: Renk açık sarı/renksiz, berrak. SpGr: **1.004** (**Hipostenüri**) 🔴 — kortizol fazlalığına bağlı idrar konsantrasyon kaybı. pH: 6.5. Protein: (+). Glukoz: Negatif. Keton: Negatif. Sediment: Nadir yassı epitel, mikroorganizma yok.",
+      "urine": "İdrar muayenesi: Renk açık sarı/renksiz, berrak. SpGr: **1.004** (**Hipostenüri**) 🔴. pH: 6.5. Protein: (+). Glukoz: Negatif. Keton: Negatif. Sediment: Nadir yassı epitel, mikroorganizma yok.",
       "stool": "Dışkı muayenesi: Kıvam normal. Parazit yumurtasına rastlanmadı. Sindirim normal görünümde.",
-      "skin": "Deri kazıntısı: Tüy dökülen bölgelerde deri ince ve frajil. **Ektoparazit görülmedi.** Kalınlaşmış epidermis veya hiperkeratoz bulgusu yok. Alopesi non-enflamatuar niteliktedir — endokrin kökenli.",
-      "biopsy": "Biyopsi raporu: Bu vakada rutin deri biyopsisi endike değildir. Karaciğer biyopsisi ancak vakuoler hepatopatinin ilerlediği durumlarda düşünülür."
+      "skin": "Deri kazıntısı: Tüy dökülen bölgelerde deri ince ve frajil. **Ektoparazit görülmedi.** Kalınlaşmış epidermis veya hiperkeratoz bulgusu yok. Alopesi non-enflamatuar niteliktedir.",
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Abdominosentez: USG eşliğinde ponksiyon yapıldı, sıvı elde edilemedi. Rivalta testi yapılamadı."
     },
     "questionAnswers": {
       "istah_1": "Hayır, hiç azalmadı; sürekli aç gibi kendi mamasını hemen bitirip mutfaktan yemek çalmaya çalışıyor.",
@@ -4147,7 +4422,7 @@
       "pharyngo": "Faringoskopi: Oral mukoza normal. Patolojik bulgu yok.",
       "reflex": "Refleks muayenesi: Patellar refleks normal. Nörolojik defisit yok.",
       "inspection": "İnspeksiyon: **Baş, yüz ve kulak kepçesi çevresinde sirküler, iyi sınırlı alopesi alanları.** Lezyon kenarları düzensiz, üzeri gri-beyaz skuamla kaplı. Tüyler kırılgan. Sarılık yok.",
-      "auscultation": "Oskültasyon: Akciğer sesleri bilateral normal. Kalp sesleri ritmik, üfürüm yok. Bağırsak sesleri normal. Oskültasyonda spesifik patolojik bulgu beklenmez.",
+      "auscultation": "Oskültasyon: Akciğer sesleri bilateral normal. Kalp sesleri ritmik, üfürüm yok. Bağırsak sesleri normal.",
       "woodslamp": "Wood's Lambası: Tüylerde **elma yeşili floresan parlama POZİTİF.**"
     },
     "imaging": {
@@ -4162,22 +4437,22 @@
         "imgUrl": null
       },
       "xray_direct": {
-        "result": "Toraks/Abdomen Röntgeni: Normal bulgular. Deri hastalığında radyografi endike değildir.",
+        "result": "Toraks/Abdomen Röntgeni: Normal bulgular.",
         "hasImage": false,
         "imgUrl": null
       },
       "xray_indirect": {
-        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "result": "İndirekt Radyografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "bt": {
-        "result": "BT: Bu vakada bilgisayarlı tomografi endike değildir.",
+        "result": "BT: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "mr": {
-        "result": "MR: Bu vakada manyetik rezonans görüntüleme endike değildir.",
+        "result": "MR: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       }
@@ -4189,7 +4464,7 @@
       "woodslamp": "**🔦 Wood's Lambası Muayenesi:** Tüylerde **elma yeşili floresan parlama POZİTİF** — Microsporum canis enfeksiyonu ile uyumlu. 🔴",
       "fcov_ag": "NEGATİF",
       "ntprobnp": "NEGATİF",
-      "fsaa": "POZİTİF",
+      "fsaa": "NEGATİF",
       "giardia_ag": "NEGATİF"
     },
     "hemogram": [
@@ -4327,6 +4602,24 @@
         "ref": "190–365",
         "flag": ""
       },
+      "Kolesterol": {
+        "value": "140",
+        "unit": "mg/dL",
+        "ref": "65–225",
+        "flag": ""
+      },
+      "Trigliserit": {
+        "value": "55",
+        "unit": "mg/dL",
+        "ref": "10–115",
+        "flag": ""
+      },
+      "BUN": {
+        "value": "24",
+        "unit": "mg/dL",
+        "ref": "16–36",
+        "flag": ""
+      },
       "CREA": {
         "value": "1.2",
         "unit": "mg/dL",
@@ -4379,6 +4672,12 @@
         "value": "9.8",
         "unit": "mg/dL",
         "ref": "8.8–11.9",
+        "flag": ""
+      },
+      "Lipaz": {
+        "value": "20",
+        "unit": "U/L",
+        "ref": "10–40",
         "flag": ""
       }
     },
@@ -4440,16 +4739,17 @@
     },
     "microscopy": {
       "blood": {
-        "text": "Kan yayması: Eritrosit morfolojisi normal. Lökosit dağılımı dengeli — parazit enfeksiyonuna işaret eden eozinofili yok. Trombositler yeterli. Hemoparazit görülmedi.",
+        "text": "Kan yayması: Eritrosit morfolojisi normal. Lökosit dağılımı dengeli. Trombositler yeterli. Hemoparazit görülmedi.",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Renk sarı, berrak. SpGr: **1.045**. pH: **6.5**. Diğer tüm parametreler negatif. Renal tutulum yok.",
-      "stool": "Dışkı muayenesi: Normal kıvam. Parazit yumurtası görülmedi. Primer dışkı bulgusu bu vakada beklenmez.",
+      "stool": "Dışkı muayenesi: Normal kıvam. Parazit yumurtası görülmedi.",
       "skin": {
-        "text": "Deri Kazıntısı ve Trikogram: Şeffaf bant sitolojisinde malassezia veya bakteri artışı görülmedi. **Trikogramda kıl şaftı etrafında artrospor kümeleri** gözlendi — fungal enfeksiyonla uyumlu. 🔴 | **Kültür:** 7. günde koloni üremesiyle eş zamanlı ortam rengi sarıdan kırmızıya dönüşüm — **POZİTİF.** 🔴",
+        "text": "Deri Kazıntısı ve Trikogram: Şeffaf bant sitolojisinde malassezia veya bakteri artışı görülmedi. **Trikogramda kıl şaftı etrafında artrospor kümeleri** gözlendi. 🔴 | **Kültür:** 7. günde koloni üremesiyle eş zamanlı ortam rengi sarıdan kırmızıya dönüşüm — **POZİTİF.** 🔴",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/5e7308f1dca9423f.jpg"
       },
-      "biopsy": "Biyopsi raporu: Rutin biyopsi bu vakada endike değildir. Kültür ve Wood's lambası tanı için yeterlidir. Kronik/dirençli vakalarda foliküler biyopsi düşünülebilir."
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Abdominosentez: USG eşliğinde ponksiyon yapıldı, sıvı elde edilemedi. Rivalta testi yapılamadı."
     },
     "questionAnswers": {
       "deri_kaşıntı_1": "Şiddetli bir kaşıntısı yok gibi ama ön bacaklarını sanki tahriş varmış gibi sürekli yalıyor.",
@@ -4518,7 +4818,7 @@
       "ophthalmo": "Oftalmoskopi: Retina ve göz içi yapılar normal. Patolojik bulgu yok.",
       "pharyngo": "Faringoskopi: Farinks normal. Yabancı cisim yok. Oral mukoza pembe.",
       "reflex": "Refleks muayenesi: Patellar ve tibial refleksler normal. Nörolojik defisit yok.",
-      "woodslamp": "Wood's Lambası: Bu vakada uygulanmadı.",
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
       "inspection": "İnspeksiyon: Genel kondisyon zayıf — VKS 3/9. Tüy yapısı mat. Gözler hafif çökmüş. Perianal bölge kirli. **Karın bölgesi hafif şişkin.** Sarılık yok.",
       "auscultation": "Oskültasyon: **Akciğer sesleri:** Normal. **Kalp sesleri:** Normal ritim. **Bağırsak sesleri:** Belirgin şekilde artmış, çok aktif borborygmus."
     },
@@ -4529,7 +4829,7 @@
         "imgUrl": null
       },
       "usg": {
-        "result": "Abdominal USG: **İnce bağırsak anslarında hafif sıvı birikimi** ve duvar kalınlığında minimal artış mevcut. Non-spesifik enterit bulguları — paraziter veya inflamatuar kökenli olabilir. ⚠",
+        "result": "Abdominal USG: **İnce bağırsak anslarında hafif sıvı birikimi** ve duvar kalınlığında minimal artış mevcut.",
         "hasImage": true,
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/70401671c0fa8065.jpg"
       },
@@ -4539,17 +4839,17 @@
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/26b2e150d1401487.jpg"
       },
       "xray_indirect": {
-        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "result": "İndirekt Radyografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "bt": {
-        "result": "BT: Bu vakada bilgisayarlı tomografi endike değildir.",
+        "result": "BT: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "mr": {
-        "result": "MR: Bu vakada manyetik rezonans görüntüleme endike değildir.",
+        "result": "MR: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       }
@@ -4699,6 +4999,24 @@
         "ref": "190–365",
         "flag": ""
       },
+      "Kolesterol": {
+        "value": "120",
+        "unit": "mg/dL",
+        "ref": "110–320",
+        "flag": ""
+      },
+      "Trigliserit": {
+        "value": "50",
+        "unit": "mg/dL",
+        "ref": "20–150",
+        "flag": ""
+      },
+      "BUN": {
+        "value": "14",
+        "unit": "mg/dL",
+        "ref": "7–27",
+        "flag": ""
+      },
       "CREA": {
         "value": "1.1",
         "unit": "mg/dL",
@@ -4751,6 +5069,12 @@
         "value": "9.2",
         "unit": "mg/dL",
         "ref": "7.9–12.0",
+        "flag": ""
+      },
+      "Lipaz": {
+        "value": "70",
+        "unit": "U/L",
+        "ref": "24–108",
         "flag": ""
       }
     },
@@ -4812,16 +5136,17 @@
     },
     "microscopy": {
       "blood": {
-        "text": "Kan yayması: Eritrositler normositik normokromik. **Eozinofiller belirgin** — parazitizme bağlı tipik bulgu. ⚠ Parazit görülmedi. Trombositler kümelenmiş.",
+        "text": "Kan yayması: Eritrositler normositik normokromik. **Eozinofiller belirgin**. ⚠ Parazit görülmedi. Trombositler kümelenmiş.",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Renk açık sarı, berrak. SpGr: **1.025**. pH: **6.5**. Protein, glukoz, keton negatif. Sedimentte patolojik bulgu yok.",
       "stool": {
-        "text": "Dışkı muayenesi: **Direkt Bakı:** Hareketli, armut biçimli, karakteristik yaprak dökümü gibi hareket eden **protozoon trophozoitleri** görüldü. 🔴 | **Flotasyon:** Oval yapıda **protozoon kistleri** tespit edildi. 🔴 | **ELISA Hızlı Test:** Spesifik antijen — **POZİTİF** 🔴",
+        "text": "Dışkı muayenesi: **Direkt Bakı:** Hareketli, armut biçimli, karakteristik yaprak dökümü gibi hareket eden **protozoon trophozoitleri** görüldü. 🔴 | **Flotasyon:** Oval yapıda **protozoon kistleri** tespit edildi. 🔴",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/4c6956fc305858fa.jpg"
       },
-      "skin": "Deri kazıntısı: Ektoparazit görülmedi. Bu vakada deri bulgularında spesifik patoloji beklenmez.",
-      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endike değildir. Kronik malabsorpsiyon vakalarında ince bağırsak biyopsisi düşünülebilir."
+      "skin": "Deri kazıntısı: Ektoparazit görülmedi.",
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Abdominosentez: USG eşliğinde ponksiyon yapıldı, sıvı elde edilemedi. Rivalta testi yapılamadı."
     },
     "questionAnswers": {
       "dişkilama_1": "2 haftadır geçmeyen, bazen düzelip tekrar başlayan yumuşak bir ishali var; dışkısı açık renkli, yağlı gibi parlak ve çok kötü kokuyor.",
@@ -4891,38 +5216,38 @@
       "ophthalmo": "Oftalmoskopi: **Retinal damarlarda kıvrımlanma artışı** ve hafif retinal ödem.",
       "pharyngo": "Faringoskopi: Oral kavite normal. Patolojik bulgu yok.",
       "reflex": "Refleks muayenesi: Patellar refleks normal. **Genel huzursuzluk ve hiperrefleksi** mevcut.",
-      "woodslamp": "Wood's Lambası: Bu vakada uygulanmadı.",
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
       "inspection": "İnspeksiyon: **Belirgin kas atrofisi** — temporal ve sırt kasları çökmüş. Tüy yapısı mat, bakımsız, dağınık. **Vücut kondisyon skoru: 3/9.** Ventral boyunda hafif dolgunluk. Sarılık yok. Salya akışı yok.",
       "auscultation": "Oskültasyon: **Kalp sesleri:** Çok hızlı, düzensiz ritim. Üfürüm yok, gallop ritmi şüphesi. **Akciğer sesleri:** Bilateral krepitasyon. **Bağırsak sesleri:** Artmış borborygmus."
     },
     "imaging": {
       "echo": {
-        "result": "EKO: **Sol ventrikül duvarında konsantrik hipertrofi** bulguları mevcut. 🔴 Diyastolik disfonksiyon — taşikardiye bağlı yüklenme ile uyumlu. Kalp hızı çok yüksek, tam değerlendirme güç.",
+        "result": "EKO: **Sol ventrikül duvarında konsantrik hipertrofi** bulguları mevcut. 🔴 Diyastolik disfonksiyon. Kalp hızı çok yüksek, tam değerlendirme güç.",
         "hasImage": false,
         "imgUrl": null
       },
       "usg": {
-        "result": "Tiroid USG: Bu görsel henüz mevcut değildir, gelecek güncellemelerde eklenecektir.",
+        "result": "Tiroid USG: Sol tiroid lobunda belirgin büyüme ve heterojen ekojenite izlenmektedir. Sağ lob normal boyutlarda.",
         "hasImage": false,
         "imgUrl": null
       },
       "xray_direct": {
-        "result": "Direkt Röntgen: Bu vakada direkt radyografi rutin olarak endike değildir.",
+        "result": "Toraks Röntgeni: Kalp silüeti genişlemiş (VHS 8.6). Perihiler ve kaudodorsal akciğer alanlarında yamalı interstisyel-alveoler opasite artışı. Pulmoner venlerde belirginleşme.",
         "hasImage": false,
         "imgUrl": null
       },
       "xray_indirect": {
-        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "result": "İndirekt Radyografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "bt": {
-        "result": "BT: Bu vakada BT endike değildir.",
+        "result": "BT: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "mr": {
-        "result": "MR: Bu vakada MR endike değildir.",
+        "result": "MR: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       }
@@ -4933,7 +5258,7 @@
       "fpv_ag": "NEGATİF",
       "fcov_ag": "NEGATİF",
       "ntprobnp": "POZİTİF",
-      "fsaa": "POZİTİF",
+      "fsaa": "NEGATİF",
       "giardia_ag": "NEGATİF"
     },
     "hemogram": [
@@ -5071,6 +5396,24 @@
         "ref": "190–365",
         "flag": ""
       },
+      "Kolesterol": {
+        "value": "90",
+        "unit": "mg/dL",
+        "ref": "65–225",
+        "flag": ""
+      },
+      "Trigliserit": {
+        "value": "50",
+        "unit": "mg/dL",
+        "ref": "10–115",
+        "flag": ""
+      },
+      "BUN": {
+        "value": "42",
+        "unit": "mg/dL",
+        "ref": "16–36",
+        "flag": "H"
+      },
       "CREA": {
         "value": "1.9",
         "unit": "mg/dL",
@@ -5123,6 +5466,12 @@
         "value": "9.5",
         "unit": "mg/dL",
         "ref": "8.8–11.9",
+        "flag": ""
+      },
+      "Lipaz": {
+        "value": "28",
+        "unit": "U/L",
+        "ref": "10–40",
         "flag": ""
       }
     },
@@ -5183,11 +5532,12 @@
       }
     },
     "microscopy": {
-      "blood": "Kan yayması: **Hafif eritrositoz** — metabolik uyarıya bağlı. Stres lökogramı (nötrofili, lenfopeni) mevcut. Polikromazi görülebilir. Parazit yok. Trombositler yeterli.",
-      "urine": "İdrar muayenesi: Açık sarı, berrak. SpGr: **1.025** (Referans: >1.035) — Poliüri nedeniyle idrar konsantrasyonunda düşüş. ⚠ Protein: Negatif. Glukoz: Negatif. Sediment: Sakin.",
-      "stool": "Dışkı muayenesi: **Hacimli dışkı, steatore şüphesi** — yağ emilim bozukluğu. ⚠ Parazit yumurtası görülmedi.",
-      "skin": "Deri kazıntısı: Ektoparazit görülmedi. Deri tüy kalitesinde bozulma mevcut ancak lezyonsuz. Bu vakada deri kazıntısı primer tanı aracı değildir.",
-      "biopsy": "Biyopsi raporu: Bu vakada biyopsi endike değildir. Tiroid kitlesi şüphesinde ince iğne aspirasyonu düşünülebilir."
+      "blood": "Kan yayması: **Hafif eritrositoz**. Stres lökogramı (nötrofili, lenfopeni) mevcut. Polikromazi görülebilir. Parazit yok. Trombositler yeterli.",
+      "urine": "İdrar muayenesi: Açık sarı, berrak. SpGr: **1.025** (Referans: >1.035). ⚠ Protein: Negatif. Glukoz: Negatif. Sediment: Sakin.",
+      "stool": "Dışkı muayenesi: **Hacimli dışkı, steatore şüphesi**. ⚠ Parazit yumurtası görülmedi.",
+      "skin": "Deri kazıntısı: Ektoparazit görülmedi. Deri tüy kalitesinde bozulma mevcut ancak lezyonsuz.",
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Abdominosentez: USG eşliğinde ponksiyon yapıldı, sıvı elde edilemedi. Rivalta testi yapılamadı."
     },
     "questionAnswers": {
       "istah_1": "Hayır, aksine çok yiyor, iştahında bir azalma yok.",
@@ -5257,18 +5607,18 @@
       "ophthalmo": "Oftalmoskopi: **Korneada lipid birikintileri (arkus lipoides)** görüldü.",
       "pharyngo": "Faringoskopi: Oral kavite normal. Patolojik bulgu yok.",
       "reflex": "Refleks muayenesi: **Patellar refleks hafif azalmış.**",
-      "woodslamp": "Wood's Lambası: Bu vakada uygulanmadı.",
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
       "inspection": "İnspeksiyon: Yüz derisi sarkık, mahzun bir yüz ifadesi. **Bilateral simetrik gövde alopesisi** ve hiperpigmentasyon belirgin. Kuyruk tüyleri neredeyse tamamen dökülmüş. Obezite belirgin — VKS 7/9.",
       "auscultation": "Oskültasyon: **Kalp sesleri:** **Belirgin bradikardi** — 58/dak. Düşük amplitüdlü kalp sesleri, üfürüm yok. **Akciğer sesleri:** Bilateral normal veziküler sesler. **Bağırsak sesleri:** Azalmış."
     },
     "imaging": {
       "echo": {
-        "result": "EKO: **Azalmış miyokardiyal kontraktilite** bulguları mevcut. ⚠ Perikardiyal efüzyon küçük miktarda izlenebilir. Tiroid hormon eksikliğine bağlı kardiyak tutulum ile uyumlu.",
+        "result": "EKO: **Azalmış miyokardiyal kontraktilite** bulguları mevcut. ⚠ Perikardiyal efüzyon küçük miktarda izlenebilir.",
         "hasImage": false,
         "imgUrl": null
       },
       "usg": {
-        "result": "Tiroid USG: Bu vakada görüntüleme endike değildir.",
+        "result": "Tiroid USG: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -5278,17 +5628,17 @@
         "imgUrl": null
       },
       "xray_indirect": {
-        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "result": "İndirekt Radyografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "bt": {
-        "result": "BT: Bu vakada endike değildir.",
+        "result": "BT: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "mr": {
-        "result": "MR: Bu vakada endike değildir.",
+        "result": "MR: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       }
@@ -5438,6 +5788,24 @@
         "ref": "190–365",
         "flag": ""
       },
+      "Kolesterol": {
+        "value": "520",
+        "unit": "mg/dL",
+        "ref": "110–320",
+        "flag": "H"
+      },
+      "Trigliserit": {
+        "value": "260",
+        "unit": "mg/dL",
+        "ref": "20–150",
+        "flag": "H"
+      },
+      "BUN": {
+        "value": "14",
+        "unit": "mg/dL",
+        "ref": "7–27",
+        "flag": ""
+      },
       "CREA": {
         "value": "1.1",
         "unit": "mg/dL",
@@ -5490,6 +5858,12 @@
         "value": "9.8",
         "unit": "mg/dL",
         "ref": "7.9–12.0",
+        "flag": ""
+      },
+      "Lipaz": {
+        "value": "80",
+        "unit": "U/L",
+        "ref": "24–108",
         "flag": ""
       }
     },
@@ -5551,13 +5925,14 @@
     },
     "microscopy": {
       "blood": {
-        "text": "Kan yayması: **Hafif non-rejeneratif normositik normokromik anemi** — eritropoietin yeterliliğine rağmen metabolik baskılanma. Polikromazi yok. Lökosit dağılımı normal. Parazit görülmedi.",
+        "text": "Kan yayması: **Hafif non-rejeneratif normositik normokromik anemi**. Polikromazi yok. Lökosit dağılımı normal. Parazit görülmedi.",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: SpGr: **1.025** — Normal yoğunluk. pH: 6.5. Protein: Negatif. Glukoz: Negatif. Keton: Negatif. Sediment: Sakin. Renal fonksiyon normal.",
-      "stool": "Dışkı muayenesi: Parazit yumurtasına rastlanmadı. Kıvam normal. Primer dışkı bulgusu bu vakada beklenmez.",
-      "skin": "Deri kazıntısı: Ektoparazit görülmedi. **Tüy dökülen bölgelerde hiperkeratoz ve hiperpigmentasyon** mevcut — endokrin alopesi ile uyumlu. Mantar elemanı yok.",
-      "biopsy": "Biyopsi raporu: Deri biyopsisi bu vakada endike değildir. Dirençli vakalarda deri biyopsisi miksödem değişikliklerini gösterebilir."
+      "stool": "Dışkı muayenesi: Parazit yumurtasına rastlanmadı. Kıvam normal.",
+      "skin": "Deri kazıntısı: Ektoparazit görülmedi. **Tüy dökülen bölgelerde hiperkeratoz ve hiperpigmentasyon** mevcut. Mantar elemanı yok.",
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Abdominosentez: USG eşliğinde ponksiyon yapıldı, sıvı elde edilemedi. Rivalta testi yapılamadı."
     },
     "questionAnswers": {
       "istah_1": "Evet, iştahı azaldı, önüne koyduğumuz yemeği bitirmekte bile zorlanıyor.",
@@ -5625,7 +6000,7 @@
       "ophthalmo": "Oftalmoskopi: Kornea berrak, lens saydam. Retina ve optik disk normal.",
       "pharyngo": "Faringoskopi: Oral kavite, diş etleri ve dil normal. Tonsiller normal yapıda. Farinks ve larinkste solunumu engelleyen yabancı cisim, polip veya kitle saptanmadı. Larenks kartilajlarının hareketi simetrik.",
       "reflex": "Refleks muayenesi: Patellar ve tibialis kranial refleks bilateral normoreflektif. Proprioseptif ve postural refleksler normal. Nörolojik tutulum yok.",
-      "woodslamp": "Wood's Lambası: Bu vakada uygulanmadı.",
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
       "inspection": "İnspeksiyon: Bilinç açık, çevreye ilgili. Mukozalar pembe, belirgin siyanoz yok. **Solunumda hafif abdominal komponent** mevcut, boyun hafifçe öne ekstansiyonda. Üst solunum yollarında akıntı veya stridor izlenmedi. Deri ve tüy yapısı normal.",
       "auscultation": "Oskültasyon: **Bilateral akciğer sahalarında özellikle ekspiryum fazında yaygın wheezing (ıslık sesi) ve kuru raller** duyuldu. Bronşiyal seslerin şiddetinde artış (hafif kaba veziküler solunum). Kalp oskültasyonunda ritim düzenli, üfürüm veya gallop ritmi yok."
     },
@@ -5636,7 +6011,7 @@
         "imgUrl": null
       },
       "usg": {
-        "result": "Abdominal USG: Karaciğer, dalak, böbrekler, GIS, adrenal bezler ve mesane normal sonografik mimaride. Abdominal efüzyon veya lenfadenopati saptanmadı. Bu vakada abdominal USG primer tanı aracı değildir.",
+        "result": "Abdominal USG: Karaciğer, dalak, böbrekler, GIS, adrenal bezler ve mesane normal sonografik mimaride. Abdominal efüzyon veya lenfadenopati saptanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
@@ -5646,17 +6021,17 @@
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/asthma-xray.jpg"
       },
       "xray_indirect": {
-        "result": "İndirekt Radyografi: Bu vakada endike değildir.",
+        "result": "İndirekt Radyografi: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "bt": {
-        "result": "BT: Hafif ve akut seyirli vakada BT endike değildir.",
+        "result": "BT: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       },
       "mr": {
-        "result": "MR: Bu vakada endike değildir.",
+        "result": "MR: Patolojik bulguya rastlanmadı.",
         "hasImage": false,
         "imgUrl": null
       }
@@ -5667,7 +6042,7 @@
       "fpv_ag": "NEGATİF",
       "fcov_ag": "NEGATİF",
       "ntprobnp": "NEGATİF",
-      "fsaa": "POZİTİF",
+      "fsaa": "NEGATİF",
       "giardia_ag": "NEGATİF"
     },
     "hemogram": [
@@ -5805,6 +6180,24 @@
         "ref": "190–365",
         "flag": ""
       },
+      "Kolesterol": {
+        "value": "130",
+        "unit": "mg/dL",
+        "ref": "65–225",
+        "flag": ""
+      },
+      "Trigliserit": {
+        "value": "60",
+        "unit": "mg/dL",
+        "ref": "10–115",
+        "flag": ""
+      },
+      "BUN": {
+        "value": "22",
+        "unit": "mg/dL",
+        "ref": "16–36",
+        "flag": ""
+      },
       "CREA": {
         "value": "1.1",
         "unit": "mg/dL",
@@ -5857,6 +6250,12 @@
         "value": "9.4",
         "unit": "mg/dL",
         "ref": "8.8–11.9",
+        "flag": ""
+      },
+      "Lipaz": {
+        "value": "18",
+        "unit": "U/L",
+        "ref": "10–40",
         "flag": ""
       }
     },
@@ -5918,13 +6317,14 @@
     },
     "microscopy": {
       "blood": {
-        "text": "Kan yayması: Eritrosit morfolojisi normositik normokromik. **Eozinofil sayısında belirgin artış** — alerjik hava yolu inflamasyonunu destekleyen karakteristik bulgu. 🔴 İntraeritrositer veya intralökositer parazite rastlanmadı. Trombositler yeterli.",
+        "text": "Kan yayması: Eritrosit morfolojisi normositik normokromik. **Eozinofil sayısında belirgin artış**. 🔴 İntraeritrositer veya intralökositer parazite rastlanmadı. Trombositler yeterli.",
         "imgUrl": "https://kqixpnxswlpdkfyzshyu.supabase.co/storage/v1/object/public/media/268d8aa34b17e3dd.jpg"
       },
       "urine": "İdrar muayenesi: Açık sarı, berrak. SpGr: **1.040** — iyi konsantrasyon. pH: 6.5. Protein, glukoz, keton negatif. Sediment: nadir transizyonel epitel hücresi dışında patolojik bulgu yok. ✓",
-      "stool": "Dışkı muayenesi: Flotasyon ve sedimantasyon yöntemleriyle incelendi. Akciğer kıl kurtlarına ait larva veya parazit yumurtası görülmedi. **Sonuç: Negatif** ✓ — Paraziter bronşit dışlandı.",
-      "skin": "Deri kazıntısı: Deri lezyonu bulunmadığından kazıntı endike değildir. Ektoparazit görülmedi.",
-      "biopsy": "Biyopsi raporu: Akut vakada biyopsi endike değildir. Kronik/dirençli vakalarda bronkoalveolar lavaj (BAL) sitolojisi düşünülebilir."
+      "stool": "Dışkı muayenesi: Baermann tekniği ve flotasyon yöntemiyle incelendi. Akciğer kıl kurtlarına ait larva veya parazit yumurtası görülmedi. **Sonuç: Negatif** ✓.",
+      "skin": "Deri kazıntısı: Ektoparazit görülmedi.",
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Abdominosentez: USG eşliğinde ponksiyon yapıldı, sıvı elde edilemedi. Rivalta testi yapılamadı."
     },
     "questionAnswers": {
       "solunum_öksürük_1": "Evet, 2 gündür yere çömelip boynunu öne doğru uzatarak öksürüyor.",

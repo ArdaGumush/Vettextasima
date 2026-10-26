@@ -48,7 +48,8 @@
           {
             "id": "diskilama_3",
             "q": "Dışkısını yaparken zorlanıyor veya bağırıyor mu?",
-            "default": "Zorlanmadan rahatça yapıyor."
+            "default": "Zorlanmadan rahatça yapıyor.",
+            "ifSymptom": "Yaparken yanında değildim, bilmiyorum."
           },
           {
             "id": "diskilama_4",
@@ -97,7 +98,8 @@
           {
             "id": "karin_2",
             "q": "Karnına dokunduğunuzda bir tepki veya huzursuzluk gösteriyor mu?",
-            "default": "Hayır, dokununca rahatsız olmuyor."
+            "default": "Hayır, dokununca rahatsız olmuyor.",
+            "ifSymptom": "Karnına çok dokunmadım, emin değilim."
           },
           {
             "id": "karin_3",
@@ -107,7 +109,8 @@
           {
             "id": "karin_4",
             "q": "Sürekli kambur durarak karnını koruma eğiliminde mi?",
-            "default": "Hayır, duruşu normal."
+            "default": "Hayır, duruşu normal.",
+            "ifSymptom": "Duruşuna pek dikkat etmedim."
           }
         ]
       }
@@ -176,7 +179,8 @@
           {
             "id": "burun_1",
             "q": "Burnundan şeffaf veya renkli bir akıntı geliyor mu?",
-            "default": "Hayır, akıntı yok."
+            "default": "Hayır, akıntı yok.",
+            "ifSymptom": "Burnuna yakından bakmadım."
           },
           {
             "id": "burun_2",
@@ -232,22 +236,26 @@
           {
             "id": "yuruyus_1",
             "q": "Yürürken yalpalanma veya dengesini kaybetme durumu var mı?",
-            "default": "Hayır, gayet dengeli yürüyor."
+            "default": "Hayır, gayet dengeli yürüyor.",
+            "ifSymptom": "Yürüyüşüne tam dikkat edemedim."
           },
           {
             "id": "yuruyus_2",
             "q": "Patilerini yere basarken ters basma veya sürtme yapıyor mu?",
-            "default": "Patilerini yere düzgün basıyor."
+            "default": "Patilerini yere düzgün basıyor.",
+            "ifSymptom": "Patilerine dikkat etmedim."
           },
           {
             "id": "yuruyus_3",
             "q": "Arka bacaklarını sürükleme veya basmakta isteksizlik gözlemlediniz mi?",
-            "default": "Hayır, bacaklarını normal kullanıyor."
+            "default": "Hayır, bacaklarını normal kullanıyor.",
+            "ifSymptom": "Bacaklarına tam dikkat edemedim."
           },
           {
             "id": "yuruyus_4",
             "q": "Düz bir çizgide yürümekte veya koşmakta zorlanıyor mu?",
-            "default": "Zorlanmıyor."
+            "default": "Zorlanmıyor.",
+            "ifSymptom": "Koşmasına dikkat etmedim."
           }
         ]
       },
@@ -267,12 +275,14 @@
           {
             "id": "bilinc_3",
             "q": "Çevresindeki eşyaları algılamada bir zayıflık veya sersemlik sezdiniz mi?",
-            "default": "Çevresinin ve eşyaların farkında."
+            "default": "Çevresinin ve eşyaların farkında.",
+            "ifSymptom": "Buna tam dikkat edemedim."
           },
           {
             "id": "bilinc_4",
             "q": "Gündüz ve gece algısında bozulma veya aşırı yön kaybı var mı?",
-            "default": "Hayır, bilinci gayet açık."
+            "default": "Hayır, bilinci gayet açık.",
+            "ifSymptom": "Gece gündüz farkına dikkat etmedim."
           }
         ]
       },
@@ -282,7 +292,8 @@
           {
             "id": "bas_1",
             "q": "Kafasını sürekli tek bir yöne doğru eğik tutuyor mu?",
-            "default": "Hayır, baş duruşu düz ve simetrik."
+            "default": "Hayır, baş duruşu düz ve simetrik.",
+            "ifSymptom": "Başının duruşuna dikkat etmedim."
           },
           {
             "id": "bas_2",
@@ -297,7 +308,8 @@
           {
             "id": "bas_4",
             "q": "Başına dokunduğunuzda irkilme veya ağrılı bir çekilme yapıyor mu?",
-            "default": "Dokununca sakin kalıyor, bir tepkisi yok."
+            "default": "Dokununca sakin kalıyor, bir tepkisi yok.",
+            "ifSymptom": "Başına dokunmadım, bilmiyorum."
           },
           {
             "id": "bas_5",
@@ -318,7 +330,8 @@
           {
             "id": "kasinti_1",
             "q": "Sürekli aynı bölgeyi kaşıma veya tırmalama huyu başladı mı?",
-            "default": "Hayır, normalden fazla kaşınmıyor."
+            "default": "Hayır, normalden fazla kaşınmıyor.",
+            "ifSymptom": "Ne kadar kaşındığını tam takip edemedim."
           },
           {
             "id": "kasinti_2",
@@ -333,7 +346,8 @@
           {
             "id": "kasinti_4",
             "q": "Vücudunu halıya veya mobilyalara sürtme ihtiyacı duyuyor mu?",
-            "default": "Hayır, sürtünmüyor."
+            "default": "Hayır, sürtünmüyor.",
+            "ifSymptom": "Sürtünmesine dikkat etmedim."
           }
         ]
       },
@@ -375,7 +389,8 @@
           {
             "id": "tuy_2",
             "q": "Vücudunun belli yerlerinde bölgesel açılmalar veya kellik var mı?",
-            "default": "Hayır, tüyleri homojen dağılımlı."
+            "default": "Hayır, tüyleri homojen dağılımlı.",
+            "ifSymptom": "Tüylerinin dağılımına dikkat etmedim."
           },
           {
             "id": "tuy_3",
@@ -386,7 +401,8 @@
           {
             "id": "tuy_4",
             "q": "Tüylerini çekerken elinize tutam tutam gelme durumu yaşanıyor mu?",
-            "default": "Hayır, yaşanmıyor."
+            "default": "Hayır, yaşanmıyor.",
+            "ifSymptom": "Tüylerini çekip bakmadım."
           }
         ]
       },
@@ -396,7 +412,8 @@
           {
             "id": "tirnak_1",
             "q": "Tırnaklarında kırılma, çatlama veya içine doğru batma var mı?",
-            "default": "Tırnakları düzgün ve sağlam."
+            "default": "Tırnakları düzgün ve sağlam.",
+            "ifSymptom": "Tırnaklarına yakından bakmadım."
           },
           {
             "id": "tirnak_2",
@@ -433,7 +450,8 @@
           {
             "id": "i̇drar_2",
             "q": "İdrar yaparken damlatma veya çok az yapabilme durumu var mı?",
-            "default": "Hayır, akışı rahat ve kesintisiz."
+            "default": "Hayır, akışı rahat ve kesintisiz.",
+            "ifSymptom": "İdrar yaparken yanında değildim, göremedim."
           },
           {
             "id": "i̇drar_3",
@@ -460,17 +478,20 @@
           {
             "id": "kaza_2",
             "q": "Uyurken veya yatarken farkında olmadan altına kaçırma durumu yaşandı mı?",
-            "default": "Hayır, yaşanmadı."
+            "default": "Hayır, yaşanmadı.",
+            "ifSymptom": "Uyurken kaçırıyor mu, fark etmedim."
           },
           {
             "id": "kaza_3",
             "q": "Kapıya veya tuvalete yetişemeden aceleyle damlattığı oluyor mu?",
-            "default": "Tuvaletini rahatça tutabiliyor."
+            "default": "Tuvaletini rahatça tutabiliyor.",
+            "ifSymptom": "Buna tam dikkat etmedim."
           },
           {
             "id": "kaza_4",
             "q": "Tuvalet eğitiminde son dönemde ani bir gerileme sezildi mi?",
-            "default": "Hayır, tuvalet alışkanlığı düzgün."
+            "default": "Hayır, tuvalet alışkanlığı düzgün.",
+            "ifSymptom": "Tuvalet alışkanlığına çok dikkat edemedim."
           }
         ]
       },
@@ -485,7 +506,8 @@
           {
             "id": "kan_2",
             "q": "İdrarını yaptıktan sonra damla şeklinde kırmızı sıvı geliyor mu?",
-            "default": "Hayır, gelmiyor."
+            "default": "Hayır, gelmiyor.",
+            "ifSymptom": "Yaptıktan sonra bakmadım."
           },
           {
             "id": "kan_3",
@@ -495,7 +517,8 @@
           {
             "id": "kan_4",
             "q": "İdrar kabında veya paspasında kırmızı lekelere rastladınız mı?",
-            "default": "Hayır, rastlamadım."
+            "default": "Hayır, rastlamadım.",
+            "ifSymptom": "Kabına/paspasına bakmadım."
           }
         ]
       }
@@ -753,12 +776,14 @@
           {
             "id": "i̇lac_1",
             "q": "Şu anda düzenli olarak kullandığı herhangi bir reçeteli ilaç var mı?",
-            "default": "Hayır, ilaç kullanmıyor."
+            "default": "Hayır, ilaç kullanmıyor.",
+            "ifSymptom": "Şu an düzenli verdiğim bir ilaç var mı, emin değilim."
           },
           {
             "id": "i̇lac_2",
             "q": "Son günlerde sizin verdiğiniz bir ağrı kesici veya vitamin oldu mu?",
-            "default": "Hayır, hiçbir takviye veya ilaç vermedim."
+            "default": "Hayır, hiçbir takviye veya ilaç vermedim.",
+            "ifSymptom": "Tam hatırlamıyorum."
           },
           {
             "id": "i̇lac_3",
@@ -783,7 +808,8 @@
           {
             "id": "asi_2",
             "q": "Son aşı uygulamasının üzerinden ne kadar süre geçti?",
-            "default": "Son aşıları planlanan takvimde yapıldı."
+            "default": "Son aşıları planlanan takvimde yapıldı.",
+            "ifSymptom": "Tarihini tam hatırlamıyorum, karnesine bakmam lazım."
           },
           {
             "id": "asi_3",
@@ -793,7 +819,8 @@
           {
             "id": "asi_4",
             "q": "Elinizde mevcut aşı karnesi ve sağlık kayıtları bulunuyor mu?",
-            "default": "Evet, karnesi düzenli işlenmiş durumda."
+            "default": "Evet, karnesi düzenli işlenmiş durumda.",
+            "ifSymptom": "Karnesine son zamanlarda bakmadım."
           }
         ]
       }
@@ -815,7 +842,8 @@
           {
             "id": "enerji_2",
             "q": "Sürekli yatma, uyuma veya odanın köşesine saklanma eğiliminde mi?",
-            "default": "Hayır, normal günlük rutinini sürdürüyor."
+            "default": "Hayır, normal günlük rutinini sürdürüyor.",
+            "ifSymptom": "Son günlerde çoğunlukla yatıyor gibi, tam takip edemedim."
           },
           {
             "id": "enerji_3",
@@ -826,7 +854,8 @@
           {
             "id": "enerji_4",
             "q": "Çevreye karşı genel bir ilgisizlik veya donukluk seziyor musunuz?",
-            "default": "Hayır, çevresine karşı gayet uyanık."
+            "default": "Hayır, çevresine karşı gayet uyanık.",
+            "ifSymptom": "Çevresine ilgisine pek dikkat edemedim."
           },
           {
             "id": "enerji_5",
@@ -922,7 +951,8 @@
           {
             "id": "agri_4",
             "q": "Dinlenirken belirli bir bacağını veya bölgesini koruma çabası sezdiniz mi?",
-            "default": "Hayır, ağrılı bir koruma hali yok."
+            "default": "Hayır, ağrılı bir koruma hali yok.",
+            "ifSymptom": "Dinlenirken nasıl durduğuna dikkat etmedim."
           }
         ]
       }
