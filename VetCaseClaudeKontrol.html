@@ -461,6 +461,17 @@ function replayTutorial() {
   #login-google:disabled { opacity:.6; cursor:wait; }
   #login-error { min-height:18px; margin-top:12px; font-size:11px; color:var(--accent-red); }
   .lg-note { margin-top:18px; font-size:10px; color:var(--text-muted); line-height:1.6; }
+  #login-alpha { display:flex; flex-direction:column; gap:10px; }
+  #login-alpha input {
+    width:100%; padding:13px 14px; border-radius:10px; border:1px solid var(--border); background:var(--bg-card);
+    color:var(--text-primary); font-family:inherit; font-size:15px; box-sizing:border-box;
+  }
+  #login-alpha input:focus { outline:none; border-color:var(--accent-cyan); }
+  #login-submit {
+    padding:13px; border-radius:10px; border:1px solid var(--accent-cyan); background:rgba(0,212,255,.12);
+    color:var(--accent-cyan); font-family:inherit; font-size:14px; font-weight:600; cursor:pointer;
+  }
+  #login-submit:disabled { opacity:.6; cursor:wait; }
   .vtx-acc-btns { display:flex; gap:8px; flex-shrink:0; }
   .vtx-acc-btns button {
     padding:7px 12px; border-radius:8px; font-family:'JetBrains Mono',monospace; font-size:10px; cursor:pointer;
@@ -2724,6 +2735,9 @@ window.onerror = function(msg, src, line) {
         <button class="exam-btn" id="ex-biopsy" onclick="doMicro('biopsy')">
           <span class="e-icon">🧬</span>Lab'a Biyopsi Gönder
         </button>
+        <button class="exam-btn" id="ex-effusion" onclick="doMicro('effusion')">
+          <span class="e-icon">💉</span>Abdominosentez + Rivalta
+        </button>
       </div>
     </div>
 
@@ -2809,6 +2823,10 @@ const SUPABASE_ANON_KEY = "sb_publishable_Vtj0naG05Q-ukeMAI1MIEg_42ScUllZ";
 // Google ile giriş — Google Cloud'daki WEB istemci kimliği (…apps.googleusercontent.com).
 // BOŞ olduğu sürece giriş ekranı ve demo kilidi KAPALIDIR, uygulama eskisi gibi çalışır.
 const GOOGLE_WEB_CLIENT_ID = "";
+// ALFA TEST SÜRÜMÜ: "VetTEX Alfa" derlemesi bu bayrağı açar (android-alfa.yml).
+// Açılışta kullanıcı adı + şifre ister (hesaplar Supabase'te elle açılır), girişten sonra tüm vakalar açık (VIP).
+const ALPHA = !!window.VETTEX_ALPHA;
+const ALPHA_EMAIL_DOMAIN = 'alfa.vettex.app';   // "ayse" → ayse@alfa.vettex.app
 // Ücretsiz demo vakaları (tutorial cat + fip kullanır, bunlar mutlaka açık kalmalı)
 const FREE_CASE_KEYS = ['cat', 'fip', 'parvo'];
 
@@ -2836,6 +2854,7 @@ function assignHealthyXray(caseData) {
     const result = (xray.result || '').toLowerCase();
     // Görsel olmayan tüm vakalara sağlıklı görsel ata
     if (result.includes('endike değildir') || result.includes('endike görülmemiştir') ||
+        result.includes('patolojik bulguya rastlanmadı') ||
         result.includes('laboratuvar ve serolojik') || result.includes('gelecek sürümde') ||
         (result.includes('patolojik bulgu yok') && !result.includes('büyüme') && !result.includes('küçülme') && !result.includes('hipertrofi'))) {
       xray.imgUrl = pool[Math.floor(Math.random() * pool.length)];
@@ -3137,7 +3156,7 @@ const OWNER_PROFILES = [
 ];
 
 const TETKIK_COSTS = {
-  tool:30, hemogram:80, microscopy:40, skin_micro:50, biopsy:120,
+  tool:30, hemogram:80, microscopy:40, skin_micro:50, biopsy:120, effusion:90,
   usg:150, xray:100, echo:180, bt:380, mr:450, rapid_kit:60,
   biyo_base:50, hormon_base:50,
 };
@@ -3146,6 +3165,7 @@ const BIYO_PARAM_COSTS = {
   "ALT":10,"ALP":10,"AST":10,"GGT":15,"Total Bili.":15,"Safra As.":15,
   "Glukoz":10,"Fruktozamin":15,"CREA":10,"Fosfor":10,"Total Prot.":10,
   "ALB":10,"Glob":15,"Na":10,"K":10,"Cl":10,"Ca":10,
+  "BUN":10,"Kolesterol":10,"Trigliserit":10,"Lipaz":20,
 };
 
 const HORMON_PARAM_COSTS = {
@@ -3884,6 +3904,7 @@ function mobOpenMicro() {
     { key:'stool',  label:'💩 Dışkı Muayenesi',  cost: TETKIK_COSTS.microscopy },
     { key:'skin',   label:'🔬 Deri Kazıntısı',   cost: TETKIK_COSTS.skin_micro },
     { key:'biopsy', label:'🧫 Biyopsi',           cost: TETKIK_COSTS.biopsy },
+    { key:'effusion', label:'💉 Abdominosentez + Rivalta', cost: TETKIK_COSTS.effusion },
   ];
   let html = '<div style="display:flex;flex-direction:column;gap:8px">';
   items.forEach(item => {
@@ -3899,9 +3920,10 @@ function mobOpenMicro() {
 function mobDoMicro(type) {
   if (!mobCurrentCase) return;
   if (type === 'biopsy' && !requireGeneralExam('biyopsi')) return;
+  if (type === 'effusion' && !requireGeneralExam('abdominosentez')) return;
   const micro = mobCurrentCase.microscopy?.[type];
   if (!micro) { showToast('Bu bakı bu vakada tanımlı değil.'); return; }
-  const cost = type==='skin' ? TETKIK_COSTS.skin_micro : type==='biopsy' ? TETKIK_COSTS.biopsy : TETKIK_COSTS.microscopy;
+  const cost = type==='skin' ? TETKIK_COSTS.skin_micro : type==='biopsy' ? TETKIK_COSTS.biopsy : type==='effusion' ? TETKIK_COSTS.effusion : TETKIK_COSTS.microscopy;
   if (!spendCredit(cost, type)) return;
   if (!consumeAction('Mikroskobik Bakı')) return;
   closeModal();
@@ -3910,7 +3932,7 @@ function mobDoMicro(type) {
   const imgUrl = typeof micro === 'object' ? micro.imgUrl : null;
   const safeText = text.replace(/"/g, '&quot;');
 
-  const labels = {blood:'Kan Yayması',urine:'İdrar',stool:'Dışkı',skin:'Deri Kazıntısı',biopsy:'Biyopsi'};
+  const labels = {blood:'Kan Yayması',urine:'İdrar',stool:'Dışkı',skin:'Deri Kazıntısı',biopsy:'Biyopsi',effusion:'Abdominosentez + Rivalta'};
   logTetkik('🔬 ' + (labels[type]||type));
   let html = '';
   if (imgUrl) html += `<img src="${imgUrl}" style="width:100%;border-radius:8px;margin-bottom:12px">`;
@@ -4117,7 +4139,7 @@ const IMAGE_GALLERY = [
 // 2) Galeride url'i boş olan ve vaka dosyasında hâlâ görseli olmayan slotlar
 const MISSING_FIELD_LABELS = {
   usg:'USG', xray_direct:'Direkt Röntgen', xray_indirect:'İndirekt Röntgen', echo:'EKO', bt:'BT', tomo:'Tomografi', mr:'MR',
-  blood:'Kan Yayması', urine:'İdrar Mikroskobisi', stool:'Dışkı Mikroskobisi', skin:'Deri Kazıntısı', biopsy:'Biyopsi',
+  blood:'Kan Yayması', urine:'İdrar Mikroskobisi', stool:'Dışkı Mikroskobisi', skin:'Deri Kazıntısı', biopsy:'Biyopsi', effusion:'Abdominosentez + Rivalta',
   ophthalmo:'Oftalmoskopi', otoscope:'Otoskopi', pharyngo:'Faringoskopi', woodslamp:"Wood's Lambası"
 };
 function galleryCodeToField(code, label) {
@@ -4688,7 +4710,7 @@ function startCase(caseKey) {
   });
   document.querySelectorAll('.exam-btn').forEach(b => b.classList.remove('done'));
   // New micro buttons reset
-  ['ex-stoolmicro','ex-skinmicro','ex-biopsy'].forEach(id => { const b = document.getElementById(id); if(b) b.classList.remove('done'); });
+  ['ex-stoolmicro','ex-skinmicro','ex-biopsy','ex-effusion'].forEach(id => { const b = document.getElementById(id); if(b) b.classList.remove('done'); });
 
   // Hide welcome
   document.getElementById('welcome').style.display = 'none';
@@ -4882,7 +4904,7 @@ function doAllExam() {
 // ═══════════════════════════════════════════════════════════════
 // TOOLS
 // ═══════════════════════════════════════════════════════════════
-const toolLabels = { otoscope: 'OTOSKOPİ', ophthalmo: 'OFTALMOSKOPİ', pharyngo: 'FARİNGOSKOPİ', reflex: 'REFLEKS MUAYENESİ', woodslamp: "WOOD'S LAMBASI", inspection: 'İNSPEKSİYON', auscultation: 'OSKÜLTASYONMuayenesi' };
+const toolLabels = { otoscope: 'OTOSKOPİ', ophthalmo: 'OFTALMOSKOPİ', pharyngo: 'FARİNGOSKOPİ', reflex: 'REFLEKS MUAYENESİ', woodslamp: "WOOD'S LAMBASI", inspection: 'İNSPEKSİYON', auscultation: 'OSKÜLTASYON' };
 
 function doTool(key) {
   if (!currentCase) return;
@@ -4985,7 +5007,7 @@ function buildUSGReportHTML(caseKey, imgUrl) {
 
   const gorselHTML = imgUrl ? `
     <div class="usg-gorsel-alan">
-      <div class="usg-gorsel-baslik">ULTRASONOGRAFİ GÖRÜNTÜSİ</div>
+      <div class="usg-gorsel-baslik">ULTRASONOGRAFİ GÖRÜNTÜSÜ</div>
       <img src="${imgUrl}" style="width:100%;border-radius:4px;border:1px solid #c0d0e0">
     </div>` : '';
 
@@ -5214,7 +5236,7 @@ function doImaging(key) {
         + '</button></div>';
     }
   } else if (data.hasImage) {
-    imgBlock = '<div class="modal-img-placeholder"><span style="font-size:32px">🖼️</span><span>Görüntü sonraki versiyonda eklenecek</span></div>'
+    imgBlock = '<div class="modal-img-placeholder"><span style="font-size:32px">🖼️</span><span style="color:var(--text-muted)">Bu inceleme için görüntü mevcut değil</span></div>'
       + '<div id="interp-lock-' + key + '" data-monitor-label="GÖRÜNTÜLEME — ' + key.toUpperCase() + '" data-result="' + resultText.replace(/"/g,"&quot;") + '">'
       + '<button onclick="unlockPanel(this)"'
       + ' style="width:100%;padding:10px 16px;background:rgba(243,156,18,0.08);border:1px solid var(--accent-orange);border-radius:8px;color:var(--accent-orange);font-family:JetBrains Mono,monospace;font-size:11px;cursor:pointer;letter-spacing:1px;display:flex;align-items:center;justify-content:center;gap:8px">'
@@ -5291,7 +5313,7 @@ function runHemogram() {
 // ═══════════════════════════════════════════════════════════════
 // BİYOKİMYA
 // ═══════════════════════════════════════════════════════════════
-const BIYO_PARAMS = ["ALT","ALP","AST","GGT","Total Bili.","Safra As.","Glukoz","Fruktozamin","CREA","Fosfor","Total Prot.","ALB","Glob","Na","K","Cl","Ca"];
+const BIYO_PARAMS = ["ALT","ALP","AST","GGT","Total Bili.","Safra As.","Glukoz","Fruktozamin","Kolesterol","Trigliserit","BUN","CREA","Fosfor","Total Prot.","ALB","Glob","Na","K","Cl","Ca","Lipaz"];
 let selectedBiyo = new Set();
 
 function buildBiyoChips() {
@@ -5479,13 +5501,14 @@ function useRapidKit(kitId, sampleType) {
 function doMicro(type) {
   if (!currentCase) return;
   if (type === 'biopsy' && !requireGeneralExam('biyopsi')) return;
+  if (type === 'effusion' && !requireGeneralExam('abdominosentez')) return;
   
   // 1. Parametre ve etiketleri hazırla
-  const labels = { blood: 'KAN', urine: 'İDRAR', stool: 'DIŞKI', skin: 'DERİ KAZINTISI', biopsy: 'BİYOPSİ' };
+  const labels = { blood: 'KAN', urine: 'İDRAR', stool: 'DIŞKI', skin: 'DERİ KAZINTISI', biopsy: 'BİYOPSİ', effusion: 'ABDOMİNOSENTEZ' };
   const label = labels[type] || 'MİKROSKOBİK';
   
   // 2. Butonun ismini otomatik bul (ex-bloodmicro gibi)
-  const btnIdMap = { blood: 'ex-bloodmicro', urine: 'ex-urinemicro', stool: 'ex-stoolmicro', skin: 'ex-skinmicro', biopsy: 'ex-biopsy' };
+  const btnIdMap = { blood: 'ex-bloodmicro', urine: 'ex-urinemicro', stool: 'ex-stoolmicro', skin: 'ex-skinmicro', biopsy: 'ex-biopsy', effusion: 'ex-effusion' };
   const btnId = btnIdMap[type] || ('ex-' + type + 'micro');
   const btn = document.getElementById(btnId);
   
@@ -5499,7 +5522,7 @@ function doMicro(type) {
   // 4. Daha önce yapıldıysa aksiyon harcama ama modalı yine göster
   const alreadyDone = btn && btn.classList.contains('done');
   if (!alreadyDone) {
-    const microCost = type==='skin' ? TETKIK_COSTS.skin_micro : type==='biopsy' ? TETKIK_COSTS.biopsy : TETKIK_COSTS.microscopy;
+    const microCost = type==='skin' ? TETKIK_COSTS.skin_micro : type==='biopsy' ? TETKIK_COSTS.biopsy : type==='effusion' ? TETKIK_COSTS.effusion : TETKIK_COSTS.microscopy;
     if (!spendCredit(microCost, labels[type]||type)) return;
     if (!consumeAction('Mikroskobik Bakı')) return;
     if (btn) btn.classList.add('done');
@@ -6019,7 +6042,7 @@ function openUSGModal(caseKey, imgUrl) {
 
   if (imgUrl && imgUrl !== 'null') {
     html += `<div style="margin-top:16px;border-top:1px dashed #c0d0e0;padding-top:14px">
-      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#5a6a7a;text-transform:uppercase;margin-bottom:8px">ULTRASONOGRAFİ GÖRÜNTÜSİ</div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#5a6a7a;text-transform:uppercase;margin-bottom:8px">ULTRASONOGRAFİ GÖRÜNTÜSÜ</div>
       <img src="${imgUrl}" style="width:100%;border-radius:4px;border:1px solid #c0d0e0">
     </div>`;
   }
@@ -6152,9 +6175,10 @@ function backToMainMenu() {
 // ═══════════════════════════════════════════════════════════════
 const VTX = window.VTX = {
   session: null, profile: null, _slInit: false,
-  authOn() { return !!GOOGLE_WEB_CLIENT_ID && window.top === window.self; },
-  paywallOn() { return this.authOn(); },
+  authOn() { return (ALPHA || !!GOOGLE_WEB_CLIENT_ID) && window.top === window.self; },
+  paywallOn() { return !ALPHA && this.authOn(); },
   premium() {
+    if (ALPHA) return !!this.session;            // alfa: giriş yapan herkes VIP
     const p = this.profile;
     return !!(p && p.premium_until && new Date(p.premium_until) > new Date());
   },
@@ -6199,6 +6223,36 @@ const VTX = window.VTX = {
       if (e.status === 400 || e.status === 401) this.localSignOut();   // oturum geçersiz
       // ağ hatası: çevrimdışıyız, eldeki oturumla devam
     }
+  },
+
+  // ── Alfa: kullanıcı adı + şifre ile giriş ──
+  alphaEmail(u) {
+    u = String(u || '').trim().toLowerCase();
+    return u.includes('@') ? u : u + '@' + ALPHA_EMAIL_DOMAIN;
+  },
+  async signInPassword(ev) {
+    if (ev) ev.preventDefault();
+    const u = document.getElementById('login-user'), pw = document.getElementById('login-pass');
+    const btn = document.getElementById('login-submit'), err = document.getElementById('login-error');
+    err.textContent = '';
+    if (!u.value.trim() || !pw.value) { err.textContent = 'Kullanıcı adı ve şifreyi gir.'; return false; }
+    btn.disabled = true; btn.textContent = 'Giriş yapılıyor…';
+    try {
+      const t = await this.api('/auth/v1/token?grant_type=password', { method: 'POST', auth: false,
+        body: { email: this.alphaEmail(u.value), password: pw.value } });
+      this.setSession(t);
+      pw.value = '';
+      await this.afterSignIn();
+    } catch (e) {
+      console.warn('[alfa giriş]', e);
+      err.textContent = (e.status === 400 || e.status === 401) ? 'Kullanıcı adı veya şifre hatalı.'
+        : (e.status ? 'Giriş yapılamadı (' + e.status + ').' : 'Sunucuya ulaşılamadı. İnternet bağlantını kontrol et.');
+    } finally { btn.disabled = false; btn.textContent = 'Giriş yap'; }
+    return false;
+  },
+  alphaUserName() {
+    const em = (this.session && this.session.user && this.session.user.email) || '';
+    return em.endsWith('@' + ALPHA_EMAIL_DOMAIN) ? em.split('@')[0] : em;
   },
 
   // ── Giriş ──
@@ -6246,7 +6300,7 @@ const VTX = window.VTX = {
   async afterSignIn() {
     document.getElementById('login-overlay').classList.remove('open');
     await this.loadProfile();
-    await this.syncCases();
+    if (!ALPHA) await this.syncCases();             // alfada vakalar zaten uygulamanın içinde
     this.updateUI();
     this.ensureRegistration();
   },
@@ -6269,7 +6323,7 @@ const VTX = window.VTX = {
   },
   async afterDataLoaded() {
     if (!this.authOn() || !this.session) { this.updateUI(); return; }
-    try { await this.loadProfile(); await this.syncCases(); } catch (e) {}
+    try { await this.loadProfile(); if (!ALPHA) await this.syncCases(); } catch (e) {}
     this.updateUI();
   },
 
@@ -6301,7 +6355,7 @@ const VTX = window.VTX = {
     return n;
   },
   applyCasesCache() {
-    if (!this.authOn()) return;
+    if (!this.authOn() || ALPHA) return;
     const s = this.ls('vtx-session'), cache = this.ls('vtx-cases');
     if (!s || !s.user || !cache || cache.uid !== s.user.id) return;
     this.profile = this.ls('vtx-profile');
@@ -6333,7 +6387,7 @@ const VTX = window.VTX = {
   },
   async signOut() {
     try { if (this.session) await this.api('/auth/v1/logout', { method: 'POST' }); } catch (e) {}
-    try { const SL = this.plugin('SocialLogin'); if (SL && SL.logout) await SL.logout({ provider: 'google' }); } catch (e) {}
+    if (!ALPHA) { try { const SL = this.plugin('SocialLogin'); if (SL && SL.logout) await SL.logout({ provider: 'google' }); } catch (e) {} }
     this.localSignOut();
     if (mobileMode) mobGoHome(); else backToMainMenu();
     this.updateUI();
@@ -6347,7 +6401,8 @@ const VTX = window.VTX = {
     if (row) row.style.display = on && this.session ? '' : 'none';
     const info = document.getElementById('vtx-account-info');
     if (info && this.session && this.session.user) {
-      info.textContent = (this.session.user.email || '') + ' · ' + (prem ? '⭐ Premium' : 'Demo');
+      info.textContent = ALPHA ? this.alphaUserName() + ' · ⭐ VIP (Alfa)'
+        : (this.session.user.email || '') + ' · ' + (prem ? '⭐ Premium' : 'Demo');
     }
     document.querySelectorAll('.vtx-demo-home').forEach(el => { el.style.display = on && this.session && !prem ? '' : 'none'; });
   },
@@ -6952,7 +7007,7 @@ function debugLaunchCase(caseKey, forceEmergency) {
   });
   document.querySelectorAll('.exam-btn').forEach(b => b.classList.remove('done'));
   // New micro buttons reset
-  ['ex-stoolmicro','ex-skinmicro','ex-biopsy'].forEach(id => { const b = document.getElementById(id); if(b) b.classList.remove('done'); });
+  ['ex-stoolmicro','ex-skinmicro','ex-biopsy','ex-effusion'].forEach(id => { const b = document.getElementById(id); if(b) b.classList.remove('done'); });
   document.getElementById('monitor-output').innerHTML = '<div class="empty-state"><span class="e-icon">📡</span>Muayene başladığında sonuçlar<br>burada görünecek.</div>';
   document.getElementById('hemogram-preview').innerHTML = 'Henüz hemogram istenmedi.';
 
@@ -7109,6 +7164,24 @@ document.addEventListener('visibilitychange', function() {
     <div class="lg-note">Giriş bilgilerin yalnızca hesabını ve aboneliğini tanımak için kullanılır.</div>
   </div>
 </div>
+<script>
+// Alfa sürümünde Google butonu yerine kullanıcı adı + şifre formu
+if (window.VETTEX_ALPHA) (function () {
+  const box = document.getElementById('login-box');
+  box.innerHTML = `
+    <div class="lg-logo">VetTEX</div>
+    <div class="lg-sub">ALFA TEST SÜRÜMÜ</div>
+    <p class="lg-text">Sana verilen kullanıcı adı ve şifreyle giriş yap.<br>Alfa testinde <b>tüm vakalar açık</b>.</p>
+    <form id="login-alpha" onsubmit="return VTX.signInPassword(event)" autocomplete="on">
+      <input type="text" id="login-user" placeholder="Kullanıcı adı" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false">
+      <input type="password" id="login-pass" placeholder="Şifre" autocomplete="current-password">
+      <button type="submit" id="login-submit">Giriş yap</button>
+    </form>
+    <div id="login-error"></div>
+    <div class="lg-note">Hesabın yoksa VetTEX ekibinden iste.</div>`;
+  document.title = 'VetTEX Alfa';
+})();
+</script>
 
 <div id="reg-overlay">
   <div id="reg-box">
