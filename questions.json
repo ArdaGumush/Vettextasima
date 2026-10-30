@@ -572,7 +572,7 @@
             "id": "kulak_1",
             "q": "Kulağında koyu renkli kir, akıntı veya kötü bir koku var mı?",
             "default": "Kulak içi temiz ve kokusuz.",
-            "ifSymptom": "Kulağının içine bakmadım."
+            "ifSymptom": "Kulağının içinde kir ya da akıntı görmedim."
           },
           {
             "id": "kulak_2",
@@ -638,7 +638,7 @@
           {
             "id": "kene_pire_2",
             "q": "Düzenli iç ve dış parazit uygulamaları güncel olarak yapılıyor mu?",
-            "default": "Evet, tüm aşı ve ilaç uygulamaları güncel."
+            "default": "Evet, iç ve dış parazit uygulamaları düzenli yapılıyor."
           },
           {
             "id": "kene_pire_3",
@@ -730,7 +730,7 @@
           {
             "id": "hastalik_3",
             "q": "Doğuştan gelen genetik veya ortopedik bir kusuru bulunuyor mu?",
-            "default": "Hayır, tamamen sağlıklı.",
+            "default": "Hayır, bildiğimiz doğuştan bir sorunu yok.",
             "ifSymptom": "Bildiğim başka bir sorunu yok."
           },
           {
@@ -766,7 +766,7 @@
           {
             "id": "ameliyat_4",
             "q": "Eski cerrahi dikiş hatlarında açılma, fıtıklaşma veya şişlik hissediliyor mu?",
-            "default": "Ameliyat izi sorunsuz kapandı."
+            "default": "Hayır, öyle bir açılma veya şişlik yok."
           }
         ]
       },
@@ -777,13 +777,13 @@
             "id": "i̇lac_1",
             "q": "Şu anda düzenli olarak kullandığı herhangi bir reçeteli ilaç var mı?",
             "default": "Hayır, ilaç kullanmıyor.",
-            "ifSymptom": "Şu an düzenli verdiğim bir ilaç var mı, emin değilim."
+            "ifSymptom": "Şu an düzenli kullandığı bir ilaç yok."
           },
           {
             "id": "i̇lac_2",
             "q": "Son günlerde sizin verdiğiniz bir ağrı kesici veya vitamin oldu mu?",
             "default": "Hayır, hiçbir takviye veya ilaç vermedim.",
-            "ifSymptom": "Tam hatırlamıyorum."
+            "ifSymptom": "Hayır, ağrı kesici ya da vitamin vermedik."
           },
           {
             "id": "i̇lac_3",
@@ -843,19 +843,19 @@
             "id": "enerji_2",
             "q": "Sürekli yatma, uyuma veya odanın köşesine saklanma eğiliminde mi?",
             "default": "Hayır, normal günlük rutinini sürdürüyor.",
-            "ifSymptom": "Son günlerde çoğunlukla yatıyor gibi, tam takip edemedim."
+            "ifSymptom": "Eskisinden daha çok yatıyor ve uyuyor."
           },
           {
             "id": "enerji_3",
             "q": "Sizi kapıda karşılama ve ilgi isteme heyecanı devam ediyor mu?",
             "default": "Evet, her zamanki gibi heyecanla karşılıyor.",
-            "ifSymptom": "Son günlerde buna dikkat edemedim."
+            "ifSymptom": "Eskisi kadar heyecanlı değil, ilgi de pek istemiyor."
           },
           {
             "id": "enerji_4",
             "q": "Çevreye karşı genel bir ilgisizlik veya donukluk seziyor musunuz?",
             "default": "Hayır, çevresine karşı gayet uyanık.",
-            "ifSymptom": "Çevresine ilgisine pek dikkat edemedim."
+            "ifSymptom": "Evet, eskisine göre daha durgun ve ilgisiz."
           },
           {
             "id": "enerji_5",
@@ -888,7 +888,9 @@
             "id": "agirlik_4",
             "q": "Tasması veya göğüs tasması vücuduna bol veya dar gelmeye başladı mı?",
             "default": "Tasmaları her zamanki gibi tam oturuyor.",
-            "ifSymptom": "Tasmasına dikkat etmedim."
+            "ifSymptom": "Tasmasına dikkat etmedim.",
+            "defaultCat": "Tasma takmıyor ama vücut hatlarında bir değişiklik fark etmedik.",
+            "ifSymptomCat": "Tasma takmıyor, o yüzden bu şekilde anlayamadım."
           }
         ]
       },
@@ -968,7 +970,7 @@
           {
             "id": "diger_hayvanlar_1",
             "q": "Evde veya dışarıda diğer evcil hayvanlarla iletişimi her zamanki gibi mi?",
-            "default": "Diğer hayvanlarla gayet uyumlu."
+            "default": "Diğer hayvanlarla karşılaştığında her zamanki gibi davranıyor."
           },
           {
             "id": "diger_hayvanlar_2",
@@ -983,7 +985,7 @@
           {
             "id": "diger_hayvanlar_4",
             "q": "Beraber yaşadığı diğer hayvanlarla mama veya oyuncak kavgası yaşandı mı?",
-            "default": "Hayır, sorunsuzca paylaşıyorlar."
+            "default": "Hayır, mama ya da oyuncak kavgası yaşanmadı."
           },
           {
             "id": "diger_hayvanlar_5",

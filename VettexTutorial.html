@@ -9,7 +9,7 @@
 (function () {
   try {
     var replay = new URLSearchParams(location.search).has('replay');
-    if (!replay && localStorage.getItem('vettex-tutorial-done') === '1') location.replace('VetCaseClaudeKontrol.html');
+    if (!replay && localStorage.getItem('vettex-tutorial-done') === '1') location.replace('VetTEX_Genel_Kullanım.html');
   } catch (e) {}
 })();
 </script>
@@ -116,7 +116,7 @@
 </head>
 <body>
 
-<iframe id="app" src="VetCaseClaudeKontrol.html" title="VetTEX"></iframe>
+<iframe id="app" src="VetTEX_Genel_Kullanım.html" title="VetTEX"></iframe>
 
 <div id="tut-layer">
   <div class="shade" id="sh-top"></div>
@@ -209,7 +209,7 @@ function clickPen(el) { if (el) el.click(); }
 const STEPS_D = [
   // ── AYARLAR ──
   { ch: 'Hoş geldin', mode: 'click',
-    text: `<strong>VetTEX Dijital Eğitici Veteriner Klinik Simülasyonu'na hoş geldiniz!</strong><br>Ayarlarla başlayalım: parlayan <strong>Ayarlar</strong> sekmesine dokun.`,
+    text: `<strong>VetTEX Dijital Eğitici Veteriner Klinik Simülasyonu'na hoş geldin!</strong><br>Ayarlarla başlayalım: parlayan <strong>Ayarlar</strong> sekmesine dokun.`,
     target: () => q(`button.wm-tab[onclick="wmTab('ayarlar')"]`),
     fallback: () => ev(`wmTab('ayarlar')`) },
 
@@ -521,7 +521,7 @@ const mq = sel => q(sel);
 const STEPS_M = [
   // ── AYARLAR ──
   { ch: 'Hoş geldin', mode: 'click',
-    text: `<strong>VetTEX Dijital Eğitici Veteriner Klinik Simülasyonu'na hoş geldiniz!</strong><br>Ayarlarla başlayalım: <strong>Ayarlar</strong>'a dokun.`,
+    text: `<strong>VetTEX Dijital Eğitici Veteriner Klinik Simülasyonu'na hoş geldin!</strong><br>Ayarlarla başlayalım: <strong>Ayarlar</strong>'a dokun.`,
     target: () => mq(`#mob-home-screen button[onclick="mobOpenSettings()"]`),
     fallback: () => ev(`mobOpenSettings()`) },
   { ch: 'Ayarlar', mode: 'next',
@@ -1002,7 +1002,7 @@ function finish() {
 }
 
 // Kliniğe gir: oyunu tutorial çerçevesi olmadan, kullanıcının kendi ayarlarıyla aç
-$('btn-enter').addEventListener('click', () => { location.replace('VetCaseClaudeKontrol.html'); });
+$('btn-enter').addEventListener('click', () => { location.replace('VetTEX_Genel_Kullanım.html'); });
 $('btn-replay').addEventListener('click', () => { location.replace('VettexTutorial.html?replay=1'); });
 
 // ═══════════════════════════════════════════════════════════════

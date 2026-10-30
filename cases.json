@@ -13,7 +13,7 @@
         "Sahibi tedirgin bir sesle anlatıyor:\n\n\"4 gündür tuvalette hiçbir şey yapmadı. Karnı da sertleşti sanki, dokunduğumda irkildi. Normalde çok hareketliydi, şimdi sadece yatıyor.\"",
         "Sahibi suçluluk duyarak anlatıyor:\n\n\"Beş gün önce oynarken bir iplik yuttuğunu gördüm ama fazla önem vermedim. Sonrasında yememeye, kusmaya başladı. Şimdi dışkı da yapmıyor, çok korktum.\"",
         "Sahibi hızlı hızlı anlatıyor:\n\n\"Önce iştahı kesildi, sonra kusmaya başladı. Kustuğunda sarımsı, köpüklü bir şey geliyor. 3 gündür böyle, giderek zayıflıyor gibi görünüyor.\"",
-        "Sahibi düşünerek anlatıyor:\n\n\"Aslında 2 gün önce biraz halsiz göründü ama önemsememiştim. Dün hiç yemedi, bu sabah da kusunca çok korktum. Karnına dokunduğumda da ağrıyor gibi oluyor.\""
+        "Sahibi düşünerek anlatıyor:\n\n\"Aslında 3 gün önce iştahı azaldı ama önemsememiştim. 2 gündür halsiz, hiçbir şey yemiyor; bu sabah yine kusunca çok korktum. Karnına dokunduğumda da ağrıyor gibi oluyor.\""
       ]
     },
     "diffQuestions": [
@@ -382,19 +382,25 @@
     },
     "questionAnswers": {
       "kusma_1": "İplik yuttuktan sonra başladı ve son 3 gündür sürekli kusuyor. Günde 3 ila 5 kez sarı, köpüklü sıvı çıkarıyor.",
-      "kusma_2": "Kusmuk sarımsı, köpüklü ve safralıdır. İçerisinde mama artığı veya yabancı cisim görülmemiştir.",
-      "kusma_3": "3 gündür hiçbir şey yemediği için kusma yemekle ilişkili değildir.",
+      "kusma_2": "Sarımsı, köpüklü bir sıvı geliyor; içinde mama ya da başka bir şey görmedim.",
+      "kusma_3": "Hayır; 3 gündür hiçbir şey yemediği halde kusuyor.",
       "dişkilama_1": "Son 4 gündür hiç dışkılamadı. Öncesinde ise normal kıvamda dışkılıyordu.",
       "dişkilama_4": "Son 4 gündür hiç dışkılamadı. Olay öncesinde günde 1 kez yapıyordu.",
       "istah_1": "Evet, 3 gündür hiçbir şey yemiyor.",
       "istah_3": "Su içmeyi bıraktı denecek kadar azaldı. Son 2 gündür neredeyse hiç su içmedi.",
       "karin_2": "Evet, karnına dokunulduğunda irkiliyor ve acı çekiyor. Kaldırılmaya çalışıldığında da tepki veriyor.",
-      "karin_3": "Karın bölgesinde belirgin sertlik mevcuttur.",
-      "agri_1": "Karnına dokunulduğunda ağrısı vardır, irkilir ve kaldırılmaya çalışıldığında acı çeker.",
+      "karin_3": "Gurultu duymadım ama karnı sert gibi geliyor.",
+      "agri_1": "Karnına dokununca irkiliyor; kucağa almaya çalışınca da canı yanıyor.",
       "davranis_5": "Evet, yün yumağı, kapak, bozuk para gibi cisimlerle oynamayı çok sever ve zaman zaman yutabiliyor.",
       "enerji_1": "Normalde çok hareketlidir ama 2 gündür halsiz, sadece yatıyor.",
       "kene_pire_2": "Aşıları güncel ama son 6 aydır parazit ilacı vermedik.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti.",
+      "i̇stah_2": "Hayır, 3 gündür mamasına hiç dokunmadı.",
+      "enerji_2": "Evet, 2 gündür hep yatıyor, köşesinden pek çıkmıyor.",
+      "enerji_3": "Kapıya gelmedi; yattığı yerden başını kaldırıp baktı sadece.",
+      "enerji_4": "Evet, eskisine göre çok donuk ve ilgisiz.",
+      "agirlik_1": "Tartmadık ama son günlerde zayıflamış gibi görünüyor.",
+      "diskilama_3": "Kuma gidip ıkındığını görmedim; günlerdir hiç dışkı yapmıyor."
     }
   },
   "dog": {
@@ -407,10 +413,10 @@
       "demog": "Yaş: **7 yaşında** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmamış**",
       "vaccine": "Aşılar: **Son yıl yapılmış (5'li karma + Kuduz + Leptospira)** | Parazit ilacı: **Aylık uygulanıyor**",
       "complaint": [
-        "Sahibi şaşkınlıkla anlatıyor:\n\n\"2 haftadır su kabını sürekli boşaltıyor, doldurduğumda hemen içiyor. Bir de çok fazla idrara çıkıyor, geceleri bile kalkıyor. Normalde böyle değildi hiç.\"",
+        "Sahibi şaşkınlıkla anlatıyor:\n\n\"2-3 haftadır su kabını sürekli boşaltıyor, doldurduğumda hemen içiyor. Bir de çok fazla idrara çıkıyor, geceleri bile kalkıyor. Normalde böyle değildi hiç.\"",
         "Sahibi kafası karışmış bir ifadeyle anlatıyor:\n\n\"Her zamankinin iki katı yiyor ama yine de zayıflıyor. Baktım tartıya, 3 kilosunu kaybetmiş son ayda. Nasıl olur, bu kadar yemesine rağmen?\"",
-        "Sahibi fark ettiği değişikliği anlatıyor:\n\n\"Önce gözlerinin bulanıklaştığını fark ettim, bir şeylere çarpıyor gibi oldu. Sonra suyu ve idrara çıkmayı çok artırdı. Hepsini birden görünce korktum.\"",
-        "Sahibi uzun süredir devam eden durumu anlatıyor:\n\n\"Bir aydır çok su içiyor, çok idrara çıkıyor. Sürekli aç, yedirmesem çılgına dönüyor. Ama buna rağmen giderek inceliyor, kasları da eridi gibi.\"",
+        "Sahibi fark ettiği değişikliği anlatıyor:\n\n\"Birkaç haftadır çok su içiyor, çok idrara çıkıyordu, pek önemsemedik. Son günlerde gözleri de bulanıklaştı, bir şeylere çarpıyor gibi oldu. Hepsini birden görünce korktum.\"",
+        "Sahibi uzun süredir devam eden durumu anlatıyor:\n\n\"2-3 haftadır çok su içiyor, çok idrara çıkıyor. Sürekli aç, yedirmesem çılgına dönüyor. Ama buna rağmen giderek inceliyor, kasları da eridi gibi.\"",
         "Sahibi geceleri yaşadığı sorunu anlatıyor:\n\n\"Geceleri defalarca uyanıyor, su içiyor. Evde tuvaletsizlik de başladı, çünkü tuvalete yetişemiyor. Gündüzleri de çok su içiyor ama hiç idrara yetişemiyor bazen.\""
       ]
     },
@@ -425,7 +431,7 @@
       },
       {
         "q": "Ailesinde diyabet öyküsü var mı?",
-        "a": "Sahibi bilmiyor, petshoptan almış. Ama köpek obez (8 kg fazla) olduğunu söylüyor."
+        "a": "Bilmiyoruz, petshoptan almıştık. Eskiden biraz kiloluydu ama son ayda çok zayıfladı."
       },
       {
         "q": "İdrarda koku veya renk değişikliği?",
@@ -778,14 +784,23 @@
     },
     "questionAnswers": {
       "istah_1": "Hayır, hiç azalmadı, aksine her zamankinin iki katı mama yiyor.",
-      "istah_3": "Evet, normalde yarım litre içerken son 2 haftadır günde 2-3 litre içiyor, geceleri bile kalkıp su arıyor.",
+      "istah_3": "Evet, normalde günde yarım litre içerken son 2-3 haftadır 2-3 litre içiyor, geceleri bile kalkıp su arıyor.",
       "uroloji_idrar_1": "Tam saymadım ama eskiye göre çok fazla yapıyor, geceleri bile çıkmak istiyor.",
       "uroloji_idrar_4": "Evet, idrarı çok açık sarı ve bazen tatlımsı bir kokusu geliyor.",
       "uroloji_kaza_1": "Evet, özellikle geceleri yetişemeyip bazen eve kaçırıyor.",
       "agirlik_1": "Evet, bu kadar çok yemesine rağmen son bir ayda 3 kilo verdi, kasları da eridi gibi.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
       "goz_4": "Gözleri son günlerde bulanıklaştı, etraftaki eşyalara çarpıp duruyor.",
-      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde.",
+      "i̇stah_2": "Evet, saniyesinde bitirip daha fazlasını istiyor.",
+      "agirlik_2": "Kaburgaları eskisinden çok daha kolay ele geliyor.",
+      "agirlik_4": "Tasması biraz bollaştı.",
+      "kaza_3": "Evet, kapıya yetişemeden yaptığı oluyor.",
+      "kaza_4": "Evet, yıllardır evde kaza yapmazdı; son haftalarda eve kaçırmaya başladı.",
+      "goz_1": "Akıntı yok ama gözleri bulanık görünüyor.",
+      "goz_5": "Göz bebeklerinin arkası beyazımsı-bulanık görünüyor; kanama görmedim.",
+      "bilinc_3": "Bilinci yerinde ama gözleri bulanık olduğu için eşyalara çarpıyor.",
+      "enerji_1": "Eskisine göre biraz durgun; gözleri bulanıklaşınca daha da çekingen oldu."
     }
   },
   "fip": {
@@ -796,13 +811,13 @@
     "anamnez": {
       "name": "İsim: **Duman** | Irk: **British Shorthair**",
       "demog": "Yaş: **1 yaşında** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmış (Orşiektomi)**",
-      "vaccine": "Aşılar: **Güncel (Karma, Kuduz, FeLV)** ✓ | Parazit ilacı: **Güncel** ✓",
+      "vaccine": "Aşılar: **Güncel (Karma, Kuduz, FeLV)** | Parazit ilacı: **Güncel**",
       "complaint": [
         "Sahibi sakin ama ciddi bir endişeyle anlatıyor:\n\n\"Bir süredir karnının şiştiğini fark ettik. Önce kilo aldı sandık ama tam tersi — vücudu inceldi, sadece karnı büyüdü. Bir de ateşi var, düşmüyor bir türlü. Yemek yemiyor neredeyse.\"",
-        "Sahibi üzgün bir ifadeyle anlatıyor:\n\n\"Haftalar önce hafifçe iştahını kaybetti, biraz yorgun göründü. Ama son birkaç gündür karnı şişti, yürürken zorlanıyor. İçinden bir şeyler birikmekte olan sıvı var sanki.\"",
+        "Sahibi üzgün bir ifadeyle anlatıyor:\n\n\"Haftalar önce hafifçe iştahını kaybetti, biraz yorgun göründü. Ama son bir iki haftadır karnı şişti, yürürken zorlanıyor. İçinden bir şeyler birikmekte olan sıvı var sanki.\"",
         "Sahibi antibiyotik sürecini anlatıyor:\n\n\"Ateşi vardı, antibiyotik verdiler geçmedi. Şimdi karnı günden güne şişiyor. Yemiyor içmiyor, sadece köşede yatıyor. Verilen ilaçlar da tutmuyor, çaresiz kaldım.\"",
         "Sahibi dikkat ettiği detayı anlatıyor:\n\n\"Önce küçük bir şey gibi başladı — az yemek, biraz yorgunluk. Ama 10 gün içinde karnı çok şişti. Kaldırdığımda altında sıvı varmış gibi, ağır geliyor.\"",
-        "Sahibi durumu özetliyor:\n\n\"3 haftadır iştahsız, halsiz, kilo veriyor. Son 1 haftadır da karnı şişmeye başladı. Hiç dışarı çıkmıyor, sadece kucağımda yatıyor. Sanki gitgide içine kapanıyor.\""
+        "Sahibi durumu özetliyor:\n\n\"3 haftadır iştahsız, halsiz, kilo veriyor. Son 1 haftadır da karnı şişmeye başladı. Ortalıkta hiç dolaşmıyor, sadece kucağımda yatıyor. Sanki gitgide içine kapanıyor.\""
       ]
     },
     "diffQuestions": [
@@ -1186,7 +1201,19 @@
       "agri_3": "Evet, karnı şiştiğinden beri yükseğe zıplamıyor, merdivende hemen yoruluyor.",
       "agirlik_3": "Karnı büyüdüğü için önce kilo aldı sandık ama aslında vücudu inceldi.",
       "i̇lac_4": "Evet, ateşi için antibiyotik ve ateş düşürücü verildi ama işe yaramadı.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (kastrasyon) ve sorunsuz iyileşti."
+      "ameliyat_1": "Evet, kısırlaştırıldı (kastrasyon) ve sorunsuz iyileşti.",
+      "i̇stah_2": "Hayır, birkaç lokma yiyip bırakıyor.",
+      "i̇lac_1": "Veterinerin verdiği antibiyotiği bitirdik; şu an düzenli verdiğim bir ilaç yok.",
+      "i̇lac_2": "Kendim bir şey vermedim; ateş düşürücüyü de veteriner vermişti.",
+      "agirlik_2": "Evet, sırtı ve kaburgaları eskisinden belirgin; ama karnı şiş.",
+      "goz_5": "Gözlerinin içi eskisine göre bulanık görünüyor; kanama görmedim.",
+      "yuruyus_1": "Dengesi yerinde ama karnı ağır olduğu için yavaş yürüyor.",
+      "yuruyus_4": "Karnı şiştiğinden beri yürürken zorlanıyor, hiç koşmuyor.",
+      "enerji_3": "Artık kapıya gelmiyor, yattığı yerden bakıyor.",
+      "enerji_4": "Evet, gitgide içine kapanıyor.",
+      "diger_hayvanlar_1": "Evde başka hayvan yok.",
+      "diger_hayvanlar_4": "Evde başka hayvan yok.",
+      "goz_1": "Akıntı yok ama gözleri eskisine göre bulanık bakıyor."
     }
   },
   "parvo": {
@@ -1197,13 +1224,13 @@
     "anamnez": {
       "name": "İsim: **Çakıl** | Irk: **Alman Çoban Köpeği**",
       "demog": "Yaş: **4 aylık** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmamış**",
-      "vaccine": "Aşılar: **YOK — Hiç aşılanmamış** 🔴 | İç parazit ilacı: **1 ay önce uygulanmış** ✓",
+      "vaccine": "Aşılar: **Hiç yapılmamış** | İç parazit ilacı: **1 ay önce uygulanmış**",
       "complaint": [
         "Sahibi telaşla ve gözleri dolarak anlatıyor:\n\n\"Dün sabahtan beri durmadan kusuyor. Önce yiyecek geldi, sonra sarı bir şey. Şimdi de kanlı bir şey çıktı — çok korktum. Hiç yemiyor, sadece yatıyor.\"",
         "Sahibi paniğe kapılmış bir sesle anlatıyor:\n\n\"Köpek parkında başka köpeklerle oynadı 5 gün önce. Sonra yavaş yavaş halsizleşti, yemek yemeyi bıraktı. Bu sabah da kanlı ishal oldu, çok kötü kokuyor.\"",
         "Sahibi hızlı anlatıyor:\n\n\"Dün gece ateşi vardı, çok sıcaktı. Sabah kalktım, çevresine kusmuş ve ishal yapmış. Kalkmak bile istemiyor, seslensem bile başını kaldırmıyor.\"",
         "Sahibi endişeyle anlatıyor:\n\n\"2 gündür hiçbir şey yemiyor. Önce sadece halsizdi, sonra kusma başladı. Bu sabah dışkısında kan gördüm, çok kötü kokuyordu. Çok genç bir köpek, bir şey olmasın diye korktum.\"",
-        "Sahibi suçlulukla anlatıyor:\n\n\"Aşılarını tam yaptırmadım, zaman bulamadım. Şimdi bir haftadır iştahsız ve bugün kanlı ishal oldu. Kusması da var, duramıyor. Çok pişmanım, geç mi kaldık?\""
+        "Sahibi suçlulukla anlatıyor:\n\n\"Aşılarını hiç yaptırmadım, zaman bulamadım. Birkaç gündür iştahsız, dünden beri de kusması durmuyor; bugün bir de kanlı ishal oldu. Çok pişmanım, geç mi kaldık?\""
       ]
     },
     "diffQuestions": [
@@ -1577,15 +1604,15 @@
     "questionAnswers": {
       "kusma_1": "Dün sabahtan beri neredeyse saat başı durmadan kusuyor.",
       "kusma_2": "Önce yediği mamayı çıkardı, sonra sarı sıvıya döndü, şimdi ise kanlı kusuyor.",
-      "kusma_3": "Zaten dünden beri hiçbir şey yemiyor, su içirmeye çalıştığımızda bile hemen geri çıkarıyor.",
+      "kusma_3": "Zaten iki gündür hiçbir şey yemiyor; su içirmeye çalıştığımızda bile hemen geri çıkarıyor.",
       "dişkilama_1": "Durduramadığımız çok şiddetli bir ishali var ve inanılmaz kötü kokuyor.",
       "dişkilama_2": "Evet, dışkısı tamamen kanlı geliyor.",
-      "istah_1": "Evet, bir haftadır iştahsızdı zaten ama son iki gündür ağzına tek lokma koymadı.",
+      "istah_1": "Evet, 3-4 gündür iştahı azdı ama son iki gündür ağzına tek lokma koymadı.",
       "istah_3": "Su bile tutamıyor midesinde, içtiği gibi kusuyor.",
       "karin_2": "Evet, karnına dokunduğumuz anda acıyla inliyor ve elimizden kaçmaya çalışıyor.",
       "enerji_1": "Aşırı halsiz, yerinden hiç kalkmak istemiyor; seslensek bile kafasını bile kaldıramıyor.",
       "agri_1": "Özellikle karnına dokunduğumuzda çok acı çekiyor, inleyip kaçmaya çalışıyor.",
-      "gecmis_asi_1": "Hayır, aşıları ne yazık ki tam yaptırılmamıştı.",
+      "gecmis_asi_1": "Hayır, hiç aşı yaptırmadık, zaman bulamadık.",
       "diger_hayvanlar_5": "Evet, 5 gün önce köpek parkında diğer köpeklerle, geçen hafta da bahçede sahipsiz bir yavruyla oynadı.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
       "disari_2": "Evet, 5 gün önce köpek parkında diğer köpeklerle, geçen hafta da bahçede sahipsiz bir yavruyla oynadı.",
@@ -1593,7 +1620,17 @@
       "asi_2": "Hiç aşı yapılmadı.",
       "asi_3": "Hiç aşı yapılmadığı için bilmiyoruz.",
       "asi_4": "Hayır, karnesi yok.",
-      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde.",
+      "i̇stah_2": "Hayır, iki gündür hiç yemiyor.",
+      "yuruyus_1": "Ayağa kalkınca sallanıyor, çok halsiz.",
+      "yuruyus_4": "Kalkmak bile istemiyor, yürüyecek hali yok.",
+      "bilinc_1": "Seslenince gözlerini açıyor ama başını kaldıramıyor.",
+      "agri_2": "Kalkamıyor bile.",
+      "nefes_4": "Hareket edecek hali yok.",
+      "davranis_4": "Huzursuz; karın ağrısından ara ara inliyor.",
+      "enerji_2": "Evet, sürekli yatıyor.",
+      "enerji_3": "Hayır, kapıya gelecek hali yok.",
+      "enerji_4": "Evet, çevresine karşı çok ilgisiz."
     }
   },
   "hernia": {
@@ -1605,13 +1642,13 @@
     "anamnez": {
       "name": "İsim: **Muezza** | Irk: **Tekir (Domestic Shorthair)**",
       "demog": "Yaş: **1 yaşında** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmamış**",
-      "vaccine": "Aşılar: **Güncel değil** — Son aşı 6 aylıkken yapılmış ⚠ | Parazit ilacı: **Bilinmiyor**",
+      "vaccine": "Aşılar: **Güncel değil** (son aşı 6 aylıkken) | Parazit ilacı: **Bilinmiyor**",
       "complaint": [
         "Sahip hızlı ve panikle anlatıyor, sesi titriyor:\n\n\"D-dün gece 3. kattan düştü. Çok korktuk. Bir yere saklandı, bulamadık. Sabah onu bulduk ve— nefes alamıyor. Ağzını açıp kapatıyor sürekli. Hiç böyle görmedim onu, lütfen yardım edin!\"",
         "Sahip ağlayarak anlatıyor:\n\n\"Balkondan düştü gece, tam göremedim. Sabah bulduğumda çok kötüydü — nefes almakta zorlanıyor, ağzıyla soluk alıyor. Karnı da garip görünüyor, içi boşalmış gibi.\"",
         "Sahip şokta anlatıyor:\n\n\"3. kattan düştü dün gece. Saklandı, sabaha kadar bulamadık. Sabah kapı arkasında buldum — solunum çok hızlı ve zor, mukozaları morarmış gibi. Lütfen çabuk bakın.\"",
-        "Sahip panikte anlatıyor:\n\n\"Yüksekten düştü dün gece. Burnundan pembe sıvı geldi o an, çok korktum. Sabah bulduk onu, nefes alırken karnı tuhaf hareket ediyor, göğsü çalışmıyor sanki.\"",
-        "Sahip derin bir üzüntüyle anlatıyor:\n\n\"Balkondan düşmesini engelleyemedim. Sabah uyandım, arka bacaklarını zar zor kullanıyordu, nefes almakta çok zorlanıyordu. Hemen geldim, bir an bile bekleyemedim.\""
+        "Sahip panikte anlatıyor:\n\n\"Yüksekten düştü dün gece. Sabah bulduğumuzda burnunun etrafında pembe bir sıvı vardı, çok korktum. Nefes alırken karnı tuhaf hareket ediyor, göğsü çalışmıyor sanki.\"",
+        "Sahip derin bir üzüntüyle anlatıyor:\n\n\"Dün gece balkondan düşmesini engelleyemedim. Sabah bulduğumuzda arka bacaklarını zar zor kullanıyordu, nefes almakta çok zorlanıyordu. Hemen geldim, bir an bile bekleyemedim.\""
       ]
     },
     "diffQuestions": [
@@ -1996,7 +2033,22 @@
       "asi_1": "Hayır, en son 6 aylıkken aşılandı, sonra devam etmedik.",
       "asi_2": "Yaklaşık 6 ay önce.",
       "asi_4": "Karnesi var ama son aşıları işlenmemiş.",
-      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde.",
+      "burun_1": "Sabah bulduğumuzda burnunun etrafında pembe bir sıvı vardı; şu an akıntı yok.",
+      "nefes_4": "Kıpırdamıyor bile; birkaç adım atınca nefesi iyice daralıyor.",
+      "bilinc_1": "Seslenince bakıyor ama yerinden kalkmıyor.",
+      "davranis_2": "Düştükten sonra çok korkmuş, saklanmıştı.",
+      "davranis_3": "Düştükten sonra kapının arkasına saklanmıştı; şimdi kıpırdamadan yatıyor.",
+      "agri_1": "Göğsüne ve karnına dokununca huzursuzlanıyor.",
+      "agri_2": "Kalkmakta çok zorlanıyor.",
+      "agri_3": "Hiç zıplamıyor, kıpırdamadan yatıyor.",
+      "agri_4": "Yattığı yerde dirseklerini yana açmış, kıpırdamadan duruyor.",
+      "enerji_1": "Düşmeden önce gayet enerjikti; şimdi hiç hareket etmiyor.",
+      "enerji_3": "Hayır, yattığı yerden kalkmıyor.",
+      "enerji_4": "Çevresine ilgisiz, sanki sadece nefes almaya çalışıyor.",
+      "disari_1": "Balkona çıkabiliyordu; dün gece oradan düştü ve sabaha kadar bulamadık.",
+      "i̇stah_2": "Hayır, sabahtan beri hiçbir şey yemedi.",
+      "goz_6": "Sararma yok ama diş etleri soluk, hatta morumsu gibi."
     }
   },
   "uro": {
@@ -2007,11 +2059,11 @@
     "anamnez": {
       "name": "İsim: **Leo** | Irk: **İran Kedisi (Persian)**",
       "demog": "Yaş: **3 yaşında** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmış (Orşiektomi)**",
-      "vaccine": "Aşılar: **Güncel** ✓ | Parazit ilacı: **Güncel** ✓",
+      "vaccine": "Aşılar: **Güncel** | Parazit ilacı: **Güncel**",
       "complaint": [
-        "Sahibi paniğe yakın bir sesle anlatıyor:\n\n\"Tuvalete gidip geliyor ama hiçbir şey çıkmıyor. 2 saattir böyle, çok ağlıyor. Normalde sessizdir, böyle ağlamaz hiç. Çok ağrısı var galiba.\"",
+        "Sahibi paniğe yakın bir sesle anlatıyor:\n\n\"Tuvalete gidip geliyor ama hiçbir şey çıkmıyor. Gece yarısından beri böyle, çok ağlıyor. Normalde sessizdir, böyle ağlamaz hiç. Çok ağrısı var galiba.\"",
         "Sahibi fark ettiği durumu anlatıyor:\n\n\"Dün gece kuma girip çıkmaya başladı, bir türlü çıkamadı. Bu sabah da devam ediyor. İdrar yapmıyor, karnı sertleşti sanki. Bir de kanlı bir şey fark ettim kumun üzerinde.\"",
-        "Sahibi üzgün bir sesle anlatıyor:\n\n\"Dün sabahtan beri tuvalete girip çıkıyor ama bir damla bile çıkmıyor. Öne eğilip inliyor, çok acı çekiyor. Hiç yemedi bu süreçte. Gece de ağladı durdu.\"",
+        "Sahibi üzgün bir sesle anlatıyor:\n\n\"Dün akşamdan beri tuvalete girip çıkıyor; gece yarısından beri bir damla bile çıkmıyor. Öne eğilip inliyor, çok acı çekiyor. Hiç yemedi bu süreçte. Gece de ağladı durdu.\"",
         "Sahibi telaşla anlatıyor:\n\n\"Sabah tuvalette tuhaf ses çıkardığını duydum. Baktım, ıkınıyor ama hiçbir şey gelmiyor. Altında küçük kanlı leke var. Bu kadar ağlamadı hiç, acısından mıdır bilmiyorum.\"",
         "Sahibi gece yaşadığı durumu anlatıyor:\n\n\"Gece yarısı ağlamaya başladı, uyandırdı beni. Tuvalete götürdüm, ıkındı ama çıkmadı. Sabah tekrar aynı şey, karın bölgesi çok gergin. Çok korktum, ilk defa böyle görüyorum.\""
       ]
@@ -2388,8 +2440,8 @@
       "effusion": "Abdominosentez: USG eşliğinde ponksiyon yapıldı, sıvı elde edilemedi. Rivalta testi yapılamadı."
     },
     "questionAnswers": {
-      "uroloji_idrar_1": "Dün akşam az yapıyordu ama sabahtan beri hiç yapamıyor, sadece son iki saatte en az 6-7 kez kuma girdi.",
-      "uroloji_idrar_2": "Dün akşam çok az yapıyordu ama dünden beri damla bile çıkmıyor, ıkınsa da boş dönüyor.",
+      "uroloji_idrar_1": "Dün akşam az az yapıyordu ama gece yarısından beri hiç yapamıyor; sadece son iki saatte en az 6-7 kez kuma girdi.",
+      "uroloji_idrar_2": "Dün akşam damla damla yapıyordu, gece yarısından beri hiç çıkmıyor; ıkınsa da boş dönüyor.",
       "uroloji_idrar_3": "Evet, öne eğilip çok ıkınıyor, kum kabındayken acı acı miyavlayıp inliyor.",
       "uroloji_kan_1": "İdrarını hiç yapamıyor ama altında ve kumunda kanlı lekeler gördük.",
       "uroloji_kan_4": "Evet, sabah kumun içinde kanlı izler ve lekeler vardı.",
@@ -2400,7 +2452,22 @@
       "davranis_4": "Normalde çok sessiz bir kedidir ama gece yarısından beri durmadan ağlıyor ve çok huzursuz.",
       "kusma_1": "Bir kez; sabah içtiği suyu hemen kustu.",
       "diskilama_3": "Kum kabında çok ıkınıyor ama bence çişini yapamıyor; dışkısını en son dün normal yaptı.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (kastrasyon) ve sorunsuz iyileşti."
+      "ameliyat_1": "Evet, kısırlaştırıldı (kastrasyon) ve sorunsuz iyileşti.",
+      "i̇drar_4": "Son damlalar kanlıydı.",
+      "kan_2": "Kumdan çıkınca birkaç damla kan gördüm.",
+      "enerji_1": "Dünden beri çok huzursuz ve keyifsiz.",
+      "enerji_2": "Kum kabıyla yatağı arasında gidip geliyor, rahat edemiyor.",
+      "enerji_3": "Hayır, bugün hiç ilgilenmiyor.",
+      "enerji_4": "Uyanık ama sadece ağrısıyla meşgul.",
+      "agri_1": "Karnının altına dokununca bağırıyor.",
+      "agri_4": "Evet, kambur durup karnını koruyor.",
+      "karin_2": "Evet, karnına dokununca bağırıyor.",
+      "karin_4": "Evet, öne eğilip kambur duruyor.",
+      "i̇stah_2": "Hayır, sabahtan beri hiçbir şey yemedi.",
+      "nefes_1": "Ağrıdan hızlı hızlı soluyor.",
+      "kusma_2": "Sadece içtiği su geri geldi.",
+      "kusma_3": "Yemek yemedi; sabah içtiği suyu hemen kustu.",
+      "diskilama_1": "Dün yaptığı dışkı normaldi."
     }
   },
   "ascaris": {
@@ -2803,7 +2870,9 @@
       "asi_1": "Hayır, aşıları eksik.",
       "asi_2": "Tam bilmiyoruz, eksik kaldı.",
       "asi_4": "Karnesi var ama aşıları eksik.",
-      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde.",
+      "oksuruk_3": "Öksürürken bazen boğazına bir şey kaçmış gibi öğürüyor.",
+      "diger_hayvanlar_6": "Kardeşleri de evde, onlarda böyle bir şikayet görmedim ama onlar daha iri."
     }
   },
   "demodicosis": {
@@ -2814,7 +2883,7 @@
     "anamnez": {
       "name": "İsim: **Zara** | Irk: **Siyam**",
       "demog": "Yaş: **7 yaş** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmış (OVH)**",
-      "vaccine": "Aşılar: **Güncel** | Parazit ilacı: **Düzensiz (mite kontrolü içeren ürün kullanılmamış)**",
+      "vaccine": "Aşılar: **Güncel** | Parazit ilacı: **Düzensiz**",
       "complaint": [
         "Sahibi üzgün bir ifadeyle anlatıyor:\n\n\"Gözlerinin etrafındaki ve başındaki tüyler tamamen döküldü. Çok kötü görünüyor, sanki hasta gibi. Deri de kabuklanmış.\"",
         "Sahibi şaşkınlıkla anlatıyor:\n\n\"Derisi çok fazla pullanıyor, sanki her yerinden kepek dökülüyor. Hiç böyle olmamıştı, ne yaptıysam geçmedi.\"",
@@ -3178,8 +3247,17 @@
       "diger_hayvanlar_6": "Bu sorun sadece bu kedimde var, evdeki diğer kedilerde hiçbir belirti görülmedi.",
       "i̇lac_4": "Evet, geçen ay alerji şüphesiyle kortizon iğnesi yapılmıştı, zaten dökülmeler de ondan sonra arttı.",
       "i̇drar_1": "Evet, son zamanlarda çok sık kuma gidiyor, topaklar da büyüdü.",
-      "kene_pire_2": "Düzenli değil; akarlara karşı etkili bir ürün kullanmadık.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
+      "kene_pire_2": "Düzenli değil, aklımıza geldikçe pire damlası yapıyoruz.",
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti.",
+      "i̇stah_1": "Hayır, iştahı yerinde.",
+      "i̇stah_2": "Evet, öğünlerini bitiriyor.",
+      "agirlik_2": "Sırtını sevince kemikleri eskisinden daha belirgin hissediliyor.",
+      "i̇lac_1": "Şu an düzenli verdiğim bir ilaç yok.",
+      "i̇lac_2": "Ben bir şey vermedim; sadece geçen ay veterinerde kortizon iğnesi yapıldı.",
+      "hastalik_2": "Geçen ay tüy dökülmesi için başka bir veterinere gitmiştik; alerji dediler, kortizon iğnesi yapıldı ama düzelmedi.",
+      "tuy_3": "Kalan tüyleri de eskisine göre mat ve kuru.",
+      "goz_3": "Göz kapaklarının etrafı tüysüz ve kabuklu, hafif de kızarık.",
+      "goz_1": "Akıntı yok; göz çevresi tüysüz ve kabuklu."
     }
   },
   "pancreatitis": {
@@ -3576,7 +3654,20 @@
       "davranis_5": "Hayır, öyle bir huyu yok.",
       "beslenme_4": "Evet, dün akşam mangaldan arta kalan et yağları ve kemikler verilmişti.",
       "beslenme_2": "Evet, dün akşam mangal artıklarının içinde kemikler de vardı.",
-      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde.",
+      "karin_4": "Evet, ön ayaklarını yere uzatıp arkasını havada tutuyor, sanki karnını korumaya çalışıyor.",
+      "agri_4": "Evet, ön ayaklarını uzatıp arkasını havada tutarak duruyor.",
+      "agri_2": "Kalkarken inliyor.",
+      "agri_3": "Hiç zıplamıyor.",
+      "yuruyus_1": "Sendelemiyor ama ağrıdan ayakta durmakta zorlanıyor.",
+      "yuruyus_4": "Ağrıdan yürümek istemiyor, çok yavaş ve kambur yürüyor.",
+      "nefes_1": "Ağrıdan hızlı hızlı soluyor.",
+      "i̇stah_2": "Hayır, bugün hiçbir şey yemedi.",
+      "kusma_3": "Yemek yemese de kusuyor; ilk kustuğunda mamasını çıkarmıştı.",
+      "davranis_4": "Ağrıdan huzursuz; sürekli inliyor ve yer değiştiriyor.",
+      "enerji_2": "Evet, bugün kalkmak istemiyor.",
+      "enerji_3": "Hayır, bugün kapıya bile gelemedi.",
+      "enerji_4": "Ağrıdan dolayı çevresiyle hiç ilgilenmiyor."
     }
   },
   "invagination": {
@@ -3590,7 +3681,7 @@
       "vaccine": "Aşılar: **Güncel** | Parazit ilacı: **Güncel**",
       "complaint": [
         "Sahibi telaşla anlatıyor:\n\n\"İki gün önce bahçede koştururken hızla çarptığı kapı eşiğine karnını çok sert vurdu. Ondan sonra kusmaya başladı.\"",
-        "Sahibi panikte anlatıyor:\n\n\"Kazadan birkaç saat sonra kusma başladı, bugün artık hiçbir şeyi midesinde tutamıyor. Su içince de 2 dakika sonra çıkarıyor.\"",
+        "Sahibi panikte anlatıyor:\n\n\"Kazadan birkaç saat sonra kusma başladı, dünden beri hiçbir şeyi midesinde tutamıyor. Su içince de 2 dakika sonra çıkarıyor.\"",
         "Sahibi ağlayarak anlatıyor:\n\n\"Karnı çok gergin ve dokunduğumda canı yanıyor gibi bağırıyor. Sağ tarafında hafif bir morluk da oluştu.\"",
         "Sahibi şokta anlatıyor:\n\n\"Dışkısı tamamen kanlı ve sümüksü bir hal aldı, jöle gibi bir şey çıkarıyor. Bu sabah hiç kalkmak istemedi.\"",
         "Sahibi üzgün anlatıyor:\n\n\"Dünden beri çok halsiz, sadece yatıyor ve kalkmak istemiyor. Önüne ne koysam reddediyor, çok endişelendim.\""
@@ -3973,7 +4064,18 @@
       "enerji_1": "Evet, dünden beri aşırı halsiz ve yerinden hiç kalkmak istemiyor.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
       "hastalik_5": "Evet, 2 gün önce bahçede koşarken karnının sağ tarafını kapı eşiğine çok sert çarptı.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti.",
+      "yuruyus_4": "Kalkmak istemiyor; kalktığında kambur ve yavaş yürüyor.",
+      "karin_4": "Evet, kambur duruyor, karnını korur gibi.",
+      "agri_3": "Hiç zıplamıyor.",
+      "agri_4": "Karnını korur gibi kıvrılıp yatıyor.",
+      "i̇stah_2": "Hayır, dünden beri hiçbir şey yemiyor.",
+      "nefes_1": "Hızlı ve yüzeysel soluyor gibi.",
+      "dokuntu_1": "Karnının sağ tarafında bir morluk var; onun dışında derisi temiz.",
+      "davranis_4": "Ağrıdan rahat uyuyamıyor, sık sık pozisyon değiştiriyor.",
+      "enerji_2": "Evet, dünden beri sadece yatıyor.",
+      "yuruyus_1": "Yalpalamıyor ama kambur ve yavaş yürüyor.",
+      "agri_2": "Kalkarken inliyor, çok yavaş kalkıyor."
     }
   },
   "cushings": {
@@ -4355,7 +4457,7 @@
     },
     "questionAnswers": {
       "istah_1": "Hayır, hiç azalmadı; sürekli aç gibi kendi mamasını hemen bitirip mutfaktan yemek çalmaya çalışıyor.",
-      "istah_3": "Evet, inanılmaz arttı; eskiden bir kase yeterken şimdi günde 3 litreden fazla içiyor, geceleri bile kalkıp su arıyor.",
+      "istah_3": "Evet, inanılmaz arttı; eskiden günde bir kase yeterken şimdi 4 kase içiyor, geceleri bile kalkıp su arıyor.",
       "uroloji_kaza_1": "Evet, her sabah evin ortasında idrar birikintisi buluyoruz, geceleri mutlaka kaza yapıyor.",
       "deri_kaşıntı_1": "Hayır, tüy dökülen yerlerde hiç kaşıntı ya da kızarıklık yok.",
       "deri_tüy_1": "Evet, sırtındaki tüyler çok döküldü ve derisi damarları görünecek kadar inceldi.",
@@ -4366,7 +4468,25 @@
       "davranis_5": "Hayır, öyle bir huyu yok.",
       "i̇drar_1": "Evet, çok sık ve bol idrar yapıyor; geceleri tutamayıp eve kaçırıyor.",
       "agri_3": "Evet, artık merdiven çıkamıyor, koltuğa zıplayamıyor.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti.",
+      "i̇stah_2": "Evet, saniyesinde bitiriyor, hatta daha fazlasını istiyor.",
+      "yuruyus_1": "Yalpalamıyor ama arka bacakları eskisine göre zayıf.",
+      "yuruyus_3": "Bacaklarına basıyor ama arka bacakları eskisi kadar güçlü değil, kasları erimiş gibi.",
+      "yuruyus_4": "Evet, kısa yürüyüşlerde bile çabuk yoruluyor, koşamıyor.",
+      "enerji_1": "Eskisi kadar hareketli değil, yürüyüşlerde çabuk yoruluyor; ama yemek konusunda çok hevesli.",
+      "enerji_2": "Daha çok yatıyor ama yemek saatinde hemen kalkıyor.",
+      "agirlik_1": "Tartıda pek değişmedi ama vücut şekli değişti: karnı şişti, bacakları inceldi.",
+      "agirlik_2": "Kaburgaları eskisi gibi ama sırtında ve bacaklarında kaslar azaldı.",
+      "agirlik_3": "Karnı büyüdüğü için kilo almış gibi görünüyor ama bacakları inceldi.",
+      "agirlik_4": "Göğüs tasması karnından dolayı dar gelmeye başladı.",
+      "dokuntu_1": "Kızarıklık ya da yara yok ama derisi çok inceldi.",
+      "kaza_2": "Yatağı ıslak olmuyor; gece kalkıp evin ortasına yapıyor.",
+      "kaza_3": "Evet, gece kapıya kadar dayanamıyor.",
+      "kaza_4": "Evet, yıllardır gece hiç kaza yapmazdı; son aylarda neredeyse her gece yapıyor.",
+      "i̇drar_4": "İdrarı su gibi açık renkli, kokusu pek yok.",
+      "nefes_1": "Evet, dinlenirken bile sık sık dili dışarıda soluyor.",
+      "agri_2": "Kalkarken biraz zorlanıyor, arka bacakları güçsüz.",
+      "tuy_3": "Kalan tüyleri de kuru ve cansız."
     }
   },
   "dermatophytosis": {
@@ -4760,10 +4880,13 @@
       "istah_1": "Evet, biraz iştahı azaldı ama genel durumu fena değil.",
       "maruziyet_beslenme_3": "Hayır, son zamanlarda herhangi bir mama veya çevre değişikliği yapmadık.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
-      "diger_hayvanlar_6": "Evet, evdeki diğer kedimizin de kulak kenarlarında aynı anda tüy dökülmeleri ve açılmalar başladı.",
+      "diger_hayvanlar_6": "Evet, evdeki diğer kedimizin de kulak kenarlarında tüyleri döküldü. Benim kolumda ve kızımın bacağında da kaşıntılı, halka şeklinde kırmızı lekeler çıktı.",
       "kasinti_2": "Evet, özellikle ön bacaklarını sürekli yalıyor.",
       "kulak_3": "Evet, kulak arkalarında ve kenarlarında tüy dökülmesi ve kepeklenme var.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti.",
+      "diger_hayvanlar_5": "Bir ay kadar önce kapının önünde bulduğumuz bir yavru kediyi birkaç gün evde misafir ettik, sonra sahiplendirdik.",
+      "dokuntu_1": "Tüysüz kalan yerlerde hafif kızarıklık var; sivilce ya da açık yara görmedim.",
+      "i̇stah_2": "Çoğu zaman bitiriyor, bazen biraz bırakıyor."
     }
   },
   "giardiasis": {
@@ -5156,12 +5279,14 @@
       "agirlik_1": "Evet, çok yemesine rağmen bir türlü kilo alamıyor, hatta kaburgaları sayılacak kadar zayıfladı.",
       "karin_1": "Karnından çok yüksek sesli gurultular geliyor ve çok fazla gaz çıkarıyor.",
       "karin_2": "Evet, karnı bazen çok gergin oluyor ve dokunduğumuzda inliyor.",
-      "davranis_5": "Hayır, öyle bir huyu yok.",
+      "davranis_5": "Yabancı cisim yemiyor ama son zamanlarda halıları ve yerleri takıntılı şekilde yalıyor.",
       "diskilama_4": "Evet çok arttı, eskiden günde 2 kez çıkarken şimdi günde 4-5 kez dışarı çıkmak istiyor.",
       "disari_3": "Evet, hafta sonları ormanlık alanda gezerken göletlerden su içiyor.",
       "kene_pire_4": "Evet, hafta sonları ormanlık alanda yürüyüşe çıkıyoruz.",
       "kene_pire_2": "Aşıları güncel ama son 3 aydır parazit ilacını aksattık.",
-      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde.",
+      "agirlik_2": "Evet, kaburgaları sayılıyor.",
+      "diskilama_3": "Zorlanmıyor ama acil acil dışarı çıkmak istiyor."
     }
   },
   "hyperthyroidism": {
@@ -5552,7 +5677,18 @@
       "davranis_5": "Hayır, öyle bir huyu yok.",
       "agri_3": "Evet, eskiden tezgaha tek hamlede zıplayıp çıkardı ama artık çıkamıyor.",
       "davranis_4": "Evet, geceleri evin içinde koşturup yüksek sesle bağırıyor, hiç uyumuyor.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti.",
+      "enerji_2": "Hayır, tam tersine yerinde duramıyor.",
+      "enerji_3": "Evet, hatta eskisinden de hareketli.",
+      "enerji_4": "Hayır, aksine sürekli tetikte.",
+      "temas_1": "Eskiden çok severdi; son zamanlarda dokunulmaktan hoşlanmıyor.",
+      "temas_2": "Bize karşı eskisi kadar sevecen değil, hırçınlaştı.",
+      "temas_3": "Yaklaşınca bazen tıslıyor.",
+      "temas_4": "Evet, dokunulmaktan kaçıyor.",
+      "kusma_3": "Evet, genelde hızlı hızlı yedikten sonra kusuyor.",
+      "agirlik_2": "Evet, kaburgaları ve omurgası sayılıyor.",
+      "i̇stah_2": "Evet, hemen bitirip daha fazlasını istiyor.",
+      "kusma_2": "Genelde yediği mamayı pek sindirmeden çıkarıyor."
     }
   },
   "hypothyroidism": {
@@ -5945,7 +6081,20 @@
       "davranis_5": "Hayır, öyle bir huyu yok.",
       "bilinc_1": "Hayır, komutlara tepkisi oldukça yavaşladı, seslendiğimizde eskisi gibi hemen gelmiyor.",
       "enerji_5": "Evet, sürekli evin en sıcak yerlerini arıyor ve battaniyenin altında yatmak istiyor.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti.",
+      "agirlik_1": "Hayır, tam tersine kilo aldı.",
+      "agirlik_2": "Hayır, aksine kaburgaları yağdan zor ele geliyor.",
+      "agirlik_4": "Evet, tasması daraldı, yeni bir delik açtık.",
+      "tuy_3": "Evet, tüyleri kuru, cansız ve mat.",
+      "tuy_4": "Evet, fırçalarken tutam tutam geliyor.",
+      "dokuntu_1": "Yarası yok ama derisi kalınlaşmış ve sarkık gibi.",
+      "enerji_2": "Evet, bütün gün uyuyor.",
+      "enerji_3": "Eskisi kadar heyecanla karşılamıyor, yattığı yerden kuyruk sallıyor.",
+      "enerji_4": "Biraz donuk ve ilgisiz.",
+      "yuruyus_4": "Yürüyüşte çabuk yoruluyor, koşmak istemiyor.",
+      "agri_3": "Eskisi kadar istekli zıplamıyor, arabaya bindirirken yardım ediyoruz.",
+      "i̇stah_2": "Hayır, yemeğini bitirmekte zorlanıyor, yarısını bırakıyor.",
+      "yuruyus_1": "Dengeli yürüyor ama çabuk yoruluyor."
     }
   },
   "asthma": {
@@ -5958,9 +6107,9 @@
       "demog": "Yaş: **3 yaş** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmış (OVH)**",
       "vaccine": "Aşılar: **Güncel (FVRCP + Kuduz)** | Parazit ilacı: **Güncel (1 ay önce)**",
       "complaint": [
-        "Sahibi endişeyle anlatıyor:\n\n\"Doktor bey, kedim iki gündür sanki boğazına bir şey takılmış gibi sürekli kuru kuru öksürüyor. Yere çömelip boynunu öne uzatıyor, tıpkı tüy yumağı çıkarmaya çalışır gibi kasılıyor ama hiçbir şey kusmuyor. Geçen gün halıları güçlü kimyasal şampuanla yıkamıştık, tam o temizlikten sonra bu öksürük krizi başladı.\"",
+        "Sahibi endişeyle anlatıyor:\n\n\"Doktor bey, kedim son günlerde sanki boğazına bir şey takılmış gibi sürekli kuru kuru öksürüyor. Yere çömelip boynunu öne uzatıyor, tıpkı tüy yumağı çıkarmaya çalışır gibi kasılıyor ama hiçbir şey kusmuyor. Geçen gün halıları güçlü kimyasal şampuanla yıkamıştık, tam o temizlikten sonra öksürük krizleri iyice sıklaştı.\"",
         "Sahibi fark ettiği sesi anlatıyor:\n\n\"Kızımızın kumunu dün değiştirdik ve ilk defa lavanta kokulu parfümlü bir kedi kumu aldık. Kum kabına girip çıktıktan hemen sonra kedimden çok tuhaf, tiz bir hırıltı sesi gelmeye başladı. Uzaktan bakınca sanki nefes alıp verirken içeriden ıslık sesi duyuluyor, göğsü hızlı hızlı inip kalkıyor.\"",
-        "Sahibi korku içinde anlatıyor:\n\n\"Bugün salona yoğun miktarda oda spreyi sıktım. Birkaç dakika sonra kedimin bir köşeye çekildiğini ve çok sık nefes aldığını fark ettim. Ağzı kapalı ama karnı adeta körük gibi çok hızlı inip kalkıyordu. Daha önce hiç böyle görmemiştik, çok korktuk.\"",
+        "Sahibi korku içinde anlatıyor:\n\n\"Bugün salona yoğun miktarda oda spreyi sıktım. Birkaç dakika sonra kedimin bir köşeye çekildiğini ve çok sık nefes aldığını fark ettim. Ağzı kapalı ama karnı adeta körük gibi çok hızlı inip kalkıyordu. Ara ara öksürdüğü olurdu ama hiç bu kadar kötü görmemiştik, çok korktuk.\"",
         "Sahibi davranış değişikliğini anlatıyor:\n\n\"Kedimiz normalde çok enerjiktir, evde koşturup oynar. Ama son zamanlarda hiç oyun oynamak istemiyor, iki adım koşunca hemen yorulup kenara siniyor. Eşim tütsü yaktığında veya misafirler sigara içtiğinde hemen koltuğun altına saklanıyor ve derin derin solumaya başlıyor.\"",
         "Sahibi krizi anlatıyor:\n\n\"Evde küçük bir tadilat başlattık, ortalık toz oldu. Kedim aniden panik halinde kriz geçirdi; boynunu yere sıfırlayarak hırıltıyla karışık öksürmeye başladı. Sanki hava alamıyor gibi boğulur gibi oldu. Kriz birkaç dakika sürdü ama hala normalden sesli nefes alıyor.\""
       ]
@@ -6327,7 +6476,7 @@
       "effusion": "Abdominosentez: USG eşliğinde ponksiyon yapıldı, sıvı elde edilemedi. Rivalta testi yapılamadı."
     },
     "questionAnswers": {
-      "solunum_öksürük_1": "Evet, 2 gündür yere çömelip boynunu öne doğru uzatarak öksürüyor.",
+      "solunum_öksürük_1": "Evet, kriz şeklinde öksürüyor: yere çömelip boynunu öne uzatıyor, kuru kuru öksürüyor. Son günlerde iyice sıklaştı.",
       "solunum_nefes_1": "Evet, dinlenirken bile göğsü ve karnı körük gibi çok hızlı inip kalkıyor.",
       "solunum_nefes_2": "Evet, nefes alırken boğulur gibi belirgin bir hırıltı sesi geliyor.",
       "solunum_nefes_4": "Evet, iki adım koşsa hemen yoruluyor ve nefes nefese kalıyor.",
@@ -6335,9 +6484,14 @@
       "enerji_1": "Evet, hiç oyun oynamıyor, çabuk yoruluyor ve duman veya koku olunca köşelere saklanıyor.",
       "maruziyet_zehir_1": "Evet, evde sigara içiliyor; ayrıca oda spreyi, parfümlü kedi kumu, kokulu mumlar ve esansiyel yağlar kullanılıyor. Parfümlü kum, oda spreyi, tütsü, sigara dumanı ya da tadilat tozu olunca öksürük krizi hemen başlıyor.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
-      "oksuruk_3": "Hayır, öksürüğü tamamen kuru; öğürüp bir şey çıkarmıyor.",
+      "oksuruk_3": "Evet, sanki boğazına bir şey takılmış ya da tüy yumağı çıkaracakmış gibi kasılıyor ama hiçbir şey çıkmıyor; öksürüğü kuru.",
       "enerji_2": "Duman ya da koku olunca köşeye, koltuğun altına saklanıyor.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti.",
+      "nefes_3": "Ağzı genelde kapalı ama krizlerde boynunu öne uzatıp yere doğru eğilerek nefes almaya çalışıyor.",
+      "davranis_2": "Sadece nefesi daraldığında panikliyor; onun dışında korkak bir kedi değil.",
+      "davranis_3": "Normalde saklanmaz; sadece duman ya da yoğun koku olunca koltuğun altına çekiliyor.",
+      "davranis_6": "Misafirler sigara içtiğinde kötüleşiyor; stresten çok dumanla ve kokuyla ilgili gibi.",
+      "hastalik_2": "Veterinere bu yüzden hiç gelmedik. Ara ara kısa öksürük nöbetleri olurdu, tüy yumağı sanıyorduk."
     }
   }
 }

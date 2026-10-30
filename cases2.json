@@ -395,7 +395,14 @@
       "diskilama_2": "Evet, dün akşamdan beri dışkısı zift gibi simsiyah ve cıvık.",
       "nobet_3": "Evet, dün misafir gelince birden yığılıp kaldı.",
       "agri_2": "Evet, kalkarken çok zorlanıyor, arka bacakları titriyor.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti.",
+      "agirlik_2": "Evet, kaburgaları ve omurgası artık eskisinden çok daha belirgin şekilde ele geliyor.",
+      "agirlik_4": "Evet, tasması bollaştı, bir delik sıkmak zorunda kaldık.",
+      "bilinc_1": "Seslenince bakıyor ama eskisi gibi kalkıp yanıma gelmiyor; tepkileri yavaşladı.",
+      "enerji_3": "Kötü günlerinde kapıya bile gelmiyor, iyi günlerinde yine eskisi gibi karşılıyor.",
+      "yuruyus_1": "Yürürken arka bacakları titriyor, sallanıyor.",
+      "i̇stah_2": "Hayır, hiç yemiyor.",
+      "kusma_3": "Yemek yemiyor; aç karnına köpüklü sıvı kusuyor."
     }
   },
   "hypoglycemia": {
@@ -794,7 +801,18 @@
       "asi_1": "Hayır, ilk karma yapıldı ama rapelleri eksik.",
       "asi_2": "İlk karma yaklaşık 1 ay önce yapıldı.",
       "asi_4": "Karnesi var ama rapelleri işlenmemiş.",
-      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde.",
+      "bilinc_2": "Etrafında dönmüyor ama boş boş duvara bakıyor.",
+      "bilinc_3": "Hayır, sersem gibi; yürürken eşyalara çarpıyor.",
+      "bilinc_4": "Bilinci bulanık, sanki uykuyla uyanıklık arasında.",
+      "nobet_4": "Evet, boş boş bakıp tepkisiz kaldığı anlar oluyor.",
+      "bas_5": "Hayır, kafasını dik tutmakta zorlanıyor, başı düşüyor.",
+      "agirlik_2": "Zaten çok minik ve ince bir yavru; kaburgaları kolayca ele geliyor.",
+      "agri_2": "Kalkmakta zorlanıyor, bacakları titriyor.",
+      "agri_3": "Bugün hiç zıplamadı.",
+      "enerji_2": "Evet, bugün hep uyku halinde.",
+      "enerji_3": "Hayır, bugün kapıya hiç gelmedi.",
+      "enerji_4": "Evet, çevresine karşı donuk ve ilgisiz."
     }
   },
   "hernia_dog": {
@@ -807,17 +825,17 @@
       "demog": "Yaş: **3 yaş** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmamış**",
       "vaccine": "Aşılar: **Güncel (Karma + Kuduz)** | Parazit ilacı: **Güncel**",
       "complaint": [
-        "Sahibi panikte anlatıyor:\n\n\"Dün akşam sokakta bir araba köpeğimize hafifçe çarptı, o an sadece korktu sandık ama sabahtan beri çok hızlı hızlı nefes alıyor. Göğsü körük gibi inip kalkıyor ve ağzını hiç kapatmıyor, sürekli ayakta durmak istiyor.\"",
-        "Sahibi endişeyle anlatıyor:\n\n\"Yaklaşık iki hafta önce yüksek bir duvardan düşmüştü. O günden sonra yarası beresi geçti ama eskisi gibi hiç koşmuyor. İki adım atınca hemen yorulup oturuveriyor, dili dışarı fırlıyor ve sanki nefesi yetmiyormuş gibi tıkanıyor.\"",
-        "Sahibi şaşkınlıkla anlatıyor:\n\n\"Köpeğimiz birkaç gün önce balkondan bahçeye düştü. O günden beri ne yese ne içse birkaç dakika içinde köpüklü şekilde geri çıkarıyor. Kusmaktan halsiz düştü, karnı da içeri göçmüş gibi duruyor.\"",
+        "Sahibi panikte anlatıyor:\n\n\"Geçen hafta sokakta bir araba köpeğimize hafifçe çarptı, o an sadece korktu sandık. Ama bu sabahtan beri çok hızlı hızlı nefes alıyor. Göğsü körük gibi inip kalkıyor ve ağzını hiç kapatmıyor, sürekli ayakta durmak istiyor.\"",
+        "Sahibi endişeyle anlatıyor:\n\n\"Geçen hafta sokakta araba çarpmıştı. O günden sonra yarası beresi geçti ama eskisi gibi hiç koşmuyor. İki adım atınca hemen yorulup oturuveriyor, dili dışarı fırlıyor ve sanki nefesi yetmiyormuş gibi tıkanıyor.\"",
+        "Sahibi şaşkınlıkla anlatıyor:\n\n\"Geçen hafta köpeğimize sokakta araba çarptı. O günden beri ne yese ne içse birkaç dakika içinde köpüklü şekilde geri çıkarıyor. Kusmaktan halsiz düştü, karnı da içeri göçmüş gibi duruyor.\"",
         "Sahibi endişeyle anlatıyor:\n\n\"Geçen hafta geçirdiği trafik kazasından sonra garip bir öksürük başladı. Özellikle yatarken nefes almakta zorlanıyor, ön ayaklarını açarak garip bir pozisyonda oturuyor ve sürekli kuru kuru öksürüyor.\"",
-        "Sahibi çok korkmuş halde anlatıyor:\n\n\"Dün akşam köpeğimize sokakta araba çarptı. Sabahtan beri dili ve diş etleri tamamen morarmış durumda, çok halsiz ve çok zor nefes alıyor, göğüs kafesi normalden çok farklı hareket ediyor.\""
+        "Sahibi çok korkmuş halde anlatıyor:\n\n\"Geçen hafta köpeğimize sokakta araba çarptı. İlk günler idare etti ama bu sabahtan beri dili ve diş etleri morarmış durumda, çok halsiz ve çok zor nefes alıyor, göğüs kafesi normalden çok farklı hareket ediyor.\""
       ]
     },
     "diffQuestions": [
       {
         "q": "Yakın zamanda veya geçmişte araba çarpması, yüksekten düşme, tekme alma gibi herhangi bir künt travma geçmişi oldu mu?",
-        "a": "Evet, yaklaşık 3 gün önce bahçede koştururken hızla gelen bir motosiklet yandan çarptı ve savurdu. O an ayağa kalkıp kaçtı ama solunumu o günden sonra bozuldu."
+        "a": "Evet, geçen hafta sokakta bir araba çarptı. O an ayağa kalkıp kaçtı ama solunumu o günden sonra bozuldu."
       },
       {
         "q": "Nefes alışı ne zamandan beri bu şekilde ve yattığı pozisyona göre değişiyor mu?",
@@ -1186,9 +1204,23 @@
       "enerji_1": "Evet, eskiden saatlerce koşan hayvan artık sürekli ayakta veya dik pozisyonda durmaya çalışıyor, hemen yoruluyor.",
       "gecmis_hastalik_1": "Hayır, kazadan önce saatlerce koşardı, bilinen hiçbir kalp ya da solunum rahatsızlığı yoktu.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
-      "hastalik_5": "Evet, araç çarpması ve yüksekten düşme şeklinde ciddi kaza ve travma geçmişi var.",
+      "hastalik_5": "Evet, geçen hafta sokakta araba çarptı. O an sadece korktu sandık, dışarıdan bir yarası da yoktu.",
       "disari_1": "Bahçede ve sokakta bazen gözetimsiz kalıyor; kaza da öyle bir anda oldu.",
-      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde.",
+      "i̇stah_1": "Yemek istiyor ama yedikten kısa süre sonra kusuyor; son günlerde iştahı da azaldı.",
+      "i̇stah_2": "Az yiyor, yediğini de çoğu zaman geri çıkarıyor.",
+      "i̇stah_3": "Su içiyor ama içtikten sonra bazen onu da çıkarıyor.",
+      "kusma_3": "Evet, yedikten birkaç dakika sonra çıkarıyor.",
+      "oksuruk_4": "Evet, yatınca öksürüp kalkıyor.",
+      "yuruyus_4": "Koşmuyor; iki adım atınca yorulup oturuyor.",
+      "agri_1": "Kaburgalarına dokununca rahatsız oluyor.",
+      "agri_3": "Kazadan beri zıplamıyor, merdivende zorlanıyor.",
+      "agri_4": "Yatmak istemiyor, ön ayaklarını açıp dik oturuyor.",
+      "davranis_4": "Yatınca nefesi daraldığı için rahat uyuyamıyor, sürekli kalkıyor.",
+      "enerji_2": "Yatmak istemiyor; ya ayakta ya da dik oturuyor.",
+      "goz_6": "Sararma yok ama dili ve diş etleri morumsu.",
+      "kusma_2": "Yediği mamayı köpükle birlikte geri çıkarıyor.",
+      "agri_2": "Zaten pek yatmıyor; yatınca da hemen kalkıp dik oturuyor."
     }
   },
   "dermatophytosis_dog": {
@@ -1211,7 +1243,7 @@
     "diffQuestions": [
       {
         "q": "Bu döküntüler ne kadar sürede bu hale geldi ve ilk nerede başladı?",
-        "a": "Yaklaşık 2 hafta önce ilk olarak sağ kulağının hemen üstünde bozuk para büyüklüğünde bir açılmayla başladı. Birkaç gün içinde bacaklarına ve yüzünün diğer kısımlarına da irili ufaklı yayıldı."
+        "a": "Yaklaşık 2 hafta önce ilk olarak gözünün kenarında küçük bir açılmayla başladı. Birkaç gün içinde bacaklarına ve yüzünün diğer kısımlarına da irili ufaklı yayıldı."
       },
       {
         "q": "Hayvanda şiddetli bir kaşıntı, durmadan kendini ısırma veya sürtünme davranışı gözlemliyor musunuz?",
@@ -1578,12 +1610,18 @@
       "deri_döküntü_1": "Tüysüz yerlerin derisi hafif kızarık ve kabuk bağlamış durumda.",
       "deri_döküntü_2": "Evet, lekeler kuru, kepekli ve pullu duruyor; kabuklanma var.",
       "deri_tüy_1": "Evet, o bölgelerdeki tüyler kırılarak kendiliğinden dökülüyor.",
-      "deri_tüy_2": "Evet, kafasında, kulak arkasında ve göz kenarında yuvarlak, bozuk para büyüklüğünde tüysüz alanlar oluştu. Önce sağ kulağında başlamıştı, şimdi patilere, bacaklara, yüze ve gövdeye yayıldı.",
+      "deri_tüy_2": "Evet, kafasında, kulak arkasında ve göz kenarında yuvarlak, bozuk para büyüklüğünde tüysüz alanlar oluştu. Önce gözünün kenarında küçük bir açılma olarak başladı, şimdi bacaklarına ve gövdesine de yayıldı.",
       "maruziyet_dışarı_2": "Evet, dışarıda parkta gezerken diğer köpeklerle temas ediyor ve oynuyor.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
       "diger_hayvanlar_6": "Evet, kızımın kollarında da halka şeklinde kırmızı ve kaşıntılı lekeler çıktı.",
       "diger_hayvanlar_5": "Evet, 3 hafta önce pet kuaföre gitti ve parkta diğer köpeklerle oynuyor.",
-      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde.",
+      "kasinti_2": "Takıntılı şekilde değil; ara sıra yalıyor.",
+      "kulak_3": "Kulak arkasında tüysüz, kabuklu bir alan var; kulak kepçesinin içi temiz.",
+      "goz_3": "Gözünün kenarında küçük, hafif kızarık bir tüysüz alan var; gözün kendisi temiz.",
+      "goz_1": "Hayır, akıntı ya da çapak yok.",
+      "goz_4": "Hayır, gözünün kendisi temiz.",
+      "kulak_1": "Hayır, kulağının içi temiz, koku yok."
     }
   },
   "fiv": {
@@ -1985,7 +2023,21 @@
       "asi_2": "Hiç aşı yapılmadı.",
       "asi_3": "Hiç aşı yapılmadığı için bilmiyoruz.",
       "asi_4": "Hayır, karnesi yok.",
-      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde.",
+      "i̇lac_4": "Evet, geçen ay bir antibiyotik kürü tamamlandı.",
+      "diger_hayvanlar_1": "Sokaktaki erkek kedilerle hiç anlaşamıyor.",
+      "diger_hayvanlar_3": "Başka erkek kedileri görünce saldırıyor.",
+      "hastalik_5": "Kavgalarda ısırık yaraları aldı; geçen ay da boynundan ısırılmıştı.",
+      "davranis_3": "Evet, dünden beri köşelere saklanıyor.",
+      "i̇stah_2": "Hayır, birkaç lokmadan sonra bırakıyor.",
+      "agirlik_2": "Evet, kaburgaları ve omurgası tek tek sayılıyor.",
+      "goz_2": "Sol gözünü açamıyor, kapalı tutuyor.",
+      "goz_3": "Sol göz kapakları kızarık ve şiş.",
+      "dokuntu_3": "Çenesinin altında ve dizlerinin arkasında ceviz gibi şişlikler var.",
+      "disari_3": "Dışarıda ne yiyip içtiğini bilemiyoruz.",
+      "beslenme_5": "Dışarıda fare, kuş yakaladığı oluyor.",
+      "i̇lac_1": "Şu an düzenli kullandığı bir ilaç yok; antibiyotik kürü geçen ay bitti.",
+      "i̇lac_2": "Hayır, son günlerde bir şey vermedik."
     }
   },
   "felv": {
@@ -2020,7 +2072,7 @@
       },
       {
         "q": "Daha önce retroviral enfeksiyon testi yapılmış mıydı ve aşısı var mı?",
-        "a": "Sokaktan sahiplendiğimizde genel bir kontrol yapılmıştı ama bu testlerden yapıldı mı bilmiyorum, lösemi aşısı ise hiç yapılmadı."
+        "a": "Sokaktan sahiplendiğimizde genel bir kontrol yapılmıştı ama bu testlerden yapıldı mı bilmiyorum, aşılarının devamını da getirmedik."
       },
       {
         "q": "Kedinizde son zamanlarda hiç nefes darlığı, öksürük veya hırıltılı solunum gözlemlediniz mi?",
@@ -2373,7 +2425,7 @@
       "solunum_nefes_1": "Evet, dinlenip yatarken bile göğsü çok hızlı inip kalkıyor.",
       "solunum_nefes_2": "Evet, yatarken nefes alıp verirken hafif hırıltılı bir ses geliyor.",
       "deri_tüy_3": "Evet, tüyleri iyice cansızlaşıp matlaştı.",
-      "gecmis_asi_1": "Hayır, sokaktan sahiplenmiştik ve lösemi aşısı hiç yapılmadı.",
+      "gecmis_asi_1": "Hayır, sokaktan sahiplenmiştik; ilk karma aşılarını yaptırdık ama sonra devamını getirmedik.",
       "maruziyet_dışarı_2": "Evet, geceleri dışarı çıkıyor ve mahalledeki kedilerle kavga edip eve ısırık ve yaralarla geldiği oluyordu.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
       "goz_6": "Evet, gözlerinin beyazı ve kulaklarının içi sapsarı görünüyor.",
@@ -2387,7 +2439,20 @@
       "kene_pire_2": "Hayır, düzensiz yapılıyor.",
       "asi_2": "Uzun zaman oldu, tam hatırlamıyoruz.",
       "asi_4": "Karnesi var ama son aşıları işlenmemiş.",
-      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde.",
+      "diger_hayvanlar_1": "Mahalledeki kedilerle pek anlaşamıyor, sık sık kavga ediyor.",
+      "diger_hayvanlar_3": "Başka kediler yaklaşınca tıslayıp saldırabiliyor.",
+      "diger_hayvanlar_5": "Evet, geceleri dışarıda mahalledeki sokak kedileriyle sürekli temas halinde.",
+      "hastalik_5": "Kavgalarda ısırık yaraları alıyordu; onun dışında bir kaza geçirmedi.",
+      "disari_3": "Geceleri dışarıda ne yiyip içtiğini bilemiyoruz.",
+      "beslenme_5": "Dışarıda av yakalıyor mu bilmiyoruz, eve hiç getirmedi.",
+      "i̇stah_2": "Hayır, birkaç lokma yiyip bırakıyor.",
+      "agirlik_2": "Evet, kaburgaları ve omurgası belirgin şekilde ele geliyor.",
+      "goz_1": "Akıntı yok ama gözlerinin beyazı sapsarı.",
+      "kulak_3": "Kızarıklık ya da kabuk yok ama kulaklarının içi sararmış.",
+      "dokuntu_3": "Boğazının altında ve arka bacaklarının arkasında misket gibi sert şişlikler var.",
+      "tirnak_3": "Yaralı patisine basarken biraz çekiniyor.",
+      "goz_4": "Hayır, perde yok; ama gözlerinin beyazı sapsarı."
     }
   },
   "hyperaldosteronism": {
@@ -2782,7 +2847,22 @@
       "goz_5": "Evet, göz bebekleri kocaman ve ışıkta küçülmüyor; hatta dün sabah sol gözünün içi kan gölü gibiydi.",
       "bilinc_2": "Evet, evin içinde kendi etrafında dönüp duruyor.",
       "enerji_2": "Evet, sürekli saklanacak yer arıyor.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti.",
+      "i̇stah_2": "Evet, hemen bitirip daha fazlasını istiyor.",
+      "agirlik_2": "Evet, sırtı ve kaburgaları belirgin şekilde ele geliyor.",
+      "bas_1": "Yana eğik değil ama boynu hep aşağı doğru bükük duruyor.",
+      "bilinc_3": "Bizi net göremiyor gibi; yürürken kapı pervazlarına çarpıyor.",
+      "goz_1": "Akıntı yok ama göz bebekleri kocaman.",
+      "goz_4": "Dün sabah sol gözünün içinde kan vardı; gözün önü şeffaf görünüyor.",
+      "yuruyus_3": "Bacaklarını sürüklemiyor ama arka bacakları çok güçsüz, ağırlığını zor taşıyor.",
+      "yuruyus_4": "Koşamıyor; yürürken bile ayakları birbirine dolanıyor.",
+      "agri_1": "Belli bir yerine dokununca bağırmıyor ama genel olarak çok huzursuz.",
+      "agri_2": "Kalkarken zorlanıyor, arka bacakları titriyor.",
+      "agri_3": "Artık koltuğa bile zıplayamıyor.",
+      "davranis_3": "Evet, sürekli saklanacak yer arıyor.",
+      "enerji_1": "Hayır, eskisi gibi oynamıyor; çok güçsüz.",
+      "kusma_3": "Evet, genelde yemekten sonra oluyor.",
+      "kusma_2": "Beyaz köpüklü sıvı; içinde mama ya da yabancı bir şey görmedim."
     }
   },
   "fic": {
@@ -3179,7 +3259,20 @@
       "davranis_6": "Evet, geçen hafta eve 3 gün kalabalık misafir gelip dolabın arkasına saklanmıştı, her şey o stresten sonra başladı.",
       "diger_hayvanlar_5": "Hayır, evde tek kedi olarak yaşıyor ve tamamen iç mekanda kalıyor.",
       "enerji_2": "Misafirler gelince dolabın arkasına saklanmıştı; şimdi daha az saklanıyor ama keyfi yok.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (kastrasyon) ve sorunsuz iyileşti."
+      "ameliyat_1": "Evet, kısırlaştırıldı (kastrasyon) ve sorunsuz iyileşti.",
+      "i̇drar_1": "Evet, günde 6-7 kez kuma gidiyor ama her seferinde ya hiç yapamıyor ya da birkaç damla.",
+      "i̇drar_4": "Rengi pembe-kırmızı, bazen çok koyu kırmızı; kokusunda pek bir fark yok.",
+      "kan_4": "Evet, kumunda ve halıda kırmızı lekeler buldum.",
+      "kaza_3": "Evet, kuma yetişemeden halıya damlattığı oldu.",
+      "kaza_4": "Evet, hiç kum kabı dışına yapmazdı; son bir haftadır lavaboya ve halıya da damlatıyor.",
+      "i̇stah_2": "Hayır, birkaç lokma yiyip bırakıyor.",
+      "enerji_1": "Evet, eskisi gibi oynamıyor, keyfi yok.",
+      "davranis_2": "Kalabalıktan ve gürültüden çok korkar; misafirler varken titreyip saklandı.",
+      "davranis_3": "Misafirler varken dolabın arkasına saklandı; şimdi daha az saklanıyor ama hâlâ çekingen.",
+      "karin_2": "Karnının alt kısmına dokununca kaçıyor, rahatsız oluyor.",
+      "diger_hayvanlar_1": "Evde başka hayvan yok.",
+      "diger_hayvanlar_4": "Evde başka hayvan yok, kum kabını ve mamasını kimseyle paylaşmıyor.",
+      "kan_2": "Evet, bazen sonunda pembe-kırmızı damlalar geliyor."
     }
   },
   "liver_failure": {
@@ -3577,7 +3670,21 @@
       "kan_1": "Kırmızı değil ama çok koyu, turuncuya dönük.",
       "enerji_2": "Evet, köşelere sıkışıp kalıyor, çoğu zaman yatıyor.",
       "diskilama_2": "Kırmızı kan görmedim ama dışkısı katran gibi simsiyah.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (kastrasyon) ve sorunsuz iyileşti."
+      "ameliyat_1": "Evet, kısırlaştırıldı (kastrasyon) ve sorunsuz iyileşti.",
+      "nobet_4": "Evet, dakikalarca boşluğa bakıp tepkisiz kaldığı oluyor.",
+      "bilinc_3": "Evet, sersem gibi; köşelere sıkışıp nereye gideceğini bilemiyor.",
+      "bilinc_4": "Geceleri amaçsızca dolaşıyor, gündüzleri uyukluyor.",
+      "enerji_1": "Hayır, eskiden çok oyuncuydu, artık hiç oynamıyor.",
+      "goz_1": "Akıntı yok ama gözlerinin içi sapsarı.",
+      "kulak_3": "Kızarıklık yok ama kulaklarının içi sararmış.",
+      "i̇stah_2": "Hayır, hiçbir şey yemiyor.",
+      "agirlik_2": "Evet, sırtı ve kalça kemikleri çok belirginleşti; ama karnı şiş.",
+      "kusma_2": "Kahve telvesi gibi koyu kahverengi pıhtılar vardı.",
+      "davranis_3": "Saklanmıyor ama köşelere sıkışıp kalıyor, bizimle eskisi gibi ilgilenmiyor.",
+      "temas_2": "Eskisi gibi ilgili değil, bazen bizi tanımıyor gibi bakıyor.",
+      "davranis_4": "Geceleri huzursuzca dolaşıyor, rahat uyumuyor.",
+      "nefes_1": "Karnı şiştiğinden beri dinlenirken bile biraz hızlı nefes alıyor.",
+      "goz_4": "Hayır, perde yok; ama gözlerinin içi sapsarı."
     }
   },
   "imha": {
@@ -3971,7 +4078,16 @@
       "goz_6": "Evet, gözlerinin beyazı, kulaklarının içi ve derisi sapsarı oldu.",
       "beslenme_1": "Hayır, yabancı cisim ya da soğan, sarımsak gibi zararlı bir şey yemedi.",
       "kan_1": "Evet, idrarı demlenmiş çay gibi koyu kahverengi-turuncu.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti.",
+      "enerji_3": "Hayır, eskisi gibi kapıda karşılamıyor.",
+      "yuruyus_4": "Birkaç adım atınca yorulup çöküyor, koşamıyor.",
+      "agri_2": "Kalkmaya isteksiz, yavaş yavaş kalkıyor.",
+      "agri_3": "Hiç zıplamıyor, merdiven çıkmak da istemiyor.",
+      "i̇stah_2": "Hayır, 3-4 gündür mamasına dokunmuyor.",
+      "goz_1": "Akıntı yok ama gözlerinin beyazı sararmış.",
+      "kulak_3": "Kızarıklık ya da kabuk yok ama kulaklarının içi sapsarı.",
+      "dokuntu_1": "Yara yok ama derisi sarımsı görünüyor, özellikle karnının altı.",
+      "goz_4": "Hayır, perde yok; ama gözlerinin beyazı sararmış."
     }
   },
   "toxo": {
@@ -4378,7 +4494,20 @@
       "asi_1": "Hayır, ilk karma yapıldı, rapelleri eksik.",
       "asi_2": "İlk karma birkaç hafta önce yapıldı.",
       "asi_4": "Karnesi var ama rapelleri işlenmemiş.",
-      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde."
+      "ameliyat_1": "Hayır, kısırlaştırılmadı; üreme organları yerinde.",
+      "goz_3": "Sol gözünün içi ve çevresi kızarık.",
+      "goz_5": "Sol gözünün içi kızarık ve bulanık; göz bebeği diğerinden farklı görünüyor.",
+      "kulak_3": "Kızarıklık yok ama kulak içleri sapsarı.",
+      "davranis_3": "Evet, sürekli karanlık ve serin köşelere saklanıyor.",
+      "enerji_5": "Evet, ateşi olduğu için serin köşeleri arıyor.",
+      "agri_1": "Bacaklarına ve karnına dokununca rahatsız oluyor.",
+      "agri_2": "Kalkarken bacakları titriyor, zorlanıyor.",
+      "agri_3": "Hiç zıplamıyor.",
+      "yuruyus_3": "Arka bacaklarını sürüklemiyor ama titriyor ve güçsüz.",
+      "yuruyus_4": "Düz yürüyemiyor, sağa sola yalpalıyor.",
+      "disari_3": "Bahçede ne yiyip içtiğini tam bilemiyoruz; fare kovaladığını gördük.",
+      "beslenme_4": "Genelde mama yiyor ama geçen hafta mutfakta çiğ kıyma yemişti.",
+      "i̇stah_2": "Hayır, hiçbir şey yemiyor."
     }
   },
   "atopic_derm": {
@@ -4776,7 +4905,10 @@
       "diger_hayvanlar_6": "Hayır, evdeki diğer kedimizde ve ailemizde hiçbir sorun yok.",
       "kasinti_3": "Evet, geceleri kaşınmaktan uyuyamıyor, sürekli kalkıp yalanıyor.",
       "davranis_4": "Evet, kaşıntıdan geceleri uyuyamıyor, sürekli kalkıp yalanıyor.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (kastrasyon) ve sorunsuz iyileşti."
+      "ameliyat_1": "Evet, kısırlaştırıldı (kastrasyon) ve sorunsuz iyileşti.",
+      "davranis_1": "Saldırgan değil ama kaşıntıdan dolayı çok huysuzlaştı, eskisi kadar sabırlı değil.",
+      "agri_1": "Yaralı bölgelere dokununca çekiliyor, onun dışında rahat.",
+      "dokuntu_3": "Yaralar kabarık ama onların dışında bir şişlik veya kitle hissetmedim."
     }
   },
   "bacterial_cystitis": {
@@ -5171,7 +5303,15 @@
       "diger_hayvanlar_5": "Hayır, evde tek kedi olarak yaşıyor ve kum kabını başka bir hayvanla paylaşmıyor.",
       "i̇drar_4": "Evet, paspasa damlattığı idrarın kokusu çok ağır ve oldukça keskin.",
       "i̇drar_1": "Evet, çok sık kuma gidiyor ama her seferinde birkaç damla yapıyor.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti."
+      "ameliyat_1": "Evet, kısırlaştırıldı (OVH) ve sorunsuz iyileşti.",
+      "diger_hayvanlar_1": "Evde başka hayvan yok; pencereden gördüğü kedilere de pek ilgi göstermez.",
+      "diger_hayvanlar_4": "Evde başka hayvan yok, mamasını ve kumunu kimseyle paylaşmıyor.",
+      "kan_3": "Pıhtı görmedim ama o bölge sürekli ıslak ve tahriş olmuş durumda.",
+      "kan_4": "Evet, paspasta ve fayansta pembe-kırmızı lekeler buluyorum.",
+      "kaza_3": "Evet, kuma yetişemeden damlatıyor gibi.",
+      "kaza_4": "Evet, hep kumunu kullanırdı; son günlerde paspasa ve fayansa yapmaya başladı.",
+      "karin_2": "Karnının alt kısmına dokununca hemen kaçıyor, rahatsız oluyor.",
+      "kan_2": "Evet, en sonda birkaç damla kıpkırmızı geliyor."
     }
   },
   "ehrlichiosis": {
@@ -5194,7 +5334,7 @@
     "diffQuestions": [
       {
         "q": "Yakın zamanda üzerinde kene gördünüz mü veya kene koruyucu damlasını aksattınız mı?",
-        "a": "Evet, yaklaşık bir ay önce kırsal bir alanda gezdikten sonra üzerinde birkaç kene bulup koparmıştım, kene damlasını yaptırmayı unutmuştuk."
+        "a": "Evet, yaklaşık bir ay önce kırsal bir alanda gezdikten sonra üzerinde birkaç kene bulup koparmıştım."
       },
       {
         "q": "Burnundaki kanama dışında dışkısında veya idrarında kan fark ettiniz mi?",
@@ -5561,12 +5701,28 @@
       "goz_kulak_goz_1": "Evet, sol gözünün içi dün aniden kan oturmuş gibi kızardı, çapaklanıyor ve gözünü sürekli kısıyor.",
       "solunum_nefes_4": "Evet, bacakları şiş olduğu için yürürken çok zorlanıyor ve hemen nefes nefese kalıyor.",
       "maruziyet_kene_pire_1": "Evet, yaklaşık 1 ay önce kırsal alandayken üzerinde birkaç tane kene bulup koparmıştık.",
-      "maruziyet_kene_pire_2": "Hayır, kene damlasını düzenli olarak yaptırmamıştık.",
+      "maruziyet_kene_pire_2": "Hayır, dış parazit damlasını son 4 aydır yaptırmadık.",
       "davranis_5": "Hayır, öyle bir huyu yok.",
       "burun_4": "Evet, birkaç gündür durduk yere burnu kanıyor.",
       "diskilama_2": "Evet, dünkü dışkısı zift gibi simsiyahtı.",
       "kene_pire_4": "Evet, yaklaşık 1 ay önce kırsal alanda yürüyüş yaptık.",
-      "ameliyat_1": "Evet, kısırlaştırıldı (kastrasyon) ve sorunsuz iyileşti."
+      "ameliyat_1": "Evet, kısırlaştırıldı (kastrasyon) ve sorunsuz iyileşti.",
+      "goz_2": "Sol gözünü sürekli kısıyor, ışıktan rahatsız oluyor gibi.",
+      "goz_3": "Sol gözünün çevresi ve içi kızarık.",
+      "goz_4": "Sol gözünün önü kanlı ve bulanık görünüyor.",
+      "goz_5": "Evet, sol gözünün içinde kan toplanmış gibi duruyor; göz bebeği tam seçilmiyor.",
+      "burun_1": "Evet, burnundan damla damla kan geliyor.",
+      "dokuntu_1": "Karnının altında iğne ucu gibi kırmızı noktalar ve morluklar var.",
+      "dokuntu_3": "Bacaklarında yumuşak bir şişlik var; ayrıca bir kitle hissetmedim.",
+      "yuruyus_1": "Yalpalamıyor ama çok yavaş ve isteksiz yürüyor.",
+      "yuruyus_3": "Bacaklarını kullanıyor ama şişlikten dolayı isteksiz basıyor.",
+      "yuruyus_4": "Evet, bacakları şiş olduğu için yürürken zorlanıyor, koşamıyor.",
+      "agri_2": "Kalkarken zorlanıyor, yavaş yavaş doğruluyor.",
+      "agri_3": "Arabaya ya da koltuğa zıplamak istemiyor.",
+      "agirlik_2": "Evet, kaburgaları ve kalça kemikleri belirginleşti.",
+      "agirlik_4": "Tasması bollaştı.",
+      "i̇stah_2": "Hayır, mamasının neredeyse hepsini bırakıyor.",
+      "disari_5": "Bir ay kadar önce hafta sonu için kırsal bir bölgeye gittik, orada yürüyüş yaptık."
     }
   }
 }
