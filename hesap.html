@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VetTEX Hesap</title>
+<style>
+  :root { --bg:#0b1118; --card:#121b25; --ink:#e6ebf1; --muted:#8fa0b3; --line:#223040; --accent:#00d4ff; --err:#ff6b6b; --ok:#2ecc71; }
+  @media (prefers-color-scheme: light) { :root { --bg:#f5f7fa; --card:#fff; --ink:#1b2430; --muted:#5b6675; --line:#e2e6ec; --accent:#0e7c86; --err:#c0392b; --ok:#1e8449; } }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px 16px; background:var(--bg); color:var(--ink); font:15px/1.6 -apple-system,"Segoe UI",Roboto,Arial,sans-serif; }
+  main { width:100%; max-width:380px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:28px 22px; text-align:center; }
+  .logo { font-size:34px; font-weight:800; letter-spacing:3px; color:var(--accent); margin-bottom:4px; }
+  h1 { font-size:18px; margin:14px 0 8px; }
+  p { color:var(--muted); margin:6px 0; }
+  input { width:100%; padding:12px 14px; margin-top:10px; border-radius:10px; border:1px solid var(--line); background:transparent; color:var(--ink); font-size:15px; }
+  button { width:100%; margin-top:14px; padding:12px; border-radius:10px; border:1px solid var(--accent); background:transparent; color:var(--accent); font-size:15px; font-weight:600; cursor:pointer; }
+  button:disabled { opacity:.6; }
+  .err { color:var(--err); font-size:13px; min-height:18px; margin-top:10px; }
+  .ok { color:var(--ok); }
+  .hidden { display:none; }
+</style>
+</head>
+<body>
+<main>
+  <div class="logo">VetTEX</div>
+  <div id="view"><p>Yükleniyor…</p></div>
+</main>
+<script>
+const SUPABASE_URL = "https://kqixpnxswlpdkfyzshyu.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_Vtj0naG05Q-ukeMAI1MIEg_42ScUllZ";
+const view = document.getElementById('view');
+const q = new URLSearchParams((location.hash || '').slice(1));
+const qs = new URLSearchParams(location.search);
+try { history.replaceState(null, '', location.pathname); } catch (e) {}   // jetonlar adres çubuğunda kalmasın (önizlemede izin yok)
+
+function show(html) { view.innerHTML = html; }
+const err = q.get('error_description') || qs.get('error_description');
+const type = q.get('type'), token = q.get('access_token');
+
+if (err) {
+  show('<h1>Link geçersiz</h1><p>' + err.replace(/[<>&]/g, '') + '</p><p>Link süresi dolmuş olabilir. Uygulamadan yeniden iste.</p>');
+} else if (token && type === 'recovery') {
+  show('<h1>Yeni şifre belirle</h1>'
+    + '<input type="password" id="p1" placeholder="Yeni şifre (en az 8 karakter)" autocomplete="new-password">'
+    + '<input type="password" id="p2" placeholder="Yeni şifre (tekrar)" autocomplete="new-password">'
+    + '<button id="save">Şifreyi kaydet</button><div class="err" id="e"></div>');
+  document.getElementById('save').onclick = async () => {
+    const p1 = document.getElementById('p1').value, p2 = document.getElementById('p2').value, e = document.getElementById('e'), b = document.getElementById('save');
+    e.textContent = '';
+    if (p1.length < 8) { e.textContent = 'Şifre en az 8 karakter olmalı.'; return; }
+    if (p1 !== p2) { e.textContent = 'İki şifre aynı değil.'; return; }
+    b.disabled = true;
+    try {
+      const r = await fetch(SUPABASE_URL + '/auth/v1/user', { method: 'PUT',
+        headers: { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: p1 }) });
+      if (!r.ok) { const j = await r.json().catch(() => ({})); throw new Error(j.msg || j.message || ('HTTP ' + r.status)); }
+      show('<h1 class="ok">✅ Şifren değişti</h1><p>VetTEX uygulamasına dönüp e-posta adresin ve yeni şifrenle giriş yapabilirsin.</p>');
+    } catch (x) { e.textContent = 'Kaydedilemedi: ' + x.message; b.disabled = false; }
+  };
+} else if (token) {
+  show('<h1 class="ok">✅ E-postan doğrulandı</h1><p>VetTEX uygulamasına dönüp e-posta adresin ve şifrenle giriş yapabilirsin.</p>');
+} else {
+  show('<h1>VetTEX hesap sayfası</h1><p>Bu sayfa e-posta doğrulama ve şifre sıfırlama linkleri içindir.</p><p><a href="mailto:vettex.app@gmail.com" style="color:var(--accent)">vettex.app@gmail.com</a></p>');
+}
+</script>
+</body>
+</html>

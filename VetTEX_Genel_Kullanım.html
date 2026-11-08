@@ -467,6 +467,16 @@ function replayTutorial() {
     color:var(--text-primary); font-family:inherit; font-size:15px; box-sizing:border-box;
   }
   #login-alpha input:focus { outline:none; border-color:var(--accent-cyan); }
+  #login-email { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  #login-email input { width:100%; padding:13px 14px; border-radius:10px; border:1px solid var(--border); background:var(--bg-card); color:var(--text-primary); font-family:inherit; font-size:15px; box-sizing:border-box; }
+  #login-email input:focus { outline:none; border-color:var(--accent-cyan); }
+  #login-email .em-btns { display:flex; gap:8px; }
+  #login-email .em-btns button { flex:1; padding:12px; border-radius:10px; font-family:inherit; font-size:13px; font-weight:600; cursor:pointer; border:1px solid var(--accent-cyan); background:rgba(0,212,255,.12); color:var(--accent-cyan); }
+  #login-email .em-btns button.em-sec { background:none; border-color:var(--border); color:var(--text-secondary); }
+  #login-email button:disabled { opacity:.6; cursor:wait; }
+  .lg-link { background:none; border:none; color:var(--text-muted); font-family:inherit; font-size:11px; text-decoration:underline; cursor:pointer; margin-top:10px; }
+  #login-info { min-height:0; margin-top:8px; font-size:11px; color:var(--accent-green, #2ecc71); line-height:1.6; }
+  #login-alpha.lg-hidden, #login-email.lg-hidden { display:none; }
   #login-submit {
     padding:13px; border-radius:10px; border:1px solid var(--accent-cyan); background:rgba(0,212,255,.12);
     color:var(--accent-cyan); font-family:inherit; font-size:14px; font-weight:600; cursor:pointer;
@@ -2901,9 +2911,16 @@ const ALPHA = !!window.VETTEX_ALPHA;
 // Kullanıcı adı + şifre ile giriş: hesaplar Supabase → Authentication → Users'ta elle açılır.
 // Giriş yapan herkes tüm vakaları oynar. Giriş ekranındaki "Demo vakalar" ile hesapsız, sadece demo vakaları açık.
 const PASSWORD_LOGIN = ALPHA || !GOOGLE_WEB_CLIENT_ID;
-const ALPHA_EMAIL_DOMAIN = 'alfa.vettex.app';   // "ayse" → ayse@alfa.vettex.app
+const ALPHA_EMAIL_DOMAIN = 'alfa.vettex.app';
+// E-posta + şifre ile kayıt/giriş. Altyapı hazır; true yapınca giriş ekranında görünür (Google girişi açıkken).
+const EMAIL_AUTH = false;
+// E-posta doğrulama ve şifre sıfırlama linklerinin açılacağı sayfa (repoda hesap.html)
+const ACCOUNT_PAGE_URL = 'https://ardagumush.github.io/Vettextasima/hesap.html';   // "ayse" → ayse@alfa.vettex.app
 // Ücretsiz demo vakaları (tutorial cat + fip kullanır, bunlar mutlaka açık kalmalı)
 const FREE_CASE_KEYS = ['cat', 'fip', 'parvo'];
+// Google Play aboneliği — Play Console → Para kazanma → Abonelikler'deki kimliklerle AYNI olmalı
+const BILLING_PRODUCT_ID = 'vettex_premium';    // abonelik ürün kimliği
+const BILLING_PLAN_ID = 'alti-ay';              // temel plan kimliği (6 ay)
 
 
 
@@ -6689,6 +6706,67 @@ const VTX = window.VTX = {
     } finally { btn.disabled = false; btn.textContent = 'Giriş yap'; }
     return false;
   },
+  // ── Kullanıcı adıyla giriş (Google modunda gizli; inceleme ve özel hesaplar için) ──
+  toggleUserLogin() {
+    const f = document.getElementById('login-alpha'); if (!f) return;
+    f.classList.toggle('lg-hidden');
+    if (!f.classList.contains('lg-hidden')) setTimeout(() => { const u = document.getElementById('login-user'); if (u) u.focus(); }, 30);
+  },
+
+  // ── E-posta + şifre (EMAIL_AUTH) ──
+  _emVals() {
+    const e = (document.getElementById('em-email').value || '').trim().toLowerCase(), p = document.getElementById('em-pass').value || '';
+    return { e, p, ok: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e) };
+  },
+  _emMsg(err, info) {
+    const a = document.getElementById('login-error'), b = document.getElementById('login-info');
+    if (a) a.textContent = err || ''; if (b) b.textContent = info || '';
+  },
+  async emailSignIn(ev) {
+    if (ev) ev.preventDefault();
+    const v = this._emVals(), btn = document.getElementById('em-login');
+    this._emMsg('', '');
+    if (!v.ok || !v.p) { this._emMsg('E-posta ve şifreni gir.'); return false; }
+    btn.disabled = true;
+    try {
+      const t = await this.api('/auth/v1/token?grant_type=password', { method: 'POST', auth: false, body: { email: v.e, password: v.p } });
+      this.setSession(t); document.getElementById('em-pass').value = '';
+      await this.afterSignIn();
+    } catch (e) {
+      const m = String(e && e.message || '');
+      this._emMsg(/confirm/i.test(m) ? 'E-postanı henüz doğrulamadın. Gelen kutundaki linke tıkla (spam klasörüne de bak).'
+        : (e.status === 400 || e.status === 401) ? 'E-posta veya şifre hatalı.'
+        : (e.status ? 'Giriş yapılamadı (' + e.status + ').' : 'Sunucuya ulaşılamadı. İnternet bağlantını kontrol et.'));
+    } finally { btn.disabled = false; }
+    return false;
+  },
+  async emailSignUp() {
+    const v = this._emVals(), btn = document.getElementById('em-signup');
+    this._emMsg('', '');
+    if (!v.ok) { this._emMsg('Geçerli bir e-posta adresi gir.'); return; }
+    if (v.p.length < 8) { this._emMsg('Şifre en az 8 karakter olmalı.'); return; }
+    btn.disabled = true;
+    try {
+      const r = await this.api('/auth/v1/signup?redirect_to=' + encodeURIComponent(ACCOUNT_PAGE_URL), { method: 'POST', auth: false, body: { email: v.e, password: v.p } });
+      if (r && r.access_token) { this.setSession(r); await this.afterSignIn(); return; }   // doğrulama kapalıysa direkt giriş
+      this._emMsg('', '📧 ' + v.e + ' adresine doğrulama linki gönderdik. Linke tıkladıktan sonra buradan giriş yap.');
+    } catch (e) {
+      const m = String(e && e.message || '');
+      this._emMsg(/registered|already/i.test(m) ? 'Bu e-postayla zaten bir hesap var. Giriş yap ya da şifreni sıfırla.'
+        : /weak|password/i.test(m) ? 'Şifre çok zayıf, daha güçlü bir şifre seç.'
+        : 'Kayıt olunamadı: ' + m);
+    } finally { btn.disabled = false; }
+  },
+  async emailForgot() {
+    const v = this._emVals();
+    this._emMsg('', '');
+    if (!v.ok) { this._emMsg('Önce e-posta adresini yaz.'); return; }
+    try {
+      await this.api('/auth/v1/recover?redirect_to=' + encodeURIComponent(ACCOUNT_PAGE_URL), { method: 'POST', auth: false, body: { email: v.e } });
+    } catch (e) { /* hesabın var olup olmadığını belli etme */ }
+    this._emMsg('', '📧 Bu e-postayla bir hesap varsa şifre sıfırlama linki gönderdik.');
+  },
+
   // Hesap Supabase'ten silindiyse / şifresi değiştiyse uygulamadan çıkar
   async verifyAccount() {
     if (!PASSWORD_LOGIN || !this.session) return;
@@ -6770,7 +6848,7 @@ const VTX = window.VTX = {
     const h = location.hash || '';
     if (!/access_token=|error=/.test(h)) return false;
     const q = new URLSearchParams(h.slice(1));
-    history.replaceState(null, '', location.pathname + location.search);
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
     if (q.get('error')) { const el = document.getElementById('login-error'); if (el) el.textContent = 'Giriş yapılamadı: ' + (q.get('error_description') || q.get('error')); return false; }
     const tok = q.get('access_token');
     const user = await this.api('/auth/v1/user', { auth: false, token: tok });
@@ -6782,6 +6860,7 @@ const VTX = window.VTX = {
     document.getElementById('login-overlay').classList.remove('open');
     await this.loadProfile();
     if (!PASSWORD_LOGIN) await this.syncCases();    // şifreli girişte vakalar zaten uygulamanın içinde
+    if (!PASSWORD_LOGIN) VTXBilling.init();
     this.updateUI();
     this.ensureRegistration();
     if (PASSWORD_LOGIN) showToast('👋 Hoş geldin, ' + this.alphaUserName() + '!');
@@ -6811,6 +6890,7 @@ const VTX = window.VTX = {
     if (PASSWORD_LOGIN) { await this.verifyAccount(); if (!this.session) return; }
     try { await this.loadProfile(); if (!PASSWORD_LOGIN) await this.syncCases(); } catch (e) {}
     this.updateUI();
+    if (!PASSWORD_LOGIN) VTXBilling.init();
   },
 
   // ── Profil ──
@@ -6914,11 +6994,86 @@ function isCaseUnlocked(key) {
   return FREE_CASE_KEYS.includes(key) || VTX.premium();
 }
 
-// ── Abonelik (Google Play Billing — Play Console'da ürün tanımlanınca bağlanacak) ──
+// ── Abonelik (Google Play Billing, cordova-plugin-purchase) ──
+// Akış: satın alma → Supabase "verify-purchase" fonksiyonu Google'a sorar → profiles.premium_until sunucuda yazılır.
+// Uygulamanın kendisi premium_until'i değiştiremez (veritabanı izni yok); sadece doğrulama fonksiyonu yazar.
 const VTXBilling = {
-  available() { return false; },
-  async subscribe() { showToast('⭐ Abonelik çok yakında! Şimdilik demo vakalarını oynayabilirsin.'); },
+  _ready: false, _initP: null, _busy: false,
+  store() { return window.CdvPurchase && window.CdvPurchase.store; },
+  available() { return VTX.isNative() && !PASSWORD_LOGIN && !!this.store(); },
+  product() { const st = this.store(); return st ? st.get(BILLING_PRODUCT_ID, CdvPurchase.Platform.GOOGLE_PLAY) : null; },
+  offer() {
+    const p = this.product(); if (!p) return null;
+    return (p.offers || []).find(o => String(o.id).split('@')[0] === BILLING_PLAN_ID || String(o.id).indexOf(BILLING_PLAN_ID) >= 0) || p.getOffer();
+  },
+  priceText() {
+    const o = this.offer(), ph = o && o.pricingPhases && o.pricingPhases[o.pricingPhases.length - 1];
+    return ph && ph.price ? ph.price : '';
+  },
+  // Sunucu doğrulaması (CdvPurchase özel doğrulayıcı imzası: (body, callback))
+  async _validate(body, cb) {
+    try {
+      const tr = body && body.transaction;
+      if (!tr || !tr.purchaseToken) { cb({ ok: false, code: 6778003, message: 'Satın alma bilgisi eksik' }); return; }
+      if (!VTX.session) { cb({ ok: false, code: 6778003, message: 'Giriş yapılmamış' }); return; }
+      const r = await VTX.api('/functions/v1/verify-purchase', { method: 'POST',
+        body: { purchaseToken: tr.purchaseToken, productId: body.id || BILLING_PRODUCT_ID } });
+      if (r && r.ok) {
+        if (VTX.profile) { VTX.profile.premium_until = r.premium_until; VTX.ls('vtx-profile', VTX.profile); }
+        cb({ ok: true, data: { id: body.id || BILLING_PRODUCT_ID, latest_receipt: true, transaction: tr } });
+      } else cb({ ok: false, code: 6778003, message: (r && r.error) || 'Doğrulanamadı' });
+    } catch (e) {
+      // 4xx: abonelik geçersiz/başka hesaba ait · ağ hatası: sonra tekrar denenir
+      cb({ ok: false, code: e.status && e.status < 500 ? 6778003 : 6778001, message: String(e && e.message || e) });
+    }
+  },
+  init() {
+    if (this._initP) return this._initP;
+    if (!VTX.isNative() || PASSWORD_LOGIN) return Promise.resolve(false);
+    this._initP = new Promise(res => {
+      const go = async () => {
+        const st = this.store();
+        if (!st) { res(false); return; }
+        const { ProductType, Platform, LogLevel } = CdvPurchase;
+        st.verbosity = LogLevel.WARNING;
+        st.register([{ id: BILLING_PRODUCT_ID, type: ProductType.PAID_SUBSCRIPTION, platform: Platform.GOOGLE_PLAY }]);
+        st.validator = (body, cb) => this._validate(body, cb);
+        st.applicationUsername = () => (VTX.session && VTX.session.user && VTX.session.user.id) || undefined;
+        st.when()
+          .approved(t => t.verify())
+          .verified(r => { r.finish(); this._onPremium(); })
+          .unverified(r => { if (this._busy) { this._busy = false; showToast('Abonelik doğrulanamadı. İnternetini kontrol edip "Satın alımları geri yükle"ye bas.'); } });
+        st.error(e => { console.warn('[abonelik]', e); if (this._busy && e && e.code !== CdvPurchase.ErrorCode.PAYMENT_CANCELLED) showToast('Ödeme tamamlanamadı: ' + (e.message || e.code)); this._busy = false; });
+        try { await st.initialize([Platform.GOOGLE_PLAY]); this._ready = true; } catch (e) { console.warn('[abonelik başlatma]', e); }
+        res(this._ready);
+      };
+      if (window.CdvPurchase) go(); else document.addEventListener('deviceready', go, { once: true });
+      setTimeout(() => res(this._ready), 8000);
+    });
+    return this._initP;
+  },
+  async _onPremium() {
+    const was = this._busy; this._busy = false;
+    await VTX.loadProfile(); await VTX.syncCases(); VTX.updateUI();
+    if (was && VTX.premium()) { try { closeModal(); } catch (e) {} showToast('⭐ Premium aktif! Tüm vakalar açıldı.'); }
+  },
+  async subscribe() {
+    if (!VTX.session) { VTX.showLogin('Abone olmak için önce giriş yap.'); try { closeModal(); } catch (e) {} return; }
+    if (!VTX.isNative()) { showToast('Abonelik Google Play uygulamasından alınır.'); return; }
+    await this.init();
+    const o = this.offer();
+    if (!o) { showToast('Abonelik bilgisi alınamadı. İnternetini kontrol edip tekrar dene.'); return; }
+    this._busy = true;
+    const err = await o.order();
+    if (err) { this._busy = false; if (err.code !== CdvPurchase.ErrorCode.PAYMENT_CANCELLED) showToast('Ödeme başlatılamadı: ' + (err.message || err.code)); }
+  },
+  manage() {
+    const st = this.store();
+    if (st && st.manageSubscriptions) st.manageSubscriptions(CdvPurchase.Platform.GOOGLE_PLAY);
+    else window.open('https://play.google.com/store/account/subscriptions?package=com.vettex.app', '_system');
+  },
   async restore() {
+    if (this.available()) { try { await this.init(); this._busy = true; await this.store().restorePurchases(); } catch (e) {} this._busy = false; }
     await VTX.loadProfile(); await VTX.syncCases(); VTX.updateUI();
     showToast(VTX.premium() ? '⭐ Premium aboneliğin bulundu!' : 'Bu hesapta aktif abonelik bulunamadı.');
     if (VTX.premium()) closeModal();
@@ -6945,13 +7100,15 @@ function openPaywall(reason) {
   const html = '<div class="pw-wrap">'
     + (reason ? '<div class="pw-reason">' + freeEsc(reason) + '</div>' : '')
     + (prem ? '<div class="pw-active">⭐ Premium aboneliğin aktif · ' + until + ' tarihine kadar</div>' : '')
+    + (prem && VTX.isNative() ? '<button type="button" class="pw-link" onclick="VTXBilling.manage()">Aboneliği yönet / iptal et</button>' : '')
     + '<ul class="pw-list">'
     + '<li>🩺 <b>' + (window.CASE_INDEX ? Object.keys(window.CASE_INDEX).length : 40) + ' klinik vakanın</b> tamamı (kedi + köpek)</li>'
     + '<li>📚 Serbest Çalışma listelerinin hepsi + kendi listelerin</li>'
     + '<li>🆕 Eklenen her yeni vaka otomatik olarak açılır</li>'
     + '<li>📴 İndirilen vakalar internetsiz de oynanır</li>'
     + '</ul>'
-    + (prem ? '' : '<button type="button" class="pw-buy" onclick="VTXBilling.subscribe()">⭐ PREMIUM\'A GEÇ</button>')
+    + (prem ? '' : '<button type="button" class="pw-buy" onclick="VTXBilling.subscribe()">⭐ PREMIUM\'A GEÇ' + (VTXBilling.priceText() ? ' · ' + freeEsc(VTXBilling.priceText()) + ' / 6 ay' : '') + '</button>')
+    + (prem ? '' : '<div class="pw-acc">6 aylık abonelik, iptal edilmezse dönem sonunda otomatik yenilenir. İstediğin zaman Google Play → Ödemeler ve abonelikler bölümünden iptal edebilirsin.</div>')
     + '<button type="button" class="pw-link" onclick="VTXBilling.restore()">Satın alımları geri yükle</button>'
     + (email ? '<div class="pw-acc">' + freeEsc(email) + '</div>' : '')
     + '</div>';
@@ -7689,16 +7846,31 @@ document.addEventListener('visibilitychange', function() {
       <input type="password" id="login-pass" placeholder="Şifre" autocomplete="current-password">
       <button type="submit" id="login-submit">Giriş yap</button>
     </form>`;
+  const emailForm = `<form id="login-email" onsubmit="return VTX.emailSignIn(event)" autocomplete="on">
+      <div class="lg-or" style="margin:4px 0 2px"><span>veya e-posta ile</span></div>
+      <input type="email" id="em-email" placeholder="E-posta" autocomplete="email" autocapitalize="none" spellcheck="false">
+      <input type="password" id="em-pass" placeholder="Şifre (en az 8 karakter)" autocomplete="current-password">
+      <div class="em-btns">
+        <button type="submit" id="em-login">Giriş yap</button>
+        <button type="button" id="em-signup" class="em-sec" onclick="VTX.emailSignUp()">Kayıt ol</button>
+      </div>
+      <button type="button" class="lg-link" style="margin-top:0" onclick="VTX.emailForgot()">Şifremi unuttum</button>
+    </form>`;
   box.innerHTML = `
     <div class="lg-logo">VetTEX</div>
     <div class="lg-sub">${ALPHA ? 'ALFA TEST SÜRÜMÜ' : 'KLİNİK SİMÜLASYON'}</div>
     <p class="lg-text">${PASSWORD_LOGIN ? 'Sana verilen kullanıcı adı ve şifreyle giriş yap.' : 'Devam etmek için Google hesabınla giriş yap.'}
       ${ALPHA ? '<br>Alfa testinde <b>tüm vakalar açık</b>.' : ''}</p>
     ${PASSWORD_LOGIN ? pwForm : googleBtn}
+    ${!PASSWORD_LOGIN && EMAIL_AUTH ? emailForm : ''}
+    ${!PASSWORD_LOGIN ? pwForm.replace('id="login-alpha"', 'id="login-alpha" class="lg-hidden" style="margin-top:14px"') : ''}
     <div id="login-error"></div>
+    <div id="login-info"></div>
     <div class="lg-or"><span>veya</span></div>
     <button type="button" id="login-demo" onclick="VTX.enterDemo()">🩺 Demo vakalar<small>Hesapsız dene · ${FREE_CASE_KEYS.length} vaka açık</small></button>
-    <div class="lg-note">Hesabın yoksa VetTEX ekibinden iste:<br><a href="mailto:vettex.app@gmail.com">vettex.app@gmail.com</a></div>
+    ${PASSWORD_LOGIN
+      ? '<div class="lg-note">Hesabın yoksa VetTEX ekibinden iste:<br><a href="mailto:vettex.app@gmail.com">vettex.app@gmail.com</a></div>'
+      : '<button type="button" class="lg-link" onclick="VTX.toggleUserLogin()">Kullanıcı adıyla giriş</button><div class="lg-note">Sorun mu yaşıyorsun? <a href="mailto:vettex.app@gmail.com">vettex.app@gmail.com</a></div>'}
     <div class="lg-ver">VetTEX ${APP_VERSION}${ALPHA ? ' · Alfa' : ''}</div>`;
   if (ALPHA) document.title = 'VetTEX Alfa';
 })();
