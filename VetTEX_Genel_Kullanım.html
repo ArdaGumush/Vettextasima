@@ -2116,6 +2116,16 @@ window.onerror = function(msg, src, line) {
           <div class="toggle-slider"></div>
         </label>
       </div>
+      <div class="settings-row">
+        <div class="sr-label">
+          🔊 USG / EKO Rapor Sonucu
+          <span>Açıkken USG ve EKO raporlarının sonunda uzmanın yorumu çıkar. Kapalıyken bulguları kendin okursun.</span>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="settings-usgsonuc-toggle" onchange="onUsgConclusionToggle(this.checked)">
+          <div class="toggle-slider"></div>
+        </label>
+      </div>
 
       <div class="settings-row" style="flex-direction:column;align-items:flex-start;gap:14px">
         <div class="sr-label">
@@ -2825,7 +2835,7 @@ window.onerror = function(msg, src, line) {
         <div style="font-size:14px;font-weight:700;letter-spacing:1px">VetTEX Veteriner Kliniği</div>
         <div style="font-size:10px;opacity:0.7;margin-top:2px">Radyoloji & Görüntüleme Birimi</div>
       </div>
-      <div style="font-size:11px;background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:20px;letter-spacing:1px;font-weight:600">ABDOMİNAL USG</div>
+      <div id="usg-modal-badge" style="font-size:11px;background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:20px;letter-spacing:1px;font-weight:600">ABDOMİNAL USG</div>
       <button onclick="closeUSGModal()" style="background:rgba(255,255,255,0.15);border:none;color:white;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;line-height:1">✕</button>
     </div>
     <div id="usg-modal-hasta" style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;background:#f0f4f8;border:1px solid #d0dae6;margin:16px 20px 0;border-radius:4px;padding:10px 14px;font-size:12px"></div>
@@ -2860,6 +2870,7 @@ let CASE_DATA = {};
 const CASES_URL = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/cases.json";
 const CONFIG_URL = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/vetconfig.json";
 const USG_REPORTS_URL = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/usg-reports.json";
+const EKO_REPORTS_URL = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/eko-reports.json";
 const QUESTIONS_URL = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/questions.json";
 const DIFFERENTIALS_URL = "https://raw.githubusercontent.com/ArdaGumush/Vettextasima/refs/heads/main/differentials.json";
 const SUPABASE_URL = "https://kqixpnxswlpdkfyzshyu.supabase.co";
@@ -2962,6 +2973,7 @@ const DEFAULT_BIYO_DOG = {
   "K":           { value:"4.2", unit:"mEq/L", ref:"3.6–5.5", flag:"" },
   "Cl":          { value:"110", unit:"mEq/L", ref:"102–120", flag:"" },
   "Ca":          { value:"9.8", unit:"mg/dL", ref:"7.9–12.0",flag:"" },
+  "CK":          { value:"115", unit:"U/L",   ref:"52–368",  flag:"" },
 };
 
 const DEFAULT_BIYO_CAT = {
@@ -2982,6 +2994,7 @@ const DEFAULT_BIYO_CAT = {
   "K":           { value:"4.0", unit:"mEq/L", ref:"3.5–5.8", flag:"" },
   "Cl":          { value:"120", unit:"mEq/L", ref:"115–130", flag:"" },
   "Ca":          { value:"9.5", unit:"mg/dL", ref:"8.8–11.9",flag:"" },
+  "CK":          { value:"125", unit:"U/L",   ref:"69–214",  flag:"" },
 };
 
 function fillMissingParams(caseData) {
@@ -2991,11 +3004,37 @@ function fillMissingParams(caseData) {
 
   // Hormonlar
   if (!caseData.hormones) caseData.hormones = {};
+  const _filled = new Set();
   Object.entries(defHorm).forEach(([k, v]) => {
     const cur = caseData.hormones[k];
     if (!cur || !cur.value || cur.value === '—' || cur.value === '-') {
       caseData.hormones[k] = { ...v };
+      _filled.add(k);
+    } else if (cur.value === v.value && cur.ref === v.ref) {
+      _filled.add(k);   // vaka verisine varsayılan aynen kopyalanmış: cinsiyete göre düzeltilebilir
     }
+  });
+  const _sx = String((caseData.anamnez && caseData.anamnez.demog) || '').toLocaleLowerCase('tr-TR');
+  const _male = /erkek/.test(_sx);
+  const _neut = /kısırlaştırılmış|ovh|orşiektomi/.test(_sx) && !/kısırlaştırılmamış/.test(_sx);
+  const _young = /aylık/.test(_sx);
+  const SEXH = isDog ? {
+    mi: { Testosteron: ['2.5', '1.0–8.0 (intakt erkek)'], Progesteron: ['0.2', '<0.5 (erkek)'] },
+    mn: { Testosteron: ['0.05', '<0.2 (kastre erkek)'], Progesteron: ['0.1', '<0.5 (erkek)'] },
+    fi: { Testosteron: ['0.1', '<0.5 (dişi)'], Progesteron: ['0.4', '<1.0 (anöstrus)'] },
+    fn: { Testosteron: ['0.05', '<0.2 (kısır dişi)'], Progesteron: ['0.1', '<0.5 (kısır dişi)'] },
+    y:  { Testosteron: ['0.05', '<0.2 (ergenlik öncesi)'], Progesteron: ['0.1', '<0.5 (ergenlik öncesi)'] },
+  } : {
+    mi: { Testosteron: ['1.8', '0.5–5.0 (intakt erkek)'], Progesteron: ['0.1', '<0.5 (erkek)'] },
+    mn: { Testosteron: ['0.05', '<0.3 (kastre erkek)'], Progesteron: ['0.1', '<0.5 (erkek)'] },
+    fi: { Testosteron: ['0.1', '<0.3 (dişi)'], Progesteron: ['0.3', '<1.0 (interöstrus)'] },
+    fn: { Testosteron: ['0.05', '<0.3 (kısır dişi)'], Progesteron: ['0.1', '<0.5 (kısır dişi)'] },
+    y:  { Testosteron: ['0.05', '<0.3 (ergenlik öncesi)'], Progesteron: ['0.1', '<0.5 (ergenlik öncesi)'] },
+  };
+  let _grp = (_male ? 'm' : 'f') + (_neut ? 'n' : 'i');
+  if (_young && !_neut) _grp = 'y';   // ergenlik öncesi
+  Object.entries(SEXH[_grp]).forEach(([k, [val, ref]]) => {
+    if (_filled.has(k)) caseData.hormones[k] = { value: val, unit: 'ng/mL', ref: ref, flag: '' };
   });
 
   // Biyokimya
@@ -3034,6 +3073,7 @@ async function loadCaseData() {
     if (window.VTX) VTX.applyCasesCache();
     // USG raporlarını yükle
     try { const ru = await fetch(USG_REPORTS_URL); if (ru.ok) window.USG_REPORTS = await ru.json(); } catch(eu) {}
+    try { const re = await fetch(EKO_REPORTS_URL); if (re.ok) window.EKO_REPORTS = await re.json(); } catch(ee) {}
     fetch(QUESTIONS_URL).then(r=>r.ok?r.json():{}).then(d=>{window.QUESTIONS=d;}).catch(e=>{window.QUESTIONS={};});
     fetch(DIFFERENTIALS_URL).then(r=>r.ok?r.json():{}).then(d=>{window.DIFFERENTIALS=d;}).catch(e=>{window.DIFFERENTIALS={};});
     document.getElementById('splash-status').textContent = "Parametreler dolduruluyor...";
@@ -3203,9 +3243,17 @@ const OWNER_PROFILES = [
   { id:"rich",   label:"💰 Yüksek Gelirli", credit:1200 },
 ];
 
+// USG raporunda radyoloğun "Sonuç" paragrafı (Ayarlar → USG Rapor Sonucu). Varsayılan: kapalı.
+let usgShowConclusion = false;
+function onUsgConclusionToggle(checked) {
+  usgShowConclusion = !!checked;
+  try { localStorage.setItem('vetcase-usg-sonuc', checked ? '1' : '0'); } catch (e) {}
+  showToast(checked ? '🔊 USG / EKO rapor sonucu AÇIK' : '🔒 USG / EKO rapor sonucu KAPALI — bulguları kendin yorumla');
+}
+
 const TETKIK_COSTS = {
   tool:30, hemogram:80, microscopy:40, skin_micro:50, biopsy:120, effusion:90,
-  usg:150, xray:100, echo:180, bt:380, mr:450, rapid_kit:60,
+  usg:150, xray:100, echo:180, bt:380, mr:450, rapid_kit:60, kit_confirm:220,
   biyo_base:50, hormon_base:50,
 };
 
@@ -3213,7 +3261,7 @@ const BIYO_PARAM_COSTS = {
   "ALT":10,"ALP":10,"AST":10,"GGT":15,"Total Bili.":15,"Safra As.":15,
   "Glukoz":10,"Fruktozamin":15,"CREA":10,"Fosfor":10,"Total Prot.":10,
   "ALB":10,"Glob":15,"Na":10,"K":10,"Cl":10,"Ca":10,
-  "BUN":10,"Kolesterol":10,"Trigliserit":10,"Lipaz":20,
+  "BUN":10,"Kolesterol":10,"Trigliserit":10,"Lipaz":20,"CK":15,
 };
 
 const HORMON_PARAM_COSTS = {
@@ -3788,8 +3836,24 @@ function mobDoImaging(key) {
   const _rk = mobCurrentCase._realKey || currentCaseKey;
   if (key === 'usg' && window.USG_REPORTS && window.USG_REPORTS[_rk]) {
     openUSGModal(_rk, data.imgUrl && data.imgUrl !== 'null' ? data.imgUrl : null);
-    const sonuc = (String(window.USG_REPORTS[_rk]).split('\n').filter(l => l.trim()).pop() || '');
-    mobLog('🔊 USG Raporu', parseMarkdown(sonuc));
+    const _lines = String(window.USG_REPORTS[_rk]).split('\n').filter(l => l.trim());
+    if (usgShowConclusion) {
+      mobLog('🔊 USG Raporu', parseMarkdown(_lines.filter(l => l.startsWith('SONUÇ:')).pop() || _lines[_lines.length - 1] || ''));
+    } else {
+      const _abn = _lines.filter(l => !l.startsWith('SONUÇ:') && !l.startsWith('ENDİKASYON NOTU:') && usgLineAbnormal(l));
+      mobLog('🔊 USG Raporu', _abn.length ? _abn.map(l => parseMarkdown(l)).join('<br>') : 'Patolojik bulgu işaretlenmedi.');
+    }
+    return;
+  }
+  if (key === 'echo' && window.EKO_REPORTS && window.EKO_REPORTS[_rk]) {
+    openUSGModal(_rk, data.imgUrl && data.imgUrl !== 'null' ? data.imgUrl : null, 'eko');
+    const _el = String(window.EKO_REPORTS[_rk]).split('\n').filter(l => l.trim());
+    if (usgShowConclusion) {
+      mobLog('🫀 EKO Raporu', parseMarkdown(_el.filter(l => l.startsWith('SONUÇ:')).pop() || ''));
+    } else {
+      const _ea = _el.filter(l => !l.startsWith('SONUÇ:') && /:\s*!/.test(l)).map(l => l.replace(/:\s*!\s*/, ': '));
+      mobLog('🫀 EKO Raporu', _ea.length ? _ea.map(l => parseMarkdown(l)).join('<br>') : 'Patolojik bulgu işaretlenmedi.');
+    }
     return;
   }
 
@@ -4031,9 +4095,10 @@ function mobUseRapidKit(kitId, sampleType) {
   const kit = RAPID_KITS.find(k => k.id === kitId);
   usedRapidKits.add(kitId);
   if (typeof logTetkik === 'function') logTetkik('⚡ Hızlı Kit: ' + kit.label);
-  const res = rapidKitResult(mobCurrentCase, kitId);
-  mobLog('🧪 ' + kit.label, rapidKitBadge(res));
-  openModal('🧪 ' + kit.label, `<div style="text-align:center;padding:20px 0">${rapidKitBadge(res, 20)}</div><div style="text-align:center">${notePenHTML('Hızlı Kit', kit.label + ': ' + res.text)} <span style="font-size:11px;color:var(--text-muted)">Notlara ekle</span></div>`);
+  const res = kitRoll(mobCurrentCase, kitId);
+  const nth = kitRuns[kitId].length;
+  mobLog('🧪 ' + kit.label + (nth > 1 ? ' (' + nth + '. test)' : ''), rapidKitBadge(res));
+  showKitResult(kitId, sampleType, res);
 }
 
 function mobOpenRapidKit() {
@@ -4667,6 +4732,7 @@ window.addEventListener('DOMContentLoaded', function initSettings() {
 
     if (eco === "1") { economyMode = true; const t = document.getElementById("settings-economy-toggle"); if(t) t.checked=true; }
       if (lm  === "1") { document.body.classList.add('light-mode'); const t = document.getElementById('settings-lightmode-toggle'); if(t) t.checked=true; }
+    if (localStorage.getItem('vetcase-usg-sonuc') === '1') { usgShowConclusion = true; const t = document.getElementById('settings-usgsonuc-toggle'); if (t) t.checked = true; }
 
     // Kullanıcı Mobil Mod'u hiç elle değiştirmediyse cihaza göre otomatik seç
     let useMobile = mob === "1";
@@ -5088,7 +5154,7 @@ function buildUSGReportHTML(caseKey, imgUrl) {
   return `<div class="usg-rapor">
     <div class="usg-bulgular-baslik">ULTRASONOGRAFİ BULGULARI</div>
     ${bulgular}
-    <div class="usg-sonuc">
+    <div class="usg-sonuc" style="${usgShowConclusion ? '' : 'display:none'}">
       <div class="usg-sonuc-baslik">RADYOLOJİ SONUCU</div>
       ${sonuc}
     </div>
@@ -5278,6 +5344,17 @@ function doImaging(key) {
       return;
     }
   }
+  // EKO için kardiyoloji raporu
+  if (key === 'echo') {
+    const caseKey = (currentCase && currentCase._realKey) ? currentCase._realKey : currentCaseKey;
+    if (window.EKO_REPORTS && window.EKO_REPORTS[caseKey]) {
+      if (!spendCredit(TETKIK_COSTS.echo, 'EKO')) return;
+      if (!consumeAction('Görüntüleme')) return;
+      logTetkik('🖼 EKO');
+      openUSGModal(caseKey, data.imgUrl && data.imgUrl !== "null" ? data.imgUrl : null, 'eko');
+      return;
+    }
+  }
   const imgCostMap = {echo:TETKIK_COSTS.echo, usg:TETKIK_COSTS.usg, xray_direct:TETKIK_COSTS.xray, xray_indirect:TETKIK_COSTS.xray, bt:TETKIK_COSTS.bt, mr:TETKIK_COSTS.mr};
   if (!spendCredit(imgCostMap[key]||TETKIK_COSTS.xray, imagingLabels[key]||key)) return;
   if (!consumeAction('Görüntüleme')) return;
@@ -5387,7 +5464,7 @@ function runHemogram() {
 // ═══════════════════════════════════════════════════════════════
 // BİYOKİMYA
 // ═══════════════════════════════════════════════════════════════
-const BIYO_PARAMS = ["ALT","ALP","AST","GGT","Total Bili.","Safra As.","Glukoz","Fruktozamin","Kolesterol","Trigliserit","BUN","CREA","Fosfor","Total Prot.","ALB","Glob","Na","K","Cl","Ca","Lipaz"];
+const BIYO_PARAMS = ["ALT","ALP","AST","GGT","Total Bili.","Safra As.","Glukoz","Fruktozamin","Kolesterol","Trigliserit","BUN","CREA","Fosfor","Total Prot.","ALB","Glob","Na","K","Cl","Ca","Lipaz","CK"];
 let selectedBiyo = new Set();
 
 function buildBiyoChips() {
@@ -5519,6 +5596,135 @@ function rapidKitBadge(res, size) {
 // Bu vakada uygulanan kitler (menüdeki "✓ Kullanıldı" rozeti için)
 let usedRapidKits = new Set();
 
+// ── Hızlı kitler yanılabilir ──
+// sens (duyarlılık): gerçek pozitifi yakalama oranı · spec (özgüllük): gerçek negatifi doğru bilme oranı.
+// Değerler yayınlanmış çalışmalardan; kaynağı olmayan kitler hata vermez (sadece uyarı notu gösterir).
+const KIT_ACCURACY = {
+  cpv_ag:     { sens: 0.73, spec: 0.93, confirm: 'PCR (dışkı)' },                       // Tinky ve ark. 2015, Vet World 8(4):523
+  fpv_ag:     { sens: 0.55, spec: 0.99, confirm: 'PCR (dışkı)' },                       // Jacobson ve ark. 2021, JFMS 23(12):1192
+  fiv_felv:   { items: { FIV: { sens: 1.00, spec: 0.978 }, FeLV: { sens: 0.915, spec: 0.992 } },
+                confirm: 'Western blot (FIV) + PCR (FeLV)' },                           // IDEXX SNAP Combo verisi; Krecic ve ark. 2018, JFMS Open Rep
+  snap4dx:    { items: { Ehrlichia: { sens: 0.971, spec: 1 }, Anaplasma: { sens: 0.845, spec: 1 },
+                         Borrelia: { sens: 0.955, spec: 1 }, Dirofilaria: { sens: 0.974, spec: 1 } },
+                confirm: 'IFA + PCR' },                                                 // IDEXX SNAP ailesi teknik raporu (özgüllük verilmemiş)
+  leish_ab:   { sens: 0.64, spec: 1.00, confirm: 'Kantitatif ELISA / IFAT' },           // Solano-Gallego ve ark. 2014, Parasit Vectors 7:111
+  lepto_ab:   { sens: 0.79, spec: 0.96, vaccinePos: 0.24, confirm: 'MAT + PCR' },       // Curtis ve ark. 2015, Intern J Appl Res Vet Med 13(3):182
+  cpl:        { sens: 0.87, spec: 0.75, confirm: 'Spec cPL (laboratuvar)' },            // Cridge ve ark. 2018, JVIM 32(2):658
+  giardia_ag: { sens: 0.871, spec: 0.934, confirm: 'Direkt immünfloresan (DFA)' },      // Barbecho ve ark. 2018, Parasit Vectors 11:444
+};
+// Her kit sonucunun altında görünen kısa sınırlılık notu
+const KIT_NOTES = {
+  cpv_ag:     'Negatif sonuç parvoyu dışlamaz: virüs atılımı erken dönemde düşük ve aralıklı olabilir.',
+  fpv_ag:     'Negatif sonuç panlökopeniyi dışlamaz; bu kitlerin kedide duyarlılığı düşüktür.',
+  fiv_felv:   '6 aydan küçük yavruda FIV antikoru anneden geçmiş olabilir; FeLV antijeni regresif enfeksiyonda negatif çıkabilir.',
+  fcov_ab:    'Koronavirüs antikoru tek başına FIP tanısı koydurmaz; sağlıklı kedilerin çoğunda da pozitiftir.',
+  fcov_ag:    'Dışkıda koronavirüs saptanması FIP anlamına gelmez; klinik tablo ve efüzyon bulgularıyla değerlendirilmelidir.',
+  ntprobnp:   'Pozitif sonuç kalp hastalığı lehine bir tarama bulgusudur; ekokardiyografi ile doğrulanmalıdır.',
+  fsaa:       'SAA akut inflamasyonu gösterir, nedenini göstermez.',
+  cdv_ag:     'Negatif sonuç distemperi dışlamaz; antijen saptanabilirliği hastalığın evresine bağlıdır.',
+  snap4dx:    'Akut dönemde antikor henüz oluşmamış olabilir; pozitif sonuç geçmiş bir maruziyeti de gösterebilir.',
+  leish_ab:   'Hızlı antikor testlerinin duyarlılığı düşüktür; negatif sonuç leishmaniozisi dışlamaz.',
+  lepto_ab:   'Aşılı köpekte aşı antikoru pozitif sonuç verebilir; hastalığın ilk günlerinde antikor henüz oluşmamış olabilir.',
+  cpl:        'Negatif sonuç pankreatiti büyük ölçüde dışlar; pozitif sonuç laboratuvar Spec cPL ile doğrulanmalıdır.',
+  giardia_ag: 'Giardia aralıklı atılır; şüphe sürüyorsa test tekrarlanmalıdır.',
+};
+let kitRuns = {};        // kitId → [sonuç, sonuç…] (her uygulama bağımsız)
+let kitConfirmed = {};   // kitId → true (doğrulama testi yapıldı)
+
+function kitRoll(caseData, kitId) {
+  const truth = rapidKitResult(caseData, kitId);
+  const acc = KIT_ACCURACY[kitId];
+  // Tutorial içinde (iframe) sonuçlar hep doğru
+  const noRandom = !acc || window.top !== window.self || window.__vtxNoKitError;
+  const vaccinated = /lepto/i.test(String(((caseData || {}).anamnez || {}).vaccine || ''));
+  const items = truth.items.map(it => {
+    const a = acc && (acc.items ? acc.items[it.name] : acc);
+    let pos = it.pos, flipped = false, why = '';
+    if (!noRandom && a) {
+      if (it.pos) {
+        if (Math.random() > a.sens) { pos = false; flipped = true; }
+      } else {
+        let fp = 1 - a.spec;
+        if (kitId === 'lepto_ab' && vaccinated && acc.vaccinePos) { fp = Math.max(fp, acc.vaccinePos); why = 'vaccine'; }
+        if (Math.random() < fp) { pos = true; flipped = true; }
+      }
+    }
+    return { name: it.name, pos, truePos: it.pos, flipped, why: flipped ? why : '' };
+  });
+  const res = { items, anyPos: items.some(i => i.pos),
+    text: items.map(i => (i.name ? i.name + ': ' : '') + (i.pos ? 'POZİTİF' : 'NEGATİF')).join(' / ') };
+  (kitRuns[kitId] = kitRuns[kitId] || []).push(res);
+  return res;
+}
+
+function kitButtonStyle(color) {
+  return `padding:9px 12px;background:rgba(0,0,0,0);border:1px solid ${color};border-radius:8px;color:${color};font-family:'JetBrains Mono',monospace;font-size:10px;cursor:pointer;flex:1;min-width:140px`;
+}
+function showKitResult(kitId, sampleType, res) {
+  const kit = RAPID_KITS.find(k => k.id === kitId) || { label: kitId };
+  const nth = (kitRuns[kitId] || []).length;
+  const note = KIT_NOTES[kitId];
+  const acc = KIT_ACCURACY[kitId];
+  const lbl = kit.label + (nth > 1 ? ' (' + nth + '. test)' : '');
+  let html = `<div style="text-align:center;padding:16px 0 8px">${rapidKitBadge(res, 20)}</div>`
+    + (nth > 1 ? `<div style="text-align:center;font-size:10px;color:var(--text-muted);margin-bottom:6px">${nth}. test</div>` : '')
+    + `<div style="text-align:center;margin-bottom:12px">${notePenHTML('Hızlı Kit', lbl + ': ' + res.text)} <span style="font-size:11px;color:var(--text-muted)">Notlara ekle</span></div>`
+    + (note ? `<div style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;background:var(--bg-card);font-size:11px;color:var(--text-secondary);line-height:1.6;margin-bottom:12px">ℹ️ ${note}</div>` : '')
+    + `<div style="display:flex;gap:8px;flex-wrap:wrap">`
+    + `<button type="button" onclick="kitRetest('${kitId}','${sampleType}')" style="${kitButtonStyle('var(--accent-cyan)')}">🔁 Tekrar test et</button>`
+    + (acc ? `<button type="button" onclick="kitConfirm('${kitId}')" style="${kitButtonStyle('var(--accent-purple)')}">🧫 Doğrulama: ${acc.confirm}</button>` : '')
+    + `</div>`;
+  openModal('🧪 ' + kit.label, html);
+}
+function kitRetest(kitId, sampleType) {
+  closeModal();
+  if (mobileMode && typeof mobUseRapidKit === 'function' && mobCurrentCase) mobUseRapidKit(kitId, sampleType);
+  else useRapidKit(kitId, sampleType);
+}
+// Laboratuvar doğrulama testi: pahalı ama her zaman doğru
+function kitConfirm(kitId) {
+  const c = (mobileMode && mobCurrentCase) ? mobCurrentCase : currentCase;
+  if (!c) return;
+  const kit = RAPID_KITS.find(k => k.id === kitId) || { label: kitId };
+  const acc = KIT_ACCURACY[kitId] || {};
+  if (!kitConfirmed[kitId]) {
+    if (!spendCredit(TETKIK_COSTS.kit_confirm, 'Doğrulama testi')) return;
+    if (!consumeAction('Doğrulama testi')) return;
+    logTetkik('🧫 Doğrulama: ' + kit.label);
+    kitConfirmed[kitId] = true;
+  }
+  const truth = rapidKitResult(c, kitId);
+  const title = '🧫 DOĞRULAMA — ' + (acc.confirm || kit.label);
+  if (mobileMode && typeof mobLog === 'function') mobLog(title, rapidKitBadge(truth));
+  else addMonitorEntry(truth.anyPos ? 'danger' : 'normal', title, 'Laboratuvar sonucu: ' + rapidKitBadge(truth), kit.label + ' doğrulama: ' + truth.text);
+  openModal(title, `<div style="text-align:center;font-size:10px;color:var(--text-muted);letter-spacing:1px;margin-bottom:6px">LABORATUVAR SONUCU</div>
+    <div style="text-align:center;padding:10px 0 12px">${rapidKitBadge(truth, 20)}</div>
+    <div style="text-align:center;margin-bottom:10px">${notePenHTML('Doğrulama', (acc.confirm || kit.label) + ': ' + truth.text)} <span style="font-size:11px;color:var(--text-muted)">Notlara ekle</span></div>
+    <div style="font-size:11px;color:var(--text-muted);text-align:center;line-height:1.6">Laboratuvar yöntemi hızlı kitten daha güvenilirdir.</div>`);
+}
+// Sonuç ekranı: bu oynayışta yanıltan kit sonuçları
+function kitReviewHTML() {
+  const rows = [];
+  Object.entries(kitRuns).forEach(([id, runs]) => {
+    const kit = RAPID_KITS.find(k => k.id === id) || { label: id };
+    const acc = KIT_ACCURACY[id] || {};
+    runs.forEach((r, i) => r.items.forEach(it => {
+      if (!it.flipped) return;
+      const a = acc.items ? acc.items[it.name] : acc;
+      const lbl = kit.label + (it.name ? ' — ' + it.name : '') + (runs.length > 1 ? ' (' + (i + 1) + '. test)' : '');
+      const txt = it.pos
+        ? (it.why === 'vaccine'
+            ? 'yanlış <b>pozitif</b> çıktı: köpek leptospira aşılı, aşı antikoru teste pozitif yansıyabilir.'
+            : 'yanlış <b>pozitif</b> çıktı (gerçekte negatifti). Kitin özgüllüğü yaklaşık %' + Math.round((a.spec || 1) * 100) + '.')
+        : 'yanlış <b>negatif</b> çıktı (gerçekte pozitifti). Kitin duyarlılığı yaklaşık %' + Math.round((a.sens || 1) * 100) + '.';
+      rows.push('<div style="padding:8px 12px;margin-bottom:6px;border:1px solid rgba(243,156,18,.35);border-radius:8px;background:rgba(243,156,18,.06);font-size:11px;color:var(--text-secondary);line-height:1.7"><b style="color:var(--accent-orange)">' + lbl + ':</b> ' + txt + '</div>');
+    }));
+  });
+  if (!rows.length) return '';
+  return '<div class="rb-sec"><div class="rb-sec-title o">HIZLI KİT UYARISI</div>' + rows.join('')
+    + '<div style="font-size:10.5px;color:var(--text-muted);line-height:1.6">Hızlı kit sonucunu klinik tablo ve diğer bulgularla birlikte değerlendir; şüphede tekrar test ya da doğrulama testi iste.</div></div>';
+}
+
 // Kitler türe özel: kedi kitleri köpek vakasında listelenmez
 function kitsFor(caseData, sampleType) {
   const sp = caseData && caseData.species === 'Köpek' ? 'dog' : 'cat';
@@ -5564,12 +5770,14 @@ function useRapidKit(kitId, sampleType) {
 
   const kit = RAPID_KITS.find(k => k.id === kitId);
   usedRapidKits.add(kitId);
-  const res = rapidKitResult(currentCase, kitId);
+  const res = kitRoll(currentCase, kitId);
+  const nth = kitRuns[kitId].length;
   addMonitorEntry(res.anyPos ? 'danger' : 'normal',
-    '🧪 HIZLI KİT — ' + kit.label,
+    '🧪 HIZLI KİT — ' + kit.label + (nth > 1 ? ' (' + nth + '. test)' : ''),
     'Örnek: ' + (sampleType === 'blood' ? 'Kan' : 'Dışkı') + ' | Sonuç: ' + rapidKitBadge(res),
     kit.label + ': ' + res.text
   );
+  showKitResult(kitId, sampleType, res);
 }
 
 function doMicro(type) {
@@ -5766,7 +5974,7 @@ function renderNotes() {
   if (ml) { ml.innerHTML = notesListHTML(); ml.querySelectorAll('textarea').forEach(noteAutoSize); }
 }
 // Vaka başlangıcında çağrılır: notları, görülen lab değerlerini ve vakaya özel kit kayıtlarını sıfırlar
-function resetNotes() { caseNotes = []; seenLabValues = {}; renderNotes(); if (typeof usedRapidKits !== 'undefined') usedRapidKits = new Set(); }
+function resetNotes() { caseNotes = []; seenLabValues = {}; renderNotes(); if (typeof usedRapidKits !== 'undefined') usedRapidKits = new Set(); kitRuns = {}; kitConfirmed = {}; }
 
 // ═══════════════════════════════════════════════════════════════
 // ORAN HESAPLAYICI — öğrencinin GÖRDÜĞÜ lab değerlerinden iki tanesini oranlar
@@ -6041,7 +6249,11 @@ function askAnamnezQ(qId, catId, subId) {
     const q = sub && sub.questions && sub.questions.find(x => x.id === qId);
     // Kediye özel varsayılan varsa onu kullan (ör. tasma sorusu)
     const isCat = !!(currentCase && /kedi/i.test(currentCase.species || ''));
-    answer = (q && ((isCat && q.defaultCat) || q.default)) || 'Bu konuda bilgi alınamadı.';
+    const _sx = String((currentCase && currentCase.anamnez && currentCase.anamnez.demog) || '').toLocaleLowerCase('tr-TR');
+    const isMale = /erkek/.test(_sx);
+    const isSpayed = /kısırlaştırılmış|ovh|orşiektomi/.test(_sx) && !/kısırlaştırılmamış/.test(_sx);
+    const isYoung = /aylık/.test(_sx);
+    answer = (q && ((isMale && q.defaultMale) || (isSpayed && q.defaultSpayed) || (isYoung && q.defaultYoung) || (isCat && q.defaultCat) || q.default)) || 'Bu konuda bilgi alınamadı.';
     // Aynı başlıkta sahibi bir belirti tarif ettiyse, cevabı yazılmamış yan soru
     // o belirtiyi inkar etmesin (ör. "kusuyor" dedikten sonra "kusma sorunu yok" demesin)
     const ifSym = q && ((isCat && q.ifSymptomCat) || q.ifSymptom);
@@ -6073,9 +6285,12 @@ function askAnamnezQ(qId, catId, subId) {
 }
 
 
-function openUSGModal(caseKey, imgUrl) {
-  const report = (window.USG_REPORTS && window.USG_REPORTS[caseKey]) || null;
+function openUSGModal(caseKey, imgUrl, kind) {
+  const isEko = kind === 'eko';
+  const report = ((isEko ? window.EKO_REPORTS : window.USG_REPORTS) || {})[caseKey] || null;
   if (!report) return false;
+  const _badge = document.getElementById('usg-modal-badge');
+  if (_badge) _badge.textContent = isEko ? 'EKOKARDİYOGRAFİ' : 'ABDOMİNAL USG';
 
   // Hasta bilgileri
   const c = currentCase;
@@ -6084,12 +6299,12 @@ function openUSGModal(caseKey, imgUrl) {
     <div style="display:flex;gap:6px"><span style="color:#5a6a7a;font-weight:600;min-width:70px">Hasta</span><span style="color:#1a2a3a;font-weight:500">${c.anamnez?.name?.replace(/\*\*/g,'').split('|')[0].replace('İsim:','').trim()}</span></div>
     <div style="display:flex;gap:6px"><span style="color:#5a6a7a;font-weight:600;min-width:70px">Tür / Irk</span><span style="color:#1a2a3a;font-weight:500">${c.species} / ${c.anamnez?.name?.replace(/\*\*/g,'').split('|')[1]?.replace('Irk:','').trim()||''}</span></div>
     <div style="display:flex;gap:6px"><span style="color:#5a6a7a;font-weight:600;min-width:70px">Vaka No</span><span style="color:#1a2a3a;font-weight:500">${c.caseId}</span></div>
-    <div style="display:flex;gap:6px"><span style="color:#5a6a7a;font-weight:600;min-width:70px">İnceleme</span><span style="color:#1a2a3a;font-weight:500">Tam Abdominal USG</span></div>
+    <div style="display:flex;gap:6px"><span style="color:#5a6a7a;font-weight:600;min-width:70px">İnceleme</span><span style="color:#1a2a3a;font-weight:500">${isEko ? 'Transtorasik Ekokardiyografi' : 'Tam Abdominal USG'}</span></div>
   `;
 
   // Rapor içeriği
   const lines = report.split('\n');
-  let html = '<div style="font-size:10px;font-weight:800;letter-spacing:2px;color:#1a3a5c;text-transform:uppercase;margin-bottom:10px;padding-bottom:4px;border-bottom:2px solid #1a3a5c">Ultrasonografi Bulguları</div>';
+  let html = '<div style="font-size:10px;font-weight:800;letter-spacing:2px;color:#1a3a5c;text-transform:uppercase;margin-bottom:10px;padding-bottom:4px;border-bottom:2px solid #1a3a5c">' + (isEko ? 'Ekokardiyografi Bulguları' : 'Ultrasonografi Bulguları') + '</div>';
   let sonuc = '';
 
   lines.forEach(line => {
@@ -6101,25 +6316,32 @@ function openUSGModal(caseKey, imgUrl) {
     }
     const colonIdx = line.indexOf(':');
     const organ = colonIdx > -1 ? line.substring(0, colonIdx) : '';
-    const bulgu = colonIdx > -1 ? line.substring(colonIdx+1).trim() : line;
-    const isAnormal = usgLineAbnormal(line);
+    let bulgu = colonIdx > -1 ? line.substring(colonIdx+1).trim() : line;
+    let isAnormal;
+    // EKO raporunda anormal satırlar "!" ile işaretli; USG'de cümle bazlı otomatik tespit
+    if (isEko) { isAnormal = bulgu.startsWith('!'); bulgu = bulgu.replace(/^!\s*/, ''); }
+    else isAnormal = usgLineAbnormal(line);
+    // Sonuç kapalıyken öğrenci bulguları kendisi okuyup not alabilsin diye her satırda ✏️ var
+    const pen = organ ? notePenHTML((isEko ? 'EKO — ' : 'USG — ') + organ, bulgu) : '';
     if (isAnormal) {
-      html += `<div style="font-size:12.5px;line-height:1.75;margin-bottom:5px;display:flex;background:#fdf5f5;border-left:3px solid #c0392b;padding:4px 8px;border-radius:0 4px 4px 0"><span style="font-weight:700;color:#c0392b;flex-shrink:0">${organ}:&nbsp;</span><span style="color:#2a3a4a">${bulgu}</span></div>`;
+      html += `<div class="usg-row" data-organ="${organ}" style="font-size:12.5px;line-height:1.75;margin-bottom:5px;display:flex;background:#fdf5f5;border-left:3px solid #c0392b;padding:4px 8px;border-radius:0 4px 4px 0"><span style="font-weight:700;color:#c0392b;flex-shrink:0">${organ}:&nbsp;${pen}</span><span style="color:#2a3a4a">${bulgu}</span></div>`;
     } else {
-      html += `<div style="font-size:12.5px;line-height:1.75;margin-bottom:5px;display:flex"><span style="font-weight:700;color:#1a2a3a;flex-shrink:0">${organ}:&nbsp;</span><span style="color:#2a3a4a">${bulgu}</span></div>`;
+      html += `<div class="usg-row" data-organ="${organ}" style="font-size:12.5px;line-height:1.75;margin-bottom:5px;display:flex"><span style="font-weight:700;color:#1a2a3a;flex-shrink:0">${organ}:&nbsp;${pen}</span><span style="color:#2a3a4a">${bulgu}</span></div>`;
     }
   });
 
-  if (sonuc) {
-    html += `<div style="background:#edf2f7;border:1px solid #c0d0e0;border-left:4px solid #1a3a5c;border-radius:0 4px 4px 0;padding:12px 16px;margin-top:14px">
-      <div style="font-size:10px;font-weight:800;letter-spacing:2px;color:#1a3a5c;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between">Radyoloji Sonucu ${notePenHTML('USG Raporu', sonuc)}</div>
+  if (sonuc && !usgShowConclusion) {
+    html += `<div id="usg-sonuc-hidden" style="margin-top:14px;padding:10px 14px;border:1px dashed #b0c0d0;border-radius:4px;font-size:11.5px;color:#5a6a7a;line-height:1.6">🔒 ${isEko ? 'Kardiyoloji' : 'Radyoloji'} sonucu gizli: bulguları kendin yorumla. <span style="opacity:.8">(Ayarlar → USG / EKO Rapor Sonucu)</span></div>`;
+  } else if (sonuc) {
+    html += `<div id="usg-sonuc-box" style="background:#edf2f7;border:1px solid #c0d0e0;border-left:4px solid #1a3a5c;border-radius:0 4px 4px 0;padding:12px 16px;margin-top:14px">
+      <div style="font-size:10px;font-weight:800;letter-spacing:2px;color:#1a3a5c;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between">${isEko ? 'Kardiyoloji Sonucu' : 'Radyoloji Sonucu'} ${notePenHTML(isEko ? 'EKO Raporu' : 'USG Raporu', sonuc)}</div>
       <div style="font-size:12.5px;line-height:1.75;color:#1a2a3a">${sonuc}</div>
     </div>`;
   }
 
   if (imgUrl && imgUrl !== 'null') {
     html += `<div style="margin-top:16px;border-top:1px dashed #c0d0e0;padding-top:14px">
-      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#5a6a7a;text-transform:uppercase;margin-bottom:8px">ULTRASONOGRAFİ GÖRÜNTÜSÜ</div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#5a6a7a;text-transform:uppercase;margin-bottom:8px">${isEko ? 'EKOKARDİYOGRAFİ GÖRÜNTÜSÜ' : 'ULTRASONOGRAFİ GÖRÜNTÜSÜ'}</div>
       <img src="${imgUrl}" style="width:100%;border-radius:4px;border:1px solid #c0d0e0">
     </div>`;
   }
@@ -7115,7 +7337,13 @@ function openResultScreen(correct, selected, realDisease) {
   }
   var diagInfo=correct?selected:realDisease;
   var bHtml='<div class="rb-sec"><div class="rb-sec-title g">KULLANILAN TEKNİKLER</div>'+buildTetkikChips(usedTetkikLog)+'</div>';
+  bHtml+=kitReviewHTML();
   bHtml+='<div class="rb-sec"><div class="rb-sec-title">'+(correct?'TANI BİLGİSİ':'DOĞRU TANI BİLGİSİ')+'</div><div style="padding:10px 14px;background:rgba(46,204,113,.06);border:1px solid rgba(46,204,113,.2);border-radius:8px;font-size:11px;color:var(--text-secondary);line-height:1.9"><div><span style="color:var(--text-muted)">Etken:</span> <strong style="color:var(--text-primary)">'+diagInfo.etken+'</strong></div><div style="margin-top:3px"><span style="color:var(--text-muted)">Semptomlar:</span> '+diagInfo.symptoms+'</div></div></div>';
+  var _tz = (currentCase || mobCurrentCase || {}).tuzak;
+  if (_tz && _tz.metin) {
+    bHtml += '<div class="rb-sec"><div class="rb-sec-title" style="color:var(--accent-orange)">🧩 ' + noteEsc(_tz.baslik || 'Atipik sunum') + '</div>'
+      + '<div style="padding:10px 14px;background:rgba(243,156,18,.08);border:1px solid rgba(243,156,18,.35);border-radius:8px;font-size:11px;color:var(--text-secondary);line-height:1.8">' + noteEsc(_tz.metin) + '</div></div>';
+  }
   // Öğrencinin notları
   if (caseNotes.length) {
     bHtml += '<div class="rb-sec"><div class="rb-sec-title" style="color:var(--accent-cyan)">📝 NOTLARIN</div><div class="notes-readonly">'

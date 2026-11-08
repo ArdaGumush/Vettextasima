@@ -823,6 +823,35 @@
             "ifSymptom": "Karnesine son zamanlarda bakmadım."
           }
         ]
+      },
+      "ureme": {
+        "label": "Üreme",
+        "questions": [
+          {
+            "id": "ureme_1",
+            "q": "En son ne zaman kızgınlık gösterdi, kızgınlık döngüsü düzenli mi?",
+            "default": "Düzenli kızgınlık gösteriyor, son kızgınlığında dikkat çeken bir şey olmadı.",
+            "defaultSpayed": "Kısırlaştırıldığı için kızgınlık görmüyor.",
+            "defaultMale": "Erkek olduğu için kızgınlık yaşamıyor.",
+            "defaultYoung": "Daha yavru, henüz hiç kızgınlık geçirmedi."
+          },
+          {
+            "id": "ureme_2",
+            "q": "Genital bölgesinde akıntı, şişlik veya sık yalama fark ettiniz mi?",
+            "default": "Hayır, genital bölgesi temiz, akıntı ya da şişlik yok."
+          },
+          {
+            "id": "ureme_3",
+            "q": "Daha önce çiftleştirildi mi veya doğum yaptı mı?",
+            "default": "Hayır, hiç çiftleşmedi, doğum da yapmadı.",
+            "defaultMale": "Hayır, hiç çiftleştirilmedi."
+          },
+          {
+            "id": "ureme_4",
+            "q": "Kızgınlığı önlemek ya da durdurmak için hormon iğnesi veya hap kullanıldı mı?",
+            "default": "Hayır, hiç hormon ilacı kullanılmadı."
+          }
+        ]
       }
     }
   },

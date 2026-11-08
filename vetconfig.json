@@ -199,6 +199,16 @@
       "label": "Bıdık — Yorkshire Terrier",
       "tag": "Dermatoloji",
       "icon": "🐶"
+    },
+    "pyometra": {
+      "label": "Bal — Golden Retriever",
+      "tag": "Dahiliye",
+      "icon": "🐶"
+    },
+    "hcm_ate": {
+      "label": "Leo — Maine Coon",
+      "tag": "Acil",
+      "icon": "🐱"
     }
   },
   "species_cases": {
@@ -222,7 +232,8 @@
       "fpv",
       "fip_dry",
       "fhv_fcv",
-      "asthma"
+      "asthma",
+      "hcm_ate"
     ],
     "dog": [
       "dog",
@@ -244,7 +255,8 @@
       "leptospirosis",
       "babesiosis",
       "cav1_hepatitis",
-      "leishmaniosis"
+      "leishmaniosis",
+      "pyometra"
     ]
   },
   "disease_library": [
@@ -652,6 +664,17 @@
       "category": "Gastroenteroloji",
       "etken": "Yağlı diyet, idiyopatik",
       "symptoms": "Kusma, abdominal ağrı, dua pozisyonu, lipaz yüksek, USG pankreatik ödem"
+    },
+    {
+      "id": "re01",
+      "name": "Piyometra (Pyometra)",
+      "species": [
+        "dog",
+        "cat"
+      ],
+      "category": "Reprodüksiyon",
+      "etken": "Diöstrusta progesteron etkisindeki uterusta bakteriyel enfeksiyon (çoğunlukla E. coli); kistik endometriyal hiperplazi zemininde",
+      "symptoms": "Kısırlaştırılmamış dişi, kızgınlıktan 4–8 hafta sonra; PU/PD, letarji, iştahsızlık, kusma; açık serviksde vajinal akıntı, kapalı serviksde akıntı yok ve tablo daha ağır; nötrofilik lökositoz + sola kayma, monositoz, hiperglobulinemi, ALP yüksek, izostenüri, proteinüri; USG'de sıvı dolu dilate uterus"
     }
   ]
 }

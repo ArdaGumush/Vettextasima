@@ -4122,5 +4122,826 @@
       "burun_3": "Burnunun etrafı akıntıdan kabuk bağlamış.",
       "nefes_3": "Burnu tıkanınca ara ara ağzını açıp nefes alıyor."
     }
+  },
+  "pyometra": {
+    "caseId": "VC-2025-046",
+    "species": "Köpek",
+    "icon": "🐶",
+    "diagnosis": "Piyometra (Pyometra)",
+    "tuzak": {
+      "baslik": "Atipik sunum: kapalı serviks",
+      "metin": "Akıntı olmadığı için \"piyometra değil\" demek bu vakadaki en sık hata. Piyometralı köpeklerin yaklaşık üçte birinde serviks kapalıdır (111 köpeğin 39'u) ve bu form daha ağır seyreder: SIRS/sepsis kapalı serviksde %77, açıkta %51 (Hagman ve ark. 2017). Ateş de çoğu zaman yoktur; ateş, kusma ve ishal gibi bulgular hastaların yalnızca %15–30'unda görülür (Hagman 2018). Kısırlaştırılmamış orta yaşlı dişi + kızgınlıktan 4–8 hafta sonra + PU/PD + nötrofilik lökositoz gördüğünde akıntı olmasa da piyometrayı düşün ve USG yap. İdrarı sistosentez yerine serbest akışla al: dilate uterusu delme riski var."
+    },
+    "anamnez": {
+      "name": "İsim: **Bal** | Irk: **Golden Retriever**",
+      "demog": "Yaş: **8 yaş** | Cinsiyet: **Dişi** | Kısırlık: **Kısırlaştırılmamış**",
+      "vaccine": "Aşılar: **Güncel (DHPPi + Kuduz + Leptospira)** | Parazit ilacı: **Güncel, son 1 ay içinde**",
+      "complaint": [
+        "Sahibi endişeyle anlatıyor:\n\n\"Son 10 gündür durmadan su içiyor. Kabını günde üç dört kez dolduruyoruz, eskiden bir kez yeterdi. Gece de çişe çıkmak için kapıda bekliyor. İki gündür de keyfi yok, mamasının yarısını bırakıyor.\"",
+        "Sahibi telaşla anlatıyor:\n\n\"Normalde yerinde duramayan bir köpek ama bu hafta hep yatıyor. Dün iki kez kustu. Bir de sürekli su içtiğini fark ettim, kabı çok çabuk boşalıyor.\"",
+        "Sahibi kararsız anlatıyor:\n\n\"Karnı son günlerde biraz dolgun geldi bana, kilo mu aldı anlamadım. Ama iştahı azaldı, durgun. Su kabı da eskisinden çok daha çabuk boşalıyor.\"",
+        "Sahibi korkarak anlatıyor:\n\n\"Bu hafta iki kez evin içine çişini yaptı, hiç yapmazdı. Çok su içiyor, halsiz. Şeker hastalığı olabilir mi diye korktuk, annemde de var.\""
+      ]
+    },
+    "diffQuestions": [
+      {
+        "q": "En son ne zaman kızgınlık gösterdi? O dönemde farklı bir şey oldu mu?",
+        "a": "Yaklaşık 6 hafta önce kızgınlık geçirdi. Her zamanki gibiydi, birkaç gün kanaması oldu sonra kesildi. Erkek köpekle hiç bir araya gelmedi."
+      },
+      {
+        "q": "Genital bölgesinden akıntı geldi mi, altını sık sık yalıyor mu?",
+        "a": "Hayır, hiç akıntı görmedim. Yattığı minderde de leke yok, altını da fazla yalamıyor."
+      },
+      {
+        "q": "İştahında artış mı oldu, azalma mı?",
+        "a": "Azaldı. Eskiden çok obur bir köpekti, şimdi mamasının yarısını bırakıyor. Sadece su içiyor."
+      },
+      {
+        "q": "Kızgınlığı engellemek için hormon iğnesi ya da hap kullandınız mı?",
+        "a": "Hayır, hiç kullanmadık. Kısırlaştırmayı da hep erteledik."
+      },
+      {
+        "q": "Tüylerinde dökülme, karında sarkma ya da deride incelme fark ettiniz mi?",
+        "a": "Hayır, tüyleri her zamanki gibi gür ve parlak. Karnı biraz dolgun ama sarkık değil, derisinde bir değişiklik yok."
+      }
+    ],
+    "physical": {
+      "temp": "Vücut sıcaklığı: **38.9°C** (Referans: 37.8–39.2°C)",
+      "resp": "Solunum sayısı: **32/dak** (Referans: 10–30/dak)",
+      "hr": "Kalp atım sayısı: **128/dak** (Referans: 60–140/dak)",
+      "mucosa": "Mukoza rengi: **Hafif soluk pembe, kuru** | CRT: **2.5 sn**",
+      "lymph": "Lenf nodları: Palpe edilebilen tüm lenf nodları normal boyutta ve ağrısız.",
+      "palp": "Karın palpasyonu: Karın hafif gergin. **Kaudal abdomende, mesanenin kraniyalinde hamur kıvamında, sınırları tam seçilemeyen bir kitle hissi** alındı; palpasyonda hafif ağrı. (Nazikçe palpe edildi.)"
+    },
+    "tools": {
+      "otoscope": "Otoskopi: Kulak kanalları açık ve temiz. Kulak zarı doğal.",
+      "ophthalmo": "Oftalmoskopi: Lensler şeffaf, katarakt yok. Retina ve damarlar doğal.",
+      "pharyngo": "Faringoskopi: Oral mukoza hafif kuru ve soluk pembe. Tonsiller doğal, yabancı cisim yok.",
+      "reflex": "Refleks muayenesi: Patellar ve tibial refleksler bilateral normoreflektif.",
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
+      "inspection": "İnspeksiyon: Durgun, ilgisi azalmış. **Hafif dehidrasyon (%5–6; deri elastikiyeti azalmış).** Karın hafif dolgun. Tüyler gür ve parlak, alopesi yok. Vulva normal boyutta; **perineal bölge ve tüyler temiz, vajinal akıntı izlenmedi.**",
+      "auscultation": "Oskültasyon: **Kalp sesleri:** Ritmik, üfürüm yok. **Akciğer sesleri:** Temiz. **Bağırsak sesleri:** Hafif azalmış."
+    },
+    "imaging": {
+      "echo": {
+        "result": "EKO: Kalp boşlukları ve kontraktilite normal. Organik kalp hastalığı yoktur.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "usg": {
+        "result": "Abdominal USG: 🔴 **Uterus her iki kornu boyunca belirgin dilate, lümeni ekojenik partiküllü sıvıyla dolu**; duvar düzensiz kalınlaşmış, endometriyumda küçük anekoik kistler. Fötal yapı yok. Serbest sıvı yok. Adrenaller normal.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "xray_direct": {
+        "result": "Direkt Röntgen (lateral abdomen): 🔴 **Kaudoventral abdomende kıvrımlı, homojen yumuşak doku opasitesinde tübüler yapı**; ince bağırsak ansları kraniodorsale itilmiş. Fötal iskelet gölgesi yok.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "xray_indirect": {
+        "result": "İndirekt Radyografi: Patolojik bulguya rastlanmadı.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "bt": {
+        "result": "BT: Kaudal abdomende sıvı dolu, belirgin dilate tübüler uterus. Diğer organlarda patoloji yok.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "mr": {
+        "result": "MR: Patolojik bulguya rastlanmadı.",
+        "hasImage": false,
+        "imgUrl": null
+      }
+    },
+    "rapidKits": {
+      "ntprobnp": "NEGATİF",
+      "giardia_ag": "NEGATİF",
+      "cpv_ag": "NEGATİF",
+      "cdv_ag": "NEGATİF",
+      "cpl": "NEGATİF",
+      "leish_ab": "NEGATİF",
+      "lepto_ab": "NEGATİF",
+      "snap4dx": "Ehrlichia NEGATİF / Anaplasma NEGATİF / Borrelia NEGATİF / Dirofilaria NEGATİF"
+    },
+    "hemogram": [
+      {
+        "param": "WBC",
+        "value": "31.6",
+        "unit": "10³/µL",
+        "ref": "6.0–17.0",
+        "flag": "H"
+      },
+      {
+        "param": "RBC",
+        "value": "4.9",
+        "unit": "10⁶/µL",
+        "ref": "5.5–8.5",
+        "flag": "L"
+      },
+      {
+        "param": "HGB",
+        "value": "11.4",
+        "unit": "g/dL",
+        "ref": "12.0–18.0",
+        "flag": "L"
+      },
+      {
+        "param": "HCT",
+        "value": "33.5",
+        "unit": "%",
+        "ref": "37–55",
+        "flag": "L"
+      },
+      {
+        "param": "MCV",
+        "value": "68.4",
+        "unit": "fL",
+        "ref": "60–77",
+        "flag": ""
+      },
+      {
+        "param": "MCH",
+        "value": "23.3",
+        "unit": "pg",
+        "ref": "19–24.5",
+        "flag": ""
+      },
+      {
+        "param": "MCHC",
+        "value": "34.0",
+        "unit": "g/dL",
+        "ref": "32–36",
+        "flag": ""
+      },
+      {
+        "param": "PLT",
+        "value": "265",
+        "unit": "10³/µL",
+        "ref": "200–900",
+        "flag": ""
+      },
+      {
+        "param": "Nöt%",
+        "value": "84",
+        "unit": "%",
+        "ref": "60–77",
+        "flag": "H"
+      },
+      {
+        "param": "Lenf%",
+        "value": "7",
+        "unit": "%",
+        "ref": "12–30",
+        "flag": "L"
+      },
+      {
+        "param": "Mon%",
+        "value": "8",
+        "unit": "%",
+        "ref": "3–10",
+        "flag": ""
+      },
+      {
+        "param": "Eoz%",
+        "value": "1",
+        "unit": "%",
+        "ref": "0–9",
+        "flag": ""
+      }
+    ],
+    "biochemistry": {
+      "ALT": {
+        "value": "72",
+        "unit": "U/L",
+        "ref": "10–125",
+        "flag": ""
+      },
+      "ALP": {
+        "value": "365",
+        "unit": "U/L",
+        "ref": "23–212",
+        "flag": "H"
+      },
+      "AST": {
+        "value": "38",
+        "unit": "U/L",
+        "ref": "10–50",
+        "flag": ""
+      },
+      "GGT": {
+        "value": "6",
+        "unit": "U/L",
+        "ref": "0–14",
+        "flag": ""
+      },
+      "Total Bili.": {
+        "value": "0.5",
+        "unit": "mg/dL",
+        "ref": "0–0.9",
+        "flag": ""
+      },
+      "Safra As.": {
+        "value": "5.8",
+        "unit": "µmol/L",
+        "ref": "0–10",
+        "flag": ""
+      },
+      "Glukoz": {
+        "value": "94",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": ""
+      },
+      "Fruktozamin": {
+        "value": "262",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "Kolesterol": {
+        "value": "348",
+        "unit": "mg/dL",
+        "ref": "110–320",
+        "flag": "H"
+      },
+      "Trigliserit": {
+        "value": "128",
+        "unit": "mg/dL",
+        "ref": "20–150",
+        "flag": ""
+      },
+      "BUN": {
+        "value": "39",
+        "unit": "mg/dL",
+        "ref": "7–27",
+        "flag": "H"
+      },
+      "CREA": {
+        "value": "1.5",
+        "unit": "mg/dL",
+        "ref": "0.5–1.8",
+        "flag": ""
+      },
+      "Fosfor": {
+        "value": "5.4",
+        "unit": "mg/dL",
+        "ref": "2.5–6.8",
+        "flag": ""
+      },
+      "Total Prot.": {
+        "value": "8.6",
+        "unit": "g/dL",
+        "ref": "5.1–7.8",
+        "flag": "H"
+      },
+      "ALB": {
+        "value": "2.3",
+        "unit": "g/dL",
+        "ref": "2.6–4.0",
+        "flag": "L"
+      },
+      "Glob": {
+        "value": "6.3",
+        "unit": "g/dL",
+        "ref": "1.6–3.6",
+        "flag": "H"
+      },
+      "Na": {
+        "value": "147",
+        "unit": "mEq/L",
+        "ref": "139–154",
+        "flag": ""
+      },
+      "K": {
+        "value": "4.4",
+        "unit": "mEq/L",
+        "ref": "3.6–5.5",
+        "flag": ""
+      },
+      "Cl": {
+        "value": "113",
+        "unit": "mEq/L",
+        "ref": "102–120",
+        "flag": ""
+      },
+      "Ca": {
+        "value": "9.4",
+        "unit": "mg/dL",
+        "ref": "7.9–12.0",
+        "flag": ""
+      },
+      "Lipaz": {
+        "value": "96",
+        "unit": "U/L",
+        "ref": "24–108",
+        "flag": ""
+      }
+    },
+    "hormones": {
+      "T4": {
+        "value": "2.1",
+        "unit": "µg/dL",
+        "ref": "1.0–4.0",
+        "flag": ""
+      },
+      "T3": {
+        "value": "1.0",
+        "unit": "ng/mL",
+        "ref": "0.5–2.0",
+        "flag": ""
+      },
+      "TSH": {
+        "value": "0.15",
+        "unit": "µIU/mL",
+        "ref": "0.01–0.5",
+        "flag": ""
+      },
+      "Kortizol": {
+        "value": "3.4",
+        "unit": "µg/dL",
+        "ref": "1.0–6.0",
+        "flag": ""
+      },
+      "Aldosteron": {
+        "value": "85",
+        "unit": "pg/mL",
+        "ref": "10–160",
+        "flag": ""
+      },
+      "İnsülin": {
+        "value": "12",
+        "unit": "µIU/mL",
+        "ref": "5–30",
+        "flag": ""
+      },
+      "Progesteron": {
+        "value": "6.2",
+        "unit": "ng/mL",
+        "ref": "<1.0 (anöstrus)",
+        "flag": "H"
+      },
+      "Testosteron": {
+        "value": "0.1",
+        "unit": "ng/mL",
+        "ref": "<0.5 (dişi)",
+        "flag": ""
+      },
+      "Östrojen": {
+        "value": "15",
+        "unit": "pg/mL",
+        "ref": "5–50",
+        "flag": ""
+      }
+    },
+    "microscopy": {
+      "blood": {
+        "text": "Kan yayması: 🔴 **Nötrofilik lökositoz ve sola kayma (bant nötrofiller ~%9).** 🔴 **Nötrofillerde toksik değişiklik** (Döhle cisimcikleri, köpüklü bazofilik sitoplazma). Mutlak monositoz. Eritrositler normositik-normokromik, polikromazi çok az (rejenerasyon yok denecek kadar az). Hemoparazit görülmedi.",
+        "imgUrl": null
+      },
+      "urine": "İdrar muayenesi (serbest akış ile alındı): Açık sarı, hafif bulanık. 🔴 **SpGr: 1.011** (dehidrasyona rağmen izostenüri). pH: 6.5. 🔴 **Protein: (++)**. Glukoz: Negatif. Keton: Negatif. Sediment: Az sayıda lökosit ve epitel hücresi; az sayıda bakteri (serbest akış örneğinde kontaminasyon olabilir). Silendir yok.",
+      "stool": "Dışkı muayenesi: Normal kıvam ve renk. Parazit yumurtası görülmedi. Gizli kan negatif.",
+      "skin": "Deri kazıntısı: Ektoparazit görülmedi.",
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Abdominosentez: USG eşliğinde denendi; serbest peritoneal sıvı yok, örnek alınamadı."
+    },
+    "questionAnswers": {
+      "kusma_1": "Evet, dün iki kez kustu. Dört gün kadar önce de bir kez kusmuştu.",
+      "kusma_2": "Biraz mama ve sarı köpüklü su vardı, yabancı bir şey görmedim.",
+      "kusma_3": "Yemekle pek bağlantısı yok, bir keresinde aç karnına kustu.",
+      "kusma_4": "Hayır, çok zorlanmadan kustu.",
+      "i̇stah_1": "Evet, iki üç gündür iştahı azaldı, mamasının yarısını bırakıyor.",
+      "i̇stah_2": "Hayır, son günlerde öğünlerinin yarısını bırakıyor.",
+      "i̇stah_3": "Evet, çok arttı. Kabını günde üç dört kez dolduruyoruz, eskiden bir kez yeterdi.",
+      "karin_1": "Son günlerde karnı biraz dolgun gibi geldi, kilo mu aldı diye düşündük.",
+      "karin_2": "Karnını okşayınca biraz huzursuzlanıp kalkıyor, eskiden sevilmeye bayılırdı.",
+      "i̇drar_1": "Evet, çok sık ve bol yapıyor. Gece de çişe çıkmak için kapıda bekliyor.",
+      "i̇drar_4": "İdrarı her zamankinden açık renkli, neredeyse su gibi. Kokusunda bir değişiklik yok.",
+      "kaza_1": "Evet, bu hafta iki kez evin içine yaptı, hiç yapmazdı.",
+      "kaza_2": "Bir gece yatağı ıslaktı, uykuda kaçırmış olabilir.",
+      "kaza_3": "Bazen kapıya yetişemiyor, çok acele ediyor.",
+      "enerji_1": "Evet, bu hafta oyun hiç istemiyor, top atınca bakıp yatıyor.",
+      "enerji_2": "Evet, gününün çoğunu yatarak geçiriyor.",
+      "agirlik_1": "Tartmadık ama zayıflamadı, hatta karnı biraz dolgun duruyor.",
+      "agirlik_3": "Hayır, kilo almadı ama karnı biraz dolgun görünüyor.",
+      "ameliyat_1": "Hayır, kısırlaştırılmadı, üreme organları yerinde. Hep ertelemiştik.",
+      "agri_1": "Karnına dokununca biraz huzursuzlanıyor, başka yerinde ağrı yok.",
+      "tuy_1": "Hayır, tüy dökülmesi her zamanki gibi.",
+      "ureme_1": "Yaklaşık 6 hafta önce kızgınlık geçirdi. Her zamanki gibiydi, birkaç gün sürdü.",
+      "ureme_2": "Hayır, hiç akıntı görmedim. Minderinde de leke yok, altı tertemiz.",
+      "ureme_3": "Hayır, hiç çiftleşmedi, hiç doğum da yapmadı.",
+      "ureme_4": "Hayır, kızgınlık için hiç iğne ya da hap kullanmadık."
+    }
+  },
+  "hcm_ate": {
+    "caseId": "VC-2025-047",
+    "species": "Kedi",
+    "icon": "🐱",
+    "diagnosis": "Hipertrofik Kardiyomiyopati (HCM) + Arteriyel Tromboembolizm (ATE)",
+    "anamnez": {
+      "name": "İsim: **Leo** | Irk: **Maine Coon**",
+      "demog": "Yaş: **5 yaş** | Cinsiyet: **Erkek** | Kısırlık: **Kısırlaştırılmış (Orşiektomi)**",
+      "vaccine": "Aşılar: **Güncel (Karma + Kuduz)** | Parazit ilacı: **Güncel**",
+      "complaint": [
+        "Sahibi telaşla anlatıyor:\n\n\"Dün gece koltukta uyurken birden çok acı bir çığlık attı, yere düştü ve arka bacaklarını sürüklemeye başladı. Arka tarafı hiç tutmuyor.\"",
+        "Sahibi korkuyla anlatıyor:\n\n\"Dün geceden beri ağzı açık, köpek gibi hızlı hızlı soluyor. Arka bacaklarını kullanamıyor, sürünerek yatağın altına girdi.\"",
+        "Sahibi endişeyle anlatıyor:\n\n\"Arka patileri buz gibi soğuk, ön patileri sıcak. Bacaklarına dokununca acıyla bağırıyor, tıslıyor.\"",
+        "Sahibi üzgün anlatıyor:\n\n\"Dünden beri ne yedi ne içti, kuma da gidemedi. Son birkaç aydır zaten eskisi kadar oynamıyordu, çabuk yorulup yatıyordu.\""
+      ]
+    },
+    "diffQuestions": [
+      {
+        "q": "Felç bir düşme, çarpma ya da yüksekten atlama sonrasında mı başladı?",
+        "a": "Hayır, koltukta uyuyordu. Hiçbir yerden düşmedi, aniden çığlık atıp bu hale geldi."
+      },
+      {
+        "q": "Daha önce bir veteriner kalbinde üfürüm ya da farklı bir ses duyduğunu söyledi mi?",
+        "a": "Geçen yıl aşıya gittiğimizde kalbinde hafif bir ses duyduğunu söylemişti, stresten olabilir demişti. Takibe gitmedik."
+      },
+      {
+        "q": "Nefes darlığı felçle aynı anda mı başladı, yoksa öncesinde de var mıydı?",
+        "a": "Belirgin olarak felçle birlikte başladı. Öncesinde ara ara oyundan sonra biraz hızlı soluduğunu görmüştüm ama çabuk geçiyordu."
+      },
+      {
+        "q": "Son haftalarda kilo kaybı, çok su içme ya da aşırı iştah fark ettiniz mi?",
+        "a": "Hayır, kilosu aynı. Su içmesi ve iştahı bu olaya kadar normaldi."
+      },
+      {
+        "q": "Ön bacaklarında ya da başında bir güçsüzlük, titreme var mı?",
+        "a": "Hayır, ön bacaklarıyla sürünebiliyor, başı ve gözleri normal görünüyor. Sadece arka tarafı tutmuyor."
+      }
+    ],
+    "physical": {
+      "temp": "Vücut sıcaklığı: **37.0°C** (Referans: 38.0–39.2°C)",
+      "resp": "Solunum sayısı: **64/dak** (Referans: 20–30/dak)",
+      "hr": "Kalp atım sayısı: **230/dak** (Referans: 140–220/dak)",
+      "mucosa": "Mukoza rengi: **Soluk, hafif siyanotik** | CRT: **3 sn**",
+      "lymph": "Lenf nodları: Mandibular, preskapular ve popliteal lenf nodları normal boyutta ve ağrısız.",
+      "palp": "Karın palpasyonu: Abdomen yumuşak, kitle yok. Mesane küçük. 🔴 **Bilateral femoral nabız alınamıyor.** Ön bacaklarda nabız hızlı ve zayıf. 🔴 **Arka bacak kasları (özellikle gastroknemius) sert ve palpasyonda çok ağrılı.** Arka pati yastıkları soğuk ve morumsu, tırnak yatakları soluk."
+    },
+    "tools": {
+      "otoscope": "Otoskopi: Kulak kanalları açık ve temiz. Kulak zarı doğal.",
+      "ophthalmo": "Oftalmoskopi: Pupiller bilateral hafif dilate, ışık refleksleri mevcut. Retinada kanama, ödem veya dekolman yok; damarlar doğal.",
+      "pharyngo": "Faringoskopi: Oral mukoza soluk, dil kenarları hafif morumsu. Yabancı cisim veya kitle yok.",
+      "reflex": "Refleks muayenesi: Ön bacaklarda spinal refleksler ve propriosepsiyon normal. 🔴 **Arka bacaklarda motor fonksiyon yok (paralizi), çekme (fleksör) refleksi alınamıyor; parmaklara uyarıda derin ağrı alınamıyor.** Patellar refleks bilateral zayıf ama mevcut. Panikülüs refleksi normal. Kuyruk tonusu azalmış.",
+      "woodslamp": "Wood's Lambası: Floresan parlama negatif.",
+      "inspection": "İnspeksiyon: Huzursuz, ağrılı ve korkmuş. 🔴 **Ağız açık, hızlı ve zorlu solunum (ortopne); dirsekler yana açık.** Arka bacaklar yanlara uzanmış, kullanılamıyor. Hafif dehidrasyon (%5). Tüyler normal.",
+      "auscultation": "Oskültasyon: 🔴 **Kalp sesleri:** Taşikardik, **gallop ritmi** ve sol parasternal bölgede **Grade III/VI sistolik üfürüm**. 🔴 **Akciğer sesleri:** Bilateral yaygın krepitasyon (raller). **Bağırsak sesleri:** Normal."
+    },
+    "imaging": {
+      "echo": {
+        "result": "EKO: 🔴 **Sol ventrikül duvarlarında belirgin kalınlaşma, ileri derecede genişlemiş sol atriyum; sol atriyal apendikste spontan eko kontrast ve trombüs.** Mitral kapakta sistolik anterior hareket ve dinamik çıkış yolu obstrüksiyonu.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "usg": {
+        "result": "Abdominal USG: 🔴 **Aortik trifurkasyonda lümeni tıkayan hiperekoik trombüs; femoral arterlerde Doppler akımı alınamıyor.** Karaciğerde konjesyona bağlı hafif büyüme.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "xray_direct": {
+        "result": "Toraks Röntgeni (LL + VD): 🔴 **Kardiyomegali; VD pozisyonda belirgin atriyal genişlemeyle \"sevgililer günü kalbi\" görünümü.** 🔴 **Perihiler ve kaudodorsal akciğer alanlarında yamalı interstisyel-alveoler opasite (pulmoner ödem).** Pulmoner venlerde belirginleşme. Az miktarda plevral sıvı.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "xray_indirect": {
+        "result": "İndirekt Radyografi: Patolojik bulguya rastlanmadı.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "bt": {
+        "result": "BT (kontrastlı): 🔴 **Distal abdominal aortada, trifurkasyonu tıkayan dolum defekti (trombüs).** Kardiyomegali ve sol atriyal genişleme. Akciğerlerde yamalı buzlu cam opasiteleri.",
+        "hasImage": false,
+        "imgUrl": null
+      },
+      "mr": {
+        "result": "MR (torakolomber omurga): Omurilik, intervertebral diskler ve vertebralar normal; disk herniasyonu, spinal kompresyon veya kanama izlenmedi. 🔴 **Arka bacak kaslarında yaygın, iskemi ile uyumlu sinyal artışı.**",
+        "hasImage": false,
+        "imgUrl": null
+      }
+    },
+    "rapidKits": {
+      "fiv_felv": "FIV NEGATİF / FeLV NEGATİF",
+      "fcov_ab": "NEGATİF",
+      "fcov_ag": "NEGATİF",
+      "fpv_ag": "NEGATİF",
+      "ntprobnp": "POZİTİF 🔴",
+      "fsaa": "POZİTİF",
+      "giardia_ag": "NEGATİF"
+    },
+    "hemogram": [
+      {
+        "param": "WBC",
+        "value": "22.0",
+        "unit": "10³/µL",
+        "ref": "5.5–19.5",
+        "flag": "H"
+      },
+      {
+        "param": "RBC",
+        "value": "9.5",
+        "unit": "10⁶/µL",
+        "ref": "5.0–10.0",
+        "flag": ""
+      },
+      {
+        "param": "HGB",
+        "value": "14.5",
+        "unit": "g/dL",
+        "ref": "8.0–15.0",
+        "flag": ""
+      },
+      {
+        "param": "HCT",
+        "value": "45.6",
+        "unit": "%",
+        "ref": "24–45",
+        "flag": "H"
+      },
+      {
+        "param": "MCV",
+        "value": "48.0",
+        "unit": "fL",
+        "ref": "41–58",
+        "flag": ""
+      },
+      {
+        "param": "MCH",
+        "value": "15.3",
+        "unit": "pg",
+        "ref": "13–17",
+        "flag": ""
+      },
+      {
+        "param": "MCHC",
+        "value": "31.8",
+        "unit": "g/dL",
+        "ref": "30–36",
+        "flag": ""
+      },
+      {
+        "param": "PLT",
+        "value": "150",
+        "unit": "10³/µL",
+        "ref": "300–800",
+        "flag": "L"
+      },
+      {
+        "param": "Nöt%",
+        "value": "84",
+        "unit": "%",
+        "ref": "35–75",
+        "flag": "H"
+      },
+      {
+        "param": "Lenf%",
+        "value": "11",
+        "unit": "%",
+        "ref": "20–55",
+        "flag": "L"
+      },
+      {
+        "param": "Mon%",
+        "value": "4",
+        "unit": "%",
+        "ref": "1–4",
+        "flag": ""
+      },
+      {
+        "param": "Eoz%",
+        "value": "1",
+        "unit": "%",
+        "ref": "0–5",
+        "flag": ""
+      }
+    ],
+    "biochemistry": {
+      "ALT": {
+        "value": "250",
+        "unit": "U/L",
+        "ref": "10–80",
+        "flag": "H"
+      },
+      "ALP": {
+        "value": "45",
+        "unit": "U/L",
+        "ref": "10–90",
+        "flag": ""
+      },
+      "AST": {
+        "value": "850",
+        "unit": "U/L",
+        "ref": "10–50",
+        "flag": "H"
+      },
+      "GGT": {
+        "value": "2",
+        "unit": "U/L",
+        "ref": "0–10",
+        "flag": ""
+      },
+      "Total Bili.": {
+        "value": "0.3",
+        "unit": "mg/dL",
+        "ref": "0–0.4",
+        "flag": ""
+      },
+      "Safra As.": {
+        "value": "4",
+        "unit": "µmol/L",
+        "ref": "0–10",
+        "flag": ""
+      },
+      "Glukoz": {
+        "value": "215",
+        "unit": "mg/dL",
+        "ref": "70–120",
+        "flag": "H"
+      },
+      "Fruktozamin": {
+        "value": "255",
+        "unit": "µmol/L",
+        "ref": "190–365",
+        "flag": ""
+      },
+      "Kolesterol": {
+        "value": "180",
+        "unit": "mg/dL",
+        "ref": "65–225",
+        "flag": ""
+      },
+      "Trigliserit": {
+        "value": "60",
+        "unit": "mg/dL",
+        "ref": "10–115",
+        "flag": ""
+      },
+      "BUN": {
+        "value": "45",
+        "unit": "mg/dL",
+        "ref": "16–36",
+        "flag": "H"
+      },
+      "CREA": {
+        "value": "2.2",
+        "unit": "mg/dL",
+        "ref": "0.8–1.8",
+        "flag": "H"
+      },
+      "Fosfor": {
+        "value": "7.5",
+        "unit": "mg/dL",
+        "ref": "2.4–8.2",
+        "flag": ""
+      },
+      "Total Prot.": {
+        "value": "8.0",
+        "unit": "g/dL",
+        "ref": "5.4–8.2",
+        "flag": ""
+      },
+      "ALB": {
+        "value": "3.5",
+        "unit": "g/dL",
+        "ref": "2.1–3.5",
+        "flag": ""
+      },
+      "Glob": {
+        "value": "4.5",
+        "unit": "g/dL",
+        "ref": "2.6–5.1",
+        "flag": ""
+      },
+      "Na": {
+        "value": "150",
+        "unit": "mEq/L",
+        "ref": "147–162",
+        "flag": ""
+      },
+      "K": {
+        "value": "6.1",
+        "unit": "mEq/L",
+        "ref": "3.5–5.8",
+        "flag": "H"
+      },
+      "Cl": {
+        "value": "118",
+        "unit": "mEq/L",
+        "ref": "115–130",
+        "flag": ""
+      },
+      "Ca": {
+        "value": "9.2",
+        "unit": "mg/dL",
+        "ref": "8.8–11.9",
+        "flag": ""
+      },
+      "Lipaz": {
+        "value": "25",
+        "unit": "U/L",
+        "ref": "10–40",
+        "flag": ""
+      },
+      "CK": {
+        "value": "45000",
+        "unit": "U/L",
+        "ref": "69–214",
+        "flag": "H"
+      }
+    },
+    "hormones": {
+      "T4": {
+        "value": "2.1",
+        "unit": "µg/dL",
+        "ref": "0.8–4.7",
+        "flag": ""
+      },
+      "T3": {
+        "value": "0.9",
+        "unit": "ng/mL",
+        "ref": "0.5–1.5",
+        "flag": ""
+      },
+      "TSH": {
+        "value": "0.05",
+        "unit": "µIU/mL",
+        "ref": "0.01–0.1",
+        "flag": ""
+      },
+      "Kortizol": {
+        "value": "4.8",
+        "unit": "µg/dL",
+        "ref": "0.5–5.0",
+        "flag": ""
+      },
+      "Aldosteron": {
+        "value": "110",
+        "unit": "pg/mL",
+        "ref": "10–160",
+        "flag": ""
+      },
+      "İnsülin": {
+        "value": "12",
+        "unit": "µIU/mL",
+        "ref": "5–20",
+        "flag": ""
+      },
+      "Progesteron": {
+        "value": "0.1",
+        "unit": "ng/mL",
+        "ref": "<0.5 (kısır erkek)",
+        "flag": ""
+      },
+      "Testosteron": {
+        "value": "0.05",
+        "unit": "ng/mL",
+        "ref": "<0.2 (kısır erkek)",
+        "flag": ""
+      },
+      "Östrojen": {
+        "value": "12",
+        "unit": "pg/mL",
+        "ref": "5–50",
+        "flag": ""
+      }
+    },
+    "microscopy": {
+      "blood": {
+        "text": "Kan yayması: Eritrositler normositik-normokromik, rejenerasyon bulgusu yok. 🔴 **Yaymanın kenarlarında belirgin trombosit kümeleri; otomatik sayım gerçekte olduğundan düşük okunmuş olabilir.** Lökositlerde stres lökogramı: olgun nötrofili ve lenfopeni; sola kayma ve toksik değişiklik yok. Hemoparazit görülmedi.",
+        "imgUrl": null
+      },
+      "urine": "İdrar muayenesi (sistosentez ile, mesane küçük): Koyu sarı, berrak. SpGr: 1.045. pH: 6.0. Protein: Eser. Glukoz: Negatif. Keton: Negatif. Sediment: Aktif sediment yok, kristal ve bakteri yok.",
+      "stool": "Dışkı muayenesi: Rektumda az miktarda normal kıvamda dışkı. Parazit yumurtası görülmedi.",
+      "skin": "Deri kazıntısı: Ektoparazit veya mantar elemanı görülmedi.",
+      "biopsy": "Biyopsi raporu: Patolojik bulguya rastlanmadı.",
+      "effusion": "Torasentez: Az miktarda, berrak açık sarı sıvı alındı. Protein 2.8 g/dL, hücre sayısı düşük (çoğu makrofaj ve küçük lenfosit). Modifiye transüda ile uyumlu. Bakteri ve atipik hücre yok."
+    },
+    "questionAnswers": {
+      "yuruyus_1": "Ön bacaklarıyla yürümeye çalışıyor ama arka tarafı tamamen yerde sürünüyor.",
+      "yuruyus_3": "Evet, dün gece birden başladı. Arka bacaklarını hiç basamıyor, sürüklüyor.",
+      "nefes_1": "Evet, dinlenirken bile ağzı açık, çok hızlı soluyor.",
+      "nefes_3": "Evet, ağzını açıp boynunu uzatarak nefes almaya çalışıyor.",
+      "nefes_4": "Son birkaç aydır oyundan sonra çabuk yoruluyordu, şimdi hiç hareket edemiyor zaten.",
+      "oksuruk_1": "Hayır, hiç öksürmedi.",
+      "agri_1": "Arka bacaklarına dokunur dokunmaz bağırıp tıslıyor, çok canı yanıyor.",
+      "agri_4": "Arka bacaklarını korumaya çalışıyor, ellettirmiyor.",
+      "enerji_1": "Son birkaç aydır eskisi kadar oyun oynamıyordu, çabuk yorulup yatıyordu.",
+      "enerji_2": "Dünden beri hiç kıpırdamıyor, yatağın altında yatıyor.",
+      "enerji_5": "Hayır, öyle bir şey fark etmedim.",
+      "istah_1": "Dünden beri hiçbir şey yemedi.",
+      "istah_3": "Bu olaydan önce normal içiyordu, dünden beri hiç su içmedi.",
+      "idrar_1": "Dünden beri kuma gidemedi, çişini görmedik.",
+      "kusma_1": "Hayır, kusmadı.",
+      "hastalik_1": "Bilinen bir hastalığı yok. Geçen yıl kalbinde hafif bir ses duyulmuştu ama takip etmedik.",
+      "hastalik_2": "Hayır, daha önce böyle bir şey hiç olmadı.",
+      "hastalik_5": "Hayır, hiç düşmedi ya da bir yere çarpmadı. Koltukta uyurken oldu.",
+      "ilac_1": "Hayır, düzenli kullandığı bir ilaç yok.",
+      "agirlik_1": "Hayır, kilo kaybı yok, iri bir kedi zaten.",
+      "davranis_3": "Evet, korkmuş durumda, sürünerek yatağın altına saklanıyor.",
+      "disari_1": "Hayır, tamamen ev kedisi, hiç dışarı çıkmaz.",
+      "zehir_3": "Hayır, evde fare zehiri ya da böcek ilacı yok.",
+      "diger_hayvanlar_1": "Evde tek kedi, başka hayvan yok.",
+      "bas_1": "Hayır, başı ve boynu normal, sadece arka tarafı tutmuyor."
+    }
   }
 }

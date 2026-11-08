@@ -193,5 +193,20 @@
   "fhv_fcv": {
     "Felin Bordetellozis": "Bordetellozis'te trakea tutulumuna bağlı belirgin öksürük öne çıkar ve PCR'da Bordetella saptanır; FHV-FCV ise bilateral pürülan konjonktivit, kemozis, yoğun nazal akıntı, oral ülserler (FCV) ve korneada dendritik ülserlerle (FHV) seyreder.",
     "Astım": "Astım sistemik ateşin olmadığı, hemogramda eozinofili ile seyreden hışırtılı (wheezing) bir alerjik daralmayken, FHV-FCV yüksek ateş (ör: 39.8 °C) ve sekonder bakteriyel enfeksiyonlara bağlı nötrositoz ile ilerleyen bir virüs enfeksiyonudur."
+  },
+  "pyometra": {
+    "Diabetes Mellitus": "İkisi de PU/PD yapar. DM'de hiperglisemi, glukozüri ve iştah artışı (polifaji) vardır, köpekte katarakt sık görülür. Bu vakada glukoz ve fruktozamin normal, idrarda glukoz yok, iştah azalmış ve lensler şeffaf.",
+    "Cushing Sendromu": "Cushing de PU/PD ve ALP yüksekliği yapar, ama polifaji, pendülöz karın, simetrik alopesi ve stres lökogramı (lenfopeni, eozinopeni) eşlik eder. Piyometrada lökositoz çok daha belirgindir (sola kayma, toksik nötrofil), iştah azalır, hiperglobulinemi görülür; USG'de adrenaller normal, uterus dilatedir.",
+    "Leptospirozis": "Leptospirozis de PU/PD ve azotemi yapabilir, ama genellikle ikter, trombositopeni, belirgin akut böbrek hasarı (CREA çok yüksek) ve durgun su ya da kemirgen teması vardır. Piyometrada azotemi hafif ve prerenaldir (BUN yüksek, CREA normal), uterus USG'de dilatedir. Not: Leptospira aşılı köpekte lepto hızlı kiti yanlış pozitif verebilir.",
+    "Akut Pankreatit": "Pankreatitte kusma ve kranial karın ağrısı ön plandadır, cPL pozitif ve USG'de pankreas hipoekoik ve ödemlidir. Piyometrada pankreas normaldir; ağrı kaudal abdomende, PU/PD belirgindir.",
+    "Mukometra / Hidrometra": "USG'de piyometraya çok benzer (sıvı dolu uterus). Fark sistemik yangıdadır: mukometrada hayvan genelde iyi durumdadır, lökositoz ve sola kayma yoktur ya da hafiftir, globulin ve CRP normale yakındır. Bu vakadaki belirgin lökositoz, bant nötrofiller, toksik değişiklik ve hiperglobulinemi piyometra lehinedir.",
+    "Gebelik": "Gebelikte de diöstrus progesteronu yüksektir ve uterus büyür, ama USG'de ovulasyondan 20–24 gün sonra fötal yapı ve kalp atımı görülür. Bu vakada çiftleşme yok, fötal yapı yok ve tablo yangısal."
+  },
+  "hcm_ate": {
+    "Felin Hipertiroidi": "Hipertiroidi de sol ventrikülde kalınlaşma, taşikardi ve üfürüm yapar ve ATE ile karşılaşılabilir. Ama genellikle 10 yaş üstü kedide görülür, kilo kaybı, polifaji ve PU/PD eşlik eder, T4 yüksektir. Bu vakada 5 yaşında, kilo kaybı yok ve T4 normal; kalınlaşma primer.",
+    "Primer Hiperaldosteronizm (Conn Sendromu)": "Sistemik hipertansiyon yoluyla sekonder sol ventrikül kalınlaşması yapabilir. Ama hipokalemi, kas zayıflığı (boyun ventrofleksiyonu) ve yaşlı kedi tablosu beklenir. Bu vakada potasyum yüksek (kas nekrozuna bağlı), aldosteron normal.",
+    "Spinal Travma / İntervertebral Disk Hastalığı": "Ani arka bacak felci yapar, ama arka bacaklarda nabız ve sıcaklık korunur, pati yastıkları pembe kalır, kas ağrısı ve kas enzimi (CK) yükselmesi beklenmez. Bu vakada femoral nabız yok, patiler soğuk ve morumsu, CK çok yüksek; MR omuriliği normal gösteriyor.",
+    "Restriktif Kardiyomiyopati": "Sol atriyum belirgin genişler ve tromboemboli riski yüksektir, ama sol ventrikül duvar kalınlığı normaldir veya hafif artmıştır, endomiyokardiyal fibrozis görülür. Bu vakada septum ve arka duvar 6 mm'nin belirgin üzerinde ve mitral SAM var.",
+    "Felin Bronşiyal Astım": "Ağız açık solunum ve dispne yapabilir, ama ekspiratuvar wheeze, bronşiyal patern ve eozinofili beklenir, kalp normaldir ve felç olmaz. Bu vakada raller, gallop ritmi, pulmoner ödem ve kardiyomegali var."
   }
 }
