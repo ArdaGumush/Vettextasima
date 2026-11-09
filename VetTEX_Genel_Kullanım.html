@@ -2908,12 +2908,19 @@ const APP_VERSION = 'V1.0G';
 const GOOGLE_WEB_CLIENT_ID = "";
 // ALFA TEST SÜRÜMÜ: "VetTEX Alfa" derlemesi bu bayrağı açar (android-alfa.yml) → başlık ve etiketler "Alfa" olur.
 const ALPHA = !!window.VETTEX_ALPHA;
-// Kullanıcı adı + şifre ile giriş: hesaplar Supabase → Authentication → Users'ta elle açılır.
-// Giriş yapan herkes tüm vakaları oynar. Giriş ekranındaki "Demo vakalar" ile hesapsız, sadece demo vakaları açık.
-const PASSWORD_LOGIN = ALPHA || !GOOGLE_WEB_CLIENT_ID;
+// ── GİRİŞ YÖNTEMLERİ ──
+// Google ile giriş: GOOGLE_WEB_CLIENT_ID doluysa görünür.
+const GOOGLE_LOGIN = !ALPHA && !!GOOGLE_WEB_CLIENT_ID;
+// E-posta + şifre ile kayıt/giriş (hesap.html doğrulama ve şifre sıfırlama sayfası).
+const EMAIL_AUTH = true;
+// Herkes kendi hesabını açabiliyor mu? (Google ve/veya e-posta) — değilse hesaplar elle açılır (alfa düzeni).
+const OPEN_SIGNUP = !ALPHA && (GOOGLE_LOGIN || EMAIL_AUTH);
+// KAPALI TEST DÖNEMİ: giriş yapan herkes tüm vakaları oynar, abonelik kapalı.
+// Yayına (üretime) geçerken false yap + android.yml'de PAYWALL: "on".
+const TEST_PHASE = true;
+// "Açık erişim": giriş yapan herkes premium sayılır, vakalar APK'nın içinde (alfa / kapalı test).
+const PASSWORD_LOGIN = ALPHA || TEST_PHASE || !OPEN_SIGNUP;
 const ALPHA_EMAIL_DOMAIN = 'alfa.vettex.app';
-// E-posta + şifre ile kayıt/giriş. Altyapı hazır; true yapınca giriş ekranında görünür (Google girişi açıkken).
-const EMAIL_AUTH = false;
 // E-posta doğrulama ve şifre sıfırlama linklerinin açılacağı sayfa (repoda hesap.html)
 const ACCOUNT_PAGE_URL = 'https://ardagumush.github.io/Vettextasima/hesap.html';   // "ayse" → ayse@alfa.vettex.app
 // Ücretsiz demo vakaları (tutorial cat + fip kullanır, bunlar mutlaka açık kalmalı)
@@ -6953,7 +6960,7 @@ const VTX = window.VTX = {
   },
   async signOut() {
     try { if (this.session) await this.api('/auth/v1/logout', { method: 'POST' }); } catch (e) {}
-    if (!PASSWORD_LOGIN) { try { const SL = this.plugin('SocialLogin'); if (SL && SL.logout) await SL.logout({ provider: 'google' }); } catch (e) {} }
+    if (GOOGLE_LOGIN) { try { const SL = this.plugin('SocialLogin'); if (SL && SL.logout) await SL.logout({ provider: 'google' }); } catch (e) {} }
     this.localSignOut();
     if (mobileMode) mobGoHome(); else backToMainMenu();
     this.showLogin('');
@@ -7859,16 +7866,16 @@ document.addEventListener('visibilitychange', function() {
   box.innerHTML = `
     <div class="lg-logo">VetTEX</div>
     <div class="lg-sub">${ALPHA ? 'ALFA TEST SÜRÜMÜ' : 'KLİNİK SİMÜLASYON'}</div>
-    <p class="lg-text">${PASSWORD_LOGIN ? 'Sana verilen kullanıcı adı ve şifreyle giriş yap.' : 'Devam etmek için Google hesabınla giriş yap.'}
+    <p class="lg-text">${!OPEN_SIGNUP ? 'Sana verilen kullanıcı adı ve şifreyle giriş yap.' : GOOGLE_LOGIN && EMAIL_AUTH ? 'Google hesabınla ya da e-postanla giriş yap.' : GOOGLE_LOGIN ? 'Devam etmek için Google hesabınla giriş yap.' : 'E-postanla kayıt ol ya da giriş yap.'}
       ${ALPHA ? '<br>Alfa testinde <b>tüm vakalar açık</b>.' : ''}</p>
-    ${PASSWORD_LOGIN ? pwForm : googleBtn}
-    ${!PASSWORD_LOGIN && EMAIL_AUTH ? emailForm : ''}
-    ${!PASSWORD_LOGIN ? pwForm.replace('id="login-alpha"', 'id="login-alpha" class="lg-hidden" style="margin-top:14px"') : ''}
+    ${!OPEN_SIGNUP ? pwForm : (GOOGLE_LOGIN ? googleBtn : '')}
+    ${OPEN_SIGNUP && EMAIL_AUTH ? (GOOGLE_LOGIN ? emailForm : emailForm.replace(/<div class="lg-or"[^]*?<\/div>/, '')) : ''}
+    ${OPEN_SIGNUP ? pwForm.replace('id="login-alpha"', 'id="login-alpha" class="lg-hidden" style="margin-top:14px"') : ''}
     <div id="login-error"></div>
     <div id="login-info"></div>
     <div class="lg-or"><span>veya</span></div>
     <button type="button" id="login-demo" onclick="VTX.enterDemo()">🩺 Demo vakalar<small>Hesapsız dene · ${FREE_CASE_KEYS.length} vaka açık</small></button>
-    ${PASSWORD_LOGIN
+    ${!OPEN_SIGNUP
       ? '<div class="lg-note">Hesabın yoksa VetTEX ekibinden iste:<br><a href="mailto:vettex.app@gmail.com">vettex.app@gmail.com</a></div>'
       : '<button type="button" class="lg-link" onclick="VTX.toggleUserLogin()">Kullanıcı adıyla giriş</button><div class="lg-note">Sorun mu yaşıyorsun? <a href="mailto:vettex.app@gmail.com">vettex.app@gmail.com</a></div>'}
     <div class="lg-ver">VetTEX ${APP_VERSION}${ALPHA ? ' · Alfa' : ''}</div>`;
