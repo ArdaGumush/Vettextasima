@@ -474,6 +474,31 @@ function replayTutorial() {
   #login-email .em-btns button { flex:1; padding:12px; border-radius:10px; font-family:inherit; font-size:13px; font-weight:600; cursor:pointer; border:1px solid var(--accent-cyan); background:rgba(0,212,255,.12); color:var(--accent-cyan); }
   #login-email .em-btns button.em-sec { background:none; border-color:var(--border); color:var(--text-secondary); }
   #login-email button:disabled { opacity:.6; cursor:wait; }
+
+  /* ── Açılış pop-up'ı (duyuru / anket / sponsor) ── */
+  #pop-overlay { position:fixed; inset:0; z-index:9500; display:none; align-items:center; justify-content:center; padding:20px; background:rgba(3,8,14,.72); backdrop-filter:blur(3px); }
+  #pop-overlay.open { display:flex; }
+  #pop-card { position:relative; width:100%; max-width:420px; max-height:88vh; overflow:auto; background:var(--bg-card); border:1px solid var(--border); border-radius:18px; box-shadow:0 24px 60px rgba(0,0,0,.55); animation:popIn .25s ease-out; }
+  @keyframes popIn { from { transform:translateY(12px) scale(.98); opacity:0; } to { transform:none; opacity:1; } }
+  @media (prefers-reduced-motion: reduce) { #pop-card { animation:none; } }
+  #pop-card img.pop-img { display:block; width:100%; max-height:240px; object-fit:cover; border-radius:18px 18px 0 0; }
+  #pop-body { padding:20px 20px 18px; display:flex; flex-direction:column; gap:12px; }
+  .pop-tag { align-self:flex-start; font-size:10px; letter-spacing:2px; font-weight:700; padding:4px 10px; border-radius:20px; border:1px solid var(--accent-cyan); color:var(--accent-cyan); }
+  .pop-tag.anket { border-color:#b9a4ff; color:#b9a4ff; }
+  .pop-tag.reklam { border-color:#ffb547; color:#ffb547; }
+  #pop-title { margin:0; font-size:19px; line-height:1.3; color:var(--text-primary); }
+  #pop-text { font-size:14px; line-height:1.6; color:var(--text-secondary); }
+  .pop-opts { display:flex; flex-direction:column; gap:8px; }
+  .pop-opt { position:relative; overflow:hidden; text-align:left; padding:12px 14px; border-radius:10px; border:1px solid var(--border); background:transparent; color:var(--text-primary); font-family:inherit; font-size:14px; cursor:pointer; }
+  .pop-opt:hover:not(:disabled) { border-color:#b9a4ff; }
+  .pop-opt:disabled { cursor:default; }
+  .pop-opt .bar { position:absolute; inset:0 auto 0 0; background:rgba(185,164,255,.18); width:0; transition:width .5s ease; }
+  .pop-opt span { position:relative; display:flex; justify-content:space-between; gap:10px; }
+  .pop-opt.mine { border-color:#b9a4ff; }
+  .pop-cta { padding:13px; border-radius:10px; border:1px solid var(--accent-cyan); background:rgba(0,212,255,.12); color:var(--accent-cyan); font-family:inherit; font-size:14px; font-weight:700; cursor:pointer; }
+  .pop-close { background:none; border:none; color:var(--text-muted); font-family:inherit; font-size:12px; cursor:pointer; padding:6px; }
+  .pop-x { position:absolute; top:10px; right:10px; width:32px; height:32px; border-radius:50%; border:none; background:rgba(0,0,0,.45); color:#fff; font-size:16px; cursor:pointer; z-index:2; }
+  .pop-note { font-size:11px; color:var(--text-muted); text-align:center; }
   .lg-link { background:none; border:none; color:var(--text-muted); font-family:inherit; font-size:11px; text-decoration:underline; cursor:pointer; margin-top:10px; }
   #login-info { min-height:0; margin-top:8px; font-size:11px; color:var(--accent-green, #2ecc71); line-height:1.6; }
   #login-alpha.lg-hidden, #login-email.lg-hidden { display:none; }
@@ -6807,6 +6832,7 @@ const VTX = window.VTX = {
     this.updateUI();
     this.ensureRegistration();
     showToast('🩺 Demo mod · ' + FREE_CASE_KEYS.length + ' demo vaka açık');
+    VTXPopup.schedule(3200);
   },
   exitDemo() {                                       // demo moddan giriş ekranına dön
     this.demo = false; this.ls('vtx-demo', null);
@@ -6872,6 +6898,7 @@ const VTX = window.VTX = {
     this.ensureRegistration();
     if (PASSWORD_LOGIN) showToast('👋 Hoş geldin, ' + this.alphaUserName() + '!');
     flushReports();
+    VTXPopup.schedule(3200);
   },
   ensureRegistration() {
     if (localStorage.getItem('vetcase_user')) return;
@@ -6890,6 +6917,7 @@ const VTX = window.VTX = {
     if (!this.session && !this.demo) { this.showLogin(''); return; }
     this.updateUI();
     this.ensureRegistration();
+    VTXPopup.schedule();
   },
   async afterDataLoaded() {
     if (this.authOn()) flushReports();
@@ -7186,6 +7214,97 @@ function freeLS(key, val) {
 }
 function freeUserLists() { return freeLS('vettex-free-lists') || []; }
 function freeStats()     { return freeLS('vettex-free-stats') || {}; }
+
+// ── Açılış pop-up'ı: duyuru / anket / reklam (sponsor). Supabase'teki "duyurular" tablosundan gelir. ──
+const VTXPopup = {
+  _done: false, _item: null, _timer: null,
+  _seen() { try { return JSON.parse(localStorage.getItem('vtx-pop-seen') || '{}'); } catch (e) { return {}; } },
+  _mark(id) { try { const m = this._seen(); m[id] = new Date().toISOString().slice(0, 10); localStorage.setItem('vtx-pop-seen', JSON.stringify(m)); } catch (e) {} },
+  _busy() { return ['login-overlay', 'reg-overlay', 'modal-overlay', 'pop-overlay'].some(id => { const el = document.getElementById(id); return el && el.classList.contains('open'); }); },
+  _fmt(t) { return freeEsc(t || '').replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>').replace(/\\n|\n/g, '<br>'); },
+  _okLink(u) { return /^https:\/\//i.test(String(u || '')); },
+  // Oturum ya da demo hazır olunca çağrılır; başka bir pencere açıksa biraz sonra tekrar dener.
+  schedule(delay) {
+    if (this._done || !VTX.authOn() || (!VTX.session && !VTX.demo)) return;
+    clearTimeout(this._timer);
+    this._timer = setTimeout(() => this.maybeShow(), delay == null ? 900 : delay);
+  },
+  async maybeShow() {
+    if (this._done) return;
+    if (this._busy()) { this.schedule(2500); return; }
+    let list = [];
+    try { list = await VTX.api('/rest/v1/duyurular?select=*&order=oncelik.desc,olusturma.desc', { auth: !!VTX.session }) || []; } catch (e) { return; }
+    const prem = VTX.premium(), seen = this._seen(), today = new Date().toISOString().slice(0, 10);
+    const pick = list.find(d => {
+      if (d.kime === 'ucretsiz' && prem) return false;
+      if (d.kime === 'premium' && !prem) return false;
+      if (d.siklik === 'bir_kere' && seen[d.id]) return false;
+      if (d.siklik === 'her_gun' && seen[d.id] === today) return false;
+      if (d.tur === 'anket' && !(Array.isArray(d.secenekler) && d.secenekler.length)) return false;
+      return true;
+    });
+    if (!pick || this._busy()) return;
+    this._done = true; this._item = pick; this.render();
+  },
+  render(results, mine) {
+    const d = this._item, card = document.getElementById('pop-card');
+    const tag = d.tur === 'anket' ? '<span class="pop-tag anket">ANKET</span>' : d.tur === 'reklam' ? '<span class="pop-tag reklam">SPONSORLU</span>' : '<span class="pop-tag">DUYURU</span>';
+    let opts = '';
+    if (d.tur === 'anket') {
+      const tot = results ? results.reduce((a, b) => a + b, 0) : 0;
+      opts = '<div class="pop-opts">' + d.secenekler.map((o, i) => {
+        const pct = results && tot ? Math.round(results[i] * 100 / tot) : 0;
+        return '<button type="button" class="pop-opt' + (mine === i ? ' mine' : '') + '"' + (results ? ' disabled' : '') + ' onclick="VTXPopup.vote(' + i + ')">'
+          + (results ? '<i class="bar" style="width:' + pct + '%"></i>' : '')
+          + '<span><span>' + (mine === i ? '✓ ' : '') + freeEsc(o) + '</span>' + (results ? '<b>%' + pct + '</b>' : '') + '</span></button>';
+      }).join('') + '</div>';
+      if (results) opts += '<div class="pop-note">' + (tot ? tot + ' oy · ' : '') + 'Katıldığın için teşekkürler!</div>';
+      else if (!VTX.session) opts += '<div class="pop-note">Oy vermek için giriş yapman gerekiyor.</div>';
+    }
+    card.innerHTML = '<button type="button" class="pop-x" aria-label="Kapat" onclick="VTXPopup.close()">✕</button>'
+      + (d.gorsel_url && this._okLink(d.gorsel_url) ? '<img class="pop-img" src="' + freeEsc(d.gorsel_url) + '" alt="" onerror="this.remove()">' : '')
+      + '<div id="pop-body">' + tag
+      + '<h2 id="pop-title">' + freeEsc(d.baslik) + '</h2>'
+      + (d.metin ? '<div id="pop-text">' + this._fmt(d.metin) + '</div>' : '')
+      + opts
+      + (d.buton_yazi && this._okLink(d.buton_link) ? '<button type="button" class="pop-cta" onclick="VTXPopup.go()">' + freeEsc(d.buton_yazi) + '</button>' : '')
+      + '<button type="button" class="pop-close" onclick="VTXPopup.close()">Kapat</button>'
+      + '</div>';
+    if (!d.gorsel_url) card.querySelector('.pop-x').style.background = 'transparent';
+    document.getElementById('pop-overlay').classList.add('open');
+  },
+  async vote(i) {
+    const d = this._item;
+    if (!VTX.session) { showToast('Oy vermek için giriş yap.'); return; }
+    document.querySelectorAll('#pop-card .pop-opt').forEach(b => b.disabled = true);
+    try {
+      await VTX.api('/rest/v1/anket_oylari', { method: 'POST', headers: { Prefer: 'return=minimal' }, body: { duyuru_id: d.id, secenek: i } });
+    } catch (e) {
+      if (e.status !== 409) { showToast('Oy gönderilemedi, internetini kontrol et.'); document.querySelectorAll('#pop-card .pop-opt').forEach(b => b.disabled = false); return; }
+    }
+    this._mark(d.id);
+    let res = null;
+    if (d.sonucu_goster) {
+      try {
+        const rows = await VTX.api('/rest/v1/rpc/anket_sonuclari', { method: 'POST', body: { p_duyuru: d.id } }) || [];
+        res = d.secenekler.map((_, k) => { const r = rows.find(x => x.secenek === k); return r ? +r.oy : 0; });
+      } catch (e) {}
+    }
+    if (res) this.render(res, i);
+    else { showToast('🗳️ Oyun kaydedildi, teşekkürler!'); this.close(); }
+  },
+  go() {
+    const d = this._item; if (!d || !this._okLink(d.buton_link)) return;
+    this._mark(d.id);
+    try { window.open(d.buton_link, VTX.isNative() ? '_system' : '_blank'); } catch (e) {}
+    this.close();
+  },
+  close() {
+    if (this._item) this._mark(this._item.id);
+    document.getElementById('pop-overlay').classList.remove('open');
+  },
+};
+
 function freeEsc(t) { return String(t).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
 function caseDisease(k) { const c = CASE_DATA[k]; return c ? resolveDisease(c.diagnosis, c) : null; }
 function freeCaseKeys(l) {
@@ -7837,6 +7956,7 @@ document.addEventListener('visibilitychange', function() {
 
 </script>
 
+<div id="pop-overlay" role="dialog" aria-modal="true" aria-labelledby="pop-title"><div id="pop-card"></div></div>
 <div id="login-overlay">
   <div id="login-box"></div>
 </div>
