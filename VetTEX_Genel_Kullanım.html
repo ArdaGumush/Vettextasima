@@ -6784,7 +6784,8 @@ const VTX = window.VTX = {
       this._emMsg('', '📧 ' + v.e + ' adresine doğrulama linki gönderdik. Linke tıkladıktan sonra buradan giriş yap.');
     } catch (e) {
       const m = String(e && e.message || '');
-      this._emMsg(/registered|already/i.test(m) ? 'Bu e-postayla zaten bir hesap var. Giriş yap ya da şifreni sıfırla.'
+      this._emMsg(/not allowed|signup_disabled|signups? (are )?disabled/i.test(m) || (e && e.code === 'signup_disabled') ? 'Şu an kapalı test dönemindeyiz, yeni kayıt alınmıyor. Sana verilen e-posta ve şifreyle "Giriş yap" butonunu kullan.'
+        : /registered|already/i.test(m) ? 'Bu e-postayla zaten bir hesap var. Giriş yap ya da şifreni sıfırla.'
         : /weak|password/i.test(m) ? 'Şifre çok zayıf, daha güçlü bir şifre seç.'
         : 'Kayıt olunamadı: ' + m);
     } finally { btn.disabled = false; }
