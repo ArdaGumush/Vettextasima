@@ -1920,6 +1920,31 @@ function replayTutorial() {
   .rh-chip.wrong   { background:rgba(231,76,60,.14);   border:1px solid var(--accent-red);   color:var(--accent-red); }
   .rh-chip.real    { background:rgba(46,204,113,.10);  border:1px solid rgba(46,204,113,.4);  color:var(--accent-green); }
   #result-body { padding:20px 28px; }
+  /* ── Topluluk istatistiği (sonuç ekranı) + Karnem ── */
+  .rb-comm { margin-bottom:18px; padding:12px 14px; border:1px solid rgba(0,212,255,.3); border-radius:10px; background:rgba(0,212,255,.05); font-size:11px; color:var(--text-secondary); line-height:1.7; }
+  .rbc-load { color:var(--text-muted); }
+  .rbc-head { display:flex; justify-content:space-between; align-items:center; font-size:9px; letter-spacing:2px; color:var(--accent-cyan); margin-bottom:6px; font-family:'JetBrains Mono',monospace; }
+  .rbc-head span { letter-spacing:0; color:var(--text-muted); font-size:10px; }
+  .rbc-big b { font-size:22px; color:var(--text-primary); margin-right:4px; }
+  .rbc-you.ok { color:var(--accent-green); }
+  .rbc-bar, .kr-bar { height:6px; border-radius:3px; background:var(--bg-hover, rgba(255,255,255,.06)); overflow:hidden; margin:6px 0 8px; }
+  .rbc-bar i, .kr-bar i { display:block; height:100%; background:var(--accent-cyan); border-radius:3px; }
+  .rbc-row b { color:var(--text-primary); }
+  .rbc-note { color:var(--text-muted); }
+  .kr-empty { text-align:center; padding:28px 10px; color:var(--text-muted); font-size:12px; line-height:1.8; }
+  .kr-hero { display:flex; align-items:center; gap:16px; margin-bottom:14px; }
+  .kr-ring { --p:0; flex:0 0 92px; height:92px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    background:radial-gradient(closest-side, var(--bg-card, #111a24) 78%, transparent 80% 100%), conic-gradient(var(--accent-cyan) calc(var(--p) * 1%), rgba(255,255,255,.08) 0); }
+  .kr-ring b { font-size:20px; color:var(--text-primary); line-height:1; } .kr-ring span { font-size:9px; color:var(--text-muted); letter-spacing:1px; }
+  .kr-hero-t { font-size:12px; color:var(--text-secondary); line-height:1.6; } .kr-hero-t > b { font-size:16px; color:var(--text-primary); } .kr-hero-t span { font-size:11px; color:var(--text-muted); } .kr-hero-t span b { color:var(--accent-cyan); }
+  .kr-tiles { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px; }
+  .kr-tile { padding:10px; border:1px solid var(--border); border-radius:8px; text-align:center; }
+  .kr-tile b { display:block; font-size:16px; color:var(--text-primary); } .kr-tile span { font-size:9px; color:var(--text-muted); letter-spacing:.5px; }
+  .kr-tip { padding:10px 12px; border-radius:8px; background:rgba(155,89,182,.07); border:1px solid rgba(155,89,182,.3); font-size:11px; color:var(--text-secondary); line-height:1.8; margin-bottom:12px; }
+  .kr-tip b { color:var(--text-primary); }
+  .kr-sec { font-size:9px; letter-spacing:2px; color:var(--text-muted); margin:6px 0 8px; }
+  .kr-cat-l { display:flex; justify-content:space-between; font-size:11px; color:var(--text-secondary); } .kr-cat-l em { font-style:normal; color:var(--text-muted); font-size:10px; }
+  .kr-foot { margin-top:12px; font-size:9px; color:var(--text-muted); text-align:center; line-height:1.6; }
   .rb-sec { margin-bottom:18px; }
   .rb-sec-title { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
   .rb-sec-title::before { content:''; width:3px; height:11px; border-radius:2px; background:var(--accent-cyan); flex-shrink:0; }
@@ -2055,6 +2080,7 @@ window.onerror = function(msg, src, line) {
     <!-- Tab bar -->
     <div class="wm-tabs">
       <button class="wm-tab active" onclick="wmTab('basla')">▶ Başlat</button>
+      <button class="wm-tab" onclick="VTXStats.openKarne()">📊 Karnem</button>
       <button class="wm-tab" onclick="wmTab('ayarlar')">⚙ Ayarlar</button>
       <button class="wm-tab" onclick="wmTab('emek')">♥ Emeği Geçenler</button>
       <button class="wm-tab" onclick="wmTab('ref')">📄 Referanslar</button>
@@ -2554,6 +2580,9 @@ window.onerror = function(msg, src, line) {
         </button>
         <button onclick="mobOpenFreeStudy()" style="width:100%;padding:16px;background:rgba(46,204,113,0.06);border:1px solid rgba(46,204,113,0.4);border-radius:12px;color:var(--accent-green);font-family:'JetBrains Mono',monospace;font-size:13px;cursor:pointer;letter-spacing:2px;margin-bottom:10px">
           📚 SERBEST ÇALIŞMA MODU
+        </button>
+        <button onclick="VTXStats.openKarne()" style="width:100%;padding:14px;margin-bottom:10px;background:rgba(155,89,182,0.06);border:1px solid rgba(155,89,182,0.4);border-radius:12px;color:var(--accent-purple);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;cursor:pointer">
+          📊 KARNEM
         </button>
         <button onclick="mobOpenSettings()" style="width:100%;padding:14px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;letter-spacing:1px">
           ⚙ AYARLAR
@@ -3530,6 +3559,7 @@ function mobConfirmBack() {
 }
 
 function mobGoHome() {
+  VTXStats.abandonIfOpen();
   if (typeof deactivateEmergency === 'function') deactivateEmergency();
   if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
   mobCurrentCase = null;
@@ -4874,6 +4904,7 @@ function backToStep1() {
 // INIT
 // ═══════════════════════════════════════════════════════════════
 function startCase(caseKey) {
+  VTXStats.abandonIfOpen();
   currentCase = CASE_DATA[caseKey];
   currentCaseKey = caseKey;
   resetNotes();
@@ -6528,6 +6559,7 @@ function confirmBackToMenu() {
   openModal('ANA MENÜYE DÖN', html);
 }
 function backToMainMenu() {
+  VTXStats.abandonIfOpen();
   // Ana Menü butonunu gizle
   const backBtn = document.getElementById('back-to-menu-btn');
   if (backBtn) backBtn.style.display = 'none';
@@ -6898,7 +6930,7 @@ const VTX = window.VTX = {
     this.updateUI();
     this.ensureRegistration();
     if (PASSWORD_LOGIN) showToast('👋 Hoş geldin, ' + this.alphaUserName() + '!');
-    flushReports();
+    flushReports(); VTXStats.flush();
     VTXPopup.schedule(3200);
   },
   ensureRegistration() {
@@ -6921,7 +6953,7 @@ const VTX = window.VTX = {
     VTXPopup.schedule();
   },
   async afterDataLoaded() {
-    if (this.authOn()) flushReports();
+    if (this.authOn()) { flushReports(); VTXStats.flush(); }
     if (!this.authOn() || !this.session) { this.updateUI(); return; }
     if (PASSWORD_LOGIN) { await this.verifyAccount(); if (!this.session) return; }
     try { await this.loadProfile(); if (!PASSWORD_LOGIN) await this.syncCases(); } catch (e) {}
@@ -7711,6 +7743,160 @@ function showDiffPanel() {
   document.getElementById('result-box').scrollTop=9999;
 }
 
+// ═══════════════════════════════════════════════════════════════
+// VAKA İSTATİSTİKLERİ — Supabase case_results tablosu (istatistik.sql)
+// • Tanı konunca / vaka yarıda bırakılınca bir satır yazılır (sadece giriş yapmış kullanıcı).
+// • Sonuç ekranında topluluk istatistiği (her oyuncunun ilk denemesi; vaka_istatistik RPC).
+// • "Karnem" ekranı: oyuncunun kendi sonuçları.
+// ═══════════════════════════════════════════════════════════════
+const STATS_MIN_PLAYERS = 10;           // topluluk yüzdeleri bu kadar oyuncudan sonra gösterilir
+const STATS_QUEUE_KEY = 'vtx-result-queue';
+const VTXStats = {
+  _esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); },
+  _on() { return window.top === window.self && VTX.authOn() && !!VTX.session; },
+  _caseKey(c) { c = c || currentCase || mobCurrentCase || {}; return c._realKey || currentCaseKey || null; },
+  _row(outcome, chosenName, realDisease) {
+    const c = currentCase || mobCurrentCase || {};
+    const dur = startTime ? Math.round((Date.now() - startTime) / 1000) : null;
+    const tests = (typeof usedTetkikLog !== 'undefined' && usedTetkikLog || []).slice(0, 80);
+    return {
+      case_key: this._caseKey(c) || '?', case_id: c.caseId || null, species: c.species || null,
+      category: (realDisease && realDisease.category) || null,
+      diagnosis: (realDisease && realDisease.id !== 'unknown' && realDisease.name) || c._realDiagnosis || c.diagnosis || null,
+      chosen: chosenName || null, outcome,
+      duration_sec: dur == null ? null : Math.max(0, Math.min(dur, 86400)),
+      tests, test_count: tests.length,
+      mode: (typeof isEmergencyActive !== 'undefined' && isEmergencyActive) ? 'acil' : (activeFreeList ? 'serbest' : 'klinik'),
+      app_version: APP_VERSION + (ALPHA ? ' Alfa' : ''), platform: VTX.isNative() ? 'android' : 'web',
+    };
+  },
+  async _send(row) {
+    try { await VTX.api('/rest/v1/case_results', { method: 'POST', body: row, headers: { 'Prefer': 'return=minimal' } }); return 'ok'; }
+    catch (e) { return [400, 401, 403, 404, 409, 413, 422].includes(e.status) ? 'drop' : 'retry'; }
+  },
+  _queue(row) { const q = VTX.ls(STATS_QUEUE_KEY) || []; q.push(Object.assign({ client_time: new Date().toISOString() }, row)); VTX.ls(STATS_QUEUE_KEY, q.slice(-50)); },
+  _flushing: false,
+  async flush() {
+    if (this._flushing || !this._on()) return;
+    const q = VTX.ls(STATS_QUEUE_KEY) || [];
+    if (!q.length || (typeof navigator !== 'undefined' && navigator.onLine === false)) return;
+    this._flushing = true;
+    try {
+      while (q.length) {
+        const row = Object.assign({}, q[0]); delete row.client_time;
+        const r = await this._send(row);
+        if (r === 'retry') break;
+        q.shift(); VTX.ls(STATS_QUEUE_KEY, q);
+      }
+    } finally { this._flushing = false; }
+  },
+  async _record(row) {
+    if (!this._on()) return false;
+    const r = await this._send(row);
+    if (r === 'retry') this._queue(row);
+    else if (r === 'ok') this.flush();
+    return r === 'ok';
+  },
+  // Vaka bitmeden çıkılırsa / yeni vakaya geçilirse (en az bir tetkik ya da 45 sn oyalanma varsa)
+  abandonIfOpen() {
+    try {
+      const c = currentCase;
+      if (!c || !this._on() || diagnosisSubmitted || c._vtxLogged || !startTime || !this._caseKey(c)) return;
+      const used = (typeof usedTetkikLog !== 'undefined' && usedTetkikLog || []).length;
+      if (!used && Date.now() - startTime < 45000) return;
+      c._vtxLogged = true;
+      const rd = (typeof resolveDisease === 'function') ? resolveDisease(c._realDiagnosis || c.diagnosis, c) : null;
+      this._record(this._row('birakti', null, rd));
+    } catch (e) { console.warn('[istatistik]', e); }
+  },
+  // Tanı konunca: kaydet, sonra sonuç ekranına topluluk kutusunu yerleştir
+  async afterResult(correct, selected, realDisease) {
+    if (window.top !== window.self || !VTX.authOn()) return;
+    const c = currentCase || mobCurrentCase || {};
+    const key = this._caseKey(c);
+    if (!key) return;
+    const body = document.getElementById('result-body');
+    if (body) body.insertAdjacentHTML('afterbegin', '<div id="rb-comm" class="rb-comm"><div class="rbc-load">🌍 Topluluk istatistiği yükleniyor…</div></div>');
+    if (!c._vtxLogged && this._on()) {
+      c._vtxLogged = true;
+      await this._record(this._row(correct ? 'dogru' : 'yanlis', selected && selected.name, realDisease));
+    }
+    let st = null;
+    try { const r = await VTX.api('/rest/v1/rpc/vaka_istatistik', { method: 'POST', auth: !!VTX.session, body: { p_case: key } }); st = Array.isArray(r) ? r[0] : r; } catch (e) {}
+    const box = document.getElementById('rb-comm');
+    if (!box) return;
+    if (!st) { box.remove(); return; }
+    box.innerHTML = this._commHTML(st, correct, realDisease);
+  },
+  _commHTML(st, correct, realDisease) {
+    const n = st.oyuncu || 0, E = this._esc;
+    const head = '<div class="rbc-head">🌍 TOPLULUK<span>' + n + ' hekim oynadı</span></div>';
+    if (n < STATS_MIN_PLAYERS || st.dogru_yuzde == null) {
+      const kalan = Math.max(STATS_MIN_PLAYERS - n, 1);
+      return head + '<div class="rbc-note">' + (n <= 1 ? 'Bu vakayı ilk oynayanlardansın! 🎉 ' : '')
+        + 'Topluluk istatistiği ' + kalan + ' oyuncu daha oynayınca açılacak.</div>';
+    }
+    const p = Math.max(0, Math.min(100, st.dogru_yuzde));
+    let h = head + '<div class="rbc-big"><b>%' + p + '</b> ilk denemede doğru teşhis koydu'
+      + (correct ? ' <span class="rbc-you ok">· sen de onlardansın ✓</span>' : '') + '</div>'
+      + '<div class="rbc-bar"><i style="width:' + p + '%"></i></div>';
+    const real = realDisease && realDisease.name;
+    if (st.sik_yanlis && st.sik_yanlis !== real)
+      h += '<div class="rbc-row">En sık verilen yanlış cevap: <b>' + E(st.sik_yanlis) + '</b>' + (st.sik_yanlis_yuzde != null ? ' (%' + st.sik_yanlis_yuzde + ')' : '') + '</div>';
+    if (st.ort_sure_dk != null) h += '<div class="rbc-row">Ortalama süre: <b>' + String(st.ort_sure_dk).replace('.', ',') + ' dk</b></div>';
+    return h;
+  },
+  // ── Karnem ──
+  async openKarne() {
+    if (!VTX.session) {
+      openModal('📊 KARNEM', '<div class="kr-empty">Karnen hesabına kaydedilir.<br>Görmek için giriş yapman gerekiyor.</div>');
+      return;
+    }
+    openModal('📊 KARNEM', '<div class="kr-empty">Yükleniyor…</div>');
+    let rows = null;
+    try { rows = await VTX.api('/rest/v1/case_results?select=case_key,category,outcome,duration_sec,species,created_at&order=created_at.asc&limit=5000'); } catch (e) {}
+    const mc = document.getElementById('modal-content');
+    if (!mc) return;
+    if (!Array.isArray(rows)) { mc.innerHTML = '<div class="kr-empty">Karne yüklenemedi. İnternet bağlantını kontrol edip tekrar dene.</div>'; return; }
+    mc.innerHTML = this._karneHTML(rows);
+  },
+  _karneHTML(rows) {
+    const E = this._esc;
+    const done = rows.filter(r => r.outcome !== 'birakti');
+    if (!done.length) return '<div class="kr-empty">Henüz tamamladığın bir vaka yok.<br>İlk vakanı çöz, karnen burada oluşsun. 🩺</div>';
+    const ok = done.filter(r => r.outcome === 'dogru').length;
+    const pct = Math.round(100 * ok / done.length);
+    const total = Object.keys(typeof CASE_DATA !== 'undefined' ? CASE_DATA : {}).filter(k => !k.startsWith('__')).length;
+    const solved = new Set(done.filter(r => r.outcome === 'dogru').map(r => r.case_key)).size;
+    const firsts = {}; done.forEach(r => { if (!(r.case_key in firsts)) firsts[r.case_key] = r.outcome === 'dogru'; });
+    const fk = Object.keys(firsts), fPct = fk.length ? Math.round(100 * fk.filter(k => firsts[k]).length / fk.length) : 0;
+    const durs = done.map(r => r.duration_sec).filter(x => x != null).sort((a, b) => a - b);
+    const med = durs.length ? durs[Math.floor(durs.length / 2)] : null;
+    const left = rows.length - done.length;
+    const weekAgo = Date.now() - 7 * 864e5;
+    const week = done.filter(r => new Date(r.created_at).getTime() >= weekAgo).length;
+    const cats = {};
+    done.forEach(r => { const k = r.category || 'Diğer'; (cats[k] = cats[k] || { n: 0, ok: 0 }); cats[k].n++; if (r.outcome === 'dogru') cats[k].ok++; });
+    const catList = Object.entries(cats).map(([k, v]) => ({ k, n: v.n, p: Math.round(100 * v.ok / v.n) })).sort((a, b) => b.n - a.n || a.k.localeCompare(b.k, 'tr'));
+    const weak = catList.filter(c => c.n >= 2).sort((a, b) => a.p - b.p)[0];
+    const strong = catList.filter(c => c.n >= 2).sort((a, b) => b.p - a.p)[0];
+    const tile = (v, l) => '<div class="kr-tile"><b>' + v + '</b><span>' + l + '</span></div>';
+    let h = '<div class="kr-hero"><div class="kr-ring" style="--p:' + pct + '"><b>%' + pct + '</b><span>başarı</span></div>'
+      + '<div class="kr-hero-t"><b>' + ok + ' / ' + done.length + '</b> teşhis doğru'
+      + (total ? '<br><span>' + total + ' farklı vakanın <b>' + solved + '</b> tanesini çözdün</span>' : '') + '</div></div>';
+    h += '<div class="kr-tiles">' + tile('%' + fPct, 'ilk denemede doğru') + tile(med != null ? (Math.round(med / 6) / 10).toString().replace('.', ',') + ' dk' : '—', 'ortalama süre')
+      + tile(week, 'son 7 günde vaka') + tile(left, 'yarıda bırakılan') + '</div>';
+    if (weak && strong && weak.k !== strong.k)
+      h += '<div class="kr-tip">💪 En güçlü alanın: <b>' + E(strong.k) + '</b> (%' + strong.p + ')<br>📚 En çok zorlandığın alan: <b>' + E(weak.k) + '</b> (%' + weak.p + ')</div>';
+    h += '<div class="kr-sec">ALANLARA GÖRE</div>' + catList.map(c =>
+      '<div class="kr-cat"><div class="kr-cat-l"><span>' + E(c.k) + '</span><em>' + c.n + ' vaka · %' + c.p + '</em></div>'
+      + '<div class="kr-bar"><i style="width:' + c.p + '%;background:' + (c.p >= 70 ? 'var(--accent-green)' : c.p >= 40 ? 'var(--accent-orange)' : 'var(--accent-red)') + '"></i></div></div>').join('');
+    h += '<div class="kr-foot">Karnen sadece sana görünür. Topluluk istatistiklerinde isim ya da e-posta gösterilmez.</div>';
+    return h;
+  },
+};
+window.addEventListener('online', () => { try { VTXStats.flush(); } catch (e) {} });
+
 function submitDiagnosis(selectedId) {
   if (mobileMode) closeModal();
   var selected = DISEASE_LIBRARY.find(function(d){ return d.id===selectedId; });
@@ -7728,6 +7914,7 @@ function submitDiagnosis(selectedId) {
     ? '✓ Doğru: <strong>'+selected.name+'</strong>'
     : '✗ Yanlış. Doğru: <strong>'+realDisease.name+'</strong>');
   openResultScreen(correct, selected||{name:'—',etken:'—',symptoms:'—'}, realDisease);
+  VTXStats.afterResult(correct, selected, realDisease);
 }
 
 function buildDiseaseReferenceHTML(groups, catColors) {
