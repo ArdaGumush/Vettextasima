@@ -1,0 +1,61 @@
+# VetTEX — Supabase veritabanı yedeği (her gece)
+# Dosya yeri: .github/workflows/yedek.yml  (Vettextasima reposu — GİZLİ repo olmalı)
+#
+# Gerekli gizli değerler (Settings → Secrets and variables → Actions → New repository secret):
+#   SUPABASE_DB_URL   → Supabase → Connect → "Session pooler" bağlantı adresi, [YOUR-PASSWORD] yerine veritabanı şifresi
+#   BACKUP_PASSPHRASE → yedeği şifrelemek için uzun bir parola (bir yere not et; kaybolursa yedek açılmaz)
+#
+# Yedekler: Actions → "Veritabanı yedeği" → çalışmaya tıkla → en altta "vettex-yedek-…" (30 gün saklanır)
+# Elle çalıştırmak için: Actions → Veritabanı yedeği → Run workflow
+
+name: Veritabanı yedeği
+
+on:
+  schedule:
+    - cron: '17 0 * * *'        # her gün 03:17 (Türkiye saati)
+  workflow_dispatch:
+
+jobs:
+  yedek:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Gizli değerleri kontrol et
+        env:
+          DB: ${{ secrets.SUPABASE_DB_URL }}
+          PASS: ${{ secrets.BACKUP_PASSPHRASE }}
+        run: |
+          [ -n "$DB" ]   || { echo "::error::SUPABASE_DB_URL eksik"; exit 1; }
+          [ -n "$PASS" ] || { echo "::error::BACKUP_PASSPHRASE eksik"; exit 1; }
+
+      - name: PostgreSQL 17 istemcisini kur
+        run: |
+          sudo apt-get install -y -qq postgresql-common >/dev/null
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y >/dev/null
+          sudo apt-get install -y -qq postgresql-client-17 >/dev/null
+          /usr/lib/postgresql/17/bin/pg_dump --version
+
+      - name: Yedeği al ve şifrele
+        env:
+          DB: ${{ secrets.SUPABASE_DB_URL }}
+          PASS: ${{ secrets.BACKUP_PASSPHRASE }}
+        run: |
+          set -o pipefail
+          T=$(TZ=Europe/Istanbul date +%Y-%m-%d_%H%M)
+          mkdir -p out
+          # public: tüm tablolar (profiller, vakalar, sonuçlar, şikayetler, duyurular, abonelikler…)
+          # auth:   kullanıcı hesapları (e-posta, şifre özetleri) — geri yüklemede hesaplar korunur
+          /usr/lib/postgresql/17/bin/pg_dump "$DB" -n public -n auth --no-owner --no-privileges -Fc -f yedek.dump
+          SIZE=$(du -h yedek.dump | cut -f1)
+          gpg --batch --yes --pinentry-mode loopback --passphrase "$PASS" --symmetric --cipher-algo AES256 -o "out/vettex_$T.dump.gpg" yedek.dump
+          rm -f yedek.dump
+          echo "### ✅ Yedek alındı: vettex_$T ($SIZE)" >> "$GITHUB_STEP_SUMMARY"
+          # Kısa özet (satır sayıları) — yedeğin boş olmadığını görmek için
+          psql "$DB" -At -c "select 'kullanici: '||count(*) from auth.users union all select 'vaka_sonucu: '||count(*) from public.case_results union all select 'sikayet: '||count(*) from public.case_reports" 2>/dev/null | sed 's/^/- /' >> "$GITHUB_STEP_SUMMARY" || true
+
+      - name: Yedeği sakla (30 gün)
+        uses: actions/upload-artifact@v4
+        with:
+          name: vettex-yedek-${{ github.run_number }}
+          path: out/
+          retention-days: 30
