@@ -2962,6 +2962,9 @@ const APP_VERSION = 'V1.0G';
 const GOOGLE_WEB_CLIENT_ID = "";
 // ALFA TEST SÜRÜMÜ: "VetTEX Alfa" derlemesi bu bayrağı açar (android-alfa.yml) → başlık ve etiketler "Alfa" olur.
 const ALPHA = !!window.VETTEX_ALPHA;
+// WEB SÜRÜMÜ: ücretli vakalar + raporları dosyadan değil Supabase'ten gelir (web derlemesi bu bayrağı açar).
+// Sitede sadece ücretsiz demo vakaları dosya olarak durur; kalanları RLS kuralları korur.
+const REMOTE_CASES = !!window.VETTEX_REMOTE_CASES;
 // ── GİRİŞ YÖNTEMLERİ ──
 // Google ile giriş: GOOGLE_WEB_CLIENT_ID doluysa görünür.
 const GOOGLE_LOGIN = !ALPHA && !!GOOGLE_WEB_CLIENT_ID;
@@ -3166,10 +3169,10 @@ async function loadCaseData() {
     CASE_DATA = { ...data1, ...data2, ...data3 };
     if (window.VTX) VTX.applyCasesCache();
     // USG raporlarını yükle
-    try { const ru = await fetch(USG_REPORTS_URL); if (ru.ok) window.USG_REPORTS = await ru.json(); } catch(eu) {}
-    try { const re = await fetch(EKO_REPORTS_URL); if (re.ok) window.EKO_REPORTS = await re.json(); } catch(ee) {}
+    try { const ru = await fetch(USG_REPORTS_URL); if (ru.ok) window.USG_REPORTS = Object.assign(await ru.json(), window.USG_REPORTS || {}); } catch(eu) {}
+    try { const re = await fetch(EKO_REPORTS_URL); if (re.ok) window.EKO_REPORTS = Object.assign(await re.json(), window.EKO_REPORTS || {}); } catch(ee) {}
     fetch(QUESTIONS_URL).then(r=>r.ok?r.json():{}).then(d=>{window.QUESTIONS=d;}).catch(e=>{window.QUESTIONS={};});
-    fetch(DIFFERENTIALS_URL).then(r=>r.ok?r.json():{}).then(d=>{window.DIFFERENTIALS=d;}).catch(e=>{window.DIFFERENTIALS={};});
+    fetch(DIFFERENTIALS_URL).then(r=>r.ok?r.json():{}).then(d=>{window.DIFFERENTIALS=Object.assign(d||{}, window.DIFFERENTIALS||{});}).catch(e=>{window.DIFFERENTIALS=window.DIFFERENTIALS||{};});
     document.getElementById('splash-status').textContent = "Parametreler dolduruluyor...";
     Object.values(CASE_DATA).forEach(c => fillMissingParams(c));
     document.getElementById('splash-status').textContent = "Görseller atanıyor...";
@@ -6925,7 +6928,7 @@ const VTX = window.VTX = {
     this.demo = false; this.ls('vtx-demo', null);
     document.getElementById('login-overlay').classList.remove('open');
     await this.loadProfile();
-    if (!PASSWORD_LOGIN) await this.syncCases();    // şifreli girişte vakalar zaten uygulamanın içinde
+    if (!PASSWORD_LOGIN || REMOTE_CASES) await this.syncCases();    // şifreli girişte (APK) vakalar zaten uygulamanın içinde
     if (!PASSWORD_LOGIN) VTXBilling.init();
     this.updateUI();
     this.ensureRegistration();
@@ -6956,7 +6959,7 @@ const VTX = window.VTX = {
     if (this.authOn()) { flushReports(); VTXStats.flush(); }
     if (!this.authOn() || !this.session) { this.updateUI(); return; }
     if (PASSWORD_LOGIN) { await this.verifyAccount(); if (!this.session) return; }
-    try { await this.loadProfile(); if (!PASSWORD_LOGIN) await this.syncCases(); } catch (e) {}
+    try { await this.loadProfile(); if (!PASSWORD_LOGIN || REMOTE_CASES) await this.syncCases(); } catch (e) {}
     this.updateUI();
     if (!PASSWORD_LOGIN) VTXBilling.init();
   },
@@ -6985,24 +6988,36 @@ const VTX = window.VTX = {
       try { fillMissingParams(c); assignHealthyXray(c); } catch (e) {}
       if (!r.is_free) c.__remote = true;
       CASE_DATA[r.key] = c; n++;
+      if (r.usg) (window.USG_REPORTS = window.USG_REPORTS || {})[r.key] = r.usg;
+      if (r.eko) (window.EKO_REPORTS = window.EKO_REPORTS || {})[r.key] = r.eko;
+      if (r.dif) (window.DIFFERENTIALS = window.DIFFERENTIALS || {})[r.key] = r.dif;
     });
     return n;
   },
   applyCasesCache() {
-    if (!this.authOn() || PASSWORD_LOGIN) return;
+    if (!this.authOn() || (PASSWORD_LOGIN && !REMOTE_CASES)) return;
     const s = this.ls('vtx-session'), cache = this.ls('vtx-cases');
     if (!s || !s.user || !cache || cache.uid !== s.user.id) return;
     this.profile = this.ls('vtx-profile');
     const rows = this.premium() ? cache.rows : (cache.rows || []).filter(r => r.is_free);
     this._ingest(rows);
   },
+  // Vakalar sadece sunucuda değiştiyse indirilir (cases_stamp küçük bir RPC) → ücretsiz plandaki trafik kotası korunur.
   async syncCases() {
     if (!this.session || !this.session.user) return;
     try {
-      const rows = await this.api('/rest/v1/cases?select=key,data,is_free,version');
+      const uid = this.session.user.id, p = this.profile;
+      const sp = !!(p && p.premium_until && new Date(p.premium_until) > new Date()) ? 1 : 0;   // sunucunun gördüğü premium
+      const cache = this.ls('vtx-cases');
+      let stamp = null;
+      try { stamp = await this.api('/rest/v1/rpc/cases_stamp', { method: 'POST', body: {} }); } catch (e) {}
+      if (stamp && cache && cache.uid === uid && cache.stamp === stamp && cache.sp === sp && Array.isArray(cache.rows)) { this._ingest(cache.rows); return; }
+      let rows;
+      try { rows = await this.api('/rest/v1/cases?select=key,data,is_free,usg,eko,dif'); }
+      catch (e) { rows = await this.api('/rest/v1/cases?select=key,data,is_free'); }   // rapor sütunları henüz yoksa
       if (!Array.isArray(rows)) return;
       this._ingest(rows);
-      this.ls('vtx-cases', { uid: this.session.user.id, at: Date.now(), rows });
+      this.ls('vtx-cases', { uid, at: Date.now(), stamp, sp, rows });
     } catch (e) { console.warn('[vaka eşitleme]', e); }
   },
 
@@ -7017,7 +7032,7 @@ const VTX = window.VTX = {
     this.setSession(null); this.profile = null;
     this.ls('vtx-profile', null); this.ls('vtx-cases', null);
     try { localStorage.removeItem('vetcase_user'); } catch (e) {}
-    Object.keys(CASE_DATA).forEach(k => { if (k !== '__clinic__' && !isCaseUnlocked(k) && CASE_DATA[k] && CASE_DATA[k].__remote) delete CASE_DATA[k]; });
+    Object.keys(CASE_DATA).forEach(k => { if (k !== '__clinic__' && !isCaseUnlocked(k) && CASE_DATA[k] && CASE_DATA[k].__remote) { delete CASE_DATA[k]; ['USG_REPORTS', 'EKO_REPORTS', 'DIFFERENTIALS'].forEach(n => { if (window[n]) delete window[n][k]; }); } });
   },
   async signOut() {
     try { if (this.session) await this.api('/auth/v1/logout', { method: 'POST' }); } catch (e) {}

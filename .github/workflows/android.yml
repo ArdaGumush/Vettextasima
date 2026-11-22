@@ -175,11 +175,14 @@ jobs:
           python3 - <<'PY'
           import json, os, urllib.request, urllib.error
           free = set(os.environ['FREE_CASES'].split(','))
+          def load(f):
+              return json.load(open(f, encoding='utf-8')) if os.path.exists(f) else {}
+          U, E, D = load('usg-reports.json'), load('eko-reports.json'), load('differentials.json')
           rows = []
           for f in ('cases.json', 'cases2.json', 'cases3.json'):
-              if os.path.exists(f):
-                  for k, v in json.load(open(f, encoding='utf-8')).items():
-                      rows.append({'key': k, 'data': v, 'is_free': k in free})
+              for k, v in load(f).items():
+                  # raporlar ve ayırıcı tanılar da vakanın yanında (web sürümü bunları Supabase'ten okur)
+                  rows.append({'key': k, 'data': v, 'is_free': k in free, 'usg': U.get(k), 'eko': E.get(k), 'dif': D.get(k)})
           url = os.environ['SUPABASE_URL'] + '/rest/v1/cases?on_conflict=key'
           key = os.environ['SB_KEY']
           body = json.dumps(rows, ensure_ascii=False).encode('utf-8')
