@@ -7771,6 +7771,13 @@ const STATS_QUEUE_KEY = 'vtx-result-queue';
 const VTXStats = {
   _esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); },
   _on() { return window.top === window.self && VTX.authOn() && !!VTX.session; },
+  // Hesapsız demo oyunu: sadece ücretsiz vakalar, tutorial (iframe) hariç. İsimsiz: kim olduğu kaydedilmez.
+  _demoOn(key) { return window.top === window.self && VTX.authOn() && !VTX.session && FREE_CASE_KEYS.includes(key); },
+  _demo(row) {
+    const d = { case_key: row.case_key, diagnosis: row.diagnosis, chosen: row.chosen, outcome: row.outcome,
+      duration_sec: row.duration_sec, tests: row.tests, test_count: row.test_count, mode: row.mode, app_version: row.app_version, platform: row.platform };
+    VTX.api('/rest/v1/demo_results', { method: 'POST', body: d, headers: { 'Prefer': 'return=minimal' } }).catch(() => {});
+  },
   _caseKey(c) { c = c || currentCase || mobCurrentCase || {}; return c._realKey || currentCaseKey || null; },
   _row(outcome, chosenName, realDisease) {
     const c = currentCase || mobCurrentCase || {};
@@ -7818,12 +7825,13 @@ const VTXStats = {
   abandonIfOpen() {
     try {
       const c = currentCase;
-      if (!c || !this._on() || diagnosisSubmitted || c._vtxLogged || !startTime || !this._caseKey(c)) return;
+      const key = this._caseKey(c), demo = !this._on() && this._demoOn(key);
+      if (!c || !(this._on() || demo) || diagnosisSubmitted || c._vtxLogged || !startTime || !key) return;
       const used = (typeof usedTetkikLog !== 'undefined' && usedTetkikLog || []).length;
       if (!used && Date.now() - startTime < 45000) return;
       c._vtxLogged = true;
       const rd = (typeof resolveDisease === 'function') ? resolveDisease(c._realDiagnosis || c.diagnosis, c) : null;
-      this._record(this._row('birakti', null, rd));
+      if (demo) this._demo(this._row('birakti', null, rd)); else this._record(this._row('birakti', null, rd));
     } catch (e) { console.warn('[istatistik]', e); }
   },
   // Tanı konunca: kaydet, sonra sonuç ekranına topluluk kutusunu yerleştir
@@ -7837,6 +7845,9 @@ const VTXStats = {
     if (!c._vtxLogged && this._on()) {
       c._vtxLogged = true;
       await this._record(this._row(correct ? 'dogru' : 'yanlis', selected && selected.name, realDisease));
+    } else if (!c._vtxLogged && this._demoOn(key)) {
+      c._vtxLogged = true;
+      this._demo(this._row(correct ? 'dogru' : 'yanlis', selected && selected.name, realDisease));
     }
     let st = null;
     try { const r = await VTX.api('/rest/v1/rpc/vaka_istatistik', { method: 'POST', auth: !!VTX.session, body: { p_case: key } }); st = Array.isArray(r) ? r[0] : r; } catch (e) {}
