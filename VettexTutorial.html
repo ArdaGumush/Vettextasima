@@ -67,6 +67,7 @@
     pointer-events: auto;
   }
   #card.show { opacity: 1; }
+  #card:not(.show) { pointer-events: none; visibility: hidden; }
   #card.at-bottom { bottom: max(14px, env(safe-area-inset-bottom)); top: auto; }
   #card.at-top { top: max(14px, env(safe-area-inset-top)); bottom: auto; }
   #card.shake { animation: shake .35s; }
@@ -1057,7 +1058,9 @@ function appState() {
   const disc = doc.getElementById('disclaimer-screen');
   const discGone = !disc || !disc.isConnected || disc.classList.contains('fade-out');
   if (!splashGone || !dataOk || !discGone) return 'loading';
-  if (doc.getElementById('reg-overlay')?.classList.contains('open')) return 'register';
+  // Giriş ya da kayıt formu açıkken tutorial beklemede kalır (kart formun üstünü kapatmasın)
+  if (doc.getElementById('reg-overlay')?.classList.contains('open') ||
+      doc.getElementById('login-overlay')?.classList.contains('open')) return 'register';
   return 'ready';
 }
 
@@ -1075,11 +1078,12 @@ function waitForApp() {
       return;
     }
     if (s === 'register') {
+      // Form doldurulurken tutorial kartı tamamen gizli; form kapanınca tutorial başlar
       layer.classList.remove('on');
-      $('text').innerHTML = 'Önce kayıt formunu doldur, tutorial ardından başlayacak.';
-      card.classList.remove('at-bottom'); card.classList.add('at-top');
+      card.classList.remove('show');
       return;
     }
+    card.classList.add('show');
     if (s === 'loading') {
       $('text').textContent = tries > 80 ? 'Vaka verisi hâlâ yükleniyor. İnternet bağlantını kontrol et.' : 'Klinik hazırlanıyor…';
       return;
