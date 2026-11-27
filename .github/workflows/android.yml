@@ -167,6 +167,8 @@ jobs:
           PY
 
       - name: Vakaları Supabase'e yükle
+        # Sadece main'den yapılan derlemeler canlı vakaları günceller; deneme branch'leri dokunmaz
+        if: github.ref == 'refs/heads/main'
         continue-on-error: true
         env:
           SB_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
