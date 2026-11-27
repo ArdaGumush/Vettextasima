@@ -107,6 +107,7 @@ function replayTutorial() {
     dna:'<path d="M7 3c0 7 10 7 10 18M17 3c0 7-10 7-10 18"/><path d="M8.5 7h7M8.5 17h7"/>',
     disk:'<path d="M5 3.5h11.5l3 3V20.5H4.5V4z"/><path d="M8 3.5v5h7v-5M8 20v-6h8v6"/>',
     cikis:'<path d="M14 4h6v16h-6M10 8l-4 4 4 4M6 12h10"/>',
+    bilgi:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><path d="M12 7.6v.2"/>',
     terazi:'<path d="M12 4v16M7.5 20h9M4 7.5h16"/><path d="M5 8l-3 6a3 3 0 0 0 6 0zM19 8l-3 6a3 3 0 0 0 6 0z"/>',
     takvim:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
     ev:'<path d="M3 11l9-7 9 7"/><path d="M5.5 9.5V20h13V9.5"/>'
@@ -136,10 +137,10 @@ function replayTutorial() {
     '📊':'grafik','📈':'grafik','📉':'grafik','💰':'kart','💳':'kart','💸':'kart','🧮':'hesap',
     '🫀':'kalp','❤':'kalp','♥':'kalp','📱':'telefon','📴':'telefon','✉':'mail','📧':'mail','📨':'mail',
     '☀':'gunes','🔆':'gunes','🌙':'ay','📁':'klasor','📂':'klasor','🗑':'cop','🌍':'dunya','🌐':'dunya',
-    '👤':'kisi','👥':'kisi','🎓':'kep','🏷':'etiket','💡':'ampul','🌡':'termometre','📥':'indir','💾':'disk','⚑':'bayrak','🚩':'bayrak','🚪':'cikis','⚖':'terazi','📅':'takvim','📆':'takvim','🗓':'takvim','🏠':'ev','🏡':'ev'
+    '👤':'kisi','👥':'kisi','🎓':'kep','🏷':'etiket','💡':'ampul','🌡':'termometre','📥':'indir','💾':'disk','⚑':'bayrak','🚩':'bayrak','🚪':'cikis','ℹ':'bilgi','⚖':'terazi','📅':'takvim','📆':'takvim','🗓':'takvim','🏠':'ev','🏡':'ev'
   };
   const DOT = { '🔴':'r','🟢':'g','🟡':'y','🟠':'y' };
-  const RE = /(?:[☀-➿⭐⭕⌚⌛⏩-⏺↺⚐-⚟‼]|[\uD83C-\uD83E][\uDC00-\uDFFF])(?:️|‍(?:[☀-➿]|[\uD83C-\uD83E][\uDC00-\uDFFF])️?|[\uD83C][\uDFFB-\uDFFF])*/g;
+  const RE = /(?:[ℹ☀-➿⭐⭕⌚⌛⏩-⏺↺⚐-⚟‼]|[\uD83C-\uD83E][\uDC00-\uDFFF])(?:️|‍(?:[☀-➿]|[\uD83C-\uD83E][\uDC00-\uDFFF])️?|[\uD83C][\uDFFB-\uDFFF])*/g;
   const SKIP = { SCRIPT:1, STYLE:1, TEXTAREA:1, INPUT:1, NOSCRIPT:1, svg:1, SVG:1, CODE:1, PRE:1 };
   const PLAIN = { OPTION:1, TITLE:1 };
   const base = e => e.replace(/[️‍].*$/, '');
@@ -2242,6 +2243,395 @@ window.onerror = function(msg, src, line) {
   window.fc('ERR: ' + msg + ' L:' + line, 'error');
 };
 </script>
+<style id="vtx-ui2-css">
+/* ═══════════════════════════════════════════════════════════════════
+   YENİ ARAYÜZ (UI2): "İşlem paneli + hasta dosyası"
+   Sadece görünüm katmanı. Oyun mantığı eski fonksiyonlarda çalışır.
+═══════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Eski renk değişkenlerini açık temaya eşle: tüm eski pencereler de yeni renge geçer ── */
+body.ui2 {
+  --bg-base: var(--paper); --bg-panel: var(--surface); --bg-card: #F6F8F7; --bg-hover: #E8EDEB;
+  --border: var(--rule); --border-bright: var(--field);
+  --text-primary: var(--ink); --text-secondary: var(--ink-2); --text-muted: var(--muted);
+  --accent-green: var(--ok); --accent-green2: #245536; --accent-blue: var(--scrub);
+  --accent-orange: var(--iod); --accent-red: #B3262E; --accent-purple: var(--c-lab); --accent-cyan: var(--scrub);
+  --glow-green: rgba(47,107,69,.10); --glow-blue: rgba(45,92,127,.10); --glow-orange: rgba(166,70,26,.10); --glow-red: rgba(179,38,46,.10);
+  background: var(--paper); color: var(--ink);
+  font-family: var(--f-sans); font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+body.ui2::before, body.ui2::after { display: none !important; }
+/* Tek yazı ailesi: Archivo. Plex Mono sadece laboratuvar çıktısında (.mono) */
+body.ui2 *:not(.mono):not(.mono *):not(svg):not(svg *) { font-family: var(--f-sans) !important; }
+body.ui2 .mono, body.ui2 .mono * { font-family: var(--f-mono) !important; }
+body.ui2 [style*="letter-spacing"] { letter-spacing: normal !important; }
+body.ui2 :focus-visible { outline: 3px solid var(--scrub) !important; outline-offset: 2px; }
+body.ui2 button { -webkit-tap-highlight-color: transparent; }
+body.ui2 .tnum { font-variant-numeric: tabular-nums; }
+
+/* Masaüstü düzeni de mobil kabuğu kullanır (UI2): eski 3 panel gizli */
+body.ui2 #layout, body.ui2 #topbar, body.ui2 #welcome { display: none !important; }
+body.ui2 #mob-wrapper { display: flex !important; background: var(--paper); }
+
+/* ── 2. Ana ekran ve tür seçimi ── */
+body.ui2 #mob-topbar { display: none !important; }
+body.ui2 #mob-patient-card, body.ui2 #mob-diagnosis-bar, body.ui2 #mob-bottombar { display: none !important; }
+body.ui2 #mob-content { background: var(--paper); padding-bottom: 0; }
+.u2-home { max-width: 560px; margin: 0 auto; padding: 22px 16px 24px; }
+.u2-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 26px; }
+.u2-brand-mark { width: 34px; height: 34px; border-radius: 8px; background: var(--scrub); color: #fff; display: grid; place-items: center; }
+.u2-brand-mark svg { width: 20px; height: 20px; }
+.u2-brand-name { font-stretch: 72%; font-weight: 800; font-size: 22px; letter-spacing: .2px; }
+.u2-brand-sub { font-size: 13px; color: var(--muted); }
+.u2-h1 { font-stretch: 72%; font-weight: 800; font-size: 36px; line-height: 1.05; margin: 0 0 6px; color: var(--ink); }
+.u2-lead { font-size: 15px; color: var(--ink-2); line-height: 1.5; margin: 0 0 20px; }
+.u2-modes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.u2-mode { text-align: left; padding: 16px 14px; border-radius: var(--radius); border: 1px solid var(--rule); background: var(--surface); color: var(--ink); cursor: pointer; min-height: 120px; display: flex; flex-direction: column; gap: 8px; transition: transform .12s, box-shadow .12s, background .12s; }
+.u2-mode:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(29,42,44,.08); }
+.u2-mode:active { transform: translateY(0); }
+.u2-mode svg.vi { width: 24px; height: 24px; }
+.u2-mode b { font-stretch: 72%; font-weight: 800; font-size: 20px; line-height: 1.1; }
+.u2-mode span { font-size: 13px; line-height: 1.4; color: var(--muted); }
+.u2-mode.primary { background: var(--scrub); border-color: var(--scrub); color: #fff; }
+.u2-mode.primary span { color: #D6E3EC; }
+.u2-mode.primary:hover { background: var(--scrub-hover); }
+.u2-row { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 56px; padding: 10px 14px; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); color: var(--ink); text-align: left; cursor: pointer; margin-bottom: 8px; font-size: 15px; transition: background .12s; }
+.u2-row:hover { background: #F7F9F8; }
+.u2-row .u2-chip { flex-shrink: 0; }
+.u2-row .grow { flex: 1; min-width: 0; }
+.u2-row .grow b { display: block; font-weight: 700; font-size: 15px; }
+.u2-row .grow small { display: block; font-size: 13px; color: var(--muted); margin-top: 1px; }
+.u2-row .chev { color: var(--muted); }
+.u2-switch { position: relative; width: 44px; height: 26px; flex-shrink: 0; }
+.u2-switch input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.u2-switch i { position: absolute; inset: 0; border-radius: 13px; background: #C9D1CF; transition: background .15s; pointer-events: none; }
+.u2-switch i::after { content: ''; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; transition: transform .15s; box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+.u2-switch input:checked + i { background: var(--iod); }
+.u2-switch input:checked + i::after { transform: translateX(18px); }
+.u2-switch input:focus-visible + i { outline: 3px solid var(--scrub); outline-offset: 2px; }
+.u2-sec-title { font-size: 14px; font-weight: 700; color: var(--ink-2); margin: 18px 0 8px; }
+.u2-species { display: grid; gap: 8px; }
+.u2-backlink { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 4px; background: none; border: 0; color: var(--scrub); font-weight: 700; font-size: 15px; cursor: pointer; margin-bottom: 6px; }
+body.ui2 .vtx-demo-banner { border-radius: var(--radius) !important; }
+
+/* Alt gezinme (ana ekranlarda) */
+.u2-nav { display: none; flex-shrink: 0; background: var(--surface); border-top: 1px solid var(--rule); padding: 4px 6px calc(4px + env(safe-area-inset-bottom, 0px)); }
+body.ui2:not(.u2-incase) .u2-nav { display: flex; }
+.u2-nav button { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 54px; background: none; border: 0; color: var(--muted); font-size: 12px; font-weight: 600; cursor: pointer; border-radius: var(--radius); }
+.u2-nav button svg.vi { width: 22px; height: 22px; }
+.u2-nav button.on { color: var(--scrub); }
+.u2-nav button:hover { background: #F3F6F5; }
+
+/* ── 3. Kategori çipi ve etiketi ── */
+.u2-chip { width: 36px; height: 36px; border-radius: 8px; display: grid; place-items: center; background: var(--t); color: var(--c); flex-shrink: 0; position: relative; }
+.u2-chip svg.vi { width: 20px; height: 20px; }
+.u2-chip.sm { width: 28px; height: 28px; }
+.u2-chip.sm svg.vi { width: 16px; height: 16px; }
+.u2-tag { display: inline-flex; align-items: center; gap: 5px; height: 24px; padding: 0 9px 0 7px; border-radius: 12px; background: var(--t); color: var(--c); font-size: 12.5px; font-weight: 700; white-space: nowrap; flex-shrink: 0; }
+.u2-tag svg.vi { width: 14px; height: 14px; }
+.k-anamnez { --c: var(--c-anamnez); --t: var(--t-anamnez); }
+.k-muayene { --c: var(--c-muayene); --t: var(--t-muayene); }
+.k-ileri   { --c: var(--c-ileri);   --t: var(--t-ileri); }
+.k-lab     { --c: var(--c-lab);     --t: var(--t-lab); }
+.k-goruntu { --c: var(--c-goruntu); --t: var(--t-goruntu); }
+.k-mikro   { --c: var(--c-mikro);   --t: var(--t-mikro); }
+.k-kit     { --c: var(--c-kit);     --t: var(--t-kit); }
+.k-not     { --c: var(--c-not);     --t: var(--t-not); }
+.k-dog { --c: #8A5A12; --t: #F4ECDD; } .k-cat { --c: #5B4A8B; --t: #ECE8F5; } .k-any { --c: var(--scrub); --t: var(--scrub-tint); }
+
+/* ── 4. Vaka ekranı ── */
+#u2-case { display: none; flex-direction: column; flex: 1; min-height: 0; background: var(--paper); }
+body.ui2.u2-incase #u2-case { display: flex; }
+body.ui2.u2-incase #mob-content { display: none !important; }
+.u2-top { display: flex; align-items: flex-start; gap: 6px; padding: 8px 6px 10px; padding-top: calc(8px + env(safe-area-inset-top, 0px)); background: var(--surface); border-bottom: 1px solid var(--rule); flex-shrink: 0; }
+.u2-ibtn { width: 44px; height: 44px; flex-shrink: 0; display: grid; place-items: center; background: none; border: 0; border-radius: var(--radius); color: var(--ink); cursor: pointer; }
+.u2-ibtn:hover { background: #F0F3F2; }
+.u2-ibtn svg.vi { width: 22px; height: 22px; }
+.u2-ibtn.flag { color: var(--iod); }
+.u2-pt { flex: 1; min-width: 0; padding-top: 3px; }
+.u2-pt-line { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.u2-pt-name { font-stretch: 72%; font-weight: 800; font-size: 22px; line-height: 1.1; color: var(--ink); }
+.u2-pt-sig { font-size: 13px; color: var(--muted); }
+.u2-pt-cc { font-size: 13px; color: var(--ink-2); margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.u2-pt-cc.wait { color: var(--muted); font-style: italic; }
+.u2-status { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.u2-status span { display: inline-flex; align-items: center; gap: 4px; height: 24px; padding: 0 9px; border-radius: 12px; font-size: 12.5px; font-weight: 700; }
+.u2-status .acil { background: var(--iod-tint); color: var(--iod-dark); }
+.u2-status .acil.low { background: var(--iod); color: #fff; }
+.u2-status .kredi { background: var(--scrub-tint); color: var(--scrub); }
+
+.u2-main { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.u2-file { flex: 1; min-height: 0; overflow-y: auto; padding: 14px 12px 18px; -webkit-overflow-scrolling: touch; }
+.u2-file-in { max-width: 640px; margin: 0 auto; }
+.u2-file-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.u2-file-head h2 { margin: 0; font-stretch: 72%; font-weight: 800; font-size: 17px; color: var(--ink); }
+.u2-file-head small { font-size: 12.5px; color: var(--muted); }
+
+/* Kayıt kartı */
+.u2-rec { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 12px; margin-bottom: 10px; }
+.u2-rec.flash { animation: u2flash 1.2s ease-out; }
+@keyframes u2flash { 0% { box-shadow: 0 0 0 3px var(--scrub-tint); border-color: var(--scrub); } 100% { box-shadow: 0 0 0 0 transparent; } }
+.u2-rec-h { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.u2-rec-h b { font-size: 15px; font-weight: 700; flex: 1; min-width: 0; color: var(--ink); line-height: 1.3; }
+.u2-rec-h .no { font-size: 12px; color: var(--muted); }
+.u2-rec-b { font-size: 14px; line-height: 1.5; color: var(--ink); }
+.u2-rec-b p { margin: 0 0 6px; }
+.u2-more { display: inline-flex; align-items: center; min-height: 44px; margin: 2px 0 -8px; padding: 0; background: none; border: 0; color: var(--scrub); font-size: 13.5px; font-weight: 700; cursor: pointer; }
+.u2-more:hover { text-decoration: underline; }
+.u2-qa { padding: 7px 0; border-top: 1px solid var(--rule-soft); display: flex; gap: 6px; }
+.u2-qa:first-child { border-top: 0; padding-top: 0; }
+.u2-qa .t { flex: 1; min-width: 0; }
+.u2-qa .q { font-size: 12.5px; color: var(--muted); margin-bottom: 1px; }
+.u2-qa .a { font-size: 14px; color: var(--ink); }
+.u2-hidden { display: none !important; }
+.u2-rec .note-pen { flex-shrink: 0; align-self: flex-start; }
+
+/* Muayene: vital ızgarası */
+.u2-vitals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 8px; }
+.u2-vital { background: #F1F4F3; border-radius: var(--radius-sm); padding: 7px 8px; }
+.u2-vital small { display: block; font-size: 12px; color: var(--muted); }
+.u2-vital b { font-size: 15px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.u2-vital.ab { background: var(--iod-tint); color: var(--iod-dark); }
+.u2-vital.ab small { color: var(--iod-dark); }
+.u2-find { margin: 0; padding: 0; list-style: none; }
+.u2-find li { display: flex; gap: 6px; padding: 6px 0; border-top: 1px solid var(--rule-soft); font-size: 14px; }
+.u2-find li:first-child { border-top: 0; }
+.u2-find li .t { flex: 1; min-width: 0; }
+
+/* Laboratuvar: analizör kâğıdı */
+.u2-paper { background: #F8F8F5; box-shadow: inset 0 0 0 1px #E4E6E2; border-radius: var(--radius-sm); padding: 10px 10px 8px; font-size: 12.5px; }
+.u2-paper table { width: 100%; border-collapse: collapse; }
+.u2-paper th { text-align: left; font-weight: 600; color: var(--muted); padding: 0 4px 5px; font-size: 11.5px; }
+.u2-paper td { padding: 4px; border-top: 1px dotted #D5D9D4; font-variant-numeric: tabular-nums; vertical-align: top; }
+.u2-paper td.v, .u2-paper th.v, .u2-paper td.r, .u2-paper th.r { text-align: right; }
+.u2-paper td.f { width: 20px; text-align: center; }
+.u2-paper tr.ab td.v, .u2-paper tr.ab td.f { color: var(--iod); font-weight: 600; }
+.u2-paper .rest { margin-top: 6px; color: var(--muted); font-size: 12px; }
+.u2-paper .note-pen-cell { width: 28px; }
+
+/* Hızlı kit kaseti */
+.u2-kitrow { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.kaset { position: relative; width: 150px; height: 48px; background: #FBFBF9; border: 1px solid #B9C2C0; border-radius: 24px; flex-shrink: 0; }
+.kaset .kuyu { position: absolute; left: 13px; top: 13px; width: 20px; height: 20px; border-radius: 50%; border: 2px solid #B9C2C0; background: #EDEFEE; }
+.kaset .pencere { position: absolute; left: 50px; top: 11px; width: 84px; height: 24px; border-radius: 3px; background: #F3EFEA; border: 1px solid #B9C2C0; }
+.kaset .cizgi { position: absolute; top: 12px; width: 3px; height: 22px; background: #B3262E; }
+.kaset .c { left: 120px; } .kaset .t1 { left: 64px; } .kaset .t2 { left: 88px; }
+.kaset .etiket { position: absolute; top: 36px; font-size: 8px; color: #555; transform: translateX(-30%); }
+.kaset .e1 { left: 64px; } .kaset .e2 { left: 88px; } .kaset .e3 { left: 120px; }
+.kaset.x2 { width: 300px; height: 96px; border-radius: 48px; }
+.kaset.x2 .kuyu { left: 26px; top: 26px; width: 40px; height: 40px; }
+.kaset.x2 .pencere { left: 100px; top: 22px; width: 168px; height: 48px; border-radius: 6px; }
+.kaset.x2 .cizgi { top: 24px; width: 6px; height: 44px; }
+.kaset.x2 .c { left: 240px; } .kaset.x2 .t1 { left: 128px; } .kaset.x2 .t2 { left: 176px; }
+.kaset.x2 .etiket { top: 72px; font-size: 12px; }
+.kaset.x2 .e1 { left: 128px; } .kaset.x2 .e2 { left: 176px; } .kaset.x2 .e3 { left: 240px; }
+.u2-kitres { flex: 1; min-width: 150px; font-size: 14px; }
+.u2-kitres b { display: block; }
+.u2-limit { font-size: 12.5px; color: var(--muted); margin-top: 8px; line-height: 1.45; }
+
+/* Görüntüleme kaydı */
+.u2-abn { margin: 0; padding: 0 0 0 16px; }
+.u2-abn li { margin: 3px 0; }
+.u2-abn li::marker { color: var(--iod); }
+.u2-thumb { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 1px solid var(--rule); float: right; margin: 0 0 6px 10px; }
+
+/* Boş dosya */
+.u2-empty { background: var(--surface); border: 1px dashed var(--field); border-radius: var(--radius); padding: 20px 16px; }
+.u2-empty h3 { margin: 0 0 6px; font-stretch: 72%; font-weight: 800; font-size: 20px; }
+.u2-empty p { margin: 0 0 14px; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+.u2-steps { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.u2-steps li { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.u2-steps li small { color: var(--muted); font-size: 12.5px; }
+.u2-lockline { display: flex; gap: 8px; align-items: flex-start; font-size: 12.5px; color: var(--muted); margin-top: 12px; line-height: 1.45; }
+.u2-lockline svg.vi { margin-top: 1px; }
+
+/* İşlem paneli (dock) */
+.u2-dock { flex-shrink: 0; background: var(--surface); border-top: 1px solid var(--rule); box-shadow: 0 -4px 14px rgba(29,42,44,.06); padding: 8px 10px calc(14px + env(safe-area-inset-bottom, 0px)); }
+.u2-dock-in { max-width: 640px; margin: 0 auto; }
+.u2-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-bottom: 8px; }
+.u2-act { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 5px; min-height: 66px; padding: 5px 2px 4px; background: none; border: 0; border-radius: var(--radius); color: var(--ink); font-size: 12px; font-weight: 600; cursor: pointer; text-align: center; line-height: 1.15; }
+.u2-act:hover { background: #F3F6F5; }
+.u2-act:active .u2-chip { transform: scale(.94); }
+.u2-act .u2-chip { transition: transform .1s; }
+.u2-act.hint .u2-chip { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--c-anamnez); }
+.u2-badge { position: absolute; top: -6px; right: -7px; min-width: 18px; height: 18px; padding: 0 4px; border-radius: 9px; background: var(--c); color: #fff; font-size: 11px; font-weight: 700; display: grid; place-items: center; border: 2px solid #fff; box-sizing: content-box; font-variant-numeric: tabular-nums; }
+.u2-dx { width: 100%; height: 46px; border: 0; border-radius: 7px; background: var(--scrub); color: #fff; font-size: 16px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.u2-dx:hover { background: var(--scrub-hover); }
+
+/* ── 5. Alttan açılan panel (sheet) ── */
+#u2-sheet { position: fixed; inset: 0; z-index: 150; display: none; }
+#u2-sheet.open { display: block; }
+.u2-scrim { position: absolute; inset: 0; background: rgba(20,28,30,.45); animation: u2fade .18s ease-out; }
+.u2-panel { position: absolute; left: 0; right: 0; bottom: 0; height: 82vh; height: 82dvh; background: var(--surface); border-radius: var(--radius-sheet) var(--radius-sheet) 0 0; box-shadow: 0 -10px 30px rgba(0,0,0,.25); display: flex; flex-direction: column; animation: u2up .22s cubic-bezier(.22,1,.36,1); }
+@keyframes u2up { from { transform: translateY(40px); opacity: .4; } to { transform: none; opacity: 1; } }
+@keyframes u2fade { from { opacity: 0; } }
+.u2-grab { width: 40px; height: 4px; border-radius: 2px; background: #C9D1CF; margin: 8px auto 0; flex-shrink: 0; }
+.u2-sh-head { display: flex; align-items: flex-start; gap: 12px; padding: 10px 16px 12px; border-bottom: 1px solid var(--rule); flex-shrink: 0; }
+.u2-sh-head .t { flex: 1; min-width: 0; }
+.u2-sh-head h2 { margin: 0; font-stretch: 72%; font-weight: 800; font-size: 22px; line-height: 1.1; color: var(--ink); }
+.u2-sh-head p { margin: 3px 0 0; font-size: 13px; color: var(--muted); line-height: 1.4; }
+.u2-close { min-height: 44px; padding: 0 4px; background: none; border: 0; color: var(--scrub); font-weight: 700; font-size: 14px; cursor: pointer; }
+.u2-sh-body { flex: 1; min-height: 0; overflow-y: auto; padding: 12px 16px 16px; -webkit-overflow-scrolling: touch; }
+.u2-sh-foot { flex-shrink: 0; border-top: 1px solid var(--rule); padding: 10px 16px calc(12px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; gap: 12px; }
+.u2-sh-foot .grow { flex: 1; font-size: 14px; color: var(--ink-2); }
+.u2-btn { min-height: 46px; padding: 0 18px; border: 0; border-radius: 7px; background: var(--scrub); color: #fff; font-size: 15px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: filter .12s, transform .08s; }
+.u2-btn:hover { filter: brightness(.93); }
+.u2-btn:active { transform: translateY(1px); }
+.u2-btn.wide { flex: 1; }
+.u2-btn.ghost { background: var(--surface); color: var(--scrub); box-shadow: inset 0 0 0 1px var(--rule); }
+.u2-btn[disabled] { background: #C9D1CF !important; color: #fff; cursor: not-allowed; filter: none; }
+.u2-btn.cat { background: var(--c); }
+.u2-h3 { font-size: 14px; font-weight: 700; color: var(--ink-2); margin: 14px 0 6px; }
+.u2-h3:first-child { margin-top: 2px; }
+
+/* Anamnez satırları */
+.u2-q { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 46px; padding: 8px 2px; background: none; border: 0; border-top: 1px solid var(--rule-soft); color: var(--ink); text-align: left; font-size: 14.5px; cursor: pointer; }
+.u2-q:hover { background: #F7F9F8; }
+.u2-q .dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--scrub); flex-shrink: 0; box-sizing: border-box; }
+.u2-q .ok { color: var(--ok); flex-shrink: 0; width: 18px; display: grid; place-items: center; }
+.u2-q .tx { flex: 1; min-width: 0; line-height: 1.35; }
+.u2-q .go { font-size: 13px; font-weight: 700; color: var(--scrub); flex-shrink: 0; }
+.u2-q.done { cursor: default; }
+.u2-q.done .tx { color: var(--muted); }
+.u2-q.done .go { color: var(--muted); font-weight: 600; }
+.u2-ans { font-size: 14px; color: var(--ink); padding: 0 2px 10px 28px; line-height: 1.45; display: flex; gap: 6px; }
+.u2-ans .t { flex: 1; }
+.u2-grp { border: 1px solid var(--rule); border-radius: var(--radius); margin-bottom: 8px; overflow: hidden; }
+.u2-grp > summary { list-style: none; display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 6px 12px; cursor: pointer; font-weight: 700; font-size: 14.5px; }
+.u2-grp > summary::-webkit-details-marker { display: none; }
+.u2-grp > summary .n { margin-left: auto; font-size: 12.5px; color: var(--muted); font-weight: 600; }
+.u2-grp > summary .chev { transition: transform .15s; color: var(--muted); }
+.u2-grp[open] > summary .chev { transform: rotate(90deg); }
+.u2-grp .u2-sub { padding: 0 12px 6px; }
+.u2-grp .u2-sub-t { font-size: 12.5px; font-weight: 700; color: var(--muted); margin: 8px 0 0; }
+
+/* Segment kontrol */
+.u2-seg { display: flex; background: #DCE2E0; border-radius: 9px; padding: 3px; gap: 3px; margin-bottom: 12px; }
+.u2-seg button { flex: 1; min-height: 40px; border: 0; border-radius: 7px; background: none; color: var(--ink-2); font-size: 14px; font-weight: 600; cursor: pointer; }
+.u2-seg button.on { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(29,42,44,.15); }
+.u2-meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); margin-bottom: 10px; min-height: 32px; }
+.u2-link { background: none; border: 0; color: var(--scrub); font-weight: 700; font-size: 13.5px; cursor: pointer; min-height: 44px; padding: 0; }
+.u2-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.u2-check { position: relative; display: flex; align-items: center; gap: 8px; min-height: 46px; padding: 6px 10px; border: 1px solid var(--rule); border-radius: var(--radius); font-size: 14px; cursor: pointer; background: var(--surface); }
+.u2-check input { width: 18px; height: 18px; accent-color: var(--c-lab); flex-shrink: 0; margin: 0; }
+.u2-check:has(input:checked) { border: 1.5px solid var(--c-lab); background: #F5F0F9; }
+.u2-check.off { opacity: .45; cursor: not-allowed; }
+.u2-check.off input { cursor: not-allowed; }
+.u2-gate { display: flex; gap: 10px; align-items: flex-start; background: var(--iod-tint); color: var(--iod-dark); border-radius: var(--radius); padding: 10px 12px; font-size: 13.5px; line-height: 1.45; margin-bottom: 12px; }
+.u2-gate svg.vi { margin-top: 2px; }
+.u2-gate.ok { background: var(--ok-tint); color: var(--ok); }
+
+/* Seçenek çipleri ve listeler */
+.u2-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.u2-opt { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 8px 12px; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); color: var(--ink); text-align: left; font-size: 14.5px; font-weight: 600; cursor: pointer; }
+.u2-opt small { display: block; font-size: 12px; color: var(--muted); font-weight: 500; }
+.u2-opt .grow { flex: 1; min-width: 0; }
+.u2-opt.sel { background: var(--scrub-tint); border-color: var(--scrub); box-shadow: inset 0 0 0 1px var(--scrub); }
+.u2-opt.done::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--ok); flex-shrink: 0; }
+.u2-opt.na { opacity: .45; }
+.u2-opt .lk { color: var(--iod); display: grid; }
+.u2-list .u2-opt { width: 100%; margin-bottom: 8px; }
+.u2-kit { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--rule); border-radius: var(--radius); margin-bottom: 8px; }
+.u2-kit .grow { flex: 1; min-width: 0; }
+.u2-kit b { display: block; font-size: 14.5px; }
+.u2-kit small { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.4; margin-top: 2px; }
+.u2-kit .used { font-size: 12px; color: var(--ok); font-weight: 700; }
+
+/* ── 6. Eski pencereler (modal) yeni panel görünümünde ── */
+body.ui2 #modal-overlay { z-index: 200; background: rgba(20,28,30,.45); backdrop-filter: none; align-items: flex-end; }
+body.ui2 #modal-box { width: 100%; max-width: 100%; max-height: 86vh; border: 0; border-radius: var(--radius-sheet) var(--radius-sheet) 0 0; background: var(--surface); padding: 22px 16px calc(18px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 -10px 30px rgba(0,0,0,.25); animation: u2up .22s cubic-bezier(.22,1,.36,1); color: var(--ink); }
+body.ui2 #modal-box::before { content: ''; position: absolute; top: 8px; left: 50%; margin-left: -20px; width: 40px; height: 4px; border-radius: 2px; background: #C9D1CF; }
+body.ui2 #modal-box h3 { font-stretch: 72%; font-weight: 800; font-size: 22px; color: var(--ink); margin: 4px 48px 14px 0; line-height: 1.15; text-transform: none; }
+body.ui2 .modal-close { top: 10px; right: 8px; width: 44px; height: 44px; font-size: 0; color: var(--ink); border-radius: var(--radius); display: grid; place-items: center; }
+body.ui2 .modal-close svg.vi { width: 22px; height: 22px; }
+body.ui2 .modal-close:hover { background: #F0F3F2; }
+body.ui2 #modal-content table { font-size: 12.5px !important; }
+body.ui2 #modal-content table th { color: var(--muted) !important; background: #F1F4F3 !important; }
+body.ui2 #modal-content button { min-height: 44px; }
+body.ui2 .mob-menu-btn, body.ui2 #modal-content > div > button[onclick] { border-radius: var(--radius) !important; }
+body.ui2 .mob-popup-result { color: var(--ink) !important; font-size: 14.5px; line-height: 1.55; }
+body.ui2 .note-pen { background: none; border: 0; color: var(--muted); min-width: 32px; min-height: 32px; border-radius: 6px; cursor: pointer; display: inline-grid; place-items: center; padding: 0; opacity: 1; }
+body.ui2 .note-pen:hover { background: #EEF1F0; color: var(--scrub); }
+body.ui2 .note-pen.noted { color: var(--ok); }
+body.ui2 .note-pen svg.vi { width: 16px; height: 16px; }
+body.ui2 #usg-modal-overlay, body.ui2 #anamnez-modal-overlay { background: rgba(20,28,30,.55) !important; }
+body.ui2 #toast { background: var(--ink); color: #fff; border: 0; border-radius: 22px; box-shadow: 0 6px 18px rgba(0,0,0,.2); font-size: 14px; padding: 11px 18px; }
+body.ui2.mobile-mode #toast { bottom: calc(170px + env(safe-area-inset-bottom, 0px)); left: 50%; right: auto; transform: translate(-50%, 10px); max-width: calc(100% - 32px); }
+body.ui2.mobile-mode #toast.show { transform: translate(-50%, 0); }
+body.ui2:not(.u2-incase).mobile-mode #toast { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+body.ui2.u2-incase.mobile-mode #toast { bottom: auto; top: calc(84px + env(safe-area-inset-top, 0px)); transform: translate(-50%, -10px); }
+body.ui2.u2-incase.mobile-mode #toast.show { transform: translate(-50%, 0); }
+body.ui2 .u2-panel:focus, body.ui2 .u2-panel:focus-visible { outline: none !important; }
+/* Yeni arayüz her ekranda aynı kabuğu kullanır: "Mobil mod" ayarı gereksiz */
+body.ui2 .settings-row:has(#settings-mobile-toggle) { display: none !important; }
+body.ui2 .settings-row { border-radius: var(--radius) !important; }
+body.ui2 .ge-say { color: var(--ink) !important; }
+
+/* ── 7. Sonuç ekranı ── */
+body.ui2 #result-overlay { background: var(--paper); backdrop-filter: none; padding: 0; z-index: 290; }
+body.ui2 #result-box { width: 100%; max-width: 640px; border-radius: 0; box-shadow: none; background: var(--paper); margin: 0 auto; min-height: 100%; display: flex; flex-direction: column; }
+body.ui2 #result-header-area { padding: 0; text-align: left; border: 0; background: none; }
+.u2-res-top { padding: calc(22px + env(safe-area-inset-top, 0px)) 18px 20px; background: var(--ok-tint); }
+.u2-res-top.bad { background: var(--iod-tint); }
+.u2-res-top .k { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 700; color: var(--ok); }
+.u2-res-top.bad .k { color: var(--iod-dark); }
+.u2-res-top .k svg.vi { width: 18px; height: 18px; }
+.u2-res-top h1 { margin: 6px 0 6px; font-stretch: 72%; font-weight: 800; font-size: 34px; line-height: 1.05; color: var(--ink); }
+.u2-res-top .yours { font-size: 14px; color: var(--iod-dark); margin-bottom: 4px; }
+.u2-res-top .sub { font-size: 13.5px; color: var(--ink-2); }
+.u2-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 14px 16px 0; }
+.u2-stat { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 10px; }
+.u2-stat b { display: block; font-stretch: 72%; font-weight: 800; font-size: 24px; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.u2-stat small { font-size: 12px; color: var(--muted); }
+body.ui2 #result-body { padding: 4px 16px 10px; flex: 1; }
+body.ui2 .rb-sec { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 12px; margin: 12px 0 0; }
+body.ui2 .rb-sec-title { font-size: 15px !important; font-weight: 700 !important; color: var(--ink) !important; text-transform: none; letter-spacing: 0 !important; margin-bottom: 8px; }
+body.ui2 .rb-sec-title::first-letter { text-transform: uppercase; }
+.u2-steps-done { list-style: none; margin: 0; padding: 0; }
+.u2-steps-done li { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-top: 1px solid var(--rule-soft); font-size: 14px; }
+.u2-steps-done li:first-child { border-top: 0; }
+.u2-steps-done .n { width: 22px; text-align: right; font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; flex-shrink: 0; }
+body.ui2 #result-actions { position: sticky; bottom: 0; background: var(--surface); border-top: 1px solid var(--rule); padding: 10px 16px calc(12px + env(safe-area-inset-bottom, 0px)); display: flex; flex-wrap: wrap; gap: 8px; }
+body.ui2 .ra-btn { min-height: 46px; border-radius: 7px; font-size: 14px; font-weight: 700; letter-spacing: 0; background: var(--surface); color: var(--scrub); box-shadow: inset 0 0 0 1px var(--rule); border: 0; }
+body.ui2 .ra-btn.ra-primary { background: var(--scrub); color: #fff; box-shadow: none; order: 9; flex-basis: 100%; }
+body.ui2 .ra-btn:hover { filter: brightness(.95); }
+
+/* Tutorial içinde dock ve paneller eski kimlikleriyle bulunamaz: tutorial eski arayüzü kullanır */
+
+/* ── 8. Geniş ekran ── */
+@media (min-width: 768px) {
+  #u2-sheet .u2-panel { left: 50%; right: auto; width: 560px; margin-left: -280px; }
+  body.ui2 #modal-overlay { align-items: center; }
+  body.ui2 #modal-box { max-width: 560px; border-radius: var(--radius-sheet); padding-bottom: 20px; }
+  body.ui2 #modal-box::before { display: none; }
+}
+@media (min-width: 1024px) {
+  .u2-home { max-width: 760px; padding-top: 40px; }
+  .u2-modes { gap: 14px; }
+  .u2-mode { min-height: 150px; padding: 20px; }
+  .u2-nav { justify-content: center; }
+  .u2-nav button { flex: 0 0 120px; }
+  .u2-main { flex-direction: row; }
+  .u2-file { padding: 20px 24px; }
+  .u2-file-in { max-width: 760px; }
+  .u2-dock { width: 360px; border-top: 0; border-left: 1px solid var(--rule); box-shadow: -4px 0 14px rgba(29,42,44,.05); padding: 18px 16px; overflow-y: auto; }
+  .u2-dock-in { max-width: none; }
+  .u2-dock .u2-grid { grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+  .u2-dock .u2-act { flex-direction: row; justify-content: flex-start; min-height: 56px; padding: 8px 10px; gap: 10px; font-size: 14px; text-align: left; border: 1px solid var(--rule); background: var(--surface); }
+  .u2-dock .u2-act:hover { background: #F7F9F8; }
+  .u2-dock-title { display: block !important; font-stretch: 72%; font-weight: 800; font-size: 17px; margin: 0 0 12px; }
+  .u2-top { padding: 12px 16px; }
+  .u2-pt-name { font-size: 26px; }
+  #u2-sheet .u2-panel { top: 6vh; bottom: 6vh; height: auto; border-radius: var(--radius-sheet); }
+  #u2-sheet .u2-grab { display: none; }
+  body.ui2 #result-box { max-width: 760px; }
+}
+.u2-dock-title { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  body.ui2 *, body.ui2 *::before, body.ui2 *::after { animation: none !important; transition: none !important; }
+}
+</style>
 </head>
 <body>
 
@@ -8517,6 +8907,703 @@ window.__vtxBack = function (opts) {
     else history.back();                                     // ikinci basış: geçmiş bitti → uygulama kapanır
   });
   document.addEventListener('click', guard, true);
+})();
+</script>
+<script id="vtx-ui2-js">
+/* ═══════════════════════════════════════════════════════════════════
+   YENİ ARAYÜZ (UI2) — görünüm katmanı
+   Oyunun kendi fonksiyonlarını (mobStartCase, mobDoAllExam, mobOpenHemogram,
+   mobRunBiyo, mobDoImaging, mobDoMicro, mobUseRapidKit, askAnamnezQ, mobLog…)
+   çağırır; puanlama, kredi, acil mod, kit kuralları, Supabase onlarda kalır.
+═══════════════════════════════════════════════════════════════════ */
+(function () {
+  if (window.top !== window.self) return;           // tutorial (iframe) eski arayüzle çalışır
+  const U = window.UI2 = { on: false, recs: [], anamLog: [], seq: 0, ctx: null, ctxKit: null, sheet: null };
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const I = (n, c) => window.icon(n, c);
+  const md = s => (typeof parseMarkdown === 'function' ? parseMarkdown(String(s || '')) : esc(s));
+  const plain = s => String(s || '').replace(/\*\*/g, '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  const pen = (src, text) => (typeof notePenHTML === 'function' ? notePenHTML(src, text) : '');
+  const C = () => (typeof mobCurrentCase !== 'undefined' && mobCurrentCase) || null;
+  const emergency = () => typeof isEmergencyActive !== 'undefined' && isEmergencyActive;
+
+  // Kategoriler: ad, ikon
+  const CAT = {
+    anamnez: { ad: 'Anamnez', ic: 'anamnez' }, muayene: { ad: 'Muayene', ic: 'muayene' },
+    ileri: { ad: 'İleri muayene', ic: 'ileri' }, lab: { ad: 'Laboratuvar', ic: 'lab' },
+    goruntu: { ad: 'Görüntüleme', ic: 'goruntu' }, mikro: { ad: 'Mikroskopi', ic: 'mikro' },
+    kit: { ad: 'Hızlı kit', ic: 'kit' }, not: { ad: 'Notlarım', ic: 'not' }
+  };
+  const chip = (k, sm) => `<span class="u2-chip k-${k}${sm ? ' sm' : ''}">${I(CAT[k].ic)}</span>`;
+  const tag = k => `<span class="u2-tag k-${k}">${I(CAT[k].ic)}${CAT[k].ad}</span>`;
+
+  // BÜYÜK HARFLİ başlıkları cümle düzenine çevir (kısaltmalar kalır: USG, EKO, BT, PCR…)
+  function sentence(t) {
+    t = window.vtxStripEmoji ? window.vtxStripEmoji(t) : String(t);
+    if (/[a-zçğıöşü]/.test(t)) return t;
+    const KEEP = /^(USG|EKO|BT|MR|PCR|CBC|FIV|FELV|IFA|IFAT|MAT|ELISA|DFA|SNAP|KDZ|SAA|NT)$/;
+    const w = t.split(/(\s+)/).map(x => (KEEP.test(x.replace(/[^A-ZÇĞİÖŞÜ]/g, '')) ? x : x.toLocaleLowerCase('tr-TR')));
+    const s = w.join('');
+    return s.charAt(0).toLocaleUpperCase('tr-TR') + s.slice(1);
+  }
+
+  /* ══════════ Etkinleştirme ══════════ */
+  function enable() {
+    U.on = true;
+    document.body.classList.add('ui2');
+    document.body.classList.remove('light-mode');
+    // Masaüstü de aynı (mobil) kabuğu kullanır; geniş ekranda iki kolona açılır
+    try { mobileMode = true; } catch (e) {}
+    document.body.classList.add('mobile-mode');
+    const w = $('welcome'); if (w) w.style.cssText = 'display:none!important';
+    buildShell();
+    renderHome();
+    if (typeof mobShowScreen === 'function') mobShowScreen('mob-home-screen');
+  }
+
+  function buildShell() {
+    const wrap = $('mob-wrapper'); if (!wrap || $('u2-case')) return;
+    const caseEl = document.createElement('section');
+    caseEl.id = 'u2-case'; caseEl.setAttribute('aria-label', 'Vaka');
+    caseEl.innerHTML = `
+      <header class="u2-top">
+        <button type="button" class="u2-ibtn" onclick="mobConfirmBack()" aria-label="Vakalara dön">${I('geri')}</button>
+        <div class="u2-pt" id="u2-pt"></div>
+        <button type="button" class="u2-ibtn flag" onclick="openCaseReport()" aria-label="Vakada hata bildir">${I('bayrak')}</button>
+      </header>
+      <div class="u2-main">
+        <main class="u2-file" id="u2-file" tabindex="-1"><div class="u2-file-in" id="u2-file-in"></div></main>
+        <nav class="u2-dock" aria-label="Klinik işlemler"><div class="u2-dock-in">
+          <div class="u2-dock-title">Klinik işlemler</div>
+          <div class="u2-grid" id="u2-grid"></div>
+          <button type="button" class="u2-dx" onclick="mobOpenDiagnosis()">${I('onay')}Tanı koy</button>
+        </div></nav>
+      </div>`;
+    wrap.appendChild(caseEl);
+    const nav = document.createElement('nav');
+    nav.className = 'u2-nav'; nav.id = 'u2-nav'; nav.setAttribute('aria-label', 'Ana gezinme');
+    nav.innerHTML = `
+      <button type="button" data-k="home" class="on" onclick="UI2.go('home')">${I('dosya')}Vakalar</button>
+      <button type="button" data-k="karne" onclick="UI2.go('karne')">${I('grafik')}Karnem</button>
+      <button type="button" data-k="ayar" onclick="UI2.go('ayar')">${I('ayar')}Ayarlar</button>
+      <button type="button" data-k="iletisim" onclick="UI2.go('iletisim')">${I('mail')}İletişim</button>`;
+    wrap.appendChild(nav);
+    const sh = document.createElement('div');
+    sh.id = 'u2-sheet';
+    sh.innerHTML = `<div class="u2-scrim" onclick="UI2.closeSheet()"></div>
+      <div class="u2-panel" role="dialog" aria-modal="true" aria-labelledby="u2-sh-title" tabindex="-1">
+        <div class="u2-grab" aria-hidden="true"></div>
+        <div class="u2-sh-head"><span id="u2-sh-chip"></span><div class="t"><h2 id="u2-sh-title"></h2><p id="u2-sh-sub"></p></div>
+          <button type="button" class="u2-close" onclick="UI2.closeSheet()">Kapat</button></div>
+        <div class="u2-sh-body" id="u2-sh-body"></div>
+        <div class="u2-sh-foot" id="u2-sh-foot"></div>
+      </div>`;
+    document.body.appendChild(sh);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && U.sheet) U.closeSheet(); });
+  }
+
+  /* ══════════ Ana ekran ve tür seçimi ══════════ */
+  function renderHome() {
+    const home = $('mob-home-screen'); if (!home) return;
+    const banner = home.querySelector('.vtx-demo-banner');
+    const emerg = typeof emergencyModeEnabled !== 'undefined' && emergencyModeEnabled;
+    home.innerHTML = `<div class="u2-home">
+      <div class="u2-brand"><span class="u2-brand-mark">${I('muayene')}</span><div><div class="u2-brand-name">VetTEX</div><div class="u2-brand-sub">Klinik simülasyon</div></div></div>
+      <h1 class="u2-h1">Vakalar</h1>
+      <p class="u2-lead">Hastayı sen karşıla: anamnezi al, muayene et, tetkiki seç ve tanıyı koy.</p>
+      <div id="u2-banner-slot"></div>
+      <div class="u2-modes">
+        <button type="button" class="u2-mode primary" onclick="mobOpenClinic()">${I('klinik')}<b>Klinik mod</b><span>Rastgele yeni hasta gelir, tanıyı sen koyarsın.</span></button>
+        <button type="button" class="u2-mode" onclick="mobOpenFreeStudy()">${I('kitap')}<b>Serbest çalışma</b><span>Seçtiğin hastalık listeleriyle çalış.</span></button>
+      </div>
+      <label class="u2-row" for="u2-emerg">
+        <span class="u2-chip k-kit">${I('uyari')}</span>
+        <span class="grow"><b>Acil mod</b><small>Hastaların bir kısmı acil gelir: 5 işlem hakkın olur.</small></span>
+        <span class="u2-switch"><input type="checkbox" id="u2-emerg" ${emerg ? 'checked' : ''} onchange="UI2.setEmerg(this.checked)"><i></i></span>
+      </label>
+    </div>`;
+    if (banner) $('u2-banner-slot').appendChild(banner);
+    const sp = $('mob-species-screen');
+    if (sp) sp.innerHTML = `<div class="u2-home">
+      <button type="button" class="u2-backlink" onclick="mobShowScreen('mob-home-screen')">${I('geri')}Vakalar</button>
+      <h1 class="u2-h1">Hangi hasta?</h1>
+      <p class="u2-lead">Tür seç, kliniğe yeni bir hasta gelsin.</p>
+      <div class="u2-species">
+        <button type="button" class="u2-row" onclick="mobStartCase('dog')">${'<span class="u2-chip k-dog">' + I('kopek') + '</span>'}<span class="grow"><b>Köpek</b><small>Canis lupus familiaris</small></span><span class="chev">${I('geri', 'u2-rot')}</span></button>
+        <button type="button" class="u2-row" onclick="mobStartCase('cat')">${'<span class="u2-chip k-cat">' + I('kedi') + '</span>'}<span class="grow"><b>Kedi</b><small>Felis catus</small></span><span class="chev">${I('geri', 'u2-rot')}</span></button>
+        <button type="button" class="u2-row" onclick="mobStartCase('any')">${'<span class="u2-chip k-any">' + I('zar') + '</span>'}<span class="grow"><b>Rastgele</b><small>Her türden bir hasta</small></span><span class="chev">${I('geri', 'u2-rot')}</span></button>
+      </div>
+    </div>`;
+    document.querySelectorAll('svg.u2-rot').forEach(s => s.style.transform = 'rotate(180deg)');
+  }
+  U.setEmerg = function (on) {
+    if (typeof onSettingsEmergencyToggle === 'function') onSettingsEmergencyToggle(on);
+    const t = $('settings-emergency-toggle'); if (t) t.checked = on;
+  };
+  U.go = function (k) {
+    if (/-mark$/.test(k)) { const m = k.replace(/-mark$/, ''); document.querySelectorAll('#u2-nav button').forEach(b => b.classList.toggle('on', b.dataset.k === m)); return; }
+    document.querySelectorAll('#u2-nav button').forEach(b => b.classList.toggle('on', b.dataset.k === k));
+    if (k === 'home') { if (typeof mobCloseSettings === 'function' && $('mob-settings-body')?.children.length) mobCloseSettings(true); mobShowScreen('mob-home-screen'); }
+    else if (k === 'karne') { VTXStats.openKarne(); setTimeout(() => U.go('home-mark'), 0); }
+    else if (k === 'ayar') mobOpenSettings();
+    else if (k === 'iletisim') { mobOpenContact(); setTimeout(() => U.go('home-mark'), 0); }
+  };
+
+  /* ══════════ Vaka başlangıcı / bitişi ══════════ */
+  function caseStart() {
+    U.recs = []; U.anamLog = []; U.seq = 0; U.ctx = null;
+    U.closeSheet();
+    document.body.classList.add('u2-incase');
+    renderTop(); renderFile(); renderDock();
+    const f = $('u2-file'); if (f) f.scrollTop = 0;
+  }
+  function caseEnd() {
+    document.body.classList.remove('u2-incase');
+    U.closeSheet();
+    U.go('home-mark');
+  }
+
+  /* ══════════ Üst bar ══════════ */
+  function demog(c, re) { const m = String((c.anamnez && c.anamnez.demog) || '').match(re); return m ? m[1].trim() : ''; }
+  function renderTop() {
+    const c = C(), el = $('u2-pt'); if (!c || !el) return;
+    const name = c._randomName || (c.anamnez && c.anamnez.name ? String(c.anamnez.name).split('**')[1] : '') || 'Hasta';
+    const yas = demog(c, /Yaş:\s*\*\*([^*]+)\*\*/), cins = demog(c, /Cinsiyet:\s*\*\*([^*]+)\*\*/);
+    const sig = [c.species, yas, cins].filter(Boolean).join(', ');
+    const heard = typeof complaintAsked !== 'undefined' && complaintAsked;
+    const cc = heard ? 'Şikayet: ' + plain(window._shownComplaint || '') : 'Şikayet henüz dinlenmedi';
+    let st = '';
+    if (emergency()) st += `<span class="acil${actionsRemaining <= 2 ? ' low' : ''}">${I('uyari')}Acil vaka: ${actionsRemaining}/${MAX_ACTIONS} işlem hakkı</span>`;
+    if (typeof economyMode !== 'undefined' && economyMode && typeof remainingCredit !== 'undefined') st += `<span class="kredi">${I('kart')}${remainingCredit}/${(currentOwner && currentOwner.credit) || '—'} kredi</span>`;
+    el.innerHTML = `<div class="u2-pt-line"><span class="u2-pt-name">${esc(name)}</span><span class="u2-pt-sig">${esc(sig)}</span></div>
+      <div class="u2-pt-cc${heard ? '' : ' wait'}" title="${esc(cc)}">${esc(cc)}</div>${st ? '<div class="u2-status">' + st + '</div>' : ''}`;
+  }
+
+  /* ══════════ İşlem paneli ══════════ */
+  const ACTS = ['anamnez', 'muayene', 'ileri', 'lab', 'goruntu', 'mikro', 'kit', 'not'];
+  function examDoneKeys() {
+    return PHYS.filter(p => { const el = $('mob-acc-phys-' + p.key); return el && el.dataset.done; }).map(p => p.key);
+  }
+  function counts() {
+    const n = {};
+    ACTS.forEach(k => n[k] = 0);
+    n.anamnez = U.anamLog.length;
+    n.muayene = examDoneKeys().length;
+    U.recs.forEach(r => { if (r.cat !== 'anamnez' && r.cat !== 'muayene') n[r.cat] = (n[r.cat] || 0) + 1; });
+    n.not = (typeof caseNotes !== 'undefined' && caseNotes.length) || 0;
+    return n;
+  }
+  function renderDock() {
+    const g = $('u2-grid'); if (!g) return;
+    const n = counts(), nothing = !U.anamLog.length && !n.muayene && !U.recs.length;
+    g.innerHTML = ACTS.map(k => `<button type="button" class="u2-act k-${k}${k === 'anamnez' && nothing ? ' hint' : ''}" onclick="UI2.open('${k}')" aria-label="${CAT[k].ad}${n[k] ? ', ' + n[k] + ' kez yapıldı' : ''}">
+        <span class="u2-chip k-${k}">${I(CAT[k].ic)}${n[k] ? '<span class="u2-badge">' + n[k] + '</span>' : ''}</span><span>${CAT[k].ad}</span></button>`).join('');
+  }
+
+  /* ══════════ Hasta dosyası ══════════ */
+  function addRec(cat, title, body, extra) {
+    const r = Object.assign({ id: 'r' + (++U.seq), seq: U.seq, cat, title, body, ts: Date.now() }, extra || {});
+    U.recs.push(r);
+    return r;
+  }
+  U.addRecord = addRec;
+  function bump(r) { r.ts = Date.now(); }
+
+  function renderFile(flashId) {
+    const box = $('u2-file-in'); if (!box) return;
+    const all = U.recs.slice().sort((a, b) => b.ts - a.ts);
+    if (!all.length) {
+      box.innerHTML = `<div class="u2-file-head"><h2>Hasta dosyası</h2></div>
+        <div class="u2-empty"><h3>Hasta dosyası henüz boş</h3>
+          <p>Yaptığın her işlem burada sırayla birikir: sorduğun sorular, muayene bulguları, sonuçlar. Aşağıdaki panelden bir işlem seçerek başla.</p>
+          <ul class="u2-steps">
+            <li>${chip('anamnez', 1)}<span>Anamnez <small>· şikayeti dinle, soru sor</small></span></li>
+            <li>${chip('muayene', 1)}<span>Muayene <small>· ateş, nabız, solunum, mukoza…</small></span></li>
+            <li>${chip('lab', 1)}<span>Testler <small>· laboratuvar, görüntüleme, mikroskopi</small></span></li>
+          </ul>
+          <div class="u2-lockline">${I('kilit')}<span>Pahalı tetkikler (biyokimya, hormon, BT/MR, biyopsi, abdominosentez) gerçek klinikteki gibi şikayet dinlenip genel muayene yapıldıktan sonra istenebilir.</span></div>
+        </div>`;
+      return;
+    }
+    box.innerHTML = `<div class="u2-file-head"><h2>Hasta dosyası</h2><small>${all.length} kayıt, en yenisi üstte</small></div>`
+      + all.map(r => `<article class="u2-rec${r.id === flashId ? ' flash' : ''}" id="u2-${r.id}">
+          <div class="u2-rec-h">${tag(r.cat)}<b>${esc(r.title)}</b><span class="no">#${r.seq}</span></div>
+          <div class="u2-rec-b">${typeof r.body === 'function' ? r.body(r) : r.body}</div></article>`).join('');
+  }
+  function show(id) {
+    renderFile(id); renderDock(); renderTop();
+    const f = $('u2-file'); if (f) f.scrollTo ? f.scrollTo({ top: 0, behavior: 'smooth' }) : (f.scrollTop = 0);
+  }
+  U.toggleMore = function (btn) {
+    const box = btn.previousElementSibling; if (!box) return;
+    const open = box.classList.toggle('u2-hidden') === false;
+    btn.textContent = open ? btn.dataset.less : btn.dataset.more;
+  };
+  const more = (inner, moreTxt, lessTxt) => `<div class="u2-hidden">${inner}</div><button type="button" class="u2-more" data-more="${esc(moreTxt)}" data-less="${esc(lessTxt)}" onclick="UI2.toggleMore(this)">${esc(moreTxt)}</button>`;
+
+  /* ── Anamnez kaydı (tek kart: hasta sahibiyle görüşme) ── */
+  const GEN = [
+    { key: 'complaint', ad: 'Şikayet' }, { key: 'name', ad: 'İsim ve ırk' },
+    { key: 'demog', ad: 'Yaş, cinsiyet, kısırlık' }, { key: 'vaccine', ad: 'Aşı ve parazit ilacı' }
+  ];
+  function qText(id) {
+    const Q = window.QUESTIONS || {};
+    for (const c of Object.values(Q)) for (const s of Object.values(c.subcategories || {})) for (const q of s.questions || []) if (q.id === id) return q.q;
+    return id;
+  }
+  function anamPairs() {
+    const c = C() || {};
+    return U.anamLog.slice().reverse().map(e => {
+      if (e.t === 'gen') {
+        const q = (typeof ANAMNEZ_QUESTIONS !== 'undefined' && ANAMNEZ_QUESTIONS[e.key]) || e.key;
+        const a = e.key === 'complaint' ? (window._shownComplaint || '') : ((c.anamnez || {})[e.key] || '—');
+        return { q, a };
+      }
+      return { q: qText(e.id), a: (window._aqAnswered || {})[e.id] || '' };
+    });
+  }
+  function anamBody() {
+    const rows = anamPairs().map(p => `<div class="u2-qa"><div class="t"><div class="q">${esc(p.q)}</div><div class="a">${md(p.a)}</div></div>${pen('ANAMNEZ', p.q + ' → ' + plain(p.a))}</div>`);
+    if (rows.length <= 3) return rows.join('');
+    return rows.slice(0, 3).join('') + more(rows.slice(3).join(''), (rows.length - 3) + ' cevap daha', 'Daha az göster');
+  }
+  function anamRec() {
+    let r = U.recs.find(x => x.cat === 'anamnez');
+    if (!r) r = addRec('anamnez', 'Hasta sahibiyle görüşme', anamBody);
+    bump(r); return r;
+  }
+
+  /* ── Muayene kaydı (tek kart) ── */
+  const PHYS = [
+    { key: 'temp', ad: 'Vücut sıcaklığı', src: 'physical' }, { key: 'resp', ad: 'Solunum sayısı', src: 'physical' },
+    { key: 'hr', ad: 'Kalp atım sayısı', src: 'physical' }, { key: 'mucosa', ad: 'Mukoza ve KDZ', src: 'physical' },
+    { key: 'lymph', ad: 'Lenf nodları', src: 'physical' }, { key: 'palp', ad: 'Palpasyon', src: 'physical' },
+    { key: 'inspection', ad: 'İnspeksiyon', src: 'tools' }, { key: 'auscultation', ad: 'Oskültasyon', src: 'tools' }
+  ];
+  const num = s => parseFloat(String(s).replace(',', '.'));
+  const fmt = (v, d) => String(v).replace('.', ',');
+  function vital(text, unitRe) {
+    const t = plain(text);
+    const ref = t.match(/Referans:?\s*([\d.,]+)\s*[–-]\s*([\d.,]+)/i);
+    const body = t.replace(/\(Referans[^)]*\)/i, '');
+    const m = body.match(new RegExp('(\\d+(?:[.,]\\d+)?)\\s*' + unitRe));
+    if (!m) return null;
+    const v = num(m[1]);
+    return { v: m[1], ab: ref ? (v < num(ref[1]) || v > num(ref[2])) : false };
+  }
+  function examBody() {
+    const c = C() || {}, done = examDoneKeys();
+    const txt = k => { const p = PHYS.find(x => x.key === k); return ((p.src === 'tools' ? c.tools : c.physical) || {})[k] || ''; };
+    const cells = [], used = new Set();
+    const add = (ad, r, unit) => cells.push(`<div class="u2-vital${r.ab ? ' ab' : ''}"><small>${ad}</small><b>${fmt(r.v)}${unit}</b>${r.ab ? '<span class="u2-hidden">anormal</span>' : ''}</div>`);
+    if (done.includes('temp')) { const r = vital(txt('temp'), '°\\s*C'); if (r) { add('Isı', r, ' °C'); used.add('temp'); } }
+    if (done.includes('hr'))   { const r = vital(txt('hr'), '\\/\\s*da?k'); if (r) { add('Nabız', r, '/dk'); used.add('hr'); } }
+    if (done.includes('resp')) { const r = vital(txt('resp'), '\\/\\s*da?k'); if (r) { add('Solunum', r, '/dk'); used.add('resp'); } }
+    if (done.includes('mucosa')) {
+      const m = plain(txt('mucosa')).match(/(?:CRT|KDZ|KRT)\s*:?\s*([\d.,]+)\s*sn/i);
+      if (m) cells.push(`<div class="u2-vital${num(m[1]) > 2 ? ' ab' : ''}"><small>KDZ</small><b>${fmt(m[1])} sn</b></div>`);
+    }
+    const finds = done.filter(k => !used.has(k)).map(k => {
+      const p = PHYS.find(x => x.key === k), t = txt(k);
+      return `<li><span class="t"><b>${p.ad}:</b> ${md(String(t).replace(/^[^:]{2,40}:\s*/, ''))}</span>${pen(p.ad, t)}</li>`;
+    });
+    const vit = cells.length ? `<div class="u2-vitals">${cells.join('')}</div>` : '';
+    const vitPens = ['temp', 'hr', 'resp'].filter(k => used.has(k)).map(k => { const p = PHYS.find(x => x.key === k); return `<li><span class="t"><b>${p.ad}:</b> ${md(txt(k).replace(/^[^:]{2,40}:\s*/, ''))}</span>${pen(p.ad, txt(k))}</li>`; });
+    return vit + (finds.length ? `<ul class="u2-find">${finds.join('')}</ul>` : '')
+      + (vitPens.length ? more(`<ul class="u2-find">${vitPens.join('')}</ul>`, 'Vital bulguların tam metni', 'Daha az göster') : '');
+  }
+  function examRec() {
+    let r = U.recs.find(x => x.cat === 'muayene');
+    if (!r) r = addRec('muayene', 'Fiziksel muayene', examBody);
+    bump(r); return r;
+  }
+
+  /* ── mobLog'dan gelen sonuçlar ── */
+  const TOOL_RE = /otoskop|oftalmoskop|faringoskop|refleks|wood/i;
+  const IMG_RE = /usg|eko|röntgen|rontgen|\bbt\b|\bmr\b|tomografi|manyetik/i;
+  const MIC_RE = /yayma|idrar|dışkı|deri|biyopsi|abdominosentez|rivalta/i;
+  const LAB_RE = /hemogram|biyokimya|hormon/i;
+  function catOf(title) {
+    const t = plain(title).toLocaleLowerCase('tr-TR');
+    if (/doğrulama/.test(t)) return 'kit';
+    if (U.ctx === 'kit') return 'kit';
+    if (LAB_RE.test(t)) return 'lab';
+    if (TOOL_RE.test(t)) return 'ileri';
+    if (IMG_RE.test(t)) return 'goruntu';
+    if (MIC_RE.test(t)) return 'mikro';
+    return U.ctx || 'ileri';
+  }
+  function labBody(html, src) {
+    const d = document.createElement('div'); d.innerHTML = html;
+    const rows = [...d.querySelectorAll('tr')].filter(tr => tr.querySelector('td')).map(tr => {
+      const td = [...tr.querySelectorAll('td')].map(x => x.textContent.replace(/\s+/g, ' ').trim());
+      const f = td[td.length - 1]; const four = td.length >= 4;
+      return { p: td[0], v: td[1], r: four ? td[2] : '', f: /^[HL]$/.test(f) ? f : '' };
+    });
+    const row = x => `<tr class="${x.f ? 'ab' : ''}"><td>${esc(x.p)}</td><td class="v">${esc(x.v)}</td><td class="f">${x.f || ''}</td><td class="r">${esc(x.r)}</td><td class="note-pen-cell">${pen(src, [x.p, x.v, x.r, x.f].filter(Boolean).join(' · '))}</td></tr>`;
+    const head = '<tr><th>Parametre</th><th class="v">Sonuç</th><th></th><th class="r">Referans</th><th></th></tr>';
+    const ab = rows.filter(x => x.f), ok = rows.length - ab.length;
+    const short = ab.length ? `<table>${head}${ab.map(row).join('')}</table>` : '<div>Tüm değerler referans aralığında.</div>';
+    return `<div class="u2-paper mono">${short}${ok && ab.length ? `<div class="rest">+ ${ok} değer referans aralığında</div>` : ''}</div>`
+      + more(`<div class="u2-paper mono" style="margin-top:8px"><table>${head}${rows.map(row).join('')}</table></div>`, 'Tam çıktıyı gör', 'Tam çıktıyı gizle');
+  }
+  function kasetHTML(res, label, big) {
+    const it = (res && res.items) || [{ name: '', pos: false }];
+    const ln = it.slice(0, 2).map((x, i) => (x.pos ? `<span class="cizgi t${i + 1}"></span>` : '')).join('');
+    const lb = it.slice(0, 2).map((x, i) => `<span class="etiket e${i + 1}">${esc(x.name || (i ? '' : 'T'))}</span>`).join('');
+    return `<div class="kaset${big ? ' x2' : ''}" aria-hidden="true"><span class="kuyu"></span><span class="pencere"></span><span class="cizgi c"></span>${ln}${lb}<span class="etiket e3">C</span></div>`;
+  }
+  function kitText(res) {
+    const it = res.items || [];
+    if (it.length > 1) {
+      if (it.every(x => !x.pos)) return 'Hepsi negatif.';
+      return it.map(x => x.name + ' ' + (x.pos ? 'pozitif' : 'negatif')).join(', ') + '.';
+    }
+    return it[0] && it[0].pos ? 'Pozitif.' : 'Negatif.';
+  }
+  function kitBody(r) {
+    const res = r.res;
+    if (!res) return r.raw;
+    const note = (typeof KIT_NOTES !== 'undefined' && r.kitId && KIT_NOTES[r.kitId]) || '';
+    return `<div class="u2-kitrow">${kasetHTML(res)}<div class="u2-kitres"><b>${kitText(res)}</b>Kontrol çizgisi var, test geçerli.</div>${pen('Hızlı kit', r.title + ': ' + res.text)}</div>
+      <div class="u2-limit">${note ? esc(note) + ' ' : ''}Kitler yanlış sonuç verebilir. Şüphen varsa tekrarla veya doğrulama testi iste.</div>`;
+  }
+  function imgBody(r) {
+    let h = '';
+    if (r.kind === 'usg' || r.kind === 'eko') {
+      const d = document.createElement('div'); d.innerHTML = r.raw;
+      const lines = d.innerHTML.split(/<br\s*\/?>/i).map(x => x.trim()).filter(Boolean);
+      h += lines.length && !/Patolojik bulgu işaretlenmedi/.test(r.raw)
+        ? `<ul class="u2-abn">${lines.map(l => { const t = plain(l); const i = t.indexOf(':'); const org = i > 0 && i < 40 ? sentence(t.slice(0, i)) : ''; let rest = i > 0 && i < 40 ? t.slice(i + 1).trim() : t; if (rest.length > 120) rest = rest.slice(0, 118).replace(/\s+\S*$/, '') + '…'; return '<li>' + (org ? '<b>' + esc(org) + ':</b> ' : '') + esc(rest) + '</li>'; }).join('')}</ul>` : '<div>Patolojik bulgu işaretlenmedi.</div>';
+      h += `<button type="button" class="u2-more" onclick="UI2.openReport('${r.kind}','${esc(r.rk)}')">Raporu aç</button>`;
+      return h;
+    }
+    return `<div>${r.raw}</div>`;
+  }
+  U.openReport = function (kind, rk) {
+    const c = C(); const data = c && c.imaging && c.imaging[kind === 'eko' ? 'echo' : 'usg'];
+    const img = data && data.imgUrl && data.imgUrl !== 'null' ? data.imgUrl : null;
+    openUSGModal(rk, img, kind === 'eko' ? 'eko' : undefined);
+  };
+
+  function onLog(title, html) {
+    const cat = catOf(title);
+    const t = sentence(title);
+    let r;
+    if (cat === 'lab') r = addRec('lab', t, labBody(html, t));
+    else if (cat === 'kit') {
+      const kitId = U.ctxKit;
+      const dogr = /doğrulama/i.test(plain(title).toLocaleLowerCase('tr-TR'));
+      let res = null;
+      if (kitId && typeof kitRuns !== 'undefined') {
+        res = dogr ? rapidKitResult(C(), kitId) : (kitRuns[kitId] || []).slice(-1)[0];
+      }
+      r = addRec('kit', t.replace(/^Doğrulama — /i, 'Doğrulama: '), kitBody, { res, kitId, raw: html });
+    }
+    else if (cat === 'goruntu') {
+      const kind = /usg/i.test(title) ? 'usg' : /eko/i.test(title) ? 'eko' : 'img';
+      const c = C() || {};
+      r = addRec('goruntu', t, imgBody, { kind, raw: html, rk: c._realKey || (typeof currentCaseKey !== 'undefined' ? currentCaseKey : '') });
+    }
+    else r = addRec(cat, t, `<div>${html}</div>`);
+    show(r.id);
+  }
+
+  /* ══════════ Alttan açılan paneller ══════════ */
+  function openSheet(cat, title, sub, body, foot, keepFocus) {
+    U.sheet = cat;
+    $('u2-sh-chip').innerHTML = chip(cat);
+    $('u2-sh-title').textContent = title;
+    $('u2-sh-sub').textContent = sub || '';
+    $('u2-sh-body').innerHTML = body;
+    const f = $('u2-sh-foot'); f.innerHTML = foot || ''; f.style.display = foot ? '' : 'none';
+    $('u2-sheet').className = 'open k-' + cat;
+    if (!keepFocus) setTimeout(() => { const pn = $('u2-sheet').querySelector('.u2-panel'); pn && pn.focus({ preventScroll: true }); }, 40);
+  }
+  U.closeSheet = function () {
+    const s = $('u2-sheet'); if (s) s.className = '';
+    U.sheet = null;
+  };
+  function gateMissing() { return (typeof generalExamMissing === 'function' && !emergency()) ? generalExamMissing() : []; }
+  function gateNote(what) {
+    const m = gateMissing(); if (!m.length) return '';
+    return `<div class="u2-gate">${I('kilit')}<div>${what} istemeden önce: ${m.map(esc).join(', ')}.</div></div>`;
+  }
+  const lock = () => (gateMissing().length ? `<span class="lk" title="Önce şikayet ve genel muayene">${I('kilit')}</span>` : '');
+  // Eski akış sonuç penceresini açar; sonuç dosyaya düştüyse pencereyi kapat
+  function runAndFile(fn, keepModal) {
+    const before = U.recs.length;
+    fn();
+    if (!keepModal && U.recs.length > before && typeof closeModal === 'function') closeModal();
+  }
+
+  U.open = function (k) {
+    if (!C()) return;
+    U.ctx = k;
+    if (k === 'not') { mobOpenNotes(); return; }
+    ({ anamnez: shAnamnez, muayene: shMuayene, ileri: shIleri, lab: shLab, goruntu: shGoruntu, mikro: shMikro, kit: shKit })[k]();
+  };
+
+  /* Anamnez */
+  function shAnamnez(keepScroll) {
+    const c = C(); const Q = window.QUESTIONS || {}; const aq = window._aqAnswered || {};
+    const genDone = k => U.anamLog.some(e => e.t === 'gen' && e.key === k);
+    const row = (done, txt, on, ans, src) => done
+      ? `<div class="u2-q done"><span class="ok">${I('onay')}</span><span class="tx">${esc(txt)}</span><span class="go">Soruldu</span></div>${ans ? `<div class="u2-ans"><span class="t">${md(ans)}</span>${pen(src || 'ANAMNEZ', txt + ' → ' + plain(ans))}</div>` : ''}`
+      : `<button type="button" class="u2-q" onclick="${on}"><span class="dot"></span><span class="tx">${esc(txt)}</span><span class="go">Sor</span></button>`;
+    let h = '<div class="u2-h3">Genel sorular</div>';
+    GEN.forEach(g => {
+      const q = (typeof ANAMNEZ_QUESTIONS !== 'undefined' && ANAMNEZ_QUESTIONS[g.key]) || g.ad;
+      const a = g.key === 'complaint' ? window._shownComplaint : (c.anamnez || {})[g.key];
+      h += row(genDone(g.key), q, `UI2.askGen('${g.key}')`, genDone(g.key) ? a : '');
+    });
+    h += '<div class="u2-h3">Ayırıcı tanı soruları</div>';
+    for (const [catId, cat] of Object.entries(Q)) {
+      let n = 0, tot = 0, inner = '';
+      for (const [subId, sub] of Object.entries(cat.subcategories || {})) {
+        inner += `<div class="u2-sub-t">${esc(sub.label)}</div>`;
+        for (const q of sub.questions || []) {
+          tot++; const a = aq[q.id]; if (a) n++;
+          inner += row(!!a, q.q, `UI2.askQ('${q.id}','${catId}','${subId}')`, a);
+        }
+      }
+      const open = U._openGrp && U._openGrp.has(catId);
+      h += `<details class="u2-grp" data-cat="${catId}"${open ? ' open' : ''} ontoggle="UI2.grp(this)"><summary><span class="chev">${I('geri', 'u2-rot')}</span>${esc(cat.label)}<span class="n">${n ? n + ' / ' : ''}${tot}</span></summary><div class="u2-sub">${inner}</div></details>`;
+    }
+    const asked = U.anamLog.length;
+    const body = $('u2-sh-body'); const st = keepScroll && body ? body.scrollTop : 0;
+    openSheet('anamnez', 'Anamnez', 'Hasta sahibine sor. Her cevap dosyadaki görüşme kaydına eklenir.', h,
+      `<span class="grow"><b>${asked}</b> soru soruldu</span><button type="button" class="u2-btn" onclick="UI2.closeSheet()">Dosyaya dön</button>`, keepScroll);
+    $('u2-sh-body').querySelectorAll('svg.u2-rot').forEach(s => s.style.transform = 'rotate(180deg)');
+    if (keepScroll) $('u2-sh-body').scrollTop = st;
+  }
+  U.grp = el => { U._openGrp = U._openGrp || new Set(); el.open ? U._openGrp.add(el.dataset.cat) : U._openGrp.delete(el.dataset.cat); };
+  U.askGen = function (key) {
+    const id = key === 'complaint' ? 'mob-acc-complaint' : 'mob-acc-' + key;
+    const el = $(id);
+    if (el && !el.classList.contains('open')) mobToggleAccordion(id);
+    if (key === 'complaint') { try { complaintAsked = true; } catch (e) {} }
+    if (!U.anamLog.some(e => e.t === 'gen' && e.key === key)) U.anamLog.push({ t: 'gen', key });
+    anamRec(); renderFile(); renderDock(); renderTop(); shAnamnez(true);
+  };
+  U.askQ = function (qId, catId, subId) {
+    const had = !!(window._aqAnswered || {})[qId];
+    askAnamnezQ(qId, catId, subId);
+    if (!had && (window._aqAnswered || {})[qId]) U.anamLog.push({ t: 'q', id: qId });
+    anamRec(); renderFile(); renderDock(); shAnamnez(true);
+  };
+
+  /* Muayene */
+  function shMuayene() {
+    const done = examDoneKeys(), core = (typeof EXAM_CORE !== 'undefined' ? EXAM_CORE : []);
+    const allCore = core.every(k => done.includes(k));
+    let h = `<button type="button" class="u2-btn wide" style="width:100%;margin-bottom:6px;background:var(--c-muayene)" onclick="UI2.examAll()" ${allCore ? 'disabled' : ''}>${I('muayene')}${allCore ? 'Genel muayene yapıldı' : 'Genel muayeneyi yap'}</button>
+      <div style="font-size:12.5px;color:var(--muted);margin-bottom:10px;text-align:center">Ateş, solunum, nabız, mukoza, lenf nodları ve palpasyon tek seferde.</div>
+      <div class="u2-h3">Tek tek muayene</div><div class="u2-opts">`;
+    PHYS.forEach(p => {
+      const d = done.includes(p.key);
+      h += `<button type="button" class="u2-opt${d ? ' done' : ''}" onclick="UI2.exam('${p.key}')" ${d ? 'aria-disabled="true"' : ''}><span class="grow">${p.ad}${d ? '<small>Yapıldı</small>' : ''}</span></button>`;
+    });
+    h += '</div>';
+    if (emergency()) h = `<div class="u2-gate">${I('uyari')}<div>Acil vaka: her muayene bir işlem hakkı harcar (genel muayene tek hak).</div></div>` + h;
+    openSheet('muayene', 'Fiziksel muayene', 'Bulgular dosyadaki muayene kaydında toplanır.', h,
+      `<span class="grow">${done.length} bulgu alındı</span><button type="button" class="u2-btn" onclick="UI2.closeSheet()">Dosyaya dön</button>`);
+  }
+  U.examAll = function () {
+    const before = examDoneKeys().length;
+    mobDoAllExam();
+    if (examDoneKeys().length > before) { examRec(); U.closeSheet(); show(U.recs.find(x => x.cat === 'muayene').id); }
+  };
+  U.exam = function (k) {
+    const el = $('mob-acc-phys-' + k); if (!el || el.dataset.done) return;
+    mobToggleAccordion('mob-acc-phys-' + k);
+    if (el.dataset.done) { examRec(); renderFile(); renderDock(); shMuayene(); }
+  };
+
+  /* İleri muayene */
+  function shIleri() {
+    const c = C(), tools = c.tools || {};
+    const items = [['otoscope', 'Otoskopi', 'Kulak kanalı ve kulak zarı'], ['ophthalmo', 'Oftalmoskopi', 'Göz dibi ve göz'], ['pharyngo', 'Faringoskopi', 'Ağız ve yutak'], ['reflex', 'Refleks muayenesi', 'Refleks çekici ile'], ['woodslamp', "Wood's lambası", 'Deri ve tüy']];
+    const done = new Set(U.recs.filter(r => r.cat === 'ileri').map(r => r.title.toLocaleLowerCase('tr-TR')));
+    const h = '<div class="u2-list">' + items.map(([k, ad, sub]) => {
+      const has = !!tools[k], d = [...done].some(t => t.startsWith(ad.toLocaleLowerCase('tr-TR').slice(0, 6)));
+      return `<button type="button" class="u2-opt${d ? ' done' : ''}${has ? '' : ' na'}" onclick="UI2.tool('${k}')"><span class="grow">${ad}<small>${has ? sub : 'Bu vakada tanımlı değil'}</small></span></button>`;
+    }).join('') + '</div>';
+    openSheet('ileri', 'İleri muayene', 'Muayene aletini seç. Bulgu dosyaya kaydedilir.', h, '');
+  }
+  U.tool = function (k) {
+    U.closeSheet();
+    runAndFile(() => mobDoTool(k));
+  };
+
+  /* Laboratuvar */
+  U._labTab = 'hemo';
+  function shLab(tab) {
+    if (tab) U._labTab = tab;
+    const c = C(), t = U._labTab;
+    const seg = `<div class="u2-seg" role="tablist">${[['hemo', 'Hemogram'], ['biyo', 'Biyokimya'], ['hormon', 'Hormon']].map(([k, ad]) => `<button type="button" role="tab" aria-selected="${t === k}" class="${t === k ? 'on' : ''}" onclick="UI2.lab('${k}')">${ad}</button>`).join('')}</div>`;
+    let h = seg, foot = '';
+    if (t === 'hemo') {
+      const n = (c.hemogram || []).length;
+      const did = U.recs.some(r => r.cat === 'lab' && /hemogram/i.test(r.title));
+      h += `<div class="u2-meta"><span>Kan: tam kan (EDTA), 2 ml</span><span>${n} parametre</span></div>
+        <div style="font-size:14px;color:var(--ink-2);line-height:1.5">Hemogram tam panel olarak çalışılır: eritrosit, lökosit ve trombosit serileri ile lökosit formülü.${did ? '<div class="u2-gate ok" style="margin-top:12px">' + I('onay') + '<div>Bu hastanın hemogramı dosyada. Tekrar istersen yeni bir kayıt açılır.</div></div>' : ''}</div>`;
+      foot = `<button type="button" class="u2-btn wide cat" style="background:var(--c-lab)" onclick="UI2.runHemo()">${I('lab')}Numuneyi gönder (hemogram)</button>`;
+    } else {
+      const data = t === 'biyo' ? (c.biochemistry || {}) : (c.hormones || {});
+      const avail = p => { if (t === 'biyo') return true; const v = data[p] ? String(data[p].value || '') : ''; return v !== '' && v !== '—' && v !== '-'; };
+      h += gateNote(t === 'biyo' ? 'Biyokimya' : 'Hormon paneli');
+      h += `<div class="u2-meta"><span>Kan: serum, 2 ml</span><button type="button" class="u2-link" onclick="UI2.selAll()">Paneldeki tümünü seç</button></div><div class="u2-checks" id="u2-checks">`;
+      Object.keys(data).forEach(p => {
+        const ok = avail(p);
+        h += `<label class="u2-check${ok ? '' : ' off'}"><input type="checkbox" value="${esc(p)}" ${ok ? '' : 'disabled'} onchange="UI2.labCount()"><span>${esc(p)}</span></label>`;
+      });
+      h += '</div>' + (t === 'hormon' ? '<div style="font-size:12.5px;color:var(--muted);margin-top:8px">Soluk olanlar bu vakada çalışılamıyor.</div>' : '');
+      foot = `<button type="button" class="u2-btn wide" id="u2-lab-send" style="background:var(--c-lab)" onclick="UI2.runPanel()" disabled>Test seç</button>`;
+    }
+    openSheet('lab', 'Laboratuvar', 'Testleri seç ve numuneyi gönder. Sonuç dosyaya düşer.', h, foot);
+  }
+  U.lab = t => shLab(t);
+  U.labCount = function () {
+    const n = document.querySelectorAll('#u2-checks input:checked').length, b = $('u2-lab-send');
+    if (!b) return; b.disabled = !n; b.innerHTML = n ? `${I('lab')}Numuneyi gönder (${n} test)` : 'Test seç';
+  };
+  U.selAll = function () { document.querySelectorAll('#u2-checks input:not([disabled])').forEach(i => i.checked = true); U.labCount(); };
+  U.runHemo = function () { U.closeSheet(); runAndFile(() => mobOpenHemogram()); };
+  U.runPanel = function () {
+    const t = U._labTab, sel = [...document.querySelectorAll('#u2-checks input:checked')].map(i => i.value);
+    if (!sel.length) return;
+    if (!requireGeneralExam(t === 'biyo' ? 'biyokimya' : 'hormon paneli')) return;
+    U.closeSheet();
+    const tmp = document.createElement('div'); tmp.style.display = 'none';
+    const cls = t === 'biyo' ? 'mob-biyo-chip' : 'mob-hormon-chip';
+    tmp.innerHTML = sel.map(p => `<button class="${cls} selected" data-param="${esc(p)}"></button>`).join('');
+    document.body.appendChild(tmp);
+    try { runAndFile(() => (t === 'biyo' ? mobRunBiyo() : mobRunHormon())); } finally { tmp.remove(); }
+  };
+
+  /* Görüntüleme */
+  function shGoruntu() {
+    const c = C(), im = c.imaging || {};
+    const items = [['xray_direct', 'Direkt röntgen', 0], ['xray_indirect', 'İndirekt röntgen', 0], ['usg', 'USG', 0], ['echo', 'EKO', 0], ['bt', 'BT', 1], ['mr', 'MR', 1]];
+    U._img = U._img && im[U._img] ? U._img : null;
+    let h = gateMissing().length ? `<div class="u2-gate">${I('kilit')}<div>BT ve MR için önce: ${gateMissing().map(esc).join(', ')}.</div></div>` : '';
+    h += '<div class="u2-opts">' + items.map(([k, ad, g]) => {
+      const has = !!im[k];
+      return `<button type="button" class="u2-opt${U._img === k ? ' sel' : ''}${has ? '' : ' na'}" onclick="UI2.pickImg('${k}')" aria-pressed="${U._img === k}"><span class="grow">${ad}<small>${has ? (g ? 'Pahalı tetkik' : 'Hazır') : 'Bu vakada yok'}</small></span>${g ? lock() : ''}</button>`;
+    }).join('') + '</div>';
+    openSheet('goruntu', 'Görüntüleme', 'Yöntemi seç. Görüntüyü yorumladıktan sonra sonucu açarsın.', h,
+      `<button type="button" class="u2-btn wide" style="background:var(--c-goruntu)" onclick="UI2.runImg()" ${U._img ? '' : 'disabled'}>${U._img ? I('goruntu') + 'Çek' : 'Yöntem seç'}</button>`);
+  }
+  U.pickImg = k => { const c = C(); if (!(c.imaging || {})[k]) { showToast('Bu görüntüleme bu vakada tanımlı değil.'); return; } U._img = k; shGoruntu(); };
+  U.runImg = function () { const k = U._img; if (!k) return; U.closeSheet(); U._img = null; mobDoImaging(k); };
+
+  /* Mikroskopi */
+  function shMikro() {
+    const c = C(), mi = c.microscopy || {};
+    const items = [['blood', 'Kan yayması', 'Kan', 0], ['urine', 'İdrar', 'İdrar sedimenti', 0], ['stool', 'Dışkı', 'Flotasyon ve direkt bakı', 0], ['skin', 'Deri kazıntısı', 'Deri', 0], ['biopsy', 'Biyopsi', 'Doku', 1], ['effusion', 'Abdominosentez', 'Efüzyon ve Rivalta', 1]];
+    let h = '<div class="u2-opts">' + items.map(([k, ad, sub, g]) => {
+      const has = !!mi[k];
+      return `<button type="button" class="u2-opt${U._mic === k ? ' sel' : ''}${has ? '' : ' na'}" onclick="UI2.pickMic('${k}')" aria-pressed="${U._mic === k}"><span class="grow">${ad}<small>${has ? sub : 'Bu vakada yok'}</small></span>${g ? lock() : ''}</button>`;
+    }).join('') + '</div>';
+    if (gateMissing().length) h = `<div class="u2-gate">${I('kilit')}<div>Biyopsi ve abdominosentez için önce: ${gateMissing().map(esc).join(', ')}.</div></div>` + h;
+    openSheet('mikro', 'Mikroskopi', 'Örnek türünü seç ve preparatı incele.', h,
+      `<button type="button" class="u2-btn wide" style="background:var(--c-mikro)" onclick="UI2.runMic()" ${U._mic ? '' : 'disabled'}>${U._mic ? I('mikro') + 'İncele' : 'Örnek seç'}</button>`);
+  }
+  U.pickMic = k => { const c = C(); if (!(c.microscopy || {})[k]) { showToast('Bu bakı bu vakada tanımlı değil.'); return; } U._mic = k; shMikro(); };
+  U.runMic = function () { const k = U._mic; if (!k) return; U.closeSheet(); U._mic = null; mobDoMicro(k); };
+
+  /* Hızlı kit */
+  U._kitS = 'blood';
+  function shKit(s) {
+    if (s) U._kitS = s;
+    const c = C();
+    const sb = kitsFor(c, 'blood').length, ss = kitsFor(c, 'stool').length;
+    if (!sb && ss) U._kitS = 'stool';
+    const kits = kitsFor(c, U._kitS);
+    let h = `<div class="u2-seg" role="tablist">${[['blood', 'Kan', sb], ['stool', 'Dışkı', ss]].map(([k, ad, n]) => `<button type="button" role="tab" aria-selected="${U._kitS === k}" class="${U._kitS === k ? 'on' : ''}" onclick="UI2.kitS('${k}')" ${n ? '' : 'disabled'}>${ad}</button>`).join('')}</div>`;
+    h += kits.length ? kits.map(k => {
+      const n = ((typeof kitRuns !== 'undefined' && kitRuns[k.id]) || []).length;
+      return `<div class="u2-kit"><div class="grow"><b>${esc(k.label)}</b><small>${esc(k.desc || '')}</small>${n ? `<span class="used">${n} kez uygulandı</span>` : ''}</div>
+        <button type="button" class="u2-btn" style="background:var(--c-kit);min-height:44px;padding:0 14px" onclick="UI2.useKit('${k.id}')">Uygula</button></div>`;
+    }).join('') : '<div style="color:var(--muted)">Bu örnek için uygun hızlı kit yok.</div>';
+    h += `<div class="u2-limit">Kitler yanlış sonuç verebilir. Sonuç penceresinden testi tekrarlayabilir ya da laboratuvar doğrulaması isteyebilirsin.</div>`;
+    openSheet('kit', 'Hızlı kit', 'Örneği kite damlat, sonucu oku.', h, '');
+  }
+  U.kitS = s => shKit(s);
+  U.useKit = function (id) { U.closeSheet(); U.ctx = 'kit'; U.ctxKit = id; mobUseRapidKit(id, U._kitS); };
+
+  /* ══════════ Sonuç ekranı ══════════ */
+  function afterResult(correct, selected, real) {
+    const head = $('result-header-area'), body = $('result-body'), acts = $('result-actions');
+    if (!head) return;
+    const c = C() || (typeof currentCase !== 'undefined' && currentCase) || {};
+    const name = c._randomName || '';
+    const dx = correct ? (selected && selected.name) : (real && real.name);
+    head.innerHTML = `<div class="u2-res-top${correct ? '' : ' bad'}">
+        <div class="k">${I(correct ? 'onay' : 'kapat')}${correct ? 'Doğru tanı' : 'Doğru tanı bu değildi'}</div>
+        <h1>${esc(dx || '—')}</h1>
+        ${!correct && selected ? `<div class="yours">Senin cevabın: ${esc(selected.name)}</div>` : ''}
+        <div class="sub">${esc([name, c.caseId].filter(Boolean).join(', '))}</div></div>
+      <div class="u2-stats">
+        <div class="u2-stat"><b>${(typeof usedTetkikLog !== 'undefined' ? usedTetkikLog.length : 0)}</b><small>işlem</small></div>
+        <div class="u2-stat"><b>${U.anamLog.length}</b><small>anamnez sorusu</small></div>
+        <div class="u2-stat"><b>${dur()}</b><small>süre</small></div></div>`;
+    // "Kullanılan teknikler" yerine: yapılan işlemler, sırasıyla
+    const steps = U.recs.slice().sort((a, b) => a.seq - b.seq);
+    const first = body.querySelector('.rb-sec');
+    if (first && steps.length) first.outerHTML = `<div class="rb-sec"><div class="rb-sec-title">Yaptığın işlemler, sırasıyla</div><ul class="u2-steps-done">${steps.map(r => `<li><span class="n">${r.seq}</span>${chip(r.cat, 1)}<span>${esc(r.title)}</span></li>`).join('')}</ul></div>`;
+    body.querySelectorAll('.rb-sec-title').forEach(t => {
+      const s = window.vtxStripEmoji ? window.vtxStripEmoji(t.textContent) : t.textContent;
+      if (/AYIRici TANI|AYIRICI TANI/i.test(s)) t.textContent = 'Nelerden ayırmalıydın';
+      else if (!/[a-zçğıöşü]/.test(s)) t.textContent = sentence(s);
+    });
+    if (acts && !acts.querySelector('.u2-flagbtn')) acts.insertAdjacentHTML('afterbegin', `<button class="ra-btn u2-flagbtn" onclick="openCaseReport()" style="flex:0 0 auto;min-width:46px;color:var(--iod)" aria-label="Vakada hata bildir">${I('bayrak')}</button>`);
+    acts && acts.querySelectorAll('.ra-btn').forEach(b => { const t = b.textContent.trim(); if (/^[^a-zçğıöşü]*$/.test(t) && t.length > 3) b.lastChild && (b.lastChild.nodeValue = sentence(t)); });
+  }
+  function dur() {
+    try { const s = Math.floor((Date.now() - startTime) / 1000); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); } catch (e) { return '—'; }
+  }
+
+  /* ══════════ Eski fonksiyonlara bağlantılar ══════════ */
+  function wrap(name, after, before) {
+    const orig = window[name]; if (typeof orig !== 'function') return;
+    window[name] = function () {
+      if (before && U.on) { const r = before.apply(this, arguments); if (r === false) return; }
+      const out = orig.apply(this, arguments);
+      if (U.on) try { after && after.apply(this, [out].concat([].slice.call(arguments))); } catch (e) { console.warn('[UI2]', name, e); }
+      return out;
+    };
+  }
+  function hook() {
+    wrap('mobBuildClinicScreen', () => caseStart());
+    wrap('mobGoHome', () => caseEnd());
+    wrap('mobLog', (o, title, html) => onLog(title, html));
+    wrap('consumeAction', () => { renderTop(); });
+    wrap('spendCredit', () => { renderTop(); });
+    wrap('closeModal', () => { if (document.body.classList.contains('u2-incase')) { renderDock(); renderTop(); } });
+    wrap('renderNotes', () => { if (document.body.classList.contains('u2-incase')) renderDock(); });
+    wrap('mobDoAllExam', () => { if (examDoneKeys().length && U.recs.find(x => x.cat === 'muayene') == null) examRec(); renderFile(); renderDock(); });
+    wrap('openResultScreen', (o, correct, selected, real) => afterResult(correct, selected, real));
+    wrap('mobOpenSettings', () => U.go('ayar-mark'));
+    wrap('mobCloseSettings', () => U.go('home-mark'));
+    wrap('mobShowScreen', (o, id) => { if (id === 'mob-home-screen') U.go('home-mark'); });
+    wrap('mobUpdatePatientCard', () => renderTop());
+    wrap('openModal', () => { const t = $('modal-title'); if (t) t.textContent = sentence(t.textContent); });
+    // "Muayeneye dön": eksik olan adımın panelini aç
+    wrap('goToGeneralExam', () => { U.closeSheet(); U.open(complaintAsked ? 'muayene' : 'anamnez'); });
+    // Android geri tuşu: önce açık paneli kapat
+    const back = window.__vtxBack;
+    if (typeof back === 'function') window.__vtxBack = function (opts) {
+      if (U.on && U.sheet && !(document.getElementById('modal-overlay') || {}).classList?.contains('open')) { U.closeSheet(); return true; }
+      return back(opts);
+    };
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    try { hook(); enable(); } catch (e) { console.error('[UI2] başlatılamadı', e); }
+  });
 })();
 </script>
 </body>
