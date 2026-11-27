@@ -9914,7 +9914,7 @@ window.__vtxBack = function (opts) {
   function steps() {
     return [
       { sec: 'Tanışma', title: 'VetTEX\'e hoş geldin', btn: 'Başlayalım',
-        text: 'Bu kısa turda yeni arayüzü tanıyacak ve bir köpek hastayı baştan sona birlikte çözeceğiz. İstediğin an "Turu bitir" ile çıkabilirsin.' },
+        text: 'Bu kısa turda yeni arayüzü tanıyacak ve bir köpek hastayı baştan sona birlikte çözeceğiz. Yaklaşık 5 dakika sürer; vurgulanan yerlere dokunarak ilerlersin.' },
       { t: '.u2-menu', title: 'Oyun ayarları', text: 'Serbest çalışma belirli hastalık listeleriyle çalışmanı sağlar. Acil modda bazı hastalar acil gelir ve 5 işlem hakkın olur. Ekonomi modunda her tetkik bütçeden düşer. USG / EKO yardımı raporların sonunda uzman yorumunu gösterir. Bu turda acil mod ve ekonomi kapalı.' },
       { t: '#u2-nav', title: 'Alt menü ve tema', text: 'Karnem kendi sonuçlarını gösterir; Ayarlar\'da ses ve profil seçenekleri var, bu turu da oradan yeniden izleyebilirsin. Sağ üstteki ay ikonu karanlık moda geçirir.' },
       { t: '.u2-hero', title: 'Klinik mod', text: 'Asıl oyun burada: kliniğe rastgele bir hasta gelir, her adım senin. Klinik moda dokun.', act: () => ($('mob-species-screen') || {}).offsetParent !== null || inCase() },
@@ -9933,7 +9933,8 @@ window.__vtxBack = function (opts) {
       { t: 'details.u2-grp[data-cat="sindirim"] > summary', title: 'Sistem seç', needCase: 1, rec: inSheet('spesifik'),
         text: 'Sorular sistemlere göre gruplu. Şikayet sindirim sistemini gösteriyor; o grubu aç.',
         act: () => !!document.querySelector('details.u2-grp[data-cat="sindirim"][open]') },
-      { t: 'button.u2-q[onclick*="\'diskilama_2\'"]', title: 'Hedefli soru', needCase: 1, rec: inSheet('spesifik'),
+      { t: 'details.u2-grp[open] button.u2-q[onclick*="\'diskilama_2\'"]', title: 'Hedefli soru', needCase: 1,
+        rec: () => inSheet('spesifik')() || (document.querySelector('details.u2-grp[data-cat="sindirim"][open]') ? null : { el: vis('details.u2-grp[data-cat="sindirim"] > summary'), text: 'Önce Sindirim Sistemi grubunu aç.' }),
         text: 'Dışkıda kan olup olmadığını sor.', act: () => !!(window._aqAnswered || {}).diskilama_2 },
       { t: '#u2-sh-foot .u2-btn:last-child', title: 'Dosyaya dön', needCase: 1,
         text: 'Cevaplar dosyada ayrı bir kayıtta toplanır. "Dosyaya dön"e dokun.', act: () => !U.sheet },
@@ -10021,7 +10022,7 @@ window.__vtxBack = function (opts) {
   #vtx-tour .vt-next:focus-visible,#vtx-tour .vt-skip:focus-visible{outline:2px solid var(--scrub);outline-offset:2px}
   @media (prefers-reduced-motion: reduce){#vtx-tour *{animation:none!important;transition:none!important}}`;
 
-  let root, bl, ring, cover, card, S = null, list = [], i = 0, timer = 0, lastEl = null, advancing = false, saved = {};
+  let root, bl, ring, cover, card, S = null, mand = false, list = [], i = 0, timer = 0, lastEl = null, advancing = false, saved = {};
   function build() {
     if (!$('vtx-tour-css')) { const st = document.createElement('style'); st.id = 'vtx-tour-css'; st.textContent = CSS; document.head.appendChild(st); }
     root = document.createElement('div'); root.id = 'vtx-tour';
@@ -10040,7 +10041,7 @@ window.__vtxBack = function (opts) {
     const n = list.length;
     let sec = 'Tanışma'; for (let j = 0; j <= i; j++) if (list[j].sec) sec = list[j].sec;
     const si = SECS.indexOf(sec) + 1;
-    card.innerHTML = `<div class="vt-top"><span class="vt-n">${st.last ? 'Tamamlandı' : sec + ' · bölüm ' + si + '/' + SECS.length}</span>${st.last ? '' : '<button type="button" class="vt-skip">Turu bitir</button>'}</div>
+    card.innerHTML = `<div class="vt-top"><span class="vt-n">${st.last ? 'Tamamlandı' : sec + ' · bölüm ' + si + '/' + SECS.length}</span>${st.last || mand ? '' : '<button type="button" class="vt-skip">Turu bitir</button>'}</div>
       <div class="vt-bar"><i style="width:${Math.round(((i + 1) / n) * 100)}%"></i></div>
       <h3 id="vt-h">${st.title}</h3><p>${st.text}</p>${warn ? `<p class="vt-warn">${warn}</p>` : ''}
       <div class="vt-foot">${st.act || warn ? '<span class="vt-hint">Vurgulanan yere dokun</span>' : `<button type="button" class="vt-next">${st.btn || 'İleri'}</button>`}</div>`;
@@ -10057,7 +10058,11 @@ window.__vtxBack = function (opts) {
   function tick() {
     if (!S) return;
     const st = list[i]; if (!st) return;
-    if (st.needCase && !inCase() && !resultOpen()) { finish(false, 'Vakadan çıktığın için tur durdu. Ayarlar\'dan yeniden başlatabilirsin.'); return; }
+    if (st.needCase && !inCase() && !resultOpen()) {
+      // Zorunlu turda vakadan çıkılırsa tur bitmez: hasta kabulünden yeniden başlar
+      if (mand) { const k = list.findIndex(x => x.title === 'Klinik mod'); if (k >= 0) { i = k; lastEl = null; advancing = false; if (typeof showToast === 'function') showToast('Tur vakası yeniden başlıyor.'); } return; }
+      finish(false, 'Vakadan çıktığın için tur durdu. Ayarlar\'dan yeniden başlatabilirsin.'); return;
+    }
     if (st.act && !advancing && st.act()) { advancing = true; setTimeout(() => { advancing = false; if (list[i] === st) next(); }, 380); }
     let el = target(st), warn = '';
     if (st.rec && !advancing) {
@@ -10159,13 +10164,18 @@ window.__vtxBack = function (opts) {
     waitT = setInterval(() => {
       if (!ready()) return;
       clearInterval(waitT);
-      S = true; list = steps(); i = 0; lastEl = null; advancing = false;
+      S = true; mand = !force; list = steps(); i = 0; lastEl = null; advancing = false;
       setup(); build(); tick();
       timer = setInterval(tick, 120);
       addEventListener('resize', () => S && tick());
     }, 400);
   }
   U.tour = { start: () => start(true), stop: () => finish(false), get on() { return !!S; } };
+  // Zorunlu turda Android geri tuşu turu ve vakayı bozmasın
+  document.addEventListener('DOMContentLoaded', () => {
+    const back = window.__vtxBack;
+    if (typeof back === 'function') window.__vtxBack = function (opts) { if (S && mand) return true; return back(opts); };
+  });
 
   // İlk açılış: tur tamamlanmadıysa giriş ekranları kapandıktan sonra başlar
   document.addEventListener('DOMContentLoaded', () => {
