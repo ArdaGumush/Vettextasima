@@ -2314,6 +2314,80 @@ body.ui2 #mob-content { background: var(--paper); padding-bottom: 0; }
 .u2-flow span { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: var(--ink-2); flex: 1; }
 .u2-flow .ar { flex: 0; color: var(--field); }
 .k-spesifik { --c: #8A3B6E; --t: #F5E3EF; }
+.k-acil { --c: #DC2626; --t: #FEE2E2; }
+.u2-hero { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; width: 100%; padding: 26px 20px 20px; border: 0; border-radius: 18px; background: var(--scrub); color: #fff; cursor: pointer; box-shadow: 0 12px 28px rgba(45,92,127,.30); transition: transform .12s, background .12s; }
+.u2-hero:hover { background: var(--scrub-hover); transform: translateY(-2px); }
+.u2-hero:active { transform: translateY(0); }
+.u2-hero .ic { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,.16); display: grid; place-items: center; box-shadow: 0 0 0 8px rgba(255,255,255,.07); margin-bottom: 4px; }
+.u2-hero .ic svg.vi { width: 32px; height: 32px; }
+.u2-hero b { font-stretch: 72%; font-weight: 800; font-size: 30px; line-height: 1.05; }
+.u2-hero small { font-size: 14px; color: #D6E3EC; line-height: 1.45; max-width: 300px; }
+.u2-hero .go { margin-top: 8px; display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 18px; border-radius: 20px; background: #fff; color: var(--scrub); font-size: 14px; font-weight: 700; }
+.u2-menu .u2-row:last-child { margin-bottom: 0; }
+
+/* ── Karanlık mod ── */
+body.ui2.u2-dark {
+  --paper:#0F1517; --surface:#172124; --ink:#E4ECEE; --ink-2:#C2CDD0; --muted:#8C9DA1;
+  --rule:#2A373B; --rule-soft:#223034; --field:#3B4A4E;
+  --scrub:#3E7CAE; --scrub-hover:#4A8CC0; --scrub-tint:#17303F;
+  --iod:#E0794A; --iod-dark:#F2A27C; --iod-tint:#3A2216;
+  --ok:#4FB57A; --ok-tint:#16301F;
+  --c-anamnez:#7FB2DA; --t-anamnez:#17303F;
+  --c-muayene:#6CC08E; --t-muayene:#16301F;
+  --c-ileri:#A9B6C0; --t-ileri:#243036;
+  --c-lab:#B58BD8; --t-lab:#2A2036;
+  --c-goruntu:#5FC0CC; --t-goruntu:#12303A;
+  --c-mikro:#D4B062; --t-mikro:#302812;
+  --c-kit:#E0875A; --t-kit:#3A2216;
+  --c-not:#C9C2B0; --t-not:#2C2A24;
+  --bg-card:#1B272A; --bg-hover:#1F2C30;
+  color-scheme: dark;
+}
+body.ui2.u2-dark .k-spesifik { --c: #E08CBF; --t: #3A1F31; }
+body.ui2.u2-dark .k-acil { --c: #F87171; --t: #3B1A1A; }
+body.ui2.u2-dark .k-dog { --c: #E0B06A; --t: #33280F; }
+body.ui2.u2-dark .k-cat { --c: #B9A8F0; --t: #28223F; }
+body.ui2.u2-dark .k-any { --c: #7FB2DA; --t: #17303F; }
+body.ui2.u2-dark .u2-row:hover, body.ui2.u2-dark .u2-q:hover, body.ui2.u2-dark .u2-duo button:hover,
+body.ui2.u2-dark .u2-act:hover, body.ui2.u2-dark .u2-nav button:hover, body.ui2.u2-dark .u2-ibtn:hover,
+body.ui2.u2-dark .modal-close:hover, body.ui2.u2-dark .u2-dock .u2-act:hover { background: #1F2C30; }
+body.ui2.u2-dark .note-pen:hover { background: #1F2C30; }
+body.ui2.u2-dark .u2-paper { background: #121B1D; box-shadow: inset 0 0 0 1px #26353A; }
+body.ui2.u2-dark .u2-paper td { border-top-color: #26353A; }
+body.ui2.u2-dark #modal-content table th { background: #1B272A !important; }
+body.ui2.u2-dark .u2-seg { background: #0F1517; }
+body.ui2.u2-dark .u2-seg button.on { background: #24343A; }
+body.ui2.u2-dark .u2-switch i, body.ui2.u2-dark .u2-grab, body.ui2.u2-dark #modal-box::before { background: #3B4A4E; }
+body.ui2.u2-dark .u2-btn[disabled] { background: #2A373B !important; color: #6E8084; }
+body.ui2.u2-dark .u2-check:has(input:checked) { background: #2A2036; }
+body.ui2.u2-dark .u2-flow { background: rgba(255,255,255,.02); }
+body.ui2.u2-dark .u2-hero { box-shadow: 0 12px 28px rgba(0,0,0,.45); }
+body.ui2.u2-dark .u2-hero .go { background: #E4ECEE; color: #1D4F75; }
+body.ui2.u2-dark .u2-vital.st-h { background: #3A1A1A; border-color: #6B2A2A; }
+body.ui2.u2-dark .u2-vital.st-h small, body.ui2.u2-dark .u2-vital.st-h b, body.ui2.u2-dark .u2-vital.st-h .ref { color: #FCA5A5; }
+body.ui2.u2-dark .u2-vital.st-l { background: #162544; border-color: #2B4A86; }
+body.ui2.u2-dark .u2-vital.st-l small, body.ui2.u2-dark .u2-vital.st-l b, body.ui2.u2-dark .u2-vital.st-l .ref { color: #93C5FD; }
+body.ui2.u2-dark .u2-vital.st-s { background: #33280F; border-color: #6B5418; }
+body.ui2.u2-dark .u2-vital.st-s small, body.ui2.u2-dark .u2-vital.st-s b, body.ui2.u2-dark .u2-vital.st-s .ref { color: #FCD34D; }
+body.ui2.u2-dark .st-n .u2-st, body.ui2.u2-dark .u2-st.n { background: #16301F; color: #86EFAC; }
+body.ui2.u2-dark .st-s .u2-st, body.ui2.u2-dark .u2-st.s { background: #5A4510; color: #FDE68A; }
+body.ui2.u2-dark .u2-paper tr.st-h td { background: #2E1616; }
+body.ui2.u2-dark .u2-paper tr.st-h td.v { color: #FCA5A5; }
+body.ui2.u2-dark .u2-paper tr.st-l td { background: #13213B; }
+body.ui2.u2-dark .u2-paper tr.st-l td.v { color: #93C5FD; }
+body.ui2.u2-dark .u2-paper tr.st-s td { background: #2A220E; }
+body.ui2.u2-dark .u2-paper tr.st-s td.v { color: #FCD34D; }
+body.ui2.u2-dark .kaset { background: #E8E6E0; }
+body.ui2.u2-dark .u2-gate { background: #33280F; color: #FCD34D; }
+body.ui2.u2-dark .u2-gate.ok { background: #16301F; color: #86EFAC; }
+body.ui2.u2-dark .u2-res-top { background: #16301F; }
+body.ui2.u2-dark .u2-res-top.bad { background: #3A2216; }
+body.ui2.u2-dark .u2-res-top .k { color: #86EFAC; }
+body.ui2.u2-dark .u2-res-top.bad .k, body.ui2.u2-dark .u2-res-top .yours { color: #F2A27C; }
+body.ui2.u2-dark #toast { background: #E4ECEE; color: #0F1517; }
+body.ui2.u2-dark .u2-badge { border-color: var(--surface); color: #0F1517; }
+body.ui2.u2-dark .u2-act.hint .u2-chip { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--c-anamnez); }
+body.ui2.u2-dark .u2-scrim, body.ui2.u2-dark #modal-overlay { background: rgba(0,0,0,.6); }
 .u2-ibtn.notes { position: relative; color: var(--c-not); }
 .u2-ibtn .u2-nb { position: absolute; top: 4px; right: 3px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 8px; background: var(--c-not); color: #fff; font-size: 10px; font-weight: 700; display: grid; place-items: center; box-sizing: border-box; }
 .u2-ibtn .u2-nb:empty { display: none; }
@@ -2438,6 +2512,11 @@ body.ui2.u2-incase #mob-content { display: none !important; }
 .st-n .u2-st, .u2-st.n { background: #DCFCE7; color: #15803D; }
 .st-s .u2-st, .u2-st.s { background: #FDE68A; color: #92400E; }
 .st-h .u2-st, .u2-st.h { background: #DC2626; color: #fff; }
+.st-l .u2-st, .u2-st.l { background: #2563EB; color: #fff; }
+.u2-vital.st-l { background: #EFF6FF; border-color: #BFDBFE; }
+.u2-vital.st-l small, .u2-vital.st-l b, .u2-vital.st-l .ref { color: #1E40AF; }
+.u2-paper tr.st-l td { background: #EFF6FF; }
+.u2-paper tr.st-l td.v { color: #1D4ED8; font-weight: 700; }
 .u2-vital.st-s { background: #FFFBEB; border-color: #FDE68A; }
 .u2-vital.st-s small, .u2-vital.st-s b, .u2-vital.st-s .ref { color: #92400E; }
 .u2-vital.st-h { background: #FEF2F2; border-color: #FECACA; }
@@ -9014,6 +9093,15 @@ window.__vtxBack = function (opts) {
     try { mobileMode = true; } catch (e) {}
     document.body.classList.add('mobile-mode');
     const w = $('welcome'); if (w) w.style.cssText = 'display:none!important';
+    try { U.dark = localStorage.getItem('vtx-ui2-dark') === '1'; } catch (e) { U.dark = false; }
+    document.body.classList.toggle('u2-dark', U.dark);
+    // Ayarlardaki eski "Aydınlık mod" satırı → "Karanlık mod"
+    const lt = $('settings-lightmode-toggle');
+    if (lt) {
+      lt.checked = U.dark; lt.setAttribute('onchange', 'UI2.setDark(this.checked)');
+      const lb = lt.closest('.settings-row') && lt.closest('.settings-row').querySelector('.sr-label');
+      if (lb) lb.innerHTML = 'Karanlık mod<span>Açık ve koyu tema arasında geçiş yapar, ayar kaydedilir</span>';
+    }
     buildShell();
     renderHome();
     if (typeof mobShowScreen === 'function') mobShowScreen('mob-home-screen');
@@ -9072,17 +9160,16 @@ window.__vtxBack = function (opts) {
         <div><h1 class="u2-h1">Vakalar</h1>
         <p class="u2-lead">Hastayı sen karşıla: anamnezi al, muayene et, tetkiki seç ve tanıyı koy.</p></div>
         <div id="u2-banner-slot"></div>
-        <button type="button" class="u2-big" onclick="mobOpenClinic()"><span class="ic">${I('klinik')}</span><span class="tx"><b>Klinik mod</b><small>Yeni hasta kabul et. Rastgele bir vaka gelir, tanıyı sen koyarsın.</small></span>${I('geri', 'u2-rot')}</button>
-        <label class="u2-acil${emerg ? ' on' : ''}" id="u2-acil" for="u2-emerg">
-          <span class="ic">${I('uyari')}</span>
-          <b>Acil mod</b>
-          <p>Açıkken bazı hastalar acil gelir, her tetkiki iyi seçmen gerekir.</p>
-          <span class="pills"><span>5 işlem hakkı</span><span>Vakaların %10'u</span></span>
-          <span class="sw"><span class="u2-switch"><input type="checkbox" id="u2-emerg" ${emerg ? 'checked' : ''} onchange="UI2.setEmerg(this.checked)"><i></i></span><span id="u2-acil-t">${emerg ? 'Açık' : 'Kapalı'}</span></span>
-        </label>
-        <div class="u2-duo">
-          <button type="button" onclick="mobOpenFreeStudy()"><span class="u2-chip k-goruntu">${I('kitap')}</span><b>Serbest çalışma</b><small>Seçtiğin hastalık listeleriyle</small></button>
-          <button type="button" onclick="UI2.go('karne')"><span class="u2-chip k-muayene">${I('grafik')}</span><b>Karnem</b><small>Çözdüğün vakalar ve başarın</small></button>
+        <button type="button" class="u2-hero" onclick="mobOpenClinic()">
+          <span class="ic">${I('klinik')}</span>
+          <b>Klinik mod</b>
+          <small>Yeni hasta kabul et. Rastgele bir vaka gelir, anamnezden tanıya kadar her adım senin.</small>
+          <span class="go">Hasta kabul et ${I('geri', 'u2-rot')}</span>
+        </button>
+        <div class="u2-menu">
+          <button type="button" class="u2-row" onclick="mobOpenFreeStudy()"><span class="u2-chip k-goruntu">${I('kitap')}</span><span class="grow"><b>Serbest çalışma</b><small>Seçtiğin hastalık listeleriyle çalış</small></span><span class="chev">${I('geri', 'u2-rot')}</span></button>
+          <label class="u2-row" for="u2-emerg"><span class="u2-chip k-acil">${I('uyari')}</span><span class="grow"><b>Acil mod</b><small>Bazı hastalar acil gelir: 5 işlem hakkı</small></span><span class="u2-switch"><input type="checkbox" id="u2-emerg" ${emerg ? 'checked' : ''} onchange="UI2.setEmerg(this.checked)"><i></i></span></label>
+          <label class="u2-row" for="u2-dark"><span class="u2-chip k-ileri">${I('ay')}</span><span class="grow"><b>Karanlık mod</b><small>Gece çalışırken gözünü yormaz</small></span><span class="u2-switch"><input type="checkbox" id="u2-dark" ${U.dark ? 'checked' : ''} onchange="UI2.setDark(this.checked)"><i></i></span></label>
         </div>
         <div class="u2-flow" aria-label="Bir vakanın adımları">
           <span>${chip('anamnez', 1)}Anamnez</span><span class="ar">${I('geri', 'u2-rot')}</span>
@@ -9109,8 +9196,15 @@ window.__vtxBack = function (opts) {
   U.setEmerg = function (on) {
     if (typeof onSettingsEmergencyToggle === 'function') onSettingsEmergencyToggle(on);
     const t = $('settings-emergency-toggle'); if (t) t.checked = on;
-    const a = $('u2-acil'); if (a) a.classList.toggle('on', on);
-    const at = $('u2-acil-t'); if (at) at.textContent = on ? 'Açık' : 'Kapalı';
+    const h = $('u2-emerg'); if (h) h.checked = on;
+  };
+  // Karanlık mod: yeni arayüzün kendi teması (eski "Aydınlık mod" ayarının yerine)
+  U.setDark = function (on) {
+    U.dark = !!on;
+    document.body.classList.toggle('u2-dark', U.dark);
+    try { localStorage.setItem('vtx-ui2-dark', U.dark ? '1' : '0'); } catch (e) {}
+    ['u2-dark', 'settings-lightmode-toggle'].forEach(id => { const t = $(id); if (t) t.checked = U.dark; });
+    const m = document.querySelector('meta[name="theme-color"]'); if (m) m.setAttribute('content', U.dark ? '#0F1517' : '#EEF1F0');
   };
   U.go = function (k) {
     if (/-mark$/.test(k)) { const m = k.replace(/-mark$/, ''); document.querySelectorAll('#u2-nav button').forEach(b => b.classList.toggle('on', b.dataset.k === m)); return; }
@@ -9272,7 +9366,7 @@ window.__vtxBack = function (opts) {
     if (isNaN(v) || isNaN(lo) || isNaN(hi)) return { st: 'n', lbl: 'Normal' };
     const m = (hi - lo) * 0.05;
     if (v > hi) return v - hi <= m ? { st: 's', lbl: 'Sınırda ↑' } : { st: 'h', lbl: 'Yüksek' };
-    if (v < lo) return lo - v <= m ? { st: 's', lbl: 'Sınırda ↓' } : { st: 'h', lbl: 'Düşük' };
+    if (v < lo) return lo - v <= m ? { st: 's', lbl: 'Sınırda ↓' } : { st: 'l', lbl: 'Düşük' };
     return { st: 'n', lbl: 'Normal' };
   }
   function examBody() {
@@ -9328,15 +9422,15 @@ window.__vtxBack = function (opts) {
       const rm = String(x.r).match(/([\d.,]+)\s*[–-]\s*([\d.,]+)/), vn = num(String(x.v).match(/-?[\d.,]+/) || '');
       if (x.f) {
         const s = rm ? stat(vn, num(rm[1]), num(rm[2])) : { st: 'h' };
-        x.st = s.st === 'n' ? 'h' : s.st;
+        x.st = s.st === 'n' ? (x.f === 'H' ? 'h' : 'l') : s.st === 'h' && x.f === 'L' ? 'l' : s.st;
         x.lbl = x.st === 's' ? (x.f === 'H' ? 'Sınırda ↑' : 'Sınırda ↓') : (x.f === 'H' ? 'Yüksek' : 'Düşük');
       } else { x.st = 'n'; x.lbl = ''; }
       return x;
     });
     const row = x => `<tr class="st-${x.st}"><td>${esc(x.p)}</td><td class="v">${esc(x.v)}</td><td class="f">${x.lbl ? `<span class="u2-st ${x.st}">${x.lbl}</span>` : ''}</td><td class="r">${esc(x.r)}</td><td class="note-pen-cell">${pen(src, [x.p, x.v, x.r, x.f].filter(Boolean).join(' · '))}</td></tr>`;
     const head = '<tr><th>Parametre</th><th class="v">Sonuç</th><th>Durum</th><th class="r">Referans</th><th></th></tr>';
-    const nh = rows.filter(x => x.st === 'h').length, ns = rows.filter(x => x.st === 's').length, nn = rows.length - nh - ns;
-    const sum = `<div class="u2-labsum">${nh ? `<span class="u2-st h">${nh} anormal</span>` : ''}${ns ? `<span class="u2-st s">${ns} sınırda</span>` : ''}<span class="u2-st n">${nn} normal</span></div>`;
+    const nh = rows.filter(x => x.st === 'h').length, nl = rows.filter(x => x.st === 'l').length, ns = rows.filter(x => x.st === 's').length, nn = rows.length - nh - nl - ns;
+    const sum = `<div class="u2-labsum">${nh ? `<span class="u2-st h">${nh} yüksek</span>` : ''}${nl ? `<span class="u2-st l">${nl} düşük</span>` : ''}${ns ? `<span class="u2-st s">${ns} sınırda</span>` : ''}<span class="u2-st n">${nn} normal</span></div>`;
     return sum + `<div class="u2-paper mono"><table>${head}${rows.map(row).join('')}</table></div>`;
   }
   function kasetHTML(res, label, big) {
