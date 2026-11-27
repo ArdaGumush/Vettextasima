@@ -6690,7 +6690,7 @@ function revealMicroInterp(type) {
 // Acil vakada uygulanmaz (sahip "ne gerekiyorsa yapın" der).
 // ═══════════════════════════════════════════════════════════════
 const EXAM_CORE = ['temp', 'resp', 'hr', 'mucosa', 'lymph', 'palp'];
-const EXAM_CORE_LABELS = { temp: 'Vücut sıcaklığı', resp: 'Solunum sayısı', hr: 'Kalp atım sayısı', mucosa: 'Mukoza / KDZ', lymph: 'Lenf nodları', palp: 'Palpasyon' };
+const EXAM_CORE_LABELS = { temp: 'Vücut sıcaklığı', resp: 'Solunum sayısı', hr: 'Kalp atım sayısı', mucosa: 'Mukoza / CRT', lymph: 'Lenf nodları', palp: 'Palpasyon' };
 function generalExamMissing() {
   const c = currentCase || mobCurrentCase;
   const miss = [];
@@ -9387,7 +9387,7 @@ window.__vtxBack = function (opts) {
   /* ── Muayene kaydı (tek kart) ── */
   const PHYS = [
     { key: 'temp', ad: 'Vücut sıcaklığı', src: 'physical' }, { key: 'resp', ad: 'Solunum sayısı', src: 'physical' },
-    { key: 'hr', ad: 'Kalp atım sayısı', src: 'physical' }, { key: 'mucosa', ad: 'Mukoza ve KDZ', src: 'physical' },
+    { key: 'hr', ad: 'Kalp atım sayısı', src: 'physical' }, { key: 'mucosa', ad: 'Mukoza ve CRT', src: 'physical' },
     { key: 'lymph', ad: 'Lenf nodları', src: 'physical' }, { key: 'palp', ad: 'Palpasyon', src: 'physical' },
     { key: 'inspection', ad: 'İnspeksiyon', src: 'tools' }, { key: 'auscultation', ad: 'Oskültasyon', src: 'tools' }
   ];
@@ -9421,7 +9421,7 @@ window.__vtxBack = function (opts) {
     if (done.includes('mucosa')) {
       const m = plain(txt('mucosa')).match(/(?:CRT|KDZ|KRT)\s*:?\s*([\d.,]+)\s*sn/i);
       if (m) { const v = num(m[1]); const r = v <= 2 ? { st: 'n', lbl: 'Normal' } : v <= 2.5 ? { st: 's', lbl: 'Sınırda' } : { st: 'h', lbl: 'Uzamış' };
-        add('KDZ', Object.assign({ v: m[1], ref: '< 2' }, r), ' sn'); }
+        add('CRT', Object.assign({ v: m[1], ref: '< 2' }, r), ' sn'); }
     }
     const finds = done.filter(k => !used.has(k)).map(k => {
       const p = PHYS.find(x => x.key === k), t = txt(k);
