@@ -2315,6 +2315,39 @@ body.ui2 #mob-content { background: var(--paper); padding-bottom: 0; }
 .u2-flow .ar { flex: 0; color: var(--field); }
 .k-spesifik { --c: #8A3B6E; --t: #F5E3EF; }
 .k-acil { --c: #DC2626; --t: #FEE2E2; }
+.u2-brand { align-items: center; }
+.u2-theme { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--rule); background: var(--surface); color: var(--ink); display: grid; place-items: center; cursor: pointer; flex-shrink: 0; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+.u2-theme:hover { background: var(--scrub-tint); color: var(--scrub); }
+.u2-theme svg.vi { width: 21px; height: 21px; }
+
+/* ── Yan ray (işlem paneli seçenekleri, telefon ve tablet) ── */
+.u2-railtab, .u2-ibtn.railtop, .u2-dxbar { display: none; }
+.u2-main { position: relative; }
+@media (max-width: 1023px) {
+  body.u2-dk-rail .u2-dxbar { display: block; flex-shrink: 0; background: var(--surface); border-top: 1px solid var(--rule); padding: 8px 12px calc(12px + env(safe-area-inset-bottom, 0px)); }
+  body.u2-dk-rail .u2-dock .u2-dx, body.u2-dk-rail .u2-dock-title { display: none !important; }
+  body.u2-dk-rail .u2-dock { position: absolute; top: 0; bottom: 0; right: 0; width: 92px; padding: 6px 4px; border-top: 0; border-left: 1px solid var(--rule); box-shadow: -8px 0 24px rgba(15,23,42,.16); background: var(--surface); z-index: 20; transform: translateX(100%); transition: transform .26s cubic-bezier(.22,1,.36,1); overflow-y: auto; }
+  body.u2-dk-rail.u2-rail-open .u2-dock { transform: none; }
+  body.u2-dk-rail .u2-dock-in { height: 100%; }
+  body.u2-dk-rail .u2-grid { display: flex; flex-direction: column; height: 100%; gap: 2px; margin: 0; }
+  body.u2-dk-rail .u2-act { flex: 1; min-height: 58px; font-size: 11.5px; gap: 4px; justify-content: center; }
+  /* push: ray açılınca dosya daralır */
+  body.u2-dk-push .u2-main { flex-direction: row; }
+  body.u2-dk-push .u2-dock { position: relative; transform: none; width: 0; padding-left: 0; padding-right: 0; border-left-width: 0; box-shadow: none; transition: width .26s cubic-bezier(.22,1,.36,1); overflow: hidden; flex-shrink: 0; }
+  body.u2-dk-push.u2-rail-open .u2-dock { width: 92px; padding: 6px 4px; border-left-width: 1px; }
+  body.u2-dk-push .u2-file { transition: padding .26s; }
+  /* ok: sağ kenarın ortasında */
+  body.u2-dk-push .u2-railtab, body.u2-dk-over .u2-railtab { display: grid; place-items: center; position: absolute; right: 0; top: 50%; width: 30px; height: 68px; margin-top: -34px; border: 1px solid var(--rule); border-right: 0; border-radius: 12px 0 0 12px; background: var(--surface); color: var(--scrub); box-shadow: -4px 2px 12px rgba(15,23,42,.14); cursor: pointer; z-index: 21; transition: right .26s cubic-bezier(.22,1,.36,1); }
+  body.u2-dk-push .u2-railtab { position: absolute; }
+  body.u2-dk-rail.u2-rail-open .u2-railtab { right: 92px; }
+  body.u2-dk-rail.u2-rail-open .u2-railtab svg, body.u2-dk-top.u2-rail-open .u2-ibtn.railtop svg { transform: rotate(180deg); }
+  .u2-railtab svg.vi { width: 20px; height: 20px; transition: transform .2s; }
+  /* ok: sağ üstte */
+  body.u2-dk-top .u2-ibtn.railtop { display: grid; color: var(--scrub); background: var(--scrub-tint); border-radius: 12px; }
+  body.u2-dk-top .u2-ibtn.railtop svg.vi { transition: transform .2s; }
+  body.u2-dk-rail.u2-incase.mobile-mode #toast { bottom: calc(90px + env(safe-area-inset-bottom, 0px)); }
+}
+body.ui2.u2-dark.u2-dk-rail .u2-dock { box-shadow: -8px 0 24px rgba(0,0,0,.5); }
 .u2-hero { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; width: 100%; padding: 26px 20px 20px; border: 0; border-radius: 18px; background: var(--scrub); color: #fff; cursor: pointer; box-shadow: 0 12px 28px rgba(45,92,127,.30); transition: transform .12s, background .12s; }
 .u2-hero:hover { background: var(--scrub-hover); transform: translateY(-2px); }
 .u2-hero:active { transform: translateY(0); }
@@ -9116,17 +9149,24 @@ window.__vtxBack = function (opts) {
         <button type="button" class="u2-ibtn" onclick="mobConfirmBack()" aria-label="Vakalara dön">${I('geri')}</button>
         <div class="u2-pt" id="u2-pt"></div>
         <button type="button" class="u2-ibtn notes" onclick="mobOpenNotes()" aria-label="Notlarım">${I('not')}<span class="u2-nb" id="u2-nb"></span></button>
+        <button type="button" class="u2-ibtn railtop" id="u2-railtop" onclick="UI2.rail()" aria-label="Klinik işlemleri aç" aria-expanded="false">${I('geri')}</button>
         <button type="button" class="u2-ibtn flag" onclick="openCaseReport()" aria-label="Vakada hata bildir">${I('bayrak')}</button>
       </header>
       <div class="u2-main">
         <main class="u2-file" id="u2-file" tabindex="-1"><div class="u2-file-in" id="u2-file-in"></div></main>
+        <button type="button" class="u2-railtab" id="u2-railtab" onclick="UI2.rail()" aria-label="Klinik işlemleri aç" aria-expanded="false">${I('geri')}</button>
         <nav class="u2-dock" aria-label="Klinik işlemler"><div class="u2-dock-in">
           <div class="u2-dock-title">Klinik işlemler</div>
           <div class="u2-grid" id="u2-grid"></div>
           <button type="button" class="u2-dx" onclick="mobOpenDiagnosis()">${I('onay')}Tanı koy</button>
         </div></nav>
-      </div>`;
+      </div>
+      <div class="u2-dxbar"><button type="button" class="u2-dx" onclick="mobOpenDiagnosis()">${I('onay')}Tanı koy</button></div>`;
     wrap.appendChild(caseEl);
+    // İşlem paneli düzeni: grid (alt panel), push (yan ray ekranı daraltır), over (yan ray üstüne açılır), top (ok sağ üstte)
+    let dk = 'grid';
+    try { dk = new URLSearchParams(location.search).get('dock') || localStorage.getItem('vtx-ui2-dock') || 'grid'; } catch (e) {}
+    U.setDock(dk);
     const nav = document.createElement('nav');
     nav.className = 'u2-nav'; nav.id = 'u2-nav'; nav.setAttribute('aria-label', 'Ana gezinme');
     nav.innerHTML = `
@@ -9155,7 +9195,8 @@ window.__vtxBack = function (opts) {
     const banner = home.querySelector('.vtx-demo-banner');
     const emerg = typeof emergencyModeEnabled !== 'undefined' && emergencyModeEnabled;
     home.innerHTML = `<div class="u2-home c">
-      <div class="u2-brand"><span class="u2-brand-mark">${I('muayene')}</span><div><div class="u2-brand-name">VetTEX</div><div class="u2-brand-sub">Klinik simülasyon</div></div></div>
+      <div class="u2-brand"><span class="u2-brand-mark">${I('muayene')}</span><div style="flex:1"><div class="u2-brand-name">VetTEX</div><div class="u2-brand-sub">Klinik simülasyon</div></div>
+        <button type="button" class="u2-theme" id="u2-theme" onclick="UI2.setDark(!UI2.dark)" aria-label="${U.dark ? 'Aydınlık moda geç' : 'Karanlık moda geç'}">${I(U.dark ? 'gunes' : 'ay')}</button></div>
       <div class="mid">
         <div><h1 class="u2-h1">Vakalar</h1>
         <p class="u2-lead">Hastayı sen karşıla: anamnezi al, muayene et, tetkiki seç ve tanıyı koy.</p></div>
@@ -9169,13 +9210,8 @@ window.__vtxBack = function (opts) {
         <div class="u2-menu">
           <button type="button" class="u2-row" onclick="mobOpenFreeStudy()"><span class="u2-chip k-goruntu">${I('kitap')}</span><span class="grow"><b>Serbest çalışma</b><small>Seçtiğin hastalık listeleriyle çalış</small></span><span class="chev">${I('geri', 'u2-rot')}</span></button>
           <label class="u2-row" for="u2-emerg"><span class="u2-chip k-acil">${I('uyari')}</span><span class="grow"><b>Acil mod</b><small>Bazı hastalar acil gelir: 5 işlem hakkı</small></span><span class="u2-switch"><input type="checkbox" id="u2-emerg" ${emerg ? 'checked' : ''} onchange="UI2.setEmerg(this.checked)"><i></i></span></label>
-          <label class="u2-row" for="u2-dark"><span class="u2-chip k-ileri">${I('ay')}</span><span class="grow"><b>Karanlık mod</b><small>Gece çalışırken gözünü yormaz</small></span><span class="u2-switch"><input type="checkbox" id="u2-dark" ${U.dark ? 'checked' : ''} onchange="UI2.setDark(this.checked)"><i></i></span></label>
-        </div>
-        <div class="u2-flow" aria-label="Bir vakanın adımları">
-          <span>${chip('anamnez', 1)}Anamnez</span><span class="ar">${I('geri', 'u2-rot')}</span>
-          <span>${chip('muayene', 1)}Muayene</span><span class="ar">${I('geri', 'u2-rot')}</span>
-          <span>${chip('lab', 1)}Tetkik</span><span class="ar">${I('geri', 'u2-rot')}</span>
-          <span><span class="u2-chip sm" style="--c:#fff;--t:var(--scrub)">${I('onay')}</span>Tanı</span>
+          <label class="u2-row" for="u2-eco"><span class="u2-chip k-mikro">${I('kart')}</span><span class="grow"><b>Ekonomi modu</b><small>Hasta sahibine bütçe atanır</small></span><span class="u2-switch"><input type="checkbox" id="u2-eco" ${typeof economyMode !== 'undefined' && economyMode ? 'checked' : ''} onchange="UI2.setOpt('eco', this.checked)"><i></i></span></label>
+          <label class="u2-row" for="u2-usg"><span class="u2-chip k-goruntu">${I('goruntu')}</span><span class="grow"><b>USG / EKO yardımı</b><small>Rapor sonunda uzman yorumu görünür</small></span><span class="u2-switch"><input type="checkbox" id="u2-usg" ${typeof usgShowConclusion !== 'undefined' && usgShowConclusion ? 'checked' : ''} onchange="UI2.setOpt('usg', this.checked)"><i></i></span></label>
         </div>
       </div>
     </div>`;
@@ -9198,12 +9234,17 @@ window.__vtxBack = function (opts) {
     const t = $('settings-emergency-toggle'); if (t) t.checked = on;
     const h = $('u2-emerg'); if (h) h.checked = on;
   };
+  U.setOpt = function (k, on) {
+    if (k === 'eco') { if (typeof onEconomyToggle === 'function') onEconomyToggle(on); const t = $('settings-economy-toggle'); if (t) t.checked = on; }
+    if (k === 'usg') { if (typeof onUsgConclusionToggle === 'function') onUsgConclusionToggle(on); const t = $('settings-usgsonuc-toggle'); if (t) t.checked = on; }
+  };
   // Karanlık mod: yeni arayüzün kendi teması (eski "Aydınlık mod" ayarının yerine)
   U.setDark = function (on) {
     U.dark = !!on;
     document.body.classList.toggle('u2-dark', U.dark);
     try { localStorage.setItem('vtx-ui2-dark', U.dark ? '1' : '0'); } catch (e) {}
     ['u2-dark', 'settings-lightmode-toggle'].forEach(id => { const t = $(id); if (t) t.checked = U.dark; });
+    const tb = $('u2-theme'); if (tb) { tb.innerHTML = I(U.dark ? 'gunes' : 'ay'); tb.setAttribute('aria-label', U.dark ? 'Aydınlık moda geç' : 'Karanlık moda geç'); }
     const m = document.querySelector('meta[name="theme-color"]'); if (m) m.setAttribute('content', U.dark ? '#0F1517' : '#EEF1F0');
   };
   U.go = function (k) {
@@ -9523,8 +9564,23 @@ window.__vtxBack = function (opts) {
     if (!keepModal && U.recs.length > before && typeof closeModal === 'function') closeModal();
   }
 
+  U.setDock = function (m) {
+    if (!['grid', 'push', 'over', 'top'].includes(m)) m = 'grid';
+    U.dockMode = m;
+    document.body.classList.remove('u2-dk-grid', 'u2-dk-push', 'u2-dk-over', 'u2-dk-top', 'u2-dk-rail');
+    document.body.classList.add('u2-dk-' + m);
+    if (m !== 'grid') document.body.classList.add('u2-dk-rail');
+    try { localStorage.setItem('vtx-ui2-dock', m); } catch (e) {}
+    U.rail(false);
+  };
+  U.rail = function (open) {
+    const on = open === undefined ? !document.body.classList.contains('u2-rail-open') : !!open;
+    document.body.classList.toggle('u2-rail-open', on);
+    ['u2-railtab', 'u2-railtop'].forEach(id => { const b = $(id); if (b) { b.setAttribute('aria-expanded', String(on)); b.setAttribute('aria-label', on ? 'Klinik işlemleri kapat' : 'Klinik işlemleri aç'); } });
+  };
   U.open = function (k) {
     if (!C()) return;
+    if (U.dockMode && U.dockMode !== 'grid' && U.dockMode !== 'push') U.rail(false);
     U.ctx = k;
     if (k === 'not') { mobOpenNotes(); return; }
     ({ anamnez: shAnamnez, spesifik: shSpesifik, muayene: shMuayene, ileri: shIleri, lab: shLab, goruntu: shGoruntu, mikro: shMikro, kit: shKit })[k]();
