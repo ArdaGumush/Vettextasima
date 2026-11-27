@@ -9884,13 +9884,15 @@ window.__vtxBack = function (opts) {
 
   /* ── Menüden bir işlem açma: (mobilde) ok → kategori ── */
   const CATN = { anamnez: 'Anamnez', muayene: 'Muayene', lab: 'Laboratuvar', goruntu: 'Görüntüleme', kit: 'Hızlı kit' };
-  function openCat(cat, title, text) {
-    return [
-      { t: '#u2-railtab', title, text: text + ' Önce sağ kenardaki oka dokunarak menüyü aç.', act: () => railOpen(),
-        skip: () => !railMode() || railOpen() || U.sheet === cat, needCase: 1 },
-      { t: '.u2-act.k-' + cat, title, text: (railMode() ? '' : text + ' ') + CATN[cat] + ' seçeneğine dokun.', act: () => U.sheet === cat,
-        skip: () => U.sheet === cat, rec: needRail, needCase: 1 }
-    ];
+  function openCat(cat, title, text, sec) {
+    // Tek adım: menü kapalıysa ok, açıksa kategori vurgulanır
+    return [{ t: '.u2-act.k-' + cat, title, sec, needCase: 1, act: () => U.sheet === cat, skip: () => U.sheet === cat,
+      text: text + (railMode() ? ' Sağdaki oktan menüyü aç ve ' : ' ') + CATN[cat] + ' seçeneğine dokun.',
+      rec: () => {
+        if (U.sheet && U.sheet !== cat) return { el: vis('#u2-sh-foot .u2-btn:last-child') || vis('.u2-close'), text: 'Önce açık paneli kapat.' };
+        if (railMode() && !railOpen()) return { el: vis('#u2-railtab'), text: '' };
+        return null;
+      } }];
   }
   // Menü kapalıysa önce oku göster
   function needRail() {
@@ -9906,108 +9908,86 @@ window.__vtxBack = function (opts) {
     const r = needRail(); if (r) return r;
     return { el: vis('.u2-act.k-' + cat), text: 'Panel kapandı. ' + CATN[cat] + ' seçeneğine yeniden dokun.' };
   };
+  const SECS = ['Tanışma', 'Anamnez', 'Muayene', 'Laboratuvar', 'Görüntüleme', 'Hızlı kit', 'Tanı'];
 
   /* ══════════ Adımlar ══════════ */
   function steps() {
     return [
-      { title: 'VetTEX\'e hoş geldin', btn: 'Başlayalım',
-        text: 'Bu kısa turda yeni arayüzü tanıyacak ve bir köpek hastayı baştan sona birlikte çözeceğiz: anamnez, muayene, kan tahlilleri, röntgen ve hızlı test. İstediğin an "Turu bitir" ile çıkabilirsin.' },
-      { t: '#u2-theme', title: 'Tema', text: 'Aydınlık ve karanlık tema arasında buradan geçersin. Seçimin kaydedilir.' },
-      { t: '.u2-hero', title: 'Klinik mod', text: 'Asıl oyun burada. Kliniğe rastgele bir hasta gelir, anamnezden tanıya kadar her adım senin. Birazdan buradan başlayacağız.' },
-      { t: '.u2-menu .u2-row[onclick*="FreeStudy"]', title: 'Serbest çalışma', text: 'Belirli hastalık listeleriyle çalışmak istediğinde buraya gir.' },
-      { t: 'label[for="u2-emerg"]', title: 'Acil mod', text: 'Açıkken bazı hastalar acil gelir ve sadece 5 işlem hakkın olur; her tetkiki dikkatle seçmen gerekir. Bu turda acil vaka gelmeyecek.' },
-      { t: 'label[for="u2-eco"]', title: 'Ekonomi modu', text: 'Hasta sahibine bir bütçe atanır, her tetkik kredi harcar. Gereksiz tetkikten kaçınmayı öğretir.' },
-      { t: 'label[for="u2-usg"]', title: 'USG / EKO yardımı', text: 'Açıkken ultrason ve EKO raporlarının sonunda uzman yorumu görünür. Kapalıyken raporu kendin yorumlarsın.' },
-      { t: '#u2-nav', title: 'Alt menü', text: 'Vakalar ana ekrana döner. Karnem kendi sonuçlarını gösterir. Ayarlar\'da ses, tema ve profil seçenekleri var; bu turu da oradan yeniden izleyebilirsin. İletişim\'den bize yazabilirsin.' },
-      { t: '.u2-hero', title: 'Hasta kabul et', text: 'Hadi başlayalım. Klinik moda dokun.', act: () => ($('mob-species-screen') || {}).offsetParent !== null || inCase() },
-      { t: '#mob-species-screen .u2-row[onclick*="\'dog\'"]', title: 'Tür seç', text: 'Köpeğe dokun. Kliniğe yeni bir köpek hasta geliyor.', act: () => inCase() && U.recs !== undefined && typeof mobCurrentCase !== 'undefined' && !!mobCurrentCase },
+      { sec: 'Tanışma', title: 'VetTEX\'e hoş geldin', btn: 'Başlayalım',
+        text: 'Bu kısa turda yeni arayüzü tanıyacak ve bir köpek hastayı baştan sona birlikte çözeceğiz. İstediğin an "Turu bitir" ile çıkabilirsin.' },
+      { t: '.u2-menu', title: 'Oyun ayarları', text: 'Serbest çalışma belirli hastalık listeleriyle çalışmanı sağlar. Acil modda bazı hastalar acil gelir ve 5 işlem hakkın olur. Ekonomi modunda her tetkik bütçeden düşer. USG / EKO yardımı raporların sonunda uzman yorumunu gösterir. Bu turda acil mod ve ekonomi kapalı.' },
+      { t: '#u2-nav', title: 'Alt menü ve tema', text: 'Karnem kendi sonuçlarını gösterir; Ayarlar\'da ses ve profil seçenekleri var, bu turu da oradan yeniden izleyebilirsin. Sağ üstteki ay ikonu karanlık moda geçirir.' },
+      { t: '.u2-hero', title: 'Klinik mod', text: 'Asıl oyun burada: kliniğe rastgele bir hasta gelir, her adım senin. Klinik moda dokun.', act: () => ($('mob-species-screen') || {}).offsetParent !== null || inCase() },
+      { t: '#mob-species-screen .u2-row[onclick*="\'dog\'"]', title: 'Tür seç', text: 'Köpeğe dokun.', act: () => inCase() && typeof mobCurrentCase !== 'undefined' && !!mobCurrentCase },
 
-      { t: '.u2-top', title: 'Hasta bilgisi', needCase: 1, text: 'Üstte hastanın adı, türü, yaşı ve cinsiyeti var. Şikayeti dinlediğinde kısa özeti de burada görünür.' },
-      { t: '#u2-file', title: 'Hasta dosyası', needCase: 1, text: 'Yaptığın her işlem buraya bir kayıt olarak düşer, en yenisi en üstte. Tanıya giderken bütün bulgular tek yerde.' },
-      { t: '#u2-railtab', title: 'İşlem menüsü', needCase: 1, text: 'Bütün klinik işlemler sağ kenardaki bu okun arkasında. Menüyü açmak için oka dokun.',
+      { sec: 'Anamnez', t: '#u2-file', title: 'Hasta dosyası', needCase: 1, text: 'Üstte hastanın adı, türü ve yaşı var. Yaptığın her işlem bu dosyaya bir kayıt olarak düşer, en yenisi en üstte.' },
+      { t: '#u2-railtab', title: 'İşlem menüsü', needCase: 1, text: 'Bütün klinik işlemler sağ kenardaki bu okun arkasında: anamnezden hızlı kite kadar. Oka dokun.',
         act: () => railOpen(), skip: () => !railMode() || railOpen() },
-      { t: () => vis('.u2-dock .u2-grid'), title: 'Klinik işlemler', needCase: 1, rec: needRail,
-        text: 'Anamnez, spesifik sorular, muayene, ileri muayene, laboratuvar, görüntüleme, mikroskopi ve hızlı kit. Bir işlemi yaptıkça üstünde kaç kez yaptığın görünür.' },
-      { t: '.u2-act.k-anamnez', title: 'Anamnez', needCase: 1, rec: needRail, text: 'Her vaka hasta sahibini dinleyerek başlar. Anamneze dokun.', act: () => U.sheet === 'anamnez' },
+      { t: '.u2-act.k-anamnez', title: 'Anamnez', needCase: 1, rec: needRail, text: 'Her vaka hasta sahibini dinleyerek başlar. Bir işlemi yaptıkça menüde kaç kez yaptığın görünür. Anamneze dokun.', act: () => U.sheet === 'anamnez' },
       { t: '#u2-sh-body button.u2-q[onclick*="askGen(\'complaint\')"]', title: 'Şikayeti dinle', needCase: 1, rec: inSheet('anamnez'),
         text: 'İlk soru her zaman şikayet. "Sor"a dokun.', act: () => (typeof complaintAsked !== 'undefined' && complaintAsked === true) || U.anamLog.some(e => e.key === 'complaint') },
       { t: '#u2-sh-body button.u2-q[onclick*="askGen(\'vaccine\')"]', title: 'Aşı geçmişi', needCase: 1, rec: inSheet('anamnez'),
         text: 'Genç bir köpekte aşı durumu çok şey anlatır. Aşı sorusunu da sor.', act: () => U.anamLog.some(e => e.key === 'vaccine') },
       { t: '#u2-sh-foot button[onclick*="spesifik"]', title: 'Spesifik sorular', needCase: 1, rec: inSheet('anamnez'),
-        text: 'Genel sorulardan sonra ayırıcı tanı için sisteme göre hedefli sorular sorarsın. "Spesifik"e dokun.', act: () => U.sheet === 'spesifik' },
+        text: 'Ayırıcı tanı için sisteme göre hedefli sorular ayrı bir menüde. "Spesifik"e dokun.', act: () => U.sheet === 'spesifik' },
       { t: 'details.u2-grp[data-cat="sindirim"] > summary', title: 'Sistem seç', needCase: 1, rec: inSheet('spesifik'),
-        text: 'Sorular sistemlere göre gruplu. Şikayet sindirim sistemini gösteriyor; Sindirim Sistemi grubunu aç.',
+        text: 'Sorular sistemlere göre gruplu. Şikayet sindirim sistemini gösteriyor; o grubu aç.',
         act: () => !!document.querySelector('details.u2-grp[data-cat="sindirim"][open]') },
       { t: 'button.u2-q[onclick*="\'diskilama_2\'"]', title: 'Hedefli soru', needCase: 1, rec: inSheet('spesifik'),
         text: 'Dışkıda kan olup olmadığını sor.', act: () => !!(window._aqAnswered || {}).diskilama_2 },
       { t: '#u2-sh-foot .u2-btn:last-child', title: 'Dosyaya dön', needCase: 1,
-        text: 'Spesifik soruların cevapları dosyada ayrı bir kayıtta toplanır. "Dosyaya dön"e dokun.', act: () => !U.sheet },
+        text: 'Cevaplar dosyada ayrı bir kayıtta toplanır. "Dosyaya dön"e dokun.', act: () => !U.sheet },
 
-      ...openCat('muayene', 'Muayene', 'Şimdi hastayı muayene edelim.'),
+      ...openCat('muayene', 'Muayene', 'Şimdi hastayı muayene edelim.', 'Muayene'),
       { t: '#u2-sh-body .u2-btn.wide[onclick*="examAll"]', title: 'Genel muayene', needCase: 1, rec: inSheet('muayene'),
-        text: 'Ateş, solunum, nabız, mukoza, CRT, lenf nodları ve palpasyon tek dokunuşla. Biyokimya gibi pahalı tetkikler ancak şikayet dinlenip genel muayene yapıldıktan sonra açılır.',
+        text: 'Ateş, solunum, nabız, mukoza, CRT, lenf nodları ve palpasyon tek dokunuşla. Pahalı tetkikler ancak şikayet dinlenip genel muayene yapıldıktan sonra açılır.',
         act: () => !!recOf('muayene') && !U.sheet },
       { t: () => { const e = recEl('muayene'); return e && (e.querySelector('.u2-vitals') || e); }, title: 'Renkler ne anlatıyor', needCase: 1,
-        text: 'Değerler referansa göre renklenir: yeşil normal, sarı sınırda, kırmızı yüksek, mavi düşük. Bu hastada CRT (kapiller dolum zamanı) 4 saniye; 2 saniyeyi geçmesi dehidrasyonu düşündürür.' },
+        text: 'Yeşil normal, sarı sınırda, kırmızı yüksek, mavi düşük. Bu hastada CRT 4 saniye; 2 saniyeyi geçmesi dehidrasyonu düşündürür.' },
 
-      ...openCat('lab', 'Laboratuvar', 'Sıra kan tahlillerinde.'),
+      ...openCat('lab', 'Laboratuvar', 'Sıra kan tahlillerinde.', 'Laboratuvar'),
       { t: '#u2-sh-foot .u2-btn[onclick*="runHemo"]', title: 'Hemogram', needCase: 1,
         rec: inSheet('lab', () => U._labTab === 'hemo', '#u2-sh-body .u2-seg button[onclick*="\'hemo\'"]', 'Hemogram'),
-        text: 'Laboratuvarda Hemogram, Biyokimya ve Hormon sekmeleri var. Hemogram tam panel çalışılır; numuneyi gönder.',
-        act: () => !!recOf('lab', /hemogram/i) },
+        text: 'Hemogram, Biyokimya ve Hormon sekmeleri var. Hemogram tam panel çalışılır; numuneyi gönder.', act: () => !!recOf('lab', /hemogram/i) },
       { t: () => recEl('lab', /hemogram/i), title: 'Hemogram sonucu', needCase: 1,
-        text: 'Bütün parametreler görünür, anormaller renkli. Mavi WBC lökopeniyi gösterir: kusan ve ishal olan genç bir köpekte bu güçlü bir ipucu. Yüksek HCT ise dehidrasyona işaret eder.' },
-
+        text: 'Bütün değerler görünür, anormaller renkli. Mavi WBC lökopeni demek: kusan ve ishal olan genç köpekte güçlü bir ipucu. Yüksek HCT dehidrasyona işaret eder.' },
       ...openCat('lab', 'Biyokimya', 'Şimdi biyokimyaya bakalım.'),
       { t: '#u2-sh-body .u2-seg button[onclick*="\'biyo\'"]', title: 'Biyokimya sekmesi', needCase: 1, rec: inSheet('lab'),
         text: 'Biyokimya sekmesine geç.', act: () => U.sheet === 'lab' && U._labTab === 'biyo', skip: () => U.sheet === 'lab' && U._labTab === 'biyo' },
-      { t: '#u2-sh-body .u2-link[onclick*="selAll"]', title: 'Test seç', needCase: 1, rec: inSheet('lab', () => U._labTab === 'biyo', '#u2-sh-body .u2-seg button[onclick*="\'biyo\'"]', 'Biyokimya'),
-        text: 'Biyokimyada parametreleri tek tek seçebilirsin. Bu sefer "Paneldeki tümünü seç"e dokun.',
-        act: () => { const b = $('u2-lab-send'); return !!b && !b.disabled; } },
-      { t: '#u2-lab-send', title: 'Numuneyi gönder', needCase: 1, rec: inSheet('lab', () => U._labTab === 'biyo', '#u2-sh-body .u2-seg button[onclick*="\'biyo\'"]', 'Biyokimya'),
-        text: 'Seçtiğin testlerle numuneyi gönder.', act: () => !!recOf('lab', /biyokimya/i) },
+      { t: () => { const b = $('u2-lab-send'); return b && !b.disabled ? b : vis('#u2-sh-body .u2-link[onclick*="selAll"]'); }, title: 'Test seç ve gönder', needCase: 1,
+        rec: inSheet('lab', () => U._labTab === 'biyo', '#u2-sh-body .u2-seg button[onclick*="\'biyo\'"]', 'Biyokimya'),
+        text: 'Parametreleri tek tek de seçebilirsin; bu sefer "Paneldeki tümünü seç"e, sonra "Numuneyi gönder"e dokun.', act: () => !!recOf('lab', /biyokimya/i) },
       { t: () => recEl('lab', /biyokimya/i), title: 'Biyokimya sonucu', needCase: 1,
         text: 'Düşük glukoz, albümin, sodyum ve potasyum; yüksek BUN. Kusma ve ishalle kaybedilen sıvının ve elektrolitlerin izi.' },
 
-      ...openCat('goruntu', 'Görüntüleme', 'Karına bir de röntgenle bakalım.'),
-      { t: '#u2-sh-body .u2-opt[onclick*="xray_direct"]', title: 'Yöntem seç', needCase: 1, rec: inSheet('goruntu'),
-        text: 'Direkt röntgeni seç. BT ve MR gibi pahalı yöntemler genel muayeneden önce kilitlidir.', act: () => U._img === 'xray_direct' || modalOpen() },
-      { t: '#u2-sh-foot .u2-btn[onclick*="runImg"]', title: 'Çek', needCase: 1, rec: () => (modalOpen() ? null : inSheet('goruntu')()),
-        text: '"Çek"e dokun.', act: () => modalOpen() },
-      { t: () => vis('#modal-content [id^="mob-interp-lock"] button'), title: 'Önce sen yorumla', needCase: 1,
-        text: 'Gerçek görüntülü vakalarda önce görüntüyü kendin yorumlarsın, sonra raporun kilidini açarsın. Rapor dosyana da eklenir. Kilidi aç.',
-        act: () => !!recOf('goruntu') },
-      { t: () => vis('#modal-box .modal-close'), title: 'Pencereyi kapat', needCase: 1,
-        text: 'Röntgende ince bağırsaklarda yaygın gaz ve sıvı var. Sonuç dosyada; pencereyi kapat.', act: () => !modalOpen() },
+      ...openCat('goruntu', 'Görüntüleme', 'Karına röntgenle bakalım.', 'Görüntüleme'),
+      { t: () => (U._img === 'xray_direct' ? vis('#u2-sh-foot .u2-btn[onclick*="runImg"]') : vis('#u2-sh-body .u2-opt[onclick*="xray_direct"]')), title: 'Direkt röntgen', needCase: 1,
+        rec: () => (modalOpen() ? null : inSheet('goruntu')()),
+        text: 'Direkt röntgeni seç, sonra "Çek"e dokun. BT ve MR gibi pahalı yöntemler genel muayeneden önce kilitlidir.', act: () => modalOpen() },
+      { t: () => vis('#modal-content button[onclick*="mobUnlockPanel"]') || vis('#modal-box .modal-close'), title: 'Önce sen yorumla', needCase: 1,
+        text: 'Görüntüyü kendin yorumladıktan sonra raporun kilidini açarsın; rapor dosyana da eklenir. Kilidi aç, sonra pencereyi kapat.',
+        act: () => !!recOf('goruntu') && !modalOpen() },
 
-      ...openCat('kit', 'Hızlı kit', 'Şüphelendiğin hastalık için hasta başı hızlı test yapalım.'),
+      ...openCat('kit', 'Hızlı kit', 'Şüphelendiğin hastalık için hasta başı test yapalım.', 'Hızlı kit'),
       { t: '#u2-sh-body .u2-seg button[onclick*="\'stool\'"]', title: 'Örnek türü', needCase: 1, rec: inSheet('kit'),
         text: 'Kitler kan ve dışkı örneğine göre ayrılır. Dışkı sekmesine geç.', act: () => U._kitS === 'stool' && U.sheet === 'kit', skip: () => U._kitS === 'stool' && U.sheet === 'kit' },
       { t: '#u2-sh-body button[onclick*="useKit(\'cpv_ag\')"]', title: 'SNAP testi', needCase: 1, rec: inSheet('kit', () => U._kitS === 'stool', '#u2-sh-body .u2-seg button[onclick*="\'stool\'"]', 'Dışkı'),
         text: 'CPV Ag (Parvo SNAP) testini uygula.', act: () => modalOpen() && typeof kitRuns !== 'undefined' && !!kitRuns.cpv_ag },
       { t: () => vis('#modal-box'), title: 'Kit sonucu', needCase: 1,
-        text: 'Gerçek hayattaki gibi hızlı kitler bazen yanlış sonuç verebilir. Şüphelenirsen testi tekrarlayabilir ya da laboratuvar doğrulaması (burada dışkıdan PCR) isteyebilirsin. Bu turda sonuç her zaman doğru.' },
-      { t: () => vis('#modal-box .modal-close'), title: 'Pencereyi kapat', needCase: 1, text: 'Sonuç dosyaya eklendi. Pencereyi kapat.', act: () => !modalOpen() },
+        text: 'Hızlı kitler gerçek hayattaki gibi yanılabilir. Şüphelenirsen testi tekrarlar ya da laboratuvar doğrulaması (burada PCR) istersin. Bu turda sonuç hep doğru.',
+        btn: 'Kapat ve devam et', onNext: () => { if (modalOpen() && typeof closeModal === 'function') closeModal(); } },
 
-      { t: () => { const e = recEl('kit'); return e && vis(() => [...e.querySelectorAll('.note-pen')]); }, title: 'Not al', needCase: 1,
-        text: 'Önemli bir bulguyu kalem ikonuyla notlarına ekle. Kayıtlardaki her bulgunun yanında bu kalem var.',
+      { sec: 'Tanı', t: () => { const e = recEl('kit'); return e && vis(() => [...e.querySelectorAll('.note-pen')]); }, title: 'Not al', needCase: 1,
+        text: 'Her bulgunun yanındaki kalemle onu notlarına eklersin; notların üstteki kalem ikonunda toplanır. Bayrakla da vakadaki hataları bildirirsin. Şimdi bir not ekle.',
         act: () => (typeof caseNotes !== 'undefined' && caseNotes.length > 0) || !!document.querySelector('#u2-file-in .note-pen.noted'), skip: () => typeof caseNotes !== 'undefined' && caseNotes.length > 0 },
-      { t: '.u2-top .u2-ibtn.notes', title: 'Notlarım', needCase: 1, text: 'Eklediğin notlar burada toplanır; tanı koymadan önce hepsine tek yerden bakabilirsin.' },
-      { t: '.u2-top .u2-ibtn.flag', title: 'Hata bildir', needCase: 1, text: 'Vakada bir tutarsızlık görürsen bayrağa dokunarak bize bildirebilirsin.' },
       { t: () => vis('.u2-dxbar .u2-dx') || vis('.u2-dock .u2-dx'), title: 'Tanı koy', needCase: 1,
         rec: () => (U.sheet ? { el: vis('#u2-sh-foot .u2-btn:last-child') || vis('.u2-close'), text: 'Önce açık paneli kapat.' } : null),
         text: 'Aşısız genç köpek, kusma ve kanlı ishal, lökopeni ve pozitif parvo testi. Tanı koymaya hazırsın.', act: () => modalOpen() && !!document.querySelector('#modal-content .dx-picker') },
       { t: () => [...document.querySelectorAll('#modal-content .dx-item')].find(d => /parvo/i.test(d.dataset.search || d.textContent)), title: 'Tanını seç', needCase: 1,
         rec: () => (!modalOpen() && !resultOpen() ? { el: vis('.u2-dxbar .u2-dx') || vis('.u2-dock .u2-dx'), text: 'Liste kapandı. "Tanı koy"a yeniden dokun.' } : null),
         text: 'Listeden ara ya da kaydırarak bul: Canine Parvovirus Enteritis.', act: () => resultOpen() },
-
-      { t: '.u2-res-top', title: 'Sonuç', text: 'Tanının doğru olup olmadığını hemen görürsün. Yanlışsa doğru tanı ve senin cevabın yan yana yazar.' },
-      { t: '.u2-stats', title: 'Özet', text: 'Kaç işlem yaptığın, kaç anamnez sorusu sorduğun ve vakanın ne kadar sürdüğü.' },
-      { t: () => { const u = document.querySelector('#result-body .u2-steps-done'); return u ? u.closest('.rb-sec') : null; }, title: 'Yaptığın işlemler',
-        text: 'Adımların sırasıyla burada. Aşağıda ayırıcı tanılar, yani bu vakada nelerden ayırman gerektiği yazar.' },
-      { t: '#result-actions', title: 'Sırada ne var', text: 'Buradan yeni bir vaka alabilir ya da ana menüye dönebilirsin. Bayrakla vakadaki hataları bildirebilirsin.' },
-      { title: 'Tur bitti', btn: 'Bitir', last: 1,
-        text: 'Artık hazırsın. Turu istediğin zaman Ayarlar\'dan yeniden izleyebilirsin. İyi nöbetler!' }
+      { t: '.u2-res-top', title: 'Sonuç', text: 'Doğru mu yanlış mı hemen görürsün. Altında yaptığın işlemler sırasıyla, ayırıcı tanılar ve notların var; en altta yeni vaka ve ana menü butonları.' },
+      { title: 'Tur bitti', btn: 'Bitir', last: 1, text: 'Artık hazırsın. Turu istediğin zaman Ayarlar\'dan yeniden izleyebilirsin. İyi nöbetler!' }
     ];
   }
 
@@ -10058,7 +10038,9 @@ window.__vtxBack = function (opts) {
   function renderCard(st, warn) {
     const act = !!st.act && !warn;
     const n = list.length;
-    card.innerHTML = `<div class="vt-top"><span class="vt-n">${st.last ? 'Tamamlandı' : 'Adım ' + (i + 1) + ' / ' + n}</span>${st.last ? '' : '<button type="button" class="vt-skip">Turu bitir</button>'}</div>
+    let sec = 'Tanışma'; for (let j = 0; j <= i; j++) if (list[j].sec) sec = list[j].sec;
+    const si = SECS.indexOf(sec) + 1;
+    card.innerHTML = `<div class="vt-top"><span class="vt-n">${st.last ? 'Tamamlandı' : sec + ' · bölüm ' + si + '/' + SECS.length}</span>${st.last ? '' : '<button type="button" class="vt-skip">Turu bitir</button>'}</div>
       <div class="vt-bar"><i style="width:${Math.round(((i + 1) / n) * 100)}%"></i></div>
       <h3 id="vt-h">${st.title}</h3><p>${st.text}</p>${warn ? `<p class="vt-warn">${warn}</p>` : ''}
       <div class="vt-foot">${st.act || warn ? '<span class="vt-hint">Vurgulanan yere dokun</span>' : `<button type="button" class="vt-next">${st.btn || 'İleri'}</button>`}</div>`;
@@ -10121,6 +10103,7 @@ window.__vtxBack = function (opts) {
   }
 
   function next() {
+    const cur = list[i]; if (cur && cur.onNext) safe(cur.onNext);
     advancing = false; lastEl = null;
     i++;
     while (list[i] && list[i].skip && safe(list[i].skip)) i++;
