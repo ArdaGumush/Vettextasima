@@ -2761,7 +2761,7 @@ body.ui2 .rb-sec-title::first-letter { text-transform: uppercase; }
 .u2-steps-done .n { width: 22px; text-align: right; font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; flex-shrink: 0; }
 body.ui2 #result-actions { position: sticky; bottom: 0; background: var(--surface); border-top: 1px solid var(--rule); padding: 10px 16px calc(12px + env(safe-area-inset-bottom, 0px)); display: flex; flex-wrap: wrap; gap: 8px; }
 body.ui2 .ra-btn { min-height: 46px; border-radius: 7px; font-size: 14px; font-weight: 700; letter-spacing: 0; background: var(--surface); color: var(--scrub); box-shadow: inset 0 0 0 1px var(--rule); border: 0; }
-body.ui2 .ra-btn.ra-primary { background: var(--scrub); color: #fff; box-shadow: none; order: 9; flex-basis: 100%; }
+body.ui2 .ra-btn.ra-primary { background: var(--scrub); color: #fff; box-shadow: none; order: 9; flex-basis: 100%; border: 0 !important; }
 body.ui2 .ra-btn:hover { filter: brightness(.95); }
 
 /* Tutorial içinde dock ve paneller eski kimlikleriyle bulunamaz: tutorial eski arayüzü kullanır */
@@ -9164,8 +9164,8 @@ window.__vtxBack = function (opts) {
       <div class="u2-dxbar"><button type="button" class="u2-dx" onclick="mobOpenDiagnosis()">${I('onay')}Tanı koy</button></div>`;
     wrap.appendChild(caseEl);
     // İşlem paneli düzeni: grid (alt panel), push (yan ray ekranı daraltır), over (yan ray üstüne açılır), top (ok sağ üstte)
-    let dk = 'grid';
-    try { dk = new URLSearchParams(location.search).get('dock') || localStorage.getItem('vtx-ui2-dock') || 'grid'; } catch (e) {}
+    let dk = 'over';
+    try { dk = new URLSearchParams(location.search).get('dock') || localStorage.getItem('vtx-ui2-dock') || 'over'; } catch (e) {}
     U.setDock(dk);
     const nav = document.createElement('nav');
     nav.className = 'u2-nav'; nav.id = 'u2-nav'; nav.setAttribute('aria-label', 'Ana gezinme');
@@ -9565,7 +9565,7 @@ window.__vtxBack = function (opts) {
   }
 
   U.setDock = function (m) {
-    if (!['grid', 'push', 'over', 'top'].includes(m)) m = 'grid';
+    if (!['grid', 'push', 'over', 'top'].includes(m)) m = 'over';
     U.dockMode = m;
     document.body.classList.remove('u2-dk-grid', 'u2-dk-push', 'u2-dk-over', 'u2-dk-top', 'u2-dk-rail');
     document.body.classList.add('u2-dk-' + m);
@@ -9810,7 +9810,12 @@ window.__vtxBack = function (opts) {
       else if (!/[a-zçğıöşü]/.test(s)) t.textContent = sentence(s);
     });
     if (acts && !acts.querySelector('.u2-flagbtn')) acts.insertAdjacentHTML('afterbegin', `<button class="ra-btn u2-flagbtn" onclick="openCaseReport()" style="flex:0 0 auto;min-width:46px;color:var(--iod)" aria-label="Vakada hata bildir">${I('bayrak')}</button>`);
-    acts && acts.querySelectorAll('.ra-btn').forEach(b => { const t = b.textContent.trim(); if (/^[^a-zçğıöşü]*$/.test(t) && t.length > 3) b.lastChild && (b.lastChild.nodeValue = sentence(t)); });
+    // Buton yazıları: ikonsuz, cümle düzeninde ("Yeni kedi vakası", "Karışık vaka", "Ana menü")
+    acts && acts.querySelectorAll('.ra-btn:not(.u2-flagbtn)').forEach(b => {
+      let t = (window.vtxStripEmoji ? window.vtxStripEmoji(b.textContent) : b.textContent).replace(/[←→]/g, '').replace(/\s+/g, ' ').trim(); if (!t) return;
+      t = t.toLocaleLowerCase('tr-TR'); b.textContent = t.charAt(0).toLocaleUpperCase('tr-TR') + t.slice(1);
+    });
+    const ov = $('result-overlay'); if (ov) ov.scrollTop = 0;
   }
   function dur() {
     try { const s = Math.floor((Date.now() - startTime) / 1000); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); } catch (e) { return '—'; }
