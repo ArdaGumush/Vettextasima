@@ -20,8 +20,184 @@ function replayTutorial() {
 </script>
 <title>VetTEX — Klinik Simülasyon</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;600&family=JetBrains+Mono:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;600&family=JetBrains+Mono:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"></noscript>
+<style id="vtx-tasarim-temel">
+  /* ══ Yeni arayüz: tasarım değişkenleri (Aşama 1 — henüz hiçbir ekran bunları kullanmıyor) ══ */
+  :root{
+    --paper:#EEF1F0; --surface:#FFFFFF; --ink:#1D2A2C; --ink-2:#34474A; --muted:#566567;
+    --rule:#C9D1CF; --rule-soft:#E6EAE9; --field:#AEB9B7;
+    --scrub:#2D5C7F; --scrub-hover:#244C69; --scrub-tint:#DCE7EF;
+    --iod:#A6461A; --iod-dark:#7A2F0E; --iod-tint:#F7E4DA;
+    --ok:#2F6B45; --ok-tint:#DDEDE2;
+    --c-anamnez:#2D5C7F; --t-anamnez:#DCE7EF;
+    --c-muayene:#2F6B45; --t-muayene:#DDEDE2;
+    --c-ileri:#46525C;   --t-ileri:#E3E7EA;
+    --c-lab:#6A3F8C;     --t-lab:#ECE3F3;
+    --c-goruntu:#1D6A75; --t-goruntu:#D9ECEE;
+    --c-mikro:#7A5A0E;   --t-mikro:#F3EAD3;
+    --c-kit:#A6461A;     --t-kit:#F7E4DA;
+    --c-not:#4E4A40;     --t-not:#ECEAE3;
+    --radius-sm:6px; --radius:8px; --radius-sheet:16px;
+    --f-sans:'Archivo',system-ui,sans-serif; --f-mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  .cond{font-family:var(--f-sans);font-stretch:72%;font-weight:800}
+  .mono{font-family:var(--f-mono)}
+  /* Satır içi ikon: yazının boyunu ve rengini alır */
+  svg.vi{width:1.05em;height:1.05em;vertical-align:-0.16em;flex-shrink:0;display:inline-block;overflow:visible}
+  .vi-dot{display:inline-block;width:.62em;height:.62em;border-radius:50%;vertical-align:.02em;margin:0 .08em}
+  .vi-dot.r{background:#e74c3c}.vi-dot.g{background:#2ecc71}.vi-dot.y{background:#f1c40f}
+</style>
+<script>
+/* ══ İkon seti: icon(ad) → stroke SVG. Emojilerin yerine geçer. ══ */
+(function () {
+  const P = {
+    anamnez:'<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/>',
+    muayene:'<path d="M6 3v6a4 4 0 0 0 8 0V3"/><path d="M10 13v2a4 4 0 0 0 8 0v-2"/><circle cx="18" cy="11" r="2"/>',
+    ileri:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+    lab:'<path d="M9 3h6"/><path d="M10 3v13a2 2 0 0 0 4 0V3"/><path d="M10 10h4"/>',
+    goruntu:'<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="M7 12c2-4 4-4 5 0s3 4 5 0"/>',
+    mikro:'<circle cx="12" cy="12" r="8"/><circle cx="9" cy="10" r="1.6"/><circle cx="14.5" cy="13.5" r="2"/><circle cx="14" cy="8.5" r="1"/>',
+    kit:'<rect x="2" y="8" width="20" height="8" rx="4"/><circle cx="7" cy="12" r="1.6"/><path d="M12 10v4M15.5 10v4"/>',
+    not:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/>',
+    geri:'<path d="M15 5l-7 7 7 7"/>',
+    bayrak:'<path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/>',
+    kilit:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+    onay:'<path d="M5 12.5l4.5 4.5L19 7"/>',
+    ara:'<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/>',
+    /* Aynı çizgi diliyle tamamlayıcı ikonlar */
+    kapat:'<path d="M6 6l12 12M18 6L6 18"/>',
+    kilitacik:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 7.6-1.7"/>',
+    uyari:'<path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/>',
+    damla:'<path d="M12 3s6 6.4 6 11a6 6 0 0 1-12 0c0-4.6 6-11 6-11z"/>',
+    dosya:'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 3h6v3H9z"/><path d="M8.5 11h7M8.5 15h4.5"/>',
+    kitap:'<path d="M3 5h6a3 3 0 0 1 3 3v12a2.5 2.5 0 0 0-2.5-2.5H3z"/><path d="M21 5h-6a3 3 0 0 0-3 3v12a2.5 2.5 0 0 1 2.5-2.5H21z"/>',
+    yildiz:'<path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 17l-5.2 2.7 1-5.9-4.3-4.1 5.9-.8z"/>',
+    simsek:'<path d="M13 2.5L4.5 13.5H11l-1 8 8.5-11H12z"/>',
+    ayar:'<circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/>',
+    ses:'<path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/>',
+    foto:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-8 8"/>',
+    kedi:'<path d="M5 4.5l3.5 3.5h7L19 4.5V13a7 7 0 0 1-14 0z"/><path d="M9.5 12.5v.5M14.5 12.5v.5M11 16h2"/>',
+    kopek:'<path d="M7.5 6h9l-.5 8.5a4 4 0 0 1-8 0z"/><path d="M7.5 6L4 8l1.2 5.5 2.5-1.5M16.5 6L20 8l-1.2 5.5-2.5-1.5"/><path d="M10.3 10.5v.4M13.7 10.5v.4M11 15h2"/>',
+    pati:'<circle cx="6" cy="10" r="1.8"/><circle cx="10" cy="6" r="1.8"/><circle cx="14" cy="6" r="1.8"/><circle cx="18" cy="10" r="1.8"/><path d="M12 11.5c-3 0-5.5 3.3-5.5 5.6 0 1.6 1.4 2.4 2.8 2.4 1 0 1.7-.6 2.7-.6s1.7.6 2.7.6c1.4 0 2.8-.8 2.8-2.4 0-2.3-2.5-5.6-5.5-5.6z"/>',
+    yenile:'<path d="M20 11.5a8 8 0 1 0-2.4 5.7"/><path d="M20 4.5v7h-7"/>',
+    zar:'<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8.5 8.5h.01M15.5 8.5h.01M12 12h.01M8.5 15.5h.01M15.5 15.5h.01" stroke-width="2.6"/>',
+    saat:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/>',
+    grafik:'<path d="M3 20.5h18"/><path d="M6.5 20V12M12 20V5M17.5 20v-9"/>',
+    klinik:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M12 8v6M9 11h6"/>',
+    kart:'<rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6 15h4"/>',
+    siringa:'<path d="M18 3l3 3M19.5 4.5l-3 3"/><path d="M16.5 7.5l-9 9-3-3 9-9z"/><path d="M4.5 19.5l3-3M10 8.5l1.5 1.5M8 10.5l1.5 1.5"/>',
+    hesap:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 7h7"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01M8.5 15h.01M12 15h.01M15.5 15h.01" stroke-width="2.6"/>',
+    kalp:'<path d="M12 20s-7.5-4.6-7.5-10.3A4.2 4.2 0 0 1 12 7.2a4.2 4.2 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20z"/>',
+    telefon:'<rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18h2"/>',
+    mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/>',
+    anahtar:'<circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16.5 6.5l3 3"/>',
+    gunes:'<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/>',
+    ay:'<path d="M19.5 14.5A8 8 0 1 1 9.5 4.5a6.2 6.2 0 0 0 10 10z"/>',
+    klasor:'<path d="M3 6.5h6l2 2h10V19H3z"/>',
+    cop:'<path d="M4 7h16M9.5 7V4h5v3M6 7l1 13h10l1-13"/>',
+    dunya:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+    kisi:'<circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/>',
+    kep:'<path d="M2 9.5l10-5 10 5-10 5z"/><path d="M6 11.5v4.5c3.3 2.2 8.7 2.2 12 0v-4.5M22 9.5v5"/>',
+    etiket:'<path d="M3 3h8l10 10-8 8L3 11z"/><circle cx="7.5" cy="7.5" r="1.4"/>',
+    ampul:'<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3z"/>',
+    termometre:'<path d="M10 4.5a2 2 0 0 1 4 0v9.8a4 4 0 1 1-4 0z"/><path d="M12 9.5v7"/>',
+    kupa:'<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4.5a3.5 3.5 0 0 0 4 4M16 6h3.5a3.5 3.5 0 0 1-4 4M12 13v4M8 21h8M10 17h4"/>',
+    indir:'<path d="M12 3.5v11M7 10l5 5 5-5M4 20.5h16"/>',
+    dna:'<path d="M7 3c0 7 10 7 10 18M17 3c0 7-10 7-10 18"/><path d="M8.5 7h7M8.5 17h7"/>',
+    disk:'<path d="M5 3.5h11.5l3 3V20.5H4.5V4z"/><path d="M8 3.5v5h7v-5M8 20v-6h8v6"/>',
+    cikis:'<path d="M14 4h6v16h-6M10 8l-4 4 4 4M6 12h10"/>',
+    terazi:'<path d="M12 4v16M7.5 20h9M4 7.5h16"/><path d="M5 8l-3 6a3 3 0 0 0 6 0zM19 8l-3 6a3 3 0 0 0 6 0z"/>',
+    takvim:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+    ev:'<path d="M3 11l9-7 9 7"/><path d="M5.5 9.5V20h13V9.5"/>'
+  };
+  const A = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"';
+  window.VTX_ICON_PATHS = P;
+  window.icon = function (name, cls) {
+    const p = P[name]; if (!p) return '';
+    return '<svg class="vi vi-' + name + (cls ? ' ' + cls : '') + '" ' + A + '>' + p + '</svg>';
+  };
+
+  /* ══ Emoji → ikon eşlemesi. Haritada olmayan emoji kaldırılır (tasarım kuralı: emoji yok). ══ */
+  const M = {
+    '✓':'onay','✅':'onay','✔':'onay','☑':'onay','✕':'kapat','✗':'kapat','❌':'kapat','✖':'kapat',
+    '🔒':'kilit','🔐':'kilit','🔓':'kilitacik','🔑':'anahtar',
+    '🩺':'muayene','🖐':'muayene','🫁':'muayene','💪':'muayene',
+    '👁':'ileri','👂':'ileri','👄':'ileri','👅':'ileri','🦷':'ileri','🪥':'ileri','🔦':'ileri','🔨':'ileri','🔭':'ileri','🧠':'ileri',
+    '🧪':'lab','⚗':'lab','🩸':'damla','💧':'damla','💉':'siringa','🧬':'dna',
+    '🔬':'mikro','🧫':'mikro','🦠':'mikro','🪱':'mikro','💩':'mikro',
+    '🖥':'goruntu','📡':'goruntu','☢':'goruntu','🖼':'foto','📷':'foto',
+    '⚠':'uyari','🚨':'uyari','⛔':'uyari','❗':'uyari','‼':'uyari','🚑':'klinik','🏥':'klinik',
+    '🔍':'ara','🔎':'ara','📚':'kitap','📖':'kitap','📋':'dosya','📄':'dosya','🗳':'dosya','📑':'dosya',
+    '📝':'not','✏':'not','✎':'not','🖊':'not','💬':'anamnez','💭':'anamnez','🗨':'anamnez',
+    '⭐':'yildiz','🌟':'yildiz','🎉':'yildiz','🧩':'yildiz','🏆':'kupa','🥇':'kupa','⚡':'simsek','⚙':'ayar','🛠':'ayar',
+    '🔊':'ses','🔔':'ses','🎵':'ses','🔇':'ses','🐱':'kedi','🐈':'kedi','🐶':'kopek','🐕':'kopek','🐾':'pati',
+    '🔄':'yenile','🔁':'yenile','↺':'yenile','🌀':'yenile','🎲':'zar','⏳':'saat','⌛':'saat','⏱':'saat','🕐':'saat',
+    '📊':'grafik','📈':'grafik','📉':'grafik','💰':'kart','💳':'kart','💸':'kart','🧮':'hesap',
+    '🫀':'kalp','❤':'kalp','♥':'kalp','📱':'telefon','📴':'telefon','✉':'mail','📧':'mail','📨':'mail',
+    '☀':'gunes','🔆':'gunes','🌙':'ay','📁':'klasor','📂':'klasor','🗑':'cop','🌍':'dunya','🌐':'dunya',
+    '👤':'kisi','👥':'kisi','🎓':'kep','🏷':'etiket','💡':'ampul','🌡':'termometre','📥':'indir','💾':'disk','⚑':'bayrak','🚩':'bayrak','🚪':'cikis','⚖':'terazi','📅':'takvim','📆':'takvim','🗓':'takvim','🏠':'ev','🏡':'ev'
+  };
+  const DOT = { '🔴':'r','🟢':'g','🟡':'y','🟠':'y' };
+  const RE = /(?:[☀-➿⭐⭕⌚⌛⏩-⏺↺⚐-⚟‼]|[\uD83C-\uD83E][\uDC00-\uDFFF])(?:️|‍(?:[☀-➿]|[\uD83C-\uD83E][\uDC00-\uDFFF])️?|[\uD83C][\uDFFB-\uDFFF])*/g;
+  const SKIP = { SCRIPT:1, STYLE:1, TEXTAREA:1, INPUT:1, NOSCRIPT:1, svg:1, SVG:1, CODE:1, PRE:1 };
+  const PLAIN = { OPTION:1, TITLE:1 };
+  const base = e => e.replace(/[️‍].*$/, '');
+
+  function render(e) {
+    const b = base(e);
+    if (DOT[b]) return '<span class="vi-dot ' + DOT[b] + '" aria-hidden="true"></span>';
+    return M[b] ? window.icon(M[b]) : '';
+  }
+  window.vtxStripEmoji = s => String(s).replace(RE, '').replace(/\s{2,}/g, ' ').trim();
+
+  function fixText(node) {
+    const t = node.nodeValue; RE.lastIndex = 0;
+    if (!t || !RE.test(t)) return;
+    const par = node.parentNode; if (!par || par.closest && par.closest('[contenteditable="true"]')) return;
+    if (SKIP[par.nodeName]) return;
+    if (PLAIN[par.nodeName]) { node.nodeValue = window.vtxStripEmoji(t); return; }
+    const html = t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                  .replace(RE, e => render(e)).replace(/^ +/, m => m.length > 1 ? ' ' : m);
+    const span = document.createElement('template'); span.innerHTML = html;
+    par.replaceChild(span.content, node);
+  }
+  const ATTRS = ['placeholder', 'title', 'aria-label', 'alt'];
+  function fixAttrs(el) {
+    for (const a of ATTRS) { const v = el.getAttribute && el.getAttribute(a); if (v) { RE.lastIndex = 0; if (RE.test(v)) el.setAttribute(a, window.vtxStripEmoji(v)); } }
+  }
+  function scan(root) {
+    if (!root) return;
+    if (root.nodeType === 3) { fixText(root); return; }
+    if (root.nodeType !== 1 || SKIP[root.nodeName]) return;
+    fixAttrs(root);
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
+      acceptNode: n => (n.nodeType === 1 && SKIP[n.nodeName]) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+    });
+    const texts = [];
+    for (let n = w.nextNode(); n; n = w.nextNode()) { if (n.nodeType === 3) texts.push(n); else fixAttrs(n); }
+    texts.forEach(fixText);
+  }
+  window.vtxIconScan = scan;
+  const obs = new MutationObserver(list => {
+    for (const m of list) {
+      if (m.type === 'characterData') fixText(m.target);
+      else if (m.type === 'attributes') fixAttrs(m.target);
+      else m.addedNodes.forEach(scan);
+    }
+  });
+  obs.observe(document.documentElement, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ATTRS });
+  document.addEventListener('DOMContentLoaded', () => scan(document.body));
+  /* Tarayıcının kendi pencerelerinde (alert/confirm) SVG gösterilemez: emojiyi sadece sil */
+  ['alert', 'confirm', 'prompt'].forEach(fn => {
+    const orig = window[fn]; if (!orig) return;
+    window[fn] = function (msg, ...r) { return orig.call(window, msg == null ? msg : window.vtxStripEmoji(msg), ...r); };
+  });
+  const _t = Object.getOwnPropertyDescriptor(Document.prototype, 'title');
+  if (_t && _t.set) Object.defineProperty(document, 'title', { get() { return _t.get.call(document); }, set(v) { _t.set.call(document, window.vtxStripEmoji(v)); }, configurable: true });
+})();
+</script>
+
 <style>
   :root {
     --bg-base:       #0a0e1a;
