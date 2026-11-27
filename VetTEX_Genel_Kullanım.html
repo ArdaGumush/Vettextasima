@@ -4,17 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <script>
-// İlk açılışta tutorial zorunlu: tamamlanmadıysa tutorial sayfasına yönlendir.
-// Tutorial oyunu iframe içinde açtığı için iframe içindeyken yönlendirme yapılmaz.
-(function () {
-  try {
-    if (window.top === window.self && localStorage.getItem('vettex-tutorial-done') !== '1') {
-      location.replace('VettexTutorial.html');
-    }
-  } catch (e) {}
-})();
+// Tutorial artık uygulamanın içinde, yeni arayüzün üstünde çalışan bir tur (UI2.tour).
+// İlk açılışta tur tamamlanmadıysa giriş ekranları kapandıktan sonra kendiliğinden başlar.
 function replayTutorial() {
   if (window.top !== window.self) return;
+  if (window.UI2 && UI2.tour) { if (typeof mobCloseSettings === 'function' && document.getElementById('mob-settings-body')?.children.length) mobCloseSettings(true); UI2.tour.start(); return; }
   location.href = 'VettexTutorial.html?replay=1';
 }
 </script>
@@ -8503,9 +8497,9 @@ const STATS_MIN_PLAYERS = 10;           // topluluk yüzdeleri bu kadar oyuncuda
 const STATS_QUEUE_KEY = 'vtx-result-queue';
 const VTXStats = {
   _esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); },
-  _on() { return window.top === window.self && VTX.authOn() && !!VTX.session; },
+  _on() { return window.top === window.self && !window.__vtxTour && VTX.authOn() && !!VTX.session; },
   // Hesapsız demo oyunu: sadece ücretsiz vakalar, tutorial (iframe) hariç. İsimsiz: kim olduğu kaydedilmez.
-  _demoOn(key) { return window.top === window.self && VTX.authOn() && !VTX.session && FREE_CASE_KEYS.includes(key); },
+  _demoOn(key) { return window.top === window.self && !window.__vtxTour && VTX.authOn() && !VTX.session && FREE_CASE_KEYS.includes(key); },
   _demo(row) {
     const d = { case_key: row.case_key, diagnosis: row.diagnosis, chosen: row.chosen, outcome: row.outcome,
       duration_sec: row.duration_sec, tests: row.tests, test_count: row.test_count, mode: row.mode, app_version: row.app_version, platform: row.platform };
@@ -8569,7 +8563,7 @@ const VTXStats = {
   },
   // Tanı konunca: kaydet, sonra sonuç ekranına topluluk kutusunu yerleştir
   async afterResult(correct, selected, realDisease) {
-    if (window.top !== window.self || !VTX.authOn()) return;
+    if (window.top !== window.self || window.__vtxTour || !VTX.authOn()) return;
     const c = currentCase || mobCurrentCase || {};
     const key = this._caseKey(c);
     if (!key) return;
@@ -9858,6 +9852,344 @@ window.__vtxBack = function (opts) {
 
   document.addEventListener('DOMContentLoaded', () => {
     try { hook(); enable(); } catch (e) { console.error('[UI2] başlatılamadı', e); }
+  });
+})();
+</script>
+<script id="vtx-tour-js">
+/* ═══════════════════════════════════════════════════════════════════
+   YENİ ARAYÜZ TURU — uygulamanın içinde, gerçek ekranların üstünde çalışır.
+   Tek vaka (Parvo): menü ve ayarları tanıtır, anamnez → spesifik soru →
+   muayene → hemogram → biyokimya → röntgen → SNAP testi → tanı → sonuç.
+   Tur sırasında: acil mod ve ekonomi modu geçici kapalı, kit sonuçları hep doğru,
+   sonuç istatistiklere kaydedilmez.
+═══════════════════════════════════════════════════════════════════ */
+(function () {
+  if (window.top !== window.self) return;
+  const U = window.UI2; if (!U) return;
+  const $ = id => document.getElementById(id);
+  const DONE_KEY = 'vettex-tutorial-done';
+  const B = () => document.body.classList;
+  const inCase = () => B().contains('u2-incase');
+  const railMode = () => B().contains('u2-dk-rail') && window.innerWidth < 1024;
+  const railOpen = () => B().contains('u2-rail-open');
+  const modalOpen = () => ($('modal-overlay') || {}).classList?.contains('open');
+  const resultOpen = () => ($('result-overlay') || {}).classList?.contains('open');
+  const recOf = (cat, re) => U.recs.find(r => r.cat === cat && (!re || re.test(r.title)));
+  const recEl = (cat, re) => { const r = recOf(cat, re); return r ? $('u2-' + r.id) : null; };
+  function vis(sel) {
+    const list = typeof sel === 'function' ? [].concat(sel() || []) : [...document.querySelectorAll(sel)];
+    return list.find(e => { if (!e || !e.getClientRects().length) return false; const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0; }) || null;
+  }
+  const onScreen = el => { const r = el.getBoundingClientRect(); return r.right > 4 && r.left < innerWidth - 4 && r.bottom > 4 && r.top < innerHeight - 4; };
+
+  /* ── Menüden bir işlem açma: (mobilde) ok → kategori ── */
+  const CATN = { anamnez: 'Anamnez', muayene: 'Muayene', lab: 'Laboratuvar', goruntu: 'Görüntüleme', kit: 'Hızlı kit' };
+  function openCat(cat, title, text) {
+    return [
+      { t: '#u2-railtab', title, text: text + ' Önce sağ kenardaki oka dokunarak menüyü aç.', act: () => railOpen(),
+        skip: () => !railMode() || railOpen() || U.sheet === cat, needCase: 1 },
+      { t: '.u2-act.k-' + cat, title, text: (railMode() ? '' : text + ' ') + CATN[cat] + ' seçeneğine dokun.', act: () => U.sheet === cat,
+        skip: () => U.sheet === cat, rec: needRail, needCase: 1 }
+    ];
+  }
+  // Menü kapalıysa önce oku göster
+  function needRail() {
+    if (railMode() && !railOpen() && !U.sheet) return { el: vis('#u2-railtab'), text: 'Menü kapandı. Sağdaki oka dokunarak yeniden aç.' };
+    return null;
+  }
+  // Beklenen panel kapandıysa: yeniden açtır
+  const inSheet = (cat, tab, tabSel, tabAd) => () => {
+    if (U.sheet === cat && (!tab || tab())) return null;
+    if (U.sheet === cat && tabSel) return { el: vis(tabSel), text: 'Önce ' + tabAd + ' sekmesine geç.' };
+    if (U.sheet && U.sheet !== cat) return { el: vis('#u2-sh-foot .u2-btn:last-child') || vis('.u2-close'), text: 'Bu panel şimdi gerekmiyor. Kapatıp devam edelim.' };
+    if (modalOpen()) return { el: vis('#modal-box .modal-close'), text: 'Önce bu pencereyi kapat.' };
+    const r = needRail(); if (r) return r;
+    return { el: vis('.u2-act.k-' + cat), text: 'Panel kapandı. ' + CATN[cat] + ' seçeneğine yeniden dokun.' };
+  };
+
+  /* ══════════ Adımlar ══════════ */
+  function steps() {
+    return [
+      { title: 'VetTEX\'e hoş geldin', btn: 'Başlayalım',
+        text: 'Bu kısa turda yeni arayüzü tanıyacak ve bir köpek hastayı baştan sona birlikte çözeceğiz: anamnez, muayene, kan tahlilleri, röntgen ve hızlı test. İstediğin an "Turu bitir" ile çıkabilirsin.' },
+      { t: '#u2-theme', title: 'Tema', text: 'Aydınlık ve karanlık tema arasında buradan geçersin. Seçimin kaydedilir.' },
+      { t: '.u2-hero', title: 'Klinik mod', text: 'Asıl oyun burada. Kliniğe rastgele bir hasta gelir, anamnezden tanıya kadar her adım senin. Birazdan buradan başlayacağız.' },
+      { t: '.u2-menu .u2-row[onclick*="FreeStudy"]', title: 'Serbest çalışma', text: 'Belirli hastalık listeleriyle çalışmak istediğinde buraya gir.' },
+      { t: 'label[for="u2-emerg"]', title: 'Acil mod', text: 'Açıkken bazı hastalar acil gelir ve sadece 5 işlem hakkın olur; her tetkiki dikkatle seçmen gerekir. Bu turda acil vaka gelmeyecek.' },
+      { t: 'label[for="u2-eco"]', title: 'Ekonomi modu', text: 'Hasta sahibine bir bütçe atanır, her tetkik kredi harcar. Gereksiz tetkikten kaçınmayı öğretir.' },
+      { t: 'label[for="u2-usg"]', title: 'USG / EKO yardımı', text: 'Açıkken ultrason ve EKO raporlarının sonunda uzman yorumu görünür. Kapalıyken raporu kendin yorumlarsın.' },
+      { t: '#u2-nav', title: 'Alt menü', text: 'Vakalar ana ekrana döner. Karnem kendi sonuçlarını gösterir. Ayarlar\'da ses, tema ve profil seçenekleri var; bu turu da oradan yeniden izleyebilirsin. İletişim\'den bize yazabilirsin.' },
+      { t: '.u2-hero', title: 'Hasta kabul et', text: 'Hadi başlayalım. Klinik moda dokun.', act: () => ($('mob-species-screen') || {}).offsetParent !== null || inCase() },
+      { t: '#mob-species-screen .u2-row[onclick*="\'dog\'"]', title: 'Tür seç', text: 'Köpeğe dokun. Kliniğe yeni bir köpek hasta geliyor.', act: () => inCase() && U.recs !== undefined && typeof mobCurrentCase !== 'undefined' && !!mobCurrentCase },
+
+      { t: '.u2-top', title: 'Hasta bilgisi', needCase: 1, text: 'Üstte hastanın adı, türü, yaşı ve cinsiyeti var. Şikayeti dinlediğinde kısa özeti de burada görünür.' },
+      { t: '#u2-file', title: 'Hasta dosyası', needCase: 1, text: 'Yaptığın her işlem buraya bir kayıt olarak düşer, en yenisi en üstte. Tanıya giderken bütün bulgular tek yerde.' },
+      { t: '#u2-railtab', title: 'İşlem menüsü', needCase: 1, text: 'Bütün klinik işlemler sağ kenardaki bu okun arkasında. Menüyü açmak için oka dokun.',
+        act: () => railOpen(), skip: () => !railMode() || railOpen() },
+      { t: () => vis('.u2-dock .u2-grid'), title: 'Klinik işlemler', needCase: 1, rec: needRail,
+        text: 'Anamnez, spesifik sorular, muayene, ileri muayene, laboratuvar, görüntüleme, mikroskopi ve hızlı kit. Bir işlemi yaptıkça üstünde kaç kez yaptığın görünür.' },
+      { t: '.u2-act.k-anamnez', title: 'Anamnez', needCase: 1, rec: needRail, text: 'Her vaka hasta sahibini dinleyerek başlar. Anamneze dokun.', act: () => U.sheet === 'anamnez' },
+      { t: '#u2-sh-body button.u2-q[onclick*="askGen(\'complaint\')"]', title: 'Şikayeti dinle', needCase: 1, rec: inSheet('anamnez'),
+        text: 'İlk soru her zaman şikayet. "Sor"a dokun.', act: () => (typeof complaintAsked !== 'undefined' && complaintAsked === true) || U.anamLog.some(e => e.key === 'complaint') },
+      { t: '#u2-sh-body button.u2-q[onclick*="askGen(\'vaccine\')"]', title: 'Aşı geçmişi', needCase: 1, rec: inSheet('anamnez'),
+        text: 'Genç bir köpekte aşı durumu çok şey anlatır. Aşı sorusunu da sor.', act: () => U.anamLog.some(e => e.key === 'vaccine') },
+      { t: '#u2-sh-foot button[onclick*="spesifik"]', title: 'Spesifik sorular', needCase: 1, rec: inSheet('anamnez'),
+        text: 'Genel sorulardan sonra ayırıcı tanı için sisteme göre hedefli sorular sorarsın. "Spesifik"e dokun.', act: () => U.sheet === 'spesifik' },
+      { t: 'details.u2-grp[data-cat="sindirim"] > summary', title: 'Sistem seç', needCase: 1, rec: inSheet('spesifik'),
+        text: 'Sorular sistemlere göre gruplu. Şikayet sindirim sistemini gösteriyor; Sindirim Sistemi grubunu aç.',
+        act: () => !!document.querySelector('details.u2-grp[data-cat="sindirim"][open]') },
+      { t: 'button.u2-q[onclick*="\'diskilama_2\'"]', title: 'Hedefli soru', needCase: 1, rec: inSheet('spesifik'),
+        text: 'Dışkıda kan olup olmadığını sor.', act: () => !!(window._aqAnswered || {}).diskilama_2 },
+      { t: '#u2-sh-foot .u2-btn:last-child', title: 'Dosyaya dön', needCase: 1,
+        text: 'Spesifik soruların cevapları dosyada ayrı bir kayıtta toplanır. "Dosyaya dön"e dokun.', act: () => !U.sheet },
+
+      ...openCat('muayene', 'Muayene', 'Şimdi hastayı muayene edelim.'),
+      { t: '#u2-sh-body .u2-btn.wide[onclick*="examAll"]', title: 'Genel muayene', needCase: 1, rec: inSheet('muayene'),
+        text: 'Ateş, solunum, nabız, mukoza, CRT, lenf nodları ve palpasyon tek dokunuşla. Biyokimya gibi pahalı tetkikler ancak şikayet dinlenip genel muayene yapıldıktan sonra açılır.',
+        act: () => !!recOf('muayene') && !U.sheet },
+      { t: () => { const e = recEl('muayene'); return e && (e.querySelector('.u2-vitals') || e); }, title: 'Renkler ne anlatıyor', needCase: 1,
+        text: 'Değerler referansa göre renklenir: yeşil normal, sarı sınırda, kırmızı yüksek, mavi düşük. Bu hastada CRT (kapiller dolum zamanı) 4 saniye; 2 saniyeyi geçmesi dehidrasyonu düşündürür.' },
+
+      ...openCat('lab', 'Laboratuvar', 'Sıra kan tahlillerinde.'),
+      { t: '#u2-sh-foot .u2-btn[onclick*="runHemo"]', title: 'Hemogram', needCase: 1,
+        rec: inSheet('lab', () => U._labTab === 'hemo', '#u2-sh-body .u2-seg button[onclick*="\'hemo\'"]', 'Hemogram'),
+        text: 'Laboratuvarda Hemogram, Biyokimya ve Hormon sekmeleri var. Hemogram tam panel çalışılır; numuneyi gönder.',
+        act: () => !!recOf('lab', /hemogram/i) },
+      { t: () => recEl('lab', /hemogram/i), title: 'Hemogram sonucu', needCase: 1,
+        text: 'Bütün parametreler görünür, anormaller renkli. Mavi WBC lökopeniyi gösterir: kusan ve ishal olan genç bir köpekte bu güçlü bir ipucu. Yüksek HCT ise dehidrasyona işaret eder.' },
+
+      ...openCat('lab', 'Biyokimya', 'Şimdi biyokimyaya bakalım.'),
+      { t: '#u2-sh-body .u2-seg button[onclick*="\'biyo\'"]', title: 'Biyokimya sekmesi', needCase: 1, rec: inSheet('lab'),
+        text: 'Biyokimya sekmesine geç.', act: () => U.sheet === 'lab' && U._labTab === 'biyo', skip: () => U.sheet === 'lab' && U._labTab === 'biyo' },
+      { t: '#u2-sh-body .u2-link[onclick*="selAll"]', title: 'Test seç', needCase: 1, rec: inSheet('lab', () => U._labTab === 'biyo', '#u2-sh-body .u2-seg button[onclick*="\'biyo\'"]', 'Biyokimya'),
+        text: 'Biyokimyada parametreleri tek tek seçebilirsin. Bu sefer "Paneldeki tümünü seç"e dokun.',
+        act: () => { const b = $('u2-lab-send'); return !!b && !b.disabled; } },
+      { t: '#u2-lab-send', title: 'Numuneyi gönder', needCase: 1, rec: inSheet('lab', () => U._labTab === 'biyo', '#u2-sh-body .u2-seg button[onclick*="\'biyo\'"]', 'Biyokimya'),
+        text: 'Seçtiğin testlerle numuneyi gönder.', act: () => !!recOf('lab', /biyokimya/i) },
+      { t: () => recEl('lab', /biyokimya/i), title: 'Biyokimya sonucu', needCase: 1,
+        text: 'Düşük glukoz, albümin, sodyum ve potasyum; yüksek BUN. Kusma ve ishalle kaybedilen sıvının ve elektrolitlerin izi.' },
+
+      ...openCat('goruntu', 'Görüntüleme', 'Karına bir de röntgenle bakalım.'),
+      { t: '#u2-sh-body .u2-opt[onclick*="xray_direct"]', title: 'Yöntem seç', needCase: 1, rec: inSheet('goruntu'),
+        text: 'Direkt röntgeni seç. BT ve MR gibi pahalı yöntemler genel muayeneden önce kilitlidir.', act: () => U._img === 'xray_direct' || modalOpen() },
+      { t: '#u2-sh-foot .u2-btn[onclick*="runImg"]', title: 'Çek', needCase: 1, rec: () => (modalOpen() ? null : inSheet('goruntu')()),
+        text: '"Çek"e dokun.', act: () => modalOpen() },
+      { t: () => vis('#modal-content [id^="mob-interp-lock"] button'), title: 'Önce sen yorumla', needCase: 1,
+        text: 'Gerçek görüntülü vakalarda önce görüntüyü kendin yorumlarsın, sonra raporun kilidini açarsın. Rapor dosyana da eklenir. Kilidi aç.',
+        act: () => !!recOf('goruntu') },
+      { t: () => vis('#modal-box .modal-close'), title: 'Pencereyi kapat', needCase: 1,
+        text: 'Röntgende ince bağırsaklarda yaygın gaz ve sıvı var. Sonuç dosyada; pencereyi kapat.', act: () => !modalOpen() },
+
+      ...openCat('kit', 'Hızlı kit', 'Şüphelendiğin hastalık için hasta başı hızlı test yapalım.'),
+      { t: '#u2-sh-body .u2-seg button[onclick*="\'stool\'"]', title: 'Örnek türü', needCase: 1, rec: inSheet('kit'),
+        text: 'Kitler kan ve dışkı örneğine göre ayrılır. Dışkı sekmesine geç.', act: () => U._kitS === 'stool' && U.sheet === 'kit', skip: () => U._kitS === 'stool' && U.sheet === 'kit' },
+      { t: '#u2-sh-body button[onclick*="useKit(\'cpv_ag\')"]', title: 'SNAP testi', needCase: 1, rec: inSheet('kit', () => U._kitS === 'stool', '#u2-sh-body .u2-seg button[onclick*="\'stool\'"]', 'Dışkı'),
+        text: 'CPV Ag (Parvo SNAP) testini uygula.', act: () => modalOpen() && typeof kitRuns !== 'undefined' && !!kitRuns.cpv_ag },
+      { t: () => vis('#modal-box'), title: 'Kit sonucu', needCase: 1,
+        text: 'Gerçek hayattaki gibi hızlı kitler bazen yanlış sonuç verebilir. Şüphelenirsen testi tekrarlayabilir ya da laboratuvar doğrulaması (burada dışkıdan PCR) isteyebilirsin. Bu turda sonuç her zaman doğru.' },
+      { t: () => vis('#modal-box .modal-close'), title: 'Pencereyi kapat', needCase: 1, text: 'Sonuç dosyaya eklendi. Pencereyi kapat.', act: () => !modalOpen() },
+
+      { t: () => { const e = recEl('kit'); return e && vis(() => [...e.querySelectorAll('.note-pen')]); }, title: 'Not al', needCase: 1,
+        text: 'Önemli bir bulguyu kalem ikonuyla notlarına ekle. Kayıtlardaki her bulgunun yanında bu kalem var.',
+        act: () => (typeof caseNotes !== 'undefined' && caseNotes.length > 0) || !!document.querySelector('#u2-file-in .note-pen.noted'), skip: () => typeof caseNotes !== 'undefined' && caseNotes.length > 0 },
+      { t: '.u2-top .u2-ibtn.notes', title: 'Notlarım', needCase: 1, text: 'Eklediğin notlar burada toplanır; tanı koymadan önce hepsine tek yerden bakabilirsin.' },
+      { t: '.u2-top .u2-ibtn.flag', title: 'Hata bildir', needCase: 1, text: 'Vakada bir tutarsızlık görürsen bayrağa dokunarak bize bildirebilirsin.' },
+      { t: () => vis('.u2-dxbar .u2-dx') || vis('.u2-dock .u2-dx'), title: 'Tanı koy', needCase: 1,
+        rec: () => (U.sheet ? { el: vis('#u2-sh-foot .u2-btn:last-child') || vis('.u2-close'), text: 'Önce açık paneli kapat.' } : null),
+        text: 'Aşısız genç köpek, kusma ve kanlı ishal, lökopeni ve pozitif parvo testi. Tanı koymaya hazırsın.', act: () => modalOpen() && !!document.querySelector('#modal-content .dx-picker') },
+      { t: () => [...document.querySelectorAll('#modal-content .dx-item')].find(d => /parvo/i.test(d.dataset.search || d.textContent)), title: 'Tanını seç', needCase: 1,
+        rec: () => (!modalOpen() && !resultOpen() ? { el: vis('.u2-dxbar .u2-dx') || vis('.u2-dock .u2-dx'), text: 'Liste kapandı. "Tanı koy"a yeniden dokun.' } : null),
+        text: 'Listeden ara ya da kaydırarak bul: Canine Parvovirus Enteritis.', act: () => resultOpen() },
+
+      { t: '.u2-res-top', title: 'Sonuç', text: 'Tanının doğru olup olmadığını hemen görürsün. Yanlışsa doğru tanı ve senin cevabın yan yana yazar.' },
+      { t: '.u2-stats', title: 'Özet', text: 'Kaç işlem yaptığın, kaç anamnez sorusu sorduğun ve vakanın ne kadar sürdüğü.' },
+      { t: () => { const u = document.querySelector('#result-body .u2-steps-done'); return u ? u.closest('.rb-sec') : null; }, title: 'Yaptığın işlemler',
+        text: 'Adımların sırasıyla burada. Aşağıda ayırıcı tanılar, yani bu vakada nelerden ayırman gerektiği yazar.' },
+      { t: '#result-actions', title: 'Sırada ne var', text: 'Buradan yeni bir vaka alabilir ya da ana menüye dönebilirsin. Bayrakla vakadaki hataları bildirebilirsin.' },
+      { title: 'Tur bitti', btn: 'Bitir', last: 1,
+        text: 'Artık hazırsın. Turu istediğin zaman Ayarlar\'dan yeniden izleyebilirsin. İyi nöbetler!' }
+    ];
+  }
+
+  /* ══════════ Görünüm ══════════ */
+  const CSS = `
+  #vtx-tour{position:fixed;inset:0;z-index:2147483000;pointer-events:none;font-family:var(--f-sans);-webkit-tap-highlight-color:transparent}
+  #vtx-tour .vt-b{position:fixed;background:rgba(17,26,28,.58);pointer-events:auto;transition:all .22s cubic-bezier(.22,1,.36,1)}
+  body.u2-dark #vtx-tour .vt-b{background:rgba(0,0,0,.66)}
+  #vtx-tour .vt-cover{position:fixed;pointer-events:auto;background:transparent}
+  #vtx-tour .vt-ring{position:fixed;border-radius:12px;box-shadow:0 0 0 2px var(--scrub),0 0 0 6px color-mix(in srgb,var(--scrub) 28%,transparent);pointer-events:none;transition:all .22s cubic-bezier(.22,1,.36,1)}
+  #vtx-tour .vt-ring.act{animation:vtPulse 1.5s ease-out infinite}
+  @keyframes vtPulse{0%{box-shadow:0 0 0 2px var(--scrub),0 0 0 0 color-mix(in srgb,var(--scrub) 55%,transparent)}100%{box-shadow:0 0 0 2px var(--scrub),0 0 0 14px transparent}}
+  #vtx-tour .vt-card{position:fixed;pointer-events:auto;width:min(360px,calc(100vw - 24px));background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:14px;box-shadow:0 18px 48px rgba(10,20,22,.28);padding:14px 16px 14px;box-sizing:border-box;transition:top .22s cubic-bezier(.22,1,.36,1),left .22s cubic-bezier(.22,1,.36,1),opacity .18s;opacity:0}
+  body.u2-dark #vtx-tour .vt-card{box-shadow:0 18px 48px rgba(0,0,0,.6)}
+  #vtx-tour .vt-card.show{opacity:1}
+  #vtx-tour .vt-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  #vtx-tour .vt-n{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);flex:1}
+  #vtx-tour .vt-skip{background:none;border:0;color:var(--muted);font:600 12.5px var(--f-sans);padding:6px 2px;cursor:pointer;min-height:32px}
+  #vtx-tour .vt-skip:hover{color:var(--ink)}
+  #vtx-tour .vt-bar{height:3px;border-radius:2px;background:var(--rule-soft);margin-bottom:10px;overflow:hidden}
+  #vtx-tour .vt-bar i{display:block;height:100%;background:var(--scrub);border-radius:2px;transition:width .3s}
+  #vtx-tour h3{margin:0 0 4px;font-size:17px;font-weight:800;font-stretch:80%;letter-spacing:-.1px;color:var(--ink)}
+  #vtx-tour p{margin:0;font-size:14px;line-height:1.5;color:var(--ink-2)}
+  #vtx-tour p.vt-warn{margin-top:8px;padding:8px 10px;border-radius:8px;background:var(--iod-tint);color:var(--iod-dark);font-size:13px}
+  #vtx-tour .vt-foot{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:12px}
+  #vtx-tour .vt-hint{flex:1;display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--scrub)}
+  #vtx-tour .vt-hint:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--scrub);animation:vtDot 1.2s ease-in-out infinite}
+  @keyframes vtDot{50%{opacity:.25}}
+  #vtx-tour .vt-next{min-height:40px;padding:0 18px;border:0;border-radius:10px;background:var(--scrub);color:#fff;font:700 14px var(--f-sans);cursor:pointer}
+  #vtx-tour .vt-next:hover{background:var(--scrub-hover)}
+  #vtx-tour .vt-next:focus-visible,#vtx-tour .vt-skip:focus-visible{outline:2px solid var(--scrub);outline-offset:2px}
+  @media (prefers-reduced-motion: reduce){#vtx-tour *{animation:none!important;transition:none!important}}`;
+
+  let root, bl, ring, cover, card, S = null, list = [], i = 0, timer = 0, lastEl = null, advancing = false, saved = {};
+  function build() {
+    if (!$('vtx-tour-css')) { const st = document.createElement('style'); st.id = 'vtx-tour-css'; st.textContent = CSS; document.head.appendChild(st); }
+    root = document.createElement('div'); root.id = 'vtx-tour';
+    root.innerHTML = '<div class="vt-b"></div><div class="vt-b"></div><div class="vt-b"></div><div class="vt-b"></div><div class="vt-cover"></div><div class="vt-ring"></div><div class="vt-card" role="dialog" aria-live="polite" aria-labelledby="vt-h"></div>';
+    document.body.appendChild(root);
+    bl = [...root.querySelectorAll('.vt-b')]; cover = root.querySelector('.vt-cover'); ring = root.querySelector('.vt-ring'); card = root.querySelector('.vt-card');
+    card.addEventListener('click', e => {
+      if (e.target.closest('.vt-next')) next();
+      else if (e.target.closest('.vt-skip')) finish(true);
+    });
+  }
+  const box = (el, x, y, w, h) => { el.style.left = x + 'px'; el.style.top = y + 'px'; el.style.width = Math.max(0, w) + 'px'; el.style.height = Math.max(0, h) + 'px'; };
+
+  function renderCard(st, warn) {
+    const act = !!st.act && !warn;
+    const n = list.length;
+    card.innerHTML = `<div class="vt-top"><span class="vt-n">${st.last ? 'Tamamlandı' : 'Adım ' + (i + 1) + ' / ' + n}</span>${st.last ? '' : '<button type="button" class="vt-skip">Turu bitir</button>'}</div>
+      <div class="vt-bar"><i style="width:${Math.round(((i + 1) / n) * 100)}%"></i></div>
+      <h3 id="vt-h">${st.title}</h3><p>${st.text}</p>${warn ? `<p class="vt-warn">${warn}</p>` : ''}
+      <div class="vt-foot">${st.act || warn ? '<span class="vt-hint">Vurgulanan yere dokun</span>' : `<button type="button" class="vt-next">${st.btn || 'İleri'}</button>`}</div>`;
+    card.dataset.k = i + '|' + (warn || '');
+    ring.classList.toggle('act', !!(st.act || warn));
+  }
+
+  function target(st) {
+    if (!st.t) return null;
+    const el = typeof st.t === 'function' ? st.t() : vis(st.t);
+    return el || null;
+  }
+
+  function tick() {
+    if (!S) return;
+    const st = list[i]; if (!st) return;
+    if (st.needCase && !inCase() && !resultOpen()) { finish(false, 'Vakadan çıktığın için tur durdu. Ayarlar\'dan yeniden başlatabilirsin.'); return; }
+    if (st.act && !advancing && st.act()) { advancing = true; setTimeout(() => { advancing = false; if (list[i] === st) next(); }, 380); }
+    let el = target(st), warn = '';
+    if (st.rec && !advancing) {
+      const r = st.rec();
+      if (r && r.el) { el = r.el; warn = r.text; }
+    }
+    if (el && el !== lastEl) { lastEl = el; if (!onScreen(el) || el.getBoundingClientRect().top < 0) try { el.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e) {} }
+    const key = i + '|' + warn;
+    if (card.dataset.k !== key) renderCard(st, warn);
+    const W = innerWidth, H = innerHeight;
+    if (!el) {
+      // Hedef yok: tüm ekran karartılır, kart ortada (hedef gelince yerine geçer)
+      box(bl[0], 0, 0, W, H); box(bl[1], 0, 0, 0, 0); box(bl[2], 0, 0, 0, 0); box(bl[3], 0, 0, 0, 0);
+      box(ring, -20, -20, 0, 0); ring.style.opacity = 0; box(cover, 0, 0, 0, 0);
+      place(null); return;
+    }
+    const p = 6, r0 = el.getBoundingClientRect();
+    const x = Math.max(0, r0.left - p), y = Math.max(0, r0.top - p), x2 = Math.min(W, r0.right + p), y2 = Math.min(H, r0.bottom + p);
+    box(bl[0], 0, 0, W, y); box(bl[1], 0, y2, W, H - y2); box(bl[2], 0, y, x, y2 - y); box(bl[3], x2, y, W - x2, y2 - y);
+    box(ring, x, y, x2 - x, y2 - y); ring.style.opacity = 1;
+    // Açıklama adımlarında vurgulanan yer tıklanmaz (akış bozulmasın)
+    if (!st.act && !warn) box(cover, x, y, x2 - x, y2 - y); else box(cover, 0, 0, 0, 0);
+    place({ top: y, bottom: y2, left: x, right: x2 });
+  }
+  function place(r) {
+    const W = innerWidth, H = innerHeight, cw = card.offsetWidth, ch = card.offsetHeight, m = 12;
+    let top, left;
+    if (!r) { top = (H - ch) / 2; left = (W - cw) / 2; }
+    else {
+      const below = H - r.bottom, above = r.top;
+      if (below >= ch + m * 2) top = r.bottom + m;
+      else if (above >= ch + m * 2) top = r.top - m - ch;
+      else top = below >= above ? H - ch - m : m;
+      // Geniş ekranda hedefin yanına sığıyorsa yana koy
+      if (W >= 900 && below < ch + m * 2 && above < ch + m * 2) {
+        if (r.left >= cw + m * 2) { left = r.left - m - cw; top = Math.min(Math.max(m, r.top), H - ch - m); }
+        else if (W - r.right >= cw + m * 2) { left = r.right + m; top = Math.min(Math.max(m, r.top), H - ch - m); }
+      }
+      if (left === undefined) left = Math.min(Math.max(m, (r.left + r.right) / 2 - cw / 2), W - cw - m);
+    }
+    card.style.top = Math.round(Math.max(m, top)) + 'px'; card.style.left = Math.round(left) + 'px';
+    card.classList.add('show');
+  }
+
+  function next() {
+    advancing = false; lastEl = null;
+    i++;
+    while (list[i] && list[i].skip && safe(list[i].skip)) i++;
+    if (i >= list.length) { finish(true); return; }
+    if (list[i].last) { /* son kart */ }
+    tick();
+    setTimeout(() => { const b = card.querySelector('.vt-next'); b && b.focus({ preventScroll: true }); }, 60);
+  }
+  const safe = f => { try { return f(); } catch (e) { return false; } };
+
+  /* ══════════ Başlat / bitir ══════════ */
+  function ready() {
+    if (!U.on || !document.body.classList.contains('ui2')) return false;
+    if (['login-overlay', 'reg-overlay', 'pop-overlay', 'modal-overlay', 'paywall-overlay', 'result-overlay'].some(id => { const e = $(id); return e && e.classList.contains('open'); })) return false;
+    if (typeof CASE_DATA === 'undefined' || !CASE_DATA || !CASE_DATA.parvo) return false;
+    const home = $('mob-home-screen'); return !!home && !!home.offsetParent && !!document.querySelector('.u2-hero');
+  }
+  function setup() {
+    saved = {
+      emerg: typeof emergencyModeEnabled !== 'undefined' ? emergencyModeEnabled : false,
+      eco: typeof economyMode !== 'undefined' ? economyMode : false,
+      pick: window.pickNextCaseKey, dock: U.dockMode
+    };
+    window.__vtxTour = true; window.__vtxNoKitError = true;
+    try { emergencyModeEnabled = false; } catch (e) {}
+    try { economyMode = false; } catch (e) {}
+    if (U.dockMode !== 'over' && U.dockMode !== 'grid') U.setDock('over');
+    window.pickNextCaseKey = function (sp) { return (CASE_DATA && CASE_DATA.parvo && (!sp || sp === 'dog' || sp === 'any')) ? 'parvo' : saved.pick.apply(this, arguments); };
+  }
+  function restore() {
+    window.__vtxTour = false; window.__vtxNoKitError = false;
+    try { emergencyModeEnabled = saved.emerg; } catch (e) {}
+    try { economyMode = saved.eco; } catch (e) {}
+    if (saved.pick) window.pickNextCaseKey = saved.pick;
+  }
+  function finish(done, msg) {
+    if (!S) return;
+    clearInterval(timer); S = null;
+    restore();
+    try { localStorage.setItem(DONE_KEY, '1'); } catch (e) {}
+    if (root) { root.remove(); root = null; }
+    if (msg && typeof showToast === 'function') showToast(msg);
+  }
+  let waitT = 0;
+  function start(force) {
+    if (S) return;
+    if (force) {
+      try { if (typeof closeResultScreen === 'function' && resultOpen()) closeResultScreen(); } catch (e) {}
+      if (inCase()) { showToast('Turu başlatmak için önce vakadan çık.'); return; }
+      U.go('home');
+    }
+    clearInterval(waitT);
+    waitT = setInterval(() => {
+      if (!ready()) return;
+      clearInterval(waitT);
+      S = true; list = steps(); i = 0; lastEl = null; advancing = false;
+      setup(); build(); tick();
+      timer = setInterval(tick, 120);
+      addEventListener('resize', () => S && tick());
+    }, 400);
+  }
+  U.tour = { start: () => start(true), stop: () => finish(false), get on() { return !!S; } };
+
+  // İlk açılış: tur tamamlanmadıysa giriş ekranları kapandıktan sonra başlar
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      let done = '1'; try { done = localStorage.getItem(DONE_KEY); } catch (e) {}
+      if (done !== '1') start(false);
+    }, 600);
   });
 })();
 </script>
