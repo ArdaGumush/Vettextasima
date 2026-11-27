@@ -2279,6 +2279,44 @@ body.ui2 #mob-topbar { display: none !important; }
 body.ui2 #mob-patient-card, body.ui2 #mob-diagnosis-bar, body.ui2 #mob-bottombar { display: none !important; }
 body.ui2 #mob-content { background: var(--paper); padding-bottom: 0; }
 .u2-home { max-width: 560px; margin: 0 auto; padding: 22px 16px 24px; }
+.u2-home.c { min-height: calc(100dvh - 66px - env(safe-area-inset-bottom, 0px)); box-sizing: border-box; display: flex; flex-direction: column; }
+.u2-home.c .u2-brand { margin-bottom: 0; }
+.u2-home.c .mid { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: 14px 0 4px; }
+@media (min-width: 1024px) { body.ui2.u2-incase.mobile-mode #toast { bottom: 28px; left: auto; right: 400px; transform: none; } body.ui2.u2-incase.mobile-mode #toast.show { transform: none; } }
+.u2-home.c .u2-h1 { margin: 0; }
+.u2-home.c .u2-lead { margin: 0; }
+.u2-big { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; padding: 18px; border: 0; border-radius: 14px; background: var(--scrub); color: #fff; cursor: pointer; box-shadow: 0 8px 20px rgba(45,92,127,.28); transition: transform .12s, background .12s; }
+.u2-big:hover { background: var(--scrub-hover); transform: translateY(-2px); }
+.u2-big .ic { width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,.16); display: grid; place-items: center; flex-shrink: 0; }
+.u2-big .ic svg.vi { width: 26px; height: 26px; }
+.u2-big .tx { flex: 1; }
+.u2-big b { display: block; font-stretch: 72%; font-weight: 800; font-size: 24px; line-height: 1.1; }
+.u2-big small { display: block; font-size: 13.5px; color: #D6E3EC; margin-top: 3px; line-height: 1.4; }
+.u2-acil { display: block; border-radius: 14px; padding: 14px 16px; background: #FEF2F2; border: 1.5px solid #FECACA; text-align: center; cursor: pointer; transition: background .15s, border-color .15s; }
+.u2-acil.on { background: #DC2626; border-color: #DC2626; color: #fff; }
+.u2-acil .ic { width: 52px; height: 52px; border-radius: 50%; margin: 0 auto 8px; display: grid; place-items: center; background: #fff; color: #DC2626; box-shadow: 0 0 0 6px rgba(220,38,38,.12); }
+.u2-acil .ic svg.vi { width: 28px; height: 28px; }
+.u2-acil b { display: block; font-stretch: 72%; font-weight: 800; font-size: 22px; color: #991B1B; }
+.u2-acil.on b { color: #fff; }
+.u2-acil p { margin: 4px 0 10px; font-size: 13.5px; line-height: 1.45; color: #7F1D1D; }
+.u2-acil.on p { color: #FEE2E2; }
+.u2-acil .pills { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.u2-acil .pills span { font-size: 12px; font-weight: 700; border-radius: 12px; padding: 4px 10px; background: #fff; color: #991B1B; border: 1px solid #FECACA; }
+.u2-acil .sw { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; color: #991B1B; }
+.u2-acil.on .sw { color: #fff; }
+.u2-acil .u2-switch input:checked + i { background: #7F1D1D; }
+.u2-duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.u2-duo button { display: flex; flex-direction: column; gap: 6px; text-align: left; padding: 14px; min-height: 96px; border-radius: 12px; border: 1px solid var(--rule); background: var(--surface); color: var(--ink); cursor: pointer; }
+.u2-duo button:hover { background: #F7F9F8; }
+.u2-duo b { font-size: 15px; font-weight: 700; }
+.u2-duo small { font-size: 12.5px; color: var(--muted); line-height: 1.35; }
+.u2-flow { display: flex; align-items: center; justify-content: space-between; gap: 4px; padding: 12px; border: 1px dashed var(--field); border-radius: 12px; background: rgba(255,255,255,.5); }
+.u2-flow span { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: var(--ink-2); flex: 1; }
+.u2-flow .ar { flex: 0; color: var(--field); }
+.k-spesifik { --c: #8A3B6E; --t: #F5E3EF; }
+.u2-ibtn.notes { position: relative; color: var(--c-not); }
+.u2-ibtn .u2-nb { position: absolute; top: 4px; right: 3px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 8px; background: var(--c-not); color: #fff; font-size: 10px; font-weight: 700; display: grid; place-items: center; box-sizing: border-box; }
+.u2-ibtn .u2-nb:empty { display: none; }
 .u2-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 26px; }
 .u2-brand-mark { width: 34px; height: 34px; border-radius: 8px; background: var(--scrub); color: #fff; display: grid; place-items: center; }
 .u2-brand-mark svg { width: 20px; height: 20px; }
@@ -2388,12 +2426,22 @@ body.ui2.u2-incase #mob-content { display: none !important; }
 .u2-rec .note-pen { flex-shrink: 0; align-self: flex-start; }
 
 /* Muayene: vital ızgarası */
-.u2-vitals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 8px; }
-.u2-vital { background: #F1F4F3; border-radius: var(--radius-sm); padding: 7px 8px; }
-.u2-vital small { display: block; font-size: 12px; color: var(--muted); }
-.u2-vital b { font-size: 15px; font-weight: 700; font-variant-numeric: tabular-nums; }
-.u2-vital.ab { background: var(--iod-tint); color: var(--iod-dark); }
-.u2-vital.ab small { color: var(--iod-dark); }
+.u2-vitals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 10px; }
+.u2-vital { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 9px 10px; }
+.u2-vital .top { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+.u2-vital small { font-size: 12px; color: var(--muted); font-weight: 600; }
+.u2-vital b { display: block; font-family: var(--f-mono) !important; font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; margin-top: 3px; line-height: 1.1; }
+.u2-vital b i { font-style: normal; font-size: 13px; font-weight: 500; opacity: .8; }
+.u2-vital .ref { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+/* Durum renkleri: normal yeşil, sınırda kehribar, yüksek/düşük kırmızı */
+.u2-st { font-size: 11px; font-weight: 700; border-radius: 6px; padding: 2px 7px; white-space: nowrap; }
+.st-n .u2-st, .u2-st.n { background: #DCFCE7; color: #15803D; }
+.st-s .u2-st, .u2-st.s { background: #FDE68A; color: #92400E; }
+.st-h .u2-st, .u2-st.h { background: #DC2626; color: #fff; }
+.u2-vital.st-s { background: #FFFBEB; border-color: #FDE68A; }
+.u2-vital.st-s small, .u2-vital.st-s b, .u2-vital.st-s .ref { color: #92400E; }
+.u2-vital.st-h { background: #FEF2F2; border-color: #FECACA; }
+.u2-vital.st-h small, .u2-vital.st-h b, .u2-vital.st-h .ref { color: #991B1B; }
 .u2-find { margin: 0; padding: 0; list-style: none; }
 .u2-find li { display: flex; gap: 6px; padding: 6px 0; border-top: 1px solid var(--rule-soft); font-size: 14px; }
 .u2-find li:first-child { border-top: 0; }
@@ -2407,6 +2455,13 @@ body.ui2.u2-incase #mob-content { display: none !important; }
 .u2-paper td.v, .u2-paper th.v, .u2-paper td.r, .u2-paper th.r { text-align: right; }
 .u2-paper td.f { width: 20px; text-align: center; }
 .u2-paper tr.ab td.v, .u2-paper tr.ab td.f { color: var(--iod); font-weight: 600; }
+.u2-paper td.f { width: auto; }
+.u2-paper tr.st-h td { background: #FEF2F2; }
+.u2-paper tr.st-h td.v { color: #B91C1C; font-weight: 700; }
+.u2-paper tr.st-s td { background: #FFFBEB; }
+.u2-paper tr.st-s td.v { color: #B45309; font-weight: 700; }
+.u2-paper .u2-st { font-family: var(--f-sans) !important; font-size: 10.5px; padding: 1px 6px; }
+.u2-labsum { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
 .u2-paper .rest { margin-top: 6px; color: var(--muted); font-size: 12px; }
 .u2-paper .note-pen-cell { width: 28px; }
 
@@ -2560,7 +2615,7 @@ body.ui2 #toast { background: var(--ink); color: #fff; border: 0; border-radius:
 body.ui2.mobile-mode #toast { bottom: calc(170px + env(safe-area-inset-bottom, 0px)); left: 50%; right: auto; transform: translate(-50%, 10px); max-width: calc(100% - 32px); }
 body.ui2.mobile-mode #toast.show { transform: translate(-50%, 0); }
 body.ui2:not(.u2-incase).mobile-mode #toast { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
-body.ui2.u2-incase.mobile-mode #toast { bottom: auto; top: calc(84px + env(safe-area-inset-top, 0px)); transform: translate(-50%, -10px); }
+body.ui2.u2-incase.mobile-mode #toast { top: auto; bottom: calc(214px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 10px); }
 body.ui2.u2-incase.mobile-mode #toast.show { transform: translate(-50%, 0); }
 body.ui2 .u2-panel:focus, body.ui2 .u2-panel:focus-visible { outline: none !important; }
 /* Yeni arayüz her ekranda aynı kabuğu kullanır: "Mobil mod" ayarı gereksiz */
@@ -8933,8 +8988,10 @@ window.__vtxBack = function (opts) {
     anamnez: { ad: 'Anamnez', ic: 'anamnez' }, muayene: { ad: 'Muayene', ic: 'muayene' },
     ileri: { ad: 'İleri muayene', ic: 'ileri' }, lab: { ad: 'Laboratuvar', ic: 'lab' },
     goruntu: { ad: 'Görüntüleme', ic: 'goruntu' }, mikro: { ad: 'Mikroskopi', ic: 'mikro' },
-    kit: { ad: 'Hızlı kit', ic: 'kit' }, not: { ad: 'Notlarım', ic: 'not' }
+    kit: { ad: 'Hızlı kit', ic: 'kit' }, not: { ad: 'Notlarım', ic: 'not' },
+    spesifik: { ad: 'Spesifik sorular', ic: 'soru' }
   };
+  if (window.VTX_ICON_PATHS) window.VTX_ICON_PATHS.soru = '<circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.4c-.7.3-1 .8-1 1.5v.4"/><path d="M12 16.6v.3"/>';
   const chip = (k, sm) => `<span class="u2-chip k-${k}${sm ? ' sm' : ''}">${I(CAT[k].ic)}</span>`;
   const tag = k => `<span class="u2-tag k-${k}">${I(CAT[k].ic)}${CAT[k].ad}</span>`;
 
@@ -8970,6 +9027,7 @@ window.__vtxBack = function (opts) {
       <header class="u2-top">
         <button type="button" class="u2-ibtn" onclick="mobConfirmBack()" aria-label="Vakalara dön">${I('geri')}</button>
         <div class="u2-pt" id="u2-pt"></div>
+        <button type="button" class="u2-ibtn notes" onclick="mobOpenNotes()" aria-label="Notlarım">${I('not')}<span class="u2-nb" id="u2-nb"></span></button>
         <button type="button" class="u2-ibtn flag" onclick="openCaseReport()" aria-label="Vakada hata bildir">${I('bayrak')}</button>
       </header>
       <div class="u2-main">
@@ -9008,20 +9066,31 @@ window.__vtxBack = function (opts) {
     const home = $('mob-home-screen'); if (!home) return;
     const banner = home.querySelector('.vtx-demo-banner');
     const emerg = typeof emergencyModeEnabled !== 'undefined' && emergencyModeEnabled;
-    home.innerHTML = `<div class="u2-home">
+    home.innerHTML = `<div class="u2-home c">
       <div class="u2-brand"><span class="u2-brand-mark">${I('muayene')}</span><div><div class="u2-brand-name">VetTEX</div><div class="u2-brand-sub">Klinik simülasyon</div></div></div>
-      <h1 class="u2-h1">Vakalar</h1>
-      <p class="u2-lead">Hastayı sen karşıla: anamnezi al, muayene et, tetkiki seç ve tanıyı koy.</p>
-      <div id="u2-banner-slot"></div>
-      <div class="u2-modes">
-        <button type="button" class="u2-mode primary" onclick="mobOpenClinic()">${I('klinik')}<b>Klinik mod</b><span>Rastgele yeni hasta gelir, tanıyı sen koyarsın.</span></button>
-        <button type="button" class="u2-mode" onclick="mobOpenFreeStudy()">${I('kitap')}<b>Serbest çalışma</b><span>Seçtiğin hastalık listeleriyle çalış.</span></button>
+      <div class="mid">
+        <div><h1 class="u2-h1">Vakalar</h1>
+        <p class="u2-lead">Hastayı sen karşıla: anamnezi al, muayene et, tetkiki seç ve tanıyı koy.</p></div>
+        <div id="u2-banner-slot"></div>
+        <button type="button" class="u2-big" onclick="mobOpenClinic()"><span class="ic">${I('klinik')}</span><span class="tx"><b>Klinik mod</b><small>Yeni hasta kabul et. Rastgele bir vaka gelir, tanıyı sen koyarsın.</small></span>${I('geri', 'u2-rot')}</button>
+        <label class="u2-acil${emerg ? ' on' : ''}" id="u2-acil" for="u2-emerg">
+          <span class="ic">${I('uyari')}</span>
+          <b>Acil mod</b>
+          <p>Açıkken bazı hastalar acil gelir, her tetkiki iyi seçmen gerekir.</p>
+          <span class="pills"><span>5 işlem hakkı</span><span>Vakaların %10'u</span></span>
+          <span class="sw"><span class="u2-switch"><input type="checkbox" id="u2-emerg" ${emerg ? 'checked' : ''} onchange="UI2.setEmerg(this.checked)"><i></i></span><span id="u2-acil-t">${emerg ? 'Açık' : 'Kapalı'}</span></span>
+        </label>
+        <div class="u2-duo">
+          <button type="button" onclick="mobOpenFreeStudy()"><span class="u2-chip k-goruntu">${I('kitap')}</span><b>Serbest çalışma</b><small>Seçtiğin hastalık listeleriyle</small></button>
+          <button type="button" onclick="UI2.go('karne')"><span class="u2-chip k-muayene">${I('grafik')}</span><b>Karnem</b><small>Çözdüğün vakalar ve başarın</small></button>
+        </div>
+        <div class="u2-flow" aria-label="Bir vakanın adımları">
+          <span>${chip('anamnez', 1)}Anamnez</span><span class="ar">${I('geri', 'u2-rot')}</span>
+          <span>${chip('muayene', 1)}Muayene</span><span class="ar">${I('geri', 'u2-rot')}</span>
+          <span>${chip('lab', 1)}Tetkik</span><span class="ar">${I('geri', 'u2-rot')}</span>
+          <span><span class="u2-chip sm" style="--c:#fff;--t:var(--scrub)">${I('onay')}</span>Tanı</span>
+        </div>
       </div>
-      <label class="u2-row" for="u2-emerg">
-        <span class="u2-chip k-kit">${I('uyari')}</span>
-        <span class="grow"><b>Acil mod</b><small>Hastaların bir kısmı acil gelir: 5 işlem hakkın olur.</small></span>
-        <span class="u2-switch"><input type="checkbox" id="u2-emerg" ${emerg ? 'checked' : ''} onchange="UI2.setEmerg(this.checked)"><i></i></span>
-      </label>
     </div>`;
     if (banner) $('u2-banner-slot').appendChild(banner);
     const sp = $('mob-species-screen');
@@ -9040,6 +9109,8 @@ window.__vtxBack = function (opts) {
   U.setEmerg = function (on) {
     if (typeof onSettingsEmergencyToggle === 'function') onSettingsEmergencyToggle(on);
     const t = $('settings-emergency-toggle'); if (t) t.checked = on;
+    const a = $('u2-acil'); if (a) a.classList.toggle('on', on);
+    const at = $('u2-acil-t'); if (at) at.textContent = on ? 'Açık' : 'Kapalı';
   };
   U.go = function (k) {
     if (/-mark$/.test(k)) { const m = k.replace(/-mark$/, ''); document.querySelectorAll('#u2-nav button').forEach(b => b.classList.toggle('on', b.dataset.k === m)); return; }
@@ -9081,16 +9152,17 @@ window.__vtxBack = function (opts) {
   }
 
   /* ══════════ İşlem paneli ══════════ */
-  const ACTS = ['anamnez', 'muayene', 'ileri', 'lab', 'goruntu', 'mikro', 'kit', 'not'];
+  const ACTS = ['anamnez', 'spesifik', 'muayene', 'ileri', 'lab', 'goruntu', 'mikro', 'kit'];
   function examDoneKeys() {
     return PHYS.filter(p => { const el = $('mob-acc-phys-' + p.key); return el && el.dataset.done; }).map(p => p.key);
   }
   function counts() {
     const n = {};
     ACTS.forEach(k => n[k] = 0);
-    n.anamnez = U.anamLog.length;
+    n.anamnez = U.anamLog.filter(e => e.t === 'gen').length;
+    n.spesifik = U.anamLog.filter(e => e.t === 'q').length;
     n.muayene = examDoneKeys().length;
-    U.recs.forEach(r => { if (r.cat !== 'anamnez' && r.cat !== 'muayene') n[r.cat] = (n[r.cat] || 0) + 1; });
+    U.recs.forEach(r => { if (!['anamnez', 'spesifik', 'muayene'].includes(r.cat)) n[r.cat] = (n[r.cat] || 0) + 1; });
     n.not = (typeof caseNotes !== 'undefined' && caseNotes.length) || 0;
     return n;
   }
@@ -9098,7 +9170,8 @@ window.__vtxBack = function (opts) {
     const g = $('u2-grid'); if (!g) return;
     const n = counts(), nothing = !U.anamLog.length && !n.muayene && !U.recs.length;
     g.innerHTML = ACTS.map(k => `<button type="button" class="u2-act k-${k}${k === 'anamnez' && nothing ? ' hint' : ''}" onclick="UI2.open('${k}')" aria-label="${CAT[k].ad}${n[k] ? ', ' + n[k] + ' kez yapıldı' : ''}">
-        <span class="u2-chip k-${k}">${I(CAT[k].ic)}${n[k] ? '<span class="u2-badge">' + n[k] + '</span>' : ''}</span><span>${CAT[k].ad}</span></button>`).join('');
+        <span class="u2-chip k-${k}">${I(CAT[k].ic)}${n[k] ? '<span class="u2-badge">' + n[k] + '</span>' : ''}</span><span>${k === 'spesifik' ? 'Spesifik soru' : CAT[k].ad}</span></button>`).join('');
+    const nb = $('u2-nb'); if (nb) nb.textContent = n.not ? n.not : '';
   }
 
   /* ══════════ Hasta dosyası ══════════ */
@@ -9118,7 +9191,8 @@ window.__vtxBack = function (opts) {
         <div class="u2-empty"><h3>Hasta dosyası henüz boş</h3>
           <p>Yaptığın her işlem burada sırayla birikir: sorduğun sorular, muayene bulguları, sonuçlar. Aşağıdaki panelden bir işlem seçerek başla.</p>
           <ul class="u2-steps">
-            <li>${chip('anamnez', 1)}<span>Anamnez <small>· şikayeti dinle, soru sor</small></span></li>
+            <li>${chip('anamnez', 1)}<span>Anamnez <small>· şikayeti dinle, temel bilgileri al</small></span></li>
+            <li>${chip('spesifik', 1)}<span>Spesifik sorular <small>· ayırıcı tanı için hedefli sorular</small></span></li>
             <li>${chip('muayene', 1)}<span>Muayene <small>· ateş, nabız, solunum, mukoza…</small></span></li>
             <li>${chip('lab', 1)}<span>Testler <small>· laboratuvar, görüntüleme, mikroskopi</small></span></li>
           </ul>
@@ -9152,9 +9226,9 @@ window.__vtxBack = function (opts) {
     for (const c of Object.values(Q)) for (const s of Object.values(c.subcategories || {})) for (const q of s.questions || []) if (q.id === id) return q.q;
     return id;
   }
-  function anamPairs() {
+  function anamPairs(type) {
     const c = C() || {};
-    return U.anamLog.slice().reverse().map(e => {
+    return U.anamLog.filter(e => e.t === type).reverse().map(e => {
       if (e.t === 'gen') {
         const q = (typeof ANAMNEZ_QUESTIONS !== 'undefined' && ANAMNEZ_QUESTIONS[e.key]) || e.key;
         const a = e.key === 'complaint' ? (window._shownComplaint || '') : ((c.anamnez || {})[e.key] || '—');
@@ -9163,14 +9237,15 @@ window.__vtxBack = function (opts) {
       return { q: qText(e.id), a: (window._aqAnswered || {})[e.id] || '' };
     });
   }
-  function anamBody() {
-    const rows = anamPairs().map(p => `<div class="u2-qa"><div class="t"><div class="q">${esc(p.q)}</div><div class="a">${md(p.a)}</div></div>${pen('ANAMNEZ', p.q + ' → ' + plain(p.a))}</div>`);
+  function anamBody(r) {
+    const rows = anamPairs(r && r.cat === 'spesifik' ? 'q' : 'gen').map(p => `<div class="u2-qa"><div class="t"><div class="q">${esc(p.q)}</div><div class="a">${md(p.a)}</div></div>${pen('ANAMNEZ', p.q + ' → ' + plain(p.a))}</div>`);
     if (rows.length <= 3) return rows.join('');
     return rows.slice(0, 3).join('') + more(rows.slice(3).join(''), (rows.length - 3) + ' cevap daha', 'Daha az göster');
   }
-  function anamRec() {
-    let r = U.recs.find(x => x.cat === 'anamnez');
-    if (!r) r = addRec('anamnez', 'Hasta sahibiyle görüşme', anamBody);
+  function anamRec(type) {
+    const cat = type === 'q' ? 'spesifik' : 'anamnez';
+    let r = U.recs.find(x => x.cat === cat);
+    if (!r) r = addRec(cat, cat === 'spesifik' ? 'Spesifik sorular' : 'Hasta sahibiyle görüşme', anamBody);
     bump(r); return r;
   }
 
@@ -9190,19 +9265,28 @@ window.__vtxBack = function (opts) {
     const m = body.match(new RegExp('(\\d+(?:[.,]\\d+)?)\\s*' + unitRe));
     if (!m) return null;
     const v = num(m[1]);
-    return { v: m[1], ab: ref ? (v < num(ref[1]) || v > num(ref[2])) : false };
+    return Object.assign({ v: m[1] }, ref ? stat(v, num(ref[1]), num(ref[2])) : { st: 'n', lbl: 'Normal' }, { ref: ref ? fmt(ref[1]) + '–' + fmt(ref[2]) : '' });
+  }
+  // Referansa göre durum: içindeyse normal, aralık genişliğinin %5'i kadar dışındaysa sınırda, daha fazlaysa yüksek/düşük
+  function stat(v, lo, hi) {
+    if (isNaN(v) || isNaN(lo) || isNaN(hi)) return { st: 'n', lbl: 'Normal' };
+    const m = (hi - lo) * 0.05;
+    if (v > hi) return v - hi <= m ? { st: 's', lbl: 'Sınırda ↑' } : { st: 'h', lbl: 'Yüksek' };
+    if (v < lo) return lo - v <= m ? { st: 's', lbl: 'Sınırda ↓' } : { st: 'h', lbl: 'Düşük' };
+    return { st: 'n', lbl: 'Normal' };
   }
   function examBody() {
     const c = C() || {}, done = examDoneKeys();
     const txt = k => { const p = PHYS.find(x => x.key === k); return ((p.src === 'tools' ? c.tools : c.physical) || {})[k] || ''; };
     const cells = [], used = new Set();
-    const add = (ad, r, unit) => cells.push(`<div class="u2-vital${r.ab ? ' ab' : ''}"><small>${ad}</small><b>${fmt(r.v)}${unit}</b>${r.ab ? '<span class="u2-hidden">anormal</span>' : ''}</div>`);
+    const add = (ad, r, unit) => cells.push(`<div class="u2-vital st-${r.st}"><div class="top"><small>${ad}</small><span class="u2-st">${r.lbl}</span></div><b>${fmt(r.v)} <i>${unit.trim()}</i></b>${r.ref ? `<div class="ref">Ref ${r.ref}</div>` : ''}</div>`);
     if (done.includes('temp')) { const r = vital(txt('temp'), '°\\s*C'); if (r) { add('Isı', r, ' °C'); used.add('temp'); } }
     if (done.includes('hr'))   { const r = vital(txt('hr'), '\\/\\s*da?k'); if (r) { add('Nabız', r, '/dk'); used.add('hr'); } }
     if (done.includes('resp')) { const r = vital(txt('resp'), '\\/\\s*da?k'); if (r) { add('Solunum', r, '/dk'); used.add('resp'); } }
     if (done.includes('mucosa')) {
       const m = plain(txt('mucosa')).match(/(?:CRT|KDZ|KRT)\s*:?\s*([\d.,]+)\s*sn/i);
-      if (m) cells.push(`<div class="u2-vital${num(m[1]) > 2 ? ' ab' : ''}"><small>KDZ</small><b>${fmt(m[1])} sn</b></div>`);
+      if (m) { const v = num(m[1]); const r = v <= 2 ? { st: 'n', lbl: 'Normal' } : v <= 2.5 ? { st: 's', lbl: 'Sınırda' } : { st: 'h', lbl: 'Uzamış' };
+        add('KDZ', Object.assign({ v: m[1], ref: '< 2' }, r), ' sn'); }
     }
     const finds = done.filter(k => !used.has(k)).map(k => {
       const p = PHYS.find(x => x.key === k), t = txt(k);
@@ -9239,14 +9323,21 @@ window.__vtxBack = function (opts) {
     const rows = [...d.querySelectorAll('tr')].filter(tr => tr.querySelector('td')).map(tr => {
       const td = [...tr.querySelectorAll('td')].map(x => x.textContent.replace(/\s+/g, ' ').trim());
       const f = td[td.length - 1]; const four = td.length >= 4;
-      return { p: td[0], v: td[1], r: four ? td[2] : '', f: /^[HL]$/.test(f) ? f : '' };
+      const x = { p: td[0], v: td[1], r: four ? td[2] : '', f: /^[HL]$/.test(f) ? f : '' };
+      // Durum: oyunun H/L bayrağı esas; referans okunabiliyorsa sınırda olanlar kehribar
+      const rm = String(x.r).match(/([\d.,]+)\s*[–-]\s*([\d.,]+)/), vn = num(String(x.v).match(/-?[\d.,]+/) || '');
+      if (x.f) {
+        const s = rm ? stat(vn, num(rm[1]), num(rm[2])) : { st: 'h' };
+        x.st = s.st === 'n' ? 'h' : s.st;
+        x.lbl = x.st === 's' ? (x.f === 'H' ? 'Sınırda ↑' : 'Sınırda ↓') : (x.f === 'H' ? 'Yüksek' : 'Düşük');
+      } else { x.st = 'n'; x.lbl = ''; }
+      return x;
     });
-    const row = x => `<tr class="${x.f ? 'ab' : ''}"><td>${esc(x.p)}</td><td class="v">${esc(x.v)}</td><td class="f">${x.f || ''}</td><td class="r">${esc(x.r)}</td><td class="note-pen-cell">${pen(src, [x.p, x.v, x.r, x.f].filter(Boolean).join(' · '))}</td></tr>`;
-    const head = '<tr><th>Parametre</th><th class="v">Sonuç</th><th></th><th class="r">Referans</th><th></th></tr>';
-    const ab = rows.filter(x => x.f), ok = rows.length - ab.length;
-    const short = ab.length ? `<table>${head}${ab.map(row).join('')}</table>` : '<div>Tüm değerler referans aralığında.</div>';
-    return `<div class="u2-paper mono">${short}${ok && ab.length ? `<div class="rest">+ ${ok} değer referans aralığında</div>` : ''}</div>`
-      + more(`<div class="u2-paper mono" style="margin-top:8px"><table>${head}${rows.map(row).join('')}</table></div>`, 'Tam çıktıyı gör', 'Tam çıktıyı gizle');
+    const row = x => `<tr class="st-${x.st}"><td>${esc(x.p)}</td><td class="v">${esc(x.v)}</td><td class="f">${x.lbl ? `<span class="u2-st ${x.st}">${x.lbl}</span>` : ''}</td><td class="r">${esc(x.r)}</td><td class="note-pen-cell">${pen(src, [x.p, x.v, x.r, x.f].filter(Boolean).join(' · '))}</td></tr>`;
+    const head = '<tr><th>Parametre</th><th class="v">Sonuç</th><th>Durum</th><th class="r">Referans</th><th></th></tr>';
+    const nh = rows.filter(x => x.st === 'h').length, ns = rows.filter(x => x.st === 's').length, nn = rows.length - nh - ns;
+    const sum = `<div class="u2-labsum">${nh ? `<span class="u2-st h">${nh} anormal</span>` : ''}${ns ? `<span class="u2-st s">${ns} sınırda</span>` : ''}<span class="u2-st n">${nn} normal</span></div>`;
+    return sum + `<div class="u2-paper mono"><table>${head}${rows.map(row).join('')}</table></div>`;
   }
   function kasetHTML(res, label, big) {
     const it = (res && res.items) || [{ name: '', pos: false }];
@@ -9342,7 +9433,7 @@ window.__vtxBack = function (opts) {
     if (!C()) return;
     U.ctx = k;
     if (k === 'not') { mobOpenNotes(); return; }
-    ({ anamnez: shAnamnez, muayene: shMuayene, ileri: shIleri, lab: shLab, goruntu: shGoruntu, mikro: shMikro, kit: shKit })[k]();
+    ({ anamnez: shAnamnez, spesifik: shSpesifik, muayene: shMuayene, ileri: shIleri, lab: shLab, goruntu: shGoruntu, mikro: shMikro, kit: shKit })[k]();
   };
 
   /* Anamnez */
@@ -9358,7 +9449,16 @@ window.__vtxBack = function (opts) {
       const a = g.key === 'complaint' ? window._shownComplaint : (c.anamnez || {})[g.key];
       h += row(genDone(g.key), q, `UI2.askGen('${g.key}')`, genDone(g.key) ? a : '');
     });
-    h += '<div class="u2-h3">Ayırıcı tanı soruları</div>';
+    const asked = U.anamLog.filter(e => e.t === 'gen').length;
+    openSheet('anamnez', 'Anamnez', 'Hasta sahibiyle ilk görüşme: şikayet ve temel bilgiler.', h,
+      `<span class="grow"><b>${asked}</b>/4</span><button type="button" class="u2-btn ghost" onclick="UI2.open('spesifik')">${I('soru')}Spesifik</button><button type="button" class="u2-btn" onclick="UI2.closeSheet()">Dosyaya dön</button>`, keepScroll);
+  }
+  function shSpesifik(keepScroll) {
+    const Q = window.QUESTIONS || {}; const aq = window._aqAnswered || {};
+    const row = (done, txt, on, ans) => done
+      ? `<div class="u2-q done"><span class="ok">${I('onay')}</span><span class="tx">${esc(txt)}</span><span class="go">Soruldu</span></div>${ans ? `<div class="u2-ans"><span class="t">${md(ans)}</span>${pen('SPESİFİK SORU', txt + ' → ' + plain(ans))}</div>` : ''}`
+      : `<button type="button" class="u2-q" onclick="${on}"><span class="dot"></span><span class="tx">${esc(txt)}</span><span class="go">Sor</span></button>`;
+    let h = '';
     for (const [catId, cat] of Object.entries(Q)) {
       let n = 0, tot = 0, inner = '';
       for (const [subId, sub] of Object.entries(cat.subcategories || {})) {
@@ -9371,9 +9471,9 @@ window.__vtxBack = function (opts) {
       const open = U._openGrp && U._openGrp.has(catId);
       h += `<details class="u2-grp" data-cat="${catId}"${open ? ' open' : ''} ontoggle="UI2.grp(this)"><summary><span class="chev">${I('geri', 'u2-rot')}</span>${esc(cat.label)}<span class="n">${n ? n + ' / ' : ''}${tot}</span></summary><div class="u2-sub">${inner}</div></details>`;
     }
-    const asked = U.anamLog.length;
+    const asked = U.anamLog.filter(e => e.t === 'q').length;
     const body = $('u2-sh-body'); const st = keepScroll && body ? body.scrollTop : 0;
-    openSheet('anamnez', 'Anamnez', 'Hasta sahibine sor. Her cevap dosyadaki görüşme kaydına eklenir.', h,
+    openSheet('spesifik', 'Spesifik sorular', 'Ayırıcı tanı için sisteme göre hedefli sorular. Cevaplar ayrı kayıtta toplanır.', h,
       `<span class="grow"><b>${asked}</b> soru soruldu</span><button type="button" class="u2-btn" onclick="UI2.closeSheet()">Dosyaya dön</button>`, keepScroll);
     $('u2-sh-body').querySelectorAll('svg.u2-rot').forEach(s => s.style.transform = 'rotate(180deg)');
     if (keepScroll) $('u2-sh-body').scrollTop = st;
@@ -9385,13 +9485,13 @@ window.__vtxBack = function (opts) {
     if (el && !el.classList.contains('open')) mobToggleAccordion(id);
     if (key === 'complaint') { try { complaintAsked = true; } catch (e) {} }
     if (!U.anamLog.some(e => e.t === 'gen' && e.key === key)) U.anamLog.push({ t: 'gen', key });
-    anamRec(); renderFile(); renderDock(); renderTop(); shAnamnez(true);
+    anamRec('gen'); renderFile(); renderDock(); renderTop(); shAnamnez(true);
   };
   U.askQ = function (qId, catId, subId) {
     const had = !!(window._aqAnswered || {})[qId];
     askAnamnezQ(qId, catId, subId);
     if (!had && (window._aqAnswered || {})[qId]) U.anamLog.push({ t: 'q', id: qId });
-    anamRec(); renderFile(); renderDock(); shAnamnez(true);
+    anamRec('q'); renderFile(); renderDock(); shSpesifik(true);
   };
 
   /* Muayene */
